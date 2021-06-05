@@ -39,6 +39,7 @@ func _do_unit_collision(snapped_pos: Vector2):
 	return false
 
 func do_tick():
+	.do_tick()
 	_do_unit_collision(self.grid_pos)
 	duration -= 1
 	if duration == 0:

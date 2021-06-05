@@ -13,6 +13,7 @@ func terminate():
 		.terminate()
 
 func do_tick():
+	.do_tick()
 	if first:
 		first = false
 		var hit_pos = grid_pos

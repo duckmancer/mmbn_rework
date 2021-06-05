@@ -27,8 +27,7 @@ func slash():
 	slash.setup(grid_pos, team)
 
 func do_tick():
-	pass
-	#self.cur_charge += 1
+	.do_tick()
 	
 func run_AI():
 	var targets = _get_targets()

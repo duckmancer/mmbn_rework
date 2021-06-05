@@ -1,5 +1,5 @@
 class_name Action
-extends Node2D
+extends Entity
 
 signal action_finished
 
@@ -63,8 +63,6 @@ const _ACTION_DATA = {
 		attack_type = Constants.EntityType.HITSCAN,
 	},
 }
-onready var weapon_sprite = $Weapon
-onready var weapon_anim = $AnimationPlayer
 
 var entity_owner
 var battle_owner
@@ -91,6 +89,7 @@ func initialize_arguments(kwargs := {}):
 		set(keyword, kwargs[keyword])
 
 
+	
 
 func attack():
 	var kwargs = {grid_pos = entity_owner.grid_pos, team = entity_owner.team}
@@ -110,14 +109,16 @@ func _run():
 			callv(_get_data("func_name"), args)
 			state = COOLDOWN
 			timer = _get_data("cooldown")
+			print(sprite.global_position)
 		COOLDOWN:
 			state = DONE
 		DONE:
 			return true
 	return _run()
 
-func _physics_process(delta):
-	weapon_sprite.position = entity_owner.sprite.position
+func do_tick():
+	.do_tick()
+	sprite.position = entity_owner.sprite.position
 	if state == WARMUP or state == COOLDOWN:
 		if _run():
 			emit_signal("action_finished") 
@@ -125,15 +126,16 @@ func _physics_process(delta):
 		_try_free()
 
 func _ready():
+	position = Vector2(0, 0)
 	entity_owner = get_parent()#.get_parent()
 	battle_owner = entity_owner.get_parent()
-	weapon_sprite.flip_h = entity_owner.sprite.flip_h
-	weapon_anim.play(_get_data("anim_name"))
+	sprite.flip_h = entity_owner.sprite.flip_h
+	animation_player.play(_get_data("anim_name"))
 	timer = _get_data("warmup")
 	state = WARMUP
 
 func _try_free():
-	if state == DONE and not weapon_anim.is_playing():
+	if state == DONE and not animation_player.is_playing():
 		queue_free()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
