@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Battle/PlayerController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Battle/Battle.gd" type="Script" id=3]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="PlayerController" parent="." instance=ExtResource( 1 )]
