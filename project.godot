@@ -29,12 +29,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Panel.gd"
 }, {
-"base": "Reference",
+"base": "Action",
 "class": "Buster",
 "language": "GDScript",
 "path": "res://Battle/Entity/Action/Buster/Buster.gd"
 }, {
-"base": "Reference",
+"base": "Action",
 "class": "Cannon",
 "language": "GDScript",
 "path": "res://Battle/Entity/Action/Cannon/Cannon.gd"
@@ -79,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Attack/Slash/Slash.gd"
 }, {
-"base": "Reference",
+"base": "Action",
 "class": "Sword",
 "language": "GDScript",
 "path": "res://Battle/Entity/Action/Sword/Sword.gd"

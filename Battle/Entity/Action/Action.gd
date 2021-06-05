@@ -126,7 +126,7 @@ func do_tick():
 
 func _ready():
 	position = Vector2(0, 0)
-	entity_owner = get_parent()#.get_parent()
+	entity_owner = get_parent()
 	battle_owner = entity_owner.get_parent()
 	sprite.flip_h = entity_owner.sprite.flip_h
 	animation_player.play(_get_data("anim_name"))
