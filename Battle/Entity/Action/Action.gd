@@ -109,7 +109,6 @@ func _run():
 			callv(_get_data("func_name"), args)
 			state = COOLDOWN
 			timer = _get_data("cooldown")
-			print(sprite.global_position)
 		COOLDOWN:
 			state = DONE
 		DONE:

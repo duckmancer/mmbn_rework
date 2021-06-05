@@ -10,7 +10,7 @@ const _ENTITY_ROOT = _BATTLE_ROOT + "Entity/"
 const _UNIT_ROOT = _ENTITY_ROOT + "Unit/"
 const _NAVI_ROOT = _UNIT_ROOT + "Navi/"
 
-const _ACTION_ROOT = _BATTLE_ROOT + "Action/"
+const _ACTION_ROOT = _ENTITY_ROOT + "Action/"
 const _SWORD_ROOT = _ACTION_ROOT + "Sword/"
 const _BUSTER_ROOT = _ACTION_ROOT + "Buster/"
 const _CANNON_ROOT = _ACTION_ROOT + "Cannon/"
