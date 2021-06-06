@@ -1,9 +1,10 @@
 extends Node
 
 enum EntityType {
+	NORMAL_NAVI,
 	MEGAMAN,
 	METTAUR,
-	ACTION,
+	MISC_ACTION,
 	CANNON,
 	SWORD,
 	BUSTER,

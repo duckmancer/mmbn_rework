@@ -13,7 +13,6 @@ func set_cur_charge(new_charge):
 	else:
 		sprite.modulate = Color.white
 
-
 func _use_charge():
 	var mul = 1
 	if cur_charge >= charge_time:
@@ -26,21 +25,18 @@ func slash():
 	get_parent().add_child(slash)
 	slash.setup(grid_pos, team)
 
+
+func run_AI(target):
+	if .run_AI(target):
+		return true
+	elif target.grid_pos.y == self.grid_pos.y:
+		enqueue_action(Action.Type.SWORD)
+		return true
+	else:
+		return false
+
 func do_tick():
 	.do_tick()
-	
-func run_AI():
-	var targets = _get_targets()
-	if targets.empty():
-		return
-	var target_row = targets.front().grid_pos.y
-	if target_row > grid_pos.y:
-		enqueue_action("move", ["down"])
-	elif target_row < grid_pos.y:
-		enqueue_action("move", ["up"])
-	else:
-		enqueue_action("slash")
-
 
 func _ready():
 	pass

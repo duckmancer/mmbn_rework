@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "BattlePanel",
 "language": "GDScript",
-"path": "res://Battle/Panel.gd"
+"path": "res://Battle/Panel/Panel.gd"
 }, {
 "base": "Action",
 "class": "Buster",
@@ -52,17 +52,27 @@ _global_script_classes=[ {
 "base": "Navi",
 "class": "Megaman",
 "language": "GDScript",
-"path": "res://Battle/Entity/Unit/Navi/Megaman.gd"
+"path": "res://Battle/Entity/Unit/Navi/Megaman/Megaman.gd"
 }, {
-"base": "Unit",
+"base": "Virus",
 "class": "Mettaur",
 "language": "GDScript",
-"path": "res://Battle/Entity/Unit/Mettaur.gd"
+"path": "res://Battle/Entity/Unit/Virus/Mettaur/Mettaur.gd"
+}, {
+"base": "Action",
+"class": "MiscAction",
+"language": "GDScript",
+"path": "res://Battle/Entity/Action/MiscAction/MiscAction.gd"
 }, {
 "base": "Unit",
 "class": "Navi",
 "language": "GDScript",
 "path": "res://Battle/Entity/Unit/Navi/Navi.gd"
+}, {
+"base": "Navi",
+"class": "NormalNavi",
+"language": "GDScript",
+"path": "res://Battle/Entity/Unit/Navi/NormalNavi/NormalNavi.gd"
 }, {
 "base": "Node2D",
 "class": "PlayerController",
@@ -88,6 +98,11 @@ _global_script_classes=[ {
 "class": "Unit",
 "language": "GDScript",
 "path": "res://Battle/Entity/Unit/Unit.gd"
+}, {
+"base": "Unit",
+"class": "Virus",
+"language": "GDScript",
+"path": "res://Battle/Entity/Unit/Virus/Virus.gd"
 } ]
 _global_script_class_icons={
 "Action": "",
@@ -100,12 +115,15 @@ _global_script_class_icons={
 "Hitscan": "",
 "Megaman": "",
 "Mettaur": "",
+"MiscAction": "",
 "Navi": "",
+"NormalNavi": "",
 "PlayerController": "",
 "Shot": "",
 "Slash": "",
 "Sword": "",
-"Unit": ""
+"Unit": "",
+"Virus": ""
 }
 
 [application]

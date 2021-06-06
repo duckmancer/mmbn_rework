@@ -11,16 +11,21 @@ enum Type {
 	SWORD,
 	SHOCKWAVE,
 }
+enum {
+	PRE_RUN,
+	WARMUP,
+	COOLDOWN,
+	DONE,
+}
 
 const ACTION_SCENES = {
-	Type.IDLE: Constants.EntityType.ACTION,
-	Type.MOVE: Constants.EntityType.ACTION,
+	Type.IDLE: Constants.EntityType.MISC_ACTION,
+	Type.MOVE: Constants.EntityType.MISC_ACTION,
 	Type.BUSTER: Constants.EntityType.BUSTER,
 	Type.CANNON: Constants.EntityType.CANNON,
 	Type.SWORD: Constants.EntityType.SWORD,
-	Type.SHOCKWAVE: Constants.EntityType.ACTION,
+	Type.SHOCKWAVE: Constants.EntityType.MISC_ACTION,
 }
-
 const _ACTION_DATA = {
 	Type.MOVE: {
 		warmup = 2,
@@ -66,13 +71,6 @@ const _ACTION_DATA = {
 
 var entity_owner
 var battle_owner
-
-enum {
-	PRE_RUN,
-	WARMUP,
-	COOLDOWN,
-	DONE,
-}
 var action_type
 var state := PRE_RUN
 var timer := 0
@@ -83,13 +81,6 @@ func _get_data(field_name : String):
 	
 func get_entity_anim():
 	return _get_data("entity_anim")
-
-func initialize_arguments(kwargs := {}):
-	for keyword in kwargs:
-		set(keyword, kwargs[keyword])
-
-
-	
 
 func attack():
 	var kwargs = {grid_pos = entity_owner.grid_pos, team = entity_owner.team}

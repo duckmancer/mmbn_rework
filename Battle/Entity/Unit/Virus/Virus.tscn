@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/BattleAssets/Characters/Viruses/Met Sheet.png" type="Texture" id=1]
-[ext_resource path="res://Battle/Entity/Unit/Mettaur.gd" type="Script" id=2]
+[ext_resource path="res://Battle/Entity/Unit/Virus/Virus.gd" type="Script" id=2]
 [ext_resource path="res://Battle/Entity/Unit/Unit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
@@ -55,8 +55,11 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
 
-[node name="Mettaur" instance=ExtResource( 3 )]
+[node name="Virus" instance=ExtResource( 3 )]
 script = ExtResource( 2 )
+move_warmup = 2
+move_cooldown = 2
+hp = 40
 attack_warmup = 38
 attack_cooldown = 100
 attack_damage = 10

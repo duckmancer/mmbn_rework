@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Battle/Entity/Unit/Navi/Navi.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Battle/Entity/Unit/Navi/NormalNavi/NormalNavi.gd" type="Script" id=2]
+
+[node name="NormalNavi" groups=[
+"entity",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+move_warmup = 2
+move_cooldown = 2
+hp = 40
+charge_multiplier = 10
+charge_time = 180
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "idle"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
