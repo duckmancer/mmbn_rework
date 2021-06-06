@@ -1,6 +1,9 @@
 class_name Unit
 extends Entity
 
+signal move_to(entity, destination)
+
+
 export var move_warmup := 2
 export var move_cooldown := 2
 
@@ -13,18 +16,13 @@ func set_hp(new_hp):
 
 var queued_action = Action.Type.IDLE
 var queued_args := []
-var cur_action : Action = null
+var cur_action = null
 var is_action_running := false
 
 
 func move(dir):
 	var newPos = grid_pos + Constants.DIRS[dir]
 	emit_signal("move_to", self, newPos)
-
-func shoot():
-	var shot = Scenes.HITSCAN_SCENE.instance()
-	get_parent().add_child(shot)
-	shot.setup(grid_pos, team)
 
 
 func enqueue_action(action, args := []):
@@ -36,11 +34,9 @@ func enqueue_action(action, args := []):
 	queued_action = action
 
 func _set_cur_action():
-	if cur_action != null:
-		cur_action.terminate()
 	var kwargs = {action_type = queued_action, args = queued_args}
 	cur_action = Scenes.make_entity(Action.ACTION_SCENES[queued_action], self, kwargs) as Action
-	cur_action.connect("action_finished", self, "_on_Action_finished")
+	cur_action.connect("action_finished", self, "_on_Action_action_finished")
 
 func _run_queued_action():
 	if queued_action == Action.Type.IDLE:
@@ -74,6 +70,6 @@ func _ready():
 	pass
 
 
-func _on_Action_finished():
+func _on_Action_action_finished():
 	is_action_running = false
 	cur_action = null

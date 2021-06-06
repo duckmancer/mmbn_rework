@@ -1,42 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.gd" type="Script" id=1]
 [ext_resource path="res://Assets/BattleAssets/icon.png" type="Texture" id=2]
-
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
-length = 1.06667
-loop = true
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.533333, 0.933333 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 1 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "move"
-length = 0.0500001
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0166667, 0.0333334 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 8, 9, 8 ]
-}
 
 [node name="Entity" type="Node2D" groups=[
 "entity",
@@ -49,8 +14,5 @@ centered = false
 region_rect = Rect2( 107, 7, 34, 46 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-anims/idle = SubResource( 1 )
-anims/move = SubResource( 2 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

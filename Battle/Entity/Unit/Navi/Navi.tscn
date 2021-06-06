@@ -123,9 +123,7 @@ hp = 200
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
-hframes = 8
-vframes = 8
-frame = 24
+frame = 8
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]

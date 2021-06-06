@@ -1,14 +1,13 @@
 class_name Entity
 extends Node2D
 
-signal move_to(entity, destination)
-
 onready var sprite := $Sprite as Sprite
 onready var animation_player := $AnimationPlayer as AnimationPlayer
 
 var is_player_controlled := false
 var team = Constants.Team.ENEMY
-var is_active := true
+var is_active := false
+
 
 var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
 func set_grid_pos(new_grid_pos):
@@ -48,9 +47,9 @@ func initialize_arguments(kwargs := {}):
 		set(keyword, kwargs[keyword])
 
 func _ready():
+	is_active = true
 	sprite.flip_h = (team == Constants.Team.ENEMY)
 	self.grid_pos = grid_pos
-	
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	animation_player.stop()

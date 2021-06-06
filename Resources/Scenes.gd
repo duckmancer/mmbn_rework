@@ -72,14 +72,3 @@ static func make_entity(scene_type, entity_owner, kwargs := {}):
 
 
 const PANEL_SCENE = preload(_PANEL_PATH)
-#const MEGAMAN_SCENE = preload(_MEGAMAN_PATH)
-#const METTAUR_SCENE = preload(_METTAUR_PATH)
-#
-#const ACTION_SCENE = preload(_ACTION_PATH)
-#const BUSTER_SCENE = preload(_BUSTER_PATH)
-#const CANNON_SCENE = preload(_CANNON_PATH)
-#const SWORD_SCENE = preload(_SWORD_PATH)
-#
-#const HITSCAN_SCENE = preload(_HITSCAN_PATH)
-#const SHOT_SCENE = preload(_SHOT_PATH)
-#const SLASH_SCENE = preload(_SLASH_PATH)
