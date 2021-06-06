@@ -30,10 +30,9 @@ func _do_unit_collision(snapped_pos: Vector2):
 		if t.grid_pos == snapped_pos:
 			if t.team != team:
 				if not t in ignored_targets:
+					ignored_targets.push_back(t)
 					t.hp -= damage
-					if pass_through:
-						ignored_targets.push_back(t)
-					else:
+					if not pass_through:
 						terminate()
 						return true
 	return false

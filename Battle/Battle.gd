@@ -21,32 +21,35 @@ func _set_panels():
 			add_child(new_panel)
 			panel_grid.back().push_back(new_panel)
 
-func _on_Entity_move(entity, destination):
-	if (destination.x < 0 or destination.x > 5):
-		return
-	if (destination.y < 0 or destination.y > 2):
-		return
-	
-	if entity.team != panel_grid[destination.y][destination.x].team:
-		return
-	
-	for u in get_tree().get_nodes_in_group("unit"):
-		if u.grid_pos == destination:
-			return
-	entity.grid_pos = destination
-
 func add_entity(entity_type, pos := Vector2(0, 0), team = Constants.Team.ENEMY, pc := false):
 	var kwargs = {grid_pos = pos, team = team}
 	var entity = Scenes.make_entity(entity_type, self, kwargs) as Unit
 	if pc:
 		player_controller.bind_entity(entity)
-	entity.connect("move_to", self, "_on_Entity_move")
+	entity.connect("request_move", self, "_on_Entity_request_move")
 
 func _ready():
 	_set_panels()
 	add_entity(Constants.EntityType.MEGAMAN, Vector2(1, 1), Constants.Team.PLAYER, true)
-#	add_entity(Constants.EntityType.MEGAMAN, Vector2(3, 1))
+	add_entity(Constants.EntityType.MEGAMAN, Vector2(3, 1))
 	add_entity(Constants.EntityType.METTAUR, Vector2(4, 1))
 #	add_entity(Constants.EntityType.METTAUR, Vector2(3, 2))
 #	add_entity(Constants.EntityType.METTAUR, Vector2(3, 0))
 
+func _is_space_open(destination, team):
+	if (destination.x < 0 or destination.x > 5):
+		return false
+	if (destination.y < 0 or destination.y > 2):
+		return false
+	
+	if team != panel_grid[destination.y][destination.x].team:
+		return false
+	
+	for u in get_tree().get_nodes_in_group("unit"):
+		if u.grid_pos == destination:
+			return false
+	return true
+
+func _on_Entity_request_move(entity, destination):
+	if not _is_space_open(destination, entity.team):
+		entity.reject_move_request()

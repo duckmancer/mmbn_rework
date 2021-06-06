@@ -6,7 +6,8 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "hide"
-length = 0.1
+length = 0.0166667
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -20,9 +21,10 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "move"
-length = 0.3
+length = 0.0833333
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -42,13 +44,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.0333333 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "shockwave"
 step = 0.0166667
 tracks/0/type = "value"
@@ -76,8 +78,7 @@ tracks/1/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "shoot"
+[sub_resource type="Animation" id=4]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -105,8 +106,7 @@ tracks/1/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "shoot_heavy"
+[sub_resource type="Animation" id=5]
 length = 0.533334
 step = 0.0166667
 tracks/0/type = "value"
@@ -134,8 +134,7 @@ tracks/1/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "slash"
+[sub_resource type="Animation" id=6]
 length = 0.466667
 step = 0.0166667
 tracks/0/type = "value"
@@ -173,13 +172,13 @@ centered = true
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
-frame = 7
+frame = 48
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hide"
 anims/hide = SubResource( 1 )
-anims/move = SubResource( 5 )
-anims/shockwave = SubResource( 6 )
-anims/shoot = SubResource( 2 )
-anims/shoot_heavy = SubResource( 3 )
-anims/slash = SubResource( 4 )
+anims/move = SubResource( 2 )
+anims/shockwave = SubResource( 3 )
+anims/shoot = SubResource( 4 )
+anims/shoot_heavy = SubResource( 5 )
+anims/slash = SubResource( 6 )

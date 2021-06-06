@@ -4,6 +4,8 @@ extends Node2D
 onready var sprite := $Sprite as Sprite
 onready var animation_player := $AnimationPlayer as AnimationPlayer
 
+var frame_counter = 0
+
 var is_player_controlled := false
 var team = Constants.Team.ENEMY
 var is_active := false
@@ -37,6 +39,7 @@ func choose_target():
 
 func do_tick():
 	pass
+	frame_counter += 1
 	
 func _physics_process(delta):
 	if is_active:

@@ -1,7 +1,7 @@
 class_name Shot
 extends Attack
 
-export var speed = 1
+export var speed = 5
 
 
 func _ready():

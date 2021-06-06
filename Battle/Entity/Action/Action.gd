@@ -9,6 +9,7 @@ enum Type {
 	BUSTER,
 	CANNON,
 	SWORD,
+	MINIBOMB,
 	SHOCKWAVE,
 }
 enum ActionState {
@@ -23,6 +24,7 @@ const ACTION_SCENES = {
 	Type.BUSTER: Constants.EntityType.BUSTER,
 	Type.CANNON: Constants.EntityType.CANNON,
 	Type.SWORD: Constants.EntityType.SWORD,
+	Type.MINIBOMB: Constants.EntityType.MISC_ACTION,
 	Type.SHOCKWAVE: Constants.EntityType.MISC_ACTION,
 }
 const _ACTION_DATA = {
@@ -59,6 +61,14 @@ const _ACTION_DATA = {
 		attack_type = Constants.EntityType.SHOT,
 	},
 	Type.CANNON: {
+		warmup = 16,
+		cooldown = 18,
+		anim_name = "shoot_heavy",
+		func_name = "attack",
+		entity_anim = "shoot_heavy",
+		attack_type = Constants.EntityType.HITSCAN,
+	},
+	Type.MINIBOMB: {
 		warmup = 16,
 		cooldown = 18,
 		anim_name = "shoot_heavy",
