@@ -1,41 +1,8 @@
 class_name PlayerController
 extends Node2D
 
-var entity : Entity
-var _input_map = {
-	up = {
-		action_name = Action.Type.MOVE,
-		args = ["up"],
-	},
-	down = {
-		action_name = Action.Type.MOVE,
-		args = ["down"],
-	},
-	left = {
-		action_name = Action.Type.MOVE,
-		args = ["left"],
-	},
-	right = {
-		action_name = Action.Type.MOVE,
-		args = ["right"],
-	},
-	action_0 = {
-		action_name = Action.Type.BUSTER,
-		args = [],
-	},
-	action_1 = {
-		action_name = Action.Type.CANNON,
-		args = [],
-	},
-	action_2 = {
-		action_name = Action.Type.SWORD,
-		args = [],
-	},
-	action_3 = {
-		action_name = Action.Type.MINIBOMB,
-		args = [],
-	},
-}
+var entity : Unit
+
 var _held_input = {
 	up = 0,
 	down = 0,
@@ -67,11 +34,8 @@ func _unhandled_key_input(event):
 		elif event.is_action_released(button):
 			_button_released(button)
 
-func _physics_process(delta):
-	if _total_held_inputs == 0:
-		_cur_input_count = 0
-		return
-	var best
+func get_last_input():
+	var best = "no_action"
 	var best_count = 0
 	for input in _held_input.keys():
 		if _held_input[input] > best_count:
@@ -79,7 +43,14 @@ func _physics_process(delta):
 			best_count = _held_input[input]
 			if best_count == _cur_input_count:
 				break
-	entity.enqueue_action(_input_map[best].action_name, _input_map[best].args)
+	return best
+
+func _physics_process(delta):
+	if _total_held_inputs == 0:
+		_cur_input_count = 0
+		
+	var best = get_last_input()
+	entity.process_input(best)
 	
 
 func bind_entity(controlled_entity: Entity):

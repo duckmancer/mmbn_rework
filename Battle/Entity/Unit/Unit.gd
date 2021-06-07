@@ -11,12 +11,54 @@ func set_hp(new_hp):
 		terminate()
 	$Healthbar.text = str(hp)
 
+var input_map = {
+	up = {
+		action_name = Action.Type.MOVE,
+		args = ["up"],
+	},
+	down = {
+		action_name = Action.Type.MOVE,
+		args = ["down"],
+	},
+	left = {
+		action_name = Action.Type.MOVE,
+		args = ["left"],
+	},
+	right = {
+		action_name = Action.Type.MOVE,
+		args = ["right"],
+	},
+	action_0 = {
+		action_name = Action.Type.BUSTER,
+		args = [],
+	},
+	action_1 = {
+		action_name = Action.Type.CANNON,
+		args = [],
+	},
+	action_2 = {
+		action_name = Action.Type.SWORD,
+		args = [],
+	},
+	action_3 = {
+		action_name = Action.Type.MINIBOMB,
+		args = [],
+	},
+	no_action = {
+		action_name = Action.Type.IDLE,
+		args = [],
+	},
+}
+
 var queued_action = Action.Type.IDLE
 var queued_args := []
 var cur_action = null
 var last_action = null
 var is_action_running := false
 var cur_cooldown = 0
+
+func process_input(input):
+	enqueue_action(input_map[input].action_name, input_map[input].args)
 
 func move(dir):
 	self.grid_pos = grid_pos + Constants.DIRS[dir]
@@ -33,9 +75,11 @@ func _reset_queued_action():
 	queued_args = []
 	
 func enqueue_action(action, args := []):
+	if is_action_running and last_action != action:
+		cur_action.repeat = false
 	if cur_cooldown > 0 and last_action == action:
-		return	
-	if queued_action != Action.Type.IDLE:
+		return
+	if queued_action != Action.Type.IDLE or action == Action.Type.IDLE:
 		return	
 	queued_args = args
 	queued_action = action

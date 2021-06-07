@@ -89,6 +89,7 @@ func set_state(new_state):
 			ActionState.DONE:
 				terminate()
 
+var repeat := true
 var entity_owner
 var battle_owner
 var action_type

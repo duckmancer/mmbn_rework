@@ -172,7 +172,7 @@ centered = true
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
-frame = 48
+frame = 3
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hide"
