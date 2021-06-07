@@ -15,6 +15,7 @@ enum Type {
 enum ActionState {
 	WAITING,
 	ACTIVE,
+	REPEAT,
 	DONE,
 }
 
@@ -35,6 +36,8 @@ const _ACTION_DATA = {
 		func_name = "move",
 		entity_anim = "move",
 		attack_type = null,
+		loop_start = 0,
+		do_repeat = false,
 	},
 	Type.BUSTER: {
 		warmup = 10,
@@ -43,6 +46,8 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "shoot",
 		attack_type = Constants.EntityType.SHOT,
+		loop_start = 0,
+		do_repeat = true,
 	},
 	Type.SWORD: {
 		warmup = 10,
@@ -51,6 +56,8 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "slash",
 		attack_type = Constants.EntityType.SLASH,
+		loop_start = 0,
+		do_repeat = false,
 	},
 	Type.SHOCKWAVE: {
 		warmup = 36,
@@ -59,6 +66,8 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "shoot",
 		attack_type = Constants.EntityType.SHOT,
+		loop_start = 0,
+		do_repeat = false,
 	},
 	Type.CANNON: {
 		warmup = 16,
@@ -67,6 +76,8 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "shoot_heavy",
 		attack_type = Constants.EntityType.HITSCAN,
+		loop_start = 8,
+		do_repeat = false,
 	},
 	Type.MINIBOMB: {
 		warmup = 16,
@@ -75,6 +86,8 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "shoot_heavy",
 		attack_type = Constants.EntityType.HITSCAN,
+		loop_start = 0,
+		do_repeat = false,
 	},
 }
 
@@ -88,12 +101,21 @@ func set_state(new_state):
 				state = ActionState.WAITING
 			ActionState.DONE:
 				terminate()
+			ActionState.REPEAT:
+				state = ActionState.WAITING
+				if repeat:
+					loop_repeat()
 
-var repeat := true
+var repeat : bool
 var entity_owner
 var battle_owner
 var action_type
 var args : Array
+
+func loop_repeat():
+	var loop_target_time = Utils.frames_to_seconds(_get_data("loop_start")) 
+	animation_player.seek(loop_target_time)
+	entity_owner.animation_player.seek(loop_target_time)
 
 func _get_data(field_name : String):
 	return _ACTION_DATA[action_type][field_name]
@@ -123,6 +145,7 @@ func _ready():
 	battle_owner = entity_owner.get_parent()
 	sprite.flip_h = entity_owner.sprite.flip_h
 	animation_player.play(_get_data("anim_name"))
+	repeat = _get_data("do_repeat")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	self.state = ActionState.DONE

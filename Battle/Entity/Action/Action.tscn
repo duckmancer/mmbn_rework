@@ -100,10 +100,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.15 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.15, 0.416667 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 1, 2 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -164,7 +164,7 @@ tracks/1/keys = {
 
 [node name="Action" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-state = 1
+state = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
@@ -172,7 +172,7 @@ centered = true
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
-frame = 3
+frame = 2
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hide"
