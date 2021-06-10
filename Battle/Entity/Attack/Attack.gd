@@ -2,6 +2,11 @@ class_name Attack
 extends Entity
 
 
+enum AttackState {
+	WAITING,
+	ACTIVE,
+}
+
 const TEAM_DIRS = {
 	Constants.Team.PLAYER : Constants.DIRS.right,
 	Constants.Team.ENEMY : Constants.DIRS.left,
@@ -12,6 +17,10 @@ const SECONDS_PER_FRAME = 1.0 / 60.0
 export var damage = 10
 export var duration = 60
 export var pass_through = false
+export(AttackState) var state = AttackState.WAITING setget set_state
+func set_state(new_state):
+	if is_active:
+		state = new_state
 
 var attack_dir
 var ignored_targets = []

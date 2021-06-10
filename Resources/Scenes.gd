@@ -25,6 +25,7 @@ const _CANNON_ROOT = _ACTION_ROOT + "Cannon/"
 
 const _ATTACK_ROOT = _ENTITY_ROOT + "Attack/"
 const _HITSCAN_ROOT = _ATTACK_ROOT + "Hitscan/"
+const _BUSTER_SHOT_ROOT = _HITSCAN_ROOT + "BusterShot/"
 const _SHOT_ROOT = _ATTACK_ROOT + "Shot/"
 const _SLASH_ROOT = _ATTACK_ROOT + "Slash/"
 
@@ -42,6 +43,7 @@ const _CANNON_PATH = _CANNON_ROOT + "Cannon.tscn"
 const _BUSTER_PATH = _BUSTER_ROOT + "Buster.tscn"
 
 const _HITSCAN_PATH = _HITSCAN_ROOT + "Hitscan.tscn"
+const _BUSTER_SHOT_PATH = _BUSTER_SHOT_ROOT + "BusterShot.tscn"
 const _SHOT_PATH = _SHOT_ROOT + "Shot.tscn"
 const _SLASH_PATH = _SLASH_ROOT + "Slash.tscn"
 
@@ -58,6 +60,7 @@ const _ENTITY_SCENES = {
 	Constants.EntityType.SWORD: preload(_SWORD_PATH),
 
 	Constants.EntityType.HITSCAN: preload(_HITSCAN_PATH),
+	Constants.EntityType.BUSTER_SHOT: preload(_BUSTER_SHOT_PATH),
 	Constants.EntityType.SHOT: preload(_SHOT_PATH),
 	Constants.EntityType.SLASH: preload(_SLASH_PATH),
 }

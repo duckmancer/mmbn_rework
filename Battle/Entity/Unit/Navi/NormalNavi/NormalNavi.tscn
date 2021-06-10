@@ -7,13 +7,6 @@
 "entity",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-move_warmup = 2
-move_cooldown = 2
 hp = 40
-charge_multiplier = 10
-charge_time = 180
-
-[node name="AnimationPlayer" parent="." index="2"]
-autoplay = "idle"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

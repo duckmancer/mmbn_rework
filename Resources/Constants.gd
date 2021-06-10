@@ -11,6 +11,7 @@ enum EntityType {
 	SHOT,
 	SLASH,
 	HITSCAN,
+	BUSTER_SHOT
 }
 enum Team {
 	PLAYER,
