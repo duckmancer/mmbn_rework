@@ -1,5 +1,4 @@
 extends Node
-
 enum EntityType {
 	NORMAL_NAVI,
 	MEGAMAN,
@@ -23,6 +22,22 @@ const DIRS = {
 	down = Vector2(0, 1),
 	left = Vector2(-1, 0),
 	right = Vector2(1, 0),
+}
+
+const SCENE_NAMES = {
+	EntityType.MEGAMAN: "Megaman",
+	EntityType.NORMAL_NAVI: "NormalNavi",
+	EntityType.METTAUR: "Mettaur",
+
+	EntityType.MISC_ACTION: "MiscAction",
+	EntityType.BUSTER: "Buster",
+	EntityType.CANNON: "Cannon",
+	EntityType.SWORD: "Sword",
+
+	EntityType.HITSCAN: "Hitscan",
+	EntityType.BUSTER_SHOT: "BusterShot",
+	EntityType.SHOT: "Shot",
+	EntityType.SLASH: "Slash",
 }
 
 const GRID_SIZE = Vector2(6, 3)

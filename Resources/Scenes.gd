@@ -65,7 +65,11 @@ const _ENTITY_SCENES = {
 	Constants.EntityType.SLASH: preload(_SLASH_PATH),
 }
 
+const USE_RUNTIME_LOADING = false
+
 static func make_entity(scene_type, entity_owner, kwargs := {}):
+	if USE_RUNTIME_LOADING:
+		return runtime_make_entity(scene_type, entity_owner, kwargs)
 	if scene_type == null:
 		return
 	var new_entity = _ENTITY_SCENES[scene_type].instance()
@@ -75,3 +79,55 @@ static func make_entity(scene_type, entity_owner, kwargs := {}):
 
 
 const PANEL_SCENE = preload(_PANEL_PATH)
+
+
+
+# Newfangled Runtime Loading
+
+const PARENTS = {
+	Battle = "root",
+	Panel = "Battle",
+	
+	Entity = "Battle",
+	Unit = "Entity",
+	Action = "Entity",
+	Attack = "Entity",
+	
+	Navi = "Unit",
+	Megaman = "Navi",
+	NormalNavi = "Navi",
+	
+	Virus = "Unit",
+	Mettaur = "Virus",
+	
+	MiscAction = "Action",
+	Buster = "Action",
+	Cannon = "Action",
+	Sword = "Action",
+	
+	Shot = "Attack",
+	Slash = "Attack",
+	Hitscan = "Attack",
+	
+	BusterShot = "Hitscan",
+}
+
+static func get_entity_path(entity_name):
+	var result = entity_name + ".tscn"
+	var next = entity_name
+	while true:
+		result = next + "/" + result
+		next = PARENTS[next]
+		if next == "root":
+			break
+	return "res://" + result
+
+static func runtime_make_entity(scene_type, entity_owner, kwargs := {}):
+	if scene_type == null:
+		return
+	var path = get_entity_path(Constants.SCENE_NAMES[scene_type])
+	var new_entity = load(path).instance() as Entity
+	new_entity.initialize_arguments(kwargs)
+	entity_owner.add_child(new_entity)
+	return new_entity
+
