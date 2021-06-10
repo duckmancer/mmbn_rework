@@ -59,8 +59,6 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-centered = true
-offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
 frame = 7
