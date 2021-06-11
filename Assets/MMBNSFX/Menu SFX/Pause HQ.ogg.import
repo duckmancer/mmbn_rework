@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Pause HQ.ogg-e5003c3f2849b070d8468b40db012bd8.oggstr"
+path="res://.import/Pause HQ.ogg-28cf117a731f1e12e897ae7bf29489ab.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Pause HQ.ogg"
-dest_files=[ "res://.import/Pause HQ.ogg-e5003c3f2849b070d8468b40db012bd8.oggstr" ]
+source_file="res://Assets/MMBNSFX/Menu SFX/Pause HQ.ogg"
+dest_files=[ "res://.import/Pause HQ.ogg-28cf117a731f1e12e897ae7bf29489ab.oggstr" ]
 
 [params]
 

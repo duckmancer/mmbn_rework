@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Xylos HQ.ogg-de2a4b8d44122b80c61827dfca43f43b.oggstr"
+path="res://.import/Xylos HQ.ogg-359db6fd5f65656e8ce2860f73f8bdc9.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Xylos HQ.ogg"
-dest_files=[ "res://.import/Xylos HQ.ogg-de2a4b8d44122b80c61827dfca43f43b.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/Xylos HQ.ogg"
+dest_files=[ "res://.import/Xylos HQ.ogg-359db6fd5f65656e8ce2860f73f8bdc9.oggstr" ]
 
 [params]
 

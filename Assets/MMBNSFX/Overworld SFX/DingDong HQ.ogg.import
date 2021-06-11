@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/DingDong HQ.ogg-d5b4b638409d2d85ff1ed37981af3c44.oggstr"
+path="res://.import/DingDong HQ.ogg-4f73417e717a8144f5ed2a9832410f1a.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/DingDong HQ.ogg"
-dest_files=[ "res://.import/DingDong HQ.ogg-d5b4b638409d2d85ff1ed37981af3c44.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/DingDong HQ.ogg"
+dest_files=[ "res://.import/DingDong HQ.ogg-4f73417e717a8144f5ed2a9832410f1a.oggstr" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/OpenChipDesc HQ.ogg-d1793141727e1e6343b0dd0a9671e400.oggstr"
+path="res://.import/OpenChipDesc HQ.ogg-1296a6c7301436dd28d4913f5811b4a6.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/OpenChipDesc HQ.ogg"
-dest_files=[ "res://.import/OpenChipDesc HQ.ogg-d1793141727e1e6343b0dd0a9671e400.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/OpenChipDesc HQ.ogg"
+dest_files=[ "res://.import/OpenChipDesc HQ.ogg-1296a6c7301436dd28d4913f5811b4a6.oggstr" ]
 
 [params]
 

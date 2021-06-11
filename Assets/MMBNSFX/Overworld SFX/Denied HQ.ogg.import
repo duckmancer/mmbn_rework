@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Denied HQ.ogg-0cb58ccb153ee43806dbddaf69204a31.oggstr"
+path="res://.import/Denied HQ.ogg-e6e81662c42f351eab109ab4cecb5954.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Denied HQ.ogg"
-dest_files=[ "res://.import/Denied HQ.ogg-0cb58ccb153ee43806dbddaf69204a31.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/Denied HQ.ogg"
+dest_files=[ "res://.import/Denied HQ.ogg-e6e81662c42f351eab109ab4cecb5954.oggstr" ]
 
 [params]
 

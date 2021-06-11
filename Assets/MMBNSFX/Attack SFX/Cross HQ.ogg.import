@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Cross HQ.ogg-775ee2cf5dbdfe32b3ac79ff43d50339.oggstr"
+path="res://.import/Cross HQ.ogg-a60dfc643f6d53f90bd214c56de9c2ec.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Cross HQ.ogg"
-dest_files=[ "res://.import/Cross HQ.ogg-775ee2cf5dbdfe32b3ac79ff43d50339.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/Cross HQ.ogg"
+dest_files=[ "res://.import/Cross HQ.ogg-a60dfc643f6d53f90bd214c56de9c2ec.oggstr" ]
 
 [params]
 

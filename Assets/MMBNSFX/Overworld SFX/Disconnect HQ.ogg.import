@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Disconnect HQ.ogg-9cd5e1a6712b1ea55195078a7c93535d.oggstr"
+path="res://.import/Disconnect HQ.ogg-eee9812d1a2efacf5fae0e4a9d83342c.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Disconnect HQ.ogg"
-dest_files=[ "res://.import/Disconnect HQ.ogg-9cd5e1a6712b1ea55195078a7c93535d.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/Disconnect HQ.ogg"
+dest_files=[ "res://.import/Disconnect HQ.ogg-eee9812d1a2efacf5fae0e4a9d83342c.oggstr" ]
 
 [params]
 

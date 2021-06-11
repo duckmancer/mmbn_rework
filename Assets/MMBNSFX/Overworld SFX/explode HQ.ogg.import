@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/explode HQ.ogg-55583630a8b922aea47f56bfd0b499e9.oggstr"
+path="res://.import/explode HQ.ogg-c4de0c443f48a385f1f602642c1a490a.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/explode HQ.ogg"
-dest_files=[ "res://.import/explode HQ.ogg-55583630a8b922aea47f56bfd0b499e9.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/explode HQ.ogg"
+dest_files=[ "res://.import/explode HQ.ogg-c4de0c443f48a385f1f602642c1a490a.oggstr" ]
 
 [params]
 

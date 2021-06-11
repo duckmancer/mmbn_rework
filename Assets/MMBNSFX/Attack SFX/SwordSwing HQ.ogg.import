@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/SwordSwing HQ.ogg-422aad4df276a662fb332f045e54c12b.oggstr"
+path="res://.import/SwordSwing HQ.ogg-e611172362c7eed0f6c8475ddde57887.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/SwordSwing HQ.ogg"
-dest_files=[ "res://.import/SwordSwing HQ.ogg-422aad4df276a662fb332f045e54c12b.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/SwordSwing HQ.ogg"
+dest_files=[ "res://.import/SwordSwing HQ.ogg-e611172362c7eed0f6c8475ddde57887.oggstr" ]
 
 [params]
 

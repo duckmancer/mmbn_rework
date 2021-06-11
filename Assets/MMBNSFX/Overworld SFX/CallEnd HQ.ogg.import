@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/CallEnd HQ.ogg-0aa5b6c94bd66647ee7f240982270930.oggstr"
+path="res://.import/CallEnd HQ.ogg-9ff7cfdc1db0b3174faee1edbc78ffba.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/CallEnd HQ.ogg"
-dest_files=[ "res://.import/CallEnd HQ.ogg-0aa5b6c94bd66647ee7f240982270930.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/CallEnd HQ.ogg"
+dest_files=[ "res://.import/CallEnd HQ.ogg-9ff7cfdc1db0b3174faee1edbc78ffba.oggstr" ]
 
 [params]
 

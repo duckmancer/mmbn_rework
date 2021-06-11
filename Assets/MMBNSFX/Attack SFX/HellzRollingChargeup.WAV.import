@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/HellzRollingChargeup.WAV-d7f27e3f5d04134b72aec9c33e165697.sample"
+path="res://.import/HellzRollingChargeup.WAV-3b6e94f849fb7ee550d91d0eb99ad8ae.sample"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/HellzRollingChargeup.WAV"
-dest_files=[ "res://.import/HellzRollingChargeup.WAV-d7f27e3f5d04134b72aec9c33e165697.sample" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/HellzRollingChargeup.WAV"
+dest_files=[ "res://.import/HellzRollingChargeup.WAV-3b6e94f849fb7ee550d91d0eb99ad8ae.sample" ]
 
 [params]
 

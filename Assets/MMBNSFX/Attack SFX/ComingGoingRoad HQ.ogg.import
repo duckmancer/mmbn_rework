@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/ComingGoingRoad HQ.ogg-7e46355c565e39603259aa9cf000b15a.oggstr"
+path="res://.import/ComingGoingRoad HQ.ogg-a53970f6cbcc71b9a087c494e6a9e90d.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/ComingGoingRoad HQ.ogg"
-dest_files=[ "res://.import/ComingGoingRoad HQ.ogg-7e46355c565e39603259aa9cf000b15a.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/ComingGoingRoad HQ.ogg"
+dest_files=[ "res://.import/ComingGoingRoad HQ.ogg-a53970f6cbcc71b9a087c494e6a9e90d.oggstr" ]
 
 [params]
 

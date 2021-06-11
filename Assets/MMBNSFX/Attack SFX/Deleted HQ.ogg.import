@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Deleted HQ.ogg-a06ecec5f4d4714381bc4e87d029f234.oggstr"
+path="res://.import/Deleted HQ.ogg-0e997ec7fb1a8ef94d09d5a60df80320.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Deleted HQ.ogg"
-dest_files=[ "res://.import/Deleted HQ.ogg-a06ecec5f4d4714381bc4e87d029f234.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/Deleted HQ.ogg"
+dest_files=[ "res://.import/Deleted HQ.ogg-0e997ec7fb1a8ef94d09d5a60df80320.oggstr" ]
 
 [params]
 

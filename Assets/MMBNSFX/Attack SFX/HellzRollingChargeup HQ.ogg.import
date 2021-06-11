@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/HellzRollingChargeup HQ.ogg-edf7690d110bff2d1b35f1818a0461b7.oggstr"
+path="res://.import/HellzRollingChargeup HQ.ogg-35ed4b167e8deec67068c046790db6b0.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/HellzRollingChargeup HQ.ogg"
-dest_files=[ "res://.import/HellzRollingChargeup HQ.ogg-edf7690d110bff2d1b35f1818a0461b7.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/HellzRollingChargeup HQ.ogg"
+dest_files=[ "res://.import/HellzRollingChargeup HQ.ogg-35ed4b167e8deec67068c046790db6b0.oggstr" ]
 
 [params]
 

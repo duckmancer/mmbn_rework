@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/TimeBombImminent HQ.ogg-56c56208a6831023c290b6ff8b3f973a.oggstr"
+path="res://.import/TimeBombImminent HQ.ogg-dce0ac24ef787932180414c043a2da4b.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/TimeBombImminent HQ.ogg"
-dest_files=[ "res://.import/TimeBombImminent HQ.ogg-56c56208a6831023c290b6ff8b3f973a.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/TimeBombImminent HQ.ogg"
+dest_files=[ "res://.import/TimeBombImminent HQ.ogg-dce0ac24ef787932180414c043a2da4b.oggstr" ]
 
 [params]
 

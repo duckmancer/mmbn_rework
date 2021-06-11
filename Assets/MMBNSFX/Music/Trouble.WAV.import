@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Trouble.WAV-ced040063e066d09531fbf9c943088e4.sample"
+path="res://.import/Trouble.WAV-9f78b3c0e2a324f87d4a20a1e9c935e2.sample"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Trouble.WAV"
-dest_files=[ "res://.import/Trouble.WAV-ced040063e066d09531fbf9c943088e4.sample" ]
+source_file="res://Assets/MMBNSFX/Music/Trouble.WAV"
+dest_files=[ "res://.import/Trouble.WAV-9f78b3c0e2a324f87d4a20a1e9c935e2.sample" ]
 
 [params]
 

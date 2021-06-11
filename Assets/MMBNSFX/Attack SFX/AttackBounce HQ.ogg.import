@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/AttackBounce HQ.ogg-84303a1d2d0bddef123072ca65bcfc8b.oggstr"
+path="res://.import/AttackBounce HQ.ogg-5463c3372b3c5911c7e3a15f72760341.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/AttackBounce HQ.ogg"
-dest_files=[ "res://.import/AttackBounce HQ.ogg-84303a1d2d0bddef123072ca65bcfc8b.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/AttackBounce HQ.ogg"
+dest_files=[ "res://.import/AttackBounce HQ.ogg-5463c3372b3c5911c7e3a15f72760341.oggstr" ]
 
 [params]
 

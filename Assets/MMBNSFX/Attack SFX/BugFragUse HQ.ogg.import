@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/BugFragUse HQ.ogg-069aa3d43e76673ec366af413e54a39a.oggstr"
+path="res://.import/BugFragUse HQ.ogg-9d5b1b98b757837d7297ceba91690562.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/BugFragUse HQ.ogg"
-dest_files=[ "res://.import/BugFragUse HQ.ogg-069aa3d43e76673ec366af413e54a39a.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/BugFragUse HQ.ogg"
+dest_files=[ "res://.import/BugFragUse HQ.ogg-9d5b1b98b757837d7297ceba91690562.oggstr" ]
 
 [params]
 

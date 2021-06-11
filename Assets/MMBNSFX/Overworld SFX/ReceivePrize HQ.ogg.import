@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/ReceivePrize HQ.ogg-52896a13fed3e70c7954c41d84d03954.oggstr"
+path="res://.import/ReceivePrize HQ.ogg-443c5fe6a91188612675b91463c59392.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/ReceivePrize HQ.ogg"
-dest_files=[ "res://.import/ReceivePrize HQ.ogg-52896a13fed3e70c7954c41d84d03954.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/ReceivePrize HQ.ogg"
+dest_files=[ "res://.import/ReceivePrize HQ.ogg-443c5fe6a91188612675b91463c59392.oggstr" ]
 
 [params]
 

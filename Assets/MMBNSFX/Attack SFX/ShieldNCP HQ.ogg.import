@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/ShieldNCP HQ.ogg-4975bfdaeb58e0f2136cda210fda068a.oggstr"
+path="res://.import/ShieldNCP HQ.ogg-cf5801634d6e966db7fe10e891aa94a8.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/ShieldNCP HQ.ogg"
-dest_files=[ "res://.import/ShieldNCP HQ.ogg-4975bfdaeb58e0f2136cda210fda068a.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/ShieldNCP HQ.ogg"
+dest_files=[ "res://.import/ShieldNCP HQ.ogg-cf5801634d6e966db7fe10e891aa94a8.oggstr" ]
 
 [params]
 

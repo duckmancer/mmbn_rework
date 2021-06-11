@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/LargeExplosion HQ.ogg-9fb6fb25cf31dadacbc45b24cb9d1fc8.oggstr"
+path="res://.import/LargeExplosion HQ.ogg-9e6b795121b7b0e3e2198fa219fb2aa0.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/LargeExplosion HQ.ogg"
-dest_files=[ "res://.import/LargeExplosion HQ.ogg-9fb6fb25cf31dadacbc45b24cb9d1fc8.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/LargeExplosion HQ.ogg"
+dest_files=[ "res://.import/LargeExplosion HQ.ogg-9e6b795121b7b0e3e2198fa219fb2aa0.oggstr" ]
 
 [params]
 

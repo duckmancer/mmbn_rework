@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/AirHockeyBounce HQ.ogg-ea69925f8cdb46455675fa42df1220fe.oggstr"
+path="res://.import/AirHockeyBounce HQ.ogg-6e0c2d7bb971afdd765151ddb6b3d248.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/AirHockeyBounce HQ.ogg"
-dest_files=[ "res://.import/AirHockeyBounce HQ.ogg-ea69925f8cdb46455675fa42df1220fe.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/AirHockeyBounce HQ.ogg"
+dest_files=[ "res://.import/AirHockeyBounce HQ.ogg-6e0c2d7bb971afdd765151ddb6b3d248.oggstr" ]
 
 [params]
 

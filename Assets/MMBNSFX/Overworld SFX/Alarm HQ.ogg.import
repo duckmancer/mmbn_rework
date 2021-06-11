@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Alarm HQ.ogg-4fe752afdbed094090cc3fbd295ebd92.oggstr"
+path="res://.import/Alarm HQ.ogg-20f9b7a071da4f5e18e7e2a82b5182d1.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Alarm HQ.ogg"
-dest_files=[ "res://.import/Alarm HQ.ogg-4fe752afdbed094090cc3fbd295ebd92.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/Alarm HQ.ogg"
+dest_files=[ "res://.import/Alarm HQ.ogg-20f9b7a071da4f5e18e7e2a82b5182d1.oggstr" ]
 
 [params]
 

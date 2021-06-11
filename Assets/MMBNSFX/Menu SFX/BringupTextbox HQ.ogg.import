@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/BringupTextbox HQ.ogg-7854887be26ef830408a4a760e0510f9.oggstr"
+path="res://.import/BringupTextbox HQ.ogg-efffa46fae3dadd7190a888052143a36.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/BringupTextbox HQ.ogg"
-dest_files=[ "res://.import/BringupTextbox HQ.ogg-7854887be26ef830408a4a760e0510f9.oggstr" ]
+source_file="res://Assets/MMBNSFX/Menu SFX/BringupTextbox HQ.ogg"
+dest_files=[ "res://.import/BringupTextbox HQ.ogg-efffa46fae3dadd7190a888052143a36.oggstr" ]
 
 [params]
 

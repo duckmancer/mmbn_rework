@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/FalzarFeather HQ.ogg-d9032dea8604967793db7bad0e3a969d.oggstr"
+path="res://.import/FalzarFeather HQ.ogg-64d69b4cee096d6a714ace881c44a48b.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/FalzarFeather HQ.ogg"
-dest_files=[ "res://.import/FalzarFeather HQ.ogg-d9032dea8604967793db7bad0e3a969d.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/FalzarFeather HQ.ogg"
+dest_files=[ "res://.import/FalzarFeather HQ.ogg-64d69b4cee096d6a714ace881c44a48b.oggstr" ]
 
 [params]
 

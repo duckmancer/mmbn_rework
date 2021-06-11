@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/ScreenDivide HQ.ogg-df9310f75c3f2e00287085d161b45794.oggstr"
+path="res://.import/ScreenDivide HQ.ogg-77c2372d3e0b1cf0bf1ecb478537bd7d.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/ScreenDivide HQ.ogg"
-dest_files=[ "res://.import/ScreenDivide HQ.ogg-df9310f75c3f2e00287085d161b45794.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/ScreenDivide HQ.ogg"
+dest_files=[ "res://.import/ScreenDivide HQ.ogg-77c2372d3e0b1cf0bf1ecb478537bd7d.oggstr" ]
 
 [params]
 

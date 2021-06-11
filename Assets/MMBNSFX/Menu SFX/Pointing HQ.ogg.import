@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Pointing HQ.ogg-3234ad9bbdba36daf65505551013b9c2.oggstr"
+path="res://.import/Pointing HQ.ogg-5072eda28992f797d51b73dd7dcff3a5.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Pointing HQ.ogg"
-dest_files=[ "res://.import/Pointing HQ.ogg-3234ad9bbdba36daf65505551013b9c2.oggstr" ]
+source_file="res://Assets/MMBNSFX/Menu SFX/Pointing HQ.ogg"
+dest_files=[ "res://.import/Pointing HQ.ogg-5072eda28992f797d51b73dd7dcff3a5.oggstr" ]
 
 [params]
 

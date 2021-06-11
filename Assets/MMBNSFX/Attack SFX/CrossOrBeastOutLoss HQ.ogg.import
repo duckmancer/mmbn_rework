@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/CrossOrBeastOutLoss HQ.ogg-a175eea05df77ac2f162f5cdd05d60a0.oggstr"
+path="res://.import/CrossOrBeastOutLoss HQ.ogg-cca31525b0ab7a7eb19598fad0a76515.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/CrossOrBeastOutLoss HQ.ogg"
-dest_files=[ "res://.import/CrossOrBeastOutLoss HQ.ogg-a175eea05df77ac2f162f5cdd05d60a0.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/CrossOrBeastOutLoss HQ.ogg"
+dest_files=[ "res://.import/CrossOrBeastOutLoss HQ.ogg-cca31525b0ab7a7eb19598fad0a76515.oggstr" ]
 
 [params]
 

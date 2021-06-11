@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/gun.WAV-1ba781953fbf30da9dd31c89b6204214.sample"
+path="res://.import/gun.WAV-04c71f35c7b30e1193b18d20564178e8.sample"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/gun.WAV"
-dest_files=[ "res://.import/gun.WAV-1ba781953fbf30da9dd31c89b6204214.sample" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/gun.WAV"
+dest_files=[ "res://.import/gun.WAV-04c71f35c7b30e1193b18d20564178e8.sample" ]
 
 [params]
 

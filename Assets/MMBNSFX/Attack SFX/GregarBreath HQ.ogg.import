@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/GregarBreath HQ.ogg-a5a94b7851a61daa561f0f1ec49711d0.oggstr"
+path="res://.import/GregarBreath HQ.ogg-3d0bfb8ad1b93ee30917bd1021958eed.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/GregarBreath HQ.ogg"
-dest_files=[ "res://.import/GregarBreath HQ.ogg-a5a94b7851a61daa561f0f1ec49711d0.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/GregarBreath HQ.ogg"
+dest_files=[ "res://.import/GregarBreath HQ.ogg-3d0bfb8ad1b93ee30917bd1021958eed.oggstr" ]
 
 [params]
 

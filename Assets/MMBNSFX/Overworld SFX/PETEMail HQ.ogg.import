@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/PETEMail HQ.ogg-3669f5913a51426688d604d4e38ccbdb.oggstr"
+path="res://.import/PETEMail HQ.ogg-cadf17abb193a2a43734a50d1e60a01e.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/PETEMail HQ.ogg"
-dest_files=[ "res://.import/PETEMail HQ.ogg-3669f5913a51426688d604d4e38ccbdb.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/PETEMail HQ.ogg"
+dest_files=[ "res://.import/PETEMail HQ.ogg-cadf17abb193a2a43734a50d1e60a01e.oggstr" ]
 
 [params]
 

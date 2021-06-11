@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Cannon HQ.ogg-91d2d8aa144fc75394c7505a175a5931.oggstr"
+path="res://.import/Cannon HQ.ogg-dded73917bb9857d471542159be43d85.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Cannon HQ.ogg"
-dest_files=[ "res://.import/Cannon HQ.ogg-91d2d8aa144fc75394c7505a175a5931.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/Cannon HQ.ogg"
+dest_files=[ "res://.import/Cannon HQ.ogg-dded73917bb9857d471542159be43d85.oggstr" ]
 
 [params]
 

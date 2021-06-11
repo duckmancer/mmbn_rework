@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Earthquake HQ.ogg-1ea23fd51832b817c97ba4746e8cd469.oggstr"
+path="res://.import/Earthquake HQ.ogg-56f9ec2a849ea35e40004aaa782113ed.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Earthquake HQ.ogg"
-dest_files=[ "res://.import/Earthquake HQ.ogg-1ea23fd51832b817c97ba4746e8cd469.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/Earthquake HQ.ogg"
+dest_files=[ "res://.import/Earthquake HQ.ogg-56f9ec2a849ea35e40004aaa782113ed.oggstr" ]
 
 [params]
 

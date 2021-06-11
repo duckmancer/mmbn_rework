@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/GregarBreath.WAV-55c1b9b577d94d4edbe91cd1b1411da9.sample"
+path="res://.import/GregarBreath.WAV-58be86c1cbe7e2bc1ff815e62d70946a.sample"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/GregarBreath.WAV"
-dest_files=[ "res://.import/GregarBreath.WAV-55c1b9b577d94d4edbe91cd1b1411da9.sample" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/GregarBreath.WAV"
+dest_files=[ "res://.import/GregarBreath.WAV-58be86c1cbe7e2bc1ff815e62d70946a.sample" ]
 
 [params]
 

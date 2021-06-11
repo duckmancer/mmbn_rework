@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/PanelReturn HQ.ogg-8f4c39e35f3044be0066f96069625591.oggstr"
+path="res://.import/PanelReturn HQ.ogg-ce29f850494176ef135b4a2d424c4b72.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/PanelReturn HQ.ogg"
-dest_files=[ "res://.import/PanelReturn HQ.ogg-8f4c39e35f3044be0066f96069625591.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/PanelReturn HQ.ogg"
+dest_files=[ "res://.import/PanelReturn HQ.ogg-ce29f850494176ef135b4a2d424c4b72.oggstr" ]
 
 [params]
 

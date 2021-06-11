@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/DarkArmBlade.WAV-509d1b5abcbb115845230c1b2af9972d.sample"
+path="res://.import/DarkArmBlade.WAV-7cad5de2db7106bc0735370cb3faca20.sample"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/DarkArmBlade.WAV"
-dest_files=[ "res://.import/DarkArmBlade.WAV-509d1b5abcbb115845230c1b2af9972d.sample" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/DarkArmBlade.WAV"
+dest_files=[ "res://.import/DarkArmBlade.WAV-7cad5de2db7106bc0735370cb3faca20.sample" ]
 
 [params]
 

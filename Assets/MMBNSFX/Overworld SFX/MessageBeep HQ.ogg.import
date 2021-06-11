@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/MessageBeep HQ.ogg-b903e792bba0c513494ddb9c3f2b172a.oggstr"
+path="res://.import/MessageBeep HQ.ogg-d5fcbec0df27989e53df5c9d16ce1ff2.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/MessageBeep HQ.ogg"
-dest_files=[ "res://.import/MessageBeep HQ.ogg-b903e792bba0c513494ddb9c3f2b172a.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/MessageBeep HQ.ogg"
+dest_files=[ "res://.import/MessageBeep HQ.ogg-d5fcbec0df27989e53df5c9d16ce1ff2.oggstr" ]
 
 [params]
 

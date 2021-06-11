@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/ChipCancel HQ.ogg-fa29de2d14ff2573f4cee720f3fdef2b.oggstr"
+path="res://.import/ChipCancel HQ.ogg-51dc143e26c727b6d153b58169e3e457.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/ChipCancel HQ.ogg"
-dest_files=[ "res://.import/ChipCancel HQ.ogg-fa29de2d14ff2573f4cee720f3fdef2b.oggstr" ]
+source_file="res://Assets/MMBNSFX/Menu SFX/ChipCancel HQ.ogg"
+dest_files=[ "res://.import/ChipCancel HQ.ogg-51dc143e26c727b6d153b58169e3e457.oggstr" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Tornado HQ.ogg-ddd6d29def37209e6b0cb3beb67d800a.oggstr"
+path="res://.import/Tornado HQ.ogg-af3af580b5fccf0814f49a07ac7de70b.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Tornado HQ.ogg"
-dest_files=[ "res://.import/Tornado HQ.ogg-ddd6d29def37209e6b0cb3beb67d800a.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/Tornado HQ.ogg"
+dest_files=[ "res://.import/Tornado HQ.ogg-af3af580b5fccf0814f49a07ac7de70b.oggstr" ]
 
 [params]
 

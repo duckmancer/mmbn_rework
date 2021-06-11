@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Text HQ.ogg-ea08d2bdfd1b56c8c4113a5c96660773.oggstr"
+path="res://.import/Text HQ.ogg-eb641c29af08eed3e3874e3b90c06577.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Text HQ.ogg"
-dest_files=[ "res://.import/Text HQ.ogg-ea08d2bdfd1b56c8c4113a5c96660773.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/Text HQ.ogg"
+dest_files=[ "res://.import/Text HQ.ogg-eb641c29af08eed3e3874e3b90c06577.oggstr" ]
 
 [params]
 

@@ -32,6 +32,9 @@ func _do_panel_warning(snapped_pos: Vector2):
 		if p.grid_pos == snapped_pos:
 			p.register_danger(self)
 			
+func hit(target):
+	target.hp -= damage
+	create_child_entity(Impact, {grid_pos = target.grid_pos})
 
 func _do_unit_collision(snapped_pos: Vector2):
 	var targets = get_tree().get_nodes_in_group("target")
@@ -40,7 +43,7 @@ func _do_unit_collision(snapped_pos: Vector2):
 			if t.team != team:
 				if not t in ignored_targets:
 					ignored_targets.push_back(t)
-					t.hp -= damage
+					hit(t)
 					if not pass_through:
 						terminate()
 						return true

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/GotItem.WAV-2d3afad03cb10789ff6a4867c0990803.sample"
+path="res://.import/GotItem.WAV-80950455cc898230c4e0157a9d9b7158.sample"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/GotItem.WAV"
-dest_files=[ "res://.import/GotItem.WAV-2d3afad03cb10789ff6a4867c0990803.sample" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/GotItem.WAV"
+dest_files=[ "res://.import/GotItem.WAV-80950455cc898230c4e0157a9d9b7158.sample" ]
 
 [params]
 

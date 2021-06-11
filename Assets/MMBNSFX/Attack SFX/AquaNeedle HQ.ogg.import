@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/AquaNeedle HQ.ogg-6ac5c85549ffba1d54c4d3359ec943a0.oggstr"
+path="res://.import/AquaNeedle HQ.ogg-9fed77f077ebdb31bb401c2314560a4c.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/AquaNeedle HQ.ogg"
-dest_files=[ "res://.import/AquaNeedle HQ.ogg-6ac5c85549ffba1d54c4d3359ec943a0.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/AquaNeedle HQ.ogg"
+dest_files=[ "res://.import/AquaNeedle HQ.ogg-9fed77f077ebdb31bb401c2314560a4c.oggstr" ]
 
 [params]
 

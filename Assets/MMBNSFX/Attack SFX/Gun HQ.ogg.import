@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Gun HQ.ogg-ac1709cb8d8d4dbfd69d8b26d397f276.oggstr"
+path="res://.import/Gun HQ.ogg-529f0c1c949c8d56eac11add1557bf8a.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Gun HQ.ogg"
-dest_files=[ "res://.import/Gun HQ.ogg-ac1709cb8d8d4dbfd69d8b26d397f276.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/Gun HQ.ogg"
+dest_files=[ "res://.import/Gun HQ.ogg-529f0c1c949c8d56eac11add1557bf8a.oggstr" ]
 
 [params]
 

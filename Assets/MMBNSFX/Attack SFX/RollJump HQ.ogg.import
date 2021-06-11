@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/RollJump HQ.ogg-eabe501f928e99ffc2dc7c9b4a87a9a8.oggstr"
+path="res://.import/RollJump HQ.ogg-83e6bfc62f54c7e362d8b543d54ad4bf.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/RollJump HQ.ogg"
-dest_files=[ "res://.import/RollJump HQ.ogg-eabe501f928e99ffc2dc7c9b4a87a9a8.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/RollJump HQ.ogg"
+dest_files=[ "res://.import/RollJump HQ.ogg-83e6bfc62f54c7e362d8b543d54ad4bf.oggstr" ]
 
 [params]
 

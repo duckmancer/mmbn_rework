@@ -2,12 +2,12 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/wtf record scratch.mp3-8aae388c920d832088797f36ad23f28d.mp3str"
+path="res://.import/wtf record scratch.mp3-fbb0c55726a1643887bb79ad3ff6a183.mp3str"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/wtf record scratch.mp3"
-dest_files=[ "res://.import/wtf record scratch.mp3-8aae388c920d832088797f36ad23f28d.mp3str" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/wtf record scratch.mp3"
+dest_files=[ "res://.import/wtf record scratch.mp3-fbb0c55726a1643887bb79ad3ff6a183.mp3str" ]
 
 [params]
 

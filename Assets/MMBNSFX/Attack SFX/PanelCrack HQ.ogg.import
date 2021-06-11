@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/PanelCrack HQ.ogg-309da120359044be3c0c2c6448a8ca81.oggstr"
+path="res://.import/PanelCrack HQ.ogg-5c7b79dce195663f47b1053d3350a3b4.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/PanelCrack HQ.ogg"
-dest_files=[ "res://.import/PanelCrack HQ.ogg-309da120359044be3c0c2c6448a8ca81.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/PanelCrack HQ.ogg"
+dest_files=[ "res://.import/PanelCrack HQ.ogg-5c7b79dce195663f47b1053d3350a3b4.oggstr" ]
 
 [params]
 

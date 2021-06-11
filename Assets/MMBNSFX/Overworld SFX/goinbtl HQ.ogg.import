@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/goinbtl HQ.ogg-7dafd7eaba3ae163f19e127af5fe5441.oggstr"
+path="res://.import/goinbtl HQ.ogg-079d3896daa1b6f016ad19ecde6b49e5.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/goinbtl HQ.ogg"
-dest_files=[ "res://.import/goinbtl HQ.ogg-7dafd7eaba3ae163f19e127af5fe5441.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/goinbtl HQ.ogg"
+dest_files=[ "res://.import/goinbtl HQ.ogg-079d3896daa1b6f016ad19ecde6b49e5.oggstr" ]
 
 [params]
 

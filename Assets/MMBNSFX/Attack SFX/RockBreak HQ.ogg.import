@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/RockBreak HQ.ogg-9127cbc4ed8f904e2bdb8cedf6fb093f.oggstr"
+path="res://.import/RockBreak HQ.ogg-5ae117d678ec541c1d707542542a753d.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/RockBreak HQ.ogg"
-dest_files=[ "res://.import/RockBreak HQ.ogg-9127cbc4ed8f904e2bdb8cedf6fb093f.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/RockBreak HQ.ogg"
+dest_files=[ "res://.import/RockBreak HQ.ogg-5ae117d678ec541c1d707542542a753d.oggstr" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/Ching HQ.ogg-80ba11b9c4369bade75fa5fdcb7332bc.oggstr"
+path="res://.import/Ching HQ.ogg-4a940053ba18696e13423b7863e68373.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/Ching HQ.ogg"
-dest_files=[ "res://.import/Ching HQ.ogg-80ba11b9c4369bade75fa5fdcb7332bc.oggstr" ]
+source_file="res://Assets/MMBNSFX/Overworld SFX/Ching HQ.ogg"
+dest_files=[ "res://.import/Ching HQ.ogg-4a940053ba18696e13423b7863e68373.oggstr" ]
 
 [params]
 

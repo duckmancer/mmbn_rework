@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/CatackAim HQ.ogg-079dddc0122f81eb940a508681b31236.oggstr"
+path="res://.import/CatackAim HQ.ogg-eb281e8c35cbbec5e06ed05472513cb8.oggstr"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/CatackAim HQ.ogg"
-dest_files=[ "res://.import/CatackAim HQ.ogg-079dddc0122f81eb940a508681b31236.oggstr" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/CatackAim HQ.ogg"
+dest_files=[ "res://.import/CatackAim HQ.ogg-eb281e8c35cbbec5e06ed05472513cb8.oggstr" ]
 
 [params]
 

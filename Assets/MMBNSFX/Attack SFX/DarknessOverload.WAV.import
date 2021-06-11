@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/DarknessOverload.WAV-495a58415e7d6974a09f3e948ef3f99b.sample"
+path="res://.import/DarknessOverload.WAV-bab5793898e1d9a748463da4f7ef1f21.sample"
 
 [deps]
 
-source_file="res://Assets/MMBNSFX/DarknessOverload.WAV"
-dest_files=[ "res://.import/DarknessOverload.WAV-495a58415e7d6974a09f3e948ef3f99b.sample" ]
+source_file="res://Assets/MMBNSFX/Attack SFX/DarknessOverload.WAV"
+dest_files=[ "res://.import/DarknessOverload.WAV-bab5793898e1d9a748463da4f7ef1f21.sample" ]
 
 [params]
 
