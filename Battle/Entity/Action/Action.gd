@@ -114,6 +114,11 @@ var battle_owner
 var action_type
 var args : Array
 
+func create_child_entity(type: GDScript, kwargs := {}) -> Entity:
+	var new_entity = construct_entity(type, kwargs)
+	battle_owner.add_child(new_entity)
+	return new_entity
+
 func loop_repeat():
 	var loop_target_time = Utils.frames_to_seconds(_get_data("loop_start")) 
 	animation_player.seek(loop_target_time)
@@ -127,8 +132,8 @@ func get_entity_anim():
 
 func attack():
 	var kwargs = {grid_pos = entity_owner.grid_pos, team = entity_owner.team}
-	Scenes.make_entity(_get_data("attack_type"),
-	battle_owner, kwargs)
+	var _entity = create_child_entity(_get_data("attack_type"),
+	kwargs)
 
 func move(dir):
 	entity_owner.move(dir)

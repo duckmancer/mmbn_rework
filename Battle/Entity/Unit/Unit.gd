@@ -60,16 +60,14 @@ var input_map = {
 	},
 }
 
-var queued_action = Action.Type.IDLE
-var queued_scene = null
-var queued_args := []
+var queued_action = "no_action"
 var cur_action = null
 var last_action = null
 var is_action_running := false
 var cur_cooldown = 0
 
 func process_input(input):
-	enqueue_action(input_map[input].action_name, input_map[input].args, input_map[input].action_scene)
+	enqueue_action(input)
 
 func move(dir):
 	self.grid_pos = grid_pos + Constants.DIRS[dir]
@@ -83,13 +81,12 @@ func reject_move_request():
 
 
 func _reset_queued_action():
-	queued_action = Action.Type.IDLE
-	queued_args = []
+	queued_action = "no_action"
 	
 func _can_enqueue(action):
 	if cur_cooldown > 0 and last_action == action:
 		return false
-	if queued_action != Action.Type.IDLE or action == Action.Type.IDLE:
+	if input_map[queued_action].action_name != Action.Type.IDLE or action == Action.Type.IDLE:
 		return false
 	return true
 
@@ -97,30 +94,29 @@ func _check_repeat(action):
 	if is_action_running and last_action != action:
 		cur_action.repeat = false
 		
-func enqueue_action(action, args := [], scene = MiscAction):
+func enqueue_action(input):
+	var action = input_map[input].action_name
 	_check_repeat(action)
 	if not _can_enqueue(action):
 		return
-	queued_args = args
-	queued_action = action
-	queued_scene = scene
+	queued_action = input
 	if action == Action.Type.MOVE:
-		request_move(args[0])
+		request_move(input_map[queued_action].args[0])
 
 func _set_cur_action():
-	var kwargs = {action_type = queued_action, args = queued_args}
-	cur_action = Scenes.make_entity(queued_scene, self, kwargs)
+	var kwargs = {action_type = input_map[queued_action].action_name, args = input_map[queued_action].args}
+	cur_action = create_child_entity(input_map[queued_action].action_scene, kwargs)
 	cur_action.connect("action_finished", self, "_on_Action_action_finished")
 
 func _run_queued_action():
-	if queued_action == Action.Type.IDLE:
+	if input_map[queued_action].action_name == Action.Type.IDLE:
 		return
 	_set_cur_action()
 	animation_player.play(cur_action.get_entity_anim())
 	
 	is_action_running = true
 	cur_cooldown = action_cooldown
-	last_action = queued_action
+	last_action = input_map[queued_action].action_name
 	_reset_queued_action()
 
 func run_AI(target):

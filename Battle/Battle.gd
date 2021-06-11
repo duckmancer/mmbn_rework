@@ -23,7 +23,8 @@ func _set_panels():
 
 func add_entity(entity_type, pos := Vector2(0, 0), team = Constants.Team.ENEMY, pc := false):
 	var kwargs = {grid_pos = pos, team = team}
-	var entity = Scenes.make_entity(entity_type, self, kwargs)
+	var entity = Entity.construct_entity(entity_type, kwargs)
+	add_child(entity)
 	if pc:
 		player_controller.bind_entity(entity)
 	entity.connect("request_move", self, "_on_Entity_request_move")

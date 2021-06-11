@@ -19,6 +19,26 @@ func set_grid_pos(new_grid_pos):
 func get_grid_pos():
 	return grid_pos.round()
 
+static func _get_entity_path(entity_type):
+	var path = entity_type.resource_path
+	path.erase(path.length() - 2, 2)
+	path += "tscn"
+	return path
+
+static func construct_entity(type: GDScript, kwargs := {}) -> Entity:
+	if type == null:
+		return null
+	var path = _get_entity_path(type)
+	var new_entity = load(path).instance()
+	new_entity.initialize_arguments(kwargs)
+	return new_entity
+
+func create_child_entity(type: GDScript, kwargs := {}) -> Entity:
+	var new_entity = construct_entity(type, kwargs)
+	add_child(new_entity)
+	return new_entity
+
+
 
 func terminate():
 	queue_free()
