@@ -103,10 +103,16 @@ func enqueue_action(input):
 	if action == Action.Type.MOVE:
 		request_move(input_map[queued_action].args[0])
 
+func _connect_action_signals():
+	cur_action.connect("action_finished", self, "_on_Action_action_finished")
+	cur_action.connect("action_looped", self, "_on_Action_action_looped")
+	cur_action.connect("move_triggered", self, "_on_Action_move_triggered")
+
 func _set_cur_action():
 	var kwargs = {action_type = input_map[queued_action].action_name, args = input_map[queued_action].args}
 	cur_action = create_child_entity(input_map[queued_action].action_scene, kwargs)
-	cur_action.connect("action_finished", self, "_on_Action_action_finished")
+	_connect_action_signals()
+
 
 func _run_queued_action():
 	if input_map[queued_action].action_name == Action.Type.IDLE:
@@ -137,7 +143,9 @@ func do_tick():
 		var target = choose_target()
 		if target:
 			run_AI(target)
-	if not is_action_running:
+	if is_action_running:
+		cur_action.sprite.position = sprite.position
+	else:
 		if cur_cooldown != 0:
 			cur_cooldown -= 1
 			return
@@ -146,7 +154,13 @@ func do_tick():
 func _ready():
 	pass
 
+func _on_Action_action_looped(loop_start_time):
+	animation_player.seek(loop_start_time)
 
 func _on_Action_action_finished():
 	is_action_running = false
 	cur_action = null
+
+func _on_Action_move_triggered(dir):
+	move(dir)
+

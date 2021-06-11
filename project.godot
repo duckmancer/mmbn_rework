@@ -143,7 +143,6 @@ config/icon="res://Assets/BattleAssets/icon.png"
 Constants="*res://Resources/Constants.gd"
 Scenes="*res://Resources/Scenes.gd"
 Utils="*res://Resources/Utils.gd"
-Temp="*res://Resources/Temp.gd"
 
 [display]
 

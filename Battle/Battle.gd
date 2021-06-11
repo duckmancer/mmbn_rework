@@ -4,9 +4,9 @@ extends Node2D
 
 const GRID_SIZE = Vector2(6, 3)
 const DEFAULT_GRID = [
-	[Constants.Team.PLAYER, Constants.Team.PLAYER, Constants.Team.PLAYER, Constants.Team.ENEMY, Constants.Team.ENEMY, Constants.Team.ENEMY],
-	[Constants.Team.PLAYER, Constants.Team.PLAYER, Constants.Team.PLAYER, Constants.Team.ENEMY, Constants.Team.ENEMY, Constants.Team.ENEMY],
-	[Constants.Team.PLAYER, Constants.Team.PLAYER, Constants.Team.PLAYER, Constants.Team.ENEMY, Constants.Team.ENEMY, Constants.Team.ENEMY],
+	[Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.ENEMY, Entity.Team.ENEMY, Entity.Team.ENEMY],
+	[Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.ENEMY, Entity.Team.ENEMY, Entity.Team.ENEMY],
+	[Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.ENEMY, Entity.Team.ENEMY, Entity.Team.ENEMY],
 ]
 var panel_grid = []
 
@@ -21,18 +21,25 @@ func _set_panels():
 			add_child(new_panel)
 			panel_grid.back().push_back(new_panel)
 
-func add_entity(entity_type, pos := Vector2(0, 0), team = Constants.Team.ENEMY, pc := false):
+func connect_signals(entity: Entity):
+	if entity is Unit:
+		var _err = entity.connect("request_move", self, "_on_Entity_request_move")
+	var _err = entity.connect("spawn_entity", self, "_on_Entity_spawn_entity")
+
+func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc := false):
 	var kwargs = {grid_pos = pos, team = team}
 	var entity = Entity.construct_entity(entity_type, kwargs)
+	connect_signals(entity)
 	add_child(entity)
 	if pc:
 		player_controller.bind_entity(entity)
-	entity.connect("request_move", self, "_on_Entity_request_move")
+	
+	
 
 func _ready():
 	_set_panels()
-	add_entity(Megaman, Vector2(1, 1), Constants.Team.PLAYER, true)
-#	add_entity(Megaman, Vector2(3, 1))
+	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
+	add_entity(Megaman, Vector2(3, 1))
 	add_entity(Mettaur, Vector2(4, 1))
 #	add_entity(Mettaur, Vector2(3, 2))
 #	add_entity(Mettaur, Vector2(3, 0))
@@ -54,3 +61,8 @@ func _is_space_open(destination, team):
 func _on_Entity_request_move(entity, destination):
 	if not _is_space_open(destination, entity.team):
 		entity.reject_move_request()
+
+func _on_Entity_spawn_entity(entity):
+	connect_signals(entity)
+	if entity.is_independent:
+		add_child(entity)

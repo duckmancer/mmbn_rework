@@ -8,9 +8,9 @@ enum AttackState {
 }
 
 const TEAM_DIRS = {
-	Constants.Team.PLAYER : Constants.DIRS.right,
-	Constants.Team.ENEMY : Constants.DIRS.left,
-	Constants.Team.NEUTRAL : Constants.DIRS.right,
+	Team.PLAYER : Constants.DIRS.right,
+	Team.ENEMY : Constants.DIRS.left,
+	Team.NEUTRAL : Constants.DIRS.right,
 }
 const SECONDS_PER_FRAME = 1.0 / 60.0
 

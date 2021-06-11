@@ -1,7 +1,9 @@
 class_name Action
 extends Entity
 
-signal action_finished
+signal action_finished()
+signal action_looped(loop_start_time)
+signal move_triggered(dir)
 
 enum Type {
 	IDLE,
@@ -109,20 +111,14 @@ func set_state(new_state):
 					loop_repeat()
 
 var repeat : bool
-var entity_owner
-var battle_owner
+
 var action_type
 var args : Array
-
-func create_child_entity(type: GDScript, kwargs := {}) -> Entity:
-	var new_entity = construct_entity(type, kwargs)
-	battle_owner.add_child(new_entity)
-	return new_entity
 
 func loop_repeat():
 	var loop_target_time = Utils.frames_to_seconds(_get_data("loop_start")) 
 	animation_player.seek(loop_target_time)
-	entity_owner.animation_player.seek(loop_target_time)
+	emit_signal("action_looped", loop_target_time)
 
 func _get_data(field_name : String):
 	return _ACTION_DATA[action_type][field_name]
@@ -131,12 +127,12 @@ func get_entity_anim():
 	return _get_data("entity_anim")
 
 func attack():
-	var kwargs = {grid_pos = entity_owner.grid_pos, team = entity_owner.team}
+	var kwargs = {}
 	var _entity = create_child_entity(_get_data("attack_type"),
 	kwargs)
 
 func move(dir):
-	entity_owner.move(dir)
+	emit_signal("move_triggered", dir)
 
 func terminate():
 	emit_signal("action_finished")
@@ -144,15 +140,12 @@ func terminate():
 
 func do_tick():
 	.do_tick()
-	sprite.position = entity_owner.sprite.position
+
 
 func _ready():
-	position = Vector2(0, 0)
-	entity_owner = get_parent()
-	battle_owner = entity_owner.get_parent()
-	sprite.flip_h = entity_owner.sprite.flip_h
 	animation_player.play(_get_data("anim_name"))
 	repeat = _get_data("do_repeat")
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	self.state = ActionState.DONE
+

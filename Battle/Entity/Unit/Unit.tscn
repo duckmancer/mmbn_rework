@@ -53,18 +53,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 58, 59, 58 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Weapon:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.0666668, 0.116667 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 2 ]
-}
 
 [node name="Unit" groups=[
 "target",
@@ -85,8 +73,6 @@ __meta__ = {
 [node name="Sprite" parent="." index="1"]
 centered = true
 offset = Vector2( 0, -61 )
-hframes = 8
-vframes = 8
 frame = 58
 
 [node name="AnimationPlayer" parent="." index="2"]

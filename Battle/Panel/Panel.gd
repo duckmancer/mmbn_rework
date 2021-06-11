@@ -77,7 +77,7 @@ func _get_row_name():
 
 func _get_border_anim():
 	var result = ""
-	if team == Constants.Team.PLAYER:
+	if team == Entity.Team.PLAYER:
 		result += "player_"
 	else:
 		result += "enemy_"
@@ -94,7 +94,7 @@ func _get_tile_anim():
 	
 	if type == TileType.NORMAL or type == TileType.CRACKED or type == TileType.BROKEN:
 		result += "_"
-		if team == Constants.Team.PLAYER:
+		if team == Entity.Team.PLAYER:
 			result += "player"
 		else:
 			result += "enemy"
