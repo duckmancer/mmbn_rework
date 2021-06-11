@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SmallZap-SensorPossibly HQ.ogg-be0d827fb9016d8b6d15794b9f68ce01.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/SmallZap-SensorPossibly HQ.ogg"
+dest_files=[ "res://.import/SmallZap-SensorPossibly HQ.ogg-be0d827fb9016d8b6d15794b9f68ce01.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DarkThunder HQ.ogg-5f11f622bf85732000edf891fcba08dd.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/DarkThunder HQ.ogg"
+dest_files=[ "res://.import/DarkThunder HQ.ogg-5f11f622bf85732000edf891fcba08dd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

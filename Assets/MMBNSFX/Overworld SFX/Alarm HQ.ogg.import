@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Alarm HQ.ogg-4fe752afdbed094090cc3fbd295ebd92.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Alarm HQ.ogg"
+dest_files=[ "res://.import/Alarm HQ.ogg-4fe752afdbed094090cc3fbd295ebd92.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

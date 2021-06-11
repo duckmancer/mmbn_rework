@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/62- Gow's Barking.wav-8a4044aed5a3cc27b601b3f2b8636e87.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/62- Gow's Barking.wav"
+dest_files=[ "res://.import/62- Gow's Barking.wav-8a4044aed5a3cc27b601b3f2b8636e87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

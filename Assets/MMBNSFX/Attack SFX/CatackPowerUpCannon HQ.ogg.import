@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CatackPowerUpCannon HQ.ogg-9b3b080db861f411b9038e8aedae3ace.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/CatackPowerUpCannon HQ.ogg"
+dest_files=[ "res://.import/CatackPowerUpCannon HQ.ogg-9b3b080db861f411b9038e8aedae3ace.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

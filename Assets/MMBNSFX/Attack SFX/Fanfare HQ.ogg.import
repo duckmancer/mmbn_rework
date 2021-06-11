@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Fanfare HQ.ogg-e81cab3f0cab2be7e6461c61a8259e22.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Fanfare HQ.ogg"
+dest_files=[ "res://.import/Fanfare HQ.ogg-e81cab3f0cab2be7e6461c61a8259e22.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

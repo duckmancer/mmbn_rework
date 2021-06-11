@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/59- Pile Driver.wav-0886f048ca6559b0d91d9053d0c8fb8b.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/59- Pile Driver.wav"
+dest_files=[ "res://.import/59- Pile Driver.wav-0886f048ca6559b0d91d9053d0c8fb8b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

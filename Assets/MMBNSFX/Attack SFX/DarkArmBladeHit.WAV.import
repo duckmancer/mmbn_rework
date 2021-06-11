@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DarkArmBladeHit.WAV-43fc2b4a214a0d46d9a740777555cb68.sample"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/DarkArmBladeHit.WAV"
+dest_files=[ "res://.import/DarkArmBladeHit.WAV-43fc2b4a214a0d46d9a740777555cb68.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

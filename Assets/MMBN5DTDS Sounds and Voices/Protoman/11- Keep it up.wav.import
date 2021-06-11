@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/11- Keep it up.wav-29b9eef2b4088a842f509ba524a7617b.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Protoman/11- Keep it up.wav"
+dest_files=[ "res://.import/11- Keep it up.wav-29b9eef2b4088a842f509ba524a7617b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/4- Super Spread!.wav-d0bc46da53e7e3b24f37aabc72bbf812.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Program Advance/4- Super Spread!.wav"
+dest_files=[ "res://.import/4- Super Spread!.wav-d0bc46da53e7e3b24f37aabc72bbf812.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

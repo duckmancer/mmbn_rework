@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/5- Napalmman!.wav-9119749fa5d985c2cff1946b8d7b87af.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Navi Change/5- Napalmman!.wav"
+dest_files=[ "res://.import/5- Napalmman!.wav-9119749fa5d985c2cff1946b8d7b87af.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -119,13 +119,12 @@ tracks/0/keys = {
 
 [node name="Navi" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-is_independent = true
-action_cooldown = 8
 hp = 200
 
 [node name="Sprite" parent="." index="1"]
+position = Vector2( -4, 0 )
 texture = ExtResource( 2 )
-frame = 24
+frame = 25
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]

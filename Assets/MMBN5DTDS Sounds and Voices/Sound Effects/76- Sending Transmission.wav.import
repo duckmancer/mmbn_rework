@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/76- Sending Transmission.wav-21becb1c61cd5e783a250d5549087031.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/76- Sending Transmission.wav"
+dest_files=[ "res://.import/76- Sending Transmission.wav-21becb1c61cd5e783a250d5549087031.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

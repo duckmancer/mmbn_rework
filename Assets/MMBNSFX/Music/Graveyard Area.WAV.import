@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Graveyard Area.WAV-455c51f8234addc4f4efc7997805f38a.sample"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Graveyard Area.WAV"
+dest_files=[ "res://.import/Graveyard Area.WAV-455c51f8234addc4f4efc7997805f38a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

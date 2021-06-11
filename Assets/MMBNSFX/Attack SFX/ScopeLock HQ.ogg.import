@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ScopeLock HQ.ogg-e575b17fc45d1b07b36c0eeb5d2b5e08.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/ScopeLock HQ.ogg"
+dest_files=[ "res://.import/ScopeLock HQ.ogg-e575b17fc45d1b07b36c0eeb5d2b5e08.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

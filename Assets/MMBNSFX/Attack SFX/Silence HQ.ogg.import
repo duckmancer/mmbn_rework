@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Silence HQ.ogg-0cf369a41de5c5bc89181dca4bf2fe06.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Silence HQ.ogg"
+dest_files=[ "res://.import/Silence HQ.ogg-0cf369a41de5c5bc89181dca4bf2fe06.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

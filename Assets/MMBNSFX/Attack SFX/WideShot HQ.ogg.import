@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/WideShot HQ.ogg-06cfdfeeab39b34016aa724feb8079a9.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/WideShot HQ.ogg"
+dest_files=[ "res://.import/WideShot HQ.ogg-06cfdfeeab39b34016aa724feb8079a9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

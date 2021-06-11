@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/21- Phone Call!.wav-b398b0c275c795de0f103469f15200be.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/21- Phone Call!.wav"
+dest_files=[ "res://.import/21- Phone Call!.wav-b398b0c275c795de0f103469f15200be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

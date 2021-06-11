@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Barrier HQ.ogg-49822773ce21bf77aac61d8f0f77dc5d.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Barrier HQ.ogg"
+dest_files=[ "res://.import/Barrier HQ.ogg-49822773ce21bf77aac61d8f0f77dc5d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

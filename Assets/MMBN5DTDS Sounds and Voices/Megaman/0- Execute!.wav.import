@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/0- Execute!.wav-88bc6002bb7ce3c94dc4478f19e1d4ec.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Megaman/0- Execute!.wav"
+dest_files=[ "res://.import/0- Execute!.wav-88bc6002bb7ce3c94dc4478f19e1d4ec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

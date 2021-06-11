@@ -17,4 +17,6 @@ region_rect = Rect2( 107, 7, 34, 46 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

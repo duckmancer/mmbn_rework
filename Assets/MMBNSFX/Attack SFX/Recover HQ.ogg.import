@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Recover HQ.ogg-41276b9eee469c37207be9cc60939b86.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Recover HQ.ogg"
+dest_files=[ "res://.import/Recover HQ.ogg-41276b9eee469c37207be9cc60939b86.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

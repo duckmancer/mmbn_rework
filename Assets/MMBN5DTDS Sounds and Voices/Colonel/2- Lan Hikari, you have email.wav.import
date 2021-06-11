@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/2- Lan Hikari, you have email.wav-22fb90c9749413bcc1e6820994fa4056.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Colonel/2- Lan Hikari, you have email.wav"
+dest_files=[ "res://.import/2- Lan Hikari, you have email.wav-22fb90c9749413bcc1e6820994fa4056.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

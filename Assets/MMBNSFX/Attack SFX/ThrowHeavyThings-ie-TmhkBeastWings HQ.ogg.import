@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ThrowHeavyThings-ie-TmhkBeastWings HQ.ogg-652fb0e0da0ca84d8a30303cf218c22d.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/ThrowHeavyThings-ie-TmhkBeastWings HQ.ogg"
+dest_files=[ "res://.import/ThrowHeavyThings-ie-TmhkBeastWings HQ.ogg-652fb0e0da0ca84d8a30303cf218c22d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

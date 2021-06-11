@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AttackBounce HQ.ogg-84303a1d2d0bddef123072ca65bcfc8b.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/AttackBounce HQ.ogg"
+dest_files=[ "res://.import/AttackBounce HQ.ogg-84303a1d2d0bddef123072ca65bcfc8b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

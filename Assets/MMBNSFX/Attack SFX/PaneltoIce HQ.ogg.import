@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PaneltoIce HQ.ogg-caf4ba86f7e8b0d858f83156a0d37447.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/PaneltoIce HQ.ogg"
+dest_files=[ "res://.import/PaneltoIce HQ.ogg-caf4ba86f7e8b0d858f83156a0d37447.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

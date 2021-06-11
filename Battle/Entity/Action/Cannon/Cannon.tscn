@@ -10,4 +10,4 @@ state = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 7
+frame = 4

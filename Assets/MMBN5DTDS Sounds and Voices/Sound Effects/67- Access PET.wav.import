@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/67- Access PET.wav-26559cb5b0f708eb2475e2979b4fa829.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/67- Access PET.wav"
+dest_files=[ "res://.import/67- Access PET.wav-26559cb5b0f708eb2475e2979b4fa829.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

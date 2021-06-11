@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PanelReturn HQ.ogg-8f4c39e35f3044be0066f96069625591.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/PanelReturn HQ.ogg"
+dest_files=[ "res://.import/PanelReturn HQ.ogg-8f4c39e35f3044be0066f96069625591.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

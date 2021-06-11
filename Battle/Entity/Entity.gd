@@ -10,6 +10,7 @@ enum Team {
 }
 onready var sprite := $Sprite as Sprite
 onready var animation_player := $AnimationPlayer as AnimationPlayer
+onready var audio := $AudioStreamPlayer as AudioStreamPlayer
 
 var frame_counter = 0
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BusterCharging HQ.ogg-f8dee9b73e7d359b9834cecbe876663e.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/BusterCharging HQ.ogg"
+dest_files=[ "res://.import/BusterCharging HQ.ogg-f8dee9b73e7d359b9834cecbe876663e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

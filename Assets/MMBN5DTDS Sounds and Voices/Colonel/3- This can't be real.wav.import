@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/3- This can't be real.wav-0059e65668727653c19ded17a14b048e.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Colonel/3- This can't be real.wav"
+dest_files=[ "res://.import/3- This can't be real.wav-0059e65668727653c19ded17a14b048e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BringupTextbox HQ.ogg-7854887be26ef830408a4a760e0510f9.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/BringupTextbox HQ.ogg"
+dest_files=[ "res://.import/BringupTextbox HQ.ogg-7854887be26ef830408a4a760e0510f9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

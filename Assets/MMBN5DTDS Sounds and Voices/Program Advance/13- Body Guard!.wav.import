@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/13- Body Guard!.wav-3704e533ab006ae2ef536a0bc4364405.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Program Advance/13- Body Guard!.wav"
+dest_files=[ "res://.import/13- Body Guard!.wav-3704e533ab006ae2ef536a0bc4364405.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

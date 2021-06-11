@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PETEMail HQ.ogg-3669f5913a51426688d604d4e38ccbdb.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/PETEMail HQ.ogg"
+dest_files=[ "res://.import/PETEMail HQ.ogg-3669f5913a51426688d604d4e38ccbdb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

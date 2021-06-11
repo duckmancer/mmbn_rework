@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AreaGrab HQ.ogg-97e7f5d0c45acc51749d092e5c158a72.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/AreaGrab HQ.ogg"
+dest_files=[ "res://.import/AreaGrab HQ.ogg-97e7f5d0c45acc51749d092e5c158a72.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

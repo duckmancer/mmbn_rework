@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SwordSwing HQ.ogg-422aad4df276a662fb332f045e54c12b.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/SwordSwing HQ.ogg"
+dest_files=[ "res://.import/SwordSwing HQ.ogg-422aad4df276a662fb332f045e54c12b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

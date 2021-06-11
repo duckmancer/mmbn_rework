@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TimeBombImminent HQ.ogg-56c56208a6831023c290b6ff8b3f973a.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/TimeBombImminent HQ.ogg"
+dest_files=[ "res://.import/TimeBombImminent HQ.ogg-56c56208a6831023c290b6ff8b3f973a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

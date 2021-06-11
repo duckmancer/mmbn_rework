@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/2- Execute!!.wav-388b0963e898d8420367d5cae4545542.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Lan/2- Execute!!.wav"
+dest_files=[ "res://.import/2- Execute!!.wav-388b0963e898d8420367d5cae4545542.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/26- Let's do it, Toadman!.wav-fab95427a205472daffcfc144a2bad23.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Navi Change/26- Let's do it, Toadman!.wav"
+dest_files=[ "res://.import/26- Let's do it, Toadman!.wav-fab95427a205472daffcfc144a2bad23.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

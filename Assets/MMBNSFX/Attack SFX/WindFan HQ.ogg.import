@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/WindFan HQ.ogg-c4b5a8af08b9ed92e5e5ec84d201af5c.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/WindFan HQ.ogg"
+dest_files=[ "res://.import/WindFan HQ.ogg-c4b5a8af08b9ed92e5e5ec84d201af5c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

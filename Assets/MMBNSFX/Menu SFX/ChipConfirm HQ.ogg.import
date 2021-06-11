@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ChipConfirm HQ.ogg-40c7841ed587aebf9c30fdd7443336cd.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/ChipConfirm HQ.ogg"
+dest_files=[ "res://.import/ChipConfirm HQ.ogg-40c7841ed587aebf9c30fdd7443336cd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

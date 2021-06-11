@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Aspire Break HQ.ogg-3b4f87c6456f1b2dd56be6708f085d42.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Aspire Break HQ.ogg"
+dest_files=[ "res://.import/Aspire Break HQ.ogg-3b4f87c6456f1b2dd56be6708f085d42.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

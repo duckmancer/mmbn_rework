@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/27- Strong Attack (2).wav-2fab53348d05424aa92e1df4b17aaa63.sample"
+
+[deps]
+
+source_file="res://Assets/MMBN5DTDS Sounds and Voices/Colonel/Battle Voices/27- Strong Attack (2).wav"
+dest_files=[ "res://.import/27- Strong Attack (2).wav-2fab53348d05424aa92e1df4b17aaa63.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

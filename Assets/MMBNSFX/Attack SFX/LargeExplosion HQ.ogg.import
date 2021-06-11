@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/LargeExplosion HQ.ogg-9fb6fb25cf31dadacbc45b24cb9d1fc8.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/LargeExplosion HQ.ogg"
+dest_files=[ "res://.import/LargeExplosion HQ.ogg-9fb6fb25cf31dadacbc45b24cb9d1fc8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
