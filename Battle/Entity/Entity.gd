@@ -15,7 +15,7 @@ var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
 func set_grid_pos(new_grid_pos):
 	grid_pos = new_grid_pos
 	position = BattlePanel.ENTITY_ORIGIN + Utils.scale_vector(grid_pos, BattlePanel.SIZE)
-	z_index = grid_pos.y
+	z_index = int(grid_pos.y)
 func get_grid_pos():
 	return grid_pos.round()
 
@@ -41,7 +41,7 @@ func do_tick():
 	pass
 	frame_counter += 1
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_active:
 		do_tick()
 
@@ -54,6 +54,7 @@ func _ready():
 	sprite.flip_h = (team == Constants.Team.ENEMY)
 	self.grid_pos = grid_pos
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	animation_player.stop()
-	animation_player.play("idle")
+	if animation_player.has_animation("idle"):
+		animation_player.play("idle")

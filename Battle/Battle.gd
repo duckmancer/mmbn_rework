@@ -23,18 +23,18 @@ func _set_panels():
 
 func add_entity(entity_type, pos := Vector2(0, 0), team = Constants.Team.ENEMY, pc := false):
 	var kwargs = {grid_pos = pos, team = team}
-	var entity = Scenes.make_entity(entity_type, self, kwargs) as Unit
+	var entity = Scenes.make_entity(entity_type, self, kwargs)
 	if pc:
 		player_controller.bind_entity(entity)
 	entity.connect("request_move", self, "_on_Entity_request_move")
 
 func _ready():
 	_set_panels()
-	add_entity(Constants.EntityType.MEGAMAN, Vector2(1, 1), Constants.Team.PLAYER, true)
-	add_entity(Constants.EntityType.MEGAMAN, Vector2(3, 1))
-#	add_entity(Constants.EntityType.METTAUR, Vector2(4, 1))
-#	add_entity(Constants.EntityType.METTAUR, Vector2(3, 2))
-#	add_entity(Constants.EntityType.METTAUR, Vector2(3, 0))
+	add_entity(Megaman, Vector2(1, 1), Constants.Team.PLAYER, true)
+#	add_entity(Megaman, Vector2(3, 1))
+	add_entity(Mettaur, Vector2(4, 1))
+#	add_entity(Mettaur, Vector2(3, 2))
+#	add_entity(Mettaur, Vector2(3, 0))
 
 func _is_space_open(destination, team):
 	if (destination.x < 0 or destination.x > 5):

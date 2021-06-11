@@ -107,12 +107,12 @@ func _update_panel():
 
 func _ready():
 	_update_panel()
-	z_index += grid_pos.y
+	z_index += int(grid_pos.y)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	for s in _danger_sources:
 		_danger_sources[s] -= 1
 		if _danger_sources[s] <= 0:
-			_danger_sources.erase(s)
+			var _exists = _danger_sources.erase(s)
 	_update_panel()

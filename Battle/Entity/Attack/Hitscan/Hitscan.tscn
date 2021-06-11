@@ -4,7 +4,7 @@
 [ext_resource path="res://Battle/Entity/Attack/Hitscan/Hitscan.gd" type="Script" id=2]
 [ext_resource path="res://Assets/BattleAssets/Weapons/Cannon.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "shoot"
 length = 0.216667
 step = 0.0166667
@@ -44,4 +44,4 @@ vframes = 8
 frame = 7
 
 [node name="AnimationPlayer" parent="." index="1"]
-anims/shoot = SubResource( 3 )
+anims/shoot = SubResource( 1 )

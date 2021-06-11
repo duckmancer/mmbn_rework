@@ -3,14 +3,18 @@ extends Unit
 
 
 func _ready():
-	pass
+	input_map.action_0 = {
+		action_name = Action.Type.SHOCKWAVE,
+		action_scene = MiscAction,
+		args = [],
+	}
 
 
 func run_AI(target):
 	if .run_AI(target):
 		return true
 	elif target.grid_pos.y == self.grid_pos.y:
-		enqueue_action(Action.Type.SHOCKWAVE)
+		process_input("action_0")
 		return true
 	else:
 		return false

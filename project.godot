@@ -143,6 +143,7 @@ config/icon="res://Assets/BattleAssets/icon.png"
 Constants="*res://Resources/Constants.gd"
 Scenes="*res://Resources/Scenes.gd"
 Utils="*res://Resources/Utils.gd"
+Temp="*res://Resources/Temp.gd"
 
 [display]
 
@@ -264,3 +265,4 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

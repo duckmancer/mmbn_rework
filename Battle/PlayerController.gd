@@ -45,7 +45,7 @@ func get_last_input():
 				break
 	return best
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if _total_held_inputs == 0:
 		_cur_input_count = 0
 		

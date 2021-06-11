@@ -20,16 +20,6 @@ enum ActionState {
 	DONE,
 }
 
-const ACTION_SCENES = {
-	Type.IDLE: Constants.EntityType.MISC_ACTION,
-	Type.MOVE: Constants.EntityType.MISC_ACTION,
-	Type.BUSTER: Constants.EntityType.BUSTER,
-	Type.BUSTER_SCAN: Constants.EntityType.BUSTER,
-	Type.CANNON: Constants.EntityType.CANNON,
-	Type.SWORD: Constants.EntityType.SWORD,
-	Type.MINIBOMB: Constants.EntityType.MISC_ACTION,
-	Type.SHOCKWAVE: Constants.EntityType.MISC_ACTION,
-}
 const _ACTION_DATA = {
 	Type.MOVE: {
 		warmup = 2,
@@ -47,7 +37,7 @@ const _ACTION_DATA = {
 		anim_name = "shoot",
 		func_name = "attack",
 		entity_anim = "shoot",
-		attack_type = Constants.EntityType.SHOT,
+		attack_type = Shot,
 		loop_start = 0,
 		do_repeat = true,
 	},
@@ -57,7 +47,7 @@ const _ACTION_DATA = {
 		anim_name = "shoot",
 		func_name = "attack",
 		entity_anim = "shoot",
-		attack_type = Constants.EntityType.BUSTER_SHOT,
+		attack_type = BusterShot,
 		loop_start = 0,
 		do_repeat = true,
 	},
@@ -67,7 +57,7 @@ const _ACTION_DATA = {
 		anim_name = "slash",
 		func_name = "attack",
 		entity_anim = "slash",
-		attack_type = Constants.EntityType.SLASH,
+		attack_type = Slash,
 		loop_start = 0,
 		do_repeat = false,
 	},
@@ -77,7 +67,7 @@ const _ACTION_DATA = {
 		anim_name = "shockwave",
 		func_name = "attack",
 		entity_anim = "shoot",
-		attack_type = Constants.EntityType.SHOT,
+		attack_type = Shot,
 		loop_start = 0,
 		do_repeat = false,
 	},
@@ -87,7 +77,7 @@ const _ACTION_DATA = {
 		anim_name = "shoot_heavy",
 		func_name = "attack",
 		entity_anim = "shoot_heavy",
-		attack_type = Constants.EntityType.HITSCAN,
+		attack_type = Hitscan,
 		loop_start = 8,
 		do_repeat = false,
 	},
@@ -97,7 +87,7 @@ const _ACTION_DATA = {
 		anim_name = "shoot_heavy",
 		func_name = "attack",
 		entity_anim = "shoot_heavy",
-		attack_type = Constants.EntityType.HITSCAN,
+		attack_type = Hitscan,
 		loop_start = 0,
 		do_repeat = false,
 	},
@@ -159,5 +149,5 @@ func _ready():
 	animation_player.play(_get_data("anim_name"))
 	repeat = _get_data("do_repeat")
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	self.state = ActionState.DONE

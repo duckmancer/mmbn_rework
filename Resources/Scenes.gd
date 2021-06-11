@@ -65,7 +65,7 @@ const _ENTITY_SCENES = {
 	Constants.EntityType.SLASH: preload(_SLASH_PATH),
 }
 
-const USE_RUNTIME_LOADING = false
+const USE_RUNTIME_LOADING = true
 
 static func make_entity(scene_type, entity_owner, kwargs := {}):
 	if USE_RUNTIME_LOADING:
@@ -112,21 +112,21 @@ const PARENTS = {
 	BusterShot = "Hitscan",
 }
 
-static func get_entity_path(entity_name):
-	var result = entity_name + ".tscn"
-	var next = entity_name
-	while true:
-		result = next + "/" + result
-		next = PARENTS[next]
-		if next == "root":
-			break
-	return "res://" + result
+static func get_entity_path(entity_type):
+	var path
+	if entity_type is Script:
+		path = entity_type.resource_path
+	else:
+		path = Temp.names_to_scenes[entity_type].resource_path
+	path.erase(path.length() - 2, 2)
+	path += "tscn"
+	return path
 
 static func runtime_make_entity(scene_type, entity_owner, kwargs := {}):
 	if scene_type == null:
 		return
-	var path = get_entity_path(Constants.SCENE_NAMES[scene_type])
-	var new_entity = load(path).instance() as Entity
+	var path = get_entity_path(scene_type)
+	var new_entity = load(path).instance()
 	new_entity.initialize_arguments(kwargs)
 	entity_owner.add_child(new_entity)
 	return new_entity

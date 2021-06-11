@@ -28,6 +28,6 @@ func do_tick():
 		hit_done = true
 	terminate()
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	anim_done = true
 
