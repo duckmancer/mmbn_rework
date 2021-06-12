@@ -24,7 +24,7 @@ func set_state(new_state):
 
 var attack_dir
 var ignored_targets = []
-
+var impact_type = Impact
 
 func _do_panel_warning(snapped_pos: Vector2):
 	var panels = get_tree().get_nodes_in_group("panel")
@@ -34,7 +34,7 @@ func _do_panel_warning(snapped_pos: Vector2):
 			
 func hit(target):
 	target.hp -= damage
-	create_child_entity(Impact, {grid_pos = target.grid_pos})
+	create_child_entity(impact_type, {grid_pos = target.grid_pos})
 
 func _do_unit_collision(snapped_pos: Vector2):
 	var targets = get_tree().get_nodes_in_group("target")

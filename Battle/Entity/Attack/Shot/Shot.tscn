@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Battle/Entity/Attack/Attack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/BattleAssets/Weapons/Cannon.png" type="Texture" id=2]
 [ext_resource path="res://Battle/Entity/Attack/Shot/Shot.gd" type="Script" id=3]
+[ext_resource path="res://Assets/MMBNSFX/Attack SFX/AreaGrab HQ.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
-length = 0.0166667
+length = 0.450001
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -20,16 +21,31 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 16 ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 2.75622,
+"start_offset": 0.5,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [node name="Shot" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
-hframes = 8
-vframes = 8
 frame = 16
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "default"
 anims/default = SubResource( 1 )
+
+[node name="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 4 )

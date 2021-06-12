@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-09 Cyber Battle.mp3-26d1365b6e8f4f76c5f3971a6bc871de.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Music/3-09 Cyber Battle.mp3"
+dest_files=[ "res://.import/3-09 Cyber Battle.mp3-26d1365b6e8f4f76c5f3971a6bc871de.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

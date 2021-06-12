@@ -54,6 +54,8 @@ func set_default_kwargs(kwargs: Dictionary):
 func create_child_entity(type: Script, kwargs := {}) -> Entity:
 	set_default_kwargs(kwargs)
 	var new_entity = construct_entity(type, kwargs)
+	if not new_entity:
+		return null
 	emit_signal("spawn_entity", new_entity)
 	if not new_entity.is_independent:
 		add_child(new_entity)

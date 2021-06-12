@@ -61,3 +61,4 @@ anims/shoot = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )
+volume_db = 5.056

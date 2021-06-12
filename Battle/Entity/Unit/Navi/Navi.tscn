@@ -122,7 +122,6 @@ script = ExtResource( 3 )
 hp = 200
 
 [node name="Sprite" parent="." index="1"]
-position = Vector2( -4, 0 )
 texture = ExtResource( 2 )
 frame = 25
 region_rect = Rect2( 4, 62, 49, 44 )
