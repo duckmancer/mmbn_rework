@@ -21,7 +21,6 @@ func scan():
 		hit_pos += attack_dir
 
 func do_tick():
-	#.do_tick()
 	if state == AttackState.ACTIVE:
 		state = AttackState.WAITING
 		scan()

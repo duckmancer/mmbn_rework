@@ -3,4 +3,4 @@ extends Hitscan
 
 
 func _ready():
-	pass
+	impact_type = "buster_hit"

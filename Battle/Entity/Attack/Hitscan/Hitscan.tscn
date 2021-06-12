@@ -54,11 +54,11 @@ state = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 7
+frame = 8
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/shoot = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )
-volume_db = 5.056
+volume_db = 10.0

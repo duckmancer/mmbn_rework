@@ -3,7 +3,7 @@
 [ext_resource path="res://Battle/Entity/Attack/Hitscan/Hitscan.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Attack/Hitscan/BusterShot/BusterShot.gd" type="Script" id=2]
 [ext_resource path="res://Assets/BattleAssets/Weapons/Buster.png" type="Texture" id=3]
-[ext_resource path="res://Assets/MMBNSFX/Attack SFX/Gun HQ.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/0- Buster.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "shoot"
@@ -40,7 +40,7 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "clips": [ {
-"end_offset": 1.3698,
+"end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource( 4 )
 } ],
@@ -52,10 +52,11 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 13
+frame = 10
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/shoot = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )
+volume_db = -10.0

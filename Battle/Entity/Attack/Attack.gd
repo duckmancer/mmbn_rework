@@ -1,7 +1,6 @@
 class_name Attack
 extends Entity
 
-
 enum AttackState {
 	WAITING,
 	ACTIVE,
@@ -14,6 +13,8 @@ const TEAM_DIRS = {
 }
 const SECONDS_PER_FRAME = 1.0 / 60.0
 
+
+
 export var damage = 10
 export var duration = 60
 export var pass_through = false
@@ -24,7 +25,14 @@ func set_state(new_state):
 
 var attack_dir
 var ignored_targets = []
-var impact_type = Impact
+var impact_type = "hit"
+
+func terminate():
+	if animation_player.is_playing():
+		state = AttackState.WAITING
+		visible = false
+	else:
+		.terminate()
 
 func _do_panel_warning(snapped_pos: Vector2):
 	var panels = get_tree().get_nodes_in_group("panel")
@@ -34,7 +42,7 @@ func _do_panel_warning(snapped_pos: Vector2):
 			
 func hit(target):
 	target.hp -= damage
-	create_child_entity(impact_type, {grid_pos = target.grid_pos})
+	create_child_entity(Impact, {grid_pos = target.grid_pos, impact_anim = impact_type})
 
 func _do_unit_collision(snapped_pos: Vector2):
 	var targets = get_tree().get_nodes_in_group("target")
@@ -51,14 +59,16 @@ func _do_unit_collision(snapped_pos: Vector2):
 
 func do_tick():
 	.do_tick()
-	_do_unit_collision(self.grid_pos)
+	if state == AttackState.ACTIVE:
+		_do_unit_collision(self.grid_pos)
 	duration -= 1
-	if duration == 0:
+	if duration <= 0:
 		terminate()
 	
 func _ready():
 	attack_dir = TEAM_DIRS[team]
 	set_grid_pos(grid_pos + attack_dir)
+	state = AttackState.ACTIVE
 
 
 

@@ -38,15 +38,15 @@ tracks/1/keys = {
 
 [node name="Slash" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+duration = 20
 pass_through = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 56
+frame = 57
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/slash = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )
-volume_db = -10.0

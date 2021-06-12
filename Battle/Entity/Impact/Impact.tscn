@@ -1,11 +1,42 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Impact/Impact.gd" type="Script" id=2]
 [ext_resource path="res://Assets/MMBNSFX/Attack SFX/Hurt HQ.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/1- Buster Hit.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
-resource_name = "hit"
+resource_name = "buster_hit"
+length = 0.533333
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.166667 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.533333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -10.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.533333
 step = 0.0166667
 tracks/0/type = "audio"
@@ -20,7 +51,19 @@ tracks/0/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 3 )
 } ],
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0.166667 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [node name="Impact" instance=ExtResource( 1 )]
@@ -28,8 +71,8 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hit"
-anims/hit = SubResource( 1 )
+anims/buster_hit = SubResource( 1 )
+anims/hit = SubResource( 2 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 3 )
-volume_db = -10.0
