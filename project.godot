@@ -150,6 +150,10 @@ Constants="*res://Resources/Constants.gd"
 Scenes="*res://Resources/Scenes.gd"
 Utils="*res://Resources/Utils.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=240

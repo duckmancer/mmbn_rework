@@ -79,7 +79,6 @@ __meta__ = {
 [node name="Sprite" parent="." index="1"]
 centered = true
 offset = Vector2( 0, -61 )
-frame = 58
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "idle"

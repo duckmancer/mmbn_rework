@@ -11,6 +11,7 @@ const DEFAULT_GRID = [
 var panel_grid = []
 
 onready var player_controller = $PlayerController
+onready var player_health = $PlayerHealthBox/PlayerHealth
 
 func _set_panels():
 	for i in GRID_SIZE.y:
@@ -66,3 +67,7 @@ func _on_Entity_spawn_entity(entity):
 	connect_signals(entity)
 	if entity.is_independent:
 		add_child(entity)
+
+
+func _on_PlayerController_hp_changed(new_hp) -> void:
+	player_health.text = String(new_hp)

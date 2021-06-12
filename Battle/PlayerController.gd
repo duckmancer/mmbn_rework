@@ -1,6 +1,8 @@
 class_name PlayerController
 extends Node2D
 
+signal hp_changed(new_hp)
+
 var entity : Unit
 
 var _held_input = {
@@ -56,6 +58,12 @@ func _physics_process(_delta):
 func bind_entity(controlled_entity: Entity):
 	entity = controlled_entity
 	entity.is_player_controlled = true
+	entity.healthbar.visible = false
+	var _err = entity.connect("hp_changed", self, "_on_Entity_hp_changed")
+	emit_signal("hp_changed", entity.hp)
 
 func _ready():
 	pass
+
+func _on_Entity_hp_changed(new_hp):
+	emit_signal("hp_changed", new_hp)

@@ -2,7 +2,9 @@ class_name Unit
 extends Entity
 
 signal request_move(entity, destination)
+signal hp_changed(new_hp)
 
+onready var healthbar = $Healthbar
 
 export var action_cooldown = 8
 export var hp = 40 setget set_hp
@@ -11,6 +13,10 @@ func set_hp(new_hp):
 	if hp <= 0:
 		terminate()
 	$Healthbar.text = str(hp)
+	
+	if is_player_controlled:
+		emit_signal("hp_changed", hp)
+
 
 var input_map = {
 	up = {

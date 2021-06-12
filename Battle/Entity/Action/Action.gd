@@ -146,6 +146,8 @@ func _ready():
 	animation_player.play(_get_data("anim_name"))
 	repeat = _get_data("do_repeat")
 
-func _on_AnimationPlayer_animation_finished(_anim_name):
+func animation_done():
 	self.state = ActionState.DONE
+
+
 

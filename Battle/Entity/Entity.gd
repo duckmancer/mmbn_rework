@@ -96,7 +96,10 @@ func _ready():
 	sprite.flip_h = (team == Team.ENEMY)
 	self.grid_pos = grid_pos
 
-func _on_AnimationPlayer_animation_finished(_anim_name):
+func animation_done():
 	animation_player.stop()
 	if animation_player.has_animation("idle"):
 		animation_player.play("idle")
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	animation_done()

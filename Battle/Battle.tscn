@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Battle/PlayerController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/MMBNSFX/Music/3-09 Cyber Battle.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Battle/Battle.gd" type="Script" id=3]
 [ext_resource path="res://Battle/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/BattleAssets/HUD/Player Health Box.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=6]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 3 )
@@ -16,3 +18,25 @@ volume_db = -16.5
 autoplay = true
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="PlayerHealthBox" type="Sprite" parent="."]
+z_index = 10
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( 2, 0 )
+
+[node name="PlayerHealth" type="Label" parent="PlayerHealthBox"]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 41.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.854902, 0.976471, 1, 1 )
+text = "100"
+align = 2
+valign = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="hp_changed" from="PlayerController" to="." method="_on_PlayerController_hp_changed"]
