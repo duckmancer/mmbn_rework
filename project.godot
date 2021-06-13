@@ -109,6 +109,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Action/Sword/Sword.gd"
 }, {
+"base": "Action",
+"class": "Throw",
+"language": "GDScript",
+"path": "res://Battle/Entity/Action/Throw/Throw.gd"
+}, {
+"base": "Attack",
+"class": "Throwable",
+"language": "GDScript",
+"path": "res://Battle/Entity/Attack/Throwable/Throwable.gd"
+}, {
 "base": "Entity",
 "class": "Unit",
 "language": "GDScript",
@@ -140,6 +150,8 @@ _global_script_class_icons={
 "Shot": "",
 "Slash": "",
 "Sword": "",
+"Throw": "",
+"Throwable": "",
 "Unit": "",
 "Virus": ""
 }
@@ -167,6 +179,10 @@ window/size/height=160
 window/size/test_width=1200
 window/size/test_height=800
 window/stretch/mode="2d"
+
+[global]
+
+snap=false
 
 [importer_defaults]
 

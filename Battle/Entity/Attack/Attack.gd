@@ -14,11 +14,12 @@ const TEAM_DIRS = {
 const SECONDS_PER_FRAME = 1.0 / 60.0
 
 
-
 export var damage = 10
 export var duration = 60
 export var pass_through = false
 export var do_panel_warning = false
+export var starting_state = AttackState.ACTIVE
+export var is_offset = true
 export(AttackState) var state = AttackState.WAITING setget set_state
 func set_state(new_state):
 	if is_active:
@@ -69,9 +70,11 @@ func do_tick():
 		terminate()
 	
 func _ready():
+	# TODO: Clean up all these hard-coded workarounds
 	attack_dir = TEAM_DIRS[team]
-	set_grid_pos(grid_pos + attack_dir)
-	state = AttackState.ACTIVE
+	if is_offset:
+		set_grid_pos(grid_pos + attack_dir)
+	state = starting_state
 
 
 

@@ -86,10 +86,10 @@ const _ACTION_DATA = {
 	Type.MINIBOMB: {
 		warmup = 16,
 		cooldown = 18,
-		anim_name = "shoot_heavy",
+		anim_name = "throw",
 		func_name = "attack",
-		entity_anim = "shoot_heavy",
-		attack_type = Hitscan,
+		entity_anim = "throw",
+		attack_type = Throwable,
 		loop_start = 0,
 		do_repeat = false,
 	},

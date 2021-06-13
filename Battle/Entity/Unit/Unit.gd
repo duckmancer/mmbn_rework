@@ -55,8 +55,8 @@ var input_map = {
 		args = [],
 	},
 	action_3 = {
-		action_name = Action.Type.BUSTER_SCAN,
-		action_scene = Buster,
+		action_name = Action.Type.MINIBOMB,
+		action_scene = Throw,
 		args = [],
 	},
 	no_action = {
