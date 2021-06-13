@@ -76,10 +76,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" parent="." index="1"]
-centered = true
-offset = Vector2( 0, -61 )
-
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "idle"
 anims/idle = SubResource( 1 )

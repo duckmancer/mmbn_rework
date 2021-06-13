@@ -69,7 +69,7 @@ const _ACTION_DATA = {
 		anim_name = "shockwave",
 		func_name = "attack",
 		entity_anim = "shoot",
-		attack_type = Shot,
+		attack_type = Shockwave,
 		loop_start = 0,
 		do_repeat = false,
 	},

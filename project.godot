@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/PlayerController.gd"
 }, {
+"base": "Slash",
+"class": "Shockwave",
+"language": "GDScript",
+"path": "res://Battle/Entity/Attack/Slash/Shockwave/Shockwave.gd"
+}, {
 "base": "Attack",
 "class": "Shot",
 "language": "GDScript",
@@ -131,6 +136,7 @@ _global_script_class_icons={
 "Navi": "",
 "NormalNavi": "",
 "PlayerController": "",
+"Shockwave": "",
 "Shot": "",
 "Slash": "",
 "Sword": "",

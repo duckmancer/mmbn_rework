@@ -9,3 +9,10 @@ static func frames_to_seconds(frames):
 static func grid_to_pos(grid_pos: Vector2):
 	var result = BattlePanel.ENTITY_ORIGIN + Utils.scale_vector(grid_pos, BattlePanel.SIZE)
 	return result
+
+static func in_bounds(grid_pos: Vector2, bounding_box := Constants.GRID_SIZE):
+	if grid_pos.x >= bounding_box.x or grid_pos.x < 0:
+		return false
+	if grid_pos.y >= bounding_box.y or grid_pos.y < 0:
+		return false
+	return true

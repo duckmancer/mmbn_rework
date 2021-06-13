@@ -1,9 +1,9 @@
 class_name PlayerController
 extends Node2D
 
-signal hp_changed(new_hp)
+signal hp_changed(new_hp, is_danger)
 
-var entity : Unit
+var player : Unit
 
 var _held_input = {
 	up = 0,
@@ -54,18 +54,25 @@ func _physics_process(_delta):
 		_cur_input_count = 0
 		
 	var best = get_last_input()
-	entity.process_input(best)
+	if player:
+		player.process_input(best)
 	
 
-func bind_entity(controlled_entity: Entity):
-	entity = controlled_entity
-	entity.is_player_controlled = true
-	entity.healthbar.visible = false
-	var _err = entity.connect("hp_changed", self, "_on_Entity_hp_changed")
-	emit_signal("hp_changed", entity.hp)
+func bind_player(controlled_player: Unit):
+	player = controlled_player
+	player.is_player_controlled = true
+	player.healthbar.visible = false
+	var _err = player.connect("hp_changed", self, "_on_player_hp_changed")
+	player.hp = player.hp
 
 func _ready():
 	pass
 
-func _on_Entity_hp_changed(new_hp):
-	emit_signal("hp_changed", new_hp)
+func _update_player_hp(cur_hp, max_hp):
+	if cur_hp == 0:
+		player = null
+	var is_danger = cur_hp * 4 <= max_hp
+	emit_signal("hp_changed", cur_hp, is_danger)
+
+func _on_player_hp_changed(new_hp, max_hp):
+	_update_player_hp(new_hp, max_hp)

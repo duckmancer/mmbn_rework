@@ -7,15 +7,15 @@ signal hp_changed(new_hp)
 onready var healthbar = $Healthbar
 
 export var action_cooldown = 8
-export var hp = 40 setget set_hp
+export var max_hp = 40
+var hp = 40 setget set_hp
 func set_hp(new_hp):
-	hp = new_hp
-	if hp <= 0:
+	hp = clamp(new_hp, 0, max_hp)
+	if hp == 0:
 		terminate()
-	$Healthbar.text = str(hp)
-	
+	healthbar.text = str(hp)
 	if is_player_controlled:
-		emit_signal("hp_changed", hp)
+		emit_signal("hp_changed", hp, max_hp)
 
 
 var input_map = {
@@ -158,7 +158,7 @@ func do_tick():
 		_run_queued_action()
 
 func _ready():
-	pass
+	self.hp = max_hp
 
 func _on_Action_action_looped(loop_start_time):
 	animation_player.seek(loop_start_time)

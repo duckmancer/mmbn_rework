@@ -169,8 +169,6 @@ state = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-centered = true
-offset = Vector2( 0, -61 )
 frame = 3
 
 [node name="AnimationPlayer" parent="." index="1"]

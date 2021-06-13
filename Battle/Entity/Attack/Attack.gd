@@ -18,6 +18,7 @@ const SECONDS_PER_FRAME = 1.0 / 60.0
 export var damage = 10
 export var duration = 60
 export var pass_through = false
+export var do_panel_warning = false
 export(AttackState) var state = AttackState.WAITING setget set_state
 func set_state(new_state):
 	if is_active:
@@ -34,7 +35,7 @@ func terminate():
 	else:
 		.terminate()
 
-func _do_panel_warning(snapped_pos: Vector2):
+func _warn_panels(snapped_pos: Vector2):
 	var panels = get_tree().get_nodes_in_group("panel")
 	for p in panels:
 		if p.grid_pos == snapped_pos:
@@ -61,6 +62,8 @@ func do_tick():
 	.do_tick()
 	if state == AttackState.ACTIVE:
 		_do_unit_collision(self.grid_pos)
+		if do_panel_warning:
+			_warn_panels(self.grid_pos)
 	duration -= 1
 	if duration <= 0:
 		terminate()

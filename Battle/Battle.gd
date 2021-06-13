@@ -1,7 +1,10 @@
 class_name Battle
 extends Node2D
 
-
+const HEALTH_COLORS = {
+	normal = Color("daf9ff"),
+	danger = Color("ff7676")
+}
 const GRID_SIZE = Vector2(6, 3)
 const DEFAULT_GRID = [
 	[Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.ENEMY, Entity.Team.ENEMY, Entity.Team.ENEMY],
@@ -33,7 +36,7 @@ func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc 
 	connect_signals(entity)
 	add_child(entity)
 	if pc:
-		player_controller.bind_entity(entity)
+		player_controller.bind_player(entity)
 	
 	
 
@@ -42,6 +45,7 @@ func _ready():
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
 	add_entity(Megaman, Vector2(3, 1))
 #	add_entity(Mettaur, Vector2(4, 1))
+#	add_entity(Mettaur, Vector2(1, 1), Entity.Team.PLAYER, true)
 #	add_entity(Mettaur, Vector2(3, 2))
 #	add_entity(Mettaur, Vector2(3, 0))
 
@@ -69,5 +73,9 @@ func _on_Entity_spawn_entity(entity):
 		add_child(entity)
 
 
-func _on_PlayerController_hp_changed(new_hp) -> void:
+func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 	player_health.text = String(new_hp)
+	if is_danger:
+		player_health.set("custom_colors/font_color", HEALTH_COLORS.danger)
+	else:
+		player_health.set("custom_colors/font_color", HEALTH_COLORS.normal)
