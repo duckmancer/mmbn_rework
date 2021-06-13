@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Battle/PlayerController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/MMBNSFX/Music/3-09 Cyber Battle.mp3" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Battle/Background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/BattleAssets/HUD/Player Health Box.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Assets/BattleAssets/HUD/Chip Window.png" type="Texture" id=7]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 3 )
@@ -19,13 +20,23 @@ autoplay = true
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
 
-[node name="PlayerHealthBox" type="Sprite" parent="."]
+[node name="HUD" type="Node2D" parent="."]
+z_index = 20
+
+[node name="CustomWindow" type="Node2D" parent="HUD"]
+position = Vector2( -120, 0 )
+
+[node name="Sprite" type="Sprite" parent="HUD/CustomWindow"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="PlayerHealthBox" type="Sprite" parent="HUD"]
 z_index = 10
 texture = ExtResource( 5 )
 centered = false
 offset = Vector2( 2, 0 )
 
-[node name="PlayerHealth" type="Label" parent="PlayerHealthBox"]
+[node name="PlayerHealth" type="Label" parent="HUD/PlayerHealthBox"]
 margin_left = 4.0
 margin_top = 1.0
 margin_right = 41.0
@@ -39,4 +50,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="custom_opened" from="PlayerController" to="." method="_on_PlayerController_custom_opened"]
 [connection signal="hp_changed" from="PlayerController" to="." method="_on_PlayerController_hp_changed"]

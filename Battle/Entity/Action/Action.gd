@@ -24,8 +24,6 @@ enum ActionState {
 
 const _ACTION_DATA = {
 	Type.MOVE: {
-		warmup = 2,
-		cooldown = 2,
 		anim_name = "move",
 		func_name = "move",
 		entity_anim = "move",
@@ -34,8 +32,6 @@ const _ACTION_DATA = {
 		do_repeat = false,
 	},
 	Type.BUSTER: {
-		warmup = 10,
-		cooldown = 10,
 		anim_name = "shoot",
 		func_name = "attack",
 		entity_anim = "shoot",
@@ -44,8 +40,6 @@ const _ACTION_DATA = {
 		do_repeat = true,
 	},
 	Type.BUSTER_SCAN: {
-		warmup = 10,
-		cooldown = 10,
 		anim_name = "shoot",
 		func_name = "attack",
 		entity_anim = "shoot",
@@ -54,8 +48,6 @@ const _ACTION_DATA = {
 		do_repeat = true,
 	},
 	Type.SWORD: {
-		warmup = 10,
-		cooldown = 25,
 		anim_name = "slash",
 		func_name = "attack",
 		entity_anim = "slash",
@@ -64,8 +56,6 @@ const _ACTION_DATA = {
 		do_repeat = false,
 	},
 	Type.SHOCKWAVE: {
-		warmup = 36,
-		cooldown = 100,
 		anim_name = "shockwave",
 		func_name = "attack",
 		entity_anim = "shoot",
@@ -74,8 +64,6 @@ const _ACTION_DATA = {
 		do_repeat = false,
 	},
 	Type.CANNON: {
-		warmup = 16,
-		cooldown = 18,
 		anim_name = "shoot_heavy",
 		func_name = "attack",
 		entity_anim = "shoot_heavy",
@@ -84,8 +72,6 @@ const _ACTION_DATA = {
 		do_repeat = false,
 	},
 	Type.MINIBOMB: {
-		warmup = 16,
-		cooldown = 18,
 		anim_name = "throw",
 		func_name = "attack",
 		entity_anim = "throw",

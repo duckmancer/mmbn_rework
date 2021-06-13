@@ -2,6 +2,7 @@ class_name PlayerController
 extends Node2D
 
 signal hp_changed(new_hp, is_danger)
+signal custom_opened()
 
 var player : Unit
 
@@ -32,6 +33,8 @@ func _button_released(button):
 func _unhandled_key_input(event):
 	if event.is_action_pressed("pause"):
 		Constants.battle_paused = not Constants.battle_paused
+	if event.is_action_pressed("r"):
+		emit_signal("custom_opened")
 	for button in _held_input.keys():
 		if event.is_action_pressed(button):
 			_button_pressed(button)

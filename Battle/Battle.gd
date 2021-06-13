@@ -13,8 +13,9 @@ const DEFAULT_GRID = [
 ]
 var panel_grid = []
 
+onready var hud = $HUD
 onready var player_controller = $PlayerController
-onready var player_health = $PlayerHealthBox/PlayerHealth
+onready var player_health = $HUD/PlayerHealthBox/PlayerHealth
 
 func _set_panels():
 	for i in GRID_SIZE.y:
@@ -79,3 +80,15 @@ func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 		player_health.set("custom_colors/font_color", HEALTH_COLORS.danger)
 	else:
 		player_health.set("custom_colors/font_color", HEALTH_COLORS.normal)
+
+
+func _on_PlayerController_custom_opened() -> void:
+	if not Constants.battle_paused:
+		Constants.battle_paused = true
+		$Tween.interpolate_property(hud, "position:x", 0, 120, 0.1)
+		$Tween.start()
+	else:
+		Constants.battle_paused = false
+		$Tween.interpolate_property(hud, "position:x", 120, 00, 0.1)
+		$Tween.start()
+	
