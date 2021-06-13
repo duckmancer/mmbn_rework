@@ -5,7 +5,7 @@ func run_AI(target):
 	if .run_AI(target):
 		return true
 	elif target.grid_pos.y == self.grid_pos.y:
-		#process_input("action_2")
+		process_input("action_2")
 		return true
 	else:
 		return false

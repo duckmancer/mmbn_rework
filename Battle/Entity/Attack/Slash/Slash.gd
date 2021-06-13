@@ -3,9 +3,7 @@ extends Attack
 
 
 func do_tick():
-	if state == AttackState.ACTIVE:
-		.do_tick()
-		state = AttackState.WAITING
+	.do_tick()
 	
 func _ready():
 	animation_player.play("slash")

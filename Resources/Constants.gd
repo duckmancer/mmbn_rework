@@ -16,3 +16,4 @@ const GRID_SIZE = Vector2(6, 3)
 const GBA_SCREEN_SIZE = Vector2(240, 160)
 const FRAMES_PER_SECOND = 60
 
+var battle_paused = false

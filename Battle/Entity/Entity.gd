@@ -18,6 +18,7 @@ var is_player_controlled := false
 var team = Team.ENEMY
 var is_active := false
 export var is_independent = true
+var is_paused := false
 
 var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
 func set_grid_pos(new_grid_pos):
@@ -84,6 +85,13 @@ func do_tick():
 	frame_counter += 1
 	
 func _physics_process(_delta):
+	if Constants.battle_paused:
+		animation_player.stop(false)
+		is_paused = true
+		return
+	elif is_paused:
+		animation_player.play()
+		is_paused = false
 	if is_active:
 		do_tick()
 
