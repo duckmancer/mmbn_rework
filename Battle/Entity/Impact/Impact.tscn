@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Impact/Impact.gd" type="Script" id=2]
@@ -91,17 +91,36 @@ tracks/2/keys = {
 "values": [ 4, 0, 2, 3, 4 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "none"
+length = 0.0166667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
 [node name="Impact" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 5 )
-frame = 2
+frame = 5
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hit"
 anims/buster_hit = SubResource( 1 )
 anims/hit = SubResource( 2 )
+anims/none = SubResource( 3 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )
+volume_db = -10.0

@@ -13,7 +13,7 @@ const TEAM_DIRS = {
 }
 const SECONDS_PER_FRAME = 1.0 / 60.0
 
-
+export var animation_name = "none"
 export var damage = 10
 export var duration = 60
 export var pass_through = false
@@ -75,6 +75,7 @@ func _ready():
 	if is_offset:
 		set_grid_pos(grid_pos + attack_dir)
 	state = starting_state
+	animation_player.play(animation_name)
 
 
 

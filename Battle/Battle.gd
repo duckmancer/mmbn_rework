@@ -43,7 +43,7 @@ func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc 
 func _ready():
 	_set_panels()
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
-	add_entity(Megaman, Vector2(3, 1))
+#	add_entity(Megaman, Vector2(3, 1))
 #	add_entity(Mettaur, Vector2(4, 1))
 #	add_entity(Mettaur, Vector2(1, 1), Entity.Team.PLAYER, true)
 #	add_entity(Mettaur, Vector2(3, 2))

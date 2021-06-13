@@ -38,6 +38,7 @@ tracks/1/keys = {
 
 [node name="Shot" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+animation_name = "shoot"
 do_panel_warning = true
 
 [node name="Sprite" parent="." index="0"]

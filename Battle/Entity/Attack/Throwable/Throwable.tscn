@@ -23,6 +23,7 @@ tracks/0/keys = {
 
 [node name="Throwable" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+animation_name = "throw"
 starting_state = 0
 is_offset = false
 

@@ -54,6 +54,7 @@ tracks/2/keys = {
 "entity",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+animation_name = "shockwave"
 duration = 28
 do_panel_warning = true
 
