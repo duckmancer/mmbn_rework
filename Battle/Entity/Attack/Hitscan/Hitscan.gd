@@ -1,13 +1,34 @@
 class_name Hitscan
 extends Attack
 
+enum {
+	CANNON,
+	BUSTER,
+}
+
+const _HITSCAN_DATA = {
+	CANNON: {
+		damage = 40,
+		pass_through = false,
+		animation_name = "cannon",
+		impact_type = "hit",
+	},
+	BUSTER: {
+		damage = 10,
+		pass_through = false,
+		animation_name = "buster",
+		impact_type = "buster_hit",
+	},
+}
 
 var anim_done = false
 var hit_done = false
 
-
+func _init():
+	attack_data = _HITSCAN_DATA
+	
 func _ready():
-	animation_player.play("shoot")
+	pass
 
 func terminate():
 	if hit_done and anim_done:

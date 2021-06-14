@@ -111,8 +111,9 @@ func _ready():
 
 
 func _physics_process(_delta):
-	for s in _danger_sources:
-		_danger_sources[s] -= 1
-		if _danger_sources[s] <= 0:
-			var _exists = _danger_sources.erase(s)
-	_update_panel()
+	if not Constants.battle_paused:
+		for s in _danger_sources:
+			_danger_sources[s] -= 1
+			if _danger_sources[s] <= 0:
+				var _exists = _danger_sources.erase(s)
+		_update_panel()

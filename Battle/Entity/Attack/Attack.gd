@@ -13,10 +13,6 @@ const TEAM_DIRS = {
 }
 const SECONDS_PER_FRAME = 1.0 / 60.0
 
-export var animation_name = "none"
-export var damage = 10
-export var duration = 60
-export var pass_through = false
 export var do_panel_warning = false
 export var starting_state = AttackState.ACTIVE
 export var is_offset = true
@@ -25,9 +21,24 @@ func set_state(new_state):
 	if is_active:
 		state = new_state
 
+var attack_data = {}
+
 var attack_dir
 var ignored_targets = []
+
+var damage = 10
+var duration = 60
+var pass_through = false
+var animation_name = "none"
 var impact_type = "hit"
+var attack_type setget set_attack_type
+func set_attack_type(new_type):
+	attack_type = new_type
+	initialize_arguments(attack_data[attack_type])
+
+func _init():
+	pass
+
 
 func terminate():
 	if animation_player.is_playing():
@@ -76,6 +87,5 @@ func _ready():
 		set_grid_pos(grid_pos + attack_dir)
 	state = starting_state
 	animation_player.play(animation_name)
-
 
 

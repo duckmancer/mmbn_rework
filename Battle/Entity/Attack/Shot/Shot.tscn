@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/MMBNSFX/Attack SFX/AreaGrab HQ.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
-resource_name = "shoot"
+resource_name = "buster"
 length = 0.450001
 step = 0.0166667
 tracks/0/type = "value"
@@ -38,7 +38,6 @@ tracks/1/keys = {
 
 [node name="Shot" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-animation_name = "shoot"
 do_panel_warning = true
 
 [node name="Sprite" parent="." index="0"]
@@ -46,7 +45,7 @@ texture = ExtResource( 2 )
 frame = 16
 
 [node name="AnimationPlayer" parent="." index="1"]
-anims/shoot = SubResource( 1 )
+anims/buster = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )

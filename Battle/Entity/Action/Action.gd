@@ -36,6 +36,7 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "shoot",
 		attack_type = Shot,
+		attack_subtype = Shot.BUSTER,
 		loop_start = 0,
 		do_repeat = true,
 	},
@@ -43,7 +44,8 @@ const _ACTION_DATA = {
 		anim_name = "shoot",
 		func_name = "attack",
 		entity_anim = "shoot",
-		attack_type = BusterShot,
+		attack_type = Hitscan,
+		attack_subtype = Hitscan.BUSTER,
 		loop_start = 0,
 		do_repeat = true,
 	},
@@ -52,6 +54,7 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "slash",
 		attack_type = Slash,
+		attack_subtype = Slash.SWORD,
 		loop_start = 0,
 		do_repeat = false,
 	},
@@ -60,6 +63,7 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "shoot",
 		attack_type = Shockwave,
+		attack_subtype = Shockwave.SWORD,
 		loop_start = 0,
 		do_repeat = false,
 	},
@@ -68,6 +72,7 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "shoot_heavy",
 		attack_type = Hitscan,
+		attack_subtype = Hitscan.CANNON,
 		loop_start = 8,
 		do_repeat = false,
 	},
@@ -76,6 +81,7 @@ const _ACTION_DATA = {
 		func_name = "attack",
 		entity_anim = "throw",
 		attack_type = Throwable,
+		attack_subtype = Throwable.MINIBOMB,
 		loop_start = 0,
 		do_repeat = false,
 	},
@@ -113,7 +119,7 @@ func get_entity_anim():
 	return _get_data("entity_anim")
 
 func attack():
-	var kwargs = {}
+	var kwargs = {attack_type = _get_data("attack_subtype")}
 	var _entity = create_child_entity(_get_data("attack_type"),
 	kwargs)
 

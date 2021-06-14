@@ -50,21 +50,13 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[node name="Shockwave" groups=[
-"entity",
-] instance=ExtResource( 1 )]
+[node name="Shockwave" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-animation_name = "shockwave"
-duration = 28
 do_panel_warning = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-offset = Vector2( 0, -61 )
-hframes = 8
-vframes = 8
-frame = 6
-region_rect = Rect2( 107, 7, 34, 46 )
+frame = 0
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/shockwave = SubResource( 1 )

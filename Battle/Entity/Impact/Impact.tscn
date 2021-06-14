@@ -113,14 +113,12 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 5 )
-frame = 5
+frame = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
-autoplay = "hit"
 anims/buster_hit = SubResource( 1 )
 anims/hit = SubResource( 2 )
 anims/none = SubResource( 3 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )
-volume_db = -10.0
