@@ -22,68 +22,55 @@ enum ActionState {
 	DONE,
 }
 
-const _ACTION_DATA = {
+var action_data = {
 	Type.MOVE: {
-		anim_name = "move",
-		func_name = "move",
-		entity_anim = "move",
+		animation_name = "move",
+		function_name = "move",
+		entity_animation = "move",
 		attack_type = null,
-		loop_start = 0,
-		do_repeat = false,
 	},
 	Type.BUSTER: {
-		anim_name = "shoot",
-		func_name = "attack",
-		entity_anim = "shoot",
+		animation_name = "shoot",
+		function_name = "attack",
+		entity_animation = "shoot",
 		attack_type = Shot,
 		attack_subtype = Shot.BUSTER,
-		loop_start = 0,
-		do_repeat = true,
 	},
 	Type.BUSTER_SCAN: {
-		anim_name = "shoot",
-		func_name = "attack",
-		entity_anim = "shoot",
+		animation_name = "shoot",
+		function_name = "attack",
+		entity_animation = "shoot",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.BUSTER,
-		loop_start = 0,
 		do_repeat = true,
 	},
 	Type.SWORD: {
-		anim_name = "slash",
-		func_name = "attack",
-		entity_anim = "slash",
+		animation_name = "slash",
+		function_name = "attack",
+		entity_animation = "slash",
 		attack_type = Slash,
 		attack_subtype = Slash.SWORD,
-		loop_start = 0,
-		do_repeat = false,
 	},
 	Type.SHOCKWAVE: {
-		anim_name = "shockwave",
-		func_name = "attack",
-		entity_anim = "shoot",
+		animation_name = "shockwave",
+		function_name = "attack",
+		entity_animation = "shoot",
 		attack_type = Shockwave,
 		attack_subtype = Shockwave.SWORD,
-		loop_start = 0,
-		do_repeat = false,
 	},
 	Type.CANNON: {
-		anim_name = "shoot_heavy",
-		func_name = "attack",
-		entity_anim = "shoot_heavy",
+		animation_name = "shoot_heavy",
+		function_name = "attack",
+		entity_animation = "shoot_heavy",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.CANNON,
-		loop_start = 8,
-		do_repeat = false,
 	},
 	Type.MINIBOMB: {
-		anim_name = "throw",
-		func_name = "attack",
-		entity_anim = "throw",
+		animation_name = "throw",
+		function_name = "attack",
+		entity_animation = "throw",
 		attack_type = Throwable,
 		attack_subtype = Throwable.MINIBOMB,
-		loop_start = 0,
-		do_repeat = false,
 	},
 }
 
@@ -93,34 +80,42 @@ func set_state(new_state):
 	if is_active:
 		match state:
 			ActionState.ACTIVE:
-				callv(_get_data("func_name"), args)
+				callv(function_name, args)
 				state = ActionState.WAITING
 			ActionState.DONE:
 				terminate()
 			ActionState.REPEAT:
 				state = ActionState.WAITING
-				if repeat:
+				if do_repeat:
 					loop_repeat()
 
-var repeat : bool
-
-var action_type
 var args : Array
 
+var animation_name := "hide"
+var function_name := "attack"
+var entity_animation := "idle"
+var attack_type = null
+var attack_subtype = null
+var loop_start = 0
+var do_repeat := false
+
+var action_type setget set_action_type
+func set_action_type(new_type):
+	action_type = new_type
+	initialize_arguments(action_data[action_type])
+
 func loop_repeat():
-	var loop_target_time = Utils.frames_to_seconds(_get_data("loop_start")) 
+	var loop_target_time = Utils.frames_to_seconds(loop_start) 
 	animation_player.seek(loop_target_time)
 	emit_signal("action_looped", loop_target_time)
 
-func _get_data(field_name : String):
-	return _ACTION_DATA[action_type][field_name]
-	
+
 func get_entity_anim():
-	return _get_data("entity_anim")
+	return entity_animation
 
 func attack():
-	var kwargs = {attack_type = _get_data("attack_subtype")}
-	var _entity = create_child_entity(_get_data("attack_type"),
+	var kwargs = {attack_type = attack_subtype}
+	var _entity = create_child_entity(attack_type,
 	kwargs)
 
 func move(dir):
@@ -135,8 +130,7 @@ func do_tick():
 
 
 func _ready():
-	animation_player.play(_get_data("anim_name"))
-	repeat = _get_data("do_repeat")
+	animation_player.play(animation_name)
 
 func animation_done():
 	self.state = ActionState.DONE

@@ -18,13 +18,3 @@ const DIRS = {
 const GRID_SIZE = Vector2(6, 3)
 const GBA_SCREEN_SIZE = Vector2(240, 160)
 const FRAMES_PER_SECOND = 60
-
-#const ATTACK_DATA = {
-#	cannon = {
-#		attack_scene = Hitscan,
-#		kwargs = {
-#			animation_name = "shoot",
-#			damage = 40,
-#		},
-#	},
-#}

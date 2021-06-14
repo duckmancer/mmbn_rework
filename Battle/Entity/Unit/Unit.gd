@@ -98,7 +98,7 @@ func _can_enqueue(action):
 
 func _check_repeat(action):
 	if is_action_running and last_action != action:
-		cur_action.repeat = false
+		cur_action.do_repeat = false
 		
 func enqueue_action(input):
 	var action = input_map[input].action_name
