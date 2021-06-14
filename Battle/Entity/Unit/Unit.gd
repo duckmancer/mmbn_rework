@@ -40,7 +40,7 @@ var input_map = {
 		args = ["right"],
 	},
 	action_0 = {
-		action_name = Action.Type.BUSTER,
+		action_name = Action.Type.BUSTER_SCAN,
 		action_scene = Buster,
 		args = [],
 	},

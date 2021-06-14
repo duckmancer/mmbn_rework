@@ -15,7 +15,7 @@ var panel_grid = []
 
 onready var hud = $HUD
 onready var player_controller = $PlayerController
-onready var player_health = $HUD/PlayerHealthBox/PlayerHealth
+onready var player_health = $HUD/PlayerHealthBox
 
 func _set_panels():
 	for i in GRID_SIZE.y:
@@ -44,7 +44,7 @@ func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc 
 func _ready():
 	_set_panels()
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
-#	add_entity(Megaman, Vector2(3, 1))
+	add_entity(Megaman, Vector2(3, 1))
 #	add_entity(Mettaur, Vector2(4, 1))
 #	add_entity(Mettaur, Vector2(1, 1), Entity.Team.PLAYER, true)
 #	add_entity(Mettaur, Vector2(3, 2))
@@ -75,11 +75,11 @@ func _on_Entity_spawn_entity(entity):
 
 
 func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
-	player_health.text = String(new_hp)
+	player_health.hp = new_hp
 	if is_danger:
-		player_health.set("custom_colors/font_color", HEALTH_COLORS.danger)
+		player_health.color_mode = "danger"
 	else:
-		player_health.set("custom_colors/font_color", HEALTH_COLORS.normal)
+		player_health.color_mode = "normal"
 
 
 func _on_PlayerController_custom_opened() -> void:

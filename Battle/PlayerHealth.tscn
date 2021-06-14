@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/BattleAssets/HUD/Player Health Box.png" type="Texture" id=2]
+[ext_resource path="res://Battle/PlayerHealth.gd" type="Script" id=3]
+
+[node name="PlayerHealthBox" type="Sprite"]
+z_index = 10
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 2, 0 )
+script = ExtResource( 3 )
+color_mode = "full"
+
+[node name="Health" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 41.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.807843, 0.890196, 1, 1 )
+text = "100"
+align = 2
+valign = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBoxClipper" type="Control" parent="Health"]
+margin_top = 5.0
+margin_right = 37.0
+margin_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InnerHealth" type="Label" parent="Health/HealthBoxClipper"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -5.0
+margin_bottom = 7.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.905882, 0.921569, 1, 1 )
+text = "100"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
