@@ -12,17 +12,20 @@ const CHIP_DATA = {
 		action_scene = Cannon,
 		args = [],
 		icon_number = CANNON,
+		code = "A",
 	},
 	sword = {
 		action_name = Action.SWORD,
 		action_scene = Sword,
 		args = [],
 		icon_number = SWORD,
+		code = "S",
 	},
 	minibomb = {
 		action_name = Action.MINIBOMB,
 		action_scene = Throw,
 		args = [],
 		icon_number = MINIBOMB,
+		code = "B",
 	},
 }

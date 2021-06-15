@@ -1,17 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Battle/PlayerController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/MMBNSFX/Music/3-09 Cyber Battle.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Battle/Battle.gd" type="Script" id=3]
 [ext_resource path="res://Battle/Background.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Battle/PlayerHealth.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Battle/CustomWindow.gd" type="Script" id=6]
-[ext_resource path="res://Assets/BattleAssets/HUD/Chip Window.png" type="Texture" id=7]
-[ext_resource path="res://Battle/ChipSlot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Battle/ChipBox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Battle/HUD/HUD.tscn" type="PackedScene" id=5]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="PlayerController" parent="." instance=ExtResource( 1 )]
 
@@ -22,143 +21,10 @@ autoplay = true
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
 
-[node name="HUD" type="Node2D" parent="."]
-z_index = 50
-
-[node name="CustomWindow" type="Node2D" parent="HUD"]
-position = Vector2( -120, 0 )
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="HUD/CustomWindow"]
-visible = false
-texture = ExtResource( 7 )
-centered = false
-
-[node name="Window" type="TextureRect" parent="HUD/CustomWindow"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ChipSelect" type="GridContainer" parent="HUD/CustomWindow/Window"]
-margin_left = 7.0
-margin_top = 104.0
-margin_right = 87.0
-margin_bottom = 152.0
-custom_constants/vseparation = 0
-custom_constants/hseparation = 0
-columns = 5
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="ChipSlot1" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 16.0
-margin_bottom = 24.0
-
-[node name="ChipSlot2" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 16.0
-margin_top = 0.0
-margin_right = 32.0
-margin_bottom = 24.0
-
-[node name="ChipSlot3" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 32.0
-margin_top = 0.0
-margin_right = 48.0
-margin_bottom = 24.0
-
-[node name="ChipSlot4" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 48.0
-margin_top = 0.0
-margin_right = 64.0
-margin_bottom = 24.0
-
-[node name="ChipSlot5" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 64.0
-margin_top = 0.0
-margin_right = 80.0
-margin_bottom = 24.0
-
-[node name="ChipSlot6" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 0.0
-margin_top = 24.0
-margin_right = 16.0
-margin_bottom = 48.0
-
-[node name="ChipSlot7" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 16.0
-margin_top = 24.0
-margin_right = 32.0
-margin_bottom = 48.0
-
-[node name="ChipSlot8" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 32.0
-margin_top = 24.0
-margin_right = 48.0
-margin_bottom = 48.0
-
-[node name="ChipSlot9" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 48.0
-margin_top = 24.0
-margin_right = 64.0
-margin_bottom = 48.0
-
-[node name="ChipSlot10" parent="HUD/CustomWindow/Window/ChipSelect" instance=ExtResource( 8 )]
-margin_left = 64.0
-margin_top = 24.0
-margin_right = 80.0
-margin_bottom = 48.0
-
-[node name="SelectedChips" type="VBoxContainer" parent="HUD/CustomWindow/Window"]
-margin_left = 97.0
-margin_top = 25.0
-margin_right = 111.0
-margin_bottom = 103.0
-custom_constants/separation = 2
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="ChipBox1" parent="HUD/CustomWindow/Window/SelectedChips" instance=ExtResource( 9 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 14.0
-margin_bottom = 14.0
-
-[node name="ChipBox2" parent="HUD/CustomWindow/Window/SelectedChips" instance=ExtResource( 9 )]
-margin_left = 0.0
-margin_top = 16.0
-margin_right = 14.0
-margin_bottom = 30.0
-
-[node name="ChipBox3" parent="HUD/CustomWindow/Window/SelectedChips" instance=ExtResource( 9 )]
-margin_left = 0.0
-margin_top = 32.0
-margin_right = 14.0
-margin_bottom = 46.0
-
-[node name="ChipBox4" parent="HUD/CustomWindow/Window/SelectedChips" instance=ExtResource( 9 )]
-margin_left = 0.0
-margin_top = 48.0
-margin_right = 14.0
-margin_bottom = 62.0
-
-[node name="ChipBox5" parent="HUD/CustomWindow/Window/SelectedChips" instance=ExtResource( 9 )]
-margin_left = 0.0
-margin_top = 64.0
-margin_right = 14.0
-margin_bottom = 78.0
-
-[node name="PlayerHealthBox" parent="HUD" instance=ExtResource( 5 )]
+[node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="custom_opened" from="PlayerController" to="." method="_on_PlayerController_custom_opened"]
 [connection signal="hp_changed" from="PlayerController" to="." method="_on_PlayerController_hp_changed"]
+[connection signal="custom_finished" from="HUD" to="." method="_on_HUD_custom_finished"]

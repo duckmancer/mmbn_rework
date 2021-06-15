@@ -82,13 +82,22 @@ func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 		player_health.color_mode = "normal"
 
 
-func _on_PlayerController_custom_opened() -> void:
+func _toggle_custom_window() -> void:
 	if not Globals.battle_paused:
 		Globals.battle_paused = true
 		$Tween.interpolate_property(hud, "position:x", 0, 120, 0.1)
 		$Tween.start()
+		hud.open_custom()
 	else:
 		Globals.battle_paused = false
 		$Tween.interpolate_property(hud, "position:x", 120, 00, 0.1)
 		$Tween.start()
+
+func _on_PlayerController_custom_opened() -> void:
+	_toggle_custom_window()
 	
+
+
+func _on_HUD_custom_finished(chips) -> void:
+	player_controller.player.chip_data.set_chips(chips)
+	_toggle_custom_window()

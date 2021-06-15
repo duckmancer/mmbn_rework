@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/BattleAssets/HUD/Player Health Box.png" type="Texture" id=2]
-[ext_resource path="res://Battle/PlayerHealth.gd" type="Script" id=3]
+[ext_resource path="res://Battle/HUD/PlayerHealth.gd" type="Script" id=3]
 
 [node name="PlayerHealthBox" type="Sprite"]
 z_index = 10

@@ -33,7 +33,15 @@ func pop_chip():
 	chips.pop_front()
 	_update_display()
 
-func _ready() -> void:
-	for c in starter_chips:
-		chips.append(Battlechips.CHIP_DATA[c])
+func set_chips(new_chips):
+	chips.clear()
+	for c in new_chips:
+		chips.append(c)
 	_update_display()
+
+func _ready() -> void:
+	var s_chips = []
+	for c in starter_chips:
+		s_chips.append(Battlechips.CHIP_DATA[c])
+	set_chips(s_chips)
+
