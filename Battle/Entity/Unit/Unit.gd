@@ -5,6 +5,7 @@ signal request_move(entity, destination)
 signal hp_changed(new_hp)
 
 onready var healthbar = $Healthbar
+onready var chip_data = $ChipData
 
 export var action_cooldown = 8
 export var max_hp = 40
@@ -45,7 +46,7 @@ var input_map = {
 		args = [],
 	},
 	action_1 = {
-		action_name = Action.Type.BUSTER,
+		action_name = Action.Type.BUSTER_SCAN,
 		action_scene = Buster,
 		args = [],
 	},
@@ -66,14 +67,18 @@ var input_map = {
 	},
 }
 
-var queued_action = "no_action"
+var queued_action = input_map.no_action
 var cur_action = null
 var last_action = null
 var is_action_running := false
 var cur_cooldown = 0
 
 func process_input(input):
-	enqueue_action(input)
+	if input == "action_0":
+		if enqueue_action(chip_data.get_chip()):
+			chip_data.pop_chip()
+	else:
+		enqueue_action(input_map[input])
 
 func move(dir):
 	self.grid_pos = grid_pos + Constants.DIRS[dir]
@@ -87,12 +92,12 @@ func reject_move_request():
 
 
 func _reset_queued_action():
-	queued_action = "no_action"
+	queued_action = input_map.no_action
 	
 func _can_enqueue(action):
 	if cur_cooldown > 0 and last_action == action:
 		return false
-	if input_map[queued_action].action_name != Action.Type.IDLE or action == Action.Type.IDLE:
+	if queued_action.action_name != Action.Type.IDLE or action == Action.Type.IDLE:
 		return false
 	return true
 
@@ -100,14 +105,17 @@ func _check_repeat(action):
 	if is_action_running and last_action != action:
 		cur_action.do_repeat = false
 		
-func enqueue_action(input):
-	var action = input_map[input].action_name
-	_check_repeat(action)
-	if not _can_enqueue(action):
-		return
-	queued_action = input
-	if action == Action.Type.MOVE:
-		request_move(input_map[queued_action].args[0])
+func enqueue_action(action):
+	if not action:
+		return false
+	var action_name = action.action_name
+	_check_repeat(action_name)
+	if not _can_enqueue(action_name):
+		return false
+	queued_action = action
+	if action_name == Action.Type.MOVE:
+		request_move(queued_action.args[0])
+	return true
 
 func _connect_action_signals():
 	cur_action.connect("action_finished", self, "_on_Action_action_finished")
@@ -115,20 +123,20 @@ func _connect_action_signals():
 	cur_action.connect("move_triggered", self, "_on_Action_move_triggered")
 
 func _set_cur_action():
-	var kwargs = {action_type = input_map[queued_action].action_name, args = input_map[queued_action].args}
-	cur_action = create_child_entity(input_map[queued_action].action_scene, kwargs)
+	var kwargs = {action_type = queued_action.action_name, args = queued_action.args}
+	cur_action = create_child_entity(queued_action.action_scene, kwargs)
 	_connect_action_signals()
 
 
 func _run_queued_action():
-	if input_map[queued_action].action_name == Action.Type.IDLE:
+	if queued_action.action_name == Action.Type.IDLE:
 		return
 	_set_cur_action()
 	animation_player.play(cur_action.get_entity_anim())
 	
 	is_action_running = true
 	cur_cooldown = action_cooldown
-	last_action = input_map[queued_action].action_name
+	last_action = queued_action.action_name
 	_reset_queued_action()
 
 func run_AI(target):
