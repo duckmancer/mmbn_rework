@@ -55,10 +55,11 @@ func get_last_input():
 func _physics_process(_delta):
 	if _total_held_inputs == 0:
 		_cur_input_count = 0
-		
-	var best = get_last_input()
-	if player:
-		player.process_input(best)
+	
+	if not Globals.battle_paused:
+		var best = get_last_input()
+		if player:
+			player.process_input(best)
 	
 
 func bind_player(controlled_player: Unit):
