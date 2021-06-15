@@ -44,7 +44,7 @@ func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc 
 func _ready():
 	_set_panels()
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
-	add_entity(Megaman, Vector2(3, 1))
+#	add_entity(Megaman, Vector2(3, 1))
 #	add_entity(Mettaur, Vector2(4, 1))
 #	add_entity(Mettaur, Vector2(1, 1), Entity.Team.PLAYER, true)
 #	add_entity(Mettaur, Vector2(3, 2))
@@ -83,12 +83,12 @@ func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 
 
 func _on_PlayerController_custom_opened() -> void:
-	if not Constants.battle_paused:
-		Constants.battle_paused = true
+	if not Globals.battle_paused:
+		Globals.battle_paused = true
 		$Tween.interpolate_property(hud, "position:x", 0, 120, 0.1)
 		$Tween.start()
 	else:
-		Constants.battle_paused = false
+		Globals.battle_paused = false
 		$Tween.interpolate_property(hud, "position:x", 120, 00, 0.1)
 		$Tween.start()
 	

@@ -7,6 +7,12 @@
 "entity",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-hp = 40
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[node name="Sprite" parent="." index="1"]
+offset = Vector2( 0, -61 )
+hframes = 8
+vframes = 8
+
+[node name="Chip" parent="ChipData" index="0"]
+visible = false
+frame = 0

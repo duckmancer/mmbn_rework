@@ -1,10 +1,10 @@
 extends Node2D
 
-var dummy_cannon = {
-	action_name = Action.Type.CANNON,
-	action_scene = Cannon,
-	args = [],
-}
+var starter_chips = [
+	"minibomb",
+	"sword",
+	"cannon",
+]
 
 var chips = []
 
@@ -19,6 +19,9 @@ onready var chip_icons = [
 func _update_display():
 	for i in chip_icons.size():
 		chip_icons[i].visible = i < chips.size()
+	if not chips.empty():
+		if chips.front().has("icon_number"):
+			chip_icons.front().frame = chips.front().icon_number
 
 func get_chip():
 	if chips.empty():
@@ -31,5 +34,6 @@ func pop_chip():
 	_update_display()
 
 func _ready() -> void:
-	for i in 5:
-		chips.append(dummy_cannon)
+	for c in starter_chips:
+		chips.append(Battlechips.CHIP_DATA[c])
+	_update_display()

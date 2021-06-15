@@ -85,7 +85,7 @@ func do_tick():
 	frame_counter += 1
 	
 func _physics_process(_delta):
-	if Constants.battle_paused:
+	if Globals.battle_paused:
 		animation_player.stop(false)
 		is_paused = true
 		return

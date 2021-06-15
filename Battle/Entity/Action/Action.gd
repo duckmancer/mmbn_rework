@@ -5,7 +5,7 @@ signal action_finished()
 signal action_looped(loop_start_time)
 signal move_triggered(dir)
 
-enum Type {
+enum {
 	IDLE,
 	MOVE,
 	BUSTER,
@@ -23,20 +23,20 @@ enum ActionState {
 }
 
 var action_data = {
-	Type.MOVE: {
+	MOVE: {
 		animation_name = "move",
 		function_name = "move",
 		entity_animation = "move",
 		attack_type = null,
 	},
-	Type.BUSTER: {
+	BUSTER: {
 		animation_name = "shoot",
 		function_name = "attack",
 		entity_animation = "shoot",
 		attack_type = Shot,
 		attack_subtype = Shot.BUSTER,
 	},
-	Type.BUSTER_SCAN: {
+	BUSTER_SCAN: {
 		animation_name = "shoot",
 		function_name = "attack",
 		entity_animation = "shoot",
@@ -44,28 +44,28 @@ var action_data = {
 		attack_subtype = Hitscan.BUSTER,
 		do_repeat = true,
 	},
-	Type.SWORD: {
+	SWORD: {
 		animation_name = "slash",
 		function_name = "attack",
 		entity_animation = "slash",
 		attack_type = Slash,
 		attack_subtype = Slash.SWORD,
 	},
-	Type.SHOCKWAVE: {
+	SHOCKWAVE: {
 		animation_name = "shockwave",
 		function_name = "attack",
 		entity_animation = "shoot",
 		attack_type = Shockwave,
 		attack_subtype = Shockwave.SWORD,
 	},
-	Type.CANNON: {
+	CANNON: {
 		animation_name = "shoot_heavy",
 		function_name = "attack",
 		entity_animation = "shoot_heavy",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.CANNON,
 	},
-	Type.MINIBOMB: {
+	MINIBOMB: {
 		animation_name = "throw",
 		function_name = "attack",
 		entity_animation = "throw",

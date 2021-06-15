@@ -32,7 +32,7 @@ func _button_released(button):
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("pause"):
-		Constants.battle_paused = not Constants.battle_paused
+		Globals.battle_paused = not Globals.battle_paused
 	if event.is_action_pressed("r"):
 		emit_signal("custom_opened")
 	for button in _held_input.keys():

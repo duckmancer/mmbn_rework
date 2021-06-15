@@ -111,7 +111,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if not Constants.battle_paused:
+	if not Globals.battle_paused:
 		for s in _danger_sources:
 			_danger_sources[s] -= 1
 			if _danger_sources[s] <= 0:

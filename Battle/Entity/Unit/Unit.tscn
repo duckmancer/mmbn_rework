@@ -100,6 +100,7 @@ __meta__ = {
 texture = ExtResource( 5 )
 hframes = 30
 vframes = 8
+frame = 43
 
 [node name="Chip2" type="Sprite" parent="ChipData/Chip" index="0"]
 position = Vector2( -2, -2 )

@@ -21,47 +21,47 @@ func set_hp(new_hp):
 
 var input_map = {
 	up = {
-		action_name = Action.Type.MOVE,
+		action_name = Action.MOVE,
 		action_scene = MiscAction,
 		args = ["up"],
 	},
 	down = {
-		action_name = Action.Type.MOVE,
+		action_name = Action.MOVE,
 		action_scene = MiscAction,
 		args = ["down"],
 	},
 	left = {
-		action_name = Action.Type.MOVE,
+		action_name = Action.MOVE,
 		action_scene = MiscAction,
 		args = ["left"],
 	},
 	right = {
-		action_name = Action.Type.MOVE,
+		action_name = Action.MOVE,
 		action_scene = MiscAction,
 		args = ["right"],
 	},
 	action_0 = {
-		action_name = Action.Type.BUSTER_SCAN,
+		action_name = Action.BUSTER_SCAN,
 		action_scene = Buster,
 		args = [],
 	},
 	action_1 = {
-		action_name = Action.Type.BUSTER_SCAN,
+		action_name = Action.BUSTER_SCAN,
 		action_scene = Buster,
 		args = [],
 	},
 	action_2 = {
-		action_name = Action.Type.SWORD,
+		action_name = Action.SWORD,
 		action_scene = Sword,
 		args = [],
 	},
 	action_3 = {
-		action_name = Action.Type.MINIBOMB,
+		action_name = Action.MINIBOMB,
 		action_scene = Throw,
 		args = [],
 	},
 	no_action = {
-		action_name = Action.Type.IDLE,
+		action_name = Action.IDLE,
 		action_scene = MiscAction,
 		args = [],
 	},
@@ -69,11 +69,32 @@ var input_map = {
 
 var queued_action = input_map.no_action
 var cur_action = null
-var last_action = null
+var last_input = "no_action"
 var is_action_running := false
 var cur_cooldown = 0
 
+func _can_enqueue(input):
+	if cur_cooldown > 0 and last_input == input:
+		return false
+	if queued_action.action_name != Action.IDLE or input == "no_action":
+		return false
+	return true
+
+func _check_repeat(input):
+	if is_action_running and last_input != input:
+		cur_action.do_repeat = false
+	last_input = input
+	
+func _validate_input(input) -> bool:
+	_check_repeat(input)
+	if not _can_enqueue(input):
+		return false
+	else:
+		return true
+
 func process_input(input):
+	if not _validate_input(input):
+		return
 	if input == "action_0":
 		if enqueue_action(chip_data.get_chip()):
 			chip_data.pop_chip()
@@ -94,26 +115,12 @@ func reject_move_request():
 func _reset_queued_action():
 	queued_action = input_map.no_action
 	
-func _can_enqueue(action):
-	if cur_cooldown > 0 and last_action == action:
-		return false
-	if queued_action.action_name != Action.Type.IDLE or action == Action.Type.IDLE:
-		return false
-	return true
 
-func _check_repeat(action):
-	if is_action_running and last_action != action:
-		cur_action.do_repeat = false
-		
 func enqueue_action(action):
 	if not action:
 		return false
-	var action_name = action.action_name
-	_check_repeat(action_name)
-	if not _can_enqueue(action_name):
-		return false
 	queued_action = action
-	if action_name == Action.Type.MOVE:
+	if action.action_name == Action.MOVE:
 		request_move(queued_action.args[0])
 	return true
 
@@ -129,14 +136,13 @@ func _set_cur_action():
 
 
 func _run_queued_action():
-	if queued_action.action_name == Action.Type.IDLE:
+	if queued_action.action_name == Action.IDLE:
 		return
 	_set_cur_action()
 	animation_player.play(cur_action.get_entity_anim())
 	
 	is_action_running = true
 	cur_cooldown = action_cooldown
-	last_action = queued_action.action_name
 	_reset_queued_action()
 
 func run_AI(target):
@@ -160,10 +166,10 @@ func do_tick():
 	if is_action_running:
 		cur_action.sprite.position = sprite.position
 	else:
-		if cur_cooldown != 0:
+		if cur_cooldown == 0:
+			_run_queued_action()
+		else:
 			cur_cooldown -= 1
-			return
-		_run_queued_action()
 
 func _ready():
 	self.hp = max_hp
