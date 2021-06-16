@@ -11,21 +11,21 @@ const CHIP_DATA = {
 		action_name = Action.CANNON,
 		action_scene = Cannon,
 		args = [],
-		icon_number = CANNON,
-		code = "A",
+		id = CANNON,
+		code = "B",
 	},
 	sword = {
 		action_name = Action.SWORD,
 		action_scene = Sword,
 		args = [],
-		icon_number = SWORD,
+		id = SWORD,
 		code = "S",
 	},
 	minibomb = {
 		action_name = Action.MINIBOMB,
 		action_scene = Throw,
 		args = [],
-		icon_number = MINIBOMB,
+		id = MINIBOMB,
 		code = "B",
 	},
 }
@@ -45,6 +45,6 @@ var selected_folder = [
 
 var active_folder = []
 
-func setup_cur_folder():
+func create_active_folder():
 	active_folder = selected_folder.duplicate()
 	active_folder.shuffle()

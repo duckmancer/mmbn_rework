@@ -2,12 +2,25 @@ extends TextureRect
 
 signal custom_finished()
 
+enum LockoutID {
+	ANY = -1,
+	NONE = -2,
+}
+
 const SELECTOR_OFFSET = Vector2(3, 3)
 const CHIP_SELECTOR_SIZE = Vector2(22, 22)
 const OK_SELECTOR_SIZE = Vector2(28,26)
 
 const MAX_CHIPS = 5
 const MAX_AVAILABLE_CHIPS = 5
+
+const NO_LOCKOUT = {
+	code = "*",
+	id = LockoutID.ANY,
+}
+
+var selected_chip_data = []
+var lockout = NO_LOCKOUT.duplicate()
 
 onready var selector = $Selector
 onready var ok_button = $OkButton
@@ -31,7 +44,6 @@ onready var selected_chips = [
 	$SelectedChips/ChipBox4,
 ]
 
-var selected_chip_data = []
 
 # Enter / Exit
 
@@ -93,11 +105,48 @@ func _select_chip(selected):
 		_update_selection()
 
 func _update_selection():
+	_display_selected_chips()
+	_update_lockout()
+	_lockout_available_chips()
+
+func _update_lockout():
+	lockout = NO_LOCKOUT.duplicate()
+	for chip in selected_chip_data:
+		if lockout.id == NO_LOCKOUT.id and lockout.code == NO_LOCKOUT.code:
+			lockout.code = chip.code
+			lockout.id = chip.id
+		else:
+			if not _does_code_match(chip):
+				lockout.id = chip.id
+				lockout.code = "-"
+			elif not _does_id_match(chip):
+				lockout.id = LockoutID.NONE
+				if lockout.code == "*":
+					lockout.code = chip.code
+
+func _display_selected_chips():
 	for i in selected_chips.size():
 		if i < selected_chip_data.size():
-			selected_chips[i].set_chip(selected_chip_data[i].icon_number)
+			selected_chips[i].set_chip(selected_chip_data[i].id)
 		else:
 			selected_chips[i].hide_chip()
+
+func _lockout_available_chips():
+	for slot in chip_select:
+		if slot.state == ChipSlot.AVAILABLE:
+			if not _is_chip_valid(slot.chip_data):
+				slot.state = ChipSlot.LOCKED
+
+# Chip Validation
+
+func _is_chip_valid(chip):
+	return _does_code_match(chip) or _does_id_match(chip)
+
+func _does_code_match(chip):
+	return lockout.code == "*" or chip.code == "*" or lockout.code == chip.code
+
+func _does_id_match(chip):
+	return lockout.id == LockoutID.ANY or lockout.id == chip.id
 
 # Processing
 

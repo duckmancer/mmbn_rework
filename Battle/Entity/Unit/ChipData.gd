@@ -20,8 +20,8 @@ func _update_display():
 	for i in chip_icons.size():
 		chip_icons[i].visible = i < chips.size()
 	if not chips.empty():
-		if chips.front().has("icon_number"):
-			chip_icons.front().frame = chips.front().icon_number
+		if chips.front().has("id"):
+			chip_icons.front().frame = chips.front().id
 
 func get_chip():
 	if chips.empty():

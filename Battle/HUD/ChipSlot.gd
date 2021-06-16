@@ -34,7 +34,7 @@ func set_state(new_state):
 func set_chip(chip):
 	chip_data = chip
 	label.text = chip.code
-	chip_box.set_chip(chip.icon_number)
+	chip_box.set_chip(chip.id)
 	self.state = AVAILABLE
 
 func use_chip():
