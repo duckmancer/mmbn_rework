@@ -12,7 +12,7 @@ const CHIP_SELECTOR_SIZE = Vector2(22, 22)
 const OK_SELECTOR_SIZE = Vector2(28,26)
 
 const MAX_CHIPS = 5
-const MAX_AVAILABLE_CHIPS = 5
+const MAX_AVAILABLE_CHIPS = 8
 
 const NO_LOCKOUT = {
 	code = "*",
@@ -21,7 +21,10 @@ const NO_LOCKOUT = {
 
 var selected_chip_data = []
 var lockout = NO_LOCKOUT.duplicate()
+var last_focus = null
 
+
+onready var animation_player = $AnimationPlayer
 onready var selector = $Selector
 onready var ok_button = $OkButton
 onready var chip_select = [
@@ -48,9 +51,11 @@ onready var selected_chips = [
 # Enter / Exit
 
 func open_custom():
+	animation_player.play("open_custom")
 	_update_available_chips()
-	_setup_focus()
 	_clear_selected_chips()
+	_setup_focus()
+	_update_selector()
 
 
 func _setup_focus():
@@ -58,15 +63,18 @@ func _setup_focus():
 		chip_select.front().grab_focus()
 	else:
 		ok_button.grab_focus()
+	last_focus = null
 
 func _finish_custom():
 	_release_custom_focus()
+	animation_player.play("custom_finish")
 	emit_signal("custom_finished")
 
 func _release_custom_focus():
 	var focus = get_focus_owner()
 	if focus:
 		focus.release_focus()
+	last_focus = null
 
 # Chips
 
@@ -101,8 +109,13 @@ func _get_leftover_chips():
 
 func _select_chip(selected):
 	if selected.state == ChipSlot.AVAILABLE:
+		animation_player.play("chip_select")
 		selected_chip_data.append(selected.use_chip())
 		_update_selection()
+	else:
+		pass
+		# TODO: Find Error Sound
+		animation_player.play("close_chip_description")
 
 func _update_selection():
 	_display_selected_chips()
@@ -163,15 +176,27 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 				_select_chip(focus)
 		elif ok_button.has_focus():
 			_finish_custom()
+	elif event.is_action_pressed("ui_accept"):
+		ok_button.grab_focus()
+	elif event.is_action_pressed("ui_cancel"):
+		animation_player.stop()
+		animation_player.play("chip_cancel")
 
 func _physics_process(_delta: float) -> void:
+	_update_selector()
+
+func _update_selector():
 	var focus = get_focus_owner()
-	if focus:
+	if focus and focus != last_focus:
 		selector.set_global_position(focus.get_global_rect().position - SELECTOR_OFFSET)
 		if focus in chip_select:
 			selector.set_size(CHIP_SELECTOR_SIZE)
 		else:
 			selector.set_size(OK_SELECTOR_SIZE)
+		if last_focus:
+			animation_player.stop()
+			animation_player.play("chip_choose")
+		last_focus = focus
 
 func _ready() -> void:
 	pass

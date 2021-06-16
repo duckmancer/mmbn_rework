@@ -1,0 +1,471 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Battle/HUD/CustomWindow/ChipSlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Battle/HUD/CustomWindow/ChipBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Battle/HUD/CustomWindow/CustomWindow.gd" type="Script" id=3]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/ChipSelect HQ.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/CustomScreenOpen HQ.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/BattleAssets/HUD/OK Button.png" type="Texture" id=6]
+[ext_resource path="res://Assets/BattleAssets/HUD/Chip Window.png" type="Texture" id=7]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/ChipCancel HQ.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/BattleAssets/HUD/Chip Selector/Chip Selector1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/BattleAssets/HUD/Chip Selector/Chip Selector0.png" type="Texture" id=10]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/OpenChipDesc HQ.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/ChipChoose HQ.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/ChipConfirm HQ.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/ChipDesc HQ.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Assets/MMBNSFX/Menu SFX/CloseChipDesc HQ.ogg" type="AudioStream" id=15]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 2
+fps = 7.5
+frame_0/texture = ExtResource( 10 )
+frame_1/texture = ExtResource( 9 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "chip_cancel"
+length = 0.333333
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.4233,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "chip_choose"
+length = 0.333333
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.46853,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "chip_description"
+length = 0.666667
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.14928,
+"start_offset": 0.0,
+"stream": ExtResource( 14 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "chip_select"
+length = 0.333333
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.44193,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "close_chip_description"
+length = 0.25
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.49779,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "custom_finish"
+length = 0.666667
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.08544,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "open_chip_description"
+length = 0.666667
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.10672,
+"start_offset": 0.0,
+"stream": ExtResource( 11 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "open_custom"
+length = 0.333333
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 1.66008,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10.0 ]
+}
+
+[node name="CustomWindow" type="TextureRect"]
+margin_left = -120.0
+margin_bottom = 160.0
+texture = ExtResource( 7 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SelectedChips" type="VBoxContainer" parent="."]
+margin_left = 97.0
+margin_top = 25.0
+margin_right = 111.0
+margin_bottom = 103.0
+custom_constants/separation = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ChipBox0" parent="SelectedChips" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 14.0
+margin_bottom = 14.0
+
+[node name="ChipBox1" parent="SelectedChips" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 16.0
+margin_right = 14.0
+margin_bottom = 30.0
+
+[node name="ChipBox2" parent="SelectedChips" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 32.0
+margin_right = 14.0
+margin_bottom = 46.0
+
+[node name="ChipBox3" parent="SelectedChips" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 48.0
+margin_right = 14.0
+margin_bottom = 62.0
+
+[node name="ChipBox4" parent="SelectedChips" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 64.0
+margin_right = 14.0
+margin_bottom = 78.0
+
+[node name="ChipSelect" type="GridContainer" parent="."]
+margin_left = 8.0
+margin_top = 104.0
+margin_right = 88.0
+margin_bottom = 152.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ChipSlot0" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 16.0
+margin_bottom = 24.0
+focus_neighbour_left = NodePath("../../OkButton")
+focus_neighbour_right = NodePath("../ChipSlot1")
+focus_neighbour_bottom = NodePath("../ChipSlot5")
+
+[node name="ChipSlot1" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 16.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 24.0
+focus_neighbour_left = NodePath("../ChipSlot0")
+focus_neighbour_right = NodePath("../ChipSlot2")
+focus_neighbour_bottom = NodePath("../ChipSlot6")
+
+[node name="ChipSlot2" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 32.0
+margin_top = 0.0
+margin_right = 48.0
+margin_bottom = 24.0
+focus_neighbour_left = NodePath("../ChipSlot1")
+focus_neighbour_right = NodePath("../ChipSlot3")
+focus_neighbour_bottom = NodePath("../ChipSlot7")
+
+[node name="ChipSlot3" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 48.0
+margin_top = 0.0
+margin_right = 64.0
+margin_bottom = 24.0
+focus_neighbour_left = NodePath("../ChipSlot2")
+focus_neighbour_right = NodePath("../ChipSlot4")
+focus_neighbour_bottom = NodePath("../ChipSlot8")
+
+[node name="ChipSlot4" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 64.0
+margin_top = 0.0
+margin_right = 80.0
+margin_bottom = 24.0
+focus_neighbour_left = NodePath("../ChipSlot3")
+focus_neighbour_right = NodePath("../../OkButton")
+focus_neighbour_bottom = NodePath("../ChipSlot9")
+
+[node name="ChipSlot5" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 24.0
+margin_right = 16.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../../OkButton")
+focus_neighbour_top = NodePath("../ChipSlot0")
+focus_neighbour_right = NodePath("../ChipSlot6")
+
+[node name="ChipSlot6" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 32.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../ChipSlot5")
+focus_neighbour_top = NodePath("../ChipSlot1")
+focus_neighbour_right = NodePath("../ChipSlot7")
+
+[node name="ChipSlot7" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 48.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../ChipSlot6")
+focus_neighbour_top = NodePath("../ChipSlot2")
+focus_neighbour_right = NodePath("../ChipSlot8")
+
+[node name="ChipSlot8" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 48.0
+margin_top = 24.0
+margin_right = 64.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../ChipSlot7")
+focus_neighbour_top = NodePath("../ChipSlot3")
+focus_neighbour_right = NodePath("../ChipSlot9")
+
+[node name="ChipSlot9" parent="ChipSelect" instance=ExtResource( 1 )]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 80.0
+margin_bottom = 48.0
+focus_neighbour_left = NodePath("../ChipSlot8")
+focus_neighbour_top = NodePath("../ChipSlot4")
+focus_neighbour_right = NodePath("../../OkButton")
+
+[node name="OkButton" type="TextureRect" parent="."]
+margin_left = 89.0
+margin_top = 114.0
+margin_right = 111.0
+margin_bottom = 134.0
+focus_neighbour_left = NodePath("../ChipSelect/ChipSlot4")
+focus_neighbour_right = NodePath("../ChipSelect/ChipSlot0")
+focus_mode = 2
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="NinePatchRect" parent="."]
+margin_left = 5.0
+margin_top = 101.0
+margin_right = 27.0
+margin_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource( 1 )
+draw_center = false
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/chip_cancel = SubResource( 2 )
+anims/chip_choose = SubResource( 5 )
+anims/chip_description = SubResource( 7 )
+anims/chip_select = SubResource( 3 )
+anims/close_chip_description = SubResource( 8 )
+anims/custom_finish = SubResource( 6 )
+anims/open_chip_description = SubResource( 9 )
+anims/open_custom = SubResource( 4 )
