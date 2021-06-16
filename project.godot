@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Action/Cannon/Cannon.gd"
 }, {
+"base": "TextureRect",
+"class": "ChipSlot",
+"language": "GDScript",
+"path": "res://Battle/HUD/ChipSlot.gd"
+}, {
 "base": "Node2D",
 "class": "Entity",
 "language": "GDScript",
@@ -142,6 +147,7 @@ _global_script_class_icons={
 "Buster": "",
 "BusterShot": "",
 "Cannon": "",
+"ChipSlot": "",
 "Entity": "",
 "Explosion": "",
 "Hitscan": "",

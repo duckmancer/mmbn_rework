@@ -10,6 +10,7 @@ const MAX_CHIPS = 5
 const MAX_AVAILABLE_CHIPS = 5
 
 onready var selector = $Selector
+onready var ok_button = $OkButton
 onready var chip_select = [
 	$ChipSelect/ChipSlot0,
 	$ChipSelect/ChipSlot1,
@@ -29,29 +30,76 @@ onready var selected_chips = [
 	$SelectedChips/ChipBox3,
 	$SelectedChips/ChipBox4,
 ]
-var selected_chip_data = []
-var available_chip_data = []
 
-func _physics_process(_delta: float) -> void:
-	var focus = get_focus_owner()
-	if focus:
-		selector.set_global_position(focus.get_global_rect().position - SELECTOR_OFFSET)
-		if focus in chip_select:
-			selector.set_size(CHIP_SELECTOR_SIZE)
-		else:
-			selector.set_size(OK_SELECTOR_SIZE)
+var selected_chip_data = []
+
+# Enter / Exit
 
 func open_custom():
-	$ChipSelect/ChipSlot0.grab_focus()
-	set_available_chips()
+	_update_available_chips()
+	_setup_focus()
+	_clear_selected_chips()
+
+
+func _setup_focus():
+	if chip_select.front().state == ChipSlot.AVAILABLE:
+		chip_select.front().grab_focus()
+	else:
+		ok_button.grab_focus()
+
+func _finish_custom():
+	_release_custom_focus()
+	emit_signal("custom_finished")
+
+func _release_custom_focus():
+	var focus = get_focus_owner()
+	if focus:
+		focus.release_focus()
+
+# Chips
+
+func _update_available_chips():
+	var chips = _get_leftover_chips()
+	_get_remainder_from_deck(chips)
+	_set_available_chips(chips)
+
+func _get_remainder_from_deck(chips):
+	while chips.size() < MAX_AVAILABLE_CHIPS and not Battlechips.active_folder.empty():
+		var chip_name = Battlechips.active_folder.front()
+		chips.append(Battlechips.CHIP_DATA[chip_name])
+		Battlechips.active_folder.pop_front()
+
+func _clear_selected_chips():
+	selected_chip_data.clear()
+	_update_selection()
+
+func _set_available_chips(chip_data):
+	for i in chip_select.size():
+		if i < chip_data.size():
+			chip_select[i].set_chip(chip_data[i])
+		else:
+			chip_select[i].clear()
+
+func _get_leftover_chips():
+	var leftovers = []
+	for slot in chip_select:
+		if slot.state == ChipSlot.AVAILABLE or slot.state == ChipSlot.LOCKED:
+			leftovers.append(slot.chip_data)
+	return leftovers
+
+func _select_chip(selected):
+	if selected.state == ChipSlot.AVAILABLE:
+		selected_chip_data.append(selected.use_chip())
+		_update_selection()
 
 func _update_selection():
 	for i in selected_chips.size():
 		if i < selected_chip_data.size():
-			selected_chips[i].show_chip()
 			selected_chips[i].set_chip(selected_chip_data[i].icon_number)
 		else:
 			selected_chips[i].hide_chip()
+
+# Processing
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if not Globals.custom_open:
@@ -63,27 +111,18 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 		
 		if focus in chip_select:
 			if selected_chip_data.size() < MAX_CHIPS:
-				if focus.is_available:
-					selected_chip_data.append(focus.use_chip())
-					_update_selection()
-		else:
-			focus.release_focus()
-			emit_signal("custom_finished")
+				_select_chip(focus)
+		elif ok_button.has_focus():
+			_finish_custom()
 
-func set_available_chips():
-	for i in chip_select.size():
-		if i < available_chip_data.size():
-			chip_select[i].set_chip(available_chip_data[i])
-			chip_select[i].visible = true
+func _physics_process(_delta: float) -> void:
+	var focus = get_focus_owner()
+	if focus:
+		selector.set_global_position(focus.get_global_rect().position - SELECTOR_OFFSET)
+		if focus in chip_select:
+			selector.set_size(CHIP_SELECTOR_SIZE)
 		else:
-			chip_select[i].visible = false
+			selector.set_size(OK_SELECTOR_SIZE)
 
 func _ready() -> void:
-	var starter_chips = [
-		"minibomb",
-		"sword",
-		"cannon",
-	]
-	for c in starter_chips:
-		available_chip_data.append(Battlechips.CHIP_DATA[c])
-	_update_selection()
+	pass

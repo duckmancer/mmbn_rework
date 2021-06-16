@@ -2,7 +2,7 @@ class_name PlayerController
 extends Node2D
 
 signal hp_changed(new_hp, is_danger)
-signal custom_opened()
+
 
 var player : Unit
 

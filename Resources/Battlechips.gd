@@ -29,3 +29,22 @@ const CHIP_DATA = {
 		code = "B",
 	},
 }
+
+
+var selected_folder = [
+	"cannon",
+	"cannon",
+	"cannon",
+	"sword",
+	"sword",
+	"sword",
+	"minibomb",
+	"minibomb",
+	"minibomb",
+]
+
+var active_folder = []
+
+func setup_cur_folder():
+	active_folder = selected_folder.duplicate()
+	active_folder.shuffle()
