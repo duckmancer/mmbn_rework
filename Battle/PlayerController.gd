@@ -31,10 +31,8 @@ func _button_released(button):
 		_total_held_inputs -= 1
 
 func _unhandled_key_input(event):
-	if event.is_action_pressed("pause"):
-		Globals.battle_paused = not Globals.battle_paused
-	if event.is_action_pressed("r"):
-		emit_signal("custom_opened")
+	if Globals.battle_paused:
+		return
 	for button in _held_input.keys():
 		if event.is_action_pressed(button):
 			_button_pressed(button)

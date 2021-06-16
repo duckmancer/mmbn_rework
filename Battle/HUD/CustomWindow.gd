@@ -54,7 +54,7 @@ func _update_selection():
 			selected_chips[i].hide_chip()
 
 func _unhandled_key_input(event: InputEventKey) -> void:
-	if not Globals.battle_paused:
+	if not Globals.custom_open:
 		return
 	if event.is_action_pressed("ui_select"):
 		var focus = get_focus_owner()
@@ -67,6 +67,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 					selected_chip_data.append(focus.use_chip())
 					_update_selection()
 		else:
+			focus.release_focus()
 			emit_signal("custom_finished")
 
 func set_available_chips():

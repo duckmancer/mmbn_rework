@@ -25,6 +25,10 @@ autoplay = true
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="custom_opened" from="PlayerController" to="." method="_on_PlayerController_custom_opened"]
 [connection signal="hp_changed" from="PlayerController" to="." method="_on_PlayerController_hp_changed"]
 [connection signal="custom_finished" from="HUD" to="." method="_on_HUD_custom_finished"]

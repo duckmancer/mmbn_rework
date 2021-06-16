@@ -34,6 +34,8 @@ func pop_chip():
 	_update_display()
 
 func set_chips(new_chips):
+	if new_chips.empty():
+		return
 	chips.clear()
 	for c in new_chips:
 		chips.append(c)

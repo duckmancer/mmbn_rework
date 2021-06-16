@@ -17,6 +17,14 @@ onready var hud = $HUD
 onready var player_controller = $PlayerController
 onready var player_health = $HUD/PlayerHealthBox
 
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if event.is_action_pressed("pause"):
+		if not Globals.custom_open:
+			Globals.battle_paused = not Globals.battle_paused
+	if event.is_action_pressed("custom_menu"):
+		if not Globals.battle_paused and not Globals.custom_open:
+			_toggle_custom_window()
+
 func _set_panels():
 	for i in GRID_SIZE.y:
 		panel_grid.push_back([])
@@ -83,15 +91,19 @@ func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 
 
 func _toggle_custom_window() -> void:
-	if not Globals.battle_paused:
+	if not Globals.custom_open:
 		Globals.battle_paused = true
+		Globals.custom_open = true
 		$Tween.interpolate_property(hud, "position:x", 0, 120, 0.1)
 		$Tween.start()
 		hud.open_custom()
 	else:
-		Globals.battle_paused = false
+		Globals.custom_open = false
 		$Tween.interpolate_property(hud, "position:x", 120, 00, 0.1)
 		$Tween.start()
+		$Timer.start()
+		yield($Timer, "timeout")
+		Globals.battle_paused = false
 
 func _on_PlayerController_custom_opened() -> void:
 	_toggle_custom_window()
