@@ -185,7 +185,7 @@ func _does_id_match(chip):
 func _play_error():
 	# TODO: Find Error Sound
 	animation_player.stop()
-	animation_player.play("close_chip_description")
+	animation_player.play("menu_error")
 
 func _update_selector():
 	var focus = get_focus_owner()
