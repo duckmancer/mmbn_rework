@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-01 THEME OF ROCKMAN EXE.mp3-392b5e061f42e19c0c3ca056dc9430ad.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Menu Themes/Title Screen/1-01 THEME OF ROCKMAN EXE.mp3"
+dest_files=[ "res://.import/1-01 THEME OF ROCKMAN EXE.mp3-392b5e061f42e19c0c3ca056dc9430ad.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-10 Battle BGM1.mp3-a5ba15a4390ce7e847ffc6adb0f72ae2.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Sound Box Exclusives/6-10 Battle BGM1.mp3"
+dest_files=[ "res://.import/6-10 Battle BGM1.mp3-a5ba15a4390ce7e847ffc6adb0f72ae2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

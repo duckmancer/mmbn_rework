@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-18 Indoors.mp3-1d9e3281a0668a4012a0c7553e55a838.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Overworld Themes/Indoors/5-18 Indoors.mp3"
+dest_files=[ "res://.import/5-18 Indoors.mp3-1d9e3281a0668a4012a0c7553e55a838.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

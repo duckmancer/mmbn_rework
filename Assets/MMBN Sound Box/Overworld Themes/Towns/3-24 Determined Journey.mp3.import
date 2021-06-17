@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-24 Determined Journey.mp3-c2beca405a313aae9c3af6da25d5bd1f.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Overworld Themes/Towns/3-24 Determined Journey.mp3"
+dest_files=[ "res://.import/3-24 Determined Journey.mp3-c2beca405a313aae9c3af6da25d5bd1f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

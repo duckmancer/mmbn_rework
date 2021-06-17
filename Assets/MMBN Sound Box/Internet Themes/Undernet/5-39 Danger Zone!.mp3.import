@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-39 Danger Zone!.mp3-663dfdbbd5780149a2d1d24d7b42c4fc.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Internet Themes/Undernet/5-39 Danger Zone!.mp3"
+dest_files=[ "res://.import/5-39 Danger Zone!.mp3-663dfdbbd5780149a2d1d24d7b42c4fc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-06 Battle Theme -EXE1 STYLE-.mp3-2b6d6f78b4f1ec1fa02b6e0c02f40b79.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/DTDS/5-06 Battle Theme -EXE1 STYLE-.mp3"
+dest_files=[ "res://.import/5-06 Battle Theme -EXE1 STYLE-.mp3-2b6d6f78b4f1ec1fa02b6e0c02f40b79.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

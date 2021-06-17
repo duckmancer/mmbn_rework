@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-31 VS. Duo.mp3-34a98da8c00131957a3312980a7fcc61.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Battle Themes/Final Boss/3-31 VS. Duo.mp3"
+dest_files=[ "res://.import/3-31 VS. Duo.mp3-34a98da8c00131957a3312980a7fcc61.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

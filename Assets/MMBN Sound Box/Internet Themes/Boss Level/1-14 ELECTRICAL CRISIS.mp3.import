@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-14 ELECTRICAL CRISIS.mp3-978f3cc405f1b9dd3a5ab1c4317805e1.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Internet Themes/Boss Level/1-14 ELECTRICAL CRISIS.mp3"
+dest_files=[ "res://.import/1-14 ELECTRICAL CRISIS.mp3-978f3cc405f1b9dd3a5ab1c4317805e1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

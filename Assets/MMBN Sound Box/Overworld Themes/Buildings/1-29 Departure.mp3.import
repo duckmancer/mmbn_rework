@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-29 Departure.mp3-89d87886f914c2dbec440f05d2102c3d.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Overworld Themes/Buildings/1-29 Departure.mp3"
+dest_files=[ "res://.import/1-29 Departure.mp3-89d87886f914c2dbec440f05d2102c3d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

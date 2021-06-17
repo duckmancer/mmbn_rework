@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-36 Evil Spirit.mp3-2a958634e23f2005fbb63e0457e523be.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Event Themes/Misc/5-36 Evil Spirit.mp3"
+dest_files=[ "res://.import/5-36 Evil Spirit.mp3-2a958634e23f2005fbb63e0457e523be.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

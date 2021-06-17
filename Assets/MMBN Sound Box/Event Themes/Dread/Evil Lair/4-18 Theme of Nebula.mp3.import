@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-18 Theme of Nebula.mp3-70e1fa3a2a7a7e240405cad1d21cefa7.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Event Themes/Dread/Evil Lair/4-18 Theme of Nebula.mp3"
+dest_files=[ "res://.import/4-18 Theme of Nebula.mp3-70e1fa3a2a7a7e240405cad1d21cefa7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

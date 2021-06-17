@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-31 Ameroppa Castle.mp3-1a897a36db63bad487f1b329590ac0f6.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Overworld Themes/Buildings/1-31 Ameroppa Castle.mp3"
+dest_files=[ "res://.import/1-31 Ameroppa Castle.mp3-1a897a36db63bad487f1b329590ac0f6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

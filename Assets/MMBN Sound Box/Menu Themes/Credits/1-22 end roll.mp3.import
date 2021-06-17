@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-22 end roll.mp3-dfc515f2143736fd5fa5aa4b5923fd7a.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Menu Themes/Credits/1-22 end roll.mp3"
+dest_files=[ "res://.import/1-22 end roll.mp3-dfc515f2143736fd5fa5aa4b5923fd7a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

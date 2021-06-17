@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-09 Cyber Battle.mp3-e67eac0ec12d7bb9e910ecb5e8ca0e47.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Battle Themes/Normal Battle/3-09 Cyber Battle.mp3"
+dest_files=[ "res://.import/3-09 Cyber Battle.mp3-e67eac0ec12d7bb9e910ecb5e8ca0e47.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

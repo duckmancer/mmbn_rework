@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-21 PET Program.mp3-805ff83eddc0bcba2d47dd0fd47f20e5.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Sound Box Exclusives/6-21 PET Program.mp3"
+dest_files=[ "res://.import/6-21 PET Program.mp3-805ff83eddc0bcba2d47dd0fd47f20e5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

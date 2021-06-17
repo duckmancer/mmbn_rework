@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-11 Tournament Battle.mp3-352f4d3222dd09fd5e089bb5cb04c8f0.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Real Operation/Menus/4-11 Tournament Battle.mp3"
+dest_files=[ "res://.import/4-11 Tournament Battle.mp3-352f4d3222dd09fd5e089bb5cb04c8f0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

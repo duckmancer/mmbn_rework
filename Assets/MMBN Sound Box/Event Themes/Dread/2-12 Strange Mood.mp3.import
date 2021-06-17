@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-12 Strange Mood.mp3-f0fed5925aaa9c5df72ddec56fe2638c.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Event Themes/Dread/2-12 Strange Mood.mp3"
+dest_files=[ "res://.import/2-12 Strange Mood.mp3-f0fed5925aaa9c5df72ddec56fe2638c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-15 Great Victory!.mp3-a0dacbeb45556ce83f11f455e5e157d1.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Event Themes/Misc/3-15 Great Victory!.mp3"
+dest_files=[ "res://.import/3-15 Great Victory!.mp3-a0dacbeb45556ce83f11f455e5e157d1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

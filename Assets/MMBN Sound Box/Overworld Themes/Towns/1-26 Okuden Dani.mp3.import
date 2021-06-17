@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-26 Okuden Dani.mp3-862d79688b26d381dc9b0549f49be2ec.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Overworld Themes/Towns/1-26 Okuden Dani.mp3"
+dest_files=[ "res://.import/1-26 Okuden Dani.mp3-862d79688b26d381dc9b0549f49be2ec.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

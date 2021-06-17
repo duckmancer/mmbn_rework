@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-27 Battle BGM2 (Semifinal).mp3-1a9904372278235e2a6527819c12b097.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Sound Box Exclusives/6-27 Battle BGM2 (Semifinal).mp3"
+dest_files=[ "res://.import/6-27 Battle BGM2 (Semifinal).mp3-1a9904372278235e2a6527819c12b097.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

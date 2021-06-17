@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-18 VS. Dream Virus.mp3-1738df4fe3e8deb61702625fb66fa355.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Battle Themes/Final Boss/1-18 VS. Dream Virus.mp3"
+dest_files=[ "res://.import/1-18 VS. Dream Virus.mp3-1738df4fe3e8deb61702625fb66fa355.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-09 Ice Puzzle.mp3-521d7aafaea4465f1275eebed7b87163.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Real Operation/Minigames/4-09 Ice Puzzle.mp3"
+dest_files=[ "res://.import/4-09 Ice Puzzle.mp3-521d7aafaea4465f1275eebed7b87163.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

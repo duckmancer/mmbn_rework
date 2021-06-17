@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-35 PET Display.mp3-fb97b1d0e322a6b3ba9c97a61d283713.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Real Operation/Menus/3-35 PET Display.mp3"
+dest_files=[ "res://.import/3-35 PET Display.mp3-fb97b1d0e322a6b3ba9c97a61d283713.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

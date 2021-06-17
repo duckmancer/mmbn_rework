@@ -11,4 +11,4 @@ func _ready() -> void:
 
 
 func _on_CustomWindow_custom_finished() -> void:
-	emit_signal("custom_finished", custom_window.selected_chip_data)
+	emit_signal("custom_finished", custom_window.get_chip_data())

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-45 Trial.mp3-0b12c4a3a9f9d60e6ce4b43e00df7b32.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Event Themes/Misc/4-45 Trial.mp3"
+dest_files=[ "res://.import/4-45 Trial.mp3-0b12c4a3a9f9d60e6ce4b43e00df7b32.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

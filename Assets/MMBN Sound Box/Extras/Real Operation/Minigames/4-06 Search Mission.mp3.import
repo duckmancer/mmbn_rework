@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-06 Search Mission.mp3-4227f9b619949f9e15b7497e2881294e.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Real Operation/Minigames/4-06 Search Mission.mp3"
+dest_files=[ "res://.import/4-06 Search Mission.mp3-4227f9b619949f9e15b7497e2881294e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

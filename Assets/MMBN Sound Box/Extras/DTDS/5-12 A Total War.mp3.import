@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-12 A Total War.mp3-388aa02fcced52aae0a6b220a05c6b64.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/DTDS/5-12 A Total War.mp3"
+dest_files=[ "res://.import/5-12 A Total War.mp3-388aa02fcced52aae0a6b220a05c6b64.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-51 Battle Spirit.mp3-9c11efb8c7e825d82a0abb786f558882.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Battle Themes/Navi Battle/1-51 Battle Spirit.mp3"
+dest_files=[ "res://.import/1-51 Battle Spirit.mp3-9c11efb8c7e825d82a0abb786f558882.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

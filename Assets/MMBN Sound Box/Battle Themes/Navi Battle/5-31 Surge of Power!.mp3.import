@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-31 Surge of Power!.mp3-709ee1d4537426074c18d32a75310e8a.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Battle Themes/Navi Battle/5-31 Surge of Power!.mp3"
+dest_files=[ "res://.import/5-31 Surge of Power!.mp3-709ee1d4537426074c18d32a75310e8a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

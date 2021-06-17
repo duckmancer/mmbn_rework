@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-07 Battle Chip GP Venue.mp3-56d3869f78b6eb8e77b4fe61b6d60069.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Sound Box Exclusives/6-07 Battle Chip GP Venue.mp3"
+dest_files=[ "res://.import/6-07 Battle Chip GP Venue.mp3-56d3869f78b6eb8e77b4fe61b6d60069.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

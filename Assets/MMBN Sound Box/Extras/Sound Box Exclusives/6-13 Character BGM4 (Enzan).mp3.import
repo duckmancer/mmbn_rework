@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-13 Character BGM4 (Enzan).mp3-14a3cc5d1dc131c0aa9f325a3ca0d259.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Sound Box Exclusives/6-13 Character BGM4 (Enzan).mp3"
+dest_files=[ "res://.import/6-13 Character BGM4 (Enzan).mp3-14a3cc5d1dc131c0aa9f325a3ca0d259.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

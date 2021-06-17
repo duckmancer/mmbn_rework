@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-04 Lecture.mp3-263444cb2f8a32f3fdefe9c5c3becf13.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Real Operation/Minigames/4-04 Lecture.mp3"
+dest_files=[ "res://.import/4-04 Lecture.mp3-263444cb2f8a32f3fdefe9c5c3becf13.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

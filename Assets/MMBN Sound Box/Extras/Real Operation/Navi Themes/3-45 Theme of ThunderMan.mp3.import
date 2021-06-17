@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-45 Theme of ThunderMan.mp3-4e515d7eee7d26e9146bd87ff6107eee.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-45 Theme of ThunderMan.mp3"
+dest_files=[ "res://.import/3-45 Theme of ThunderMan.mp3-4e515d7eee7d26e9146bd87ff6107eee.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

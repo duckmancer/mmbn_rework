@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-50 Chain of Wish.mp3-98c019f9f98488772f3765e016ebd2b3.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Menu Themes/Credits/4-50 Chain of Wish.mp3"
+dest_files=[ "res://.import/4-50 Chain of Wish.mp3-98c019f9f98488772f3765e016ebd2b3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

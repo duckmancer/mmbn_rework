@@ -54,7 +54,7 @@ tracks/1/keys = {
 "values": [ 10.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "chip_choose"
 length = 0.333333
 step = 0.0166667
@@ -85,7 +85,7 @@ tracks/1/keys = {
 "values": [ 10.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "chip_description"
 length = 0.666667
 step = 0.0166667
@@ -116,8 +116,7 @@ tracks/1/keys = {
 "values": [ 10.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "chip_select"
+[sub_resource type="Animation" id=5]
 length = 0.333333
 step = 0.0166667
 tracks/0/type = "audio"
@@ -147,7 +146,7 @@ tracks/1/keys = {
 "values": [ 10.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "close_chip_description"
 length = 0.25
 step = 0.0166667
@@ -178,8 +177,7 @@ tracks/1/keys = {
 "values": [ 10.0 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "custom_finish"
+[sub_resource type="Animation" id=7]
 length = 0.666667
 step = 0.0166667
 tracks/0/type = "audio"
@@ -209,7 +207,7 @@ tracks/1/keys = {
 "values": [ 10.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "open_chip_description"
 length = 0.666667
 step = 0.0166667
@@ -240,8 +238,7 @@ tracks/1/keys = {
 "values": [ 10.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "open_custom"
+[sub_resource type="Animation" id=9]
 length = 0.333333
 step = 0.0166667
 tracks/0/type = "audio"
@@ -457,15 +454,15 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 15 )
 volume_db = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/chip_cancel = SubResource( 2 )
-anims/chip_choose = SubResource( 5 )
-anims/chip_description = SubResource( 7 )
-anims/chip_select = SubResource( 3 )
-anims/close_chip_description = SubResource( 8 )
-anims/custom_finish = SubResource( 6 )
-anims/open_chip_description = SubResource( 9 )
-anims/open_custom = SubResource( 4 )
+anims/chip_choose = SubResource( 3 )
+anims/chip_description = SubResource( 4 )
+anims/chip_select = SubResource( 5 )
+anims/close_chip_description = SubResource( 6 )
+anims/custom_finish = SubResource( 7 )
+anims/open_chip_description = SubResource( 8 )
+anims/open_custom = SubResource( 9 )

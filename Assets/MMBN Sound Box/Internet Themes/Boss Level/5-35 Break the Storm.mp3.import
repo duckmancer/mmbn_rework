@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-35 Break the Storm.mp3-8ce7e0f45be16f63be44bd50568441d8.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Internet Themes/Boss Level/5-35 Break the Storm.mp3"
+dest_files=[ "res://.import/5-35 Break the Storm.mp3-8ce7e0f45be16f63be44bd50568441d8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

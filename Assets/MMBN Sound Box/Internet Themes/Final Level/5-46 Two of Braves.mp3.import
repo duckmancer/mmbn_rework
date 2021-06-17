@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-46 Two of Braves.mp3-3ef59c74b4dba800588d68a4f6b1b85c.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Internet Themes/Final Level/5-46 Two of Braves.mp3"
+dest_files=[ "res://.import/5-46 Two of Braves.mp3-3ef59c74b4dba800588d68a4f6b1b85c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

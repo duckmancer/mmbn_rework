@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-11 Wily Laboratory.mp3-e8c0bd7be384a9abad09f82147d6951f.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Overworld Themes/Danger Zone/2-11 Wily Laboratory.mp3"
+dest_files=[ "res://.import/2-11 Wily Laboratory.mp3-e8c0bd7be384a9abad09f82147d6951f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-22 DANGEROUS BLACK.mp3-1ed2c29ed9d6ae6447adc44c0406ab2a.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Internet Themes/Undernet/2-22 DANGEROUS BLACK.mp3"
+dest_files=[ "res://.import/2-22 DANGEROUS BLACK.mp3-1ed2c29ed9d6ae6447adc44c0406ab2a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

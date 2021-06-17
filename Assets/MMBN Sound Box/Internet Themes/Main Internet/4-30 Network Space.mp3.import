@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-30 Network Space.mp3-9195e53bfd87302101a570fce527d84f.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Internet Themes/Main Internet/4-30 Network Space.mp3"
+dest_files=[ "res://.import/4-30 Network Space.mp3-9195e53bfd87302101a570fce527d84f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

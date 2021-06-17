@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-21 NETWORK IS SPREADING.mp3-4e9d225bd598d93de5526b9fb239127b.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Internet Themes/Main Internet/2-21 NETWORK IS SPREADING.mp3"
+dest_files=[ "res://.import/2-21 NETWORK IS SPREADING.mp3-4e9d225bd598d93de5526b9fb239127b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

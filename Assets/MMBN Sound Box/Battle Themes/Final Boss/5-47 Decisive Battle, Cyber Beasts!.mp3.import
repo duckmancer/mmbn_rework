@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-47 Decisive Battle, Cyber Beasts!.mp3-270064c5fe3e2eb6dfe15355bac0b3f8.mp3str"
+
+[deps]
+
+source_file="res://Assets/MMBN Sound Box/Battle Themes/Final Boss/5-47 Decisive Battle, Cyber Beasts!.mp3"
+dest_files=[ "res://.import/5-47 Decisive Battle, Cyber Beasts!.mp3-270064c5fe3e2eb6dfe15355bac0b3f8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
