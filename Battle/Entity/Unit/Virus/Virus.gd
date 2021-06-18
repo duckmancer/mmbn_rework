@@ -4,8 +4,8 @@ extends Unit
 
 func _ready():
 	input_map.action_0 = {
-		action_name = Action.SHOCKWAVE,
-		action_scene = MiscAction,
+		action_subtype = Action.SHOCKWAVE,
+		action_type = MiscAction,
 		args = [],
 	}
 

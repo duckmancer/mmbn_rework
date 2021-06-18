@@ -116,10 +116,10 @@ var attack_subtype = null
 var loop_start = 0
 var do_repeat := false
 
-var action_type setget set_action_type
-func set_action_type(new_type):
-	action_type = new_type
-	initialize_arguments(action_data[action_type])
+var action_subtype setget set_action_subtype
+func set_action_subtype(new_type):
+	action_subtype = new_type
+	initialize_arguments(action_data[action_subtype])
 
 func loop_repeat():
 	var loop_target_time = Utils.frames_to_seconds(loop_start) 

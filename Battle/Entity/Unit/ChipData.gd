@@ -1,9 +1,6 @@
 extends Node2D
 
-var starter_chips = [
-	"minibomb",
-	"sword",
-	"cannon",
+var debug_chips = [
 ]
 
 var chips = []
@@ -15,13 +12,6 @@ onready var chip_icons = [
 	$Chip/Chip2/Chip3/Chip4,
 	$Chip/Chip2/Chip3/Chip4/Chip5,
 ]
-
-func _update_display():
-	for i in chip_icons.size():
-		chip_icons[i].visible = i < chips.size()
-	if not chips.empty():
-		if chips.front().has("id"):
-			chip_icons.front().frame = chips.front().id
 
 func get_chip():
 	if chips.empty():
@@ -41,9 +31,21 @@ func set_chips(new_chips):
 		chips.append(c)
 	_update_display()
 
+func clear_chips():
+	chips.clear()
+	_update_display()
+
+func _update_display():
+	for i in chip_icons.size():
+		chip_icons[i].visible = i < chips.size()
+	if not chips.empty():
+		if chips.front().has("id"):
+			chip_icons.front().frame = chips.front().id
+
 func _ready() -> void:
+	clear_chips()
 	var s_chips = []
-	for c in starter_chips:
+	for c in debug_chips:
 		s_chips.append(Battlechips.CHIP_DATA[c])
 	set_chips(s_chips)
 
