@@ -34,14 +34,12 @@ var action_data = {
 	},
 	BUSTER: {
 		animation_name = "shoot",
-		function_name = "attack",
 		entity_animation = "shoot",
 		attack_type = Shot,
 		attack_subtype = Shot.BUSTER,
 	},
 	BUSTER_SCAN: {
 		animation_name = "shoot",
-		function_name = "attack",
 		entity_animation = "shoot",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.BUSTER,
@@ -49,64 +47,41 @@ var action_data = {
 	},
 	SWORD: {
 		animation_name = "slash",
-		function_name = "attack",
 		entity_animation = "slash",
 		attack_type = Slash,
 		attack_subtype = Slash.SWORD,
 	},
 	SHOCKWAVE: {
 		animation_name = "shockwave",
-		function_name = "attack",
 		entity_animation = "shoot",
 		attack_type = Shockwave,
 		attack_subtype = Shockwave.SWORD,
 	},
 	CANNON: {
 		animation_name = "cannon",
-		function_name = "attack",
 		entity_animation = "shoot_heavy",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.CANNON,
 	},
 	HI_CANNON: {
 		animation_name = "hi_cannon",
-		function_name = "attack",
 		entity_animation = "shoot_heavy",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.HI_CANNON,
 	},
 	M_CANNON: {
 		animation_name = "m_cannon",
-		function_name = "attack",
 		entity_animation = "shoot_heavy",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.M_CANNON,
 	},
 	MINIBOMB: {
 		animation_name = "throw",
-		function_name = "attack",
 		entity_animation = "throw",
 		attack_type = Throwable,
 		attack_subtype = Throwable.MINIBOMB,
 	},
 }
-
-export(ActionState) var state = ActionState.WAITING setget set_state
-func set_state(new_state):
-	state = new_state
-	if is_active:
-		match state:
-			ActionState.ACTIVE:
-				callv(function_name, args)
-				state = ActionState.WAITING
-			ActionState.DONE:
-				terminate()
-			ActionState.REPEAT:
-				state = ActionState.WAITING
-				if do_repeat:
-					loop_repeat()
-
-var args : Array
 
 var animation_name := "hide"
 var function_name := "attack"
@@ -115,20 +90,32 @@ var attack_type = null
 var attack_subtype = null
 var loop_start = 0
 var do_repeat := false
+var args : Array
 
 var action_subtype setget set_action_subtype
 func set_action_subtype(new_type):
 	action_subtype = new_type
 	initialize_arguments(action_data[action_subtype])
 
-func loop_repeat():
-	var loop_target_time = Utils.frames_to_seconds(loop_start) 
-	animation_player.seek(loop_target_time)
-	emit_signal("action_looped", loop_target_time)
+export(ActionState) var state = ActionState.WAITING setget set_state
+func set_state(new_state):
+	state = new_state
+	if is_active:
+		match state:
+			ActionState.ACTIVE:
+				execute_action()
+				state = ActionState.WAITING
+			ActionState.DONE:
+				conclude_action()
+			ActionState.REPEAT:
+				state = ActionState.WAITING
+				repeat_action()
 
 
-func get_entity_anim():
-	return entity_animation
+# Action Execution
+
+func execute_action():
+	callv(function_name, args)
 
 func attack():
 	var kwargs = {attack_type = attack_subtype}
@@ -138,19 +125,36 @@ func attack():
 func move(dir):
 	emit_signal("move_triggered", dir)
 
+func repeat_action():
+	if do_repeat:
+		var loop_target_time = Utils.frames_to_seconds(loop_start)
+		animation_player.seek(loop_target_time)
+		emit_signal("action_looped", loop_target_time)
+
+
+# Cleanup
+
+func conclude_action():
+	terminate()
+
+func animation_done():
+	self.state = ActionState.DONE
+
 func terminate():
 	emit_signal("action_finished")
 	.terminate()
+
+
+# Processing
 
 func do_tick():
 	.do_tick()
 
 
+# Initialization
+
 func _ready():
 	animation_player.play(animation_name)
-
-func animation_done():
-	self.state = ActionState.DONE
 
 
 

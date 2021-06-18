@@ -21,28 +21,28 @@ tracks/0/keys = {
 "values": [ 7, 0, 1, 2, 3, 2, 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:state")
+tracks/1/path = NodePath(".:anim_y_coord")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.366667 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:anim_y_coord")
+tracks/2/path = NodePath(".:state")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.366667 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -62,28 +62,28 @@ tracks/0/keys = {
 "values": [ 7, 0, 1, 2, 3, 2, 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:state")
+tracks/1/path = NodePath(".:anim_y_coord")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.366667 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 2 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:anim_y_coord")
+tracks/2/path = NodePath(".:state")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.366667 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 2 ]
+"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -103,38 +103,37 @@ tracks/0/keys = {
 "values": [ 7, 0, 1, 2, 3, 2, 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:state")
+tracks/1/path = NodePath(".:anim_y_coord")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.366667 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:anim_y_coord")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 4 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:state")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.366667 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [node name="Cannon" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 anim_x_coord = 7
-anim_y_coord = 4
+state = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 34
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/cannon = SubResource( 1 )

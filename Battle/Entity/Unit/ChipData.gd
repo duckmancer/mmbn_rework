@@ -13,6 +13,17 @@ onready var chip_icons = [
 	$Chip/Chip2/Chip3/Chip4/Chip5,
 ]
 
+func has_chip():
+	return not chips.empty()
+
+func use_chip():
+	var result = null
+	if has_chip():
+		result = chips.front()
+		chips.pop_front()
+		_update_display()
+	return result
+
 func get_chip():
 	if chips.empty():
 		return null

@@ -7,7 +7,7 @@ signal hp_changed(new_hp)
 onready var healthbar = $Healthbar
 onready var chip_data = $ChipData
 
-export var action_cooldown = 8
+export var delay_between_actions = 8
 export var max_hp = 40
 
 var input_map = {
@@ -31,7 +31,7 @@ var input_map = {
 		action_type = MiscAction,
 		args = ["right"],
 	},
-	action_0 = {
+	chip_action = {
 		action_subtype = Action.BUSTER_SCAN,
 		action_type = Buster,
 		args = [],
@@ -51,16 +51,11 @@ var input_map = {
 		action_type = Cannon,
 		args = [],
 	},
-	no_action = {
-		action_subtype = Action.IDLE,
-		action_type = MiscAction,
-		args = [],
-	},
 }
 
-var queued_action = input_map.no_action
+var queued_action = null
 var cur_action = null
-var last_input = "no_action"
+var last_input = null
 var is_action_running := false
 var cur_cooldown = 0
 
@@ -89,23 +84,18 @@ func reject_move_request():
 
 # Input Handling
 
-func process_input(input):
-	if not _validate_input(input):
-		return
-	if input == "action_0":
-		if _enqueue_action(chip_data.get_chip()):
-			chip_data.pop_chip()
-	else:
-		_enqueue_action(input_map[input])
+func process_input(input) -> void:
+	_check_held_input(input)
+	if _can_enqueue(input):
+		var action = null
+		if input == "chip_action":
+			action = chip_data.use_chip()
+		else:
+			action = input_map[input]
+		if action:
+			_enqueue_action(action)
 
-func _validate_input(input) -> bool:
-	_check_repeat(input)
-	if not _can_enqueue(input):
-		return false
-	else:
-		return true
-
-func _check_repeat(input):
+func _check_held_input(input):
 	if is_action_running and last_input != input:
 		cur_action.do_repeat = false
 	last_input = input
@@ -113,45 +103,40 @@ func _check_repeat(input):
 func _can_enqueue(input):
 	if cur_cooldown > 0 and last_input == input:
 		return false
-	if queued_action.action_subtype != Action.IDLE or input == "no_action":
+	if queued_action or not input:
 		return false
 	return true
 
 
 # Action Queueing
 
-func _enqueue_action(action):
-	if not action:
-		return false
+func _enqueue_action(action) -> void:
 	queued_action = action
 	if action.action_subtype == Action.MOVE:
 		request_move(queued_action.args[0])
-	return true
 
 func _reset_queued_action():
-	queued_action = input_map.no_action
+	queued_action = null
 
 
 # Action Execution
 
-func _run_queued_action() -> void:
-	if queued_action.action_subtype == Action.IDLE:
-		return
-	_execute_action(queued_action)
-	animation_player.play(cur_action.get_entity_anim())
-	
+func _launch_action(action_data : Dictionary) -> void:
+	cur_action = _create_action(action_data)
+	animation_player.play(cur_action.entity_animation)
 	is_action_running = true
-	cur_cooldown = action_cooldown
+	cur_cooldown = delay_between_actions
 	_reset_queued_action()
 
-func _execute_action(action) -> void:
-	cur_action = create_child_entity(action.action_type, action)
-	_connect_action_signals()
+func _create_action(action_data : Dictionary) -> Action:
+	var action = create_child_entity(action_data.action_type, action_data)
+	_connect_action_signals(action)
+	return action
 
-func _connect_action_signals():
-	cur_action.connect("action_finished", self, "_on_Action_action_finished")
-	cur_action.connect("action_looped", self, "_on_Action_action_looped")
-	cur_action.connect("move_triggered", self, "_on_Action_move_triggered")
+func _connect_action_signals(action : Action) -> void:
+	action.connect("action_finished", self, "_on_Action_action_finished")
+	action.connect("action_looped", self, "_on_Action_action_looped")
+	action.connect("move_triggered", self, "_on_Action_move_triggered")
 
 
 # Processing
@@ -177,7 +162,8 @@ func do_tick():
 		cur_action.sprite.position = sprite.position
 	else:
 		if cur_cooldown == 0:
-			_run_queued_action()
+			if queued_action:
+				_launch_action(queued_action)
 		else:
 			cur_cooldown -= 1
 

@@ -11,7 +11,7 @@ var _held_input = {
 	down = 0,
 	left = 0,
 	right = 0,
-	action_0 = 0,
+	chip_action = 0,
 	action_1 = 0,
 	action_2 = 0,
 	action_3 = 0,
@@ -40,24 +40,24 @@ func _unhandled_key_input(event):
 			_button_released(button)
 
 func get_last_input():
-	var best = "no_action"
+	var best_input = null
 	var best_count = 0
 	for input in _held_input.keys():
 		if _held_input[input] > best_count:
-			best = input
+			best_input = input
 			best_count = _held_input[input]
 			if best_count == _cur_input_count:
 				break
-	return best
+	return best_input
 
 func _physics_process(_delta):
 	if _total_held_inputs == 0:
 		_cur_input_count = 0
 	
 	if not Globals.battle_paused:
-		var best = get_last_input()
+		var best_input = get_last_input()
 		if player:
-			player.process_input(best)
+			player.process_input(best_input)
 	
 
 func bind_player(controlled_player: Unit):
