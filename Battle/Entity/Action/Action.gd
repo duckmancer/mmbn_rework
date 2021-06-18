@@ -11,9 +11,12 @@ enum {
 	BUSTER,
 	BUSTER_SCAN,
 	CANNON,
+	HI_CANNON,
+	M_CANNON
 	SWORD,
 	MINIBOMB,
 	SHOCKWAVE,
+	LAST,
 }
 enum ActionState {
 	WAITING,
@@ -59,11 +62,25 @@ var action_data = {
 		attack_subtype = Shockwave.SWORD,
 	},
 	CANNON: {
-		animation_name = "shoot_heavy",
+		animation_name = "cannon",
 		function_name = "attack",
 		entity_animation = "shoot_heavy",
 		attack_type = Hitscan,
 		attack_subtype = Hitscan.CANNON,
+	},
+	HI_CANNON: {
+		animation_name = "hi_cannon",
+		function_name = "attack",
+		entity_animation = "shoot_heavy",
+		attack_type = Hitscan,
+		attack_subtype = Hitscan.HI_CANNON,
+	},
+	M_CANNON: {
+		animation_name = "m_cannon",
+		function_name = "attack",
+		entity_animation = "shoot_heavy",
+		attack_type = Hitscan,
+		attack_subtype = Hitscan.M_CANNON,
 	},
 	MINIBOMB: {
 		animation_name = "throw",

@@ -8,6 +8,22 @@ enum Team {
 	ENEMY,
 	NEUTRAL,
 }
+
+export var anim_x_coord = 0 setget set_anim_x_coord
+func set_anim_x_coord(new_x):
+	if is_active:
+		sprite.frame_coords.x = new_x
+
+export var anim_y_coord = 0 setget set_anim_y_coord
+func set_anim_y_coord(new_y):
+	if is_active:
+		sprite.frame_coords.y = new_y
+
+func advance_animation():
+	if is_active:
+		sprite.frame += 1
+
+
 onready var sprite := $Sprite as Sprite
 onready var animation_player := $AnimationPlayer as AnimationPlayer
 onready var audio := $AudioStreamPlayer as AudioStreamPlayer

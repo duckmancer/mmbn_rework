@@ -46,18 +46,18 @@ var input_map = {
 		args = [],
 	},
 	action_1 = {
-		action_name = Action.BUSTER_SCAN,
-		action_scene = Buster,
+		action_name = Action.CANNON,
+		action_scene = Cannon,
 		args = [],
 	},
 	action_2 = {
-		action_name = Action.SWORD,
-		action_scene = Sword,
+		action_name = Action.HI_CANNON,
+		action_scene = Cannon,
 		args = [],
 	},
 	action_3 = {
-		action_name = Action.MINIBOMB,
-		action_scene = Throw,
+		action_name = Action.M_CANNON,
+		action_scene = Cannon,
 		args = [],
 	},
 	no_action = {

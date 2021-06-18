@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Battle/Entity/Attack/Attack.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/BattleAssets/Weapons/Cannon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/BattleAssets/Attacks/Shot.png" type="Texture" id=2]
 [ext_resource path="res://Battle/Entity/Attack/Shot/Shot.gd" type="Script" id=3]
 [ext_resource path="res://Assets/MMBNSFX/Attack SFX/AreaGrab HQ.ogg" type="AudioStream" id=4]
 

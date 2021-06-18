@@ -3,6 +3,8 @@ extends Attack
 
 enum {
 	CANNON,
+	HI_CANNON,
+	M_CANNON,
 	BUSTER,
 }
 
@@ -11,6 +13,18 @@ const _HITSCAN_DATA = {
 		damage = 40,
 		pass_through = false,
 		animation_name = "cannon",
+		impact_type = "hit",
+	},
+	HI_CANNON: {
+		damage = 80,
+		pass_through = false,
+		animation_name = "hi_cannon",
+		impact_type = "hit",
+	},
+	M_CANNON: {
+		damage = 120,
+		pass_through = false,
+		animation_name = "m_cannon",
 		impact_type = "hit",
 	},
 	BUSTER: {
