@@ -2,13 +2,12 @@ class_name Navi
 extends Unit
 
 func run_AI(target):
-	if .run_AI(target):
-		return true
-	elif target.grid_pos.y == self.grid_pos.y:
-		#process_input("action_2")
-		return true
-	else:
-		return false
+	var result = .run_AI(target)
+	if not result:
+		if target.grid_pos.y == self.grid_pos.y:
+	#		return "action_2"
+			pass
+	return result
 
 func do_tick():
 	.do_tick()

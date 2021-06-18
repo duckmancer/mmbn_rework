@@ -3,7 +3,8 @@ extends Entity
 
 signal action_finished()
 signal action_looped(loop_start_time)
-signal move_triggered(dir)
+signal move_triggered(destination)
+signal aborted()
 
 enum {
 	IDLE,
@@ -28,7 +29,6 @@ enum ActionState {
 var action_data = {
 	MOVE: {
 		animation_name = "move",
-		function_name = "move",
 		entity_animation = "move",
 		attack_type = null,
 	},
@@ -84,7 +84,6 @@ var action_data = {
 }
 
 var animation_name := "hide"
-var function_name := "attack"
 var entity_animation := "idle"
 var attack_type = null
 var attack_subtype = null
@@ -111,19 +110,17 @@ func set_state(new_state):
 				state = ActionState.WAITING
 				repeat_action()
 
+func stop_repeat():
+	do_repeat = false
+
 
 # Action Execution
 
 func execute_action():
-	callv(function_name, args)
-
-func attack():
 	var kwargs = {attack_type = attack_subtype}
 	var _entity = create_child_entity(attack_type,
 	kwargs)
 
-func move(dir):
-	emit_signal("move_triggered", dir)
 
 func repeat_action():
 	if do_repeat:
@@ -144,12 +141,17 @@ func terminate():
 	emit_signal("action_finished")
 	.terminate()
 
+func abort():
+	emit_signal("aborted")
+	queue_free()
 
 # Processing
 
 func do_tick():
 	.do_tick()
 
+func check_in():
+	pass
 
 # Initialization
 

@@ -31,6 +31,16 @@ func get_grid_pos():
 	return grid_pos.round()
 
 
+func can_move_to(destination : Vector2) -> bool:
+	if not Utils.in_bounds(destination, Constants.GRID_SIZE):
+		return false
+	if team != Globals.battle_grid[destination.y][destination.x].team:
+		return false
+	for u in get_tree().get_nodes_in_group("unit"):
+		if u.grid_pos == destination:
+			return false
+	return true
+
 # Animation Helpers
 
 export var anim_x_coord = 0 setget set_anim_x_coord
@@ -125,6 +135,9 @@ func get_targets() -> Array:
 func do_tick() -> void:
 	pass
 	frame_counter += 1
+
+func move_to(destination : Vector2) -> void:
+	self.grid_pos = destination
 
 
 # Initialization

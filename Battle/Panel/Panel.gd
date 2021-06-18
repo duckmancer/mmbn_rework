@@ -39,38 +39,22 @@ const SIZE = Vector2(40, 24)
 const FRONT_PANEL_OFFSET = 8
 const PANEL_ORIGIN = Vector2(0, Constants.GBA_SCREEN_SIZE.y - FRONT_PANEL_OFFSET - SIZE.y * Constants.GRID_SIZE.y)
 const ENTITY_ORIGIN = PANEL_ORIGIN + Vector2(0.5 * SIZE.x, SIZE.y)
-
 const DANGER_DURATION = 1
+
+onready var border_player = $Border/AnimationPlayer
+onready var tile_player = $Tile/AnimationPlayer
+
+var team 
+var type = TileType.NORMAL
+var _danger_sources := {}
 
 var grid_pos : Vector2 setget set_grid_pos
 func set_grid_pos(pos: Vector2):
 	grid_pos = pos
 	position = PANEL_ORIGIN + Utils.scale_vector(SIZE, pos)
-	
 
 
-onready var border_player = $Border/AnimationPlayer
-onready var tile_player = $Tile/AnimationPlayer
-
-var team setget set_team
-func set_team(new_team):
-	team = new_team
-	_update_panel()
-
-var type = TileType.NORMAL setget set_type
-func set_type(new_type):
-	type = new_type
-	_update_panel()
-
-var _danger_sources := {}
-
-func register_danger(source, duration := DANGER_DURATION):
-	_danger_sources[source] = duration
-	_update_panel()
-
-func pre_ready_setup(pos: Vector2, n_team):
-	team = n_team
-	self.grid_pos = pos
+# Animation
 
 func _get_row_name():
 	return Rows.keys()[grid_pos.y].to_lower()
@@ -101,14 +85,8 @@ func _get_tile_anim():
 	
 	return result
 
-func _update_panel():
-	border_player.play(_get_border_anim())
-	tile_player.play(_get_tile_anim())
 
-func _ready():
-	_update_panel()
-	z_index += int(grid_pos.y)
-
+# Processing
 
 func _physics_process(_delta):
 	if not Globals.battle_paused:
@@ -117,3 +95,22 @@ func _physics_process(_delta):
 			if _danger_sources[s] <= 0:
 				var _exists = _danger_sources.erase(s)
 		_update_panel()
+
+func _update_panel():
+	border_player.play(_get_border_anim())
+	tile_player.play(_get_tile_anim())
+
+func register_danger(source, duration := DANGER_DURATION):
+	_danger_sources[source] = duration
+	_update_panel()
+
+
+# Initialization
+
+func _ready():
+	_update_panel()
+	z_index += int(grid_pos.y)
+
+func pre_ready_setup(pos: Vector2, n_team):
+	team = n_team
+	self.grid_pos = pos
