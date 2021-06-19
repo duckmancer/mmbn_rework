@@ -177,9 +177,10 @@ config/icon="res://Assets/BattleAssets/icon.png"
 [autoload]
 
 Constants="*res://Resources/Constants.gd"
-Scenes="*res://Resources/Scenes.gd"
 Utils="*res://Resources/Utils.gd"
 Globals="*res://Resources/Globals.gd"
+Scenes="*res://Resources/Scenes.gd"
+ActionData="*res://Resources/ActionData.gd"
 Battlechips="*res://Resources/Battlechips.gd"
 
 [debug]

@@ -21,6 +21,15 @@ var is_active := false
 var is_paused := false
 var frame_counter := 0
 
+
+var data setget set_data
+func set_data(new_data):
+	data = new_data
+	initialize_arguments(data)
+
+
+# Movement
+
 var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
 func set_grid_pos(new_grid_pos):
 	grid_pos = new_grid_pos
@@ -29,7 +38,6 @@ func set_grid_pos(new_grid_pos):
 		z_index = int(grid_pos.y)
 func get_grid_pos():
 	return grid_pos.round()
-
 
 func can_move_to(destination : Vector2) -> bool:
 	if not Utils.in_bounds(destination, Constants.GRID_SIZE):
@@ -151,7 +159,6 @@ func initialize_arguments(kwargs := {}):
 	for keyword in kwargs:
 		if keyword in self:
 			set(keyword, kwargs[keyword])
-
 
 # Signals
 

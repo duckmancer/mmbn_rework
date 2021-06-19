@@ -12,46 +12,42 @@ export var delay_between_actions = 8
 export var max_hp = 40
 
 var input_map = {
-	up = {
-		action_subtype = Action.MOVE,
-		action_type = MiscAction,
-		movement_dir = "up",
-	},
-	down = {
-		action_subtype = Action.MOVE,
-		action_type = MiscAction,
-		movement_dir = "down",
-	},
-	left = {
-		action_subtype = Action.MOVE,
-		action_type = MiscAction,
-		movement_dir = "left",
-	},
-	right = {
-		action_subtype = Action.MOVE,
-		action_type = MiscAction,
-		movement_dir = "right",
-	},
-	chip_action = {
-		action_subtype = Action.BUSTER_SCAN,
-		action_type = Buster,
-		args = [],
-	},
-	action_1 = {
-		action_subtype = Action.CANNON,
-		action_type = Cannon,
-		args = [],
-	},
-	action_2 = {
-		action_subtype = Action.HI_CANNON,
-		action_type = Cannon,
-		args = [],
-	},
-	action_3 = {
-		action_subtype = Action.M_CANNON,
-		action_type = Cannon,
-		args = [],
-	},
+	up = ActionData.action_factory(
+		ActionData.MOVE, 
+		{
+			movement_dir = "up",
+		}
+	),
+	down = ActionData.action_factory(
+		ActionData.MOVE, 
+		{
+			movement_dir = "down",
+		}
+	),
+	left = ActionData.action_factory(
+		ActionData.MOVE, 
+		{
+			movement_dir = "left",
+		}
+	),
+	right = ActionData.action_factory(
+		ActionData.MOVE, 
+		{
+			movement_dir = "right",
+		}
+	),
+	action_1 = ActionData.action_factory(
+		ActionData.CANNON, 
+		{}
+	),
+	action_2 = ActionData.action_factory(
+		ActionData.HI_CANNON, 
+		{}
+	),
+	action_3 = ActionData.action_factory(
+		ActionData.M_CANNON, 
+		{}
+	),
 }
 
 var cur_action : Action = null
@@ -87,7 +83,9 @@ func _check_held_input(input):
 func _execute_input(input) -> void:
 	var action = null
 	if input == "chip_action":
-		action = chip_data.use_chip()
+		var chip = chip_data.use_chip()
+		if chip:
+			action = ActionData.action_factory(chip.action_subtype)
 	else:
 		action = input_map[input]
 	if action:
@@ -101,7 +99,7 @@ func _launch_action(action_data : Dictionary) -> void:
 	cur_action.check_in()
 
 func _create_action(action_data : Dictionary) -> Action:
-	var action = create_child_entity(action_data.action_type, action_data)
+	var action = create_child_entity(action_data.action_type, {data = action_data})
 	_connect_action_signals(action)
 	return action
 
@@ -116,6 +114,8 @@ func _connect_action_signals(action : Action) -> void:
 
 func run_AI(target):
 	var result = null
+	# DEBUG
+	return result
 	var target_row = target.grid_pos.y
 	if target_row > grid_pos.y:
 		result = "down"

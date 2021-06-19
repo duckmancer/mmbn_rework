@@ -29,3 +29,8 @@ static func in_bounds(grid_pos: Vector2, bounding_box := Constants.GRID_SIZE):
 	if grid_pos.y >= bounding_box.y or grid_pos.y < 0:
 		return false
 	return true
+
+
+static func overwrite_dict(destination, source):
+	for key in source:
+		destination[key] = source[key]

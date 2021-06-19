@@ -29,12 +29,8 @@ var ignored_targets = []
 var damage = 10
 var duration = 60
 var pass_through = false
-var animation_name = "none"
+var attack_animation = "none"
 var impact_type = "hit"
-var attack_type setget set_attack_type
-func set_attack_type(new_type):
-	attack_type = new_type
-	initialize_arguments(attack_data[attack_type])
 
 func _init():
 	pass
@@ -86,6 +82,6 @@ func _ready():
 	if is_offset:
 		set_grid_pos(grid_pos + attack_dir)
 	state = starting_state
-	animation_player.play(animation_name)
+	animation_player.play(attack_animation)
 
 

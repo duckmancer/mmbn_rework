@@ -396,13 +396,13 @@ tracks/6/keys = {
 
 [node name="Hitscan" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-anim_y_coord = 5
+anim_y_coord = 1
 starting_state = 0
 state = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 10
+frame = 7
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/buster = SubResource( 1 )

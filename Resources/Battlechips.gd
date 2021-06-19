@@ -330,25 +330,30 @@ enum Unobtainable {
 	_END,
 }
 
+enum NonChips {
+	MOVE = Unobtainable._END,
+	BUSTER,
+	BUSTER_SCAN,
+	
+	_END,
+}
+
 const CHIP_DATA = {
 	cannon = {
 		action_type = Cannon,
-		action_subtype = Action.CANNON,
-		args = [],
+		action_subtype = ActionData.CANNON,
 		id = Standard.CANNON,
 		code = "B",
 	},
 	sword = {
 		action_type = Sword,
-		action_subtype = Action.SWORD,
-		args = [],
+		action_subtype = ActionData.SWORD,
 		id = Standard.SWORD,
 		code = "S",
 	},
 	minibomb = {
 		action_type = Throw,
-		action_subtype = Action.MINIBOMB,
-		args = [],
+		action_subtype = ActionData.MINIBOMB,
 		id = Standard.MINIBOMB,
 		code = "B",
 	},
