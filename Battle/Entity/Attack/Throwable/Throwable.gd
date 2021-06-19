@@ -9,7 +9,7 @@ const _THROWABLE_DATA = {
 		damage = 50,
 		animation_name = "minibomb",
 		child_type = Explosion,
-		child_args = {attack_type = Slash.MINIBOMB},
+		child_args = {attack_type = AreaHit.MINIBOMB},
 	},
 }
 

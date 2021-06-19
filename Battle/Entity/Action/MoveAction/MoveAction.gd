@@ -1,4 +1,4 @@
-class_name MiscAction
+class_name MoveAction
 extends Action
 
 var movement_dir

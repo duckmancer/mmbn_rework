@@ -133,6 +133,7 @@ anim_x_coord = 7
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
+frame = 2
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/cannon = SubResource( 1 )

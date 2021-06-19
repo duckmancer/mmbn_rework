@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Battle/Entity/Action/Action.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Battle/Entity/Action/MiscAction/MiscAction.gd" type="Script" id=2]
+[ext_resource path="res://Battle/Entity/Action/MoveAction/MoveAction.gd" type="Script" id=2]
 
-[node name="MiscAction" instance=ExtResource( 1 )]
+[node name="MoveAction" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]

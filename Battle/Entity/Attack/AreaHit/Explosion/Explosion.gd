@@ -1,5 +1,5 @@
 class_name Explosion
-extends Slash
+extends AreaHit
 
 
 func _ready() -> void:

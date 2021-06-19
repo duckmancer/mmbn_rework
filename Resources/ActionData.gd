@@ -17,7 +17,7 @@ var base_actions = {
 	MOVE: {
 		entity_animation = "move",
 		
-		action_type = MiscAction,
+		action_type = MoveAction,
 		action_animation = "move",
 		
 		attack_type = null,
@@ -38,10 +38,9 @@ var base_actions = {
 		entity_animation = "slash",
 		
 		action_type = Sword,
-		# TODO: Rename to sword
-		action_animation = "slash",
+		action_animation = "sword",
 		
-		attack_type = Slash,
+		attack_type = AreaHit,
 		attack_animation = "sword",
 		damage = 80,
 		duration = 0,

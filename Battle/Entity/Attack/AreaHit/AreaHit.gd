@@ -1,4 +1,4 @@
-class_name Slash
+class_name AreaHit
 extends Attack
 
 enum {

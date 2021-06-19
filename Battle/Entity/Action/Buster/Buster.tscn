@@ -167,7 +167,6 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/hide = SubResource( 1 )

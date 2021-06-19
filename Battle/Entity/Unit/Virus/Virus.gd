@@ -3,9 +3,10 @@ extends Unit
 
 
 func _ready():
+	# TODO: Fix Mettaur Shockwave
 	input_map.action_1 = {
 		action_subtype = Action.SHOCKWAVE,
-		action_type = MiscAction,
+		action_type = MoveAction,
 	}
 
 

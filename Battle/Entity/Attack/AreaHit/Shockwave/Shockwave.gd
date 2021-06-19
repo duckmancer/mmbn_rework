@@ -1,5 +1,5 @@
 class_name Shockwave
-extends Slash
+extends AreaHit
 
 
 
