@@ -34,9 +34,10 @@ tracks/1/keys = {
 
 [node name="Sword" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+anim_x_coord = 0
 
 [node name="Sprite" parent="." index="0"]
-frame = 48
+frame = 49
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/sword = SubResource( 1 )

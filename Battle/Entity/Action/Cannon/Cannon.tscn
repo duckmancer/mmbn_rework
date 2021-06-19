@@ -129,11 +129,12 @@ tracks/2/keys = {
 
 [node name="Cannon" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-anim_x_coord = 7
+anim_x_coord = 2
+anim_y_coord = 2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 2
+frame = 7
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/cannon = SubResource( 1 )

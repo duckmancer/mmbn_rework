@@ -45,7 +45,7 @@ var input_map = {
 		{}
 	),
 	action_3 = ActionData.action_factory(
-		ActionData.M_CANNON, 
+		ActionData.BUSTER, 
 		{}
 	),
 }
@@ -93,7 +93,7 @@ func _execute_input(input) -> void:
 
 func _launch_action(action_data : Dictionary) -> void:
 	cur_action = _create_action(action_data)
-	animation_player.play(cur_action.entity_animation)
+	animation_player.play(action_data.entity_animation)
 	is_action_running = true
 	cur_cooldown = delay_between_actions
 	cur_action.check_in()

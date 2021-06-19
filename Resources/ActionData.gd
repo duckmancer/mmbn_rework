@@ -18,15 +18,27 @@ var base_actions = {
 		entity_animation = "move",
 		
 		action_type = MoveAction,
-		action_animation = "move",
+		action_subtype = MOVE,
 		
 		attack_type = null,
+	},
+	BUSTER: {
+		entity_animation = "shoot",
+		
+		action_type = Buster,
+		action_subtype = BUSTER,
+		
+		attack_type = Hitscan,
+		attack_animation = "buster",
+		damage = 10,
+		pass_through = false,
+		impact_type = "hit",
 	},
 	CANNON: {
 		entity_animation = "shoot_heavy",
 		
-		action_animation = "cannon",
 		action_type = Cannon,
+		action_subtype = CANNON,
 		
 		attack_type = Hitscan,
 		attack_animation = "cannon",
@@ -38,7 +50,7 @@ var base_actions = {
 		entity_animation = "slash",
 		
 		action_type = Sword,
-		action_animation = "sword",
+		action_subtype = SWORD,
 		
 		attack_type = AreaHit,
 		attack_animation = "sword",
@@ -51,7 +63,7 @@ var base_actions = {
 		entity_animation = "throw",
 		
 		action_type = Throw,
-		action_animation = "throw",
+		action_subtype = MINIBOMB,
 		
 		attack_type = Throwable,
 		attack_animation = "minibomb",
@@ -70,47 +82,35 @@ var base_actions = {
 var action_data = {
 	MOVE: {
 		base = MOVE,
-		mods = {
-		},
+	},
+	BUSTER: {
+		base = BUSTER,
 	},
 	CANNON: {
 		base = CANNON,
-		mods = {
-		},
 	},
 	HI_CANNON: {
 		base = CANNON,
-		mods = {
-			action_animation = "hi_cannon",
-			attack_animation = "hi_cannon",
-			damage = 80,
-		},
+		action_subtype = HI_CANNON,
+		damage = 80,
 	},
 	M_CANNON: {
 		base = CANNON,
-		mods = {
-			action_animation = "m_cannon",
-			attack_animation = "m_cannon",
-			damage = 120,
-		},
+		action_subtype = M_CANNON,
+		damage = 120,
 	},
 	SWORD: {
 		base = SWORD,
-		mods = {
-		},
 	},
 	MINIBOMB: {
 		base = MINIBOMB,
-		mods = {
-		},
 	},
 }
 
 func action_factory(action_type, kwargs = {}):
 	var data = action_data[action_type]
-	var mods = data.mods.duplicate()
-	Utils.overwrite_dict(mods, kwargs)
 	var result = base_actions[data.base].duplicate()
-	Utils.overwrite_dict(result, mods)
+	Utils.overwrite_dict(result, data)
+	Utils.overwrite_dict(result, kwargs)
 	return result
 

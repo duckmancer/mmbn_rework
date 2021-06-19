@@ -401,8 +401,8 @@ starting_state = 0
 state = 1
 
 [node name="Sprite" parent="." index="0"]
-texture = ExtResource( 3 )
-frame = 7
+texture = ExtResource( 6 )
+frame = 13
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/buster = SubResource( 1 )

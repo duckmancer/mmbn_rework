@@ -81,6 +81,7 @@ __meta__ = {
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 6 )
+frame = 58
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "idle"
