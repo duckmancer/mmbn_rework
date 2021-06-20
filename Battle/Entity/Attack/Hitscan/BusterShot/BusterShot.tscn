@@ -63,9 +63,6 @@ tracks/3/keys = {
 [node name="BusterShot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
-frame = 13
-
 [node name="AnimationPlayer" parent="." index="1"]
 anims/buster = SubResource( 1 )
 

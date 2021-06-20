@@ -25,7 +25,7 @@ var base_actions = {
 	BUSTER: {
 		entity_animation = "shoot",
 		
-		action_type = Buster,
+		action_type = Action,
 		action_subtype = BUSTER,
 		
 		attack_type = Hitscan,
@@ -37,7 +37,7 @@ var base_actions = {
 	CANNON: {
 		entity_animation = "shoot_heavy",
 		
-		action_type = Cannon,
+		action_type = Action,
 		action_subtype = CANNON,
 		
 		attack_type = Hitscan,
@@ -49,7 +49,7 @@ var base_actions = {
 	SWORD: {
 		entity_animation = "slash",
 		
-		action_type = Sword,
+		action_type = Action,
 		action_subtype = SWORD,
 		
 		attack_type = AreaHit,
@@ -62,7 +62,7 @@ var base_actions = {
 	MINIBOMB: {
 		entity_animation = "throw",
 		
-		action_type = Throw,
+		action_type = Action,
 		action_subtype = MINIBOMB,
 		
 		attack_type = Throwable,

@@ -64,7 +64,7 @@ func set_anim_y_coord(new_y):
 var sprite_path setget set_sprite_path
 func set_sprite_path(p):
 	sprite_path = p
-	sprite.texture.resource_path = sprite_path
+	sprite.texture = load(sprite_path)
 
 func advance_animation():
 	if is_active:

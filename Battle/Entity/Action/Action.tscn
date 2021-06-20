@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "shockwave"
 step = 0.0166667
 tracks/0/type = "value"
@@ -50,7 +50,7 @@ tracks/1/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "shoot_heavy"
 length = 0.533334
 step = 0.0166667
@@ -132,7 +132,7 @@ tracks/2/keys = {
 "values": [ 1, 2 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "slash"
 length = 0.466667
 step = 0.0166667
@@ -173,7 +173,7 @@ tracks/2/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "throw"
 length = 0.4
 step = 0.0166667
@@ -241,11 +241,11 @@ frame = 4
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hide"
 anims/hide = SubResource( 1 )
-anims/shockwave = SubResource( 3 )
-anims/shoot_heavy = SubResource( 5 )
+anims/shockwave = SubResource( 2 )
+anims/shoot_heavy = SubResource( 3 )
 anims/shoot_light = SubResource( 4 )
-anims/slash = SubResource( 6 )
-anims/throw = SubResource( 7 )
+anims/slash = SubResource( 5 )
+anims/throw = SubResource( 6 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )

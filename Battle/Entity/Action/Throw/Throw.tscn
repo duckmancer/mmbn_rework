@@ -51,13 +51,14 @@ tracks/2/keys = {
 [node name="Throw" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_independent = true
+anim_x_coord = 0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
+frame = 0
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/minibomb = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
-stream = ExtResource( 4 )
 volume_db = 5.0

@@ -31,7 +31,7 @@ var base_anim_data = {
 		animation_name = "slash",
 	},
 	ActionData.MINIBOMB: {
-		sprite_path = "res://Assets/BattleAssets/Weapons/Minibomb.png",
+		sprite_path = "res://Assets/BattleAssets/Weapons/Throwable.png",
 		anim_y_coord = 0,
 		animation_name = "throw",
 	},
