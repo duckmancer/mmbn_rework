@@ -30,7 +30,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.0833335 ),
+"times": PoolRealArray( 0.0333333 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
@@ -402,7 +402,7 @@ state = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 6 )
-frame = 13
+frame = 10
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/buster = SubResource( 1 )
@@ -411,5 +411,5 @@ anims/hi_cannon = SubResource( 3 )
 anims/m_cannon = SubResource( 4 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 10.0

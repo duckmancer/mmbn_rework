@@ -23,7 +23,7 @@ var base_anim_data = {
 	ActionData.BUSTER: {
 		sprite_path = "res://Assets/BattleAssets/Weapons/Buster.png",
 		anim_y_coord = 0,
-		animation_name = "shoot_heavy",
+		animation_name = "shoot_light",
 	},
 	ActionData.SWORD: {
 		sprite_path = "res://Assets/BattleAssets/Weapons/Sword.png",
