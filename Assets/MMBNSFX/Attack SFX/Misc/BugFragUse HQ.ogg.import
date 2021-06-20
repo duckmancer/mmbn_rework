@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BugFragUse HQ.ogg-721c4fb57b17f8456e642bada6ed5d90.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Misc/BugFragUse HQ.ogg"
+dest_files=[ "res://.import/BugFragUse HQ.ogg-721c4fb57b17f8456e642bada6ed5d90.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

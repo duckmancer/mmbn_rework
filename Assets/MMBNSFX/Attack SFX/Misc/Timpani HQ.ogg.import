@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Timpani HQ.ogg-d0a2e4c6a5d226287268121412c721fa.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Misc/Timpani HQ.ogg"
+dest_files=[ "res://.import/Timpani HQ.ogg-d0a2e4c6a5d226287268121412c721fa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

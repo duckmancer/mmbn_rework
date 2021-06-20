@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/OverworldFastMove-or-AirHockeyThrow HQ.ogg-8219c108828b0fb9a69ea487ae71241d.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Attacks/OverworldFastMove-or-AirHockeyThrow HQ.ogg"
+dest_files=[ "res://.import/OverworldFastMove-or-AirHockeyThrow HQ.ogg-8219c108828b0fb9a69ea487ae71241d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

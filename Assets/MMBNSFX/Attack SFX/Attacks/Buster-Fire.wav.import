@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Buster-Fire.wav-99743e202b782edbb9abcd0d5ea5735b.sample"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Attacks/Buster-Fire.wav"
+dest_files=[ "res://.import/Buster-Fire.wav-99743e202b782edbb9abcd0d5ea5735b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

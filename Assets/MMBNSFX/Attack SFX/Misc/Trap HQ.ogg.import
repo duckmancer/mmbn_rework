@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Trap HQ.ogg-26e8e9277c1ff6d2761f3d016556fef1.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Misc/Trap HQ.ogg"
+dest_files=[ "res://.import/Trap HQ.ogg-26e8e9277c1ff6d2761f3d016556fef1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

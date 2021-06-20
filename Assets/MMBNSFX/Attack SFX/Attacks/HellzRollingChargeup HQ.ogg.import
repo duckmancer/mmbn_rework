@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/HellzRollingChargeup HQ.ogg-e13e866f5063a0edae688068e1189691.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Attacks/HellzRollingChargeup HQ.ogg"
+dest_files=[ "res://.import/HellzRollingChargeup HQ.ogg-e13e866f5063a0edae688068e1189691.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CounterHit HQ.ogg-ee17c5d52ef97871c641f687840e4aa8.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Misc/CounterHit HQ.ogg"
+dest_files=[ "res://.import/CounterHit HQ.ogg-ee17c5d52ef97871c641f687840e4aa8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

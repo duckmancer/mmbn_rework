@@ -3,7 +3,7 @@
 [ext_resource path="res://Battle/Entity/Attack/Attack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Attack/AreaHit/AreaHit.gd" type="Script" id=2]
 [ext_resource path="res://Assets/BattleAssets/Weapons/Sword.png" type="Texture" id=3]
-[ext_resource path="res://Assets/MMBNSFX/Attack SFX/SwordSwing HQ.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/MMBNSFX/Attack SFX/Attacks/SwordSwing HQ.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "sword"

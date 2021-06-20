@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GrabRvng HQ.ogg-6166d8a0143bb5fa17871be6543c1ff2.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Misc/GrabRvng HQ.ogg"
+dest_files=[ "res://.import/GrabRvng HQ.ogg-6166d8a0143bb5fa17871be6543c1ff2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

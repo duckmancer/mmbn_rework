@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Text HQ.ogg-bb35687bc998fca60cf3255054570063.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Menu SFX/Text HQ.ogg"
+dest_files=[ "res://.import/Text HQ.ogg-bb35687bc998fca60cf3255054570063.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

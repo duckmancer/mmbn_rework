@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CatackAim HQ.ogg-39438d0b57dfc5a54747f17cdf32e227.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Attacks/CatackAim HQ.ogg"
+dest_files=[ "res://.import/CatackAim HQ.ogg-39438d0b57dfc5a54747f17cdf32e227.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

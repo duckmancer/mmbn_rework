@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hurt HQ.ogg-e97dc4d2a7a02fc29325f4533a019b25.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Impacts/Hurt HQ.ogg"
+dest_files=[ "res://.import/Hurt HQ.ogg-e97dc4d2a7a02fc29325f4533a019b25.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

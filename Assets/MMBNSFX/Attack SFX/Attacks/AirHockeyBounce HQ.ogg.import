@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AirHockeyBounce HQ.ogg-ef5a3d76a44a35a02169d50d630f3b19.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Attacks/AirHockeyBounce HQ.ogg"
+dest_files=[ "res://.import/AirHockeyBounce HQ.ogg-ef5a3d76a44a35a02169d50d630f3b19.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

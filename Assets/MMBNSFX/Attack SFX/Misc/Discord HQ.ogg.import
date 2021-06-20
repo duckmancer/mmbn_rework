@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Discord HQ.ogg-3047fc2ae0dfb266d70d252844874d71.oggstr"
+
+[deps]
+
+source_file="res://Assets/MMBNSFX/Attack SFX/Misc/Discord HQ.ogg"
+dest_files=[ "res://.import/Discord HQ.ogg-3047fc2ae0dfb266d70d252844874d71.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
