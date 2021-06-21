@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/BattleAssets/Weapons/Throwable.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "minibomb"
+resource_name = "throw"
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -31,4 +31,4 @@ texture = ExtResource( 3 )
 frame = 5
 
 [node name="AnimationPlayer" parent="." index="1"]
-anims/minibomb = SubResource( 1 )
+anims/throw = SubResource( 1 )

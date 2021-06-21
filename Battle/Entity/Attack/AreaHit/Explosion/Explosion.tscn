@@ -35,19 +35,12 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[node name="Explosion" groups=[
-"entity",
-] instance=ExtResource( 1 )]
+[node name="Explosion" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_offset = false
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 4 )
-offset = Vector2( 0, -61 )
-hframes = 8
-vframes = 8
-frame = 8
-region_rect = Rect2( 107, 7, 34, 46 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/explosion = SubResource( 1 )

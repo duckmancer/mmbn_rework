@@ -14,67 +14,6 @@ enum ActionState {
 	DONE,
 }
 
-var base_anim_data = {
-	ActionData.CANNON: {
-		sprite_path = "res://Assets/BattleAssets/Weapons/Cannon.png",
-		anim_y_coord = 0,
-		animation_name = "shoot_heavy",
-	},
-	ActionData.BUSTER: {
-		sprite_path = "res://Assets/BattleAssets/Weapons/Buster.png",
-		anim_y_coord = 0,
-		animation_name = "shoot_light",
-	},
-	ActionData.SWORD: {
-		sprite_path = "res://Assets/BattleAssets/Weapons/Sword.png",
-		anim_y_coord = 6,
-		animation_name = "slash",
-	},
-	ActionData.MINIBOMB: {
-		sprite_path = "res://Assets/BattleAssets/Weapons/Throwable.png",
-		anim_y_coord = 0,
-		animation_name = "throw",
-	},
-}
-
-var animation_data = {
-	ActionData.MOVE: {
-		animation_name = "move",
-	},
-	ActionData.CANNON: extend_base_action(
-		ActionData.CANNON,
-		{
-		}
-	),
-	ActionData.HI_CANNON: extend_base_action(
-		ActionData.CANNON,
-		{
-			anim_y_coord = 2,
-		}
-	),
-	ActionData.M_CANNON: extend_base_action(
-		ActionData.CANNON,
-		{
-			anim_y_coord = 4,
-		}
-	),
-	ActionData.BUSTER: extend_base_action(
-		ActionData.BUSTER,
-		{
-		}
-	),
-	ActionData.SWORD: extend_base_action(
-		ActionData.SWORD,
-		{
-		}
-	),
-	ActionData.MINIBOMB: extend_base_action(
-		ActionData.MINIBOMB,
-		{
-		}
-	),
-	
-}
 
 var action_subtype
 var animation_name
@@ -143,11 +82,5 @@ func check_in():
 # Initialization
 
 func _ready():
-	initialize_arguments(animation_data[action_subtype])
 	animation_player.play(animation_name)
-
-func extend_base_action(base, mods):
-	var result = base_anim_data[base].duplicate()
-	Utils.overwrite_dict(result, mods)
-	return result
 

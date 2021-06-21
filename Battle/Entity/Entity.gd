@@ -22,10 +22,11 @@ var is_paused := false
 var frame_counter := 0
 
 
-var data setget set_data
-func set_data(new_data):
-	data = new_data
-	initialize_arguments(data)
+var data = {}
+# setget set_data
+#func set_data(new_data):
+#	data = new_data
+#	initialize_arguments(data)
 
 
 # Movement
@@ -53,11 +54,13 @@ func can_move_to(destination : Vector2) -> bool:
 
 export var anim_x_coord = 0 setget set_anim_x_coord
 func set_anim_x_coord(new_x):
+	anim_x_coord = new_x
 	if is_active:
 		sprite.frame_coords.x = new_x
 
 export var anim_y_coord = 0 setget set_anim_y_coord
 func set_anim_y_coord(new_y):
+	anim_y_coord = new_y
 	if is_active:
 		sprite.frame_coords.y = new_y
 
@@ -157,6 +160,7 @@ func move_to(destination : Vector2) -> void:
 
 func _ready():
 	is_active = true
+	initialize_arguments(data)
 	sprite.flip_h = (team == Team.ENEMY)
 	self.grid_pos = grid_pos
 

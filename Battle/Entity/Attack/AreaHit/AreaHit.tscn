@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/MMBNSFX/Attack SFX/Attacks/SwordSwing HQ.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
-resource_name = "sword"
+resource_name = "slash"
 length = 0.333334
 step = 0.0166667
 tracks/0/type = "value"
@@ -26,7 +26,7 @@ tracks/1/path = NodePath("AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.549026,
@@ -41,10 +41,10 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 57
+frame = 61
 
 [node name="AnimationPlayer" parent="." index="1"]
-anims/sword = SubResource( 1 )
+anims/slash = SubResource( 1 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )

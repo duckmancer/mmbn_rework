@@ -21,6 +21,8 @@ func set_state(new_state):
 	if is_active:
 		state = new_state
 
+
+
 var attack_data = {}
 
 var attack_dir
@@ -29,8 +31,14 @@ var ignored_targets = []
 var damage = 10
 var duration = 60
 var pass_through = false
-var attack_animation = "none"
+var animation_name = "none"
 var impact_type = "hit"
+
+var audio_start_offset := 0.0
+var audio_path = null setget set_audio_path
+func set_audio_path(p):
+	audio_path = p
+	audio.stream = load(audio_path)
 
 func _init():
 	pass
@@ -82,6 +90,8 @@ func _ready():
 	if is_offset:
 		set_grid_pos(grid_pos + attack_dir)
 	state = starting_state
-	animation_player.play(attack_animation)
+	self.anim_y_coord += 1
+	animation_player.play(animation_name)
+	audio.play(audio_start_offset)
 
 

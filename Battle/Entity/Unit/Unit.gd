@@ -37,7 +37,7 @@ var input_map = {
 		}
 	),
 	action_1 = ActionData.action_factory(
-		ActionData.CANNON, 
+		ActionData.HEATSHOT, 
 		{}
 	),
 	action_2 = ActionData.action_factory(
@@ -93,7 +93,7 @@ func _execute_input(input) -> void:
 
 func _launch_action(action_data : Dictionary) -> void:
 	cur_action = _create_action(action_data)
-	animation_player.play(action_data.entity_animation)
+	animation_player.play(action_data.animation_name)
 	is_action_running = true
 	cur_cooldown = delay_between_actions
 	cur_action.check_in()

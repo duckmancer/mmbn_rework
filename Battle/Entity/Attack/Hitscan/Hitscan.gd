@@ -38,8 +38,8 @@ const _HITSCAN_DATA = {
 var anim_done = false
 var hit_done = false
 
-func _init():
-	attack_data = _HITSCAN_DATA
+#func _init():
+#	attack_data = _HITSCAN_DATA
 	
 func _ready():
 	pass
