@@ -64,6 +64,10 @@ func set_hp(new_hp):
 	if is_player_controlled:
 		emit_signal("hp_changed", hp, max_hp)
 
+func hurt(damage, impact_type = "hit", damage_type = "normal"):
+	set_hp(hp - damage)
+	create_child_entity(Impact, {impact_anim = impact_type})
+
 
 # Input Handling
 

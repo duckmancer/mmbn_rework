@@ -1,28 +1,26 @@
 class_name Throwable
 extends Attack
 
-enum {
-	MINIBOMB,
-}
-const _THROWABLE_DATA = {
-	MINIBOMB: {
-		damage = 50,
-		animation_name = "minibomb",
-		child_type = Explosion,
-		child_args = {attack_type = AreaHit.MINIBOMB},
-	},
-}
-
-func _init():
-	attack_data = _THROWABLE_DATA
+#enum {
+#	MINIBOMB,
+#}
+#const _THROWABLE_DATA = {
+#	MINIBOMB: {
+#		damage = 50,
+#		animation_name = "minibomb",
+#		child_type = Explosion,
+#		child_args = {attack_type = AreaHit.MINIBOMB},
+#	},
+#}
+#
+#func _init():
+#	attack_data = _THROWABLE_DATA
 	
 const START_TIME_OFFSET = 1.0 / 6.0
 
 var travel_time := 40
 var travel_height := -60
 
-var child_type = Explosion
-var child_args = {}
 
 var starting_trajectory_offset := Vector2(-8, 0)
 
@@ -45,7 +43,7 @@ func _update_trajectory():
 func do_tick():
 	if cur_travel_time == travel_time:
 		state = AttackState.ACTIVE
-		create_child_entity(child_type, child_args.duplicate())
+		create_child_entity(child_type, child_data.duplicate())
 		terminate()
 	else:
 		_update_trajectory()

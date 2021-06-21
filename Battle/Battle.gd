@@ -57,6 +57,7 @@ func _ready():
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
 #	add_entity(Mettaur, Vector2(4, 1))
 	add_entity(Megaman, Vector2(3, 1))
+	add_entity(Megaman, Vector2(4, 1))
 
 func _set_panels():
 	for i in GRID_SIZE.y:

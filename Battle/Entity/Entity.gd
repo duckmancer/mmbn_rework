@@ -15,11 +15,12 @@ onready var audio := $AudioStreamPlayer as AudioStreamPlayer
 
 export var is_independent := true
 
+var default_keywords = []
 var is_player_controlled := false
 var team = Team.ENEMY
 var is_active := false
 var is_paused := false
-var frame_counter := 0
+var lifetime_counter := 0
 
 
 var data = {}
@@ -93,10 +94,6 @@ func create_child_entity(type: Script, input_arguments := {}) -> Entity:
 	return new_entity
 
 func set_default_kwargs(kwargs: Dictionary):
-	var default_keywords = [
-		"team",
-		"grid_pos",
-	]
 	for kw in default_keywords:
 		if not kwargs.has(kw):
 			kwargs[kw] = get(kw)
@@ -149,8 +146,7 @@ func get_targets() -> Array:
 	return result
 
 func do_tick() -> void:
-	pass
-	frame_counter += 1
+	lifetime_counter += 1
 
 func move_to(destination : Vector2) -> void:
 	self.grid_pos = destination
@@ -159,6 +155,7 @@ func move_to(destination : Vector2) -> void:
 # Initialization
 
 func _ready():
+	set_default_keywords()
 	is_active = true
 	initialize_arguments(data)
 	sprite.flip_h = (team == Team.ENEMY)
@@ -168,6 +165,16 @@ func initialize_arguments(kwargs := {}):
 	for keyword in kwargs:
 		if keyword in self:
 			set(keyword, kwargs[keyword])
+
+func set_default_keywords():
+	var kw = [
+		"team",
+		"grid_pos",
+	]
+	for key in kw:
+		if not key in default_keywords:
+			default_keywords.append(key)
+
 
 # Signals
 

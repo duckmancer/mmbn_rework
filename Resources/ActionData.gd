@@ -15,6 +15,33 @@ enum {
 }
 
 
+#var sprite_roots = {
+#	weapons = "res://Assets/BattleAssets/Weapons/",
+#	attacks = "res://Assets/BattleAssets/Attacks/",
+#	impacts = "res://Assets/BattleAssets/Impacts/",
+#}
+#
+#var audio_roots = {
+#	attacks = "res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/",
+#}
+#
+#var action_anim_data = {
+#	buster = {
+#		sprite_path = sprite_roots.weapons + "Buster.png",
+#		anim_y_coord = 0,
+#		animation_name = "shoot_light",
+#	},
+#}
+#
+#var attack_anim_data = {
+#	buster = {
+#		sprite_path = sprite_roots.weapons + "Buster.png",
+#		audio_path = audio_roots.attacks + "0- Buster.wav",
+#		anim_y_coord = 1,
+#		animation_name = "shoot_light",
+#	}
+#}
+
 var base_actions = {
 	MOVE: {
 		action_type = MoveAction,
@@ -42,12 +69,38 @@ var base_actions = {
 		
 		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/Cannon HQ.ogg",
 		audio_start_offset = 0.4,
+		audio_volume = 10,
 		
 		
 		attack_type = Hitscan,
 		damage = 40,
 		pass_through = false,
 		impact_type = "hit",
+	},
+	HEATSHOT: {
+		action_type = Action,
+		
+		sprite_path = "res://Assets/BattleAssets/Weapons/Heatshot.png",
+		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/Heatshot.wav",
+		anim_y_coord = 0,
+		animation_name = "shoot_med",
+		
+		attack_type = Hitscan,
+		damage = 60,
+		pass_through = false,
+		impact_type = "none",
+		is_direct_hit = false,
+		child_type = Explosion,
+		child_data = {
+			damage = 60,
+			duration = 20,
+			
+			pass_through = true,
+			prop_type = AreaHit.SHOT,
+			animation_name = "explosion",
+			audio_volume = 5,
+			impact_type = "none",
+		},
 	},
 	SWORD: {
 		
@@ -74,11 +127,12 @@ var base_actions = {
 		attack_type = Throwable,
 		damage = 50,
 		child_type = Explosion,
-		child_args = {
+		child_data = {
 			damage = 50,
 			duration = 20,
 			pass_through = true,
 			animation_name = "explosion",
+			audio_volume = 5,
 			impact_type = "none",
 		},
 	},
@@ -105,10 +159,7 @@ var action_data = {
 		anim_y_coord = 4,
 	},
 	HEATSHOT: {
-		base = BUSTER,
-		damage = 60,
-		animation_name = "shoot_med",
-		sprite_path = "res://Assets/BattleAssets/Weapons/Heatshot.png",
+		base = HEATSHOT,
 	},
 	SWORD: {
 		base = SWORD,

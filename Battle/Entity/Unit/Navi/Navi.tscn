@@ -3,7 +3,7 @@
 [ext_resource path="res://Battle/Entity/Unit/Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Navi/Navi.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 1.06667
 loop = true
@@ -21,8 +21,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle (old)"
+[sub_resource type="Animation" id=2]
 length = 1.06667
 loop = true
 step = 0.0166667
@@ -55,7 +54,7 @@ tracks/0/keys = {
 "values": [ 0, 8, 9, 8, 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "shoot_heavy"
 length = 0.500001
 step = 0.0166667
@@ -84,8 +83,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -4, 0 ), Vector2( -5, 0 ), Vector2( -6, 0 ), Vector2( -7, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "shoot_light"
+[sub_resource type="Animation" id=5]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -101,7 +99,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "shoot_med"
 length = 0.500001
 step = 0.0166667
@@ -118,7 +116,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.466667
 step = 0.0166667
 tracks/0/type = "value"
@@ -134,8 +132,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "throw"
+[sub_resource type="Animation" id=8]
 length = 0.4
 step = 0.0166667
 tracks/0/type = "value"
@@ -160,11 +157,11 @@ frame = 24
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/idle = SubResource( 2 )
-"anims/idle (old)" = SubResource( 1 )
+anims/idle = SubResource( 1 )
+"anims/idle (old)" = SubResource( 2 )
 anims/move = SubResource( 3 )
-anims/shoot_heavy = SubResource( 5 )
-anims/shoot_light = SubResource( 4 )
-anims/shoot_med = SubResource( 8 )
-anims/slash = SubResource( 6 )
-anims/throw = SubResource( 7 )
+anims/shoot_heavy = SubResource( 4 )
+anims/shoot_light = SubResource( 5 )
+anims/shoot_med = SubResource( 6 )
+anims/slash = SubResource( 7 )
+anims/throw = SubResource( 8 )

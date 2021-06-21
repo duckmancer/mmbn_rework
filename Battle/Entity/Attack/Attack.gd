@@ -31,17 +31,20 @@ var ignored_targets = []
 var damage = 10
 var duration = 60
 var pass_through = false
-var animation_name = "none"
 var impact_type = "hit"
+var is_direct_hit = true
+var child_type = null
+var child_data = {}
+
+var animation_name = "none"
+var attack_anim_y_pos = null
 
 var audio_start_offset := 0.0
+var audio_volume := 0
 var audio_path = null setget set_audio_path
 func set_audio_path(p):
 	audio_path = p
 	audio.stream = load(audio_path)
-
-func _init():
-	pass
 
 
 func terminate():
@@ -51,15 +54,27 @@ func terminate():
 	else:
 		.terminate()
 
-func _warn_panels(snapped_pos: Vector2):
-	var panels = get_tree().get_nodes_in_group("panel")
-	for p in panels:
-		if p.grid_pos == snapped_pos:
-			p.register_danger(self)
-			
 func hit(target):
-	target.hp -= damage
-	create_child_entity(Impact, {grid_pos = target.grid_pos, impact_anim = impact_type})
+	if is_direct_hit:
+		target.hurt(damage, impact_type)
+	else:
+		pass
+		var args = child_data
+		args.grid_pos = target.grid_pos
+		create_child_entity(child_type, {data = args})
+
+
+# Processing
+
+func do_tick():
+	.do_tick()
+	if state == AttackState.ACTIVE:
+		_do_unit_collision(self.grid_pos)
+		if do_panel_warning:
+			_warn_panels(self.grid_pos)
+	duration -= 1
+	if duration <= 0:
+		terminate()
 
 func _do_unit_collision(snapped_pos: Vector2):
 	var targets = get_tree().get_nodes_in_group("target")
@@ -74,24 +89,31 @@ func _do_unit_collision(snapped_pos: Vector2):
 						return true
 	return false
 
-func do_tick():
-	.do_tick()
-	if state == AttackState.ACTIVE:
-		_do_unit_collision(self.grid_pos)
-		if do_panel_warning:
-			_warn_panels(self.grid_pos)
-	duration -= 1
-	if duration <= 0:
-		terminate()
-	
+func _warn_panels(snapped_pos: Vector2):
+	var panels = get_tree().get_nodes_in_group("panel")
+	for p in panels:
+		if p.grid_pos == snapped_pos:
+			p.register_danger(self)
+
+
+# initialization
+
 func _ready():
 	# TODO: Clean up all these hard-coded workarounds
 	attack_dir = TEAM_DIRS[team]
 	if is_offset:
 		set_grid_pos(grid_pos + attack_dir)
 	state = starting_state
-	self.anim_y_coord += 1
-	animation_player.play(animation_name)
-	audio.play(audio_start_offset)
+	_start_animation()
 
+func _start_animation():
+	if attack_anim_y_pos:
+		self.anim_y_coord = attack_anim_y_pos
+	else:
+		self.anim_y_coord += 1
+	animation_player.play(animation_name)
+	if audio.stream is AudioStreamOGGVorbis:
+		audio.stream.loop = false
+	audio.volume_db = audio_volume
+	audio.play(audio_start_offset)
 

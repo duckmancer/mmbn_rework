@@ -122,3 +122,4 @@ anims/none = SubResource( 3 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )
+volume_db = -10.0

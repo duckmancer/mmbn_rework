@@ -54,7 +54,13 @@ tracks/2/keys = {
 "entity",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+is_independent = true
+anim_x_coord = 0
+anim_y_coord = 0
 do_panel_warning = true
+starting_state = 1
+is_offset = true
+state = 0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
