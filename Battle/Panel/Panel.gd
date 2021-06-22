@@ -109,7 +109,7 @@ func register_danger(source, duration := DANGER_DURATION):
 
 func _ready():
 	_update_panel()
-	z_index += int(grid_pos.y)
+	z_index += int(grid_pos.y) * 10
 
 func pre_ready_setup(pos: Vector2, n_team):
 	team = n_team

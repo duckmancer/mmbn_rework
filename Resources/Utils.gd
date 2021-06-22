@@ -33,4 +33,7 @@ static func in_bounds(grid_pos: Vector2, bounding_box := Constants.GRID_SIZE):
 
 static func overwrite_dict(destination, source):
 	for key in source:
-		destination[key] = source[key]
+		if key in destination and source[key] is Dictionary:
+			overwrite_dict(destination[key], source[key])
+		else:
+			destination[key] = source[key]

@@ -51,10 +51,20 @@ func _ready():
 	randomize()
 	Battlechips.create_active_folder()
 	_set_panels()
+	_spawn_entities()
+
+func _spawn_entities():
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
 #	add_entity(Mettaur, Vector2(4, 1))
+	add_entity(Megaman, Vector2(3, 0))
 	add_entity(Megaman, Vector2(3, 1))
+	add_entity(Megaman, Vector2(3, 2))
+	add_entity(Megaman, Vector2(4, 0))
 	add_entity(Megaman, Vector2(4, 1))
+	add_entity(Megaman, Vector2(4, 2))
+	add_entity(Megaman, Vector2(5, 0))
+	add_entity(Megaman, Vector2(5, 1))
+	add_entity(Megaman, Vector2(5, 2))
 
 func _set_panels():
 	for i in GRID_SIZE.y:

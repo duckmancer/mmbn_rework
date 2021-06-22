@@ -20,8 +20,10 @@ volume_db = -10.0
 autoplay = true
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
+z_index = -1000
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
+z_index = 200
 
 [node name="Tween" type="Tween" parent="."]
 

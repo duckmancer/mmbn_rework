@@ -48,7 +48,10 @@ tracks/0/keys = {
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Healthbar" type="Label" parent="." index="0"]
+[node name="HealthbarHolder" type="Node2D" parent="." index="0"]
+z_index = 100
+
+[node name="Healthbar" type="Label" parent="HealthbarHolder" index="0"]
 anchor_right = 0.645
 margin_left = -9.0
 margin_top = -11.0

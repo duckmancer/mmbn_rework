@@ -37,7 +37,7 @@ func set_grid_pos(new_grid_pos):
 	grid_pos = new_grid_pos
 	if is_independent:
 		position = Utils.grid_to_pos(grid_pos)
-		z_index = int(grid_pos.y)
+		z_index = int(grid_pos.y) * 10
 func get_grid_pos():
 	return grid_pos.round()
 
@@ -107,9 +107,8 @@ static func construct_entity(type: Script, kwargs := {}) -> Entity:
 	return new_entity
 
 static func _get_entity_path(entity_type: Script) -> String:
-	var path = entity_type.resource_path
-	path.erase(path.length() - 2, 2)
-	path += "tscn"
+	var path = entity_type.resource_path.get_basename()
+	path += ".tscn"
 	return path
 
 

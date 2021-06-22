@@ -309,46 +309,41 @@ enum ChipID {
 	_END,
 }
 
-
 var selected_folder : Array = [
+	"cannon_A",
 	"cannon_B",
-	"cannon_B",
-	"cannon_B",
-	"sword_S",
-	"sword_S",
-	"sword_S",
+	"cannon_C",
+	"hicannon_B",
+	"hicannon_C",
+	"hicannon_D",
+	"m_cannon_C",
+	"m_cannon_D",
+	"m_cannon_E",
+	"sword_E",
+	"sword_F",
+	"sword_G",
 	"minibomb_B",
-	"minibomb_B",
-	"minibomb_B",
+	"minibomb_C",
+	"minibomb_D",
+	"heatshot_B",
+	"heatshot_C",
+	"heatshot_D",
+	"heat_v_C",
+	"heat_v_D",
+	"heat_v_E",
+	"heatside_D",
+	"heatside_E",
+	"heatside_F",
 ]
 
 var _active_folder : Array = []
+
 
 func create_active_folder() -> void:
 	_active_folder.clear()
 	for chip in selected_folder:
 		_active_folder.append(_get_chip_data(chip))
 	_active_folder.shuffle()
-
-
-func _get_chip_data(chip : String) -> Dictionary:
-	var data = {}
-	var string_parts = chip.split("_")
-	
-	assert(string_parts.size() == 2)
-	
-	var chip_name = string_parts[0]
-	var chip_code = string_parts[1]
-	
-	data.name = chip_name
-	data.code = chip_code
-	
-	assert(data.code.length() == 1)
-	assert(data.code in "ABCDEFGHIJKLMNOPQRSTUVWXYZ*")
-	assert(data.name.to_upper() in ChipID)
-	
-	data.id = ChipID[data.name.to_upper()]
-	return data
 
 func get_chip_from_folder() -> Dictionary:
 	var result = null
@@ -357,6 +352,19 @@ func get_chip_from_folder() -> Dictionary:
 		_active_folder.pop_front()
 	return result
 
+
+func _get_chip_data(chip : String) -> Dictionary:
+	var data = {}
+	
+	data.name = chip.left(chip.length() - 2)
+	data.code = chip.right(chip.length() - 1)
+	
+	assert(data.code.length() == 1)
+	assert(data.code in "ABCDEFGHIJKLMNOPQRSTUVWXYZ*")
+	assert(data.name.to_upper() in ChipID)
+	
+	data.id = ChipID[data.name.to_upper()]
+	return data
 
 func _ready() -> void:
 	pass

@@ -5,7 +5,7 @@ signal hp_changed(new_hp)
 
 const _REPEAT_INPUT_BUFFER = 0
 
-onready var healthbar = $Healthbar
+onready var healthbar = $HealthbarHolder/Healthbar
 onready var chip_data = $ChipData
 
 export var delay_between_actions = 8

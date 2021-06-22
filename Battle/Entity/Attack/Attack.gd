@@ -117,3 +117,12 @@ func _start_animation():
 	audio.volume_db = audio_volume
 	audio.play(audio_start_offset)
 
+func set_default_keywords():
+	.set_default_keywords()
+	var kw = [
+		"damage",
+		"damage_type",
+	]
+	for key in kw:
+		if not key in default_keywords:
+			default_keywords.append(key)

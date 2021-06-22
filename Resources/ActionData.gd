@@ -51,9 +51,7 @@ var base_actions = {
 		is_direct_hit = false,
 		child_type = Explosion,
 		child_data = {
-			damage = 60,
 			duration = 20,
-			
 			pass_through = true,
 			prop_type = AreaHit.SHOT,
 			animation_name = "explosion",
@@ -87,7 +85,6 @@ var base_actions = {
 		damage = 50,
 		child_type = Explosion,
 		child_data = {
-			damage = 50,
 			duration = 20,
 			pass_through = true,
 			animation_name = "explosion",
@@ -120,6 +117,20 @@ var action_data = {
 	heatshot = {
 		base = "heatshot",
 	},
+	heat_v = {
+		base = "heatshot",
+		damage = 70,
+		child_data = {
+			prop_type = AreaHit.V,
+		},
+	},
+	heatside = {
+		base = "heatshot",
+		damage = 100,
+		child_data = {
+			prop_type = AreaHit.SIDE,
+		},
+	},
 	sword = {
 		base = "sword",
 	},
@@ -130,7 +141,7 @@ var action_data = {
 
 func action_factory(action_type, kwargs = {}):
 	var data = action_data[action_type]
-	var result = base_actions[data.base].duplicate()
+	var result = base_actions[data.base].duplicate(true)
 	Utils.overwrite_dict(result, data)
 	Utils.overwrite_dict(result, kwargs)
 	return result
