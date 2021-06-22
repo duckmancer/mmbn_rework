@@ -29,6 +29,7 @@ var attack_dir
 var ignored_targets = []
 
 var damage = 10
+var damage_type
 var duration = 60
 var pass_through = false
 var impact_type = "hit"
@@ -56,7 +57,7 @@ func terminate():
 
 func hit(target):
 	if is_direct_hit:
-		target.hurt(damage, impact_type)
+		target.hurt(damage, impact_type, damage_type)
 	else:
 		spawn_on_hit(target.grid_pos)
 

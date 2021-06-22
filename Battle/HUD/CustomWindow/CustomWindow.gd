@@ -24,6 +24,12 @@ var selected_chip_data = []
 var lockout = NO_LOCKOUT.duplicate()
 var last_focus = null
 
+onready var chip_name = $ChipName
+onready var chip_splash = $ChipSplash
+onready var chip_code = $ChipCode
+onready var chip_element = $ChipElement
+onready var chip_damage = $ChipDamage
+
 onready var animation_player = $AnimationPlayer
 onready var selector = $Selector
 onready var ok_button = $OkButton
@@ -197,13 +203,67 @@ func _update_selector():
 		selector.set_global_position(focus.get_global_rect().position - SELECTOR_OFFSET)
 		if focus in chip_menu:
 			selector.set_size(CHIP_SELECTOR_SIZE)
+			_set_chip_preview(focus.chip_data)
 		else:
 			selector.set_size(OK_SELECTOR_SIZE)
+			_set_ok_preview()
 		if last_focus:
 			animation_player.stop()
 			animation_player.play("chip_choose")
 		last_focus = focus
 
+func _set_ok_preview():
+	var splash_path = "res://Assets/BattleAssets/HUD/"
+	if selected_chip_data.empty():
+		splash_path += "Empty Confirm Window.png"
+	else:
+		splash_path += "Chip Confirm Window.png"
+	chip_splash.texture = load(splash_path)
+	_set_chip_code(null)
+	_set_chip_damage(null)
+	chip_name.text = ""
+
+func _set_chip_preview(chip_data):
+	_set_chip_splash(chip_data.id)
+	_set_chip_code(chip_data.code)
+	_set_chip_damage(chip_data.name)
+	chip_name.text = chip_data.name.capitalize().replace(" ", "-")
+
+func _set_chip_damage(chip_name):
+	if chip_name:
+		var chip_data = ActionData.action_factory(chip_name)
+		chip_damage.set_text(String(chip_data.damage))
+		chip_element.frame = chip_data.damage_type
+	else:
+		chip_damage.set_text("")
+		chip_element.frame = ActionData.Element.HIDE
+
+func _set_chip_code(code):
+	if code:
+		var index = code.to_ascii()[0] - "A".to_ascii()[0]
+		if index > 25:
+			index = 25
+		chip_code.frame = index
+		chip_code.visible = true
+	else:
+		chip_code.visible = false
+
+func _set_chip_splash(chip_id):
+	# TODO: Cleanup magic constants
+	var splash_root = "res://Assets/BattleAssets/HUD/Chip Splashes/"
+	var S_CHIP_END = 150
+	var S_CHIP_START = 1
+	
+	var chip_name = ""
+	var id = chip_id + 1
+	
+	if id >= S_CHIP_START and id <= S_CHIP_END:
+		var id_str = String(id)
+		var padding_count = 3 - id_str.length()
+		for i in padding_count:
+			id_str = "0" + id_str
+		chip_name = "schip" + String(id_str)
+	chip_splash.texture = load(splash_root + chip_name + ".png")
 
 # Processing
 

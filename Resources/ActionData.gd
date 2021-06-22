@@ -1,6 +1,21 @@
 extends Node
 
-
+enum Element {
+	NONE,
+	WIND,
+	BREAK,
+	SWORD,
+	QUAKE,
+	BLOCK,
+	HEART,
+	INVIS,
+	PLUS,
+	FIRE,
+	AQUA,
+	ELEC,
+	WOOD,
+	HIDE,
+}
 var base_actions = {
 	move = {
 		action_type = MoveAction,
@@ -18,6 +33,7 @@ var base_actions = {
 		damage = 10,
 		pass_through = false,
 		impact_type = "hit",
+		
 	},
 	cannon = {
 		
@@ -33,6 +49,7 @@ var base_actions = {
 		
 		attack_type = Hitscan,
 		damage = 40,
+		damage_type = Element.NONE,
 		pass_through = false,
 		impact_type = "hit",
 	},
@@ -46,6 +63,7 @@ var base_actions = {
 		
 		attack_type = Hitscan,
 		damage = 60,
+		damage_type = Element.FIRE,
 		pass_through = false,
 		impact_type = "none",
 		is_direct_hit = false,
@@ -72,6 +90,7 @@ var base_actions = {
 		
 		attack_type = AreaHit,
 		damage = 80,
+		damage_type = Element.SWORD,
 		duration = 0,
 		pass_through = true,
 		impact_type = "hit",
@@ -85,6 +104,7 @@ var base_actions = {
 		
 		attack_type = Throwable,
 		damage = 50,
+		damage_type = Element.NONE,
 		child_type = Explosion,
 		child_data = {
 			duration = 20,
