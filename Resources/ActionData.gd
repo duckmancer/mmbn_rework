@@ -1,53 +1,12 @@
 extends Node
 
-enum {
-	MOVE,
-	BUSTER,
-	BUSTER_SCAN,
-	CANNON,
-	HI_CANNON,
-	M_CANNON,
-	HEATSHOT,
-	SWORD,
-	MINIBOMB,
-	SHOCKWAVE,
-	LAST,
-}
-
-
-#var sprite_roots = {
-#	weapons = "res://Assets/BattleAssets/Weapons/",
-#	attacks = "res://Assets/BattleAssets/Attacks/",
-#	impacts = "res://Assets/BattleAssets/Impacts/",
-#}
-#
-#var audio_roots = {
-#	attacks = "res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/",
-#}
-#
-#var action_anim_data = {
-#	buster = {
-#		sprite_path = sprite_roots.weapons + "Buster.png",
-#		anim_y_coord = 0,
-#		animation_name = "shoot_light",
-#	},
-#}
-#
-#var attack_anim_data = {
-#	buster = {
-#		sprite_path = sprite_roots.weapons + "Buster.png",
-#		audio_path = audio_roots.attacks + "0- Buster.wav",
-#		anim_y_coord = 1,
-#		animation_name = "shoot_light",
-#	}
-#}
 
 var base_actions = {
-	MOVE: {
+	move = {
 		action_type = MoveAction,
 		animation_name = "move",
 	},
-	BUSTER: {
+	buster = {
 		action_type = Action,
 		sprite_path = "res://Assets/BattleAssets/Weapons/Buster.png",
 		anim_y_coord = 0,
@@ -60,7 +19,7 @@ var base_actions = {
 		pass_through = false,
 		impact_type = "hit",
 	},
-	CANNON: {
+	cannon = {
 		
 		action_type = Action,
 		sprite_path = "res://Assets/BattleAssets/Weapons/Cannon.png",
@@ -77,7 +36,7 @@ var base_actions = {
 		pass_through = false,
 		impact_type = "hit",
 	},
-	HEATSHOT: {
+	heatshot = {
 		action_type = Action,
 		
 		sprite_path = "res://Assets/BattleAssets/Weapons/Heatshot.png",
@@ -102,7 +61,7 @@ var base_actions = {
 			impact_type = "none",
 		},
 	},
-	SWORD: {
+	sword = {
 		
 		action_type = Action,
 		sprite_path = "res://Assets/BattleAssets/Weapons/Sword.png",
@@ -117,7 +76,7 @@ var base_actions = {
 		pass_through = true,
 		impact_type = "hit",
 	},
-	MINIBOMB: {
+	minibomb = {
 		
 		action_type = Action,
 		sprite_path = "res://Assets/BattleAssets/Weapons/Throwable.png",
@@ -139,33 +98,33 @@ var base_actions = {
 }
 
 var action_data = {
-	MOVE: {
-		base = MOVE,
+	move = {
+		base = "move",
 	},
-	BUSTER: {
-		base = BUSTER,
+	buster = {
+		base = "buster",
 	},
-	CANNON: {
-		base = CANNON,
+	cannon = {
+		base = "cannon",
 	},
-	HI_CANNON: {
-		base = CANNON,
+	hicannon = {
+		base = "cannon",
 		damage = 80,
 		anim_y_coord = 2,
 	},
-	M_CANNON: {
-		base = CANNON,
+	m_cannon = {
+		base = "cannon",
 		damage = 120,
 		anim_y_coord = 4,
 	},
-	HEATSHOT: {
-		base = HEATSHOT,
+	heatshot = {
+		base = "heatshot",
 	},
-	SWORD: {
-		base = SWORD,
+	sword = {
+		base = "sword",
 	},
-	MINIBOMB: {
-		base = MINIBOMB,
+	minibomb = {
+		base = "minibomb",
 	},
 }
 

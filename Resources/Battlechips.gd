@@ -1,8 +1,7 @@
 extends Node
 
-
-# ~~~ STANDARD CHIPS ~~~
-enum Standard {
+enum ChipID {
+	# ~~~ STANDARD CHIPS ~~~
 	CANNON = 0,
 	HICANNON,
 	M_CANNON,
@@ -153,13 +152,9 @@ enum Standard {
 	ATK_10,
 	NAVI_20,
 	COLORPNT,
-	
-	_END,
-}
 
 # ~~~ MEGA CHIPS ~~~
-enum Mega {
-	SUPRVULC = Standard._END,
+	SUPRVULC,
 	NEOVARI,
 	SHOTSTAR,
 	GODHAMMR,
@@ -240,13 +235,9 @@ enum Mega {
 	VIDEOMAN,
 	VIDEMNSP,
 	VIDEMNDS,
-	
-	_END,
-}
 
 # ~~~ GIGA CHIPS ~~~
-enum Giga {
-	REDSUN = Mega._END,
+	REDSUN,
 	HOLYDREM,
 	BASS,
 	BUGCHARG,
@@ -257,13 +248,9 @@ enum Giga {
 	BASSANLY,
 	BUGCURSE,
 	DELTARAY,
-	
-	_END,
-}
 
 # ~~~ SECRET CHIPS ~~~
-enum Secret {
-	ROLLARO1 = Giga._END,
+	ROLLARO1,
 	ROLLARO2,
 	ROLLARO3,
 	GUTPNCH1,
@@ -304,12 +291,8 @@ enum Secret {
 	GUNSOLEX,
 	Z_SAVER,
 	
-	_END,
-}
-
 # ~~~ DARK CHIPS ~~~
-enum Dark {
-	DARKBOMB = Secret._END,
+	DARKBOMB,
 	DRKCANON,
 	DRKLANCE,
 	DRKRECOV,
@@ -317,63 +300,63 @@ enum Dark {
 	DRKSTAGE,
 	DRKSWORD,
 	DRKVULCN,
-	
-	_END,
-}
 
 # ~~~ UNOBTAINABLE ~~~
-enum Unobtainable {
-	DUO = Dark._END,
+	DUO,
 	GRANDPRIXPOWER,
 	FINALGUN,
 	
 	_END,
 }
 
-enum NonChips {
-	MOVE = Unobtainable._END,
-	BUSTER,
-	BUSTER_SCAN,
-	
-	_END,
-}
 
-const CHIP_DATA = {
-	cannon = {
-		action_type = Cannon,
-		action_subtype = ActionData.CANNON,
-		id = Standard.CANNON,
-		code = "B",
-	},
-	sword = {
-		action_type = Sword,
-		action_subtype = ActionData.SWORD,
-		id = Standard.SWORD,
-		code = "S",
-	},
-	minibomb = {
-		action_type = Throw,
-		action_subtype = ActionData.MINIBOMB,
-		id = Standard.MINIBOMB,
-		code = "B",
-	},
-}
-
-
-var selected_folder = [
-	"cannon",
-	"cannon",
-	"cannon",
-	"sword",
-	"sword",
-	"sword",
-	"minibomb",
-	"minibomb",
-	"minibomb",
+var selected_folder : Array = [
+	"cannon_B",
+	"cannon_B",
+	"cannon_B",
+	"sword_S",
+	"sword_S",
+	"sword_S",
+	"minibomb_B",
+	"minibomb_B",
+	"minibomb_B",
 ]
 
-var active_folder = []
+var _active_folder : Array = []
 
-func create_active_folder():
-	active_folder = selected_folder.duplicate()
-	active_folder.shuffle()
+func create_active_folder() -> void:
+	_active_folder.clear()
+	for chip in selected_folder:
+		_active_folder.append(_get_chip_data(chip))
+	_active_folder.shuffle()
+
+
+func _get_chip_data(chip : String) -> Dictionary:
+	var data = {}
+	var string_parts = chip.split("_")
+	
+	assert(string_parts.size() == 2)
+	
+	var chip_name = string_parts[0]
+	var chip_code = string_parts[1]
+	
+	data.name = chip_name
+	data.code = chip_code
+	
+	assert(data.code.length() == 1)
+	assert(data.code in "ABCDEFGHIJKLMNOPQRSTUVWXYZ*")
+	assert(data.name.to_upper() in ChipID)
+	
+	data.id = ChipID[data.name.to_upper()]
+	return data
+
+func get_chip_from_folder() -> Dictionary:
+	var result = null
+	if not _active_folder.empty():
+		result = _active_folder.front()
+		_active_folder.pop_front()
+	return result
+
+
+func _ready() -> void:
+	pass

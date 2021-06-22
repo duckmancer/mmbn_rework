@@ -60,6 +60,19 @@ func open_custom():
 	_setup_focus()
 	_update_selector()
 
+func _update_available_chips():
+	var chips = _get_leftover_chips()
+	_get_remainder_from_deck(chips)
+	_set_available_chips(chips)
+
+func _get_remainder_from_deck(chips):
+	while chips.size() < MAX_AVAILABLE_CHIPS:
+		var chip = Battlechips.get_chip_from_folder()
+		if chip:
+			chips.append(chip)
+		else:
+			break
+		
 
 func _setup_focus():
 	if chip_menu.front().state == ChipSlot.AVAILABLE:
@@ -79,23 +92,14 @@ func _release_custom_focus():
 		focus.release_focus()
 	last_focus = null
 
-# Chips
+# Chip Display
 
-func _update_available_chips():
-	var chips = _get_leftover_chips()
-	_get_remainder_from_deck(chips)
-	_set_available_chips(chips)
-
-func _get_remainder_from_deck(chips):
-	while chips.size() < MAX_AVAILABLE_CHIPS and not Battlechips.active_folder.empty():
-		var chip_name = Battlechips.active_folder.front()
-		chips.append(Battlechips.CHIP_DATA[chip_name])
-		Battlechips.active_folder.pop_front()
-
-func _clear_selected_chips():
-	selected_chip_data.clear()
-	chip_slot_order.clear()
-	_update_selection()
+func _display_selected_chips():
+	for i in selected_chip_display.size():
+		if i < selected_chip_data.size():
+			selected_chip_display[i].set_chip(selected_chip_data[i].id)
+		else:
+			selected_chip_display[i].hide_chip()
 
 func _set_available_chips(chip_data):
 	for i in chip_menu.size():
@@ -104,12 +108,20 @@ func _set_available_chips(chip_data):
 		else:
 			chip_menu[i].clear()
 
+func _clear_selected_chips():
+	selected_chip_data.clear()
+	chip_slot_order.clear()
+	_update_selection()
+
 func _get_leftover_chips():
 	var leftovers = []
 	for slot in chip_menu:
 		if slot.state == ChipSlot.AVAILABLE or slot.state == ChipSlot.LOCKED:
 			leftovers.append(slot.chip_data)
 	return leftovers
+
+
+# Chip Selection
 
 func _unselect_chip():
 	if selected_chip_data.empty():
@@ -131,12 +143,14 @@ func _select_chip(chip_slot):
 		_update_selection()
 	else:
 		_play_error()
-		
 
 func _update_selection():
 	_display_selected_chips()
 	_update_lockout()
 	_lockout_available_chips()
+
+
+# Chip Validation
 
 func _update_lockout():
 	lockout = NO_LOCKOUT.duplicate()
@@ -153,13 +167,6 @@ func _update_lockout():
 				if lockout.code == "*":
 					lockout.code = chip.code
 
-func _display_selected_chips():
-	for i in selected_chip_display.size():
-		if i < selected_chip_data.size():
-			selected_chip_display[i].set_chip(selected_chip_data[i].id)
-		else:
-			selected_chip_display[i].hide_chip()
-
 func _lockout_available_chips():
 	for slot in chip_menu:
 		if slot.state == ChipSlot.AVAILABLE or slot.state == ChipSlot.LOCKED:
@@ -167,8 +174,6 @@ func _lockout_available_chips():
 				slot.state = ChipSlot.AVAILABLE
 			else:
 				slot.state = ChipSlot.LOCKED
-
-# Chip Validation
 
 func _is_chip_valid(chip):
 	return _does_code_match(chip) or _does_id_match(chip)
@@ -183,7 +188,6 @@ func _does_id_match(chip):
 # Animation
 
 func _play_error():
-	# TODO: Find Error Sound
 	animation_player.stop()
 	animation_player.play("menu_error")
 

@@ -13,39 +13,39 @@ export var max_hp = 40
 
 var input_map = {
 	up = ActionData.action_factory(
-		ActionData.MOVE, 
+		"move", 
 		{
 			movement_dir = "up",
 		}
 	),
 	down = ActionData.action_factory(
-		ActionData.MOVE, 
+		"move", 
 		{
 			movement_dir = "down",
 		}
 	),
 	left = ActionData.action_factory(
-		ActionData.MOVE, 
+		"move", 
 		{
 			movement_dir = "left",
 		}
 	),
 	right = ActionData.action_factory(
-		ActionData.MOVE, 
+		"move", 
 		{
 			movement_dir = "right",
 		}
 	),
 	action_1 = ActionData.action_factory(
-		ActionData.HEATSHOT, 
+		"heatshot", 
 		{}
 	),
 	action_2 = ActionData.action_factory(
-		ActionData.HI_CANNON, 
+		"hicannon", 
 		{}
 	),
 	action_3 = ActionData.action_factory(
-		ActionData.BUSTER, 
+		"buster", 
 		{}
 	),
 }
@@ -89,7 +89,7 @@ func _execute_input(input) -> void:
 	if input == "chip_action":
 		var chip = chip_data.use_chip()
 		if chip:
-			action = ActionData.action_factory(chip.action_subtype)
+			action = ActionData.action_factory(chip.name)
 	else:
 		action = input_map[input]
 	if action:

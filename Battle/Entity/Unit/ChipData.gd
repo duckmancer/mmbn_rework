@@ -24,11 +24,6 @@ func use_chip():
 		_update_display()
 	return result
 
-func get_chip():
-	if chips.empty():
-		return null
-	var result = chips.front()
-	return result
 
 func pop_chip():
 	chips.pop_front()

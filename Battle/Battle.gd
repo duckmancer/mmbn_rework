@@ -19,7 +19,6 @@ onready var player_health = $HUD/PlayerHealthBox
 var panel_grid = []
 
 
-
 # Processing
 
 func _unhandled_key_input(event: InputEventKey) -> void:
@@ -44,8 +43,6 @@ func _toggle_custom_window() -> void:
 		$Timer.start()
 		yield($Timer, "timeout")
 		Globals.battle_paused = false
-
-
 
 
 # Initialization
