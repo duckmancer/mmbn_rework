@@ -58,11 +58,12 @@ func hit(target):
 	if is_direct_hit:
 		target.hurt(damage, impact_type)
 	else:
-		pass
-		var args = child_data
-		args.grid_pos = target.grid_pos
-		create_child_entity(child_type, {data = args})
+		spawn_on_hit(target.grid_pos)
 
+func spawn_on_hit(pos):
+	var args = child_data
+	args.grid_pos = pos
+	create_child_entity(child_type, {data = args})
 
 # Processing
 
@@ -107,7 +108,7 @@ func _ready():
 	_start_animation()
 
 func _start_animation():
-	if attack_anim_y_pos:
+	if attack_anim_y_pos != null:
 		self.anim_y_coord = attack_anim_y_pos
 	else:
 		self.anim_y_coord += 1

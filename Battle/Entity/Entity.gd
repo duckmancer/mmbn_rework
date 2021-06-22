@@ -73,6 +73,10 @@ func set_sprite_path(p):
 func advance_animation():
 	if is_active:
 		sprite.frame += 1
+	anim_x_coord += 1
+	if anim_x_coord % 8 == 0:
+		anim_x_coord = 0
+		anim_y_coord += 1
 
 func animation_done():
 	animation_player.stop()

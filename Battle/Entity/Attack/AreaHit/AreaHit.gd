@@ -70,10 +70,11 @@ func propogate():
 				var offset = Vector2(j - 1, i - 1)
 				if team == Team.ENEMY:
 					offset.x *= -1
-				var prop_data = data.duplicate()
-				prop_data.prop_recursion = prop_recursion - 1
-				prop_data.grid_pos = grid_pos + offset
-				create_child_entity(get_script(), prop_data)
+				var prop_data = {data = data.duplicate()}
+				prop_data.data.prop_recursion = prop_recursion - 1
+				prop_data.data.grid_pos = grid_pos + offset
+				if Utils.in_bounds(prop_data.data.grid_pos):
+					create_child_entity(get_script(), prop_data)
 
 func do_tick():
 	.do_tick()

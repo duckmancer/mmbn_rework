@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Small Impact.png-3aa1c8b438d5c0bbe821845a83d4f5a0.stex"
+path="res://.import/Small Impact.png-f746a420c34017f058183dcf9b98b84c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BattleAssets/Attacks/Small Impact.png"
-dest_files=[ "res://.import/Small Impact.png-3aa1c8b438d5c0bbe821845a83d4f5a0.stex" ]
+source_file="res://Assets/BattleAssets/Impacts/Small Impact.png"
+dest_files=[ "res://.import/Small Impact.png-f746a420c34017f058183dcf9b98b84c.stex" ]
 
 [params]
 

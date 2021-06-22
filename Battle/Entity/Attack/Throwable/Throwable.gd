@@ -43,7 +43,7 @@ func _update_trajectory():
 func do_tick():
 	if cur_travel_time == travel_time:
 		state = AttackState.ACTIVE
-		create_child_entity(child_type, child_data.duplicate())
+		spawn_on_hit(self.grid_pos)
 		terminate()
 	else:
 		_update_trajectory()
