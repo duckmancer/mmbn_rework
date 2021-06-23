@@ -35,5 +35,6 @@ autoplay = true
 wait_time = 0.2
 one_shot = true
 
+[connection signal="cur_chip_updated" from="Battlefield/PlayerController" to="HUD" method="_on_PlayerController_cur_chip_updated"]
 [connection signal="hp_changed" from="Battlefield/PlayerController" to="HUD" method="_on_PlayerController_hp_changed"]
 [connection signal="custom_finished" from="HUD" to="." method="_on_HUD_custom_finished"]

@@ -12,7 +12,7 @@ custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.807843, 0.890196, 1, 1 )
 text = "100"
 align = 2
-valign = 3
+valign = 1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true,
@@ -23,8 +23,6 @@ __meta__ = {
 margin_top = 5.0
 margin_right = 37.0
 margin_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
 rect_clip_content = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -35,8 +33,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -5.0
 margin_bottom = 7.0
-grow_horizontal = 0
-grow_vertical = 0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.905882, 0.921569, 1, 1 )
 text = "100"

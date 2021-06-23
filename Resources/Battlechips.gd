@@ -310,30 +310,30 @@ enum ChipID {
 }
 
 var selected_folder : Array = [
-	"cannon_A",
-	"cannon_B",
-	"cannon_C",
-	"hicannon_B",
-	"hicannon_C",
-	"hicannon_D",
-	"m_cannon_C",
-	"m_cannon_D",
-	"m_cannon_E",
-	"sword_E",
-	"sword_F",
-	"sword_G",
-	"minibomb_B",
-	"minibomb_C",
-	"minibomb_D",
-	"heatshot_B",
-	"heatshot_C",
-	"heatshot_D",
-	"heat_v_C",
-	"heat_v_D",
-	"heat_v_E",
-	"heatside_D",
-	"heatside_E",
-	"heatside_F",
+	"Cannon A",
+	"Cannon B",
+	"Cannon C",
+	"HiCannon B",
+	"HiCannon C",
+	"HiCannon D",
+	"M-Cannon C",
+	"M-Cannon D",
+	"M-Cannon E",
+	"Sword E",
+	"Sword F",
+	"Sword G",
+	"MiniBomb B",
+	"MiniBomb C",
+	"MiniBomb D",
+	"HeatShot B",
+	"HeatShot C",
+	"HeatShot D",
+	"Heat-V C",
+	"Heat-V D",
+	"Heat-V E",
+	"HeatSide D",
+	"HeatSide E",
+	"HeatSide F",
 ]
 
 var _active_folder : Array = []
@@ -356,8 +356,12 @@ func get_chip_from_folder() -> Dictionary:
 func _get_chip_data(chip : String) -> Dictionary:
 	var data = {}
 	
-	data.name = chip.left(chip.length() - 2)
-	data.code = chip.right(chip.length() - 1)
+	var data_parts = chip.split(" ")
+	assert(data_parts.size() == 2)
+	
+	data.pretty_name = data_parts[0]
+	data.code = data_parts[1]
+	data.name = data.pretty_name.replace("+", "_").replace("-", "_").to_lower()
 	
 	assert(data.code.length() == 1)
 	assert(data.code in "ABCDEFGHIJKLMNOPQRSTUVWXYZ*")

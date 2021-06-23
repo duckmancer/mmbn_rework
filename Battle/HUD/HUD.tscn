@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Battle/HUD/CustomWindow/CustomWindow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/HUD/HUD.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Battle/HUD/PlayerHealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/BN4 Rips/Misc/song257_cust_gauge_full.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/BattleAssets/HUD/Emotion Window Content.png" type="Texture" id=7]
+[ext_resource path="res://Battle/HUD/ShineLabel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "close_custom"
@@ -51,7 +53,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "custom_progressing"
 step = 0.0166667
 tracks/0/type = "value"
@@ -123,8 +125,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "open_custom"
+[sub_resource type="Animation" id=4]
 length = 0.166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -204,11 +205,45 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "custom_progressing"
 anims/close_custom = SubResource( 1 )
-anims/custom_progressing = SubResource( 4 )
+anims/custom_progressing = SubResource( 2 )
 anims/custom_ready = SubResource( 3 )
-anims/open_custom = SubResource( 2 )
+anims/open_custom = SubResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 134.0
+margin_right = 60.0
+margin_bottom = 174.0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurChip" type="Label" parent="HBoxContainer"]
+margin_top = 12.0
+margin_right = 32.0
+margin_bottom = 28.0
+grow_vertical = 0
+size_flags_horizontal = 0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Chip"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Damage" parent="HBoxContainer" instance=ExtResource( 8 )]
+margin_left = 36.0
+margin_top = 12.0
+margin_right = 60.0
+margin_bottom = 28.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 0
+outer_color = Color( 0.972549, 0.596078, 0, 1 )
+inner_color = Color( 0.972549, 0.815686, 0, 1 )
 
 [connection signal="custom_finished" from="CustomWindow" to="." method="_on_CustomWindow_custom_finished"]

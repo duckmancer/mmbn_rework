@@ -7,6 +7,9 @@ const HUD_POSITION = {
 	cust_closed = 0,
 }
 
+onready var cur_chip = $HBoxContainer
+onready var cur_name = $HBoxContainer/CurChip
+onready var cur_damage = $HBoxContainer/Damage
 onready var anim = $AnimationPlayer
 onready var audio = $AudioStreamPlayer
 onready var custom_window = $CustomWindow
@@ -21,6 +24,7 @@ var is_cust_full = false
 
 func open_custom():
 	pause_mode = PAUSE_MODE_INHERIT
+	cur_chip.visible = false
 	anim.play("open_custom")
 	custom_window.open_custom()
 
@@ -40,6 +44,7 @@ func on_cust_full() -> void:
 func on_cust_closed() -> void:
 	pause_mode = PAUSE_MODE_STOP
 	is_cust_full = false
+	cur_chip.visible = true
 	anim.play("custom_progressing", -1, cust_gauge_speed)
 	emit_signal("custom_finished", custom_window.get_chip_data())
 
@@ -60,3 +65,13 @@ func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 		player_health.color_mode = "danger"
 	else:
 		player_health.color_mode = "normal"
+
+
+func _on_PlayerController_cur_chip_updated(chip_data) -> void:
+	if chip_data:
+		cur_name.set_text(chip_data.pretty_name)
+		cur_damage.set_text( String(ActionData.action_factory(chip_data.name).damage))
+#		cur_chip.set_text("100")
+	else:
+		cur_name.set_text("")
+		cur_damage.set_text("")

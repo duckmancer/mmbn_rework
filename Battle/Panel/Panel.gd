@@ -36,7 +36,7 @@ const TILE_NAMES = {
 }
 
 const SIZE = Vector2(40, 24)
-const FRONT_PANEL_OFFSET = 8
+const FRONT_PANEL_OFFSET = 16
 const PANEL_ORIGIN = Vector2(0, Constants.GBA_SCREEN_SIZE.y - FRONT_PANEL_OFFSET - SIZE.y * Constants.GRID_SIZE.y)
 const ENTITY_ORIGIN = PANEL_ORIGIN + Vector2(0.5 * SIZE.x, SIZE.y)
 const DANGER_DURATION = 1

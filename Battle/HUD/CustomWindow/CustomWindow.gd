@@ -229,7 +229,7 @@ func _set_chip_preview(chip_data):
 	_set_chip_splash(chip_data.id)
 	_set_chip_code(chip_data.code)
 	_set_chip_damage(chip_data.name)
-	chip_title.text = chip_data.name.capitalize().replace(" ", "-")
+	chip_title.text = chip_data.pretty_name
 
 func _set_chip_damage(chip_name):
 	if chip_name:

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal cur_chip_updated(chip_data)
+
 var debug_chips = [
 ]
 
@@ -47,6 +49,9 @@ func _update_display():
 	if not chips.empty():
 		if chips.front().has("id"):
 			chip_icons.front().frame = chips.front().id
+			emit_signal("cur_chip_updated", chips.front())
+	else:
+		emit_signal("cur_chip_updated", null)
 
 func _ready() -> void:
 	clear_chips()

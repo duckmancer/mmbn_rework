@@ -2,7 +2,7 @@ class_name PlayerController
 extends Node2D
 
 signal hp_changed(new_hp, is_danger)
-
+signal cur_chip_updated(chip_data)
 
 var player : Unit
 
@@ -65,6 +65,7 @@ func bind_player(controlled_player: Unit):
 	player.is_player_controlled = true
 	player.healthbar.visible = false
 	var _err = player.connect("hp_changed", self, "_on_player_hp_changed")
+	_err = player.chip_data.connect("cur_chip_updated", self, "_on_player_cur_chip_updated")
 	player.hp = player.hp
 
 func _ready():
@@ -78,3 +79,6 @@ func _update_player_hp(cur_hp, max_hp):
 
 func _on_player_hp_changed(new_hp, max_hp):
 	_update_player_hp(new_hp, max_hp)
+
+func _on_player_cur_chip_updated(chip_data):
+	emit_signal("cur_chip_updated", chip_data)
