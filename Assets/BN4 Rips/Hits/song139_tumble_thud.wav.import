@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song139_tumble_thud.wav-f8d6a20586cd35e14a89f2731935fcd7.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song139_tumble_thud.wav"
+dest_files=[ "res://.import/song139_tumble_thud.wav-f8d6a20586cd35e14a89f2731935fcd7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

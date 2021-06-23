@@ -118,7 +118,7 @@ func _connect_action_signals(action : Action) -> void:
 
 func run_AI(target):
 	var result = null
-	# DEBUG
+	# DEBUG TODO: change
 	return result
 	var target_row = target.grid_pos.y
 	if target_row > grid_pos.y:

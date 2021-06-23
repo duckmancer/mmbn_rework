@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song414_loud_vibration.wav-591ea1de82e01b1af301570efd6108ec.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Overworld Sounds/song414_loud_vibration.wav"
+dest_files=[ "res://.import/song414_loud_vibration.wav-591ea1de82e01b1af301570efd6108ec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

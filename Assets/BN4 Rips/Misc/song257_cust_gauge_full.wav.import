@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song257_cust_gauge_full.wav-724f43bcbb851a7f9ca159536ad0f0d6.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Misc/song257_cust_gauge_full.wav"
+dest_files=[ "res://.import/song257_cust_gauge_full.wav-724f43bcbb851a7f9ca159536ad0f0d6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

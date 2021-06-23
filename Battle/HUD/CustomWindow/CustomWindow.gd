@@ -24,13 +24,14 @@ var selected_chip_data = []
 var lockout = NO_LOCKOUT.duplicate()
 var last_focus = null
 
-onready var chip_name = $ChipName
+onready var chip_title = $ChipName
 onready var chip_splash = $ChipSplash
 onready var chip_code = $ChipCode
 onready var chip_element = $ChipElement
 onready var chip_damage = $ChipDamage
 
 onready var animation_player = $AnimationPlayer
+onready var audio = $AudioStreamPlayer
 onready var selector = $Selector
 onready var ok_button = $OkButton
 onready var chip_menu = [
@@ -60,7 +61,7 @@ func get_chip_data():
 # Enter / Exit
 
 func open_custom():
-	animation_player.play("open_custom")
+	_play_animation("open_custom")
 	_update_available_chips()
 	_clear_selected_chips()
 	_setup_focus()
@@ -89,7 +90,7 @@ func _setup_focus():
 
 func _finish_custom():
 	_release_custom_focus()
-	animation_player.play("custom_finish")
+	_play_animation("custom_finish")
 	emit_signal("custom_finished")
 
 func _release_custom_focus():
@@ -131,24 +132,23 @@ func _get_leftover_chips():
 
 func _unselect_chip():
 	if selected_chip_data.empty():
-		_play_error()
+		_play_animation("error")
 	else:
 		selected_chip_data.pop_back()
 		var slot = chip_slot_order.back()
 		chip_slot_order.pop_back()
 		slot.state = ChipSlot.AVAILABLE
-		animation_player.stop()
-		animation_player.play("chip_cancel")
+		_play_animation("chip_cancel")
 		_update_selection()
 
 func _select_chip(chip_slot):
 	if selected_chip_data.size() < MAX_CHIPS and chip_slot.state == ChipSlot.AVAILABLE:
-		animation_player.play("chip_select")
+		_play_animation("chip_select")
 		selected_chip_data.append(chip_slot.use_chip())
 		chip_slot_order.append(chip_slot)
 		_update_selection()
 	else:
-		_play_error()
+		_play_animation("error")
 
 func _update_selection():
 	_display_selected_chips()
@@ -193,9 +193,12 @@ func _does_id_match(chip):
 
 # Animation
 
-func _play_error():
+func _play_animation(anim_name : String):
 	animation_player.stop()
-	animation_player.play("menu_error")
+	animation_player.play(anim_name)
+	if audio.stream is AudioStreamOGGVorbis:
+		audio.stream.loop = false
+	
 
 func _update_selector():
 	var focus = get_focus_owner()
@@ -208,8 +211,7 @@ func _update_selector():
 			selector.set_size(OK_SELECTOR_SIZE)
 			_set_ok_preview()
 		if last_focus:
-			animation_player.stop()
-			animation_player.play("chip_choose")
+			_play_animation("chip_choose")
 		last_focus = focus
 
 func _set_ok_preview():
@@ -221,13 +223,13 @@ func _set_ok_preview():
 	chip_splash.texture = load(splash_path)
 	_set_chip_code(null)
 	_set_chip_damage(null)
-	chip_name.text = ""
+	chip_title.text = ""
 
 func _set_chip_preview(chip_data):
 	_set_chip_splash(chip_data.id)
 	_set_chip_code(chip_data.code)
 	_set_chip_damage(chip_data.name)
-	chip_name.text = chip_data.name.capitalize().replace(" ", "-")
+	chip_title.text = chip_data.name.capitalize().replace(" ", "-")
 
 func _set_chip_damage(chip_name):
 	if chip_name:
@@ -285,7 +287,6 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 
 func _physics_process(_delta: float) -> void:
 	_update_selector()
-	print(animation_player.current_animation)
 
 func _ready() -> void:
 	pass

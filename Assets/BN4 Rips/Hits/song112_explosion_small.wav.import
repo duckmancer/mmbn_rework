@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song112_explosion_small.wav-bc9f9621e6c2b8389398f18f8753206f.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song112_explosion_small.wav"
+dest_files=[ "res://.import/song112_explosion_small.wav-bc9f9621e6c2b8389398f18f8753206f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

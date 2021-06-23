@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song365_buster_hit.wav-e4ba55a2da969f5af9fe0f8610583262.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song365_buster_hit.wav"
+dest_files=[ "res://.import/song365_buster_hit.wav-e4ba55a2da969f5af9fe0f8610583262.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -41,6 +41,8 @@ const PANEL_ORIGIN = Vector2(0, Constants.GBA_SCREEN_SIZE.y - FRONT_PANEL_OFFSET
 const ENTITY_ORIGIN = PANEL_ORIGIN + Vector2(0.5 * SIZE.x, SIZE.y)
 const DANGER_DURATION = 1
 
+onready var border = $Border
+onready var tile = $Tile
 onready var border_player = $Border/AnimationPlayer
 onready var tile_player = $Tile/AnimationPlayer
 
@@ -89,12 +91,12 @@ func _get_tile_anim():
 # Processing
 
 func _physics_process(_delta):
-	if not Globals.battle_paused:
-		for s in _danger_sources:
-			_danger_sources[s] -= 1
-			if _danger_sources[s] <= 0:
-				var _exists = _danger_sources.erase(s)
-		_update_panel()
+#	if not Globals.battle_paused:
+	for s in _danger_sources:
+		_danger_sources[s] -= 1
+		if _danger_sources[s] <= 0:
+			var _exists = _danger_sources.erase(s)
+	_update_panel()
 
 func _update_panel():
 	border_player.play(_get_border_anim())
@@ -109,6 +111,8 @@ func register_danger(source, duration := DANGER_DURATION):
 
 func _ready():
 	_update_panel()
+	border_player.advance(1)
+	tile_player.advance(1)
 	z_index += int(grid_pos.y) * 10
 
 func pre_ready_setup(pos: Vector2, n_team):

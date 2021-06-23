@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song318_wideshot_maybe.wav-b77927feb5428737d251365874696f20.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Attacks/song318_wideshot_maybe.wav"
+dest_files=[ "res://.import/song318_wideshot_maybe.wav-b77927feb5428737d251365874696f20.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

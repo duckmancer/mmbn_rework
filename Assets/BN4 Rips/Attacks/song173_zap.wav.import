@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song173_zap.wav-57ffdd1e6d3e9f87073300c9d8c3ea03.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Attacks/song173_zap.wav"
+dest_files=[ "res://.import/song173_zap.wav-57ffdd1e6d3e9f87073300c9d8c3ea03.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

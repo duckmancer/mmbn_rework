@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song118_jack_in.wav-bec538f6c54d894b190c6d8554d03145.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Misc/song118_jack_in.wav"
+dest_files=[ "res://.import/song118_jack_in.wav-bec538f6c54d894b190c6d8554d03145.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

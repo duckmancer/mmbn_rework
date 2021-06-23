@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song192_whip.wav-2bdd68eb1bbfdeea56f0568f0d38afdb.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song192_whip.wav"
+dest_files=[ "res://.import/song192_whip.wav-2bdd68eb1bbfdeea56f0568f0d38afdb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

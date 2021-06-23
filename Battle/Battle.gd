@@ -13,7 +13,8 @@ const HEALTH_COLORS = {
 }
 
 onready var hud = $HUD
-onready var player_controller = $PlayerController
+onready var battlefield = $Battlefield
+onready var player_controller = $Battlefield/PlayerController
 onready var player_health = $HUD/PlayerHealthBox
 
 var panel_grid = []
@@ -24,26 +25,25 @@ var panel_grid = []
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("pause"):
 		if not Globals.custom_open:
-			Globals.battle_paused = not Globals.battle_paused
+			toggle_pause()
 	if event.is_action_pressed("custom_menu"):
-		if not Globals.battle_paused and not Globals.custom_open:
-			_toggle_custom_window()
+		if not get_tree().paused and not Globals.custom_open and hud.is_cust_full:
+			open_custom()
 
-func _toggle_custom_window() -> void:
-	if not Globals.custom_open:
-		Globals.battle_paused = true
-		Globals.custom_open = true
-		$Tween.interpolate_property(hud, "position:x", 0, 120, 0.1)
-		$Tween.start()
-		hud.open_custom()
-	else:
-		Globals.custom_open = false
-		$Tween.interpolate_property(hud, "position:x", 120, 00, 0.1)
-		$Tween.start()
-		$Timer.start()
-		yield($Timer, "timeout")
-		Globals.battle_paused = false
+func toggle_pause():
+	get_tree().paused = not get_tree().paused
 
+func open_custom():
+	Globals.custom_open = true
+	hud.open_custom()
+	toggle_pause()
+
+func close_custom():
+	Globals.custom_open = false
+	$Timer.start()
+	yield($Timer, "timeout")
+#	Globals.battle_paused = false
+	toggle_pause()
 
 # Initialization
 
@@ -52,6 +52,7 @@ func _ready():
 	Battlechips.create_active_folder()
 	_set_panels()
 	_spawn_entities()
+	open_custom()
 
 func _spawn_entities():
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
@@ -72,7 +73,7 @@ func _set_panels():
 		for j in GRID_SIZE.x:
 			var new_panel = Scenes.PANEL_SCENE.instance()
 			new_panel.pre_ready_setup(Vector2(j, i), DEFAULT_GRID[i][j])
-			add_child(new_panel)
+			battlefield.add_child(new_panel)
 			panel_grid.back().push_back(new_panel)
 	Globals.battle_grid = panel_grid
 
@@ -80,7 +81,7 @@ func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc 
 	var kwargs = {grid_pos = pos, team = team}
 	var entity = Entity.construct_entity(entity_type, kwargs)
 	connect_signals(entity)
-	add_child(entity)
+	battlefield.add_child(entity)
 	if pc:
 		player_controller.bind_player(entity)
 
@@ -95,16 +96,6 @@ func _on_Entity_spawn_entity(entity):
 	if entity.is_independent:
 		add_child(entity)
 
-func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
-	player_health.hp = new_hp
-	if is_danger:
-		player_health.color_mode = "danger"
-	else:
-		player_health.color_mode = "normal"
-
-func _on_PlayerController_custom_opened() -> void:
-	_toggle_custom_window()
-	
 func _on_HUD_custom_finished(chips) -> void:
 	player_controller.player.chip_data.set_chips(chips)
-	_toggle_custom_window()
+	close_custom()

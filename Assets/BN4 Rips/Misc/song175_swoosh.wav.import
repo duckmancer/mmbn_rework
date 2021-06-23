@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song175_swoosh.wav-1122a07ca2cd9eb4064e1e02a04c79c0.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Misc/song175_swoosh.wav"
+dest_files=[ "res://.import/song175_swoosh.wav-1122a07ca2cd9eb4064e1e02a04c79c0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song163_crash.wav-07f050fa2ef0cf14944e5fe82a07c5ad.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song163_crash.wav"
+dest_files=[ "res://.import/song163_crash.wav-07f050fa2ef0cf14944e5fe82a07c5ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

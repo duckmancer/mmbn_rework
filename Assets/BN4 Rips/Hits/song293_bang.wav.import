@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song293_bang.wav-8f381c0686bd4eb9df699691c901bbd6.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song293_bang.wav"
+dest_files=[ "res://.import/song293_bang.wav-8f381c0686bd4eb9df699691c901bbd6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

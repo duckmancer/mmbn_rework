@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song366_break_hit.wav-6dc4f7ccea3587afe44d78693993f909.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song366_break_hit.wav"
+dest_files=[ "res://.import/song366_break_hit.wav-6dc4f7ccea3587afe44d78693993f909.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

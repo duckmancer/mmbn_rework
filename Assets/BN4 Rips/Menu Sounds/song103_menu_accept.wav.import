@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song103_menu_accept.wav-6e882fb86dcb2928c7d26164d1f5051e.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Menu Sounds/song103_menu_accept.wav"
+dest_files=[ "res://.import/song103_menu_accept.wav-6e882fb86dcb2928c7d26164d1f5051e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

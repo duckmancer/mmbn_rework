@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song443_flash.wav-02bd38e296f25e7312fcb2be3d66c702.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Misc/song443_flash.wav"
+dest_files=[ "res://.import/song443_flash.wav-02bd38e296f25e7312fcb2be3d66c702.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

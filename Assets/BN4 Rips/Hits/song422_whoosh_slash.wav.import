@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song422_whoosh_slash.wav-4a72d66ca37ef065a17060a72bbe64bc.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song422_whoosh_slash.wav"
+dest_files=[ "res://.import/song422_whoosh_slash.wav-4a72d66ca37ef065a17060a72bbe64bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song277_tap.wav-fcf5338d5895c8b5b9728331d90032d8.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song277_tap.wav"
+dest_files=[ "res://.import/song277_tap.wav-fcf5338d5895c8b5b9728331d90032d8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song367_clap.wav-8bf0cd13894586c788fc2025be469afe.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song367_clap.wav"
+dest_files=[ "res://.import/song367_clap.wav-8bf0cd13894586c788fc2025be469afe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

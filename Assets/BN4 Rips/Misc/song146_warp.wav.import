@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song146_warp.wav-8e1bdfe904b7d7bbbea57a4905a8c091.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Misc/song146_warp.wav"
+dest_files=[ "res://.import/song146_warp.wav-8e1bdfe904b7d7bbbea57a4905a8c091.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

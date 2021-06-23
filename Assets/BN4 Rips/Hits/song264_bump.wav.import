@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song264_bump.wav-6aca201369f23cf2fe63f27543a4640b.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Hits/song264_bump.wav"
+dest_files=[ "res://.import/song264_bump.wav-6aca201369f23cf2fe63f27543a4640b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

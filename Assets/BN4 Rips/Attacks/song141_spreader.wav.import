@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song141_spreader.wav-caa171ffc4b2c20b01284f221ea6e84c.sample"
+
+[deps]
+
+source_file="res://Assets/BN4 Rips/Attacks/song141_spreader.wav"
+dest_files=[ "res://.import/song141_spreader.wav-caa171ffc4b2c20b01284f221ea6e84c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
