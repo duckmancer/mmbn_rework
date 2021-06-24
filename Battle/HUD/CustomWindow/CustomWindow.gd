@@ -19,16 +19,7 @@ const NO_LOCKOUT = {
 	id = LockoutID.ANY,
 }
 
-var chip_slot_order = []
-var selected_chip_data = []
-var lockout = NO_LOCKOUT.duplicate()
-var last_focus = null
-
-onready var chip_title = $ChipName
-onready var chip_splash = $ChipSplash
-onready var chip_code = $ChipCode
-onready var chip_element = $ChipElement
-onready var chip_damage = $ChipDamage
+onready var chip_preview = $ChipPreview
 
 onready var animation_player = $AnimationPlayer
 onready var audio = $AudioStreamPlayer
@@ -54,6 +45,12 @@ onready var selected_chip_display = [
 	$SelectedChips/ChipBox4,
 ]
 
+var chip_slot_order = []
+var selected_chip_data = []
+var lockout = NO_LOCKOUT.duplicate()
+var last_focus = null
+var is_custom_open := false
+
 
 func get_chip_data():
 	return selected_chip_data
@@ -61,6 +58,7 @@ func get_chip_data():
 # Enter / Exit
 
 func open_custom():
+	is_custom_open = true
 	_play_animation("open_custom")
 	_update_available_chips()
 	_clear_selected_chips()
@@ -89,6 +87,7 @@ func _setup_focus():
 	last_focus = null
 
 func _finish_custom():
+	is_custom_open = false
 	_release_custom_focus()
 	_play_animation("custom_finish")
 	emit_signal("custom_finished")
@@ -198,7 +197,6 @@ func _play_animation(anim_name : String):
 	animation_player.play(anim_name)
 	if audio.stream is AudioStreamOGGVorbis:
 		audio.stream.loop = false
-	
 
 func _update_selector():
 	var focus = get_focus_owner()
@@ -206,71 +204,19 @@ func _update_selector():
 		selector.set_global_position(focus.get_global_rect().position - SELECTOR_OFFSET)
 		if focus in chip_menu:
 			selector.set_size(CHIP_SELECTOR_SIZE)
-			_set_chip_preview(focus.chip_data)
+			chip_preview.set_preview(focus.chip_data)
 		else:
 			selector.set_size(OK_SELECTOR_SIZE)
-			_set_ok_preview()
+			chip_preview.set_ok_preview(not selected_chip_data.empty())
 		if last_focus:
 			_play_animation("chip_choose")
 		last_focus = focus
 
-func _set_ok_preview():
-	var splash_path = "res://Assets/BattleAssets/HUD/"
-	if selected_chip_data.empty():
-		splash_path += "Empty Confirm Window.png"
-	else:
-		splash_path += "Chip Confirm Window.png"
-	chip_splash.texture = load(splash_path)
-	_set_chip_code(null)
-	_set_chip_damage(null)
-	chip_title.text = ""
-
-func _set_chip_preview(chip_data):
-	_set_chip_splash(chip_data.id)
-	_set_chip_code(chip_data.code)
-	_set_chip_damage(chip_data.name)
-	chip_title.text = chip_data.pretty_name
-
-func _set_chip_damage(chip_name):
-	if chip_name:
-		var chip_data = ActionData.action_factory(chip_name)
-		chip_damage.set_text(String(chip_data.damage))
-		chip_element.frame = chip_data.damage_type
-	else:
-		chip_damage.set_text("")
-		chip_element.frame = ActionData.Element.HIDE
-
-func _set_chip_code(code):
-	if code:
-		var index = code.to_ascii()[0] - "A".to_ascii()[0]
-		if index > 25:
-			index = 25
-		chip_code.frame = index
-		chip_code.visible = true
-	else:
-		chip_code.visible = false
-
-func _set_chip_splash(chip_id):
-	# TODO: Cleanup magic constants
-	var splash_root = "res://Assets/BattleAssets/HUD/Chip Splashes/"
-	var S_CHIP_END = 150
-	var S_CHIP_START = 1
-	
-	var chip_name = ""
-	var id = chip_id + 1
-	
-	if id >= S_CHIP_START and id <= S_CHIP_END:
-		var id_str = String(id)
-		var padding_count = 3 - id_str.length()
-		for i in padding_count:
-			id_str = "0" + id_str
-		chip_name = "schip" + String(id_str)
-	chip_splash.texture = load(splash_root + chip_name + ".png")
 
 # Processing
 
 func _unhandled_key_input(event: InputEventKey) -> void:
-	if not Globals.custom_open:
+	if not is_custom_open:
 		return
 	if event.is_action_pressed("ui_select"):
 		var focus = get_focus_owner()

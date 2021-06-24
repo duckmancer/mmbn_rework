@@ -125,13 +125,6 @@ func terminate():
 # Processing
 
 func _physics_process(_delta):
-	if Globals.battle_paused:
-		animation_player.stop(false)
-		is_paused = true
-		return
-	elif is_paused:
-		animation_player.play()
-		is_paused = false
 	if is_active:
 		do_tick()
 

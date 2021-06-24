@@ -91,7 +91,6 @@ func _get_tile_anim():
 # Processing
 
 func _physics_process(_delta):
-#	if not Globals.battle_paused:
 	for s in _danger_sources:
 		_danger_sources[s] -= 1
 		if _danger_sources[s] <= 0:

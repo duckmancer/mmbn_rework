@@ -180,12 +180,19 @@ texture = ExtResource( 7 )
 hframes = 7
 vframes = 3
 frame = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CustGauge" type="Sprite" parent="."]
 position = Vector2( 120, 7 )
 texture = ExtResource( 3 )
 vframes = 5
 frame = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="TextureProgress" type="TextureProgress" parent="CustGauge"]
 margin_left = -64.0
@@ -197,20 +204,11 @@ step = 0.0
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="CustomWindow" parent="." instance=ExtResource( 1 )]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "custom_progressing"
-anims/close_custom = SubResource( 1 )
-anims/custom_progressing = SubResource( 2 )
-anims/custom_ready = SubResource( 3 )
-anims/open_custom = SubResource( 4 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 134.0
@@ -245,5 +243,33 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 align = 0
 outer_color = Color( 0.972549, 0.596078, 0, 1 )
 inner_color = Color( 0.972549, 0.815686, 0, 1 )
+
+[node name="PauseLabel" type="Label" parent="."]
+visible = false
+margin_left = 100.0
+margin_top = 57.0
+margin_right = 140.0
+margin_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "PAUSE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "custom_progressing"
+anims/close_custom = SubResource( 1 )
+anims/custom_progressing = SubResource( 2 )
+anims/custom_ready = SubResource( 3 )
+anims/open_custom = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="custom_finished" from="CustomWindow" to="." method="_on_CustomWindow_custom_finished"]

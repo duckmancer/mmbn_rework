@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Battle/HUD/CustomWindow/ChipPreview.gd" type="Script" id=1]
+[ext_resource path="res://Battle/HUD/ShineLabel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/BattleAssets/HUD/Chip Splashes/schip001.png" type="Texture" id=5]
+[ext_resource path="res://Assets/BattleAssets/HUD/Selected Chip Code.png" type="Texture" id=6]
+[ext_resource path="res://Assets/BattleAssets/HUD/Chip Element.png" type="Texture" id=7]
+
+[node name="ChipPreview" type="Control"]
+margin_top = 7.0
+margin_right = 83.0
+margin_bottom = 98.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 3.0
+margin_right = 56.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.772549, 0.772549, 0.772549, 1 )
+text = "Cannon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Splash" type="Sprite" parent="."]
+position = Vector2( 44, 49 )
+texture = ExtResource( 5 )
+
+[node name="Code" type="Sprite" parent="."]
+position = Vector2( 20, 82 )
+texture = ExtResource( 6 )
+hframes = 9
+vframes = 3
+
+[node name="Element" type="Sprite" parent="."]
+position = Vector2( 32, 81 )
+texture = ExtResource( 7 )
+hframes = 7
+vframes = 2
+
+[node name="Damage" parent="." instance=ExtResource( 2 )]
+margin_left = 35.0
+margin_top = 75.0
+margin_right = 72.0
+margin_bottom = 91.0
+outer_color = Color( 0.815686, 0.815686, 0.815686, 1 )
+inner_color = Color( 1, 1, 1, 1 )

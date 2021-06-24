@@ -31,8 +31,6 @@ func _button_released(button):
 		_total_held_inputs -= 1
 
 func _unhandled_key_input(event):
-	if Globals.battle_paused:
-		return
 	for button in _held_input.keys():
 		if event.is_action_pressed(button):
 			_button_pressed(button)
@@ -54,10 +52,9 @@ func _physics_process(_delta):
 	if _total_held_inputs == 0:
 		_cur_input_count = 0
 	
-	if not Globals.battle_paused:
-		var best_input = get_last_input()
-		if player:
-			player.process_input(best_input)
+	var best_input = get_last_input()
+	if player:
+		player.process_input(best_input)
 	
 
 func bind_player(controlled_player: Unit):

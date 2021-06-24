@@ -2,11 +2,8 @@ extends Node2D
 
 signal custom_finished(chips)
 
-const HUD_POSITION = {
-	cust_open = 120,
-	cust_closed = 0,
-}
 
+onready var pause_label = $PauseLabel
 onready var cur_chip = $HBoxContainer
 onready var cur_name = $HBoxContainer/CurChip
 onready var cur_damage = $HBoxContainer/Damage
@@ -19,16 +16,19 @@ onready var player_health = $PlayerHealthBox
 
 var cust_gauge_speed = 1.0
 var is_cust_full = false
+var is_custom_open = false
 
 # State Change
 
 func open_custom():
+	is_custom_open = true
 	pause_mode = PAUSE_MODE_INHERIT
 	cur_chip.visible = false
 	anim.play("open_custom")
 	custom_window.open_custom()
 
 func close_custom():
+	is_custom_open = false
 	anim.play("close_custom")
 
 
@@ -39,7 +39,6 @@ func on_cust_full() -> void:
 	cust_progress.value = 0.0
 	anim.play("custom_ready")
 	audio.play()
-	
 
 func on_cust_closed() -> void:
 	pause_mode = PAUSE_MODE_STOP
@@ -47,6 +46,7 @@ func on_cust_closed() -> void:
 	cur_chip.visible = true
 	anim.play("custom_progressing", -1, cust_gauge_speed)
 	emit_signal("custom_finished", custom_window.get_chip_data())
+
 
 # Initialization
 
@@ -66,7 +66,6 @@ func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 	else:
 		player_health.color_mode = "normal"
 
-
 func _on_PlayerController_cur_chip_updated(chip_data) -> void:
 	if chip_data:
 		cur_name.set_text(chip_data.pretty_name)
@@ -75,3 +74,6 @@ func _on_PlayerController_cur_chip_updated(chip_data) -> void:
 	else:
 		cur_name.set_text("")
 		cur_damage.set_text("")
+
+func _on_Battle_paused(is_paused) -> void:
+	pause_label.visible = is_paused and not is_custom_open

@@ -1,6 +1,8 @@
 class_name Battle
 extends Node2D
 
+signal paused(is_paused)
+
 const GRID_SIZE = Vector2(6, 3)
 const DEFAULT_GRID = [
 	[Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.PLAYER, Entity.Team.ENEMY, Entity.Team.ENEMY, Entity.Team.ENEMY],
@@ -24,25 +26,27 @@ var panel_grid = []
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("pause"):
-		if not Globals.custom_open:
+		if not hud.is_custom_open:
 			toggle_pause()
 	if event.is_action_pressed("custom_menu"):
-		if not get_tree().paused and not Globals.custom_open and hud.is_cust_full:
+		if not get_tree().paused and not hud.is_custom_open and hud.is_cust_full:
 			open_custom()
 
 func toggle_pause():
-	get_tree().paused = not get_tree().paused
+	var is_paused = get_tree().paused
+	emit_signal("paused", not is_paused)
+	if is_paused:
+		get_tree().paused = false
+	else:
+		get_tree().paused = true
 
 func open_custom():
-	Globals.custom_open = true
 	hud.open_custom()
 	toggle_pause()
 
 func close_custom():
-	Globals.custom_open = false
 	$Timer.start()
 	yield($Timer, "timeout")
-#	Globals.battle_paused = false
 	toggle_pause()
 
 # Initialization
@@ -94,7 +98,7 @@ func connect_signals(entity: Entity):
 func _on_Entity_spawn_entity(entity):
 	connect_signals(entity)
 	if entity.is_independent:
-		add_child(entity)
+		battlefield.add_child(entity)
 
 func _on_HUD_custom_finished(chips) -> void:
 	player_controller.player.chip_data.set_chips(chips)
