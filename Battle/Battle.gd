@@ -44,10 +44,6 @@ func open_custom():
 	hud.open_custom()
 	toggle_pause()
 
-func close_custom():
-	$Timer.start()
-	yield($Timer, "timeout")
-	toggle_pause()
 
 # Initialization
 
@@ -102,4 +98,6 @@ func _on_Entity_spawn_entity(entity):
 
 func _on_HUD_custom_finished(chips) -> void:
 	player_controller.player.chip_data.set_chips(chips)
-	close_custom()
+
+func _on_HUD_battle_start() -> void:
+	toggle_pause()

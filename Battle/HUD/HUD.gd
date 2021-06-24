@@ -1,18 +1,23 @@
 extends Node2D
 
 signal custom_finished(chips)
-
+signal battle_start()
 
 onready var pause_label = $PauseLabel
+onready var start_label = $StartLabel
+
 onready var cur_chip = $HBoxContainer
 onready var cur_name = $HBoxContainer/CurChip
 onready var cur_damage = $HBoxContainer/Damage
+
 onready var anim = $AnimationPlayer
-onready var audio = $AudioStreamPlayer
+
+onready var player_health = $PlayerHealthBox
 onready var custom_window = $CustomWindow
+
+onready var cust_anim = $CustGauge/CustAnim
 onready var cust_gauge = $CustGauge
 onready var cust_progress = $CustGauge/TextureProgress
-onready var player_health = $PlayerHealthBox
 
 var cust_gauge_speed = 1.0
 var is_cust_full = false
@@ -22,8 +27,8 @@ var is_custom_open = false
 
 func open_custom():
 	is_custom_open = true
-	pause_mode = PAUSE_MODE_INHERIT
 	cur_chip.visible = false
+	cust_anim.play("cust_progressing", -1, cust_gauge_speed)
 	anim.play("open_custom")
 	custom_window.open_custom()
 
@@ -36,22 +41,32 @@ func close_custom():
 
 func on_cust_full() -> void:
 	is_cust_full = true
-	cust_progress.value = 0.0
-	anim.play("custom_ready")
-	audio.play()
+	cust_anim.play("cust_ready")
 
 func on_cust_closed() -> void:
-	pause_mode = PAUSE_MODE_STOP
 	is_cust_full = false
 	cur_chip.visible = true
-	anim.play("custom_progressing", -1, cust_gauge_speed)
 	emit_signal("custom_finished", custom_window.get_chip_data())
+	anim.play("battle_start")
 
+func on_battle_start() -> void:
+	emit_signal("battle_start")
+
+func set_chip_details(chip_data = null):
+	if chip_data:
+		cur_name.set_text(chip_data.pretty_name)
+		cur_damage.set_text( String(ActionData.action_factory(chip_data.name).damage))
+	else:
+		cur_name.set_text("")
+		cur_damage.set_text("")
 
 # Initialization
 
 func _ready() -> void:
 	cust_gauge_speed = 1.0 / Globals.CUST_GAUGE_FILL_TIME
+	set_chip_details()
+	start_label.visible = false
+	pause_label.visible = false
 
 
 # Signals
@@ -67,13 +82,7 @@ func _on_PlayerController_hp_changed(new_hp, is_danger) -> void:
 		player_health.color_mode = "normal"
 
 func _on_PlayerController_cur_chip_updated(chip_data) -> void:
-	if chip_data:
-		cur_name.set_text(chip_data.pretty_name)
-		cur_damage.set_text( String(ActionData.action_factory(chip_data.name).damage))
-#		cur_chip.set_text("100")
-	else:
-		cur_name.set_text("")
-		cur_damage.set_text("")
+	set_chip_details(chip_data)
 
 func _on_Battle_paused(is_paused) -> void:
 	pause_label.visible = is_paused and not is_custom_open

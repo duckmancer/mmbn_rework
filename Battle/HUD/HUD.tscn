@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Battle/HUD/CustomWindow/CustomWindow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/HUD/HUD.gd" type="Script" id=2]
@@ -9,6 +9,146 @@
 [ext_resource path="res://Assets/BattleAssets/HUD/Emotion Window Content.png" type="Texture" id=7]
 [ext_resource path="res://Battle/HUD/ShineLabel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Assets/BattleAssets/HUD/Battle Message.png" type="Texture" id=11]
+
+[sub_resource type="Animation" id=6]
+resource_name = "cust_progressing"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureProgress:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_cust_full"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "cust_ready"
+length = 0.533333
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.266667, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureProgress:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "battle_start"
+length = 1.5
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("StartLabel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0.666667 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StartLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.666667, 1.46667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_battle_start"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("StartLabel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.666667, 0.8, 1.26667, 1.46667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "close_custom"
@@ -53,78 +193,6 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "custom_progressing"
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("CustGauge/TextureProgress:value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "on_cust_full"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CustGauge:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "custom_ready"
-length = 0.466667
-loop = true
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("CustGauge:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.116667, 0.233333, 0.35 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 4 ]
-}
-
 [sub_resource type="Animation" id=4]
 length = 0.166667
 step = 0.0166667
@@ -166,11 +234,20 @@ tracks/2/keys = {
 }
 
 [node name="HUD" type="Node2D"]
+position = Vector2( 120, 0 )
 z_index = 50
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="StartLabel" type="Sprite" parent="."]
+visible = false
+position = Vector2( 120, 64 )
+scale = Vector2( 1, 1e-05 )
+texture = ExtResource( 11 )
+vframes = 9
+frame = 2
 
 [node name="PlayerHealthBox" parent="." instance=ExtResource( 5 )]
 
@@ -185,28 +262,37 @@ __meta__ = {
 }
 
 [node name="CustGauge" type="Sprite" parent="."]
-position = Vector2( 120, 7 )
+pause_mode = 1
 texture = ExtResource( 3 )
+offset = Vector2( 120, 7 )
 vframes = 5
-frame = 1
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="TextureProgress" type="TextureProgress" parent="CustGauge"]
-margin_left = -64.0
-margin_top = 1.0
-margin_right = 64.0
-margin_bottom = 7.0
+margin_left = 56.0
+margin_top = 8.0
+margin_right = 184.0
+margin_bottom = 14.0
 max_value = 1.0
 step = 0.0
+value = 0.333333
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="CustAnim" type="AnimationPlayer" parent="CustGauge"]
+autoplay = "cust_progressing"
+anims/cust_progressing = SubResource( 6 )
+anims/cust_ready = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CustGauge"]
+stream = ExtResource( 6 )
 
 [node name="CustomWindow" parent="." instance=ExtResource( 1 )]
 
@@ -259,17 +345,13 @@ text = "PAUSE"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "custom_progressing"
+anims/battle_start = SubResource( 5 )
 anims/close_custom = SubResource( 1 )
-anims/custom_progressing = SubResource( 2 )
-anims/custom_ready = SubResource( 3 )
 anims/open_custom = SubResource( 4 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
 
 [connection signal="custom_finished" from="CustomWindow" to="." method="_on_CustomWindow_custom_finished"]
