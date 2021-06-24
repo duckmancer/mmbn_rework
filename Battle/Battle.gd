@@ -56,9 +56,9 @@ func _ready():
 func _spawn_entities():
 	add_entity(NormalNavi, Vector2(1, 1), Entity.Team.PLAYER, true)
 	var entities = [
-		[NormalNavi, Vector2(3, 0)],
-		[NormalNavi, Vector2(4, 1)],
-		[NormalNavi, Vector2(3, 2)],
+		[NormalNavi, Vector2(4, 0)],
+		[NormalNavi, Vector2(5, 1)],
+		[NormalNavi, Vector2(4, 2)],
 	]
 	for params in entities:
 		var e = add_entity(params[0], params[1])

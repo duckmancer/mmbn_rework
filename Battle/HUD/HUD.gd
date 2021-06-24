@@ -33,7 +33,6 @@ func open_custom():
 	cust_anim.play("cust_progressing", -1, cust_gauge_speed)
 	anim.play("open_custom")
 	custom_window.open_custom()
-	set_enemy_names()
 
 func close_custom():
 	is_custom_open = false
@@ -53,6 +52,9 @@ func on_cust_closed() -> void:
 	cur_chip.visible = true
 	
 	anim.play("battle_start")
+
+func on_cust_opened() -> void:
+	set_enemy_names()
 
 func on_battle_start() -> void:
 	emit_signal("battle_start")
@@ -82,6 +84,7 @@ func _ready() -> void:
 	set_chip_details()
 	start_label.visible = false
 	pause_label.visible = false
+	enemy_names.visible = false
 
 
 # Signals
