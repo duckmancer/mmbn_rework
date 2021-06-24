@@ -14,6 +14,7 @@ const HEALTH_COLORS = {
 	danger = Color("ff7676")
 }
 
+onready var anim = $AnimationPlayer
 onready var hud = $HUD
 onready var battlefield = $Battlefield
 onready var player_controller = $Battlefield/PlayerController
@@ -42,6 +43,7 @@ func toggle_pause():
 
 func open_custom():
 	hud.open_custom()
+	anim.play("open_custom")
 	toggle_pause()
 
 
@@ -98,6 +100,7 @@ func _on_Entity_spawn_entity(entity):
 
 func _on_HUD_custom_finished(chips) -> void:
 	player_controller.player.chip_data.set_chips(chips)
+	anim.play("close_custom")
 
 func _on_HUD_battle_start() -> void:
 	toggle_pause()

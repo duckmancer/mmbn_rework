@@ -97,16 +97,16 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "battle_start"
-length = 1.5
+length = 1.16667
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("StartLabel:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.666667 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 2 ]
@@ -118,7 +118,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.666667, 1.46667 ),
+"times": PoolRealArray( 0, 0.333333, 1.13333 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -130,7 +130,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1.5 ),
+"times": PoolRealArray( 1.15 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -144,7 +144,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.666667, 0.8, 1.26667, 1.46667 ),
+"times": PoolRealArray( 0.333333, 0.466667, 0.933333, 1.13333 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
@@ -159,7 +159,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.166667 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -201,7 +201,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.166667 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -244,10 +244,27 @@ __meta__ = {
 [node name="StartLabel" type="Sprite" parent="."]
 visible = false
 position = Vector2( 120, 64 )
-scale = Vector2( 1, 1e-05 )
 texture = ExtResource( 11 )
 vframes = 9
 frame = 2
+
+[node name="Label" type="Label" parent="StartLabel"]
+visible = false
+margin_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 0.996078, 0.662745, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 0
+custom_constants/shadow_as_outline = 2
+text = "Battle Start!"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlayerHealthBox" parent="." instance=ExtResource( 5 )]
 

@@ -35,6 +35,7 @@ func open_custom():
 func close_custom():
 	is_custom_open = false
 	anim.play("close_custom")
+	emit_signal("custom_finished", custom_window.get_chip_data())
 
 
 # Processing
@@ -46,7 +47,7 @@ func on_cust_full() -> void:
 func on_cust_closed() -> void:
 	is_cust_full = false
 	cur_chip.visible = true
-	emit_signal("custom_finished", custom_window.get_chip_data())
+	
 	anim.play("battle_start")
 
 func on_battle_start() -> void:
@@ -59,6 +60,8 @@ func set_chip_details(chip_data = null):
 	else:
 		cur_name.set_text("")
 		cur_damage.set_text("")
+
+# TODO: Change "battle Start" to use text parameter
 
 # Initialization
 
