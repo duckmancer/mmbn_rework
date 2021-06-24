@@ -54,6 +54,7 @@ func _update_display():
 		emit_signal("cur_chip_updated", null)
 
 func _ready() -> void:
+	visible = true
 	clear_chips()
 	var s_chips = []
 	for c in debug_chips:

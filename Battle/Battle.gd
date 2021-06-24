@@ -33,41 +33,37 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 		if not get_tree().paused and not hud.is_custom_open and hud.is_cust_full:
 			open_custom()
 
-func toggle_pause():
-	var is_paused = get_tree().paused
-	emit_signal("paused", not is_paused)
-	if is_paused:
-		get_tree().paused = false
-	else:
-		get_tree().paused = true
+func toggle_pause(pause_state := not get_tree().paused):
+	emit_signal("paused", not pause_state)
+	get_tree().paused = pause_state
 
 func open_custom():
 	hud.open_custom()
 	anim.play("open_custom")
-	toggle_pause()
+	get_tree().paused = true
 
 
 # Initialization
 
 func _ready():
 	randomize()
+	get_tree().paused = true
 	Battlechips.create_active_folder()
 	_set_panels()
-	_spawn_entities()
+	yield(_spawn_entities(), "completed")
 	open_custom()
 
 func _spawn_entities():
 	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
-#	add_entity(Mettaur, Vector2(4, 1))
-	add_entity(Megaman, Vector2(3, 0))
-	add_entity(Megaman, Vector2(3, 1))
-	add_entity(Megaman, Vector2(3, 2))
-	add_entity(Megaman, Vector2(4, 0))
-	add_entity(Megaman, Vector2(4, 1))
-	add_entity(Megaman, Vector2(4, 2))
-	add_entity(Megaman, Vector2(5, 0))
-	add_entity(Megaman, Vector2(5, 1))
-	add_entity(Megaman, Vector2(5, 2))
+	var entities = [
+		[Megaman, Vector2(3, 0)],
+		[Megaman, Vector2(4, 1)],
+		[Megaman, Vector2(3, 2)],
+	]
+	for params in entities:
+		var e = add_entity(params[0], params[1])
+		yield(e, "spawn_completed")
+		pass
 
 func _set_panels():
 	for i in GRID_SIZE.y:
@@ -80,12 +76,13 @@ func _set_panels():
 	Globals.battle_grid = panel_grid
 
 func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc := false):
-	var kwargs = {grid_pos = pos, team = team}
+	var kwargs = {grid_pos = pos, team = team, is_player_controlled = pc}
 	var entity = Entity.construct_entity(entity_type, kwargs)
 	connect_signals(entity)
 	battlefield.add_child(entity)
 	if pc:
 		player_controller.bind_player(entity)
+	return entity
 
 func connect_signals(entity: Entity):
 	var _err = entity.connect("spawn_entity", self, "_on_Entity_spawn_entity")
@@ -103,4 +100,4 @@ func _on_HUD_custom_finished(chips) -> void:
 	anim.play("close_custom")
 
 func _on_HUD_battle_start() -> void:
-	toggle_pause()
+	get_tree().paused = false

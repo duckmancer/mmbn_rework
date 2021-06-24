@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+const float base_x = 1024.0; // blocks by x direction
+const float base_y = 1024.0; // blocks by y direction
+
+uniform float scale = 1.0;
+
+void fragment() {
+	float size_x = base_x * scale;
+	float size_y = base_y * scale;
+    COLOR = texture(TEXTURE, vec2(floor(UV.x * size_x) / (size_x - 1.0), floor(UV.y * size_y) / (size_y - 1.0)));
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/scale = 0.0

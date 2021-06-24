@@ -2,6 +2,7 @@ class_name Unit
 extends Entity
 
 signal hp_changed(new_hp)
+signal spawn_completed()
 
 const _REPEAT_INPUT_BUFFER = 0
 
@@ -147,6 +148,9 @@ func do_tick():
 
 func _ready():
 	self.hp = max_hp
+	if not is_player_controlled:
+		animation_player.play("spawn")
+		animation_player.advance(0)
 
 
 # Signals

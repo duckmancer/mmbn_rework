@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://Assets/BattleAssets/HUD/Battle Message.png" type="Texture" id=11]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "cust_progressing"
 step = 0.0166667
 tracks/0/type = "value"
@@ -65,7 +65,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "cust_ready"
 length = 0.533333
 loop = true
@@ -95,7 +95,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "battle_start"
 length = 1.16667
 step = 0.0166667
@@ -150,8 +150,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "close_custom"
+[sub_resource type="Animation" id=4]
 length = 0.166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -193,7 +192,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -280,6 +279,7 @@ __meta__ = {
 
 [node name="CustGauge" type="Sprite" parent="."]
 pause_mode = 1
+visible = false
 texture = ExtResource( 3 )
 offset = Vector2( 120, 7 )
 vframes = 5
@@ -295,7 +295,6 @@ margin_right = 184.0
 margin_bottom = 14.0
 max_value = 1.0
 step = 0.0
-value = 0.333333
 texture_progress = ExtResource( 4 )
 nine_patch_stretch = true
 __meta__ = {
@@ -304,9 +303,8 @@ __meta__ = {
 }
 
 [node name="CustAnim" type="AnimationPlayer" parent="CustGauge"]
-autoplay = "cust_progressing"
-anims/cust_progressing = SubResource( 6 )
-anims/cust_ready = SubResource( 7 )
+anims/cust_progressing = SubResource( 1 )
+anims/cust_ready = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CustGauge"]
 stream = ExtResource( 6 )
@@ -367,8 +365,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/battle_start = SubResource( 5 )
-anims/close_custom = SubResource( 1 )
-anims/open_custom = SubResource( 4 )
+autoplay = "open_custom"
+anims/battle_start = SubResource( 3 )
+anims/close_custom = SubResource( 4 )
+anims/open_custom = SubResource( 5 )
 
 [connection signal="custom_finished" from="CustomWindow" to="." method="_on_CustomWindow_custom_finished"]

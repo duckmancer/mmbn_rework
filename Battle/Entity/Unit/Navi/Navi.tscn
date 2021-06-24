@@ -1,10 +1,28 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Battle/Entity/Unit/Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Navi/Navi.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+const float base_x = 1024.0; // blocks by x direction
+const float base_y = 1024.0; // blocks by y direction
+
+uniform float scale = 1.0;
+
+void fragment() {
+	float size_x = base_x * scale;
+	float size_y = base_y * scale;
+    COLOR = texture(TEXTURE, vec2(floor(UV.x * size_x) / (size_x - 1.0), floor(UV.y * size_y) / (size_y - 1.0)));
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/scale = 1.0
+
+[sub_resource type="Animation" id=3]
 length = 1.06667
 loop = true
 step = 0.0166667
@@ -21,7 +39,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 1.06667
 loop = true
 step = 0.0166667
@@ -38,7 +56,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.0833335
 step = 0.0166667
 tracks/0/type = "value"
@@ -54,8 +72,7 @@ tracks/0/keys = {
 "values": [ 0, 8, 9, 8, 0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "shoot_heavy"
+[sub_resource type="Animation" id=6]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -83,7 +100,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -4, 0 ), Vector2( -5, 0 ), Vector2( -6, 0 ), Vector2( -7, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -99,8 +116,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "shoot_med"
+[sub_resource type="Animation" id=8]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -116,7 +132,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.466667
 step = 0.0166667
 tracks/0/type = "value"
@@ -132,7 +148,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 length = 0.4
 step = 0.0166667
 tracks/0/type = "value"
@@ -149,19 +165,19 @@ tracks/0/keys = {
 }
 
 [node name="Navi" instance=ExtResource( 1 )]
+material = SubResource( 2 )
 script = ExtResource( 3 )
 max_hp = 200
 
 [node name="Sprite" parent="." index="1"]
-frame = 24
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/idle = SubResource( 1 )
-"anims/idle (old)" = SubResource( 2 )
-anims/move = SubResource( 3 )
-anims/shoot_heavy = SubResource( 4 )
-anims/shoot_light = SubResource( 5 )
-anims/shoot_med = SubResource( 6 )
-anims/slash = SubResource( 7 )
-anims/throw = SubResource( 8 )
+anims/idle = SubResource( 3 )
+"anims/idle (old)" = SubResource( 4 )
+anims/move = SubResource( 5 )
+anims/shoot_heavy = SubResource( 6 )
+anims/shoot_light = SubResource( 7 )
+anims/shoot_med = SubResource( 8 )
+anims/slash = SubResource( 9 )
+anims/throw = SubResource( 10 )
