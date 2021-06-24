@@ -19,6 +19,8 @@ onready var cust_anim = $CustGauge/CustAnim
 onready var cust_gauge = $CustGauge
 onready var cust_progress = $CustGauge/TextureProgress
 
+onready var enemy_names = $EnemyNames
+
 var cust_gauge_speed = 1.0
 var is_cust_full = false
 var is_custom_open = false
@@ -31,9 +33,11 @@ func open_custom():
 	cust_anim.play("cust_progressing", -1, cust_gauge_speed)
 	anim.play("open_custom")
 	custom_window.open_custom()
+	set_enemy_names()
 
 func close_custom():
 	is_custom_open = false
+	enemy_names.visible = false
 	anim.play("close_custom")
 	emit_signal("custom_finished", custom_window.get_chip_data())
 
@@ -60,6 +64,14 @@ func set_chip_details(chip_data = null):
 	else:
 		cur_name.set_text("")
 		cur_damage.set_text("")
+
+func set_enemy_names():
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	var label_text = ""
+	for e in enemies:
+		label_text += e.pretty_name + "\n"
+	enemy_names.text = label_text
+	enemy_names.visible = true
 
 # TODO: Change "battle Start" to use text parameter
 

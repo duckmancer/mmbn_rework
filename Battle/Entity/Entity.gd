@@ -14,6 +14,7 @@ onready var animation_player := $AnimationPlayer as AnimationPlayer
 onready var audio := $AudioStreamPlayer as AudioStreamPlayer
 
 export var is_independent := true
+export var pretty_name := "DEFAULT"
 
 var default_keywords = []
 var is_player_controlled := false

@@ -54,16 +54,15 @@ func _ready():
 	open_custom()
 
 func _spawn_entities():
-	add_entity(Megaman, Vector2(1, 1), Entity.Team.PLAYER, true)
+	add_entity(NormalNavi, Vector2(1, 1), Entity.Team.PLAYER, true)
 	var entities = [
-		[Megaman, Vector2(3, 0)],
-		[Megaman, Vector2(4, 1)],
-		[Megaman, Vector2(3, 2)],
+		[NormalNavi, Vector2(3, 0)],
+		[NormalNavi, Vector2(4, 1)],
+		[NormalNavi, Vector2(3, 2)],
 	]
 	for params in entities:
 		var e = add_entity(params[0], params[1])
 		yield(e, "spawn_completed")
-		pass
 
 func _set_panels():
 	for i in GRID_SIZE.y:

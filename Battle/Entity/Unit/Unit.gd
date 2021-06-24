@@ -151,6 +151,10 @@ func _ready():
 	if not is_player_controlled:
 		animation_player.play("spawn")
 		animation_player.advance(0)
+	if team == Team.ENEMY:
+		add_to_group("enemy")
+	else:
+		add_to_group("ally")
 
 
 # Signals
