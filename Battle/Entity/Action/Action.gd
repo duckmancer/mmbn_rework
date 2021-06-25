@@ -95,7 +95,7 @@ func check_in():
 # Initialization
 
 func _ready():
-	var action_speed = 1.0
+	var action_speed = animation_player.playback_speed
 	if animation_name == "virus_action":
 		action_speed /= virus_action_delay
 	animation_player.play(animation_name, -1, action_speed)

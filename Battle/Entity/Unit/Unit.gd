@@ -2,6 +2,7 @@ class_name Unit
 extends Entity
 
 signal hp_changed(new_hp)
+# warning-ignore:unused_signal
 signal spawn_completed()
 
 const _REPEAT_INPUT_BUFFER = 0
@@ -68,6 +69,7 @@ func set_hp(new_hp):
 	if is_player_controlled:
 		emit_signal("hp_changed", hp, max_hp)
 
+# warning-ignore:unused_argument
 func hurt(damage, impact_type = "hit", damage_type = "normal"):
 	set_hp(hp - damage)
 	create_child_entity(Impact, {impact_anim = impact_type})
@@ -171,6 +173,7 @@ func align_row(target):
 		result = "up"
 	return result
 
+# warning-ignore:unused_argument
 func run_AI(target):
 	return null
 
@@ -192,10 +195,15 @@ func do_tick():
 		else:
 			cur_cooldown -= 1
 
+func set_do_pixelate(state : bool):
+	var foo = material
+	material.set("shader_param/do_pixelate", state)
+	pass
 
 # Setup
 
 func _ready():
+	material = material.duplicate()
 	self.hp = max_hp
 	if not is_player_controlled:
 		animation_player.play("spawn")

@@ -70,6 +70,7 @@ func _spawn_player():
 
 func _spawn_entities():
 	var entities = []
+# warning-ignore:unused_variable
 	var e_list = [
 		[Mettaur, {grid_pos = Vector2(4, 0)}],
 		[Mettaur, {grid_pos = Vector2(5, 1)}],

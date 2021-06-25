@@ -1,28 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Battle/Entity/Unit/Virus/Mettaur/Mettaur.gd" type="Script" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Virus/Virus.tscn" type="PackedScene" id=2]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-const float base_x = 1024.0; // blocks by x direction
-const float base_y = 1024.0; // blocks by y direction
-
-uniform float scale = 1.0;
-
-void fragment() {
-	float size_x = base_x * scale;
-	float size_y = base_y * scale;
-    COLOR = texture(TEXTURE, vec2(floor(UV.x * size_x) / (size_x - 1.0), floor(UV.y * size_y) / (size_y - 1.0)));
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/scale = 1.0
-
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "hide"
 length = 0.283333
 step = 0.0166667
@@ -39,7 +20,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27, 28 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "hide_idle"
 length = 0.0166667
 step = 0.0166667
@@ -56,7 +37,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 length = 0.333333
 step = 0.02
 tracks/0/type = "value"
@@ -72,7 +53,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -90,7 +71,6 @@ tracks/0/keys = {
 [node name="Mettaur" groups=[
 "entity",
 ] instance=ExtResource( 2 )]
-material = SubResource( 2 )
 script = ExtResource( 1 )
 pretty_name = "Mettaur"
 delay_between_actions = 60
@@ -102,7 +82,7 @@ vframes = 8
 frame = 14
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/hide = SubResource( 3 )
-anims/hide_idle = SubResource( 4 )
-anims/unhide = SubResource( 5 )
-anims/virus_action = SubResource( 6 )
+anims/hide = SubResource( 1 )
+anims/hide_idle = SubResource( 2 )
+anims/unhide = SubResource( 3 )
+anims/virus_action = SubResource( 4 )

@@ -3,18 +3,69 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
-const float base_x = 1024.0; // blocks by x direction
-const float base_y = 1024.0; // blocks by y direction
 
+
+varying vec2 base_size;
+varying vec2 pixelated_size;
+
+uniform bool do_pixelate = false;
+uniform bool do_shred = false;
 uniform float scale = 1.0;
+uniform int shred_height = 0;
+uniform int shred_cut_ratio = 8;
+
+void vertex() {
+	base_size = vec2(
+		1.0 / TEXTURE_PIXEL_SIZE.x,
+		1.0 / TEXTURE_PIXEL_SIZE.y);
+	pixelated_size = vec2(
+		base_size.x * scale,
+		base_size.y * scale);
+}
+
+
+
+float pixelate_dimension(float uv, float scaling) {
+	if (do_pixelate)
+		return floor(uv * scaling) / (scaling);
+	else
+		return uv;
+}
+
+vec2 pixelate(vec2 uv, vec2 scaling) {
+    return vec2(
+		pixelate_dimension(uv.x, scaling.x),
+		pixelate_dimension(uv.y, scaling.y));
+}
+
+vec2 shred(vec2 uv) {
+	if (do_shred) {
+		if (int(uv.x * base_size.x) % 2 == 0) {
+			uv.y += float(shred_height) / base_size.y;
+		}
+		if (int(uv.x * base_size.x) % shred_cut_ratio == 0) {
+			uv.y = -1.0;
+		}
+	}
+	return uv;
+}
 
 void fragment() {
-	float size_x = base_x * scale;
-	float size_y = base_y * scale;
-    COLOR = texture(TEXTURE, vec2(floor(UV.x * size_x) / (size_x - 1.0), floor(UV.y * size_y) / (size_y - 1.0)));
+	vec2 uv = UV;
+	
+	uv.y = pixelate_dimension(uv.y, pixelated_size.y);
+	uv = shred(uv);
+	uv.x = pixelate_dimension(uv.x, pixelated_size.x);
+
+//	uv = pixelate(uv, pixelated_size);
+	
+	COLOR = texture(TEXTURE, uv);
 }"
 
 [resource]
-resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/scale = 1.0
+shader_param/do_pixelate = false
+shader_param/do_shred = false
+shader_param/scale = 0.5
+shader_param/shred_height = 4
+shader_param/shred_cut_ratio = 8
