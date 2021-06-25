@@ -33,7 +33,7 @@ func set_preview(data):
 
 func _set_damage(chip_name):
 	if chip_name:
-		var data = ActionData.action_factory(chip_name)
+		var data = ActionData.action_factory(chip_name).attack_data
 		damage.set_text(String(data.damage))
 		element.frame = data.damage_type
 	else:

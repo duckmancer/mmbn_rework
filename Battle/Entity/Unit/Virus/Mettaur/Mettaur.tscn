@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Battle/Entity/Unit/Virus/Mettaur/Mettaur.gd" type="Script" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Virus/Virus.tscn" type="PackedScene" id=2]
@@ -20,7 +20,73 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/scale = 0.0
+shader_param/scale = 1.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "hide"
+length = 0.283333
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.15, 0.216667, 0.283333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hide_idle"
+length = 0.0166667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.333333
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 32, 33, 34, 35, 36, 37 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "virus_action"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.0833333, 0.216667, 0.283333, 0.433333, 0.483333, 0.516667, 0.55, 0.583333, 0.616667, 0.683333, 0.966667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
+}
 
 [node name="Mettaur" groups=[
 "entity",
@@ -28,6 +94,16 @@ shader_param/scale = 0.0
 material = SubResource( 2 )
 script = ExtResource( 1 )
 pretty_name = "Mettaur"
+delay_between_actions = 60
 
 [node name="Sprite" parent="." index="1"]
 offset = Vector2( 0, -61 )
+hframes = 8
+vframes = 8
+frame = 14
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/hide = SubResource( 3 )
+anims/hide_idle = SubResource( 4 )
+anims/unhide = SubResource( 6 )
+anims/virus_action = SubResource( 5 )

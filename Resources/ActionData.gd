@@ -16,30 +16,74 @@ enum Element {
 	WOOD,
 	HIDE,
 }
-var base_actions = {
-	move = {
-		action_type = MoveAction,
-		animation_name = "move",
+
+const SPRITE_ROOT = "res://Assets/BattleAssets/"
+const WEAPON_ROOT = SPRITE_ROOT + "Weapons/"
+const ATTACK_ROOT = SPRITE_ROOT + "Attacks/"
+const IMPACT_ROOT = SPRITE_ROOT + "Impacts/"
+
+var virus_attacks = {
+	met_wave = {
+		attack_type = Shockwave,
+		animation_name = "shockwave",
+		damage = 10,
+		pass_through = true,
+	}
+}
+
+var impacts = {
+	small_explosion = {
+		attack_type = Explosion,
+		duration = 20,
+		pass_through = true,
+		animation_name = "explosion",
+		attack_anim_y_pos = 0,
+		audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/SmallExplosion.wav",
+		audio_volume = 5,
+		impact_type = "none",
+	},
+	fireblast = {
+		attack_type = Explosion,
+		duration = 20,
+		pass_through = true,
+		prop_type = AreaHit.SHOT,
+		animation_name = "fire_explosion",
+		attack_anim_y_pos = 1,
+		audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/ExplosionImpact HQ.ogg",
+		audio_volume = 5,
+		impact_type = "none",
+	},
+}
+
+var attacks = {
+	shockwave = {
+		attack_type = Shockwave,
+		duration = 28,
+		pass_through = true,
+		prop_type = AreaHit.SHOT,
+		prop_delay = 24,
+		prop_recursion = 6,
+		animation_name = "shockwave",
+		sprite_path = ATTACK_ROOT + "Shockwave.png",
+		attack_anim_y_pos = 0,
+		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/MettWave HQ.ogg",
+		audio_volume = 10,
+		audio_start_offset = 0.55,
 	},
 	buster = {
-		action_type = Action,
-		sprite_path = "res://Assets/BattleAssets/Weapons/Buster.png",
-		anim_y_coord = 0,
+		sprite_path = WEAPON_ROOT + "Buster.png",
+		anim_y_coord = 1,
 		animation_name = "shoot_light",
-		
 		audio_path = "res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/0- Buster.wav",
 		
 		attack_type = Hitscan,
 		damage = 10,
 		pass_through = false,
 		impact_type = "hit",
-		
 	},
 	cannon = {
-		
-		action_type = Action,
-		sprite_path = "res://Assets/BattleAssets/Weapons/Cannon.png",
-		anim_y_coord = 0,
+		sprite_path = WEAPON_ROOT + "Cannon.png",
+		anim_y_coord = 1,
 		animation_name = "shoot_heavy",
 		
 		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/Cannon HQ.ogg",
@@ -54,11 +98,9 @@ var base_actions = {
 		impact_type = "hit",
 	},
 	heatshot = {
-		action_type = Action,
-		
-		sprite_path = "res://Assets/BattleAssets/Weapons/Heatshot.png",
+		sprite_path = WEAPON_ROOT + "Heatshot.png",
 		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/Heatshot.wav",
-		anim_y_coord = 0,
+		anim_y_coord = 1,
 		animation_name = "shoot_med",
 		
 		attack_type = Hitscan,
@@ -67,23 +109,11 @@ var base_actions = {
 		pass_through = false,
 		impact_type = "none",
 		is_direct_hit = false,
-		child_type = Explosion,
-		child_data = {
-			duration = 20,
-			pass_through = true,
-			prop_type = AreaHit.SHOT,
-			animation_name = "fire_explosion",
-			attack_anim_y_pos = 1,
-			audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/ExplosionImpact HQ.ogg",
-			audio_volume = 5,
-			impact_type = "none",
-		},
+		child_data = impacts.fireblast,
 	},
 	sword = {
-		
-		action_type = Action,
-		sprite_path = "res://Assets/BattleAssets/Weapons/Sword.png",
-		anim_y_coord = 6,
+		sprite_path = WEAPON_ROOT + "Sword.png",
+		anim_y_coord = 7,
 		animation_name = "slash",
 		
 		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/SwordSwing HQ.ogg",
@@ -96,31 +126,78 @@ var base_actions = {
 		impact_type = "hit",
 	},
 	minibomb = {
-		
-		action_type = Action,
-		sprite_path = "res://Assets/BattleAssets/Weapons/Throwable.png",
+		sprite_path = WEAPON_ROOT + "Throwable.png",
 		anim_y_coord = 0,
 		animation_name = "throw",
 		
 		attack_type = Throwable,
 		damage = 50,
 		damage_type = Element.NONE,
-		child_type = Explosion,
-		child_data = {
-			duration = 20,
-			pass_through = true,
-			animation_name = "explosion",
-			attack_anim_y_pos = 0,
-			audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/SmallExplosion.wav",
-			audio_volume = 5,
-			impact_type = "none",
-		},
+		child_data = impacts.small_explosion
+	},
+}
+
+var base_actions = {
+	move = {
+		action_type = MoveAction,
+		animation_name = "move",
+	},
+	virus_action = {
+		action_type = Action,
+		animation_name = "virus_action",
+	},
+	buster = {
+		action_type = Action,
+		sprite_path = WEAPON_ROOT + "Buster.png",
+		anim_y_coord = 0,
+		animation_name = "shoot_light",
+		
+		attack_data = attacks.buster,
+	},
+	cannon = {
+		
+		action_type = Action,
+		sprite_path = WEAPON_ROOT + "Cannon.png",
+		anim_y_coord = 0,
+		animation_name = "shoot_heavy",
+		
+		attack_data = attacks.cannon,
+	},
+	heatshot = {
+		action_type = Action,
+		
+		sprite_path = WEAPON_ROOT + "Heatshot.png",
+		anim_y_coord = 0,
+		animation_name = "shoot_med",
+		attack_data = attacks.heatshot,
+	},
+	sword = {
+		
+		action_type = Action,
+		sprite_path = WEAPON_ROOT + "Sword.png",
+		anim_y_coord = 6,
+		animation_name = "slash",
+		
+		attack_data = attacks.sword,
+	},
+	minibomb = {
+		
+		action_type = Action,
+		sprite_path = WEAPON_ROOT + "Throwable.png",
+		anim_y_coord = 0,
+		animation_name = "throw",
+		
+		attack_data = attacks.minibomb,
 	},
 }
 
 var action_data = {
 	move = {
 		base = "move",
+	},
+	met_wave = {
+		base = "virus_action",
+		attack_data = attacks.shockwave,
 	},
 	buster = {
 		base = "buster",
@@ -130,29 +207,37 @@ var action_data = {
 	},
 	hicannon = {
 		base = "cannon",
-		damage = 80,
-		anim_y_coord = 2,
+		attack_data = {
+			damage = 80,
+			anim_y_coord = 2,
+		},
 	},
 	m_cannon = {
 		base = "cannon",
-		damage = 120,
-		anim_y_coord = 4,
+		attack_data = {
+			damage = 120,
+			anim_y_coord = 4,
+		},
 	},
 	heatshot = {
 		base = "heatshot",
 	},
 	heat_v = {
 		base = "heatshot",
-		damage = 70,
-		child_data = {
-			prop_type = AreaHit.V,
+		attack_data = {
+			damage = 70,
+			child_data = {
+				prop_type = AreaHit.V,
+			},
 		},
 	},
 	heatside = {
 		base = "heatshot",
-		damage = 100,
-		child_data = {
-			prop_type = AreaHit.SIDE,
+		attack_data = {
+			damage = 100,
+			child_data = {
+				prop_type = AreaHit.SIDE,
+			},
 		},
 	},
 	sword = {

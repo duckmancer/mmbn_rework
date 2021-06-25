@@ -59,10 +59,18 @@ var prop_type = NONE
 var prop_delay := 1
 var prop_recursion := 1
 
+func spawn_propogation(offset):
+	var prop_data = {data = data.duplicate()}
+	prop_data.data.prop_recursion = prop_recursion - 1
+	prop_data.data.grid_pos = grid_pos + offset
+	prop_data.is_offset = false
+	prop_data.data.is_offset = false
+	if Utils.in_bounds(prop_data.data.grid_pos):
+		create_child_entity(get_script(), prop_data)
+
 func propogate():
 	if prop_recursion <= 0 or prop_type == NONE:
 		return
-
 	var shape = nova_shapes[prop_type]
 	for i in shape.size():
 		for j in shape[i].size():
@@ -70,11 +78,7 @@ func propogate():
 				var offset = Vector2(j - 1, i - 1)
 				if team == Team.ENEMY:
 					offset.x *= -1
-				var prop_data = {data = data.duplicate()}
-				prop_data.data.prop_recursion = prop_recursion - 1
-				prop_data.data.grid_pos = grid_pos + offset
-				if Utils.in_bounds(prop_data.data.grid_pos):
-					create_child_entity(get_script(), prop_data)
+				spawn_propogation(offset)
 
 func do_tick():
 	.do_tick()

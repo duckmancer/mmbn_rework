@@ -181,7 +181,6 @@ use_parent_material = true
 texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" parent="." index="2"]
-pause_mode = 2
 autoplay = "default"
 anims/default = SubResource( 1 )
 anims/idle = SubResource( 2 )

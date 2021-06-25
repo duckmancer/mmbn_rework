@@ -115,18 +115,49 @@ func _connect_action_signals(action : Action) -> void:
 	action.connect("aborted", self, "_on_Action_aborted")
 
 
-# Processing
+# AI
 
-func run_AI(target):
-	var result = null
-	# DEBUG TODO: change
+func get_all_valid_destinations() -> Array:
+	var result = []
+	for y in Constants.GRID_SIZE.y:
+		for x in Constants.GRID_SIZE.x:
+			var dest = Vector2(x, y)
+			if can_move_to(dest):
+				result.append(dest)
 	return result
+
+func get_random_position(pref_row = -1, pref_col = -1):
+	var valid_locations = get_all_valid_destinations()
+	if valid_locations.empty():
+		return null
+	valid_locations.shuffle()
+	var ideal = Vector2(pref_row, pref_col)
+	if ideal in valid_locations:
+		return ideal
+	if pref_row != -1:
+		for l in valid_locations:
+			if l.y == pref_row:
+				return l
+	if pref_col != -1:
+		for l in valid_locations:
+			if l.x == pref_row:
+				return l
+	return valid_locations.front()
+
+func align_row(target):
+	var result = null
 	var target_row = target.grid_pos.y
 	if target_row > grid_pos.y:
 		result = "down"
 	elif target_row < grid_pos.y:
 		result = "up"
 	return result
+
+func run_AI(target):
+	return null
+
+
+# Processing
 
 func do_tick():
 	.do_tick()

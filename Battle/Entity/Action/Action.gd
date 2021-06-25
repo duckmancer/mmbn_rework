@@ -20,7 +20,9 @@ var animation_name
 var attack_type = null
 var loop_start = 0
 var do_repeat := false
+var attack_data
 
+var virus_action_delay := 1
 
 export(ActionState) var state = ActionState.WAITING setget set_state
 func set_state(new_state):
@@ -43,8 +45,8 @@ func stop_repeat():
 # Action Execution
 
 func execute_action():
-	var kwargs = {data = data}
-	var _entity = create_child_entity(attack_type,
+	var kwargs = {data = attack_data}
+	var _entity = create_child_entity(attack_data.attack_type,
 	kwargs)
 
 
@@ -82,5 +84,8 @@ func check_in():
 # Initialization
 
 func _ready():
-	animation_player.play(animation_name)
+	var action_speed = 1.0
+	if animation_name == "virus_action":
+		action_speed /= virus_action_delay
+	animation_player.play(animation_name, -1, action_speed)
 

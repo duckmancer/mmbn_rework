@@ -62,7 +62,7 @@ func on_battle_start() -> void:
 func set_chip_details(chip_data = null):
 	if chip_data:
 		cur_name.set_text(chip_data.pretty_name)
-		cur_damage.set_text( String(ActionData.action_factory(chip_data.name).damage))
+		cur_damage.set_text( String(ActionData.action_factory(chip_data.name).attack_data.damage))
 	else:
 		cur_name.set_text("")
 		cur_damage.set_text("")

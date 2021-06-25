@@ -64,7 +64,7 @@ func hit(target):
 func spawn_on_hit(pos):
 	var args = child_data
 	args.grid_pos = pos
-	create_child_entity(child_type, {data = args})
+	create_child_entity(child_data.attack_type, {data = args})
 
 # Processing
 

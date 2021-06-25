@@ -1,21 +1,7 @@
 class_name Throwable
 extends Attack
 
-#enum {
-#	MINIBOMB,
-#}
-#const _THROWABLE_DATA = {
-#	MINIBOMB: {
-#		damage = 50,
-#		animation_name = "minibomb",
-#		child_type = Explosion,
-#		child_args = {attack_type = AreaHit.MINIBOMB},
-#	},
-#}
-#
-#func _init():
-#	attack_data = _THROWABLE_DATA
-	
+
 const START_TIME_OFFSET = 1.0 / 6.0
 
 var travel_time := 40

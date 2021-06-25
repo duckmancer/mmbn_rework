@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Met Sheet.png-e6f2041c4c7e9e73ee3c6988179b824e.stex"
+path="res://.import/Billy.png-d182b65030f0d0656ffd569a09a3134e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BattleAssets/Characters/Viruses/Met Sheet.png"
-dest_files=[ "res://.import/Met Sheet.png-e6f2041c4c7e9e73ee3c6988179b824e.stex" ]
+source_file="res://Assets/BattleAssets/Characters/Viruses/Billy.png"
+dest_files=[ "res://.import/Billy.png-d182b65030f0d0656ffd569a09a3134e.stex" ]
 
 [params]
 
