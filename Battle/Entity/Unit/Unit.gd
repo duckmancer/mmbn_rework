@@ -9,6 +9,7 @@ const _REPEAT_INPUT_BUFFER = 0
 
 onready var healthbar = $HealthbarHolder/Healthbar
 onready var chip_data = $ChipData
+onready var palette_anim = $PaletteAnim
 
 export var delay_between_actions = 8
 export var max_hp = 40
@@ -56,6 +57,8 @@ var cur_action : Action = null
 var queued_input = null
 var is_action_running := false
 var cur_cooldown = 0
+var hitstun_threshold := 0
+export var is_tangible := true
 
 export var start_delay_avg = 30
 export var start_delay_range = 30
@@ -72,6 +75,7 @@ func set_hp(new_hp):
 # warning-ignore:unused_argument
 func hurt(damage, impact_type = "hit", damage_type = "normal"):
 	set_hp(hp - damage)
+	palette_anim.play("hit_flash")
 	create_child_entity(Impact, {impact_anim = impact_type})
 
 
@@ -196,9 +200,7 @@ func do_tick():
 			cur_cooldown -= 1
 
 func set_do_pixelate(state : bool):
-	var foo = material
 	material.set("shader_param/do_pixelate", state)
-	pass
 
 # Setup
 

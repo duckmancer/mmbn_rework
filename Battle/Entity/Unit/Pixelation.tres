@@ -10,6 +10,7 @@ varying vec2 pixelated_size;
 
 uniform bool do_pixelate = false;
 uniform bool do_shred = false;
+uniform bool do_color_override = false;
 uniform float scale = 1.0;
 uniform int shred_height = 0;
 uniform int shred_cut_ratio = 8;
@@ -60,12 +61,18 @@ void fragment() {
 //	uv = pixelate(uv, pixelated_size);
 	
 	COLOR = texture(TEXTURE, uv);
+	if (do_color_override) {
+		COLOR.r = 1.0;
+		COLOR.g = 1.0;
+		COLOR.b = 1.0;
+	}
 }"
 
 [resource]
 shader = SubResource( 1 )
 shader_param/do_pixelate = false
 shader_param/do_shred = false
-shader_param/scale = 0.5
+shader_param/do_color_override = false
+shader_param/scale = 0.131875
 shader_param/shred_height = 4
 shader_param/shred_cut_ratio = 8

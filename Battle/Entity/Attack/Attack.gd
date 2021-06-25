@@ -34,6 +34,7 @@ var duration = 60
 var pass_through = false
 var impact_type = "hit"
 var is_direct_hit = true
+var finish_anim_on_hit := true
 var child_type = null
 var child_data = {}
 
@@ -50,7 +51,7 @@ func set_audio_path(p):
 func terminate():
 	if animation_player.is_playing():
 		state = AttackState.WAITING
-		visible = false
+		visible = finish_anim_on_hit
 	else:
 		.terminate()
 
@@ -81,7 +82,7 @@ func _do_unit_collision(snapped_pos: Vector2):
 	var targets = get_tree().get_nodes_in_group("target")
 	for t in targets:
 		if t.grid_pos == snapped_pos:
-			if t.team != team:
+			if t.team != team and t.is_tangible:
 				if not t in ignored_targets:
 					ignored_targets.push_back(t)
 					hit(t)

@@ -7,5 +7,5 @@ func do_tick():
 	
 
 func _ready():
-	pass
+	hitstun_threshold = 1
 

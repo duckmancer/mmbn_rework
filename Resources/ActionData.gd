@@ -34,7 +34,7 @@ var virus_attacks = {
 var impacts = {
 	small_explosion = {
 		attack_type = Explosion,
-		duration = 20,
+		duration = 1,
 		pass_through = true,
 		animation_name = "explosion",
 		anim_y_coord = 0,
@@ -44,7 +44,7 @@ var impacts = {
 	},
 	fireblast = {
 		attack_type = Explosion,
-		duration = 20,
+		duration = 1,
 		pass_through = true,
 		prop_type = AreaHit.SHOT,
 		animation_name = "fire_explosion",

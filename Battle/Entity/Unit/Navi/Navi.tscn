@@ -1,9 +1,26 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Battle/Entity/Unit/Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Navi/Navi.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
+resource_name = "hitstun"
+length = 0.333333
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 16 ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 1.06667
 loop = true
 step = 0.0166667
@@ -20,7 +37,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 1.06667
 loop = true
 step = 0.0166667
@@ -37,7 +54,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "move (old)"
 length = 0.0833335
 step = 0.0166667
@@ -54,7 +71,7 @@ tracks/0/keys = {
 "values": [ 0, 8, 9, 8, 0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -82,7 +99,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -4, 0 ), Vector2( -5, 0 ), Vector2( -6, 0 ), Vector2( -7, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -98,7 +115,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -114,7 +131,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 0.466667
 step = 0.0166667
 tracks/0/type = "value"
@@ -130,7 +147,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 0.4
 step = 0.0166667
 tracks/0/type = "value"
@@ -151,14 +168,16 @@ script = ExtResource( 3 )
 max_hp = 200
 
 [node name="Sprite" parent="." index="1"]
+frame = 17
 region_rect = Rect2( 4, 62, 49, 44 )
 
-[node name="AnimationPlayer" parent="." index="2"]
-anims/idle = SubResource( 3 )
-"anims/idle (old)" = SubResource( 4 )
-"anims/move (old)" = SubResource( 5 )
-anims/shoot_heavy = SubResource( 6 )
-anims/shoot_light = SubResource( 7 )
-anims/shoot_med = SubResource( 8 )
-anims/slash = SubResource( 9 )
-anims/throw = SubResource( 10 )
+[node name="AnimationPlayer" parent="." index="3"]
+anims/hitstun = SubResource( 1 )
+anims/idle = SubResource( 2 )
+"anims/idle (old)" = SubResource( 3 )
+"anims/move (old)" = SubResource( 4 )
+anims/shoot_heavy = SubResource( 5 )
+anims/shoot_light = SubResource( 6 )
+anims/shoot_med = SubResource( 7 )
+anims/slash = SubResource( 8 )
+anims/throw = SubResource( 9 )
