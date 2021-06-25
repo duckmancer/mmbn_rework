@@ -65,7 +65,7 @@ func _spawn_player():
 		team = Entity.Team.PLAYER,
 		is_player_controlled = true,
 	}
-	var player = add_entity(NormalNavi, player_data)
+	var player = add_entity(Megaman, player_data)
 	player_controller.bind_player(player)
 
 func _spawn_entities():
