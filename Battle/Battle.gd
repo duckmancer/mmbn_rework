@@ -46,18 +46,36 @@ func open_custom():
 # Initialization
 
 func _ready():
-	randomize()
 	get_tree().paused = true
 	Battlechips.create_active_folder()
 	_set_panels()
-	yield(_spawn_entities(), "completed")
+	_spawn_player()
+	var delay_ticks = 10
+	for i in delay_ticks:
+		yield(get_tree(), "idle_frame")
+
+	var state = _spawn_entities()
+	if state is GDScriptFunctionState:
+		yield(state, "completed")
 	open_custom()
 
+func _spawn_player():
+	var player_data = {
+		grid_pos = Vector2(1, 1), 
+		team = Entity.Team.PLAYER,
+		is_player_controlled = true,
+	}
+	var player = add_entity(NormalNavi, player_data)
+	player_controller.bind_player(player)
+
 func _spawn_entities():
-	add_entity(NormalNavi, Vector2(1, 1), Entity.Team.PLAYER, true)
-	var entities = [
-		[Mettaur, Vector2(4, 1)],
+	var entities = []
+	var e_list = [
+		[Mettaur, {grid_pos = Vector2(4, 0)}],
+		[Mettaur, {grid_pos = Vector2(5, 1)}],
+		[Mettaur, {grid_pos = Vector2(4, 2)}],
 	]
+	entities = e_list
 	for params in entities:
 		var e = add_entity(params[0], params[1])
 		yield(e, "spawn_completed")
@@ -72,13 +90,12 @@ func _set_panels():
 			panel_grid.back().push_back(new_panel)
 	Globals.battle_grid = panel_grid
 
-func add_entity(entity_type, pos := Vector2(0, 0), team = Entity.Team.ENEMY, pc := false):
-	var kwargs = {grid_pos = pos, team = team, is_player_controlled = pc}
+func add_entity(entity_type, kwargs := {}):
+	var data = {team = Entity.Team.ENEMY}
+	Utils.overwrite_dict(data, kwargs)
 	var entity = Entity.construct_entity(entity_type, kwargs)
 	connect_signals(entity)
 	battlefield.add_child(entity)
-	if pc:
-		player_controller.bind_player(entity)
 	return entity
 
 func connect_signals(entity: Entity):

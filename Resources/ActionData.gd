@@ -37,7 +37,7 @@ var impacts = {
 		duration = 20,
 		pass_through = true,
 		animation_name = "explosion",
-		attack_anim_y_pos = 0,
+		anim_y_coord = 0,
 		audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/SmallExplosion.wav",
 		audio_volume = 5,
 		impact_type = "none",
@@ -48,7 +48,7 @@ var impacts = {
 		pass_through = true,
 		prop_type = AreaHit.SHOT,
 		animation_name = "fire_explosion",
-		attack_anim_y_pos = 1,
+		anim_y_coord = 1,
 		audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/ExplosionImpact HQ.ogg",
 		audio_volume = 5,
 		impact_type = "none",
@@ -65,7 +65,7 @@ var attacks = {
 		prop_recursion = 6,
 		animation_name = "shockwave",
 		sprite_path = ATTACK_ROOT + "Shockwave.png",
-		attack_anim_y_pos = 0,
+		anim_y_coord = 0,
 		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/MettWave HQ.ogg",
 		audio_volume = 10,
 		audio_start_offset = 0.55,
@@ -139,7 +139,8 @@ var attacks = {
 
 var base_actions = {
 	move = {
-		action_type = MoveAction,
+		action_type = Action,
+		is_movement = true,
 		animation_name = "move",
 	},
 	virus_action = {
@@ -207,16 +208,18 @@ var action_data = {
 	},
 	hicannon = {
 		base = "cannon",
+		anim_y_coord = 2,
 		attack_data = {
 			damage = 80,
-			anim_y_coord = 2,
+			anim_y_coord = 3,
 		},
 	},
 	m_cannon = {
 		base = "cannon",
+		anim_y_coord = 4,
 		attack_data = {
 			damage = 120,
-			anim_y_coord = 4,
+			anim_y_coord = 5,
 		},
 	},
 	heatshot = {

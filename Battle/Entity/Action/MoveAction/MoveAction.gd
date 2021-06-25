@@ -5,7 +5,7 @@ var movement_dir
 var _destination
 
 func execute_action():
-	emit_signal("move_triggered", _destination)
+	emit_signal("move_triggered")
 
 func do_tick():
 	.do_tick()

@@ -3,7 +3,7 @@
 [ext_resource path="res://Battle/Entity/Action/Action.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Action/MoveAction/MoveAction.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=9]
 resource_name = "move"
 length = 0.0833333
 step = 0.0166667
@@ -36,4 +36,4 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="1"]
-anims/move = SubResource( 1 )
+anims/move = SubResource( 9 )

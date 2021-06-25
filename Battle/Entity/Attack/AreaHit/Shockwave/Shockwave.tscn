@@ -61,7 +61,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
-frame = 6
+frame = 63
 region_rect = Rect2( 107, 7, 34, 46 )
 
 [node name="AnimationPlayer" parent="." index="1"]

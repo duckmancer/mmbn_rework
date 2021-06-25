@@ -56,6 +56,9 @@ var queued_input = null
 var is_action_running := false
 var cur_cooldown = 0
 
+export var start_delay_avg = 30
+export var start_delay_range = 30
+
 var hp = 40 setget set_hp
 func set_hp(new_hp):
 	hp = clamp(new_hp, 0, max_hp)
@@ -93,8 +96,23 @@ func _execute_input(input) -> void:
 			action = ActionData.action_factory(chip.name)
 	else:
 		action = input_map[input]
+		if action.has("is_movement"):
+			if not _declare_movement(action):
+				action = null
 	if action:
 		_launch_action(action)
+
+func _declare_movement(move_data : Dictionary) -> bool:
+	var destination
+	if move_data.has("destination"):
+		destination = move_data.destination
+	else:
+		destination = self.grid_pos + Constants.DIRS[move_data.movement_dir]
+	if can_move_to(destination):
+		declared_grid_pos = destination
+		return true
+	else:
+		return false
 
 func _launch_action(action_data : Dictionary) -> void:
 	cur_action = _create_action(action_data)
@@ -182,11 +200,16 @@ func _ready():
 	if not is_player_controlled:
 		animation_player.play("spawn")
 		animation_player.advance(0)
+		cur_cooldown = get_start_delay()
 	if team == Team.ENEMY:
 		add_to_group("enemy")
 	else:
 		add_to_group("ally")
 
+func get_start_delay():
+	var base = start_delay_avg
+	var mod = int(rand_range(-start_delay_range, start_delay_range))
+	return max(base + mod, 0) as int
 
 # Signals
 
@@ -202,6 +225,6 @@ func _on_Action_aborted():
 	cur_action = null
 	animation_done()
 
-func _on_Action_move_triggered(pos):
-	move_to(pos)
+func _on_Action_move_triggered():
+	move_to(declared_grid_pos)
 

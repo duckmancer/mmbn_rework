@@ -3,7 +3,7 @@ extends Entity
 
 signal action_finished()
 signal action_looped(loop_start_time)
-signal move_triggered(destination)
+signal move_triggered()
 signal aborted()
 
 
@@ -21,6 +21,8 @@ var attack_type = null
 var loop_start = 0
 var do_repeat := false
 var attack_data
+var is_movement := false
+var destination
 
 var virus_action_delay := 1
 
@@ -45,6 +47,15 @@ func stop_repeat():
 # Action Execution
 
 func execute_action():
+	if is_movement:
+		_execute_movement()
+	else:
+		_execute_attack()
+
+func _execute_movement():
+	emit_signal("move_triggered")
+
+func _execute_attack():
 	var kwargs = {data = attack_data}
 	var _entity = create_child_entity(attack_data.attack_type,
 	kwargs)

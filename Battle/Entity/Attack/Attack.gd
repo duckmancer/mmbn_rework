@@ -38,7 +38,6 @@ var child_type = null
 var child_data = {}
 
 var animation_name = "none"
-var attack_anim_y_pos = null
 
 var audio_start_offset := 0.0
 var audio_volume := 0
@@ -109,10 +108,6 @@ func _ready():
 	_start_animation()
 
 func _start_animation():
-	if attack_anim_y_pos != null:
-		self.anim_y_coord = attack_anim_y_pos
-	else:
-		self.anim_y_coord += 1
 	animation_player.play(animation_name)
 	if audio.stream is AudioStreamOGGVorbis:
 		audio.stream.loop = false

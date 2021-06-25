@@ -34,6 +34,7 @@ var data = {}
 # Movement
 
 var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
+var declared_grid_pos := Vector2(-1, -1)
 func set_grid_pos(new_grid_pos):
 	grid_pos = new_grid_pos
 	if is_independent:
@@ -43,13 +44,19 @@ func get_grid_pos():
 	return grid_pos.round()
 
 func can_move_to(destination : Vector2) -> bool:
-	if not Utils.in_bounds(destination, Constants.GRID_SIZE):
-		return false
-	if team != Globals.battle_grid[destination.y][destination.x].team:
-		return false
-	for u in get_tree().get_nodes_in_group("unit"):
-		if u.grid_pos == destination:
-			return false
+	return _is_panel_habitable(destination) and _is_space_open(destination)
+
+func _is_panel_habitable(destination : Vector2) -> bool:
+	for p in get_tree().get_nodes_in_group("panel"):
+		if p.grid_pos == destination:
+			return p.team == self.team
+	return false
+
+func _is_space_open(destination : Vector2) -> bool:
+	for t in get_tree().get_nodes_in_group("target"):
+		if t != self:
+			if t.grid_pos == destination or t.declared_grid_pos == destination:
+				return false
 	return true
 
 # Animation Helpers

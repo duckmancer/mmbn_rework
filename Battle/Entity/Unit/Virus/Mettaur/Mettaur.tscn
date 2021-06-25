@@ -56,7 +56,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.333333
 step = 0.02
 tracks/0/type = "value"
@@ -72,8 +72,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "virus_action"
+[sub_resource type="Animation" id=6]
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -105,5 +104,5 @@ frame = 14
 [node name="AnimationPlayer" parent="." index="2"]
 anims/hide = SubResource( 3 )
 anims/hide_idle = SubResource( 4 )
-anims/unhide = SubResource( 6 )
-anims/virus_action = SubResource( 5 )
+anims/unhide = SubResource( 5 )
+anims/virus_action = SubResource( 6 )

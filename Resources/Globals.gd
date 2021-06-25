@@ -6,4 +6,5 @@ var battle_paused = false
 
 var battle_grid : Array
 
-
+func _ready() -> void:
+	randomize()
