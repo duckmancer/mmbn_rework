@@ -6,6 +6,7 @@ signal hp_changed(new_hp)
 signal spawn_completed()
 
 const _REPEAT_INPUT_BUFFER = 0
+const _DEATH_EXPLOSION_STAGGER_DELAY = 10
 
 onready var healthbar = $HealthbarHolder/Healthbar
 onready var chip_data = $ChipData
@@ -13,6 +14,8 @@ onready var palette_anim = $PaletteAnim
 
 export var delay_between_actions = 8
 export var max_hp = 40
+export var death_explosion_count = 1
+export var hitstun_frame = 0
 
 var input_map = {
 	up = ActionData.action_factory(
@@ -67,7 +70,8 @@ var hp = 40 setget set_hp
 func set_hp(new_hp):
 	hp = clamp(new_hp, 0, max_hp)
 	if hp == 0:
-		terminate()
+		healthbar.visible = false
+		begin_death()
 	healthbar.text = str(hp)
 	if is_player_controlled:
 		emit_signal("hp_changed", hp, max_hp)
@@ -77,6 +81,25 @@ func hurt(damage, impact_type = "hit", damage_type = "normal"):
 	set_hp(hp - damage)
 	palette_anim.play("hit_flash")
 	create_child_entity(Impact, {impact_anim = impact_type})
+
+
+func begin_death():
+	if is_action_running:
+		cur_action.abort()
+	animation_player.stop()
+	for i in death_explosion_count:
+		create_child_entity(Impact, {
+			impact_anim = "explosion", 
+			delay = i * _DEATH_EXPLOSION_STAGGER_DELAY,
+			is_independent = true,
+		})
+	var death_duration = death_explosion_count * _DEATH_EXPLOSION_STAGGER_DELAY
+	for i in death_duration:
+		sprite.frame = hitstun_frame
+		if death_duration - i <= 20:
+			visible = false
+		yield(get_tree(), "idle_frame")
+	terminate()
 
 
 # Input Handling
@@ -233,7 +256,6 @@ func _on_Action_action_finished():
 func _on_Action_aborted():
 	is_action_running = false
 	cur_action = null
-	animation_done()
 
 func _on_Action_move_triggered():
 	move_to(declared_grid_pos)

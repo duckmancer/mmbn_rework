@@ -11,7 +11,7 @@
 
 [sub_resource type="Animation" id=6]
 resource_name = "hit_flash"
-length = 0.0166667
+length = 0.0333334
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/do_color_override")
@@ -20,10 +20,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0166667 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.0166667, 0.0333333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ false, true, false ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=9]
 resource_name = "default"
 length = 0.0166667
 step = 0.0166667
@@ -113,7 +113,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=10]
 resource_name = "idle"
 length = 1.06667
 loop = true
@@ -149,7 +149,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=11]
 length = 0.1
 step = 0.0166667
 tracks/0/type = "value"
@@ -225,7 +225,7 @@ tracks/5/keys = {
 "values": [ 8, 3, 8 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=12]
 length = 0.666668
 step = 0.0166667
 tracks/0/type = "value"
@@ -342,11 +342,11 @@ anims/normal = SubResource( 8 )
 
 [node name="AnimationPlayer" parent="." index="3"]
 autoplay = "default"
-anims/default = SubResource( 1 )
-anims/idle = SubResource( 2 )
+anims/default = SubResource( 9 )
+anims/idle = SubResource( 10 )
 "anims/idle (long)" = SubResource( 5 )
-anims/move = SubResource( 3 )
-anims/spawn = SubResource( 4 )
+anims/move = SubResource( 11 )
+anims/spawn = SubResource( 12 )
 
 [node name="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 8 )

@@ -14,6 +14,7 @@ func start_hitstun():
 	for _i in 5:
 		palette_anim.queue("invuln_flicker")
 	palette_anim.queue("normal")
+	animation_player.stop()
 	animation_player.play("hitstun")
 	if is_action_running:
 		cur_action.abort()

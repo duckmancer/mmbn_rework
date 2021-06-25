@@ -154,6 +154,7 @@ tracks/5/keys = {
 
 [node name="Explosion" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+anim_x_coord = 1
 is_offset = false
 
 [node name="Sprite" parent="." index="0"]
