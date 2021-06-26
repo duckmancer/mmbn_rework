@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/BattleAssets/Weapons/Sword.png" type="Texture" id=3]
 [ext_resource path="res://Assets/MMBNSFX/Attack SFX/Attacks/TossItemInBtl HQ.ogg" type="AudioStream" id=4]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 resource_name = "hide"
 length = 0.0166667
 step = 0.0166667
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=2]
 resource_name = "move"
 length = 0.1
 step = 0.0166667
@@ -43,15 +43,29 @@ tracks/1/path = NodePath(".:state")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0.05 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "execute_action"
+} ]
+}
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 resource_name = "shockwave"
 step = 0.0166667
 tracks/0/type = "value"
@@ -79,7 +93,7 @@ tracks/1/keys = {
 "values": [ 1 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=4]
 resource_name = "shoot_heavy"
 length = 0.533334
 step = 0.0166667
@@ -112,15 +126,29 @@ tracks/2/path = NodePath(".:state")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0.366667 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.366667 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "execute_action"
+} ]
+}
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=5]
 resource_name = "shoot_light"
 length = 0.500001
 step = 0.0166667
@@ -141,15 +169,32 @@ tracks/1/path = NodePath(".:state")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0.05, 0.416667 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 2 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.416667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "execute_action"
+}, {
+"args": [  ],
+"method": "repeat_action"
+} ]
+}
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 resource_name = "shoot_med"
 length = 0.500001
 step = 0.0166667
@@ -170,15 +215,29 @@ tracks/1/path = NodePath(".:state")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0.183333 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.183333 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "execute_action"
+} ]
+}
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 length = 0.466667
 step = 0.0166667
 tracks/0/type = "value"
@@ -210,15 +269,29 @@ tracks/2/path = NodePath(".:state")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0.166667 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.166667 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "execute_action"
+} ]
+}
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=8]
 length = 0.4
 step = 0.0166667
 tracks/0/type = "value"
@@ -250,7 +323,7 @@ tracks/2/path = NodePath(".:state")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0.15 ),
 "transitions": PoolRealArray( 1 ),
@@ -283,9 +356,23 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 5.0 ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "execute_action"
+} ]
+}
 
-[sub_resource type="Animation" id=17]
-resource_name = "virus_action"
+[sub_resource type="Animation" id=9]
+resource_name = "unique_action"
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -305,18 +392,32 @@ tracks/1/path = NodePath(".:state")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0.0166667 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.0166667 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "execute_action"
+} ]
+}
 
 [node name="Action" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_independent = false
-anim_x_coord = 7
+anim_x_coord = 2
 state = 1
 
 [node name="Sprite" parent="." index="0"]
@@ -325,15 +426,15 @@ frame = 7
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hide"
-anims/hide = SubResource( 10 )
-anims/move = SubResource( 9 )
-anims/shockwave = SubResource( 11 )
-anims/shoot_heavy = SubResource( 12 )
-anims/shoot_light = SubResource( 13 )
-anims/shoot_med = SubResource( 14 )
-anims/slash = SubResource( 15 )
-anims/throw = SubResource( 16 )
-anims/virus_action = SubResource( 17 )
+anims/hide = SubResource( 1 )
+anims/move = SubResource( 2 )
+anims/shockwave = SubResource( 3 )
+anims/shoot_heavy = SubResource( 4 )
+anims/shoot_light = SubResource( 5 )
+anims/shoot_med = SubResource( 6 )
+anims/slash = SubResource( 7 )
+anims/throw = SubResource( 8 )
+anims/unique_action = SubResource( 9 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )

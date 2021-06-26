@@ -38,6 +38,22 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+resource_name = "met_wave"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.0833333, 0.216667, 0.283333, 0.433333, 0.483333, 0.516667, 0.55, 0.583333, 0.616667, 0.683333, 0.966667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.333333
 step = 0.02
 tracks/0/type = "value"
@@ -53,21 +69,6 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37 ]
 }
 
-[sub_resource type="Animation" id=4]
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.0833333, 0.216667, 0.283333, 0.433333, 0.483333, 0.516667, 0.55, 0.583333, 0.616667, 0.683333, 0.966667 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
-}
-
 [node name="Mettaur" groups=[
 "entity",
 ] instance=ExtResource( 2 )]
@@ -79,10 +80,10 @@ delay_between_actions = 60
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
-frame = 14
+frame = 8
 
-[node name="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" parent="." index="3"]
 anims/hide = SubResource( 1 )
 anims/hide_idle = SubResource( 2 )
-anims/unhide = SubResource( 3 )
-anims/virus_action = SubResource( 4 )
+anims/met_wave = SubResource( 3 )
+anims/unhide = SubResource( 4 )

@@ -18,7 +18,7 @@ export var starting_state = AttackState.ACTIVE
 export var is_offset = true
 export(AttackState) var state = AttackState.WAITING setget set_state
 func set_state(new_state):
-	if is_active:
+	if is_ready:
 		state = new_state
 
 

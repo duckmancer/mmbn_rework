@@ -145,10 +145,16 @@ func _declare_movement(move_data : Dictionary) -> bool:
 
 func _launch_action(action_data : Dictionary) -> void:
 	cur_action = _create_action(action_data)
-	animation_player.play(action_data.animation_name)
+	_animate_action(action_data)
 	is_action_running = true
 	cur_cooldown = delay_between_actions
 	cur_action.check_in()
+
+func _animate_action(action_data: Dictionary) -> void:
+	if action_data.has("unit_animation"):
+		animation_player.play(action_data.unit_animation)
+	else:
+		animation_player.play(action_data.animation_name)
 
 func _create_action(action_data : Dictionary) -> Action:
 	var action = create_child_entity(action_data.action_type, {data = action_data})

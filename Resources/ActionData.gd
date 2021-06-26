@@ -58,6 +58,7 @@ var impacts = {
 var attacks = {
 	shockwave = {
 		attack_type = Shockwave,
+		damage = 10,
 		duration = 28,
 		pass_through = true,
 		prop_type = AreaHit.SHOT,
@@ -143,9 +144,9 @@ var base_actions = {
 		is_movement = true,
 		animation_name = "move",
 	},
-	virus_action = {
+	unique_action = {
 		action_type = Action,
-		animation_name = "virus_action",
+		animation_name = "unique_action",
 	},
 	buster = {
 		action_type = Action,
@@ -195,10 +196,6 @@ var base_actions = {
 var action_data = {
 	move = {
 		base = "move",
-	},
-	met_wave = {
-		base = "virus_action",
-		attack_data = attacks.shockwave,
 	},
 	buster = {
 		base = "buster",
@@ -251,9 +248,15 @@ var action_data = {
 	},
 }
 
-func action_factory(action_type, kwargs = {}):
-	var data = action_data[action_type]
-	var result = base_actions[data.base].duplicate(true)
+func action_factory(action_type, kwargs := {}) -> Dictionary:
+	var data = {}
+	if action_type in action_data:
+		Utils.overwrite_dict(data, action_data[action_type])
+	var result = {}
+	if "base" in data and data.base in base_actions:
+		result = base_actions[data.base].duplicate(true)
+	elif action_type in base_actions:
+		result = base_actions[action_type].duplicate(true)
 	Utils.overwrite_dict(result, data)
 	Utils.overwrite_dict(result, kwargs)
 	return result

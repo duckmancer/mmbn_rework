@@ -19,16 +19,12 @@ export var pretty_name := "DEFAULT"
 var default_keywords = []
 var is_player_controlled := false
 var team = Team.ENEMY
-var is_active := false
-var is_paused := false
+var is_ready := false
+var is_active := true
 var lifetime_counter := 0
 
 
 var data = {}
-# setget set_data
-#func set_data(new_data):
-#	data = new_data
-#	initialize_arguments(data)
 
 
 # Movement
@@ -64,13 +60,13 @@ func _is_space_open(destination : Vector2) -> bool:
 export var anim_x_coord = 0 setget set_anim_x_coord
 func set_anim_x_coord(new_x):
 	anim_x_coord = new_x
-	if is_active:
+	if is_ready:
 		sprite.frame_coords.x = new_x
 
 export var anim_y_coord = 0 setget set_anim_y_coord
 func set_anim_y_coord(new_y):
 	anim_y_coord = new_y
-	if is_active:
+	if is_ready:
 		sprite.frame_coords.y = new_y
 
 var sprite_path setget set_sprite_path
@@ -79,7 +75,7 @@ func set_sprite_path(p):
 	sprite.texture = load(sprite_path)
 
 func advance_animation():
-	if is_active:
+	if is_ready:
 		sprite.frame += 1
 	anim_x_coord += 1
 	if anim_x_coord % 8 == 0:
@@ -160,7 +156,7 @@ func move_to(destination : Vector2) -> void:
 
 func _ready():
 	set_default_keywords()
-	is_active = true
+	is_ready = true
 	initialize_arguments(data)
 	sprite.flip_h = (team == Team.ENEMY)
 	self.grid_pos = grid_pos

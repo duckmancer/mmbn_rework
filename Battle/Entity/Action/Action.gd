@@ -11,7 +11,6 @@ enum ActionState {
 	WAITING,
 	ACTIVE,
 	REPEAT,
-	DONE,
 }
 
 
@@ -24,21 +23,11 @@ var attack_data
 var is_movement := false
 var destination
 
-var virus_action_delay := 1
+var unique_action_delay := 1
 
 export(ActionState) var state = ActionState.WAITING setget set_state
 func set_state(new_state):
 	state = new_state
-	if is_active:
-		match state:
-			ActionState.ACTIVE:
-				execute_action()
-				state = ActionState.WAITING
-			ActionState.DONE:
-				conclude_action()
-			ActionState.REPEAT:
-				state = ActionState.WAITING
-				repeat_action()
 
 func stop_repeat():
 	do_repeat = false
@@ -74,7 +63,7 @@ func conclude_action():
 	terminate()
 
 func animation_done():
-	self.state = ActionState.DONE
+	conclude_action()
 
 func terminate():
 	emit_signal("action_finished")
@@ -83,6 +72,9 @@ func terminate():
 func abort():
 	emit_signal("aborted")
 	queue_free()
+
+func pause():
+	pass
 
 # Processing
 
@@ -96,7 +88,7 @@ func check_in():
 
 func _ready():
 	var action_speed = animation_player.playback_speed
-	if animation_name == "virus_action":
-		action_speed /= virus_action_delay
+	if animation_name == "unique_action":
+		action_speed /= unique_action_delay
 	animation_player.play(animation_name, -1, action_speed)
 

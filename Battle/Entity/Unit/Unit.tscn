@@ -9,7 +9,7 @@
 [ext_resource path="res://Battle/Entity/Unit/Pixelation.tres" type="Material" id=7]
 [ext_resource path="res://Assets/BN4 Rips/Misc/song304_appear.wav" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "hit_flash"
 length = 0.0333334
 step = 0.0166667
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "invuln_flicker"
 length = 0.4
 step = 0.0166667
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "normal"
 length = 0.0166667
 step = 0.0166667
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "default"
 length = 0.0166667
 step = 0.0166667
@@ -113,7 +113,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 resource_name = "idle"
 length = 1.06667
 loop = true
@@ -131,8 +131,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle (long)"
+[sub_resource type="Animation" id=6]
 length = 2.13334
 loop = true
 step = 0.0166667
@@ -149,7 +148,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 length = 0.1
 step = 0.0166667
 tracks/0/type = "value"
@@ -225,7 +224,7 @@ tracks/5/keys = {
 "values": [ 8, 3, 8 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 length = 0.666668
 step = 0.0166667
 tracks/0/type = "value"
@@ -336,17 +335,17 @@ texture = ExtResource( 6 )
 
 [node name="PaletteAnim" type="AnimationPlayer" parent="." index="2"]
 autoplay = "normal"
-anims/hit_flash = SubResource( 6 )
-anims/invuln_flicker = SubResource( 7 )
-anims/normal = SubResource( 8 )
+anims/hit_flash = SubResource( 1 )
+anims/invuln_flicker = SubResource( 2 )
+anims/normal = SubResource( 3 )
 
 [node name="AnimationPlayer" parent="." index="3"]
 autoplay = "default"
-anims/default = SubResource( 9 )
-anims/idle = SubResource( 10 )
-"anims/idle (long)" = SubResource( 5 )
-anims/move = SubResource( 11 )
-anims/spawn = SubResource( 12 )
+anims/default = SubResource( 4 )
+anims/idle = SubResource( 5 )
+"anims/idle (long)" = SubResource( 6 )
+anims/move = SubResource( 7 )
+anims/spawn = SubResource( 8 )
 
 [node name="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 8 )
