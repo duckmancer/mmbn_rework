@@ -418,7 +418,6 @@ tracks/2/keys = {
 script = ExtResource( 2 )
 is_independent = false
 anim_x_coord = 2
-state = 1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

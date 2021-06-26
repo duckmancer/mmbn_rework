@@ -2,32 +2,24 @@ class_name Action
 extends Entity
 
 signal action_finished()
-signal action_looped(loop_start_time)
-signal move_triggered()
 signal aborted()
+signal move_triggered()
+signal action_looped(loop_start_time)
 
 
-enum ActionState {
-	WAITING,
-	ACTIVE,
-	REPEAT,
-}
-
-
-var action_subtype
 var animation_name
+
+var attack_data
 var attack_type = null
+
 var loop_start = 0
 var do_repeat := false
-var attack_data
+
 var is_movement := false
 var destination
 
 var unique_action_delay := 1
 
-export(ActionState) var state = ActionState.WAITING setget set_state
-func set_state(new_state):
-	state = new_state
 
 func stop_repeat():
 	do_repeat = false
@@ -59,22 +51,20 @@ func repeat_action():
 
 # Cleanup
 
+func terminate():
+	emit_signal("action_finished")
+	.terminate()
+	
 func conclude_action():
 	terminate()
 
 func animation_done():
 	conclude_action()
 
-func terminate():
-	emit_signal("action_finished")
-	.terminate()
-
 func abort():
 	emit_signal("aborted")
 	queue_free()
 
-func pause():
-	pass
 
 # Processing
 
@@ -83,6 +73,7 @@ func do_tick():
 
 func check_in():
 	pass
+
 
 # Initialization
 
