@@ -1,64 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Unit.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/Health Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Battle/Entity/Unit/ChipData.gd" type="Script" id=4]
 [ext_resource path="res://Assets/BattleAssets/HUD/chip_icons_exe4.png" type="Texture" id=5]
-[ext_resource path="res://Assets/BattleAssets/Characters/Navis/Normal Navi.png" type="Texture" id=6]
-[ext_resource path="res://Battle/Entity/Unit/Pixelation.tres" type="Material" id=7]
 [ext_resource path="res://Assets/BN4 Rips/Misc/song304_appear.wav" type="AudioStream" id=8]
-
-[sub_resource type="Animation" id=1]
-resource_name = "hit_flash"
-length = 0.0333334
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/do_color_override")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0166667, 0.0333333 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "invuln_flicker"
-length = 0.4
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.133333, 0.266667 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "normal"
-length = 0.0166667
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:is_tangible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "default"
@@ -87,30 +34,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:material:shader_param/do_pixelate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:material:shader_param/do_shred")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -163,68 +86,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 8, 9, 8, 0 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:material:shader_param/do_shred")
+tracks/1/type = "method"
+tracks/1/path = NodePath("PaletteAnim")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.000143354, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:material:shader_param/do_pixelate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.000143354, 0.1, 0.100144 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:material:shader_param/scale")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.000143354, 0.0500001, 0.100144 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.5, 1.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:material:shader_param/shred_height")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.000143354, 0.0500001, 0.100144 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 4, 0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:material:shader_param/shred_cut_ratio")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.0500001, 0.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 8, 3, 8 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "move" ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
+resource_name = "spawn"
 length = 0.666668
 step = 0.0166667
 tracks/0/type = "value"
@@ -244,7 +122,7 @@ tracks/1/path = NodePath(".:material:shader_param/scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.166667, 0.333334, 0.500001 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
@@ -265,25 +143,13 @@ tracks/2/keys = {
 "method": "emit_signal"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:pause_mode")
+tracks/3/type = "audio"
+tracks/3/path = NodePath("AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.666667 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 2, 0 ]
-}
-tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -291,24 +157,49 @@ tracks/4/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:material:shader_param/do_pixelate")
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:material:shader_param/do_pixelate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.666668 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("PaletteAnim")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.666668 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "spawn" ],
+"method": "play"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimationPlayer:pause_mode")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.666668 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ 0 ]
 }
 
 [node name="Unit" groups=[
 "target",
 "unit",
 ] instance=ExtResource( 1 )]
-material = ExtResource( 7 )
 script = ExtResource( 2 )
 
 [node name="HealthbarHolder" type="Node2D" parent="." index="0"]
@@ -329,17 +220,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" parent="." index="1"]
-use_parent_material = true
-texture = ExtResource( 6 )
-
-[node name="PaletteAnim" type="AnimationPlayer" parent="." index="2"]
-autoplay = "normal"
-anims/hit_flash = SubResource( 1 )
-anims/invuln_flicker = SubResource( 2 )
-anims/normal = SubResource( 3 )
-
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="2"]
+pause_mode = 0
 autoplay = "default"
 anims/default = SubResource( 4 )
 anims/idle = SubResource( 5 )
@@ -347,10 +229,7 @@ anims/idle = SubResource( 5 )
 anims/move = SubResource( 7 )
 anims/spawn = SubResource( 8 )
 
-[node name="AudioStreamPlayer" parent="." index="4"]
-stream = ExtResource( 8 )
-
-[node name="ChipData" type="Node2D" parent="." index="5"]
+[node name="ChipData" type="Node2D" parent="." index="4"]
 visible = false
 position = Vector2( 0, -64 )
 z_index = 30
@@ -392,3 +271,5 @@ z_index = -1
 texture = ExtResource( 5 )
 hframes = 30
 vframes = 8
+
+[connection signal="animation_started" from="PaletteAnim" to="." method="_on_PaletteAnim_animation_started"]

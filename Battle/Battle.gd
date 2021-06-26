@@ -73,8 +73,8 @@ func _spawn_entities():
 # warning-ignore:unused_variable
 	var e_list = [
 		[Mettaur, {grid_pos = Vector2(4, 0)}],
-		[Mettaur, {grid_pos = Vector2(5, 1)}],
-		[Mettaur, {grid_pos = Vector2(4, 2)}],
+#		[Mettaur, {grid_pos = Vector2(5, 1)}],
+#		[Mettaur, {grid_pos = Vector2(4, 2)}],
 	]
 	entities = e_list
 	for params in entities:

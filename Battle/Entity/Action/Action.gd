@@ -74,6 +74,15 @@ func do_tick():
 func check_in():
 	pass
 
+func toggle_pause(is_paused):
+	if is_paused:
+		animation_player.stop(false)
+		audio.stream_paused = true
+		is_active = false
+	else:
+		is_active = true
+		audio.stream_paused = false
+		animation_player.play()
 
 # Initialization
 

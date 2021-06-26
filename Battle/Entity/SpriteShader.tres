@@ -3,17 +3,19 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+uniform bool do_pixelate = false;
+uniform float scale = 1.0;
+
+uniform bool do_shred = false;
+uniform int shred_height = 0;
+uniform int shred_cut_ratio = 8;
+
+//uniform bool do_color_override = false;
+uniform vec4 color_override : hint_color = vec4(0.0);
 
 
 varying vec2 base_size;
 varying vec2 pixelated_size;
-
-uniform bool do_pixelate = false;
-uniform bool do_shred = false;
-uniform bool do_color_override = false;
-uniform float scale = 1.0;
-uniform int shred_height = 0;
-uniform int shred_cut_ratio = 8;
 
 void vertex() {
 	base_size = vec2(
@@ -28,9 +30,8 @@ void vertex() {
 
 float pixelate_dimension(float uv, float scaling) {
 	if (do_pixelate)
-		return floor(uv * scaling) / (scaling);
-	else
-		return uv;
+		uv = floor(uv * scaling) / (scaling);
+	return uv;
 }
 
 vec2 pixelate(vec2 uv, vec2 scaling) {
@@ -51,6 +52,12 @@ vec2 shred(vec2 uv) {
 	return uv;
 }
 
+vec3 override_color(vec3 base, vec3 override, float alpha) {
+//	if (do_color_override)
+		base = base * (1.0 - alpha) + override * alpha;
+	return base;
+}
+
 void fragment() {
 	vec2 uv = UV;
 	
@@ -61,18 +68,14 @@ void fragment() {
 //	uv = pixelate(uv, pixelated_size);
 	
 	COLOR = texture(TEXTURE, uv);
-	if (do_color_override) {
-		COLOR.r = 1.0;
-		COLOR.g = 1.0;
-		COLOR.b = 1.0;
-	}
+	COLOR.rgb = override_color(COLOR.rgb, color_override.rgb, color_override.a);
 }"
 
 [resource]
 shader = SubResource( 1 )
 shader_param/do_pixelate = false
+shader_param/scale = 0.5
 shader_param/do_shred = false
-shader_param/do_color_override = false
-shader_param/scale = 0.131875
 shader_param/shred_height = 4
 shader_param/shred_cut_ratio = 8
+shader_param/color_override = Color( 0, 0, 0, 0 )

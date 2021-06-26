@@ -11,6 +11,7 @@ enum Team {
 
 onready var sprite := $Sprite as Sprite
 onready var animation_player := $AnimationPlayer as AnimationPlayer
+onready var palette_anim = $PaletteAnim
 onready var audio := $AudioStreamPlayer as AudioStreamPlayer
 
 export var is_independent := true
@@ -157,6 +158,7 @@ func move_to(destination : Vector2) -> void:
 func _ready():
 	set_default_keywords()
 	is_ready = true
+	sprite.material = sprite.material.duplicate()
 	initialize_arguments(data)
 	sprite.flip_h = (team == Team.ENEMY)
 	self.grid_pos = grid_pos

@@ -4,7 +4,7 @@
 [ext_resource path="res://Battle/Entity/Unit/Navi/Navi.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "hitstun"
+resource_name = "flinch"
 length = 0.333333
 step = 0.0166667
 tracks/0/type = "value"
@@ -168,13 +168,14 @@ script = ExtResource( 3 )
 max_hp = 200
 death_explosion_count = 10
 hitstun_frame = 16
+hitstun_threshold = 10
 
 [node name="Sprite" parent="." index="1"]
-frame = 17
+frame = 16
 region_rect = Rect2( 4, 62, 49, 44 )
 
-[node name="AnimationPlayer" parent="." index="3"]
-anims/hitstun = SubResource( 1 )
+[node name="AnimationPlayer" parent="." index="2"]
+anims/flinch = SubResource( 1 )
 anims/idle = SubResource( 2 )
 "anims/idle (old)" = SubResource( 3 )
 "anims/move (old)" = SubResource( 4 )

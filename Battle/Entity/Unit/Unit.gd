@@ -5,17 +5,27 @@ signal hp_changed(new_hp)
 # warning-ignore:unused_signal
 signal spawn_completed()
 
+enum Hitstun {
+	NONE,
+	FLINCH,
+	INVULN,
+	STUN,
+}
+
 const _REPEAT_INPUT_BUFFER = 0
 const _DEATH_EXPLOSION_STAGGER_DELAY = 10
+const _FLINCH_DURATION = 20
+const _STUN_DURATION = 120
 
 onready var healthbar = $HealthbarHolder/Healthbar
 onready var chip_data = $ChipData
-onready var palette_anim = $PaletteAnim
 
 export var delay_between_actions = 8
 export var max_hp = 40
 export var death_explosion_count = 1
 export var hitstun_frame = 0
+export var hitstun_duration = 1.5
+export var hitstun_threshold := 0
 
 var input_map = {
 	up = ActionData.action_factory(
@@ -60,11 +70,13 @@ var cur_action : Action = null
 var queued_input = null
 var is_action_running := false
 var cur_cooldown = 0
-var hitstun_threshold := 0
-export var is_tangible := true
+var is_tangible := true
 
 export var start_delay_avg = 30
 export var start_delay_range = 30
+
+
+# Hurt States
 
 var hp = 40 setget set_hp
 func set_hp(new_hp):
@@ -80,10 +92,60 @@ func set_hp(new_hp):
 func hurt(damage, impact_type = "hit", damage_type = "normal"):
 	set_hp(hp - damage)
 	palette_anim.play("hit_flash")
+	palette_anim.advance(0)
 	create_child_entity(Impact, {impact_anim = impact_type})
+	var hitstun_type = check_hitstun(damage, damage_type)
+	if hitstun_type != Hitstun.NONE:
+		enter_hitstun(hitstun_type)
 
+func check_hitstun(damage, damage_type):
+	# TODO: Fix damage types
+	if damage_type == ActionData.Element.ELEC:
+		return Hitstun.STUN
+	elif hitstun_threshold: #and damage_type != "light":
+		if damage >= hitstun_threshold:
+			return Hitstun.INVULN
+		else:
+			return Hitstun.FLINCH
+	else:
+		return Hitstun.NONE
+
+func enter_hitstun(hitstun_type):
+	if hitstun_threshold:
+		flinch()
+	if hitstun_type == Hitstun.INVULN:
+		start_invis(hitstun_duration)
+	if hitstun_type == Hitstun.STUN:
+		pause(_STUN_DURATION)
+
+func pause(duration : float):
+	animation_player.stop(false)
+	is_active = false
+	if is_action_running:
+		cur_action.toggle_pause(true)
+	yield(get_tree().create_timer(duration), "timeout")
+	if is_action_running:
+		cur_action.toggle_pause(false)
+	is_active = true
+	animation_player.play()
+
+func flinch():
+	animation_player.play("flinch")
+	if is_action_running:
+		cur_action.abort()
+	cur_cooldown = _FLINCH_DURATION
+
+func start_invis(duration : float) -> void:
+	is_tangible = false
+	palette_anim.queue("invis_flicker")
+	yield(get_tree().create_timer(duration), "timeout")
+	palette_anim.play("normal")
+	palette_anim.advance(0)
+	print(sprite.material.get("shader_param/color_override"))
+	is_tangible = true
 
 func begin_death():
+	is_active = false
 	if is_action_running:
 		cur_action.abort()
 	animation_player.stop()
@@ -234,11 +296,9 @@ func set_do_pixelate(state : bool):
 # Setup
 
 func _ready():
-	material = material.duplicate()
 	self.hp = max_hp
 	if not is_player_controlled:
-		animation_player.play("spawn")
-		animation_player.advance(0)
+		spawn()
 		cur_cooldown = get_start_delay()
 	if team == Team.ENEMY:
 		add_to_group("enemy")
@@ -249,6 +309,12 @@ func get_start_delay():
 	var base = start_delay_avg
 	var mod = int(rand_range(-start_delay_range, start_delay_range))
 	return max(base + mod, 0) as int
+
+func spawn():
+	animation_player.pause_mode = PAUSE_MODE_PROCESS
+	animation_player.play("spawn")
+	palette_anim.pause_mode = PAUSE_MODE_PROCESS
+	palette_anim.play("spawn")
 
 # Signals
 
@@ -266,3 +332,7 @@ func _on_Action_aborted():
 func _on_Action_move_triggered():
 	move_to(declared_grid_pos)
 
+
+
+func _on_PaletteAnim_animation_started(anim_name: String) -> void:
+	print(pretty_name, " started ", anim_name, " at: ", lifetime_counter)
