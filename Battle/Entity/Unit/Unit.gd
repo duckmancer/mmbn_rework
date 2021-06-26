@@ -16,12 +16,14 @@ const _REPEAT_INPUT_BUFFER = 0
 const _DEATH_EXPLOSION_STAGGER_DELAY = 10
 const _FLINCH_DURATION = 20
 const _STUN_DURATION = 120
+const _HP_UPDATE_DELAY = 0.3
 
 onready var healthbar = $HealthbarHolder/Healthbar
+onready var hp_changer = $HealthbarHolder/Tween
 onready var chip_data = $ChipData
 
 export var delay_between_actions = 8
-export var max_hp = 40
+export var max_hp := 40
 export var death_explosion_count = 1
 export var hitstun_frame = 0
 export var hitstun_duration = 1.5
@@ -78,15 +80,25 @@ export var start_delay_range = 30
 
 # Hurt States
 
-var hp = 40 setget set_hp
+
+var hp := 40 setget set_hp
 func set_hp(new_hp):
 	hp = clamp(new_hp, 0, max_hp)
 	if hp == 0:
 		healthbar.visible = false
 		begin_death()
-	healthbar.text = str(hp)
+	hp_changer.interpolate_property(self, "_display_hp", _display_hp, hp, _HP_UPDATE_DELAY, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	hp_changer.start()
+
+var _display_hp := hp setget set_display_hp
+func set_display_hp(new_hp):
+	_display_hp = new_hp
+	healthbar.text = str(_display_hp)
 	if is_player_controlled:
-		emit_signal("hp_changed", hp, max_hp)
+		emit_signal("hp_changed", _display_hp, max_hp)
+
+func refresh_hp():
+	self._display_hp = hp
 
 # warning-ignore:unused_argument
 func hurt(damage, impact_type = "hit", damage_type = "normal"):
@@ -296,7 +308,8 @@ func set_do_pixelate(state : bool):
 # Setup
 
 func _ready():
-	self.hp = max_hp
+	hp = max_hp
+	self._display_hp = max_hp
 	if not is_player_controlled:
 		spawn()
 		cur_cooldown = get_start_delay()

@@ -63,7 +63,7 @@ func bind_player(controlled_player: Unit):
 	player.healthbar.visible = false
 	var _err = player.connect("hp_changed", self, "_on_player_hp_changed")
 	_err = player.chip_data.connect("cur_chip_updated", self, "_on_player_cur_chip_updated")
-	player.hp = player.hp
+	player.refresh_hp()
 
 func _ready():
 	pass
