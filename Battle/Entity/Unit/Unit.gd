@@ -21,6 +21,7 @@ const _HP_UPDATE_DELAY = 0.3
 onready var healthbar = $HealthbarHolder/Healthbar
 onready var hp_changer = $HealthbarHolder/Tween
 onready var chip_data = $ChipData
+onready var palette_anim = $PaletteAnim
 
 export var delay_between_actions = 8
 export var max_hp := 40
@@ -68,6 +69,8 @@ var input_map = {
 	),
 }
 
+var anim_suffix = []
+
 var cur_action : Action = null
 var queued_input = null
 var is_action_running := false
@@ -80,10 +83,9 @@ export var start_delay_range = 30
 
 # Hurt States
 
-
 var hp := 40 setget set_hp
 func set_hp(new_hp):
-	hp = clamp(new_hp, 0, max_hp)
+	hp = clamp(new_hp, 0, max_hp) as int
 	if hp == 0:
 		healthbar.visible = false
 		begin_death()
@@ -142,7 +144,7 @@ func pause(duration : float):
 	animation_player.play()
 
 func flinch():
-	animation_player.play("flinch")
+	play_anim("flinch")
 	if is_action_running:
 		cur_action.abort()
 	cur_cooldown = _FLINCH_DURATION
@@ -226,9 +228,9 @@ func _launch_action(action_data : Dictionary) -> void:
 
 func _animate_action(action_data: Dictionary) -> void:
 	if action_data.has("unit_animation"):
-		animation_player.play(action_data.unit_animation)
+		play_anim(action_data.unit_animation)
 	else:
-		animation_player.play(action_data.animation_name)
+		play_anim(action_data.animation_name)
 
 func _create_action(action_data : Dictionary) -> Action:
 	var action = create_child_entity(action_data.action_type, {data = action_data})
@@ -305,9 +307,11 @@ func do_tick():
 func set_do_pixelate(state : bool):
 	material.set("shader_param/do_pixelate", state)
 
+
 # Setup
 
 func _ready():
+	set_anim_suffix()
 	hp = max_hp
 	self._display_hp = max_hp
 	if not is_player_controlled:
@@ -323,11 +327,30 @@ func get_start_delay():
 	var mod = int(rand_range(-start_delay_range, start_delay_range))
 	return max(base + mod, 0) as int
 
+
+# Animation
+
+func play_anim(anim_name : String, speed := 1.0):
+	var play_name = anim_name
+	for suffix in anim_suffix:
+		var potential_name = anim_name + "_" + suffix
+		if animation_player.has_animation(potential_name):
+			play_name = potential_name
+			break
+	animation_player.play(play_name, -1, speed)
+
+func animation_done():
+	play_anim("idle")
+
 func spawn():
 	animation_player.pause_mode = PAUSE_MODE_PROCESS
-	animation_player.play("spawn")
+	play_anim("spawn")
 	palette_anim.pause_mode = PAUSE_MODE_PROCESS
 	palette_anim.play("spawn")
+
+func set_anim_suffix():
+	anim_suffix.append("unit")
+
 
 # Signals
 
@@ -345,7 +368,3 @@ func _on_Action_aborted():
 func _on_Action_move_triggered():
 	move_to(declared_grid_pos)
 
-
-
-func _on_PaletteAnim_animation_started(anim_name: String) -> void:
-	print(pretty_name, " started ", anim_name, " at: ", lifetime_counter)

@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Battle/Entity/Unit/Unit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Navi/Navi.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "flinch"
+resource_name = "flinch_navi"
 length = 0.333333
 step = 0.0166667
 tracks/0/type = "value"
@@ -21,6 +21,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
+resource_name = "idle_navi"
 length = 1.06667
 loop = true
 step = 0.0166667
@@ -37,25 +38,8 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=3]
-length = 1.06667
-loop = true
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.533333, 0.933333 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 1 ]
-}
-
 [sub_resource type="Animation" id=4]
-resource_name = "move (old)"
+resource_name = "move_navi (old)"
 length = 0.0833335
 step = 0.0166667
 tracks/0/type = "value"
@@ -72,6 +56,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
+resource_name = "shoot_heavy_navi"
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -100,6 +85,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=6]
+resource_name = "shoot_light_navi"
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -116,6 +102,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
+resource_name = "shoot_med_navi"
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -132,6 +119,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=8]
+resource_name = "slash_navi"
 length = 0.466667
 step = 0.0166667
 tracks/0/type = "value"
@@ -148,6 +136,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=9]
+resource_name = "throw_navi"
 length = 0.4
 step = 0.0166667
 tracks/0/type = "value"
@@ -171,16 +160,14 @@ hitstun_frame = 16
 hitstun_threshold = 10
 
 [node name="Sprite" parent="." index="1"]
-frame = 16
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/flinch = SubResource( 1 )
-anims/idle = SubResource( 2 )
-"anims/idle (old)" = SubResource( 3 )
-"anims/move (old)" = SubResource( 4 )
-anims/shoot_heavy = SubResource( 5 )
-anims/shoot_light = SubResource( 6 )
-anims/shoot_med = SubResource( 7 )
-anims/slash = SubResource( 8 )
-anims/throw = SubResource( 9 )
+anims/flinch_navi = SubResource( 1 )
+anims/idle_navi = SubResource( 2 )
+"anims/move_navi (old)" = SubResource( 4 )
+anims/shoot_heavy_navi = SubResource( 5 )
+anims/shoot_light_navi = SubResource( 6 )
+anims/shoot_med_navi = SubResource( 7 )
+anims/slash_navi = SubResource( 8 )
+anims/throw_navi = SubResource( 9 )

@@ -2,8 +2,6 @@ class_name Navi
 extends Unit
 
 
-
-
 func run_AI(target):
 	var result = .run_AI(target)
 	if not result:
@@ -17,3 +15,7 @@ func do_tick():
 
 func _ready():
 	pass
+
+func set_anim_suffix():
+	anim_suffix.append("navi")
+	.set_anim_suffix()

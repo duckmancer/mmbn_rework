@@ -11,7 +11,6 @@ enum Team {
 
 onready var sprite := $Sprite as Sprite
 onready var animation_player := $AnimationPlayer as AnimationPlayer
-onready var palette_anim = $PaletteAnim
 onready var audio := $AudioStreamPlayer as AudioStreamPlayer
 
 export var is_independent := true
@@ -84,9 +83,7 @@ func advance_animation():
 		anim_y_coord += 1
 
 func animation_done():
-	animation_player.stop()
-	if animation_player.has_animation("idle"):
-		animation_player.play("idle")
+	pass
 
 
 # Entity Construction

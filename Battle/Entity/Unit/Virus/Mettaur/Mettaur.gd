@@ -1,8 +1,8 @@
 class_name Mettaur
 extends Virus
 
-var met_wave_data = {
-	unit_animation = "met_wave",
+var shockwave_data = {
+	unit_animation = "shockwave",
 	attack_data = ActionData.attacks.shockwave,
 	unique_action_delay = 36,
 }
@@ -14,4 +14,8 @@ func run_AI(target):
 	return result
 
 func _ready():
-	input_map.action_1 = ActionData.action_factory("unique_action", met_wave_data)
+	input_map.action_1 = ActionData.action_factory("unique_action", shockwave_data)
+
+func set_anim_suffix():
+	anim_suffix.append("mettaur")
+	.set_anim_suffix()

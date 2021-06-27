@@ -40,7 +40,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "move"
 length = 0.1
 step = 0.0166667
@@ -105,8 +105,7 @@ tracks/4/keys = {
 "values": [ 8, 3, 8 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "normal"
+[sub_resource type="Animation" id=4]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -158,8 +157,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "spawn"
+[sub_resource type="Animation" id=5]
 length = 0.666668
 step = 0.0166667
 tracks/0/type = "value"
@@ -222,9 +220,9 @@ pause_mode = 2
 autoplay = "normal"
 anims/hit_flash = SubResource( 1 )
 anims/invis_flicker = SubResource( 2 )
-anims/move = SubResource( 5 )
-anims/normal = SubResource( 3 )
-anims/spawn = SubResource( 4 )
+anims/move = SubResource( 3 )
+anims/normal = SubResource( 4 )
+anims/spawn = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
