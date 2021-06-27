@@ -21,7 +21,7 @@ const _HP_UPDATE_DELAY = 0.3
 onready var healthbar = $HealthbarHolder/Healthbar
 onready var hp_changer = $HealthbarHolder/Tween
 onready var chip_data = $ChipData
-onready var palette_anim = $PaletteAnim
+onready var effect_player = $EffectPlayer
 
 export var delay_between_actions = 8
 export var max_hp := 40
@@ -105,8 +105,7 @@ func refresh_hp():
 # warning-ignore:unused_argument
 func hurt(damage, impact_type = "hit", damage_type = "normal"):
 	set_hp(hp - damage)
-	palette_anim.play("hit_flash")
-	palette_anim.advance(0)
+	effect_player.play_effect("hit_flash")
 	create_child_entity(Impact, {impact_anim = impact_type})
 	var hitstun_type = check_hitstun(damage, damage_type)
 	if hitstun_type != Hitstun.NONE:
@@ -151,11 +150,8 @@ func flinch():
 
 func start_invis(duration : float) -> void:
 	is_tangible = false
-	palette_anim.queue("invis_flicker")
+	effect_player.play_effect("invis_flicker", duration)
 	yield(get_tree().create_timer(duration), "timeout")
-	palette_anim.play("normal")
-	palette_anim.advance(0)
-	print(sprite.material.get("shader_param/color_override"))
 	is_tangible = true
 
 func begin_death():
@@ -312,6 +308,7 @@ func set_do_pixelate(state : bool):
 
 func _ready():
 	set_anim_suffix()
+	sprite.material = sprite.material.duplicate()
 	hp = max_hp
 	self._display_hp = max_hp
 	if not is_player_controlled:
@@ -345,8 +342,10 @@ func animation_done():
 func spawn():
 	animation_player.pause_mode = PAUSE_MODE_PROCESS
 	play_anim("spawn")
-	palette_anim.pause_mode = PAUSE_MODE_PROCESS
-	palette_anim.play("spawn")
+	effect_player.pause_mode = PAUSE_MODE_PROCESS
+	effect_player.play("normal")
+	effect_player.advance(1.0)
+	effect_player.play_effect("spawn")
 
 func set_anim_suffix():
 	anim_suffix.append("unit")

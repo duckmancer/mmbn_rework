@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Unit.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Fonts/Health Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Battle/Entity/Unit/ChipData.gd" type="Script" id=4]
 [ext_resource path="res://Assets/BattleAssets/HUD/chip_icons_exe4.png" type="Texture" id=5]
+[ext_resource path="res://Battle/Entity/Unit/EffectPlayer.gd" type="Script" id=6]
+[ext_resource path="res://Battle/Entity/Unit/SpriteShader.tres" type="Material" id=7]
 [ext_resource path="res://Assets/BN4 Rips/Misc/song304_appear.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
@@ -54,12 +56,12 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "move_unit"
 length = 0.1
 step = 0.0166667
 tracks/0/type = "method"
-tracks/0/path = NodePath("PaletteAnim")
+tracks/0/path = NodePath("EffectPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -73,7 +75,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "spawn_unit"
 length = 0.666668
 step = 0.0166667
@@ -118,7 +120,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "method"
-tracks/3/path = NodePath("PaletteAnim")
+tracks/3/path = NodePath("EffectPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -138,6 +140,204 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
+"times": PoolRealArray( 0.666668 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "default"
+length = 0.0166667
+loop = true
+step = 0.0166667
+
+[sub_resource type="Animation" id=6]
+resource_name = "hit_flash"
+length = 0.0166667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/color_override")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "invis_flicker"
+length = 0.4
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "move"
+length = 0.1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/do_pixelate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material:shader_param/do_shred")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material:shader_param/scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0500001, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.5, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:material:shader_param/shred_height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0500001, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 4, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:material:shader_param/shred_cut_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.0500001, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 3, 8 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.0166667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/do_pixelate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material:shader_param/do_shred")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material:shader_param/color_override")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.666668
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.333334, 0.500001 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.125, 0.25, 0.5, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material:shader_param/do_pixelate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.666668 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EffectPlayer:pause_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0.666668 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -170,15 +370,28 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="HealthbarHolder" index="1"]
 
+[node name="Sprite" parent="." index="1"]
+material = ExtResource( 7 )
+
 [node name="AnimationPlayer" parent="." index="2"]
 pause_mode = 0
 autoplay = "default_unit"
 anims/default_unit = SubResource( 1 )
 anims/idle_unit = SubResource( 2 )
-anims/move_unit = SubResource( 4 )
-anims/spawn_unit = SubResource( 5 )
+anims/move_unit = SubResource( 3 )
+anims/spawn_unit = SubResource( 4 )
 
-[node name="ChipData" type="Node2D" parent="." index="4"]
+[node name="EffectPlayer" type="AnimationPlayer" parent="." index="3"]
+autoplay = "default"
+anims/default = SubResource( 5 )
+anims/hit_flash = SubResource( 6 )
+anims/invis_flicker = SubResource( 7 )
+anims/move = SubResource( 8 )
+anims/normal = SubResource( 9 )
+anims/spawn = SubResource( 10 )
+script = ExtResource( 6 )
+
+[node name="ChipData" type="Node2D" parent="." index="5"]
 visible = false
 position = Vector2( 0, -64 )
 z_index = 30
@@ -220,3 +433,5 @@ z_index = -1
 texture = ExtResource( 5 )
 hframes = 30
 vframes = 8
+
+[connection signal="animation_finished" from="EffectPlayer" to="EffectPlayer" method="_on_EffectPlayer_animation_finished"]

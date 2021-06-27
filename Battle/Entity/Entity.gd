@@ -155,7 +155,6 @@ func move_to(destination : Vector2) -> void:
 func _ready():
 	set_default_keywords()
 	is_ready = true
-	sprite.material = sprite.material.duplicate()
 	initialize_arguments(data)
 	sprite.flip_h = (team == Team.ENEMY)
 	self.grid_pos = grid_pos
