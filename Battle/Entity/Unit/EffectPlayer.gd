@@ -19,6 +19,6 @@ func set_duration(duration : float) -> void:
 func _ready() -> void:
 	pass
 	
-func _on_EffectPlayer_animation_finished(anim_name: String) -> void:
+func _on_EffectPlayer_animation_finished(_anim_name: String) -> void:
 	if is_copy:
 		queue_free()

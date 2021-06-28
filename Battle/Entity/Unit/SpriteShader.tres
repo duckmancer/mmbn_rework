@@ -8,7 +8,7 @@ uniform float scale = 1.0;
 
 uniform bool do_shred = false;
 uniform int shred_height = 0;
-uniform int shred_cut_ratio = 8;
+uniform int shred_cut_ratio = 3;
 
 //uniform bool do_color_override = false;
 uniform vec4 color_override : hint_color = vec4(0.0);
@@ -41,10 +41,10 @@ vec2 pixelate(vec2 uv, vec2 scaling) {
 }
 
 vec2 shred(vec2 uv) {
+	if (int(uv.x * base_size.x) % 2 == 0) {
+		uv.y += float(shred_height) / base_size.y;
+	}
 	if (do_shred) {
-		if (int(uv.x * base_size.x) % 2 == 0) {
-			uv.y += float(shred_height) / base_size.y;
-		}
 		if (int(uv.x * base_size.x) % shred_cut_ratio == 0) {
 			uv.y = -1.0;
 		}
@@ -74,8 +74,8 @@ void fragment() {
 [resource]
 shader = SubResource( 1 )
 shader_param/do_pixelate = false
-shader_param/scale = 1.0
+shader_param/scale = 0.666667
 shader_param/do_shred = false
 shader_param/shred_height = 0
-shader_param/shred_cut_ratio = 8
+shader_param/shred_cut_ratio = 5
 shader_param/color_override = Color( 0, 0, 0, 0 )

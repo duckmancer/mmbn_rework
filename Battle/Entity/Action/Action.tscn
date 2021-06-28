@@ -205,7 +205,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.15, 0.216667, 0.25, 0.500001 ),
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.183333, 0.216667, 0.25, 0.500001 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 7 ]
@@ -417,7 +417,7 @@ tracks/2/keys = {
 [node name="Action" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_independent = false
-anim_x_coord = 2
+anim_x_coord = 5
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

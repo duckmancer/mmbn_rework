@@ -38,7 +38,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "move_navi (old)"
 length = 0.0833335
 step = 0.0166667
@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ 0, 8, 9, 8, 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "shoot_heavy_navi"
 length = 0.500001
 step = 0.0166667
@@ -84,7 +84,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -4, 0 ), Vector2( -5, 0 ), Vector2( -6, 0 ), Vector2( -7, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "shoot_light_navi"
 length = 0.500001
 step = 0.0166667
@@ -101,7 +101,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "shoot_med_navi"
 length = 0.500001
 step = 0.0166667
@@ -118,7 +118,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 24 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "slash_navi"
 length = 0.466667
 step = 0.0166667
@@ -135,7 +135,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "throw_navi"
 length = 0.4
 step = 0.0166667
@@ -160,14 +160,15 @@ hitstun_frame = 16
 hitstun_threshold = 10
 
 [node name="Sprite" parent="." index="1"]
+frame = 25
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/flinch_navi = SubResource( 1 )
 anims/idle_navi = SubResource( 2 )
-"anims/move_navi (old)" = SubResource( 4 )
-anims/shoot_heavy_navi = SubResource( 5 )
-anims/shoot_light_navi = SubResource( 6 )
-anims/shoot_med_navi = SubResource( 7 )
-anims/slash_navi = SubResource( 8 )
-anims/throw_navi = SubResource( 9 )
+"anims/move_navi (old)" = SubResource( 3 )
+anims/shoot_heavy_navi = SubResource( 4 )
+anims/shoot_light_navi = SubResource( 5 )
+anims/shoot_med_navi = SubResource( 6 )
+anims/slash_navi = SubResource( 7 )
+anims/throw_navi = SubResource( 8 )

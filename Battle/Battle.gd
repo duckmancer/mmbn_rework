@@ -72,7 +72,7 @@ func _spawn_entities():
 	var entities = []
 # warning-ignore:unused_variable
 	var e_list = [
-		[Mettaur, {grid_pos = Vector2(4, 0)}],
+		[Spikey, {grid_pos = Vector2(4, 1)}],
 #		[Mettaur, {grid_pos = Vector2(5, 1)}],
 #		[Mettaur, {grid_pos = Vector2(4, 2)}],
 	]

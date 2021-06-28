@@ -209,7 +209,7 @@ func _declare_movement(move_data : Dictionary) -> bool:
 		destination = move_data.destination
 	else:
 		destination = self.grid_pos + Constants.DIRS[move_data.movement_dir]
-	if can_move_to(destination):
+	if destination != self.grid_pos and can_move_to(destination):
 		declared_grid_pos = destination
 		return true
 	else:
@@ -223,7 +223,9 @@ func _launch_action(action_data : Dictionary) -> void:
 	cur_action.check_in()
 
 func _animate_action(action_data: Dictionary) -> void:
-	if action_data.has("unit_animation"):
+	if action_data.has("is_movement"):
+		effect_player.play_effect("move")
+	elif action_data.has("unit_animation"):
 		play_anim(action_data.unit_animation)
 	else:
 		play_anim(action_data.animation_name)
@@ -287,14 +289,14 @@ func run_AI(target):
 
 func do_tick():
 	.do_tick()
-	if not is_player_controlled:
-		var target = choose_target()
-		if target:
-			process_input(run_AI(target))
 	if is_action_running:
 		cur_action.sprite.position = sprite.position
 	else:
 		if cur_cooldown == 0:
+			if not is_player_controlled:
+				var target = choose_target()
+				if target:
+					process_input(run_AI(target))
 			if queued_input:
 				_execute_input(queued_input)
 		else:
@@ -311,6 +313,7 @@ func _ready():
 	sprite.material = sprite.material.duplicate()
 	hp = max_hp
 	self._display_hp = max_hp
+	reset_effect_player()
 	if not is_player_controlled:
 		spawn()
 		cur_cooldown = get_start_delay()
@@ -346,6 +349,12 @@ func spawn():
 	effect_player.play("normal")
 	effect_player.advance(1.0)
 	effect_player.play_effect("spawn")
+
+func reset_effect_player():
+	effect_player.pause_mode = PAUSE_MODE_PROCESS
+	effect_player.play("normal")
+	effect_player.advance(1.0)
+	effect_player.pause_mode = PAUSE_MODE_INHERIT
 
 func set_anim_suffix():
 	anim_suffix.append("unit")
