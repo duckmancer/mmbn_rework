@@ -112,6 +112,20 @@ var attacks = {
 		is_direct_hit = false,
 		child_data = impacts.fireblast,
 	},
+	fireball = {
+		sprite_path = ATTACK_ROOT + "Shots.png",
+		audio_path = "res://Assets/BN4 Rips/Hits/song112_explosion_small.wav",
+		anim_y_coord = 0,
+		animation_name = "fireball_shot",
+		
+		attack_type = Shot,
+		damage = 30,
+		damage_type = Element.FIRE,
+		pass_through = false,
+		impact_type = "none",
+		is_direct_hit = false,
+		child_data = impacts.fireblast,
+	},
 	sword = {
 		sprite_path = WEAPON_ROOT + "Sword.png",
 		anim_y_coord = 7,
@@ -140,16 +154,16 @@ var attacks = {
 
 var base_actions = {
 	move = {
-		action_type = Action,
+		
 		is_movement = true,
 		animation_name = "move",
 	},
 	unique_action = {
-		action_type = Action,
+		
 		animation_name = "unique_action",
 	},
 	buster = {
-		action_type = Action,
+		
 		sprite_path = WEAPON_ROOT + "Buster.png",
 		anim_y_coord = 0,
 		animation_name = "shoot_light",
@@ -158,7 +172,7 @@ var base_actions = {
 	},
 	cannon = {
 		
-		action_type = Action,
+		
 		sprite_path = WEAPON_ROOT + "Cannon.png",
 		anim_y_coord = 0,
 		animation_name = "shoot_heavy",
@@ -166,7 +180,7 @@ var base_actions = {
 		attack_data = attacks.cannon,
 	},
 	heatshot = {
-		action_type = Action,
+		
 		
 		sprite_path = WEAPON_ROOT + "Heatshot.png",
 		anim_y_coord = 0,
@@ -175,7 +189,7 @@ var base_actions = {
 	},
 	sword = {
 		
-		action_type = Action,
+		
 		sprite_path = WEAPON_ROOT + "Sword.png",
 		anim_y_coord = 6,
 		animation_name = "slash",
@@ -184,7 +198,7 @@ var base_actions = {
 	},
 	minibomb = {
 		
-		action_type = Action,
+		
 		sprite_path = WEAPON_ROOT + "Throwable.png",
 		anim_y_coord = 0,
 		animation_name = "throw",

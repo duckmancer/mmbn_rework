@@ -1,9 +1,9 @@
 class_name Spikey
 extends Virus
 
-var heatshot_data = {
+var fireball_data = {
 	unit_animation = "shoot",
-	attack_data = ActionData.attacks.heatshot,
+	attack_data = ActionData.attacks.fireball,
 	unique_action_delay = 28,
 }
 
@@ -38,7 +38,7 @@ func run_AI(target):
 
 func _ready() -> void:
 	cur_cycle_pos = 0
-	input_map.action_1 = ActionData.action_factory("unique_action", heatshot_data)
+	input_map.action_1 = ActionData.action_factory("unique_action", fireball_data)
 
 func set_anim_suffix():
 	anim_suffix.append("spikey")

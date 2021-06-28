@@ -60,8 +60,10 @@ var input_map = {
 		{}
 	),
 	action_2 = ActionData.action_factory(
-		"hicannon", 
-		{}
+		"heatshot", 
+		{
+			attack_data = ActionData.attacks.fireball
+		}
 	),
 	action_3 = ActionData.action_factory(
 		"buster", 
@@ -231,7 +233,7 @@ func _animate_action(action_data: Dictionary) -> void:
 		play_anim(action_data.animation_name)
 
 func _create_action(action_data : Dictionary) -> Action:
-	var action = create_child_entity(action_data.action_type, {data = action_data})
+	var action = create_child_entity(Action, {data = action_data})
 	_connect_action_signals(action)
 	return action
 
