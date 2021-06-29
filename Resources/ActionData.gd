@@ -22,6 +22,34 @@ const WEAPON_ROOT = SPRITE_ROOT + "Weapons/"
 const ATTACK_ROOT = SPRITE_ROOT + "Attacks/"
 const IMPACT_ROOT = SPRITE_ROOT + "Impacts/"
 
+const STANDARD_ACTION_DURATIONS = {
+	move = {
+		delay = 3,
+		duration = 6,
+	},
+	shoot_light = {
+		delay = 3,
+		repeat = 25,
+		duration = 30,
+	},
+	shoot_med = {
+		delay = 11,
+		duration = 30,
+	},
+	shoot_heavy = {
+		delay = 22,
+		duration = 32,
+	},
+	slash = {
+		delay = 10,
+		duration = 28,
+	},
+	throw = {
+		delay = 9,
+		duration = 24,
+	},
+}
+
 var virus_attacks = {
 	met_wave = {
 		attack_type = Shockwave,

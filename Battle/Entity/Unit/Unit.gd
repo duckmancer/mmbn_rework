@@ -192,31 +192,25 @@ func _check_held_input(input):
 
 # Action Execution
 
-func _execute_input(input) -> void:
+func _execute_input(input : String) -> void:
 	var action = null
 	if input == "chip_action":
 		var chip = chip_data.use_chip()
 		if chip:
 			action = ActionData.action_factory(chip.name)
 	else:
+		action = _parse_input(input)
+	if action:
+		_launch_action(action)
+
+func _parse_input(input : String) -> Dictionary:
+	var action = null
+	if input_map.has(input):
 		action = input_map[input]
 		if action.has("is_movement"):
 			if not _declare_movement(action):
 				action = null
-	if action:
-		_launch_action(action)
-
-func _declare_movement(move_data : Dictionary) -> bool:
-	var destination
-	if move_data.has("destination"):
-		destination = move_data.destination
-	else:
-		destination = self.grid_pos + Constants.DIRS[move_data.movement_dir]
-	if destination != self.grid_pos and can_move_to(destination):
-		declared_grid_pos = destination
-		return true
-	else:
-		return false
+	return action
 
 func _launch_action(action_data : Dictionary) -> void:
 	cur_action = _create_action(action_data)
@@ -251,6 +245,21 @@ func _connect_action_signals(action : Action) -> void:
 	action.connect("action_looped", self, "_on_Action_action_looped")
 	action.connect("move_triggered", self, "_on_Action_move_triggered")
 	action.connect("aborted", self, "_on_Action_aborted")
+
+
+# Movement
+
+func _declare_movement(move_data : Dictionary) -> bool:
+	var destination = self.grid_pos
+	if move_data.has("destination"):
+		destination = move_data.destination
+	elif move_data.has("movement_dir"):
+		destination = self.grid_pos + Constants.DIRS[move_data.movement_dir]
+	if destination != self.grid_pos and can_move_to(destination):
+		declared_grid_pos = destination
+		return true
+	else:
+		return false
 
 
 # AI
@@ -291,8 +300,7 @@ func align_row(target):
 		result = "up"
 	return result
 
-# warning-ignore:unused_argument
-func run_AI(target):
+func run_AI(_target):
 	return null
 
 

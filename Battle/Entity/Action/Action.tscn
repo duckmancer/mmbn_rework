@@ -417,11 +417,9 @@ tracks/2/keys = {
 [node name="Action" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_independent = false
-anim_x_coord = 5
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-frame = 7
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hide"
