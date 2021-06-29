@@ -22,6 +22,7 @@ onready var healthbar = $HealthbarHolder/Healthbar
 onready var hp_changer = $HealthbarHolder/Tween
 onready var chip_data = $ChipData
 onready var effect_player = $EffectPlayer
+onready var slider = $Slider
 
 export var delay_between_actions = 8
 export var max_hp := 40
@@ -221,12 +222,20 @@ func _launch_action(action_data : Dictionary) -> void:
 	cur_action = _create_action(action_data)
 	_animate_action(action_data)
 	is_action_running = true
-	cur_cooldown = delay_between_actions
+	if cur_cooldown == 0:
+		if action_data.has("cooldown"):
+			cur_cooldown = action_data.cooldown
+		else:
+			cur_cooldown = delay_between_actions
 	cur_action.check_in()
 
 func _animate_action(action_data: Dictionary) -> void:
 	if action_data.has("is_movement"):
-		effect_player.play_effect("move")
+		if action_data.has("is_slide"):
+			slider.interpolate_method(self, "set_grid_pos", grid_pos, declared_grid_pos, Utils.frames_to_seconds(action_data.duration))
+			slider.start()
+		else:
+			effect_player.play_effect("move")
 	elif action_data.has("unit_animation"):
 		play_anim(action_data.unit_animation)
 	else:

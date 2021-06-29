@@ -7,14 +7,10 @@ var shockwave_data = {
 	unique_action_delay = 36,
 }
 
-func run_AI(target):
-	var result = align_row(target)
-	if not result:
-		result = "action_1"
-	return result
 
 func _ready():
-	input_map.action_1 = ActionData.action_factory("unique_action", shockwave_data)
+	AI_type = AI.CHASER_COL
+	input_map.attack = ActionData.action_factory("unique_action", shockwave_data)
 
 func set_anim_suffix():
 	anim_suffix.append("mettaur")

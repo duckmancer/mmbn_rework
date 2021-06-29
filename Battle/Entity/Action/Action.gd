@@ -16,6 +16,7 @@ var loop_start = 0
 var do_repeat := false
 
 var is_movement := false
+var is_slide := false
 var destination
 
 var unique_action_delay := 1
@@ -29,7 +30,8 @@ func stop_repeat():
 
 func execute_action():
 	if is_movement:
-		_execute_movement()
+		if not is_slide:
+			_execute_movement()
 	else:
 		_execute_attack()
 
@@ -89,6 +91,10 @@ func toggle_pause(is_paused):
 func _ready():
 	var action_speed = animation_player.playback_speed
 	if animation_name == "unique_action":
-		action_speed /= unique_action_delay
+		if action_speed:
+			action_speed /= unique_action_delay
+		else:
+			execute_action()
+			conclude_action()
 	animation_player.play(animation_name, -1, action_speed)
 
