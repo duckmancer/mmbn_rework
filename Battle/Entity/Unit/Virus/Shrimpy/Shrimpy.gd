@@ -15,12 +15,18 @@ var _move_down = {
 	name = "slide",
 	args = {movement_dir = "down"},
 }
+var _wait = {
+	name = "wait",
+	args = {},
+}
 
 var rails_sequence = [
 	_move_up,
 	_move_up,
+	_wait,
 	_move_down,
 	_move_down,
+	_wait,
 ]
 
 

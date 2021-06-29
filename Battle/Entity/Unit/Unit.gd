@@ -75,7 +75,7 @@ var input_map = {
 
 var anim_suffix = []
 
-var cur_action : Weapon = null
+var cur_action = null
 var queued_input = null
 var is_action_running := false
 var cur_cooldown = 0
@@ -143,17 +143,17 @@ func enter_hitstun(hitstun_type):
 func pause(duration : float):
 	animation_player.stop(false)
 	is_active = false
-	if is_action_running:
+	if cur_action:
 		cur_action.toggle_pause(true)
 	yield(get_tree().create_timer(duration), "timeout")
-	if is_action_running:
+	if cur_action:
 		cur_action.toggle_pause(false)
 	is_active = true
 	animation_player.play()
 
 func flinch():
 	play_anim("flinch")
-	if is_action_running:
+	if cur_action:
 		cur_action.abort()
 	cur_cooldown = _FLINCH_DURATION
 
@@ -165,7 +165,7 @@ func start_invis(duration : float) -> void:
 
 func begin_death():
 	is_active = false
-	if is_action_running:
+	if cur_action:
 		cur_action.abort()
 	animation_player.stop()
 	for i in death_explosion_count:
@@ -190,7 +190,7 @@ func process_input(input) -> void:
 	queued_input = input
 
 func _check_held_input(input):
-	if is_action_running:
+	if cur_action:
 		if cur_action.do_repeat:
 			if input != queued_input:
 				cur_action.stop_repeat()
@@ -220,20 +220,36 @@ func _parse_input(input : String) -> Dictionary:
 
 func _launch_action(action_args : Dictionary) -> void:
 	action_data = action_args
-	cur_action = _create_action(action_data)
-	_animate_action(action_data)
 	is_action_running = true
-	if cur_cooldown == 0:
-		if action_data.has("cooldown"):
-			cur_cooldown = action_data.cooldown
-		else:
-			cur_cooldown = delay_between_actions
-	cur_action.check_in()
+	_set_cooldown(action_data)
+	if action_data.has("no_weapon"):
+		_launch_manual_action(action_data)
+	else:
+		cur_action = _create_action(action_data)
+		_animate_action(action_data)
 
-func _animate_action(_action_args: Dictionary) -> void:
+func _set_cooldown(_action_data) -> void:
+	if action_data.has("cooldown"):
+		cur_cooldown = action_data.cooldown
+	else:
+		cur_cooldown = delay_between_actions
+
+func _launch_manual_action(_action_data) -> void:
+	if action_data.has("delay"):
+		yield(wait_frames(action_data.delay), "completed")
+	if action_data.has("attack_data"):
+		create_child_entity(action_data.attack_data.attack_type, {data = action_data.attack_data})
 	if action_data.has("is_movement"):
 		if action_data.has("is_slide"):
-			slide(declared_grid_pos, action_data.duration)
+			slide(declared_grid_pos, cur_cooldown)
+		else:
+			move_to(declared_grid_pos)
+	is_action_running = false
+
+func _animate_action(_action_data: Dictionary) -> void:
+	if action_data.has("is_movement"):
+		if action_data.has("is_slide"):
+			slide(declared_grid_pos, action_data.cooldown)
 		else:
 			effect_player.play_effect("move")
 	elif action_data.has("unit_animation"):
@@ -241,7 +257,7 @@ func _animate_action(_action_args: Dictionary) -> void:
 	else:
 		play_anim(action_data.animation_name)
 
-func _create_action(_action_args : Dictionary):
+func _create_action(_action_data : Dictionary):
 	var action = create_child_entity(Weapon, {data = action_data})
 	_connect_action_signals(action)
 	return action
@@ -315,8 +331,7 @@ func run_AI(_target):
 func do_tick():
 	.do_tick()
 	if is_action_running:
-		cur_action.sprite.position = sprite.position
-#		process_action()
+		pass
 	else:
 		if cur_cooldown == 0:
 			if not is_player_controlled:

@@ -43,14 +43,17 @@ tracks/0/keys = {
 "entity",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+pretty_name = "Shrimpy"
+max_hp = 60
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
-frame = 2
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/idle_shrimpy = SubResource( 1 )
 anims/shoot_shrimpy = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

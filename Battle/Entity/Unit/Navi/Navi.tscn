@@ -72,7 +72,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 24, 25, 24 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
+tracks/1/path = NodePath(".:sprite_displacement")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -160,7 +160,6 @@ hitstun_frame = 16
 hitstun_threshold = 10
 
 [node name="Sprite" parent="." index="1"]
-frame = 25
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]

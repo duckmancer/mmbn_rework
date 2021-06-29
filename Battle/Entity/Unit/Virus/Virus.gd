@@ -21,9 +21,12 @@ var virus_inputs = {
 		movement_dir = Vector2(0, 0),
 		is_movement = true,
 		is_slide = true,
-		duration = 30,
-		cooldown = 27,
+		duration = 0,
+		cooldown = 30,
 #		unique_action_delay = 0,
+	}),
+	wait = ActionData.action_factory("unique_action", {
+		cooldown = 10,
 	}),
 }
 

@@ -182,12 +182,12 @@ var attacks = {
 
 var base_actions = {
 	move = {
-		
+		no_weapon = true,
 		is_movement = true,
 		animation_name = "move",
 	},
 	unique_action = {
-		
+		no_weapon = true,
 		animation_name = "unique_action",
 	},
 	buster = {

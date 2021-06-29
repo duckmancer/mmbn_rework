@@ -28,6 +28,7 @@ var is_ready := false
 var is_active := true
 var lifetime_counter := 0
 
+var waiting_callbacks = []
 
 var data = {}
 
@@ -61,11 +62,13 @@ func _is_space_open(destination : Vector2) -> bool:
 	return true
 
 func move_to(destination : Vector2) -> void:
-	pass
-	# TODO: Move all movement/positioning logic into Entity
+	self.grid_pos = destination
+
+func move(dir) -> void:
+	move_to(self.grid_pos + Constants.DIRS[dir])
 
 func slide(destination : Vector2, duration : int) -> void:
-	slider.interpolate_method(self, "set_grid_pos", grid_pos, declared_grid_pos, Utils.frames_to_seconds(duration))
+	slider.interpolate_method(self, "set_grid_pos", grid_pos, destination, Utils.frames_to_seconds(duration))
 	slider.start()
 
 
@@ -99,6 +102,16 @@ func advance_animation():
 func animation_done():
 	pass
 
+func wait_frames(frames : int) -> void:
+	var callback_info = {
+		duration = frames, 
+		callback = _dummy_yield()
+	}
+	waiting_callbacks.append(callback_info)
+	yield(callback_info.callback, "completed")
+
+func _dummy_yield():
+	yield()
 
 # Entity Construction
 
@@ -159,9 +172,13 @@ func get_targets() -> Array:
 
 func do_tick() -> void:
 	lifetime_counter += 1
+	_tick_waiting_callbacks()
 
-func move_to(destination : Vector2) -> void:
-	self.grid_pos = destination
+func _tick_waiting_callbacks():
+	for c in waiting_callbacks:
+		c.duration -= 1
+		if c.duration <= 0:
+			c.resume()
 
 
 # Initialization

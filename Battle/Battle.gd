@@ -34,7 +34,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 			open_custom()
 
 func toggle_pause(pause_state := not get_tree().paused):
-	emit_signal("paused", not pause_state)
+	emit_signal("paused", pause_state)
 	get_tree().paused = pause_state
 
 func open_custom():

@@ -1,11 +1,8 @@
-class_name Action
-extends Resource
+class_name ActionTracker
+extends Node
 
-enum {
-	NONE,
-	ATTACK,
-	MOVEMENT,
-}
+
+var is_active := false
 
 var duration := 0
 var launch_time := 0
@@ -14,7 +11,6 @@ var loop_start_offset := 0
 
 var cur_tick := 0
 
-var type = NONE
 
 
 # Processing
@@ -27,36 +23,26 @@ func do_tick():
 		_conclude()
 
 func _launch():
-	match type:
-		MOVEMENT:
-			_launch_movement()
-		ATTACK:
-			_launch_attack()
-
-func _launch_movement():
 	pass
-
-func _launch_attack():
-	pass
-
 
 func _conclude():
 	if repeat_count:
 		_repeat()
 	else:
-		_terminate()
+		terminate()
 
 func _repeat():
 	cur_tick = loop_start_offset
 
-func _terminate():
-	pass
+func terminate():
+	is_active = false
 
 
 # Initialization
 
-func _init(data := {}):
+func start_new(data := {}):
 	_init_args(data)
+	is_active = true
 
 func _init_args(args : Dictionary) -> void:
 	for a in args:

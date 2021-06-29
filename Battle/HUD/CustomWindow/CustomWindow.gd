@@ -131,7 +131,7 @@ func _get_leftover_chips():
 
 func _unselect_chip():
 	if selected_chip_data.empty():
-		_play_animation("error")
+		_play_animation("menu_error")
 	else:
 		selected_chip_data.pop_back()
 		var slot = chip_slot_order.back()
@@ -147,7 +147,7 @@ func _select_chip(chip_slot):
 		chip_slot_order.append(chip_slot)
 		_update_selection()
 	else:
-		_play_animation("error")
+		_play_animation("menu_error")
 
 func _update_selection():
 	_display_selected_chips()
