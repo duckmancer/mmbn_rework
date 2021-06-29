@@ -1,6 +1,8 @@
 class_name Unit
 extends Entity
 
+# Collisions, Actions, HP
+
 signal hp_changed(new_hp)
 # warning-ignore:unused_signal
 signal spawn_completed()
@@ -22,7 +24,6 @@ onready var healthbar = $HealthbarHolder/Healthbar
 onready var hp_changer = $HealthbarHolder/Tween
 onready var chip_data = $ChipData
 onready var effect_player = $EffectPlayer
-onready var slider = $Slider
 
 export var delay_between_actions = 8
 export var max_hp := 40
@@ -74,11 +75,16 @@ var input_map = {
 
 var anim_suffix = []
 
-var cur_action : Action = null
+var cur_action : Weapon = null
 var queued_input = null
 var is_action_running := false
 var cur_cooldown = 0
+
+var action_data = null
+var cur_action_tick = 0
+
 var is_tangible := true
+
 
 export var start_delay_avg = 30
 export var start_delay_range = 30
@@ -212,7 +218,8 @@ func _parse_input(input : String) -> Dictionary:
 				action = null
 	return action
 
-func _launch_action(action_data : Dictionary) -> void:
+func _launch_action(action_args : Dictionary) -> void:
+	action_data = action_args
 	cur_action = _create_action(action_data)
 	_animate_action(action_data)
 	is_action_running = true
@@ -223,11 +230,10 @@ func _launch_action(action_data : Dictionary) -> void:
 			cur_cooldown = delay_between_actions
 	cur_action.check_in()
 
-func _animate_action(action_data: Dictionary) -> void:
+func _animate_action(_action_args: Dictionary) -> void:
 	if action_data.has("is_movement"):
 		if action_data.has("is_slide"):
-			slider.interpolate_method(self, "set_grid_pos", grid_pos, declared_grid_pos, Utils.frames_to_seconds(action_data.duration))
-			slider.start()
+			slide(declared_grid_pos, action_data.duration)
 		else:
 			effect_player.play_effect("move")
 	elif action_data.has("unit_animation"):
@@ -235,12 +241,12 @@ func _animate_action(action_data: Dictionary) -> void:
 	else:
 		play_anim(action_data.animation_name)
 
-func _create_action(action_data : Dictionary) -> Action:
-	var action = create_child_entity(Action, {data = action_data})
+func _create_action(_action_args : Dictionary):
+	var action = create_child_entity(Weapon, {data = action_data})
 	_connect_action_signals(action)
 	return action
 
-func _connect_action_signals(action : Action) -> void:
+func _connect_action_signals(action) -> void:
 	action.connect("action_finished", self, "_on_Action_action_finished")
 	action.connect("action_looped", self, "_on_Action_action_looped")
 	action.connect("move_triggered", self, "_on_Action_move_triggered")
@@ -310,6 +316,7 @@ func do_tick():
 	.do_tick()
 	if is_action_running:
 		cur_action.sprite.position = sprite.position
+#		process_action()
 	else:
 		if cur_cooldown == 0:
 			if not is_player_controlled:
@@ -321,8 +328,7 @@ func do_tick():
 		else:
 			cur_cooldown -= 1
 
-func set_do_pixelate(state : bool):
-	material.set("shader_param/do_pixelate", state)
+
 
 
 # Setup

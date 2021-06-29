@@ -1,6 +1,10 @@
 class_name Entity
 extends Node2D
 
+# Maps position to grid
+# Handles node pausing
+# Node construction
+
 signal spawn_entity(entity)
 
 enum Team {
@@ -12,6 +16,7 @@ enum Team {
 onready var sprite := $Sprite as Sprite
 onready var animation_player := $AnimationPlayer as AnimationPlayer
 onready var audio := $AudioStreamPlayer as AudioStreamPlayer
+onready var slider = $Slider as Tween
 
 export var is_independent := true
 export var pretty_name := "DEFAULT"
@@ -29,8 +34,8 @@ var data = {}
 
 # Movement
 
-var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
 var declared_grid_pos := Vector2(-1, -1)
+var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
 func set_grid_pos(new_grid_pos):
 	grid_pos = new_grid_pos
 	if is_independent:
@@ -54,6 +59,15 @@ func _is_space_open(destination : Vector2) -> bool:
 			if t.grid_pos == destination or t.declared_grid_pos == destination:
 				return false
 	return true
+
+func move_to(destination : Vector2) -> void:
+	pass
+	# TODO: Move all movement/positioning logic into Entity
+
+func slide(destination : Vector2, duration : int) -> void:
+	slider.interpolate_method(self, "set_grid_pos", grid_pos, declared_grid_pos, Utils.frames_to_seconds(duration))
+	slider.start()
+
 
 # Animation Helpers
 

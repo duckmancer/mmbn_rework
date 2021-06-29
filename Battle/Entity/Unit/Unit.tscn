@@ -446,6 +446,4 @@ texture = ExtResource( 5 )
 hframes = 30
 vframes = 8
 
-[node name="Slider" type="Tween" parent="." index="6"]
-
 [connection signal="animation_finished" from="EffectPlayer" to="EffectPlayer" method="_on_EffectPlayer_animation_finished"]

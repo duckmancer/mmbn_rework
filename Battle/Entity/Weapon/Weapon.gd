@@ -1,4 +1,4 @@
-class_name Action
+class_name Weapon
 extends Entity
 
 signal action_finished()
