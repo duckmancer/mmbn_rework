@@ -386,7 +386,6 @@ __meta__ = {
 material = ExtResource( 7 )
 
 [node name="AnimationPlayer" parent="." index="2"]
-pause_mode = 0
 autoplay = "default_unit"
 anims/default_unit = SubResource( 1 )
 anims/idle_unit = SubResource( 2 )

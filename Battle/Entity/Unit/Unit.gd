@@ -89,6 +89,15 @@ var is_tangible := true
 export var start_delay_avg = 30
 export var start_delay_range = 30
 
+export var sprite_displacement = Vector2(0, 0) setget set_sprite_displacement
+func set_sprite_displacement(relative_displacement : Vector2) -> void:
+	sprite_displacement = relative_displacement
+	var absolute_displacement = relative_displacement
+	absolute_displacement.x *= facing_dir
+	if sprite:
+		sprite.position = absolute_displacement
+	if is_action_running and cur_action:
+		cur_action.sprite.position = absolute_displacement
 
 # Hurt States
 
@@ -222,11 +231,11 @@ func _launch_action(action_args : Dictionary) -> void:
 	action_data = action_args
 	is_action_running = true
 	_set_cooldown(action_data)
+	_animate_action(action_data)
 	if action_data.has("no_weapon"):
 		_launch_manual_action(action_data)
 	else:
 		cur_action = _create_action(action_data)
-		_animate_action(action_data)
 
 func _set_cooldown(_action_data) -> void:
 	if action_data.has("cooldown"):
@@ -247,14 +256,9 @@ func _launch_manual_action(_action_data) -> void:
 	is_action_running = false
 
 func _animate_action(_action_data: Dictionary) -> void:
-	if action_data.has("is_movement"):
-		if action_data.has("is_slide"):
-			slide(declared_grid_pos, action_data.cooldown)
-		else:
-			effect_player.play_effect("move")
-	elif action_data.has("unit_animation"):
+	if action_data.has("unit_animation"):
 		play_anim(action_data.unit_animation)
-	else:
+	elif action_data.has("animation_name"):
 		play_anim(action_data.animation_name)
 
 func _create_action(_action_data : Dictionary):

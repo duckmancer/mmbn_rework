@@ -5,8 +5,36 @@
 [ext_resource path="res://Assets/BattleAssets/Characters/Viruses/Shrimpy.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "idle_shrimpy"
-length = 0.533333
+resource_name = "attack_shrimpy"
+length = 0.500001
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0333334, 0.05, 0.333333, 0.4, 0.466667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 9, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:sprite_displacement")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0500001, 0.133333, 0.300001, 0.466667, 0.500001 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -6, 0 ), Vector2( -6, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.666668
 loop = true
 step = 0.0166667
 tracks/0/type = "value"
@@ -16,27 +44,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.133333, 0.266667, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.166667, 0.333333, 0.5, 0.666668 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 1 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "shoot_shrimpy"
-length = 0.533333
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.133333, 0.266667 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 0, 1, 2, 1, 0 ]
 }
 
 [node name="Shrimpy" groups=[
@@ -45,15 +56,17 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 pretty_name = "Shrimpy"
 max_hp = 60
+sprite_displacement = Vector2( -0.911987, 0 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
+frame = 1
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/idle_shrimpy = SubResource( 1 )
-anims/shoot_shrimpy = SubResource( 2 )
+anims/attack_shrimpy = SubResource( 1 )
+anims/idle_shrimpy = SubResource( 2 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

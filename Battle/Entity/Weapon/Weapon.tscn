@@ -287,7 +287,6 @@ visible = false
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="." index="1"]
-pause_mode = 0
 autoplay = "hide"
 anims/hide = SubResource( 1 )
 anims/move = SubResource( 2 )

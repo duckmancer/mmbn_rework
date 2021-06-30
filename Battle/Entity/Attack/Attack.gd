@@ -107,9 +107,12 @@ func _ready():
 		set_grid_pos(grid_pos + attack_dir)
 	state = starting_state
 	_start_animation()
+	_start_audio()
 
 func _start_animation():
 	animation_player.play(animation_name)
+
+func _start_audio():
 	if audio.stream is AudioStreamOGGVorbis:
 		audio.stream.loop = false
 	audio.volume_db = audio_volume

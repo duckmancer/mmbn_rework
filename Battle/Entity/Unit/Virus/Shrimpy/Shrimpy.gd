@@ -2,9 +2,10 @@ class_name Shrimpy
 extends Virus
 
 var bubble_data = {
-	unit_animation = "shoot",
-	attack_data = ActionData.attacks.fireball,
-	unique_action_delay = 28,
+	unit_animation = "attack",
+	attack_data = ActionData.attacks.bubble_bounce,
+	unique_action_delay = 3,
+	cooldown = 30,
 }
 
 var _move_up = {

@@ -70,13 +70,12 @@ func _spawn_player():
 
 func _spawn_entities():
 	var entities = []
-# warning-ignore:unused_variable
-	var e_list = [
-		[Shrimpy, {grid_pos = Vector2(4, 1)}],
-#		[Mettaur, {grid_pos = Vector2(5, 1)}],
-#		[Mettaur, {grid_pos = Vector2(4, 2)}],
+	var _e_list = [
+		[Spikey, {grid_pos = Vector2(4, 1)}],
+		[Spikey, {grid_pos = Vector2(5, 1)}],
+		[Spikey, {grid_pos = Vector2(4, 2)}],
 	]
-	entities = e_list
+	entities = _e_list
 	for params in entities:
 		var e = add_entity(params[0], params[1])
 		yield(e, "spawn_completed")

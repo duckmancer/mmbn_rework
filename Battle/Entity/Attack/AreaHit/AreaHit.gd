@@ -12,6 +12,8 @@ enum {
 	FULL,
 }
 
+const PROP_AUDIO_REPEAT_THRESHOLD = 5
+
 var nova_shapes = {
 	NONE: [
 		[0, 0, 0],
@@ -55,6 +57,7 @@ var nova_shapes = {
 	],
 }
 
+var is_original := true
 var prop_type = NONE
 var prop_delay := 1
 var prop_recursion := 1
@@ -65,6 +68,7 @@ func spawn_propogation(offset):
 	prop_data.data.grid_pos = grid_pos + offset
 	prop_data.is_offset = false
 	prop_data.data.is_offset = false
+	prop_data.is_original = false
 	if Utils.in_bounds(prop_data.data.grid_pos):
 		create_child_entity(get_script(), prop_data)
 
@@ -87,3 +91,7 @@ func do_tick():
 	
 func _ready():
 	pass
+
+func _start_audio():
+	if is_original or prop_delay >= PROP_AUDIO_REPEAT_THRESHOLD:
+		._start_audio()

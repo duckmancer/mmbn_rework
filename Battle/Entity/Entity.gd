@@ -8,9 +8,9 @@ extends Node2D
 signal spawn_entity(entity)
 
 enum Team {
-	PLAYER,
-	ENEMY,
-	NEUTRAL,
+	ENEMY = -1,
+	NEUTRAL = 0,
+	PLAYER = 1,
 }
 
 onready var sprite := $Sprite as Sprite
@@ -24,6 +24,7 @@ export var pretty_name := "DEFAULT"
 var default_keywords = []
 var is_player_controlled := false
 var team = Team.ENEMY
+var facing_dir := 1
 var is_ready := false
 var is_active := true
 var lifetime_counter := 0
@@ -175,10 +176,14 @@ func do_tick() -> void:
 	_tick_waiting_callbacks()
 
 func _tick_waiting_callbacks():
+	var completed = []
 	for c in waiting_callbacks:
 		c.duration -= 1
 		if c.duration <= 0:
-			c.resume()
+			c.callback.resume()
+			completed.append(c)
+	for c in completed:
+		waiting_callbacks.erase(c)
 
 
 # Initialization
@@ -187,8 +192,13 @@ func _ready():
 	set_default_keywords()
 	is_ready = true
 	initialize_arguments(data)
-	sprite.flip_h = (team == Team.ENEMY)
+	_setup_team()
 	self.grid_pos = grid_pos
+
+func _setup_team() -> void:
+	sprite.flip_h = (team == Team.ENEMY)
+	if team:
+		facing_dir = team
 
 func initialize_arguments(kwargs := {}):
 	for keyword in kwargs:

@@ -81,6 +81,17 @@ var impacts = {
 		audio_volume = 5,
 		impact_type = "none",
 	},
+	bubbles = {
+		attack_type = Explosion,
+		duration = 1,
+		pass_through = true,
+		prop_type = AreaHit.SHOT,
+		animation_name = "bubbles",
+		anim_y_coord = 3,
+		audio_path = "res://Assets/BN4 Rips/Attacks/song416_bubbles.wav",
+		audio_volume = -5,
+		impact_type = "none",
+	},
 }
 
 var attacks = {
@@ -154,6 +165,21 @@ var attacks = {
 		is_direct_hit = false,
 		child_data = impacts.fireblast,
 	},
+	bubble_bounce = {
+		sprite_path = ATTACK_ROOT + "ShrimpyBubble.png",
+		audio_path = "res://Assets/BN4 Rips/Attacks/song359_boing.wav",
+		audio_volume = 5,
+		anim_y_coord = 1,
+		animation_name = "fireball_shot",
+		
+		attack_type = Shot,
+		damage = 30,
+		damage_type = Element.AQUA,
+		pass_through = false,
+		impact_type = "none",
+		is_direct_hit = false,
+		child_data = impacts.bubbles,
+	},
 	sword = {
 		sprite_path = WEAPON_ROOT + "Sword.png",
 		anim_y_coord = 7,
@@ -185,10 +211,10 @@ var base_actions = {
 		no_weapon = true,
 		is_movement = true,
 		animation_name = "move",
+		delay = 3,
 	},
 	unique_action = {
 		no_weapon = true,
-		animation_name = "unique_action",
 	},
 	buster = {
 		
