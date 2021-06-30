@@ -1,6 +1,16 @@
 class_name Navi
 extends Unit
 
+var navi_deleted_track = "res://Assets/MMBNSFX/Attack SFX/Misc/Deleted HQ.ogg"
+
+func begin_death():
+	if is_player_controlled:
+		audio.stream = load(navi_deleted_track)
+		audio.volume_db = 10
+		if audio.stream is AudioStreamOGGVorbis:
+			audio.stream.loop = false
+		audio.play()
+	.begin_death()
 
 func run_AI(target):
 	var result = .run_AI(target)

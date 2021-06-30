@@ -82,7 +82,7 @@ func _do_unit_collision(snapped_pos: Vector2):
 	var targets = get_tree().get_nodes_in_group("target")
 	for t in targets:
 		if t.grid_pos == snapped_pos:
-			if t.team != team and t.is_tangible:
+			if t.team != team and t.is_tangible and t.is_alive:
 				if not t in ignored_targets:
 					ignored_targets.push_back(t)
 					hit(t)

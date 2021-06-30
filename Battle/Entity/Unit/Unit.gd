@@ -3,6 +3,7 @@ extends Entity
 
 # Collisions, Actions, HP
 
+signal deleted(unit)
 signal hp_changed(new_hp)
 # warning-ignore:unused_signal
 signal spawn_completed()
@@ -84,7 +85,7 @@ var action_data = null
 var cur_action_tick = 0
 
 var is_tangible := true
-
+var is_alive := true
 
 export var start_delay_avg = 30
 export var start_delay_range = 30
@@ -107,13 +108,17 @@ func set_hp(new_hp):
 	if hp == 0:
 		healthbar.visible = false
 		begin_death()
-	hp_changer.interpolate_property(self, "_display_hp", _display_hp, hp, _HP_UPDATE_DELAY, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	hp_changer.start()
+	if hp_changer:
+		hp_changer.interpolate_property(self, "_display_hp", _display_hp, hp, _HP_UPDATE_DELAY, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		hp_changer.start()
+	else:
+		self._display_hp = hp
 
 var _display_hp := hp setget set_display_hp
 func set_display_hp(new_hp):
 	_display_hp = new_hp
-	healthbar.text = str(_display_hp)
+	if healthbar:
+		healthbar.text = str(_display_hp)
 	if is_player_controlled:
 		emit_signal("hp_changed", _display_hp, max_hp)
 
@@ -174,6 +179,8 @@ func start_invis(duration : float) -> void:
 
 func begin_death():
 	is_active = false
+	is_alive = false
+	emit_signal("deleted", self)
 	if cur_action:
 		cur_action.abort()
 	animation_player.stop()

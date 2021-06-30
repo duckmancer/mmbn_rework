@@ -21,7 +21,9 @@ tracks/0/keys = {
 "values": [ 63 ]
 }
 
-[node name="Attack" instance=ExtResource( 1 )]
+[node name="Attack" groups=[
+"attack",
+] instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

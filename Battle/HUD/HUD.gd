@@ -75,6 +75,13 @@ func set_enemy_names():
 	enemy_names.text = label_text
 	enemy_names.visible = true
 
+func play_defeat():
+	anim.play("megaman_deleted")
+
+func play_victory():
+	anim.play("enemy_deleted")
+
+
 # TODO: Change "battle Start" to use text parameter
 
 # Initialization

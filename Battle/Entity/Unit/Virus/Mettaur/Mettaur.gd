@@ -4,7 +4,7 @@ extends Virus
 var shockwave_data = {
 	unit_animation = "shockwave",
 	attack_data = ActionData.attacks.shockwave,
-	unique_action_delay = 36,
+	delay = 36,
 }
 
 

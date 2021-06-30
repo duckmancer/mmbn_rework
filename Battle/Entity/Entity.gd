@@ -57,7 +57,7 @@ func _is_panel_habitable(destination : Vector2) -> bool:
 
 func _is_space_open(destination : Vector2) -> bool:
 	for t in get_tree().get_nodes_in_group("target"):
-		if t != self:
+		if t != self and t.is_alive:
 			if t.grid_pos == destination or t.declared_grid_pos == destination:
 				return false
 	return true
@@ -167,7 +167,7 @@ func choose_target() -> Entity:
 func get_targets() -> Array:
 	var result = []
 	for u in get_tree().get_nodes_in_group("target"):
-		if u.team != team:
+		if u.team != team and u.is_alive:
 			result.append(u)
 	return result
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Battle/HUD/CustomWindow/CustomWindow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/HUD/HUD.gd" type="Script" id=2]
@@ -192,6 +192,116 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "enemy_deleted"
+length = 1.16667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("StartLabel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StartLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.333333, 1.13333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 1.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_battle_start"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("StartLabel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.333333, 0.466667, 0.933333, 1.13333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "megaman_deleted"
+length = 1.16667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("StartLabel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StartLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.333333, 1.13333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 1.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_battle_start"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("StartLabel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.333333, 0.466667, 0.933333, 1.13333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
+}
+
 [sub_resource type="Animation" id=5]
 length = 0.166667
 step = 0.0166667
@@ -259,7 +369,7 @@ visible = false
 position = Vector2( 120, 64 )
 texture = ExtResource( 11 )
 vframes = 9
-frame = 2
+frame = 8
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -402,6 +512,8 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/battle_start = SubResource( 3 )
 anims/close_custom = SubResource( 4 )
+anims/enemy_deleted = SubResource( 6 )
+anims/megaman_deleted = SubResource( 7 )
 anims/open_custom = SubResource( 5 )
 
 [connection signal="custom_finished" from="CustomWindow" to="." method="_on_CustomWindow_custom_finished"]

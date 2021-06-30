@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Battle/Entity/Unit/Virus/Mettaur/Mettaur.gd" type="Script" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Virus/Virus.tscn" type="PackedScene" id=2]
@@ -70,22 +70,6 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37 ]
 }
 
-[sub_resource type="Animation" id=5]
-length = 0.4
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.133333, 0.266667 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
 [node name="Mettaur" groups=[
 "entity",
 ] instance=ExtResource( 2 )]
@@ -96,7 +80,6 @@ delay_between_actions = 60
 
 [node name="Sprite" parent="." index="1"]
 modulate = Color( 1, 1, 1, 0.75 )
-material = ExtResource( 4 )
 offset = Vector2( 0, -61 )
 hframes = 8
 vframes = 8
@@ -107,8 +90,5 @@ anims/hide_idle_mettaur = SubResource( 1 )
 anims/hide_mettaur = SubResource( 2 )
 anims/shockwave_mettaur = SubResource( 3 )
 anims/unhide_mettaur = SubResource( 4 )
-
-[node name="PaletteAnim" parent="." index="3"]
-anims/invuln_flicker = SubResource( 5 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
