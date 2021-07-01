@@ -1,23 +1,62 @@
+tool
 extends Label
 
 onready var inner_label = $LabelClipper/InnerLabel
 onready var clipper = $LabelClipper
 
 export(Color) var outer_color setget set_outer_color
+export(Color) var inner_color setget set_inner_color
+export(String) var label_text setget set_label_text
+
+var box_size : Vector2
+
+var queued_updates = {}
+
 func set_outer_color(new_color):
 	outer_color = new_color
 	set("custom_colors/font_color", new_color)
-export(Color) var inner_color setget set_inner_color
 func set_inner_color(new_color):
 	inner_color = new_color
 	if inner_label:
 		inner_label.set("custom_colors/font_color", new_color)
+	else:
+		queued_updates.inner_color = new_color
 
+func set_label_text(val):
+	label_text = String(val)
+	text = label_text
+#	update_box()
+	if inner_label:
+		inner_label.text = label_text
+	else:
+		queued_updates.label_text = label_text
+#
+#func set_box_size(val) -> void:
+#	box_size = val
+#	if clipper:
+#		clipper.rect_size = box_size
+#	else:
+#		queued_updates.box_size = box_size
+#
+#func update_box() -> void:
+#	set_box_size(self.rect_size)
 
+# TODO: Legacy Code
 func set_text(new_text):
-	text = new_text
-	inner_label.text = new_text
-	
+	set_label_text(new_text)
+
+
+func update_vals(updates):
+	queued_updates.clear()
+	for property in updates:
+		if property in self:
+			set(property, updates[property])
+
+func _physics_process(_delta: float) -> void:
+	if not queued_updates.empty():
+#		print("queued updates:\n", queued_updates, "\n")
+		update_vals(queued_updates.duplicate(true))
+		
 
 func _ready() -> void:
 	self.outer_color = outer_color

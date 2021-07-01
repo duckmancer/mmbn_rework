@@ -64,8 +64,10 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "fade_to_black"
+length = 0.5
+step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -73,13 +75,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -121,7 +123,6 @@ z_index = -1000
 
 [node name="Battlefield" type="Node2D" parent="."]
 pause_mode = 1
-position = Vector2( 0, 15 )
 
 [node name="PlayerController" parent="Battlefield" instance=ExtResource( 1 )]
 
@@ -141,8 +142,8 @@ one_shot = true
 autoplay = "default"
 anims/close_custom = SubResource( 1 )
 anims/default = SubResource( 2 )
-anims/fade_to_black = SubResource( 4 )
-anims/open_custom = SubResource( 3 )
+anims/fade_to_black = SubResource( 3 )
+anims/open_custom = SubResource( 4 )
 
 [connection signal="paused" from="." to="HUD" method="_on_Battle_paused"]
 [connection signal="cur_chip_updated" from="Battlefield/PlayerController" to="HUD" method="_on_PlayerController_cur_chip_updated"]

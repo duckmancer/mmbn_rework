@@ -50,5 +50,3 @@ margin_left = 35.0
 margin_top = 75.0
 margin_right = 72.0
 margin_bottom = 91.0
-outer_color = Color( 0.815686, 0.815686, 0.815686, 1 )
-inner_color = Color( 1, 1, 1, 1 )

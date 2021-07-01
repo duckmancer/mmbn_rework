@@ -3,13 +3,13 @@
 [ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Battle/HUD/ShineLabel.gd" type="Script" id=2]
 
-[node name="OuterLabel" type="Label"]
+[node name="ShineLabel" type="Label"]
 margin_left = 4.0
 margin_top = 1.0
 margin_right = 41.0
-margin_bottom = 15.0
+margin_bottom = 17.0
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.807843, 0.890196, 1, 1 )
+custom_colors/font_color = Color( 0.815686, 0.815686, 0.815686, 1 )
 text = "100"
 align = 2
 valign = 1
@@ -18,13 +18,17 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
+outer_color = Color( 0.815686, 0.815686, 0.815686, 1 )
+inner_color = Color( 1, 1, 1, 1 )
+label_text = "100"
 
 [node name="LabelClipper" type="Control" parent="."]
+anchor_right = 1.0
 margin_top = 5.0
-margin_right = 37.0
 margin_bottom = 9.0
 rect_clip_content = true
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -34,10 +38,11 @@ anchor_bottom = 1.0
 margin_top = -5.0
 margin_bottom = 7.0
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.905882, 0.921569, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "100"
 align = 2
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }

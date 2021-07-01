@@ -33,11 +33,20 @@ var waiting_callbacks = []
 
 var data = {}
 
-
-# Movement
-
 var declared_grid_pos := Vector2(-1, -1)
+
+
+# Setget Vars
+
 var grid_pos := Vector2(0, 0) setget set_grid_pos, get_grid_pos
+
+export var anim_x_coord = 0 setget set_anim_x_coord
+export var anim_y_coord = 0 setget set_anim_y_coord
+var sprite_path setget set_sprite_path
+
+
+# Setters and Getters
+
 func set_grid_pos(new_grid_pos):
 	grid_pos = new_grid_pos
 	if is_independent:
@@ -45,6 +54,29 @@ func set_grid_pos(new_grid_pos):
 		z_index = int(grid_pos.y) * 10
 func get_grid_pos():
 	return grid_pos.round()
+
+func set_anim_x_coord(new_x):
+	anim_x_coord = new_x
+	if is_ready:
+		sprite.frame_coords.x = new_x
+
+func set_anim_y_coord(new_y):
+	anim_y_coord = new_y
+	if is_ready:
+		sprite.frame_coords.y = new_y
+
+func set_sprite_path(p):
+	sprite_path = p
+	sprite.texture = load(sprite_path)
+
+
+# Interface
+
+func deactivate() -> void:
+	is_active = false
+
+
+# Movement
 
 func can_move_to(destination : Vector2) -> bool:
 	return _is_panel_habitable(destination) and _is_space_open(destination)
@@ -75,23 +107,6 @@ func slide(destination : Vector2, duration : int) -> void:
 
 # Animation Helpers
 
-export var anim_x_coord = 0 setget set_anim_x_coord
-func set_anim_x_coord(new_x):
-	anim_x_coord = new_x
-	if is_ready:
-		sprite.frame_coords.x = new_x
-
-export var anim_y_coord = 0 setget set_anim_y_coord
-func set_anim_y_coord(new_y):
-	anim_y_coord = new_y
-	if is_ready:
-		sprite.frame_coords.y = new_y
-
-var sprite_path setget set_sprite_path
-func set_sprite_path(p):
-	sprite_path = p
-	sprite.texture = load(sprite_path)
-
 func advance_animation():
 	if is_ready:
 		sprite.frame += 1
@@ -113,6 +128,7 @@ func wait_frames(frames : int) -> void:
 
 func _dummy_yield():
 	yield()
+
 
 # Entity Construction
 

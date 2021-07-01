@@ -3,23 +3,32 @@ extends Node2D
 signal custom_finished(chips)
 signal battle_start()
 
-onready var pause_label = $PauseLabel
-onready var start_label = $StartLabel
 
-onready var cur_chip = $HBoxContainer
-onready var cur_name = $HBoxContainer/CurChip
-onready var cur_damage = $HBoxContainer/Damage
+# Battle Info
+
+onready var player_health = $BattleInfo/PlayerHealthBox
+
+onready var cust_anim = $BattleInfo/CustGauge/CustAnim
+onready var cust_gauge = $BattleInfo/CustGauge
+onready var cust_progress = $BattleInfo/CustGauge/TextureProgress
+
+
+# Popups
+
+onready var pause_label = $Popups/PauseLabel
+onready var enemy_names = $Popups/EnemyNames
+onready var start_label = $Popups/StartLabel
+
+onready var cur_chip = $Popups/CurChipInfo
+onready var cur_name = $Popups/CurChipInfo/CurChip
+onready var cur_damage = $Popups/CurChipInfo/Damage
+
+
+# Other
 
 onready var anim = $AnimationPlayer
-
-onready var player_health = $PlayerHealthBox
 onready var custom_window = $CustomWindow
 
-onready var cust_anim = $CustGauge/CustAnim
-onready var cust_gauge = $CustGauge
-onready var cust_progress = $CustGauge/TextureProgress
-
-onready var enemy_names = $EnemyNames
 
 var cust_gauge_speed = 1.0
 var is_cust_full = false
@@ -88,6 +97,7 @@ func play_victory():
 
 func _ready() -> void:
 	cust_gauge_speed = 1.0 / Globals.CUST_GAUGE_FILL_TIME
+	cust_gauge.frame = 0
 	set_chip_details()
 	start_label.visible = false
 	pause_label.visible = false

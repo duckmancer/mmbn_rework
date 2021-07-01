@@ -342,7 +342,7 @@ var _active_folder : Array = []
 func create_active_folder() -> void:
 	_active_folder.clear()
 	for chip in selected_folder:
-		_active_folder.append(_get_chip_data(chip))
+		_active_folder.append(get_chip_data(chip))
 	_active_folder.shuffle()
 
 func get_chip_from_folder() -> Dictionary:
@@ -353,7 +353,7 @@ func get_chip_from_folder() -> Dictionary:
 	return result
 
 
-func _get_chip_data(chip : String) -> Dictionary:
+func get_chip_data(chip : String) -> Dictionary:
 	var data = {}
 	
 	var data_parts = chip.split(" ")

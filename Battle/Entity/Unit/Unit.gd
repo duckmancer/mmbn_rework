@@ -90,7 +90,17 @@ var is_alive := true
 export var start_delay_avg = 30
 export var start_delay_range = 30
 
+
+# Setget Vars
+
 export var sprite_displacement = Vector2(0, 0) setget set_sprite_displacement
+
+var hp := 40 setget set_hp
+var _display_hp := hp setget set_display_hp
+
+
+# Setters and Getters
+
 func set_sprite_displacement(relative_displacement : Vector2) -> void:
 	sprite_displacement = relative_displacement
 	var absolute_displacement = relative_displacement
@@ -100,9 +110,6 @@ func set_sprite_displacement(relative_displacement : Vector2) -> void:
 	if is_action_running and cur_action:
 		cur_action.sprite.position = absolute_displacement
 
-# Hurt States
-
-var hp := 40 setget set_hp
 func set_hp(new_hp):
 	hp = clamp(new_hp, 0, max_hp) as int
 	if hp == 0:
@@ -114,7 +121,6 @@ func set_hp(new_hp):
 	else:
 		self._display_hp = hp
 
-var _display_hp := hp setget set_display_hp
 func set_display_hp(new_hp):
 	_display_hp = new_hp
 	if healthbar:
@@ -122,10 +128,9 @@ func set_display_hp(new_hp):
 	if is_player_controlled:
 		emit_signal("hp_changed", _display_hp, max_hp)
 
-func refresh_hp():
-	self._display_hp = hp
 
-# warning-ignore:unused_argument
+# Interface
+
 func hurt(damage, impact_type = "hit", damage_type = "normal"):
 	set_hp(hp - damage)
 	effect_player.play_effect("hit_flash")
@@ -133,6 +138,16 @@ func hurt(damage, impact_type = "hit", damage_type = "normal"):
 	var hitstun_type = check_hitstun(damage, damage_type)
 	if hitstun_type != Hitstun.NONE:
 		enter_hitstun(hitstun_type)
+
+func deactivate() -> void:
+	.deactivate()
+	is_tangible = false
+
+
+# Hurt States
+
+func refresh_hp():
+	self._display_hp = hp
 
 func check_hitstun(damage, damage_type):
 	# TODO: Fix damage types
@@ -153,17 +168,6 @@ func enter_hitstun(hitstun_type):
 		start_invis(hitstun_duration)
 	if hitstun_type == Hitstun.STUN:
 		pause(_STUN_DURATION)
-
-func pause(duration : float):
-	animation_player.stop(false)
-	is_active = false
-	if cur_action:
-		cur_action.toggle_pause(true)
-	yield(get_tree().create_timer(duration), "timeout")
-	if cur_action:
-		cur_action.toggle_pause(false)
-	is_active = true
-	animation_player.play()
 
 func flinch():
 	play_anim("flinch")
@@ -337,6 +341,30 @@ func run_AI(_target):
 	return null
 
 
+# Animation
+
+func play_anim(anim_name : String, speed := 1.0):
+	var play_name = anim_name
+	for suffix in anim_suffix:
+		var potential_name = anim_name + "_" + suffix
+		if animation_player.has_animation(potential_name):
+			play_name = potential_name
+			break
+	animation_player.play(play_name, -1, speed)
+
+func animation_done():
+	play_anim("idle")
+
+func reset_effect_player():
+	effect_player.pause_mode = PAUSE_MODE_PROCESS
+	effect_player.play("normal")
+	effect_player.advance(1.0)
+	effect_player.pause_mode = PAUSE_MODE_INHERIT
+
+func set_anim_suffix():
+	anim_suffix.append("unit")
+
+
 # Processing
 
 func do_tick():
@@ -354,8 +382,16 @@ func do_tick():
 		else:
 			cur_cooldown -= 1
 
-
-
+func pause(duration : float):
+	animation_player.stop(false)
+	is_active = false
+	if cur_action:
+		cur_action.toggle_pause(true)
+	yield(get_tree().create_timer(duration), "timeout")
+	if cur_action:
+		cur_action.toggle_pause(false)
+	is_active = true
+	animation_player.play()
 
 # Setup
 
@@ -378,21 +414,6 @@ func get_start_delay():
 	var mod = int(rand_range(-start_delay_range, start_delay_range))
 	return max(base + mod, 0) as int
 
-
-# Animation
-
-func play_anim(anim_name : String, speed := 1.0):
-	var play_name = anim_name
-	for suffix in anim_suffix:
-		var potential_name = anim_name + "_" + suffix
-		if animation_player.has_animation(potential_name):
-			play_name = potential_name
-			break
-	animation_player.play(play_name, -1, speed)
-
-func animation_done():
-	play_anim("idle")
-
 func spawn():
 	animation_player.pause_mode = PAUSE_MODE_PROCESS
 	play_anim("spawn")
@@ -400,15 +421,6 @@ func spawn():
 	effect_player.play("normal")
 	effect_player.advance(1.0)
 	effect_player.play_effect("spawn")
-
-func reset_effect_player():
-	effect_player.pause_mode = PAUSE_MODE_PROCESS
-	effect_player.play("normal")
-	effect_player.advance(1.0)
-	effect_player.pause_mode = PAUSE_MODE_INHERIT
-
-func set_anim_suffix():
-	anim_suffix.append("unit")
 
 
 # Signals
