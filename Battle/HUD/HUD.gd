@@ -2,11 +2,12 @@ extends Node2D
 
 signal custom_finished(chips)
 signal battle_start()
-
+signal finished()
 
 # Battle Info
 
 onready var player_health = $BattleInfo/PlayerHealthBox
+onready var emotion_window = $BattleInfo/EmotionWindow
 
 onready var cust_anim = $BattleInfo/CustGauge/CustAnim
 onready var cust_gauge = $BattleInfo/CustGauge
@@ -23,11 +24,11 @@ onready var cur_chip = $Popups/CurChipInfo
 onready var cur_name = $Popups/CurChipInfo/CurChip
 onready var cur_damage = $Popups/CurChipInfo/Damage
 
-
 # Other
 
 onready var anim = $AnimationPlayer
 onready var custom_window = $CustomWindow
+onready var results = $BattleResults
 
 
 var cust_gauge_speed = 1.0
@@ -87,9 +88,13 @@ func set_enemy_names():
 func play_defeat():
 	anim.play("megaman_deleted")
 
-func play_victory():
+func play_victory(reward, time, level):
+	cust_anim.stop(false)
+	results.set_reward(reward, time, level)
 	anim.play("enemy_deleted")
 
+func show_results():
+	anim.play("show_results")
 
 # TODO: Change "battle Start" to use text parameter
 
@@ -102,6 +107,8 @@ func _ready() -> void:
 	start_label.visible = false
 	pause_label.visible = false
 	enemy_names.visible = false
+	results.visible = false
+	emotion_window.visible = true
 
 
 # Signals
@@ -121,3 +128,7 @@ func _on_PlayerController_cur_chip_updated(chip_data) -> void:
 
 func _on_Battle_paused(is_paused) -> void:
 	pause_label.visible = is_paused and not is_custom_open
+
+
+func _on_BattleResults_finished() -> void:
+	emit_signal("finished")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Battle/HUD/CustomWindow/CustomWindow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/HUD/HUD.gd" type="Script" id=2]
@@ -226,13 +226,13 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 1.15 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "on_battle_start"
+"method": "show_results"
 } ]
 }
 tracks/3/type = "value"
@@ -357,6 +357,73 @@ tracks/3/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "show_results"
+length = 0.333333
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("BattleResults:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -200, 17 ), Vector2( 24, 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BattleResults:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BattleInfo/CustGauge:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BattleInfo/EmotionWindow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("BattleResults")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.333333 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
+
 [node name="HUD" type="Node2D"]
 z_index = 50
 script = ExtResource( 2 )
@@ -365,7 +432,6 @@ __meta__ = {
 }
 
 [node name="BattleInfo" type="Node2D" parent="."]
-visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -373,7 +439,8 @@ __meta__ = {
 
 [node name="PlayerHealthBox" parent="BattleInfo" instance=ExtResource( 5 )]
 
-[node name="Emotion Window" type="Sprite" parent="BattleInfo"]
+[node name="EmotionWindow" type="Sprite" parent="BattleInfo"]
+visible = false
 position = Vector2( 25, 27 )
 texture = ExtResource( 7 )
 hframes = 7
@@ -385,6 +452,7 @@ __meta__ = {
 
 [node name="CustGauge" type="Sprite" parent="BattleInfo"]
 pause_mode = 1
+visible = false
 texture = ExtResource( 3 )
 offset = Vector2( 120, 7 )
 vframes = 5
@@ -416,7 +484,6 @@ anims/cust_ready = SubResource( 2 )
 stream = ExtResource( 6 )
 
 [node name="Popups" type="Node2D" parent="."]
-visible = false
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -425,9 +492,10 @@ __meta__ = {
 [node name="StartLabel" type="Sprite" parent="Popups"]
 visible = false
 position = Vector2( 120, 64 )
+scale = Vector2( 1, 1e-05 )
 texture = ExtResource( 11 )
 vframes = 9
-frame = 5
+frame = 2
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -523,7 +591,6 @@ __meta__ = {
 }
 
 [node name="CustomWindow" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/battle_start = SubResource( 3 )
@@ -531,7 +598,9 @@ anims/close_custom = SubResource( 4 )
 anims/enemy_deleted = SubResource( 5 )
 anims/megaman_deleted = SubResource( 6 )
 anims/open_custom = SubResource( 7 )
+anims/show_results = SubResource( 8 )
 
 [node name="BattleResults" parent="." instance=ExtResource( 10 )]
 
 [connection signal="custom_finished" from="CustomWindow" to="." method="_on_CustomWindow_custom_finished"]
+[connection signal="finished" from="BattleResults" to="." method="_on_BattleResults_finished"]

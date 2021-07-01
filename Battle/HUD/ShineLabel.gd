@@ -30,16 +30,7 @@ func set_label_text(val):
 		inner_label.text = label_text
 	else:
 		queued_updates.label_text = label_text
-#
-#func set_box_size(val) -> void:
-#	box_size = val
-#	if clipper:
-#		clipper.rect_size = box_size
-#	else:
-#		queued_updates.box_size = box_size
-#
-#func update_box() -> void:
-#	set_box_size(self.rect_size)
+
 
 # TODO: Legacy Code
 func set_text(new_text):
@@ -62,3 +53,4 @@ func _ready() -> void:
 	self.outer_color = outer_color
 	self.inner_color = inner_color
 	inner_label.align = align
+	update_vals(queued_updates.duplicate(true))

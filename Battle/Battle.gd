@@ -22,6 +22,9 @@ onready var player_controller = $Battlefield/PlayerController
 
 var panel_grid = []
 var is_battle_running := false
+var battle_frame_counter := 0
+var dummy_reward = "MiniBomb M"
+var dummy_rank = "4"
 
 # Processing
 
@@ -53,6 +56,10 @@ func open_custom():
 	anim.play("open_custom")
 	get_tree().paused = true
 
+func _physics_process(_delta: float) -> void:
+	if is_battle_running and not get_tree().paused:
+		battle_frame_counter += 1
+
 
 # End States
 
@@ -63,7 +70,7 @@ func _begin_defeat():
 
 func _begin_victory():
 	_cleanup_battle()
-	hud.play_victory()
+	hud.play_victory(dummy_reward, battle_frame_counter, dummy_rank)
 	_play_victory_fanfare()
 
 func _cleanup_battle():
@@ -90,6 +97,11 @@ func _fade_to_game_over() -> void:
 	anim.play("fade_to_black")
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_tree().change_scene_to(Scenes.GAME_OVER_SCENE)
+
+func _exit_battle() -> void:
+	anim.play("fade_to_black")
+	yield(get_tree().create_timer(0.5), "timeout")
+	get_tree().quit()
 
 # Initialization
 
@@ -173,3 +185,8 @@ func _on_HUD_custom_finished(chips) -> void:
 
 func _on_HUD_battle_start() -> void:
 	get_tree().paused = false
+
+
+func _on_HUD_finished() -> void:
+	_exit_battle()
+	

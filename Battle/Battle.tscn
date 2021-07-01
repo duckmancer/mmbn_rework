@@ -150,3 +150,4 @@ anims/open_custom = SubResource( 4 )
 [connection signal="hp_changed" from="Battlefield/PlayerController" to="HUD" method="_on_PlayerController_hp_changed"]
 [connection signal="battle_start" from="HUD" to="." method="_on_HUD_battle_start"]
 [connection signal="custom_finished" from="HUD" to="." method="_on_HUD_custom_finished"]
+[connection signal="finished" from="HUD" to="." method="_on_HUD_finished"]
