@@ -164,6 +164,7 @@ Globals="*res://Resources/Globals.gd"
 Scenes="*res://Resources/Scenes.gd"
 ActionData="*res://Resources/ActionData.gd"
 Battlechips="*res://Resources/Battlechips.gd"
+EncounterPool="*res://Resources/EncounterPool.gd"
 
 [debug]
 

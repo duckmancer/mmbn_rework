@@ -25,6 +25,7 @@ var is_battle_running := false
 var battle_frame_counter := 0
 var dummy_reward = "MiniBomb M"
 var dummy_rank = "4"
+var encounter_data : Dictionary
 
 # Processing
 
@@ -70,7 +71,7 @@ func _begin_defeat():
 
 func _begin_victory():
 	_cleanup_battle()
-	hud.play_victory(dummy_reward, battle_frame_counter, dummy_rank)
+	hud.play_victory(encounter_data.reward, battle_frame_counter, dummy_rank)
 	_play_victory_fanfare()
 
 func _cleanup_battle():
@@ -108,57 +109,66 @@ func _exit_battle() -> void:
 func _ready():
 	get_tree().paused = true
 	Battlechips.create_active_folder()
-	_set_panels()
-	_spawn_player()
+	
+	encounter_data = EncounterPool.get_random_encounter()
+	_set_panels(encounter_data.panels)
+	_spawn_player(encounter_data.player_spawn)
+	
 	var delay_ticks = 10
 	for i in delay_ticks:
 		yield(get_tree(), "idle_frame")
-
-	var state = _spawn_entities()
+	
+	var state = _spawn_units(encounter_data.units)
 	if state is GDScriptFunctionState:
 		yield(state, "completed")
+	
 	is_battle_running = true
 	open_custom()
 
-func _spawn_player():
-	var player_data = {
-		grid_pos = Vector2(1, 1), 
-		team = Entity.Team.PLAYER,
-		is_player_controlled = true,
-		max_hp = 10,
-	}
-	var player = add_entity(Megaman, player_data)
-	player_controller.bind_player(player)
-
-func _spawn_entities():
-	var entities = []
-	var _e_list = [
-		[Mettaur, {grid_pos = Vector2(4, 1)}],
-#		[Spikey, {grid_pos = Vector2(5, 1)}],
-#		[Spikey, {grid_pos = Vector2(4, 2)}],
-	]
-	entities = _e_list
-	for params in entities:
-		var e = add_entity(params[0], params[1])
-		yield(e, "spawn_completed")
-
-func _set_panels():
-	for i in GRID_SIZE.y:
-		panel_grid.push_back([])
-		for j in GRID_SIZE.x:
-			var new_panel = Scenes.PANEL_SCENE.instance()
-			new_panel.pre_ready_setup(Vector2(j, i), DEFAULT_GRID[i][j])
-			battlefield.add_child(new_panel)
-			panel_grid.back().push_back(new_panel)
+func _set_panels(new_panels : Array) -> void:
+	panel_grid = new_panels
+	for row in panel_grid:
+		for panel in row:
+			battlefield.add_child(panel)
 	Globals.battle_grid = panel_grid
 
-func add_entity(entity_type, kwargs := {}):
-	var data = {team = Entity.Team.ENEMY}
-	Utils.overwrite_dict(data, kwargs)
-	var entity = Entity.construct_entity(entity_type, kwargs)
-	connect_signals(entity)
-	battlefield.add_child(entity)
-	return entity
+
+# Unit Setup
+
+func _spawn_player(spawn_pos := Vector2(1, 1)):
+	var player_data = {
+		grid_pos = spawn_pos, 
+		team = Entity.Team.PLAYER,
+		is_player_controlled = true,
+		max_hp = 100,
+	}
+	var player = Entity.construct_entity(Megaman, player_data)
+	add_unit(player)
+	player_controller.bind_player(player)
+
+func _spawn_units(new_units : Array):
+	_debug_override_units(new_units)
+	for unit in new_units:
+		add_unit(unit)
+		yield(unit, "spawn_completed")
+
+func _debug_override_units(unit_data : Array):
+	var default_team = Entity.Team.ENEMY
+	var override_data = [
+#		[Mettaur, Vector2(4, 1)],
+	]
+	if Globals.debug_mode and not override_data.empty():
+		unit_data.clear()
+		for unit in override_data:
+			var team = default_team
+			if unit.size() > 2:
+				team = unit[2]
+			unit_data.append(Utils.instantiate(
+				unit[0]).setup(unit[1], team))
+
+func add_unit(unit : Unit) -> void:
+	connect_signals(unit)
+	battlefield.add_child(unit)
 
 func connect_signals(entity: Entity):
 	var _err = entity.connect("spawn_entity", self, "_on_Entity_spawn_entity")

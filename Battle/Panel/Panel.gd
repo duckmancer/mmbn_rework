@@ -40,6 +40,7 @@ const FRONT_PANEL_OFFSET = 16
 const PANEL_ORIGIN = Vector2(0, Constants.GBA_SCREEN_SIZE.y - FRONT_PANEL_OFFSET - SIZE.y * Constants.GRID_SIZE.y)
 const ENTITY_ORIGIN = PANEL_ORIGIN + Vector2(0.5 * SIZE.x, SIZE.y)
 const DANGER_DURATION = 1
+const PANEL_BASE_Z_INDEX = -100
 
 onready var border = $Border
 onready var tile = $Tile
@@ -54,6 +55,8 @@ var grid_pos : Vector2 setget set_grid_pos
 func set_grid_pos(pos: Vector2):
 	grid_pos = pos
 	position = PANEL_ORIGIN + Utils.scale_vector(SIZE, pos)
+	z_index = PANEL_BASE_Z_INDEX + int(grid_pos.y) * Constants.GRID_Y_POS_Z_FACTOR
+
 
 
 # Animation
@@ -108,12 +111,16 @@ func register_danger(source, duration := DANGER_DURATION):
 
 # Initialization
 
+func setup(new_pos = null, new_team = null, new_type = TileType.Normal):
+	if new_pos:
+		grid_pos = new_pos
+	if new_team:
+		team = new_team
+	type = new_type
+
 func _ready():
+	set_grid_pos(grid_pos)
 	_update_panel()
 	border_player.advance(1)
 	tile_player.advance(1)
-	z_index += int(grid_pos.y) * 10
 
-func pre_ready_setup(pos: Vector2, n_team):
-	team = n_team
-	self.grid_pos = pos

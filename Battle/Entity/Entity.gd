@@ -204,6 +204,11 @@ func _tick_waiting_callbacks():
 
 # Initialization
 
+func setup(new_pos : Vector2, new_team):
+	data.grid_pos = new_pos
+	data.team = new_team
+	return self
+
 func _ready():
 	set_default_keywords()
 	is_ready = true
