@@ -97,7 +97,7 @@ func make_anim(keyframes, frame_duration := 1) -> Animation:
 		keyframes = [keyframes]
 	var anim = Animation.new() as Animation
 	var track = anim.add_track(Animation.TYPE_VALUE)
-	anim.track_set_path(track, "SpritesheetManager:sprite_index")
+	anim.track_set_path(track, "SpritesheetManager:frame_index")
 	for i in keyframes.size():
 		var time = frame_time(i, frame_duration)
 		anim.track_insert_key(track, time, keyframes[i])

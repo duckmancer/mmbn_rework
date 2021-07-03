@@ -25,10 +25,6 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="SpritesheetManager" parent="Character" instance=ExtResource( 2 )]
-offset = Vector2( -9, -32 )
-region_rect = Rect2( 107, 200, 19, 32 )
-sprite_index = 32
-sprite_name = "sprite32"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 
