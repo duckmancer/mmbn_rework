@@ -1,0 +1,14 @@
+[remap]
+
+importer="snkkid.SpriteSheetImporter"
+type="Resource"
+path="res://.import/spritesheet.json-2cbdf25d9ab05262a8682d303315e2aa.res"
+
+[deps]
+
+source_file="res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.json"
+dest_files=[ "res://.import/spritesheet.json-2cbdf25d9ab05262a8682d303315e2aa.res" ]
+
+[params]
+
+Import_As_Atlas=true

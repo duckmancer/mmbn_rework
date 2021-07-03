@@ -80,23 +80,23 @@ var encounters = {
 	e0 = {
 		units = [
 			_make_unit(Mettaur, Vector2(4, 0)),
-#			_make_unit(Mettaur, Vector2(5, 1)),
-#			_make_unit(Mettaur, Vector2(4, 2)),
+			_make_unit(Mettaur, Vector2(5, 1)),
+			_make_unit(Mettaur, Vector2(4, 2)),
 		],
 		reward = "Guard1 A",
 	},
 	e1 = {
 		units = [
 			_make_unit(Mettaur, Vector2(4, 0)),
-#			_make_unit(Spikey, Vector2(5, 1)),
-#			_make_unit(Mettaur, Vector2(4, 2)),
+			_make_unit(Spikey, Vector2(5, 1)),
+			_make_unit(Mettaur, Vector2(4, 2)),
 		],
 		reward = "Heat-V G",
 	},
 	e2 = {
 		units = [
 			_make_unit(Mettaur, Vector2(3, 0)),
-#			_make_unit(NormalNavi, Vector2(5, 2)),
+			_make_unit(NormalNavi, Vector2(5, 2)),
 		],
 		reward = "LongSwrd S",
 	},

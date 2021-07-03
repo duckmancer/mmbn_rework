@@ -153,18 +153,18 @@ _global_script_class_icons={
 [application]
 
 config/name="Megaman Battle Network"
-run/main_scene="res://Battle/Battle.tscn"
+run/main_scene="res://Overworld/Overworld.tscn"
 config/icon="res://Assets/BattleAssets/icon.png"
 
 [autoload]
 
-Constants="*res://Resources/Constants.gd"
-Utils="*res://Resources/Utils.gd"
-Globals="*res://Resources/Globals.gd"
-Scenes="*res://Resources/Scenes.gd"
-ActionData="*res://Resources/ActionData.gd"
-Battlechips="*res://Resources/Battlechips.gd"
-EncounterPool="*res://Resources/EncounterPool.gd"
+Constants="*res://Globals/Constants.gd"
+Utils="*res://Utilities/Utils.gd"
+Globals="*res://Globals/Globals.gd"
+Scenes="*res://Globals/Scenes.gd"
+ActionData="*res://Globals/ActionData.gd"
+Battlechips="*res://Globals/Battlechips.gd"
+EncounterPool="*res://Globals/EncounterPool.gd"
 
 [debug]
 
