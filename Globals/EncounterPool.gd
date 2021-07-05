@@ -60,7 +60,9 @@ func setup_units(unit_data : Array) -> Array:
 	var result = []
 	for u in unit_data:
 		var unit = null
-		if "team" in u:
+		if u is Array:
+			unit = _make_unit(u[0], u[1])
+		elif "team" in u:
 			unit = _make_unit(u.type, u.pos, u.team)
 		else:
 			unit = _make_unit(u.type, u.pos)
@@ -79,24 +81,24 @@ const _GRID_HELPER = [
 var encounters = {
 	e0 = {
 		units = [
-			_make_unit(Mettaur, Vector2(4, 0)),
-			_make_unit(Mettaur, Vector2(5, 1)),
-			_make_unit(Mettaur, Vector2(4, 2)),
+			[Mettaur, Vector2(4, 0)],
+			[Mettaur, Vector2(5, 1)],
+			[Mettaur, Vector2(4, 2)],
 		],
 		reward = "Guard1 A",
 	},
 	e1 = {
 		units = [
-			_make_unit(Mettaur, Vector2(4, 0)),
-			_make_unit(Spikey, Vector2(5, 1)),
-			_make_unit(Mettaur, Vector2(4, 2)),
+			[Mettaur, Vector2(4, 0)],
+			[Spikey, Vector2(5, 1)],
+			[Mettaur, Vector2(4, 2)],
 		],
 		reward = "Heat-V G",
 	},
 	e2 = {
 		units = [
-			_make_unit(Mettaur, Vector2(3, 0)),
-			_make_unit(NormalNavi, Vector2(5, 2)),
+			[Mettaur, Vector2(3, 0)],
+			[NormalNavi, Vector2(5, 2)],
 		],
 		reward = "LongSwrd S",
 	},
@@ -104,7 +106,7 @@ var encounters = {
 
 func encounter_factory(units : Array, panel_difs := {}, player_spawn := Vector2(1, 1)) -> Dictionary:
 	var encounter = {}
-	encounter.units = units #setup_units(units)
+	encounter.units = setup_units(units)
 	encounter.panels = setup_panels(panel_difs)
 	encounter.player_spawn = player_spawn
 	return encounter

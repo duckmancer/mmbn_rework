@@ -1,34 +1,71 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Overworld/Maps/GenericComp.png" type="Texture" id=1]
 [ext_resource path="res://Utilities/SpritesheetManager/SpritesheetManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld/Character.gd" type="Script" id=3]
 [ext_resource path="res://Overworld/Overworld.gd" type="Script" id=4]
+[ext_resource path="res://Assets/MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Assets/BattleAssets/icon.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 5.09902
+radius = 2.0
 
 [node name="Overworld" type="Node2D"]
 position = Vector2( 129, 76 )
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_group_": true
+"_edit_lock_": true
 }
 
-[node name="Map" type="Sprite" parent="."]
+[node name="Map" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MapSprite" type="Sprite" parent="Map"]
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map"]
+visible = false
+build_mode = 1
+polygon = PoolVector2Array( -1, 148, -321, -10, -3, -170, 317, -11 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 64, -2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 64, -2 )
+polygon = PoolVector2Array( 29, -32, 32, -27, 32, 28, 26.4, 32, -26.8, 32, -32, 28.7, -32, -25.4, -28.7, -32 )
 
 [node name="Character" type="KinematicBody2D" parent="."]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 shape = SubResource( 1 )
 
 [node name="SpritesheetManager" parent="Character" instance=ExtResource( 2 )]
-offset = Vector2( -11, -32 )
+position = Vector2( 0, 3 )
+offset = Vector2( -10, -32 )
 region_rect = Rect2( 82, 123, 22, 32 )
 frame_index = 19
+x_offset = 1.0
+frame_name = "walk_right3"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
 
 [connection signal="moved" from="Character" to="." method="_on_Character_moved"]

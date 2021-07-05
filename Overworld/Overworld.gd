@@ -1,6 +1,6 @@
 extends Node2D
 
-const PLAYER_ANCHOR = Vector2(120, 80)
+const PLAYER_ANCHOR = Vector2(120, 90)
 
 onready var player = $Character
 
