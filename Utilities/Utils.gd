@@ -1,5 +1,6 @@
 extends Node
 
+var _last_delta = 0.0
 
 # Misc
 
@@ -27,6 +28,11 @@ static func instantiate(type: Script):
 		scene = load(path).instance()
 	return scene
 
+func delta_time() -> float:
+	var cur_time = float(OS.get_system_time_msecs()) / 1000
+	var result = cur_time - _last_delta
+	_last_delta = cur_time
+	return result
 
 # Grid Mapping
 

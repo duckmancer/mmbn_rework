@@ -7,10 +7,11 @@ const SLIDE_ANGLE_THRESHOLD := deg2rad(20)
 onready var animation_player = $AnimationPlayer
 onready var sprite = $SpritesheetManager
 
-var move_dir = Vector2(0, 0)
+var velocity = Vector2(0, 0)
 var anim_dir = "down"
 
 var speeds = {
+	stand = 0,
 	walk = 60,
 	run = 100,
 }
@@ -23,16 +24,20 @@ var held_inputs = {
 	run = false,
 }
 
-
+var is_busy = false
+var queued_action = null
+var queued_args = []
 
 # Inputs
 
-func get_movement(inputs) -> Vector2:
-	var result = Vector2(0, 0)
+func get_velocity(inputs : Dictionary) -> Vector2:
+	var direction = Vector2(0, 0)
 	for dir in Constants.ISOMETRIC_DIRS:
 		if inputs[dir]:
-			result += Constants.ISOMETRIC_DIRS[dir]
-	return result.normalized()
+			direction += Constants.ISOMETRIC_DIRS[dir]
+	direction = direction.normalized()
+	var speed = speeds.run if held_inputs.run else speeds.walk
+	return direction * speed
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	for d in Constants.DIRS:
@@ -44,51 +49,100 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 		held_inputs["run"] = true
 	elif event.is_action_released("ui_cancel"):
 		held_inputs["run"] = false
+	if event.is_action_pressed("ui_select"):
+		if not is_busy:
+			queued_action = "emote"
 	
-	move_dir = get_movement(held_inputs)
+	velocity = get_velocity(held_inputs)
 
 
 # Processing
 
 func _physics_process(delta : float) -> void:
-	do_movement(move_dir, delta)
-
-func do_movement(dir : Vector2, delta :float) -> void:
-	var speed = speeds.run if held_inputs.run else speeds.walk
-	var velocity = dir * speed * delta
-	var collision = move_and_collide(velocity)
-	# TODO: Isometric angles messing stuff up
-	if collision:
-		var collision_normal = collision.normal
-		collision_normal.x *= 2 
+	if is_busy:
+		return
+	if queued_action:
+		run_coroutine(queued_action, queued_args.duplicate())
+		queued_action = null
+		queued_args.clear()
+		return
 		
-#		print("Normal: ", rad2deg(collision.normal.angle()))
-#		print("IsoNormal: ", rad2deg(collision_normal.angle()))
-#		print("Travel: ", rad2deg(collision.travel.angle()))
-#		print("IsoTravel: ", rad2deg(travel_normal.angle()))
-		
-		var collision_angle = abs(abs(collision_normal.angle_to(velocity)) - PI)
-		print("Collision Angle: ", rad2deg(collision_angle))
-		print()
-		if collision_angle > SLIDE_ANGLE_THRESHOLD:
-			var extra_move = (collision.remainder.normalized() + collision_normal.normalized()).normalized() * collision.remainder.length()
-			move_and_slide(extra_move / delta)
-	emit_signal("moved", position)
-	animate_movement(dir)
+	if velocity:
+		do_movement(velocity, delta)
+		emit_signal("moved", position)
+	animate_movement(velocity)
+
+func run_coroutine(func_name : String, args := []) -> void:
+	is_busy = true
+#	emote()
+#	yield(get_tree().create_timer(2), "timeout")
+	yield(callv(func_name, args), "completed")
+	is_busy = false
 
 
-# Animation Running
+# Coroutines
+
+func emote() -> void:
+	animation_player.play("emote")
+	yield(animation_player, "animation_finished")
+
+
+# Movement
+
+func do_movement(vel : Vector2, delta :float) -> void:
+	var displacement = vel * delta
+	var collision = move_and_collide(displacement, true, true, true)
+	if not collision:
+		move_and_collide(displacement)
+	else:
+		_iso_move_and_slide(collision)
+
+func _iso_move_and_slide(collision : KinematicCollision2D) -> void:
+	var displacement = collision.travel + collision.remainder
+	
+	if _is_iso_head_on_collision(displacement, collision.normal):
+		return
+	
+	var slide_dir = _get_iso_slide_vector(displacement, collision.normal)
+
+	var new_disp = collision.travel
+	new_disp += _rotate_vector_to(collision.remainder, slide_dir)
+	move_and_collide(new_disp)
+
+func _is_iso_head_on_collision(travel : Vector2, normal : Vector2) -> bool:
+	var iso_normal = normal
+	iso_normal.x *= 2
+	if abs(iso_normal.angle_to(-travel)) < SLIDE_ANGLE_THRESHOLD:
+		return true
+	return false
+
+func _get_iso_slide_vector(travel : Vector2, normal : Vector2) -> Vector2:
+	var left_of_normal = normal.rotated(-PI / 2)
+	var right_of_normal = normal.rotated(PI / 2)
+	
+	var left_angle = abs(travel.angle_to(left_of_normal))
+	var right_angle = abs(travel.angle_to(right_of_normal))
+	if left_angle < right_angle:
+		return left_of_normal
+	else:
+		return right_of_normal
+
+func _rotate_vector_to(len_vector : Vector2, angle_vector : Vector2) -> Vector2:
+	return angle_vector.normalized() * len_vector.length()
+
+
+# Animation Execution
 
 func animate_movement(dir : Vector2) -> void:
 	anim_dir = _get_anim_dir(dir)
 	var anim_type
-	if dir.length() == 0.0:
-		anim_type = "stand"
-	else:
+	if dir:
 		if held_inputs.run:
 			anim_type = "run"
 		else:
 			anim_type = "walk"
+	else:
+		anim_type = "stand"
 	animation_player.play(anim_type + "_" + anim_dir)
 
 func _get_anim_dir(dir : Vector2) -> String:
@@ -141,15 +195,24 @@ func make_anim(keyframes, frame_duration := 1) -> Animation:
 	
 	return anim
 
+func add_anim_single(anim_name : String, start : int, frame_count : int, frame_duration := 1) -> void:
+	var frames = []
+	for j in frame_count:
+		frames.append(start + j)
+	var anim = make_anim(frames, frame_duration)
+	animation_player.add_animation(anim_name, anim)
+
 func add_anim_batch(batch : String, start : int, frame_count : int, frame_duration := 1) -> void:
 	var anim_dirs = ["up", "up_right", "right", "down_right", "down"]
 	for i in anim_dirs.size():
 		var anim_name = batch + "_" + anim_dirs[i]
-		var frames = []
-		for j in frame_count:
-			frames.append(start + i * frame_count + j)
-		var anim = make_anim(frames, frame_duration)
-		animation_player.add_animation(anim_name, anim)
+		var start_frame = start + i * frame_count
+		add_anim_single(anim_name, start_frame, frame_count, frame_duration)
+#		var frames = []
+#		for j in frame_count:
+#			frames.append(start + i * frame_count + j)
+#		var anim = make_anim(frames, frame_duration)
+#		animation_player.add_animation(anim_name, anim)
 
 
 # Initialization
@@ -158,6 +221,8 @@ func setup_standard_animations() -> void:
 	add_anim_batch("stand", 0, 1, 1)
 	add_anim_batch("walk", 5, 6, 6)
 	add_anim_batch("run", 5, 6, 4)
+	add_anim_single("emote", 35, 4, 6)
 
 func _ready() -> void:
 	setup_standard_animations()
+	emit_signal("moved", position)

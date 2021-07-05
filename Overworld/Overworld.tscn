@@ -34,13 +34,13 @@ build_mode = 1
 polygon = PoolVector2Array( -1, 148, -321, -10, -3, -170, 317, -11 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
 position = Vector2( 64, -2 )
 texture = ExtResource( 6 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
 position = Vector2( 64, -2 )
 polygon = PoolVector2Array( 29, -32, 32, -27, 32, 28, 26.4, 32, -26.8, 32, -32, 28.7, -32, -25.4, -28.7, -32 )
 
@@ -56,11 +56,11 @@ shape = SubResource( 1 )
 
 [node name="SpritesheetManager" parent="Character" instance=ExtResource( 2 )]
 position = Vector2( 0, 3 )
-offset = Vector2( -10, -32 )
-region_rect = Rect2( 82, 123, 22, 32 )
-frame_index = 19
-x_offset = 1.0
-frame_name = "walk_right3"
+offset = Vector2( -9, -32 )
+region_rect = Rect2( 130, 239, 19, 32 )
+frame_index = 38
+x_offset = 0.0
+frame_name = "emote4"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 

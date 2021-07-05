@@ -5,8 +5,7 @@ const PLAYER_ANCHOR = Vector2(120, 90)
 onready var player = $Character
 
 
-func center_player():
-	var player_pos = player.position
+func center_player(var player_pos := player.position):
 	var player_offset = PLAYER_ANCHOR - player_pos
 	position = player_offset
 	
@@ -20,4 +19,4 @@ func _ready() -> void:
 
 
 func _on_Character_moved(_position) -> void:
-	center_player()
+	center_player(_position)
