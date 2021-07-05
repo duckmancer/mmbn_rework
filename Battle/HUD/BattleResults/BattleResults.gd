@@ -97,7 +97,8 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 				State.WAITING:
 					start_reveal()
 				State.REVEALING:
-					anim.advance(anim.current_animation_length)
+					if anim.is_playing():
+						anim.advance(anim.current_animation_length)
 				State.SHOWING:
 					emit_signal("finished")
 

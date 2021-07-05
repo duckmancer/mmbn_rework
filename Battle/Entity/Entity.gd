@@ -210,6 +210,9 @@ func setup(new_pos : Vector2, new_team):
 	return self
 
 func _ready():
+	# Doing it manualy so it doesn't spout errors
+	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+	
 	set_default_keywords()
 	is_ready = true
 	initialize_arguments(data)
@@ -238,5 +241,5 @@ func set_default_keywords():
 
 # Signals
 
-func _on_AnimationPlayer_animation_finished(_anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name = null):
 	animation_done()

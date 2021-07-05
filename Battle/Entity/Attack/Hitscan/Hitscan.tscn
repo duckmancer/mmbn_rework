@@ -419,7 +419,6 @@ tracks/2/keys = {
 
 [node name="Hitscan" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-anim_x_coord = 4
 anim_y_coord = 3
 starting_state = 0
 state = 1

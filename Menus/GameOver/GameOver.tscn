@@ -30,5 +30,4 @@ centered = false
 stream = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "fade_in"
 anims/fade_in = SubResource( 1 )

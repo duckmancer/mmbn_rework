@@ -165,6 +165,8 @@ Scenes="*res://Globals/Scenes.gd"
 ActionData="*res://Globals/ActionData.gd"
 Battlechips="*res://Globals/Battlechips.gd"
 EncounterPool="*res://Globals/EncounterPool.gd"
+PlayerData="*res://Globals/PlayerData.gd"
+Transition="*res://Globals/Transition.tscn"
 
 [debug]
 
