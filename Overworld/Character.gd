@@ -225,4 +225,5 @@ func setup_standard_animations() -> void:
 
 func _ready() -> void:
 	setup_standard_animations()
+	position = PlayerData.overworld_pos
 	emit_signal("moved", position)

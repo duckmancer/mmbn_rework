@@ -101,6 +101,7 @@ func _exit_battle() -> void:
 #	anim.play("fade_to_black")
 #	yield(get_tree().create_timer(0.5), "timeout")
 #	Scenes.switch_to("overworld")
+	PlayerData.hp = player_controller.player.hp
 	Transition.transition_to("overworld")
 
 
@@ -141,6 +142,7 @@ func _spawn_player(spawn_pos := Vector2(1, 1)):
 		team = Entity.Team.PLAYER,
 		is_player_controlled = true,
 		max_hp = 100,
+		hp = PlayerData.hp,
 	}
 	var player = Entity.construct_entity(Megaman, player_data)
 	add_unit(player)

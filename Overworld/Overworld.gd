@@ -8,6 +8,8 @@ const TRAVEL_STEP = 100.0
 
 onready var player = $Character
 
+var do_encounter = true
+
 var encounter_progress := 0.0
 var distance_traveled := 0.0
 
@@ -15,19 +17,18 @@ var distance_traveled := 0.0
 # Movement
 
 func encounter_check() -> bool:
+	if not do_encounter:
+		return false
 	return encounter_progress > ENCOUNTER_THRESHOLD
 
-func track_travel(distance : float) -> void:
+func track_travel(new_pos : Vector2) -> void:
+	var distance = PlayerData.update_position(new_pos)
 	distance_traveled += distance
 	if distance_traveled > TRAVEL_STEP:
 		encounter_progress += distance_traveled * rand_range(0.0, 5.0)
 		distance_traveled = 0.0
+		print(encounter_progress)
 
-func center_player(player_pos := player.position):
-	var player_offset = PLAYER_ANCHOR - player_pos
-	var distance = (position - player_offset).length()
-	position = player_offset
-	track_travel(distance)
 
 
 # Processing
@@ -39,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 		enter_battle()
 
 func enter_battle() -> void:
+	PlayerData.overworld_pos = player.position
 	Transition.transition_to("battle", Color.white, 0.5, "res://Assets/MMBNSFX/Overworld SFX/goinbtl HQ.ogg")
 #	Scenes.switch_to("battle")
 
@@ -51,5 +53,5 @@ func _ready() -> void:
 
 # Signals
 
-func _on_Character_moved(_position) -> void:
-	center_player(_position)
+func _on_Character_moved(position) -> void:
+	track_travel(position)

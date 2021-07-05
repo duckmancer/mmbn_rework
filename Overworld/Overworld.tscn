@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Overworld/Maps/GenericComp.png" type="Texture" id=1]
 [ext_resource path="res://Utilities/SpritesheetManager/SpritesheetManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld/Character.gd" type="Script" id=3]
 [ext_resource path="res://Overworld/Overworld.gd" type="Script" id=4]
 [ext_resource path="res://Assets/MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Battle/Background.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.0
@@ -35,7 +36,6 @@ polygon = PoolVector2Array( -1, 148, -321, -10, -3, -170, 317, -11 )
 [node name="Character" type="KinematicBody2D" parent="."]
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -51,6 +51,14 @@ x_offset = 0.0
 frame_name = "emote4"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+current = true
+
+[node name="Node2D" type="Node2D" parent="Character"]
+position = Vector2( -140, -80 )
+
+[node name="Background" parent="Character/Node2D" instance=ExtResource( 6 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

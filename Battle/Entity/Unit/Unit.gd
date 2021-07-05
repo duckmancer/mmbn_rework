@@ -95,7 +95,7 @@ export var start_delay_range = 30
 
 export var sprite_displacement = Vector2(0, 0) setget set_sprite_displacement
 
-var hp := 40 setget set_hp
+var hp := 0 setget set_hp
 var _display_hp := hp setget set_display_hp
 
 
@@ -398,7 +398,8 @@ func pause(duration : float):
 func _ready():
 	set_anim_suffix()
 	sprite.material = sprite.material.duplicate()
-	hp = max_hp
+	if hp == 0:
+		hp = max_hp
 	self._display_hp = max_hp
 	reset_effect_player()
 	if not is_player_controlled:
