@@ -1,17 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Overworld/Character.gd" type="Script" id=3]
+[ext_resource path="res://Utilities/SpritesheetManager/SpritesheetManager.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=1]
-resource_name = "New Anim"
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.0
 
-[node name="Character" type="Node2D"]
+[node name="Character" type="KinematicBody2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-hframes = 11
-vframes = 7
-frame = 65
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="SpritesheetManager" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, 3 )
+offset = Vector2( -6, -32 )
+region_rect = Rect2( 26, 123, 17, 32 )
+frame_index = 17
+FrameData/XOffset = 2.0
+FrameData/Name = "walk_right"
+Anchors/Vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/New Anim" = SubResource( 1 )

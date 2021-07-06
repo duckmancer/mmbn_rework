@@ -6,7 +6,7 @@ const ENCOUNTER_THRESHOLD = 1000.0
 const ENCOUNTER_VARIANCE = 300.0
 const TRAVEL_STEP = 100.0
 
-onready var player = $Character
+onready var player = $Player
 
 var do_encounter = true
 
@@ -53,5 +53,5 @@ func _ready() -> void:
 
 # Signals
 
-func _on_Character_moved(position) -> void:
+func _on_Player_moved(position) -> void:
 	track_travel(position)

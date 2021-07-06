@@ -33,4 +33,5 @@ func set_color_mode(mode):
 	
 
 func _ready() -> void:
-	self.color_mode = color_mode
+	self.color_mode = PlayerData.get_hp_state()
+	self.hp = PlayerData.hp
