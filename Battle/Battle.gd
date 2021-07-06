@@ -31,21 +31,23 @@ var encounter_data : Dictionary
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("pause"):
-		if not hud.is_custom_open:
+		if _is_pause_available():
 			toggle_pause()
 	if event.is_action_pressed("custom_menu"):
 		if _is_custom_available():
 			open_custom()
 
 func _is_custom_available() -> bool:
-	var result = get_tree().paused
-	result &= not hud.is_custom_open 
-	result &= hud.is_cust_full
+	var result = not get_tree().paused
+	result = result and not hud.is_custom_open 
+	result = result and hud.is_cust_full
+	result = result and is_battle_running
 	return result
 
 func _is_pause_available() -> bool:
 	var result = not hud.is_custom_open 
-	result &= hud.is_cust_full
+	result = result and hud.is_cust_full
+	result = result and is_battle_running
 	return result
 
 func toggle_pause(pause_state := not get_tree().paused):
