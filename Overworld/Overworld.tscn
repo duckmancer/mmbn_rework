@@ -44,12 +44,10 @@ shape = SubResource( 1 )
 
 [node name="SpritesheetManager" parent="Character" instance=ExtResource( 2 )]
 position = Vector2( 0, 3 )
-offset = Vector2( -9, -32 )
-region_rect = Rect2( 130, 239, 19, 32 )
-FrameData/XOffset = 0
-FrameData/YOffset = 0
+offset = Vector2( -8, -32 )
+region_rect = Rect2( 26, 123, 17, 32 )
+frame_index = 17
 FrameData/Name = ""
-Anchors/Horizontal = 1
 Anchors/Vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
