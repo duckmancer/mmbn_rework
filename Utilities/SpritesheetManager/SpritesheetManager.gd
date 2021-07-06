@@ -7,6 +7,33 @@ enum AnchorType {
 	END,
 }
 
+const EXPORT_PROPERTY_LIST = {
+	"FrameData/XOffset" : {
+		type = TYPE_INT,
+		var = "x_offset",
+	},
+	"FrameData/YOffset" : {
+		type = TYPE_INT,
+		var = "y_offset",
+	},
+	"FrameData/Name" : {
+		type = TYPE_STRING,
+		var = "frame_name",
+	},
+	"Anchors/Horizontal" : {
+		type = TYPE_INT,
+		hint = PROPERTY_HINT_ENUM,
+		hint_string = "Begin,Center,End",
+		var = "horizontal_anchor",
+	},
+	"Anchors/Vertical" : {
+		type = TYPE_INT,
+		hint = PROPERTY_HINT_ENUM,
+		hint_string = "Begin,Center,End",
+		var = "vertical_anchor",
+	},
+}
+
 const SPRITE_VERTICAL_TOLERANCE = 10
 
 const FRAME_DATA_TEMPLATE = {
@@ -16,23 +43,55 @@ const FRAME_DATA_TEMPLATE = {
 	offset = Vector2(),
 }
 
+export(String, "Locked", "Local", "Write") var data_access_mode := "Locked"
+
 export(String, FILE, "*.png") var sheet_path setget set_sheet_path
 export(String, FILE, "*.json") var data_path setget set_data_path
 
 export var frame_index = 0 setget set_frame_index
 
-export(int) var x_offset = 0 setget set_x_offset
-export(int) var y_offset = 0 setget set_y_offset
+var x_offset = 0 setget set_x_offset
+var y_offset = 0 setget set_y_offset
 
-export var frame_name : String setget set_frame_name
+var frame_name : String setget set_frame_name
 
-export(AnchorType) var vertical_anchor = AnchorType.END setget set_vertical_anchor
-export(AnchorType) var horizontal_anchor = AnchorType.CENTER setget set_horizontal_anchor
+var vertical_anchor = AnchorType.END setget set_vertical_anchor
+var horizontal_anchor = AnchorType.CENTER setget set_horizontal_anchor
 
 var sprite_offset := Vector2(0, 0) setget set_sprite_offset
 
 var spritesheet_data : Array = []
 var frame_data : Dictionary = {}
+
+
+# Properties
+
+func _get_property_list() -> Array:
+	var list = []
+	
+	for prop_name in EXPORT_PROPERTY_LIST:
+		var prop = EXPORT_PROPERTY_LIST[prop_name].duplicate()
+		prop.name = prop_name
+		list.append(prop)
+	
+	return list
+
+func _set(property: String, value) -> bool:
+	var result = false
+	if property in EXPORT_PROPERTY_LIST:
+		if "FrameData" in property and data_access_mode == "Locked":
+			pass
+		else:
+			set(EXPORT_PROPERTY_LIST[property].var, value)
+		result = true
+	return result
+
+func _get(property: String):
+	var result = null
+	if property in EXPORT_PROPERTY_LIST:
+		result = get(EXPORT_PROPERTY_LIST[property].var)
+	return result
+
 
 # Setgetters
 
@@ -48,6 +107,12 @@ func set_sheet_path(val : String):
 	sheet_path = val
 	texture = load(sheet_path)
 	region_enabled = true
+	try_find_json(sheet_path)
+func try_find_json(sprite_path : String):
+	var test_path = sprite_path.replace(sprite_path.get_extension(), "json")
+	if test_path.is_abs_path():
+		set_data_path(test_path)
+
 
 func set_frame_index(val : int) -> void:
 	if spritesheet_data.empty():
@@ -165,6 +230,18 @@ func unpack_data(packed_data : Array) -> Array:
 		data.append(_unpack_frame(packed_frame))
 	return data
 
+func sort_frames(frame1, frame2) -> bool:
+	if frame1.has("rect") and frame2.has("rect"):
+		var pos1 = frame1.rect.position
+		var pos2 = frame2.rect.position
+		if abs(pos1.y - pos2.y) > SPRITE_VERTICAL_TOLERANCE:
+			return pos1.y < pos2.y
+		else:
+			return pos1.x < pos2.x
+	else:
+		return frame1.hash() < frame2.hash()
+
+
 ## Data Unpacking
 
 func _unpack_frame(packed_frame : Dictionary) -> Dictionary:
@@ -234,22 +311,10 @@ func load_json_data(path : String) -> Array:
 	return unpacked_data
 
 func save_json_data(path : String) -> void:
-	var packed_data = pack_data(spritesheet_data)
-	var str_data = JSON.print(packed_data)
-	write_file(path, str_data)
-
-
-func sort_frames(frame1, frame2) -> bool:
-	if frame1.has("rect") and frame2.has("rect"):
-		var pos1 = frame1.rect.position
-		var pos2 = frame2.rect.position
-		if abs(pos1.y - pos2.y) > SPRITE_VERTICAL_TOLERANCE:
-			return pos1.y < pos2.y
-		else:
-			return pos1.x < pos2.x
-	else:
-		return frame1.hash() < frame2.hash()
-
+	if data_access_mode == "Write":
+		var packed_data = pack_data(spritesheet_data)
+		var str_data = JSON.print(packed_data)
+		write_file(path, str_data)
 
 func read_file(path : String) -> String:
 	var contents := ""

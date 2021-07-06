@@ -6,12 +6,14 @@
 [node name="SpritesheetManager" type="Sprite"]
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( -6, -32 )
+offset = Vector2( -8, 0 )
 region_enabled = true
-region_rect = Rect2( 26, 123, 17, 32 )
+region_rect = Rect2( 58, 4, 17, 32 )
 script = ExtResource( 2 )
 sheet_path = "res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.png"
 data_path = "res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.json"
-frame_index = 17
-x_offset = 2.0
-frame_name = "walk_right"
+FrameData/XOffset = 0.0
+FrameData/YOffset = 0.0
+FrameData/Name = "stand_up"
+Anchors/Horizontal = 1
+Anchors/Vertical = 0
