@@ -45,7 +45,7 @@ func update_vals(updates):
 
 func _physics_process(_delta: float) -> void:
 	if not queued_updates.empty():
-#		print("queued updates:\n", queued_updates, "\n")
+
 		update_vals(queued_updates.duplicate(true))
 		
 

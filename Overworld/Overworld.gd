@@ -27,8 +27,6 @@ func track_travel(new_pos : Vector2) -> void:
 	if distance_traveled > TRAVEL_STEP:
 		encounter_progress += distance_traveled * rand_range(0.0, 5.0)
 		distance_traveled = 0.0
-		print(encounter_progress)
-
 
 
 # Processing
@@ -41,8 +39,11 @@ func _physics_process(_delta: float) -> void:
 
 func enter_battle() -> void:
 	PlayerData.overworld_pos = player.position
-	Transition.transition_to("battle", Color.white, 0.5, "res://Assets/MMBNSFX/Overworld SFX/goinbtl HQ.ogg")
-#	Scenes.switch_to("battle")
+	Transition.transition_to("battle", "virus_flash")
+
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if event.is_action_pressed("action_1"):
+		enter_battle()
 
 # Setup
 
