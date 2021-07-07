@@ -5,7 +5,7 @@ extends Virus
 var fireball_data = {
 	unit_animation = "shoot",
 	attack_data = ActionData.attacks.fireball,
-	unique_action_delay = 28,
+	delay = 28,
 }
 
 

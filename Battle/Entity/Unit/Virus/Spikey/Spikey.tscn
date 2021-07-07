@@ -46,7 +46,7 @@ max_hp = 300
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
-frame = 2
+frame = 11
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/idle_spikey = SubResource( 1 )

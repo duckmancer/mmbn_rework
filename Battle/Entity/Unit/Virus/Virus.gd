@@ -38,7 +38,7 @@ var attack_cooldown = 50
 var min_move_cycle = 6
 var max_move_cycle = 8
 var AI_sequence = []
-var sequence_pos = 0
+var sequence_pos = -1
 var cur_cycle_pos = 0
 
 func try_move(dir):
