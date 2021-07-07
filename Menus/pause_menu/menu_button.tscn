@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Fonts/BN6/BN6FontSmallCd.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Menus/Pause Menu/blank_option.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Menus/Pause Menu/menu_icons.png" type="Texture" id=3]
+[ext_resource path="res://Menus/pause_menu/menu_button.gd" type="Script" id=4]
+[ext_resource path="res://Assets/BN4 Rips/Menu Sounds/song229_menu_scroll.wav" type="AudioStream" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 1
+outline_color = Color( 0.345098, 0.345098, 0.313726, 1 )
+extra_spacing_top = -3
+extra_spacing_bottom = -2
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 0.0166667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:frame_coords:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "hover"
+length = 0.266667
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:frame_coords:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[node name="MenuButton" type="TextureRect"]
+margin_right = 82.0
+margin_bottom = 12.0
+texture = ExtResource( 2 )
+stretch_mode = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 26.0
+margin_right = 82.0
+margin_bottom = 12.0
+mouse_filter = 2
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.941176, 0.972549, 0.941176, 1 )
+custom_colors/font_color_hover = Color( 0.564706, 0.878431, 0.847059, 1 )
+shortcut_in_tooltip = false
+button_mask = 0
+text = "Text"
+flat = true
+clip_text = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 10, 8 )
+texture = ExtResource( 3 )
+hframes = 2
+vframes = 8
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 2 )
+anims/hover = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="focus_entered" from="Button" to="." method="_on_Button_focus_entered"]
+[connection signal="focus_exited" from="Button" to="." method="_on_Button_focus_exited"]
