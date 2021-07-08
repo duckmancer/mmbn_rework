@@ -8,7 +8,7 @@ const TRAVEL_STEP = 100.0
 
 onready var player = $Player
 
-var do_encounter = true
+var do_encounter = false
 
 var encounter_progress := 0.0
 var distance_traveled := 0.0
@@ -50,6 +50,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 func _ready() -> void:
 	distance_traveled = 0.0
 	encounter_progress = 0.0
+	
 
 
 # Signals
