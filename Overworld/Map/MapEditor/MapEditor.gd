@@ -59,6 +59,7 @@ func load_from_resource():
 
 func save_to_resource():
 	_save_map()
+	
 
 func generate_polys():
 	var polys = _get_polys_from_texture(map_data)
@@ -74,6 +75,7 @@ func _load_map() -> void:
 		yield(self, "ready")
 	map_sprite.texture = map_data
 	_form_polygons(map_data.collisions)
+	_instance_events(map_data.events)
 
 func _form_polygons(poly_list : Array) -> void:
 	for node in collisions.get_children():
@@ -88,11 +90,40 @@ func _add_poly(poly : PoolVector2Array):
 	collisions.add_child(shape)
 	shape.set_owner(self)
 
+func _instance_events(packed_events : Array) -> void:
+	for node in events.get_children():
+		node.queue_free()
+	for e in packed_events:
+		var new_event = e.instance()
+		events.add_child(new_event)
+		new_event.set_owner(self)
+		for child in new_event.get_children():
+			child.set_owner(self)
+
 
 # Saving
 
 func _save_map() -> void:
+	if not is_ready:
+		yield(self, "ready")
 	map_data.collisions = _get_polys()
+	map_data.events = _get_events()
+
+func _get_events() -> Array:
+	var event_list = []
+	for e in events.get_children():
+		var packed_event = PackedScene.new()
+#		packed_event.pack(e)
+		_pack_subtree(packed_event, e)
+		event_list.append(packed_event)
+	return event_list
+
+func _pack_subtree(packed_scene : PackedScene, root : Node) -> void:
+	for child in root.get_children():
+		child.set_owner(root)
+	packed_scene.pack(root)
+	for child in root.get_children():
+		child.set_owner(root.owner)
 
 func _get_polys() -> Array:
 	var poly_list = []
@@ -119,3 +150,4 @@ func _get_polys_from_texture(texture : Texture) -> Array:
 
 func _ready() -> void:
 	is_ready = true
+	

@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Entity.gd"
 }, {
+"base": "Area2D",
+"class": "Event",
+"language": "GDScript",
+"path": "res://Overworld/Map/MapEditor/Event/Event.gd"
+}, {
 "base": "AreaHit",
 "class": "Explosion",
 "language": "GDScript",
@@ -62,7 +67,7 @@ _global_script_classes=[ {
 "base": "StreamTexture",
 "class": "MapData",
 "language": "GDScript",
-"path": "res://Overworld/Map/MapData.gd"
+"path": "res://Overworld/Map/MapEditor/MapData.gd"
 }, {
 "base": "Navi",
 "class": "Megaman",
@@ -137,6 +142,7 @@ _global_script_class_icons={
 "BattlePanel": "",
 "ChipSlot": "",
 "Entity": "",
+"Event": "",
 "Explosion": "",
 "Hitscan": "",
 "Impact": "",
