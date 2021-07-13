@@ -1,21 +1,44 @@
+#tool
 class_name Event
 extends Area2D
 
-var event_type = "warp_event"
-
-onready var warp_destination = $WarpDestination
+onready var trigger_area = $TriggerArea
 
 
 
-func get_warp_destination() -> Vector2:
-	return warp_destination.position + position
+# Save/Load
 
-func warp_event(entity) -> void:
-	entity.position = get_warp_destination()
+func get_data() -> Dictionary:
+	var result = {}
+	result.type = get_filename()
+	result.position = position
+	result.shape_path = trigger_area.shape.resource_path
+	result.rotation_degrees = rotation_degrees
+	return result
 
-func _ready() -> void:
+func load_from_data(data : Dictionary) -> void:
+	position = data.position
+	trigger_area.shape = load(data.shape_path)
+	rotation_degrees = rotation_degrees
+
+
+# Events
+
+func trigger_event(_entity) -> void:
+	print("[DEBUG] BASE EVENT TRIGGERED")
+
+func connect_signals_to_overworld(_overworld) -> void:
 	pass
 
+# Init
 
-func _on_EventTrigger_body_entered(body: Node) -> void:
-	warp_event(body)
+func _ready() -> void:
+	self.connect("body_entered", self, "_on_Event_body_entered")
+
+
+# Signals
+
+func _on_Event_body_entered(body: Node) -> void:
+	trigger_event(body)
+
+

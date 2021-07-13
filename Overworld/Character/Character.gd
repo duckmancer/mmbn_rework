@@ -28,15 +28,31 @@ var is_busy = false
 var queued_action = null
 var queued_args = []
 
+
+# Overrides
+
+func warp_to(destination : Vector2, walk_dir : String, walk_duration : float) -> bool:
+	if not is_busy:
+		run_coroutine("warp_local", [destination, walk_dir, walk_duration])
+		return true
+	return false
+
+func walk_transition(walk_dir : String, walk_duration : float) -> bool:
+	if not is_busy:
+		run_coroutine("walking_map_change", [walk_dir, walk_duration])
+		return true
+	return false
+
+
 # Inputs
 
 func get_velocity(inputs : Dictionary) -> Vector2:
 	var direction = Vector2(0, 0)
 	for dir in Constants.ISOMETRIC_DIRS:
-		if inputs[dir]:
+		if inputs.has(dir) and inputs[dir]:
 			direction += Constants.ISOMETRIC_DIRS[dir]
 	direction = direction.normalized()
-	var speed = speeds.run if held_inputs.run else speeds.walk
+	var speed = speeds.run if inputs.run else speeds.walk
 	return direction * speed
 
 func _unhandled_key_input(event: InputEventKey) -> void:
@@ -52,30 +68,40 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("ui_select"):
 		if not is_busy:
 			queued_action = "emote"
-	
-	velocity = get_velocity(held_inputs)
+
+func _get_string_dirs(string_dir : String, run := true) -> Dictionary:
+	var movement_dirs = {}
+	for dir in Constants.DIRS:
+		if dir in string_dir:
+			movement_dirs[dir] = true
+	if not "run" in movement_dirs:
+		movement_dirs.run = run
+	return movement_dirs
+
+func set_velocity_from_string(string_dir : String) -> void:
+	velocity = get_velocity(_get_string_dirs(string_dir))
 
 
 # Processing
 
 func _physics_process(delta : float) -> void:
-	if is_busy:
-		return
-	if queued_action:
-		run_coroutine(queued_action, queued_args.duplicate())
-		queued_action = null
-		queued_args.clear()
-		return
+	if not is_busy:
+		if queued_action:
+			run_coroutine(queued_action, queued_args.duplicate())
+			queued_action = null
+			queued_args.clear()
+			return
+		else:
+			velocity = get_velocity(held_inputs)
 		
 	if velocity:
 		do_movement(velocity, delta)
 		emit_signal("moved", position)
-	animate_movement(velocity)
+	if velocity or not is_busy:
+		animate_movement(velocity)
 
 func run_coroutine(func_name : String, args := []) -> void:
 	is_busy = true
-#	emote()
-#	yield(get_tree().create_timer(2), "timeout")
 	yield(callv(func_name, args), "completed")
 	is_busy = false
 
@@ -85,6 +111,21 @@ func run_coroutine(func_name : String, args := []) -> void:
 func emote() -> void:
 	animation_player.play("emote")
 	yield(animation_player, "animation_finished")
+
+func warp_local(destination : Vector2, walk_dir : String, walk_duration : float) -> void:
+	position = destination
+
+	var movement_dirs = _get_string_dirs(walk_dir)
+	velocity = get_velocity(movement_dirs)
+	
+	yield(get_tree().create_timer(walk_duration), "timeout")
+
+func walking_map_change(walk_dir : String, walk_duration : float) -> void:
+	var movement_dirs = _get_string_dirs(walk_dir)
+	velocity = get_velocity(movement_dirs)
+	
+	yield(get_tree().create_timer(walk_duration * 2), "timeout")
+	
 
 
 # Movement
@@ -208,11 +249,6 @@ func add_anim_batch(batch : String, start : int, frame_count : int, frame_durati
 		var anim_name = batch + "_" + anim_dirs[i]
 		var start_frame = start + i * frame_count
 		add_anim_single(anim_name, start_frame, frame_count, frame_duration)
-#		var frames = []
-#		for j in frame_count:
-#			frames.append(start + i * frame_count + j)
-#		var anim = make_anim(frames, frame_duration)
-#		animation_player.add_animation(anim_name, anim)
 
 
 # Initialization

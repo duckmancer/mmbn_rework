@@ -1,6 +1,7 @@
 extends Node
 
-var overworld_pos := Vector2(940, 355)
+var overworld_map := "ACDC_1"
+var overworld_pos := Vector2(150, 250)
 var max_hp := 200
 var hp := 100
 

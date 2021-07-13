@@ -6,7 +6,8 @@ const ENCOUNTER_THRESHOLD = 1000.0
 const ENCOUNTER_VARIANCE = 300.0
 const TRAVEL_STEP = 100.0
 
-onready var player = $Player
+onready var player = $Characters/Player
+onready var map = $Map
 
 var do_encounter = false
 
@@ -48,12 +49,59 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 # Setup
 
 func _ready() -> void:
+	load_map(PlayerData.overworld_map)
+
+func load_map(map_name : String) -> void:
+	var map_scene = Scenes.get_map(map_name)
+	map.queue_free()
+	yield(map, "tree_exited")
+	map = map_scene
+	add_child(map_scene)
+	for_tree(map_scene, "connect_signals_to_overworld", [self])
+	reset_encounters()
+
+func for_tree(root : Node, method : String, args := []) -> void:
+	if root.has_method(method):
+		root.callv(method, args)
+	for child in root.get_children():
+		for_tree(child, method, args)
+
+func reset_encounters():
 	distance_traveled = 0.0
 	encounter_progress = 0.0
-	
 
 
 # Signals
 
 func _on_Player_moved(position) -> void:
 	track_travel(position)
+
+func _on_Event_map_transition_triggered(new_map : String) -> void:
+	yield(Transition.fade_in_and_out(), "completed")
+	yield(load_map(new_map), "completed")
+	var player_start = $Map/Spawnpoint.position
+	var player_dir = "none"
+	var old_map = PlayerData.overworld_map
+	PlayerData.overworld_map = new_map
+	for e in $Map/Events.get_children():
+		if "destination_map" in e:
+			if e.destination_map == old_map:
+				player_start = e.position
+				player_dir = e.walk_dir
+				if e is WalkTransition:
+					player_dir = reverse_dirs(player_dir)
+	player.position = player_start
+	player.set_velocity_from_string(player_dir)
+	PlayerData.update_position(player.position)
+	
+
+func reverse_dirs(dir : String) -> String:
+	if "left" in dir:
+		dir = dir.replace("left", "right")
+	else:
+		dir = dir.replace("right", "left")
+	if "up" in dir:
+		dir = dir.replace("up", "down")
+	else:
+		dir = dir.replace("down", "up")
+	return dir

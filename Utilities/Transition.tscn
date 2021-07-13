@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Utilities/Transition.gd" type="Script" id=1]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform bool do_pixelate = false;
@@ -16,13 +16,13 @@ void fragment() {
 		COLOR.rgb = textureLod(SCREEN_TEXTURE, uv, 0.0).rgb;
 }"
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/do_pixelate = false
 shader_param/size_x = 0.1
 shader_param/size_y = 0.1
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "pixelate"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pixelate:material:shader_param/do_pixelate")
@@ -73,8 +73,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "fade_in"
+[sub_resource type="Animation" id=4]
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScreenTint:color:a")
@@ -89,8 +88,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScreenTint:color:a")
 tracks/0/interp = 1
@@ -117,7 +115,7 @@ __meta__ = {
 }
 
 [node name="Pixelate" type="ColorRect" parent="."]
-material = SubResource( 4 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -125,10 +123,10 @@ __meta__ = {
 }
 
 [node name="EffectPlayer" type="AnimationPlayer" parent="."]
-anims/pixelate = SubResource( 5 )
+anims/pixelate = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fade_in = SubResource( 1 )
-anims/fade_out = SubResource( 2 )
+anims/fade_in = SubResource( 4 )
+anims/fade_out = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
