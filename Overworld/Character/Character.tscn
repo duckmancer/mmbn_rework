@@ -4,8 +4,9 @@
 [ext_resource path="res://Overworld/Character/Character.gd" type="Script" id=3]
 [ext_resource path="res://Utilities/SpritesheetManager/SpritesheetManager.tscn" type="PackedScene" id=6]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 2.0
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.0
+height = 7.0
 
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 3
@@ -15,6 +16,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="SpritesheetManager" parent="." instance=ExtResource( 6 )]

@@ -62,17 +62,35 @@ var sprite_offset := Vector2(0, 0) setget set_sprite_offset
 
 var spritesheet_data : Array = []
 var frame_data : Dictionary = {}
-
+var anim_groups : Dictionary = {}
 
 # Interface
 
-func get_frame_with_name(search_name : String) -> int:
-	var result = -1
+func get_dirs_for_anim(base_anim : String) -> Dictionary:
+	var result = {}
+	for index in spritesheet_data.size():
+		pass
+	return result
+
+func get_anim_by_name(search_name : String) -> Dictionary:
+	var result = {start_frame = 0, frame_count = 0, exists = false}
 	for i in spritesheet_data.size():
 		if spritesheet_data[i].name == search_name:
-			result = i
+			result.start_frame = i
+			result.frame_count = get_chain_length(i)
+			result.exists = true
 			break
 	return result
+
+func get_chain_length(start_index : int) -> int:
+	var length = 1
+	var base_name = spritesheet_data[start_index].name
+	for test_index in range(start_index + 1, spritesheet_data.size()):
+		var test_name = base_name + String(length + 1)
+		if spritesheet_data[test_index].name != test_name:
+			break
+		length += 1
+	return length
 
 
 # Properties
@@ -240,6 +258,16 @@ func unpack_data(packed_data : Array) -> Array:
 	for packed_frame in packed_data:
 		data.append(_unpack_frame(packed_frame))
 	return data
+
+# TODO: Auto group animations. (Help with marking?)
+func group_animations():
+	anim_groups = {}
+	var cur_group = ""
+	var cur_start = 0
+	for index in spritesheet_data.size():
+		if spritesheet_data[index].is_custom_name:
+			if cur_group:
+				anim_groups[cur_group] = 0
 
 func sort_frames(frame1, frame2) -> bool:
 	if frame1.has("rect") and frame2.has("rect"):

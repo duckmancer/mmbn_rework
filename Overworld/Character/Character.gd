@@ -5,6 +5,17 @@ signal moved(position)
 
 const SLIDE_ANGLE_THRESHOLD := deg2rad(20)
 
+const ANIMATION_BACKUP_LIST = {
+	walk = ["walk", "run", "stand", "emote", "fight"],
+	run = ["run", "walk", "stand", "emote", "fight"],
+	stand = ["stand", "walk", "run", "fight", "emote"],
+	emote = ["emote", "fight", "hurt", "fall", "stand"],
+	fight = ["fight", "emote", "hurt", "stand", "fall"],
+	hurt = ["hurt", "fight", "fall", "stand", "emote"],
+	fall = ["fall", "hurt", "fight", "stand", "emote"],
+}
+
+
 onready var animation_player = $AnimationPlayer
 onready var sprite = $SpritesheetManager
 
@@ -103,6 +114,7 @@ func run_coroutine(func_name : String, args := []) -> void:
 # Coroutines
 
 func emote() -> void:
+	velocity = Vector2(0, 0)
 	animation_player.play("emote")
 	yield(animation_player, "animation_finished")
 
@@ -230,28 +242,54 @@ func make_anim(keyframes, frame_duration := 1) -> Animation:
 	
 	return anim
 
-func add_anim_single(anim_name : String, start : int, frame_count : int, frame_duration := 1) -> void:
+func add_anim_single(anim_name : String, frame_duration := 1) -> void:
+	var anim_data = get_best_anim_match(anim_name)
 	var frames = []
-	for j in frame_count:
-		frames.append(start + j)
+	for j in anim_data.frame_count:
+		frames.append(anim_data.start_frame + j)
 	var anim = make_anim(frames, frame_duration)
 	animation_player.add_animation(anim_name, anim)
 
-func add_anim_batch(batch : String, start : int, frame_count : int, frame_duration := 1) -> void:
+func add_anim_batch(batch : String, frame_duration := 1) -> void:
 	var anim_dirs = ["up", "up_right", "right", "down_right", "down"]
 	for i in anim_dirs.size():
 		var anim_name = batch + "_" + anim_dirs[i]
-		var start_frame = start + i * frame_count
-		add_anim_single(anim_name, start_frame, frame_count, frame_duration)
+		add_anim_single(anim_name, frame_duration)
+
+func get_best_anim_match(anim_name : String) -> Dictionary:
+	var result = sprite.get_anim_by_name(anim_name)
+	if not result.exists:
+		for backup in get_backup_anim_names(anim_name):
+			result = sprite.get_anim_by_name(backup)
+			if result.exists:
+				break
+	return result
+
+func get_backup_anim_names(anim_name : String) -> Array:
+	var result = []
+	var anim = parse_anim_name(anim_name)
+	if anim.type in ANIMATION_BACKUP_LIST:
+		for backup in ANIMATION_BACKUP_LIST[anim.type]:
+			result.append(backup + anim.dir)
+	return result
+
+func parse_anim_name(anim_name : String) -> Dictionary:
+	var name_components = anim_name.split("_", false, 1)
+	var anim = {}
+	anim.type = name_components[0]
+	anim.dir = ""
+	if name_components.size() == 2:
+		anim.dir = "_" + name_components[1]
+	return anim
 
 
 # Initialization
 
 func setup_standard_animations() -> void:
-	add_anim_batch("stand", 0, 1, 1)
-	add_anim_batch("walk", 5, 6, 6)
-	add_anim_batch("run", 5, 6, 4)
-	add_anim_single("emote", 35, 4, 6)
+	add_anim_batch("stand", 1)
+	add_anim_batch("walk", 6)
+	add_anim_batch("run", 4)
+	add_anim_single("emote", 6)
 
 func _ready() -> void:
 	setup_standard_animations()
