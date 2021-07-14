@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Overworld/Character/OverworldPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Overworld/Character/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Overworld/Overworld.gd" type="Script" id=4]
 [ext_resource path="res://Assets/MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3" type="AudioStream" id=5]
 
@@ -12,12 +12,11 @@ __meta__ = {
 
 [node name="Map" parent="." instance_placeholder="res://Overworld/Map/MapScenes/ACDC_1.tscn"]
 
-[node name="Characters" type="YSort" parent="."]
-z_index = 10
+[node name="Player" parent="." instance=ExtResource( 1 )]
 
-[node name="OverworldPlayer" parent="Characters" instance=ExtResource( 1 )]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -10.0
 autoplay = true
+
+[connection signal="moved" from="Player" to="." method="_on_Player_moved"]

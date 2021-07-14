@@ -1,6 +1,10 @@
-class_name OverworldPlayer
+class_name Player
 extends Character
 
+
+# Interface
+
+# Processing
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	for d in Constants.DIRS:
@@ -18,4 +22,5 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 
 
 func _ready() -> void:
+#	position = PlayerData.overworld_pos
 	pass

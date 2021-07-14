@@ -105,9 +105,9 @@ _global_script_classes=[ {
 "path": "res://Battle/Entity/Unit/Navi/NormalNavi/NormalNavi.gd"
 }, {
 "base": "Character",
-"class": "OverworldPlayer",
+"class": "Player",
 "language": "GDScript",
-"path": "res://Overworld/Character/OverworldPlayer.gd"
+"path": "res://Overworld/Character/Player.gd"
 }, {
 "base": "Node2D",
 "class": "PlayerController",
@@ -179,7 +179,7 @@ _global_script_class_icons={
 "NPC": "",
 "Navi": "",
 "NormalNavi": "",
-"OverworldPlayer": "",
+"Player": "",
 "PlayerController": "",
 "Shockwave": "",
 "Shot": "",

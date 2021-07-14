@@ -20,7 +20,7 @@ const _scenes = {
 func switch_to(scene_name : String) -> void:
 	get_tree().change_scene_to(_scenes[scene_name])
 
-func get_map(map_name : String):
+func get_map(map_name : String) -> Node:
 	var map_path = MAP_ROOT + map_name + ".tscn"
 	if not File.new().file_exists(map_path):
 		return null

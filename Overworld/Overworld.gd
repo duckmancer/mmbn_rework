@@ -6,7 +6,7 @@ const ENCOUNTER_THRESHOLD = 1000.0
 const ENCOUNTER_VARIANCE = 300.0
 const TRAVEL_STEP = 100.0
 
-onready var player = $Characters/Player
+onready var player = $Player
 onready var map = $Map
 
 var do_encounter = false
@@ -34,8 +34,7 @@ func track_travel(new_pos : Vector2) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if encounter_check():
-		distance_traveled = 0.0
-		encounter_progress = 0.0
+		reset_encounters()
 		enter_battle()
 
 func enter_battle() -> void:
@@ -46,25 +45,29 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("action_1"):
 		enter_battle()
 
+
 # Setup
 
 func _ready() -> void:
+	remove_child(player)
 	load_map(PlayerData.overworld_map)
 
 func load_map(map_name : String) -> void:
-	var map_scene = Scenes.get_map(map_name)
-	map.queue_free()
-	yield(map, "tree_exited")
-	map = map_scene
-	add_child(map_scene)
-	for_tree(map_scene, "connect_signals_to_overworld", [self])
+	_clear_old_map(map)
+	map = _setup_new_map(map_name)
 	reset_encounters()
 
-func for_tree(root : Node, method : String, args := []) -> void:
-	if root.has_method(method):
-		root.callv(method, args)
-	for child in root.get_children():
-		for_tree(child, method, args)
+func _clear_old_map(old_map : Node) -> void:
+	if not old_map.get_scene_instance_load_placeholder():
+		old_map.release_player()
+	old_map.queue_free()
+
+func _setup_new_map(map_name : String) -> Node:
+	var new_map = Scenes.get_map(map_name)
+	add_child(new_map)
+	new_map.spawn_player(player)
+	new_map.connect_character_signals_to_overworld(self)
+	return new_map
 
 func reset_encounters():
 	distance_traveled = 0.0
@@ -73,13 +76,13 @@ func reset_encounters():
 
 # Signals
 
-func _on_Player_moved(position) -> void:
+func _on_Player_moved(position : Vector2) -> void:
 	track_travel(position)
 
 func _on_Event_map_transition_triggered(new_map : String) -> void:
 	yield(Transition.fade_in_and_out(), "completed")
 	yield(load_map(new_map), "completed")
-	var player_start = $Map/Spawnpoint.position
+	var player_start = $Map/DefaultSpawn.position
 	var player_dir = "none"
 	var old_map = PlayerData.overworld_map
 	PlayerData.overworld_map = new_map
@@ -93,7 +96,6 @@ func _on_Event_map_transition_triggered(new_map : String) -> void:
 	player.position = player_start
 	player.set_velocity_from_string(player_dir)
 	PlayerData.update_position(player.position)
-	
 
 func reverse_dirs(dir : String) -> String:
 	if "left" in dir:

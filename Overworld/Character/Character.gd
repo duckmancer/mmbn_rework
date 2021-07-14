@@ -30,6 +30,13 @@ var queued_action = null
 var queued_args = []
 
 
+# Interface
+
+func connect_signals_to_overworld(_overworld : Node) -> void:
+#	connect("moved", overworld, "_on_Character_moved")
+	pass
+
+
 # Overrides
 
 func warp_to(destination : Vector2, walk_dir : String, walk_duration : float) -> bool:
@@ -248,5 +255,4 @@ func setup_standard_animations() -> void:
 
 func _ready() -> void:
 	setup_standard_animations()
-	position = PlayerData.overworld_pos
 	emit_signal("moved", position)

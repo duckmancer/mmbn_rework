@@ -11,7 +11,7 @@ radius = 2.0
 collision_layer = 3
 script = ExtResource( 3 )
 __meta__ = {
-"_edit_lock_": true
+"_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
