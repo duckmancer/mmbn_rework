@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Panel/Panel.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Overworld/Character/Character.gd"
+}, {
 "base": "TextureRect",
 "class": "ChipSlot",
 "language": "GDScript",
@@ -84,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Unit/Virus/Mettaur/Mettaur.gd"
 }, {
+"base": "Character",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://Overworld/Character/NPC.gd"
+}, {
 "base": "Unit",
 "class": "Navi",
 "language": "GDScript",
@@ -93,6 +103,11 @@ _global_script_classes=[ {
 "class": "NormalNavi",
 "language": "GDScript",
 "path": "res://Battle/Entity/Unit/Navi/NormalNavi/NormalNavi.gd"
+}, {
+"base": "Character",
+"class": "OverworldPlayer",
+"language": "GDScript",
+"path": "res://Overworld/Character/OverworldPlayer.gd"
 }, {
 "base": "Node2D",
 "class": "PlayerController",
@@ -150,6 +165,7 @@ _global_script_class_icons={
 "Attack": "",
 "Battle": "",
 "BattlePanel": "",
+"Character": "",
 "ChipSlot": "",
 "Entity": "",
 "Event": "",
@@ -160,8 +176,10 @@ _global_script_class_icons={
 "MapData": "",
 "Megaman": "",
 "Mettaur": "",
+"NPC": "",
 "Navi": "",
 "NormalNavi": "",
+"OverworldPlayer": "",
 "PlayerController": "",
 "Shockwave": "",
 "Shot": "",

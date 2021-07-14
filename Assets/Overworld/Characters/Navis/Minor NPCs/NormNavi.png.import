@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spritesheet.png-5d376aa22b8c4bf53718c801a0853ac9.stex"
+path="res://.import/NormNavi.png-06455357cee93d65ef206fbb95c86dfb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.png"
-dest_files=[ "res://.import/spritesheet.png-5d376aa22b8c4bf53718c801a0853ac9.stex" ]
+source_file="res://Assets/Overworld/Characters/Navis/Minor NPCs/NormNavi.png"
+dest_files=[ "res://.import/NormNavi.png-06455357cee93d65ef206fbb95c86dfb.stex" ]
 
 [params]
 

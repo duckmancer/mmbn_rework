@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Overworld/Character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Overworld/Character/OverworldPlayer.gd" type="Script" id=2]
+[ext_resource path="res://Overworld/OverworldHUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Overworld/Characters/Navis/Megaman/Megaman.png" type="Texture" id=4]
+
+[node name="OverworldPlayer" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="SpritesheetManager" parent="." index="1"]
+texture = ExtResource( 4 )
+offset = Vector2( -8, -32 )
+region_rect = Rect2( 58, 4, 17, 32 )
+sheet_path = "res://Assets/Overworld/Characters/Navis/Megaman/Megaman.png"
+data_path = "res://Assets/Overworld/Characters/Navis/Megaman/Megaman.json"
+frame_index = 0
+FrameData/Name = "stand_up"
+
+[node name="Camera2D" parent="." index="3" instance=ExtResource( 3 )]

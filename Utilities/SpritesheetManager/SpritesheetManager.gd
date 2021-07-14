@@ -64,6 +64,17 @@ var spritesheet_data : Array = []
 var frame_data : Dictionary = {}
 
 
+# Interface
+
+func get_frame_with_name(search_name : String) -> int:
+	var result = -1
+	for i in spritesheet_data.size():
+		if spritesheet_data[i].name == search_name:
+			result = i
+			break
+	return result
+
+
 # Properties
 
 func _get_property_list() -> Array:

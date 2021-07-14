@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Overworld/Characters/Navis/Minor NPCs/HeelNavi.png" type="Texture" id=1]
 [ext_resource path="res://Utilities/SpritesheetManager/SpritesheetManager.gd" type="Script" id=2]
 
 [node name="SpritesheetManager" type="Sprite"]
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( -8, 0 )
+offset = Vector2( -8, -34 )
 region_enabled = true
-region_rect = Rect2( 58, 4, 17, 32 )
+region_rect = Rect2( 6, 3, 17, 34 )
 script = ExtResource( 2 )
-sheet_path = "res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.png"
-data_path = "res://Assets/Overworld/Characters/Navis/Megaman/spritesheet.json"
+sheet_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/HeelNavi.png"
+data_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/HeelNavi.json"
 FrameData/XOffset = 0.0
 FrameData/YOffset = 0.0
-FrameData/Name = "stand_up"
+FrameData/Name = "stand_down_right"
 Anchors/Horizontal = 1
-Anchors/Vertical = 0
+Anchors/Vertical = 2
