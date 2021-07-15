@@ -3,10 +3,106 @@ extends SpritesheetManager
 
 signal animation_finished()
 
+const ANIM_DIRS = [
+	"up", 
+	"up_right", 
+	"right", 
+	"down_right", 
+	"down", 
+	"down_left", 
+	"left", 
+	"up_left"]
+
+const ANIM_CYCLE_TYPES = {
+	forward = {
+		reverse = false,
+		flip = false,
+	},
+	reverse = {
+		reverse = true,
+		flip = false,
+	},
+	flip_forward = {
+		reverse = false,
+		flip = true,
+	},
+	flip_reverse = {
+		reverse = true,
+		flip = true,
+	},
+}
+
+const STANDARD_ANIM_CYCLES = {
+	normal = [
+		ANIM_CYCLE_TYPES.forward
+	],
+	flipped = [
+		ANIM_CYCLE_TYPES.flip_forward
+	],
+	oscillate = [
+		ANIM_CYCLE_TYPES.forward,
+		ANIM_CYCLE_TYPES.reverse,
+	],
+	flip_flop = [
+		ANIM_CYCLE_TYPES.forward,
+		ANIM_CYCLE_TYPES.flip_forward,
+	],
+	oscillate_to_flip = [
+		ANIM_CYCLE_TYPES.forward,
+		ANIM_CYCLE_TYPES.flip_forward,
+		ANIM_CYCLE_TYPES.flip_reverse,
+		ANIM_CYCLE_TYPES.reverse,
+	],
+	flip_to_oscillate = [
+		ANIM_CYCLE_TYPES.forward,
+		ANIM_CYCLE_TYPES.flip_forward,
+		ANIM_CYCLE_TYPES.reverse,
+		ANIM_CYCLE_TYPES.flip_reverse,
+	],
+}
+
+const ANIMATION_PARAMS = {
+	stand = {
+		individual_frame_duration = 10,
+		loop = true,
+		cycle = STANDARD_ANIM_CYCLES.oscillate
+	},
+	walk = {
+		individual_frame_duration = 6,
+		loop = true,
+		cycle = STANDARD_ANIM_CYCLES.normal
+	},
+	run = {
+		individual_frame_duration = 4,
+		loop = true,
+		cycle = STANDARD_ANIM_CYCLES.normal
+	},
+	emote = {
+		individual_frame_duration = 6,
+		loop = false,
+		cycle = STANDARD_ANIM_CYCLES.oscillate
+	},
+	fight = {
+		individual_frame_duration = 6,
+		loop = true,
+		cycle = STANDARD_ANIM_CYCLES.normal
+	},
+	hurt = {
+		individual_frame_duration = 6,
+		loop = true,
+		cycle = STANDARD_ANIM_CYCLES.normal
+	},
+	fall = {
+		individual_frame_duration = 6,
+		loop = true,
+		cycle = STANDARD_ANIM_CYCLES.normal
+	},
+}
+
 const ANIMATION_BACKUP_LIST = {
+	stand = ["stand", "walk", "run", "fight", "emote"],
 	walk = ["walk", "run", "stand", "emote", "fight"],
 	run = ["run", "walk", "stand", "emote", "fight"],
-	stand = ["stand", "walk", "run", "fight", "emote"],
 	emote = ["emote", "fight", "hurt", "fall", "stand"],
 	fight = ["fight", "emote", "hurt", "stand", "fall"],
 	hurt = ["hurt", "fight", "fall", "stand", "emote"],
@@ -17,115 +113,77 @@ const ANIMATION_BACKUP_LIST = {
 onready var animation_player = $FrameAnimator
 onready var sprite = $"."
 
-var velocity = Vector2(0, 0)
-var anim_dir = "down"
+#var velocity = Vector2(0, 0)
+#var anim_dir = "down"
+#
+#var speeds = {
+#	stand = 0,
+#	walk = 60,
+#	run = 100,
+#}
 
-var speeds = {
-	stand = 0,
-	walk = 60,
-	run = 100,
-}
+var anim_map = {}
 
-var loop_anim := false
-var oscillate_anim := false
-var oscillate_state := "forward"
+var animation_state = null
+
 
 # Interface
 
-func play_anim(anim_name : String, do_loop := false, oscillate := false) -> void:
-	loop_anim = do_loop
-	oscillate_anim = oscillate
-	oscillate_state = "forward"
-	animation_player.play(anim_name)
+func play_anim(anim_name : String) -> void:
+	var anim = _parse_anim_name(anim_name)
+	if not animation_player.has_animation(anim.name):
+		return
+	animation_state = run_anim_cycle(anim_name)
 
 
 # Animation Execution
 
-# Unused
-func _get_anim_dir(dir : Vector2) -> String:
-	var new_dir_name = _get_dir_name(dir) as String
-	if new_dir_name.empty():
-		return anim_dir
-	
-	if "left" in new_dir_name:
-		new_dir_name = new_dir_name.replace("left", "right")
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
-	return new_dir_name
-# Unused
-func _get_dir_name(dir : Vector2) -> String:
-	var result = ""
-	if dir.y > 0.0:
-		result += "down"
-	elif dir.y < 0.0:
-		result += "up"
-	
-	var horizontal = ""
-	if dir.x > 0.0:
-		horizontal += "right"
-	elif dir.x < 0.0:
-		horizontal += "left"
-	
-	if not horizontal.empty():
-		if not result.empty():
-			result += "_"
-		result += horizontal
-	return result
-
-func _conclude_anim(anim_name : String) -> bool:
-	var result = true
-	if _process_oscillation():
-		animation_player.play_backwards(anim_name)
-		result = false
-	elif loop_anim:
-		animation_player.play(anim_name)
-		result = false
-	return result
-
-func _process_oscillation() -> bool:
-	var result = false
-	if oscillate_anim:
-		if oscillate_state == "forward":
-			result = true
-			oscillate_state = "backward"
+func run_anim_cycle(anim_name : String) -> void:
+	var anim = _gather_anim_data_components(anim_name)
+	var step = anim.cycle[anim.cycle_pos]
+	while true:
+		_play_anim_step(anim.name, anim.individual_frame_duration, step.reverse, step.flip)
+		step = _next_anim_step(anim)
+		if step.empty():
+			break
 		else:
-			result = false
-			oscillate_state = "forward"
-	return result
+			yield()
 
-
-# Animation Creation
-
-func _frame_time(frame : int, frame_duration := 1) -> float:
-	return Utils.frames_to_seconds(frame * frame_duration)
-
-func _make_anim(keyframes, frame_duration := 1) -> Animation:
-	if keyframes is int:
-		keyframes = [keyframes]
-	var anim = Animation.new() as Animation
-	var track = anim.add_track(Animation.TYPE_VALUE)
-	anim.track_set_path(track, ".:frame_index")
-	for i in keyframes.size():
-		var time = _frame_time(i, frame_duration)
-		anim.track_insert_key(track, time, keyframes[i])
-	anim.length = _frame_time(keyframes.size(), frame_duration)
-	
+func _gather_anim_data_components(anim_name : String) -> Dictionary:
+	var anim_name_components = _parse_anim_name(anim_name)
+	var anim_params = ANIMATION_PARAMS[anim_name_components.type]
+	var anim = anim_params.duplicate()
+	anim.name = anim_name_components.name
+	anim.cycle_pos = 0
 	return anim
 
-func _add_anim_single(anim_name : String, frame_duration := 1) -> void:
-	var anim_data = _get_best_anim_match(anim_name)
-	var frames = []
-	for j in anim_data.length:
-		frames.append(anim_data.start + j)
-	var anim = _make_anim(frames, frame_duration)
-	animation_player.add_animation(anim_name, anim)
+func _play_anim_step(anim_name := "", frame_duration := 1, do_reverse := false, do_flip := false) -> void:
+	var anim_speed = _get_anim_speed(frame_duration, do_reverse)
+	animation_player.play(anim_name, -1, anim_speed, do_reverse)
+	sprite.flip_h = do_flip
 
-func _add_anim_batch(batch : String, frame_duration := 1) -> void:
-	var anim_dirs = ["up", "up_right", "right", "down_right", "down"]
-	for i in anim_dirs.size():
-		var anim_name = batch + "_" + anim_dirs[i]
-		_add_anim_single(anim_name, frame_duration)
+func _get_anim_speed(frame_duration : int, do_reverse := false) -> float:
+	var anim_speed = 1.0
+	if frame_duration:
+		anim_speed /= frame_duration
+	else:
+		anim_speed = 1000000
+	if do_reverse:
+		anim_speed = -anim_speed
+	return anim_speed
+
+func _next_anim_step(anim : Dictionary) -> Dictionary:
+	anim.cycle_pos = (anim.cycle_pos + 1) % anim.cycle.size()
+	var result = {}
+	if anim.cycle_pos != 0 or anim.loop:
+		result = anim.cycle[anim.cycle_pos]
+	return result
+
+func _conclude_anim_step() -> void:
+	if animation_state is GDScriptFunctionState and animation_state.is_valid():
+		animation_state = animation_state.resume()
+	else:
+		emit_signal("animation_finished")
 
 
 # Animation Mapping
@@ -176,14 +234,46 @@ func _parse_anim_name(anim_name : String) -> Dictionary:
 	return anim
 
 
-# Initialization
+# Animation Creation
+
+func _frame_time(frame : int, frame_duration := 1) -> float:
+	return Utils.frames_to_seconds(frame * frame_duration)
+
+func _make_anim(keyframes, frame_duration := 1) -> Animation:
+	if keyframes is int:
+		keyframes = [keyframes]
+	var anim = Animation.new() as Animation
+	var track = anim.add_track(Animation.TYPE_VALUE)
+	anim.track_set_path(track, ".:frame_index")
+	for i in keyframes.size():
+		var time = _frame_time(i, frame_duration)
+		anim.track_insert_key(track, time, keyframes[i])
+	anim.length = _frame_time(keyframes.size(), frame_duration)
+	
+	return anim
+
+func _add_anim_single(anim_name : String, frame_duration := 1) -> void:
+	if not sprite.has_anim(anim_name):
+		return
+	var anim_data = sprite.get_anim_data(anim_name)
+	var frames = []
+	for j in anim_data.length:
+		frames.append(anim_data.start + j)
+	var anim = _make_anim(frames, frame_duration)
+	animation_player.add_animation(anim_name, anim)
+
+func _try_add_anim_batch(batch : String, frame_duration := 1) -> void:
+	for i in ANIM_DIRS.size():
+		var anim_name = batch + "_" + ANIM_DIRS[i]
+		_add_anim_single(anim_name, frame_duration)
 
 # TODO: Allow spritesheet to dictate animation speed and/or reversing
 func _setup_standard_animations() -> void:
-	_add_anim_batch("stand", 10)
-	_add_anim_batch("walk", 6)
-	_add_anim_batch("run", 4)
-	_add_anim_batch("emote", 6)
+	for anim in ANIMATION_PARAMS:
+		_try_add_anim_batch(anim)
+
+
+# Init
 
 func _ready() -> void:
 	_setup_standard_animations()
@@ -191,6 +281,5 @@ func _ready() -> void:
 
 # Signals
 
-func _on_FrameAnimator_animation_finished(anim_name: String) -> void:
-	if _conclude_anim(anim_name):
-		emit_signal("animation_finished")
+func _on_FrameAnimator_animation_finished(_anim_name: String) -> void:
+	_conclude_anim_step()
