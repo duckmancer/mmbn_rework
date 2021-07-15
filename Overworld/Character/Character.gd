@@ -160,7 +160,7 @@ func _is_iso_head_on_collision(travel : Vector2, normal : Vector2) -> bool:
 	var iso_normal = normal
 	iso_normal.x *= 2
 	var iso_collision_angle = abs(iso_normal.angle_to(-travel))
-	print(rad2deg(iso_collision_angle))
+#	print(rad2deg(iso_collision_angle))
 #	Utils.slow_print(rad2deg(iso_collision_angle))
 	if iso_collision_angle < SLIDE_ANGLE_THRESHOLD:
 		return true
@@ -200,11 +200,11 @@ func _get_anim_dir(dir : Vector2) -> String:
 	if new_dir_name.empty():
 		return anim_dir
 	
-	if "left" in new_dir_name:
-		new_dir_name = new_dir_name.replace("left", "right")
-		animated_spritesheet.flip_h = true
-	else:
-		animated_spritesheet.flip_h = false
+#	if "left" in new_dir_name:
+#		new_dir_name = new_dir_name.replace("left", "right")
+#		animated_spritesheet.flip_h = true
+#	else:
+#		animated_spritesheet.flip_h = false
 	return new_dir_name
 
 func _get_dir_name(dir : Vector2) -> String:
