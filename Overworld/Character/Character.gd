@@ -115,7 +115,7 @@ func run_coroutine(func_name : String, args := []) -> void:
 
 func emote() -> void:
 	velocity = Vector2(0, 0)
-	animated_spritesheet.play_anim("emote_down")
+	animated_spritesheet.play_anim("emote_" + anim_dir)
 	yield(animated_spritesheet, "animation_finished")
 
 func warp_local(destination : Vector2, walk_dir : String, walk_duration : float) -> void:
