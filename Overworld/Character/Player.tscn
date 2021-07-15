@@ -10,10 +10,12 @@ script = ExtResource( 2 )
 
 [node name="SpritesheetManager" parent="." index="1"]
 texture = ExtResource( 4 )
-offset = Vector2( -8, -32 )
-region_rect = Rect2( 58, 4, 17, 32 )
+offset = Vector2( -11, -31 )
+region_rect = Rect2( 51, 124, 24, 31 )
 sheet_path = "res://Assets/Overworld/Characters/Navis/Megaman/Megaman.png"
 data_path = "res://Assets/Overworld/Characters/Navis/Megaman/Megaman.json"
-FrameData/Name = "stand_up"
+frame_index = 18
+FrameData/XOffset = 1.0
+FrameData/Name = "walk_right2"
 
 [node name="Camera2D" parent="." index="3" instance=ExtResource( 3 )]

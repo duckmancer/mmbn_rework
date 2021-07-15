@@ -20,6 +20,18 @@ const EXPORT_PROPERTY_LIST = {
 		type = TYPE_STRING,
 		var = "frame_name",
 	},
+	"FrameData/Type" : {
+		type = TYPE_STRING,
+		hint = PROPERTY_HINT_ENUM,
+		hint_string = "stand,walk,run,emote,fight,hurt,fall,copy_prev",
+		var = "frame_type",
+	},
+	"FrameData/Dir" : {
+		type = TYPE_STRING,
+		hint = PROPERTY_HINT_ENUM,
+		hint_string = "down_right,up_right,up,right,down,down_left,up_left,left",
+		var = "frame_dir",
+	},
 	"Anchors/Horizontal" : {
 		type = TYPE_INT,
 		hint = PROPERTY_HINT_ENUM,
@@ -38,9 +50,20 @@ const SPRITE_VERTICAL_TOLERANCE = 10
 
 const FRAME_DATA_TEMPLATE = {
 	name = "frame",
-	is_custom_name = false,
 	rect = Rect2(),
 	offset = Vector2(),
+	type = "copy_prev",
+	dir = "down_right",
+}
+
+const BASE_ANIM_GROUPS = {
+	stand = {},
+	walk = {},
+	run = {},
+	emote = {},
+	fight = {},
+	hurt = {},
+	fall = {},
 }
 
 export(String, "Locked", "Local", "Write") var data_access_mode := "Locked"
@@ -54,6 +77,8 @@ var x_offset = 0 setget set_x_offset
 var y_offset = 0 setget set_y_offset
 
 var frame_name : String setget set_frame_name
+var frame_type : String = "copy_prev" setget set_frame_type
+var frame_dir : String setget set_frame_dir
 
 var vertical_anchor = AnchorType.END setget set_vertical_anchor
 var horizontal_anchor = AnchorType.CENTER setget set_horizontal_anchor
@@ -64,13 +89,34 @@ var spritesheet_data : Array = []
 var frame_data : Dictionary = {}
 var anim_groups : Dictionary = {}
 
+var is_group_dirty := false
+
+
 # Interface
 
-func get_dirs_for_anim(base_anim : String) -> Dictionary:
-	var result = {}
-	for index in spritesheet_data.size():
-		pass
+func has_anim(anim_name : String) -> bool:
+	group_animations()
+	var anim_params = _parse_anim_name(anim_name)
+	var result = not anim_groups[anim_params.type].empty()
+	if anim_params.dir:
+		result = anim_groups[anim_params.type].has(anim_params.dir)
 	return result
+
+func get_anim_data(anim_name : String) -> Dictionary:
+	group_animations()
+	var anim_params = _parse_anim_name(anim_name)
+	var result = _find_anim(anim_params)
+	return result
+
+func _find_anim(anim_params : Dictionary) -> Dictionary:
+	var type_group = anim_groups[anim_params.type]
+	var anim = {}
+	if anim_params.dir:
+		if anim_params.dir in type_group:
+			anim = type_group[anim_params.dir]
+	else:
+		anim = type_group
+	return anim
 
 func get_anim_by_name(search_name : String) -> Dictionary:
 	var result = {start_frame = 0, frame_count = 0, exists = false}
@@ -108,11 +154,14 @@ func _get_property_list() -> Array:
 func _set(property: String, value) -> bool:
 	var result = false
 	if property in EXPORT_PROPERTY_LIST:
-		if "FrameData" in property and data_access_mode == "Locked":
-			pass
-		else:
-			set(EXPORT_PROPERTY_LIST[property].var, value)
 		result = true
+		if "FrameData" in property:
+			if data_access_mode == "Locked":
+				return result
+			else:
+				is_group_dirty = true
+		set(EXPORT_PROPERTY_LIST[property].var, value)
+		load_frame()
 	return result
 
 func _get(property: String):
@@ -150,13 +199,18 @@ func set_frame_index(val : int) -> void:
 	frame_index = posmod(val, spritesheet_data.size())
 	load_frame()
 
-func set_frame_name(val : String) -> void:
-	frame_name = val
-	set_frame_data("is_custom_name", not frame_name.empty(), frame_index, false)
-	set_frame_data("name", frame_name, frame_index, false)
-	propagate_frame_names(frame_index)
-	save_json_data(data_path)
+func set_frame_type(val : String) -> void:
+	frame_type = val
+	set_frame_data("type", frame_type)
+	update_frame_names()
 
+func set_frame_dir(val : String) -> void:
+	frame_dir = val
+	set_frame_data("dir", frame_dir)
+	update_frame_names()
+
+func set_frame_name(_val : String) -> void:
+	return
 
 func set_x_offset(val):
 	x_offset = val
@@ -208,22 +262,23 @@ func calc_offset(type, dimension_size) -> int:
 				result = -floor(half_dim) as int
 	return result
 
-func propagate_frame_names(starting_frame : int) -> void:
-	var base_name := spritesheet_data[starting_frame].name as String
-	var base_index := base_name.to_int()
-	var base_index_str := String(base_index)
-	if not base_index_str in base_name:
-		base_name += base_index_str
-	
-	var index = 1
-	while index + starting_frame < spritesheet_data.size():
-		var cur_index = index + starting_frame
-		index += 1
-		if spritesheet_data[cur_index].is_custom_name:
-			break
-		else:
-			var new_name = base_name.replace(base_index_str, String(index + base_index))
-			set_frame_data("name", new_name, cur_index, false)
+
+func update_frame_names() -> void:
+	var prev_type = FRAME_DATA_TEMPLATE.name
+	var prev_dir = FRAME_DATA_TEMPLATE.dir
+	var count = 0
+	for index in spritesheet_data.size():
+		var cur_frame = spritesheet_data[index]
+		if cur_frame.type != "copy_prev":
+			prev_type = cur_frame.type
+			prev_dir = cur_frame.dir
+			count = 0
+		var new_name = prev_type + "_" + prev_dir
+		count += 1
+		if count >= 2:
+			new_name += String(count)
+		set_frame_data("name", new_name, index, false)
+		set_frame_data("dir", prev_dir, index, false)
 
 
 # Data Processing
@@ -232,6 +287,8 @@ func load_frame(index = frame_index) -> void:
 	frame_data = spritesheet_data[index]
 	frame_name = frame_data.name
 	region_rect = frame_data.rect
+	frame_type = frame_data.type
+	frame_dir = frame_data.dir
 	_update_sprite_offset(frame_data.offset)
 	update_sprite()
 
@@ -246,8 +303,9 @@ func pack_data(unpacked_data : Array) -> Array:
 	var data = []
 	for unpacked_frame in unpacked_data:
 		var packed_frame = {}
+		packed_frame.type = unpacked_frame.type
+		packed_frame.dir = unpacked_frame.dir
 		packed_frame.name = unpacked_frame.name
-		packed_frame.is_custom_name = unpacked_frame.is_custom_name
 		packed_frame.rect = var2str(unpacked_frame.rect)
 		packed_frame.offset = var2str(unpacked_frame.offset)
 		data.append(packed_frame)
@@ -258,16 +316,6 @@ func unpack_data(packed_data : Array) -> Array:
 	for packed_frame in packed_data:
 		data.append(_unpack_frame(packed_frame))
 	return data
-
-# TODO: Auto group animations. (Help with marking?)
-func group_animations():
-	anim_groups = {}
-	var cur_group = ""
-	var cur_start = 0
-	for index in spritesheet_data.size():
-		if spritesheet_data[index].is_custom_name:
-			if cur_group:
-				anim_groups[cur_group] = 0
 
 func sort_frames(frame1, frame2) -> bool:
 	if frame1.has("rect") and frame2.has("rect"):
@@ -281,28 +329,77 @@ func sort_frames(frame1, frame2) -> bool:
 		return frame1.hash() < frame2.hash()
 
 
+## Anim Grouping
+
+func group_animations():
+	if not is_group_dirty:
+		return
+	anim_groups = BASE_ANIM_GROUPS.duplicate(true)
+	var group := {}
+	for index in spritesheet_data.size():
+		_test_index_for_groups(index, group)
+	_finish_group(group)
+	is_group_dirty = false
+
+func _test_index_for_groups(index : int, group : Dictionary) -> void:
+	if spritesheet_data[index].type != "copy_prev":
+		_finish_group(group)
+		var anim_name = spritesheet_data[index].name
+		var anim = _parse_anim_name(anim_name)
+		if anim.dir == "":
+			anim.dir = "down"
+		_setup_new_group(group, anim, index)
+	if not group.empty():
+		group.length += 1
+
+func _finish_group(group : Dictionary) -> void:
+	if not group.empty():
+		anim_groups[group.type][group.dir] = group.duplicate(true)
+
+func _setup_new_group(group : Dictionary, anim : Dictionary, index : int) -> void:
+	group.clear()
+	group.name = anim.name
+	group.type = anim.type
+	group.dir = anim.dir
+	group.start = index
+	group.length = 0
+
+func _parse_anim_name(anim_name : String) -> Dictionary:
+	var name_components = anim_name.split("_", false, 1)
+	var anim = {}
+	anim.name = anim_name
+	anim.type = name_components[0]
+	assert(anim.type in BASE_ANIM_GROUPS)
+	anim.dir = ""
+	if name_components.size() == 2:
+		anim.dir = name_components[1]
+	return anim
+
+
 ## Data Unpacking
 
 func _unpack_frame(packed_frame : Dictionary) -> Dictionary:
 	var unpacked_frame = {}
 	
 	unpacked_frame.name = _unpack_name(packed_frame)
-	unpacked_frame.is_custom_name = _unpack_is_custom_name(packed_frame)
 	unpacked_frame.rect = _unpack_rect(packed_frame)
 	unpacked_frame.offset = _unpack_offset(packed_frame)
-	
+	if packed_frame.has("type"):
+		unpacked_frame.type = packed_frame.type
+	else:
+		unpacked_frame.type = FRAME_DATA_TEMPLATE.type
+	if packed_frame.has("dir"):
+		unpacked_frame.dir = packed_frame.dir
+	else:
+		unpacked_frame.dir = FRAME_DATA_TEMPLATE.dir
 	return unpacked_frame
 
 func _unpack_name(packed_frame : Dictionary) -> String:
 	var sprite_frame_name = FRAME_DATA_TEMPLATE.name
 	if packed_frame.has("name"):
 		sprite_frame_name = packed_frame.name
+
 	return sprite_frame_name
-func _unpack_is_custom_name(packed_frame : Dictionary) -> bool:
-	var frame_is_custom_name = FRAME_DATA_TEMPLATE.is_custom_name
-	if packed_frame.has("is_custom_name"):
-		frame_is_custom_name = packed_frame.is_custom_name
-	return frame_is_custom_name
 
 func _unpack_rect(packed_frame : Dictionary) -> String:
 	var frame_rect = FRAME_DATA_TEMPLATE.rect

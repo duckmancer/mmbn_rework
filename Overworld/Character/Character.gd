@@ -245,8 +245,8 @@ func make_anim(keyframes, frame_duration := 1) -> Animation:
 func add_anim_single(anim_name : String, frame_duration := 1) -> void:
 	var anim_data = get_best_anim_match(anim_name)
 	var frames = []
-	for j in anim_data.frame_count:
-		frames.append(anim_data.start_frame + j)
+	for j in anim_data.length:
+		frames.append(anim_data.start + j)
 	var anim = make_anim(frames, frame_duration)
 	animation_player.add_animation(anim_name, anim)
 
@@ -256,30 +256,49 @@ func add_anim_batch(batch : String, frame_duration := 1) -> void:
 		var anim_name = batch + "_" + anim_dirs[i]
 		add_anim_single(anim_name, frame_duration)
 
+
+# Animation Mapping
+
 func get_best_anim_match(anim_name : String) -> Dictionary:
-	var result = sprite.get_anim_by_name(anim_name)
-	if not result.exists:
-		for backup in get_backup_anim_names(anim_name):
-			result = sprite.get_anim_by_name(backup)
-			if result.exists:
+	var anim_params = _parse_anim_name(anim_name)
+	var backup_list = ANIMATION_BACKUP_LIST[anim_params.type]
+	var usable_list = _get_usable_list(anim_params)
+	
+	var MAX_ANIM_STEP = 9
+	for step in MAX_ANIM_STEP:
+		for type_delta in backup_list.size():
+			var remaining_step = step - type_delta
+			if remaining_step < 0:
 				break
-	return result
+			var test_type = usable_list[backup_list[type_delta]]
+			for backup_dir in test_type:
+				var angle_step = _get_angle_delta(anim_params.dir, backup_dir)
+				if angle_step <= remaining_step:
+					return test_type[backup_dir]
+	return {}
 
-func get_backup_anim_names(anim_name : String) -> Array:
-	var result = []
-	var anim = parse_anim_name(anim_name)
-	if anim.type in ANIMATION_BACKUP_LIST:
-		for backup in ANIMATION_BACKUP_LIST[anim.type]:
-			result.append(backup + anim.dir)
-	return result
+func _get_angle_delta(original_dir : String, backup_dir : String) -> int:
+	var original_vec = Constants.DIR_ANGLES[original_dir]
+	var backup_vec = Constants.DIR_ANGLES[backup_dir]
+	var angle = abs(original_vec.angle_to(backup_vec))
+	var step = round(angle / (PI / 4)) as int
+	return step
 
-func parse_anim_name(anim_name : String) -> Dictionary:
+func _get_usable_list(anim_params : Dictionary) -> Dictionary:
+	var usable_list = {}
+	for backup in ANIMATION_BACKUP_LIST[anim_params.type]:
+		if sprite.has_anim(backup):
+			usable_list[backup] = sprite.get_anim_data(backup)
+	return usable_list
+
+func _parse_anim_name(anim_name : String) -> Dictionary:
 	var name_components = anim_name.split("_", false, 1)
 	var anim = {}
+	anim.name = anim_name
 	anim.type = name_components[0]
 	anim.dir = ""
 	if name_components.size() == 2:
-		anim.dir = "_" + name_components[1]
+		anim.dir = name_components[1]
 	return anim
 
 

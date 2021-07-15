@@ -17,6 +17,16 @@ const ISOMETRIC_DIRS = {
 	left = Vector2(-2, 0),
 	right = Vector2(2, 0),
 }
+const DIR_ANGLES = {
+	up = Vector2(0, -1),
+	up_right = Vector2(1, -1),
+	right = Vector2(1, 0),
+	down_right = Vector2(1, 1),
+	down = Vector2(0, 1),
+	down_left = Vector2(-1, 1),
+	left = Vector2(-1, 0),
+	up_left = Vector2(-1, -1),
+}
 
 const GRID_SIZE = Vector2(6, 3)
 const GBA_SCREEN_SIZE = Vector2(240, 160)
