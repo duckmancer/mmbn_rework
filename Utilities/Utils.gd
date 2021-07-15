@@ -1,6 +1,24 @@
 extends Node
 
-var _last_delta = 0.0
+var _last_delta := 0.0
+
+var _slow_print_frequency_seconds := 2.0
+var _last_slow_print := 0.0
+
+# Variable-Dependent
+
+func slow_print(val) -> void:
+	var cur_time = OS.get_unix_time()
+	if cur_time - _last_slow_print > _slow_print_frequency_seconds:
+		_last_slow_print = cur_time
+		print(val)
+
+func delta_time() -> float:
+	var cur_time = float(OS.get_system_time_msecs()) / 1000
+	var result = cur_time - _last_delta
+	_last_delta = cur_time
+	return result
+
 
 # Misc
 
@@ -27,12 +45,6 @@ static func instantiate(type: Script):
 	if path.is_abs_path():
 		scene = load(path).instance()
 	return scene
-
-func delta_time() -> float:
-	var cur_time = float(OS.get_system_time_msecs()) / 1000
-	var result = cur_time - _last_delta
-	_last_delta = cur_time
-	return result
 
 # Grid Mapping
 
