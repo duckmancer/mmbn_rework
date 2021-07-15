@@ -66,7 +66,7 @@ func _setup_new_map(map_name : String) -> Node:
 	var new_map = Scenes.get_map(map_name)
 	add_child(new_map)
 	new_map.spawn_player(player)
-	new_map.connect_character_signals_to_overworld(self)
+	new_map.connect_signals_to_overworld(self)
 	return new_map
 
 func reset_encounters():
@@ -81,29 +81,6 @@ func _on_Player_moved(position : Vector2) -> void:
 
 func _on_Event_map_transition_triggered(new_map : String) -> void:
 	yield(Transition.fade_in_and_out(), "completed")
-	yield(load_map(new_map), "completed")
-	var player_start = $Map/DefaultSpawn.position
-	var player_dir = "none"
-	var old_map = PlayerData.overworld_map
+	load_map(new_map)
 	PlayerData.overworld_map = new_map
-	for e in $Map/Events.get_children():
-		if "destination_map" in e:
-			if e.destination_map == old_map:
-				player_start = e.position
-				player_dir = e.walk_dir
-				if e is WalkTransition:
-					player_dir = reverse_dirs(player_dir)
-	player.position = player_start
-	player.set_velocity_from_string(player_dir)
-	PlayerData.update_position(player.position)
-
-func reverse_dirs(dir : String) -> String:
-	if "left" in dir:
-		dir = dir.replace("left", "right")
-	else:
-		dir = dir.replace("right", "left")
-	if "up" in dir:
-		dir = dir.replace("up", "down")
-	else:
-		dir = dir.replace("down", "up")
-	return dir
+	

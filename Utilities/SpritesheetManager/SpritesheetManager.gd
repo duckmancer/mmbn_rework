@@ -87,9 +87,9 @@ var sprite_offset := Vector2(0, 0) setget set_sprite_offset
 
 var spritesheet_data : Array = []
 var frame_data : Dictionary = {}
-var anim_groups : Dictionary = {}
+var anim_groups : Dictionary = BASE_ANIM_GROUPS.duplicate(true)
 
-var is_group_dirty := false
+var is_group_dirty := true
 
 
 # Interface

@@ -115,7 +115,7 @@ func run_coroutine(func_name : String, args := []) -> void:
 
 func emote() -> void:
 	velocity = Vector2(0, 0)
-	animation_player.play("emote")
+	animation_player.play("emote_down")
 	yield(animation_player, "animation_finished")
 
 func warp_local(destination : Vector2, walk_dir : String, walk_duration : float) -> void:
@@ -184,7 +184,7 @@ func animate_movement(dir : Vector2) -> void:
 	anim_dir = _get_anim_dir(dir)
 	var anim_type
 	if dir:
-		if held_inputs.run:
+		if is_equal_approx(dir.length(), speeds.run):
 			anim_type = "run"
 		else:
 			anim_type = "walk"
@@ -267,14 +267,17 @@ func get_best_anim_match(anim_name : String) -> Dictionary:
 	var MAX_ANIM_STEP = 9
 	for step in MAX_ANIM_STEP:
 		for type_delta in backup_list.size():
+			var test_type = backup_list[type_delta]
+			if not test_type in usable_list:
+				continue
 			var remaining_step = step - type_delta
 			if remaining_step < 0:
 				break
-			var test_type = usable_list[backup_list[type_delta]]
-			for backup_dir in test_type:
+			var test_data = usable_list[test_type]
+			for backup_dir in test_data:
 				var angle_step = _get_angle_delta(anim_params.dir, backup_dir)
 				if angle_step <= remaining_step:
-					return test_type[backup_dir]
+					return test_data[backup_dir]
 	return {}
 
 func _get_angle_delta(original_dir : String, backup_dir : String) -> int:
@@ -304,11 +307,12 @@ func _parse_anim_name(anim_name : String) -> Dictionary:
 
 # Initialization
 
+# TODO: Allow spritesheet to dictate animation speed and/or reversing
 func setup_standard_animations() -> void:
-	add_anim_batch("stand", 1)
+	add_anim_batch("stand", 10)
 	add_anim_batch("walk", 6)
 	add_anim_batch("run", 4)
-	add_anim_single("emote", 6)
+	add_anim_batch("emote", 6)
 
 func _ready() -> void:
 	setup_standard_animations()
