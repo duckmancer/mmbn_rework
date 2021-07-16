@@ -33,7 +33,18 @@ position = Vector2( 29, 190 )
 destination_map = "ACDC_2"
 
 [node name="NPC" parent="Entities" index="0" instance=ExtResource( 5 )]
-position = Vector2( 433, 269 )
+position = Vector2( 403, 279 )
+facing_direction = "up_right"
+
+[node name="NPC2" parent="Entities" index="1" instance=ExtResource( 5 )]
+position = Vector2( 519, 281 )
+facing_direction = "down_left"
+
+[node name="NPC3" parent="Entities" index="2" instance=ExtResource( 5 )]
+position = Vector2( 458, 254 )
+
+[node name="NPC4" parent="Entities" index="3" instance=ExtResource( 5 )]
+position = Vector2( 460, 310 )
 
 [node name="DefaultSpawn" parent="." index="4"]
 position = Vector2( 470, 281 )
