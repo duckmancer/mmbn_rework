@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menus/DialogueWindow/DialogueWindow.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Menus/Dialogue/StaticDialogueWindow.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/DialogueFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 236, 58 )
+margin_left = 49.0
+margin_right = 3.0
+margin_top = 7.0
+margin_bottom = 3.0
+
+[node name="DialogueWindow" type="PopupDialog"]
+visible = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -60.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_styles/panel = SubResource( 1 )
+popup_exclusive = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 72.0
+margin_top = 11.0
+margin_right = -12.0
+margin_bottom = -4.0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Lorem Ipsum foo bar test this is a lot of text to write out, so its gonna take a long time to do it. Maybe I'll start to repeat myself, I just can't say for certian."
+autowrap = true
+clip_text = true
+max_lines_visible = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="about_to_show" from="." to="." method="_on_DialogueWindow_about_to_show"]

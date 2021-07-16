@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/HUD/CustomWindow/ChipSlot.gd"
 }, {
+"base": "PopupDialog",
+"class": "DialogueWindow",
+"language": "GDScript",
+"path": "res://Menus/DialogueWindow/DialogueWindow.gd"
+}, {
 "base": "Node2D",
 "class": "Entity",
 "language": "GDScript",
@@ -178,6 +183,7 @@ _global_script_class_icons={
 "Character": "",
 "CharacterSprite": "",
 "ChipSlot": "",
+"DialogueWindow": "",
 "Entity": "",
 "Event": "",
 "Explosion": "",

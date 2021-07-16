@@ -8,6 +8,7 @@ const TRAVEL_STEP = 100.0
 
 onready var player = $Player
 onready var map = $Map
+onready var dialogue_box = $HUD/DialogueWindow
 
 var do_encounter = false
 
@@ -84,3 +85,7 @@ func _on_Event_map_transition_triggered(new_map : String) -> void:
 	load_map(new_map)
 	PlayerData.overworld_map = new_map
 	
+func _on_Character_dialogue_started(character : Character, text : String) -> void:
+	dialogue_box.open(text)
+	yield(dialogue_box, "popup_hide")
+	character.finish_interaction()

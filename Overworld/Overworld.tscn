@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Overworld/Character/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menus/DialogueWindow/DialogueWindow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld/Overworld.gd" type="Script" id=4]
 [ext_resource path="res://Assets/MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3" type="AudioStream" id=5]
 
@@ -18,5 +19,10 @@ __meta__ = {
 stream = ExtResource( 5 )
 volume_db = -10.0
 autoplay = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="DialogueWindow" parent="HUD" instance=ExtResource( 2 )]
 
 [connection signal="moved" from="Player" to="." method="_on_Player_moved"]

@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Battle/HUD/PlayerHealth.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Battle/Background.gd" type="Script" id=3]
-[ext_resource path="res://Battle/HUD/PlayerHealth.gd" type="Script" id=4]
-[ext_resource path="res://Assets/BattleAssets/HUD/Player Health Box.png" type="Texture" id=5]
 
 [node name="Camera2D" type="Camera2D"]
 current = true
@@ -18,16 +15,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Background" type="Node2D" parent="Node2D" instance=ExtResource( 2 )]
-z_index = -100
-script = ExtResource( 3 )
-scroll_factor = 4
+[node name="Background" parent="Node2D" instance=ExtResource( 2 )]
 
-[node name="PlayerHealthBox" type="Sprite" parent="." instance=ExtResource( 1 )]
+[node name="PlayerHealthBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( -120, -80 )
-z_index = 10
-texture = ExtResource( 5 )
-centered = false
-offset = Vector2( 2, 0 )
-script = ExtResource( 4 )
-color_mode = "full"

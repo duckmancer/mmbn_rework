@@ -2,7 +2,9 @@ class_name Character
 extends KinematicBody2D
 
 signal moved(position)
-
+# warning-ignore:unused_signal
+signal dialogue_started(responder, text)
+signal interaction_finished()
 
 const SLIDE_ANGLE_THRESHOLD := deg2rad(5)
 const ANGLE_SNAP = 30
@@ -55,21 +57,25 @@ var queued_args = []
 func try_interaction() -> void:
 	var overlap = interaction.get_overlapping_bodies()
 	var target = _get_closest_target(overlap)
-	_interact_with(target)
+	if target:
+		_interact_with(target)
 
 func turn_to(pos : Vector2) -> void:
 	set_facing_dir(pos - position)
 
-func connect_signals_to_overworld(_overworld : Node) -> void:
-#	connect("moved", overworld, "_on_Character_moved")
-	pass
+func respond_to(character : Character) -> void:
+	turn_to(character.position)
+	emit_signal("interaction_finished")
+
 
 
 # Interaction
 
 func _interact_with(character : Character) -> void:
-	character.turn_to(position)
-	print(character.dialogue)
+	if not is_busy:
+		run_coroutine("talk_to", [character])
+
+
 
 func _get_closest_target(targets : Array) -> Node:
 	var closest_target = null
@@ -149,12 +155,19 @@ func run_coroutine(func_name : String, args := []) -> void:
 
 # Coroutines
 
+func talk_to(target : Character) -> void:
+	turn_to(target.position)
+	stop_movement()
+	target.respond_to(self)
+	yield(target, "interaction_finished")
+
 func emote() -> void:
-	velocity = Vector2(0, 0)
+	stop_movement()
 	animated_spritesheet.play_anim("emote_" + facing_dir)
 	yield(animated_spritesheet, "animation_finished")
 
 func warp_local(destination : Vector2, walk_dir : String, walk_duration : float) -> void:
+	stop_movement()
 	position = destination
 
 	var movement_dirs = _get_string_dirs(walk_dir)
@@ -167,10 +180,13 @@ func walking_map_change(walk_dir : String, walk_duration : float) -> void:
 	velocity = get_velocity(movement_dirs)
 	
 	yield(get_tree().create_timer(walk_duration * 2), "timeout")
-	
 
 
 # Movement
+
+func stop_movement() -> void:
+	velocity = Vector2(0, 0)
+	animate_movement(velocity)
 
 func set_facing_dir(dir) -> bool:
 	var snapped_angle = _convert_dir_input(dir)
@@ -270,6 +286,12 @@ func _rotate_vector_to(len_vector : Vector2, angle_vector : Vector2) -> Vector2:
 
 
 # Initialization
+
+
+func connect_signals_to_overworld(_overworld : Node) -> void:
+#	connect("moved", overworld, "_on_Character_moved")
+	pass
+
 
 func _ready() -> void:
 	animated_spritesheet.sheet_path = sprite_path

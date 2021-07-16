@@ -42,7 +42,7 @@ static func in_bounds(grid_pos: Vector2, bounding_box := Constants.GRID_SIZE):
 static func instantiate(type: Script):
 	var path = type.resource_path.get_basename() + ".tscn"
 	var scene = null
-	if path.is_abs_path():
+	if File.new().file_exists(path):
 		scene = load(path).instance()
 	return scene
 
