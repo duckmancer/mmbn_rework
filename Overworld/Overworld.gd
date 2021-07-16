@@ -86,6 +86,6 @@ func _on_Event_map_transition_triggered(new_map : String) -> void:
 	PlayerData.overworld_map = new_map
 	
 func _on_Character_dialogue_started(character : Character, text : String) -> void:
-	dialogue_box.open(text)
+	dialogue_box.open(text, character.mugshot)
 	yield(dialogue_box, "popup_hide")
 	character.finish_interaction()

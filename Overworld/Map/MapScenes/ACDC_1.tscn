@@ -50,9 +50,10 @@ sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/VendorNavi.png
 dialogue = "Vendor Navi"
 
 [node name="NPC4" parent="Entities" index="3" instance=ExtResource( 5 )]
-position = Vector2( 459, 261 )
+position = Vector2( 461, 309 )
 sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/MrProg.png"
 dialogue = "Mr. Prog"
+facing_direction = "up_right"
 
 [node name="DefaultSpawn" parent="." index="4"]
 position = Vector2( 471, 279 )

@@ -1,17 +1,13 @@
 class_name DialogueWindow
 extends PopupDialog
 
+
 onready var label = $Label
-
+onready var mugshot = $Mugshot
 var open_buffer = false
-# Interface
 
-func open(text : String) -> void:
-	label.text = text
-	popup()
-	open_buffer = true
-	yield(get_tree().create_timer(0.1), "timeout")
-	open_buffer = false
+
+# Interface
 
 func scroll_text() -> bool:
 	var cur_line = label.lines_skipped
@@ -35,6 +31,18 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 		return
 	if event.is_action_pressed("ui_select"):
 		proceed_text()
+
+
+# Setup
+
+func open(text : String, mugshot_path := "") -> void:
+	label.text = text
+	mugshot.set_mugshot(mugshot_path)
+	popup()
+	open_buffer = true
+	yield(get_tree().create_timer(0.1), "timeout")
+	open_buffer = false
+
 
 
 # Init

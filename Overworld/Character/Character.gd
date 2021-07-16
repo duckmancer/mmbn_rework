@@ -32,6 +32,8 @@ var facing_dir = "down"
 var facing_angle = Constants.DIR_TO_DEG.down
 
 
+var mugshot := ""
+
 var speeds = {
 	stand = 0,
 	walk = 60,
@@ -298,3 +300,11 @@ func _ready() -> void:
 	animated_spritesheet.setup_animations()
 	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle
+	try_find_mugshot(sprite_path)
+
+func try_find_mugshot(spritesheet_path : String) -> void:
+	var MUGSHOT_ROOT = "res://Assets/Menus/Dialogue/Mugshots/"
+	var file_name = spritesheet_path.get_file()
+	var mugshot_path = MUGSHOT_ROOT + file_name
+	if File.new().file_exists(mugshot_path):
+		mugshot = mugshot_path

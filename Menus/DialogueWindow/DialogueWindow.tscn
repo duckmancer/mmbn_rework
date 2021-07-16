@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menus/DialogueWindow/DialogueWindow.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menus/Dialogue/StaticDialogueWindow.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Fonts/DialogueFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Menus/DialogueWindow/Mugshot.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -25,6 +26,7 @@ custom_styles/panel = SubResource( 1 )
 popup_exclusive = true
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
@@ -46,5 +48,8 @@ max_lines_visible = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Mugshot" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3, 7 )
 
 [connection signal="about_to_show" from="." to="." method="_on_DialogueWindow_about_to_show"]
