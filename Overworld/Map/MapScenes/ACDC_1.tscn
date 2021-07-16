@@ -35,23 +35,27 @@ destination_map = "ACDC_2"
 [node name="NPC" parent="Entities" index="0" instance=ExtResource( 5 )]
 position = Vector2( 403, 279 )
 sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/NormNavi.png"
+dialogue = "Normal Navi"
 facing_direction = "up_right"
 
 [node name="NPC2" parent="Entities" index="1" instance=ExtResource( 5 )]
 position = Vector2( 519, 281 )
 sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/OfficialNavi.png"
+dialogue = "Official Navi"
 facing_direction = "down_left"
 
 [node name="NPC3" parent="Entities" index="2" instance=ExtResource( 5 )]
 position = Vector2( 458, 254 )
 sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/VendorNavi.png"
+dialogue = "Vendor Navi"
 
 [node name="NPC4" parent="Entities" index="3" instance=ExtResource( 5 )]
-position = Vector2( 460, 310 )
+position = Vector2( 459, 261 )
 sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/MrProg.png"
+dialogue = "Mr. Prog"
 
 [node name="DefaultSpawn" parent="." index="4"]
-position = Vector2( 471, 291 )
+position = Vector2( 471, 279 )
 
 [editable path="Events/LocalWarpEvent"]
 [editable path="Events/LocalWarpEvent2"]

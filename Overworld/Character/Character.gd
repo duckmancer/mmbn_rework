@@ -54,10 +54,8 @@ var queued_args = []
 
 func try_interaction() -> void:
 	var overlap = interaction.get_overlapping_bodies()
-	for body in overlap:
-		print(body.get_class())
-		if body is Node and body != self:
-			_interact_with(body)
+	var target = _get_closest_target(overlap)
+	_interact_with(target)
 
 func turn_to(pos : Vector2) -> void:
 	set_facing_dir(pos - position)
@@ -67,10 +65,22 @@ func connect_signals_to_overworld(_overworld : Node) -> void:
 	pass
 
 
-# Actions
+# Interaction
 
 func _interact_with(character : Character) -> void:
 	character.turn_to(position)
+	print(character.dialogue)
+
+func _get_closest_target(targets : Array) -> Node:
+	var closest_target = null
+	var closest_distance = INF
+	for t in targets:
+		if t != self:
+			var dist = position.distance_squared_to(t.position)
+			if dist < closest_distance:
+				closest_target = t
+				closest_distance =  dist
+	return closest_target
 
 
 # Overrides
@@ -185,7 +195,7 @@ func _convert_dir_input(dir) -> int:
 	return dir
 
 func _snap_to_valid_direction(dir : int) -> int:
-	dir = stepify(dir, ANGLE_SNAP)
+	dir = stepify(dir, ANGLE_SNAP) as int
 	dir = posmod(dir, 360) as int
 	if dir in [60, 240]:
 		dir -= ANGLE_SNAP
