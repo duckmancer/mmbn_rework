@@ -33,10 +33,10 @@ position = Vector2( 29, 190 )
 destination_map = "ACDC_2"
 
 [node name="NPC" parent="Entities" index="0" instance=ExtResource( 5 )]
-position = Vector2( 429, 265 )
+position = Vector2( 433, 269 )
 
 [node name="DefaultSpawn" parent="." index="4"]
-position = Vector2( 95, 223 )
+position = Vector2( 470, 281 )
 
 [editable path="Events/LocalWarpEvent"]
 [editable path="Events/LocalWarpEvent2"]

@@ -8,7 +8,7 @@ enum MovementType {
 
 export(String, MULTILINE) var dialogue = "DEBUG TEXT"
 export(MovementType) var movement_type = MovementType.STAND
-export(String, "down_right", "down_left", "up_right", "up_left") var facing_dir = "down_right"
+export(String, "down_right", "down_left", "up_right", "up_left") var facing_direction = "down_right"
 
 func _ready() -> void:
-	anim_dir = facing_dir
+	set_facing_dir(facing_direction)

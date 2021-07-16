@@ -3,7 +3,10 @@ extends KinematicBody2D
 
 signal moved(position)
 
+
 const SLIDE_ANGLE_THRESHOLD := deg2rad(5)
+const ANGLE_SNAP = 30
+const DIAGONAL_SNAP_WINDOW = 0.05
 
 # Deprecated
 const ANIMATION_BACKUP_LIST = {
@@ -18,9 +21,13 @@ const ANIMATION_BACKUP_LIST = {
 
 
 onready var animated_spritesheet = $CharacterSprite
+onready var interaction = $Interaction
 
 var velocity = Vector2(0, 0)
-var anim_dir = "down"
+var facing_dir = "down"
+var facing_angle = Constants.DIR_TO_DEG.down
+
+
 
 var speeds = {
 	stand = 0,
@@ -42,6 +49,16 @@ var queued_args = []
 
 
 # Interface
+
+
+func try_interaction() -> void:
+	var overlap = interaction.get_overlapping_bodies()
+	for body in overlap:
+		if body != self:
+			body.turn_to(position)
+
+func turn_to(pos : Vector2) -> void:
+	set_facing_dir(pos - position)
 
 func connect_signals_to_overworld(_overworld : Node) -> void:
 #	connect("moved", overworld, "_on_Character_moved")
@@ -97,6 +114,7 @@ func _physics_process(delta : float) -> void:
 			queued_args.clear()
 			return
 		else:
+			
 			velocity = get_velocity(held_inputs)
 		
 	if velocity:
@@ -115,7 +133,7 @@ func run_coroutine(func_name : String, args := []) -> void:
 
 func emote() -> void:
 	velocity = Vector2(0, 0)
-	animated_spritesheet.play_anim("emote_" + anim_dir)
+	animated_spritesheet.play_anim("emote_" + facing_dir)
 	yield(animated_spritesheet, "animation_finished")
 
 func warp_local(destination : Vector2, walk_dir : String, walk_duration : float) -> void:
@@ -136,6 +154,34 @@ func walking_map_change(walk_dir : String, walk_duration : float) -> void:
 
 # Movement
 
+func set_facing_dir(dir) -> bool:
+	var snapped_angle = _convert_dir_input(dir)
+	if snapped_angle < 0 or snapped_angle == facing_angle:
+		return false
+	facing_angle = snapped_angle
+	facing_dir = Constants.DEG_TO_DIR[snapped_angle]
+	interaction.rotation_degrees = facing_angle
+	return true
+
+func _convert_dir_input(dir) -> int:
+	if dir is String:
+		dir = Constants.DIR_TO_DEG[dir]
+	elif dir is Vector2:
+		if dir.length() == 0:
+			return -1
+		dir = dir.angle()
+	if dir is float:
+		dir = round(rad2deg(dir)) as int
+	if dir is int:
+		dir = posmod(dir, 360)
+		var old_dir = dir
+		dir = stepify(dir, ANGLE_SNAP) as int
+		if dir in [60, 120, 240, 300]:
+			var dir_step_delta = dir - old_dir
+			dir += ANGLE_SNAP * sign(dir_step_delta)
+		dir = posmod(dir, 360)
+	return dir
+
 func do_movement(vel : Vector2, delta :float) -> void:
 	var displacement = vel * delta
 	var collision = move_and_collide(displacement, true, true, true)
@@ -143,6 +189,27 @@ func do_movement(vel : Vector2, delta :float) -> void:
 		move_and_collide(displacement)
 	else:
 		_iso_move_and_slide(collision)
+
+
+# Animation Execution
+
+func animate_movement(dir : Vector2) -> void:
+	set_facing_dir(dir)
+	var anim_type = "stand"
+	if dir:
+		if is_equal_approx(dir.length(), speeds.run):
+			anim_type = "run"
+		else:
+			anim_type = "walk"
+	else:
+		check_diagonal_buffer()
+	animated_spritesheet.play_anim(anim_type + "_" + facing_dir)
+
+func check_diagonal_buffer():
+	pass
+
+
+# Isometric Movement Calculations
 
 func _iso_move_and_slide(collision : KinematicCollision2D) -> void:
 	var displacement = collision.travel + collision.remainder
@@ -181,53 +248,8 @@ func _rotate_vector_to(len_vector : Vector2, angle_vector : Vector2) -> Vector2:
 	return angle_vector.normalized() * len_vector.length()
 
 
-# Animation Execution
-
-func animate_movement(dir : Vector2) -> void:
-	anim_dir = _get_anim_dir(dir)
-	var anim_type
-	if dir:
-		if is_equal_approx(dir.length(), speeds.run):
-			anim_type = "run"
-		else:
-			anim_type = "walk"
-	else:
-		anim_type = "stand"
-	animated_spritesheet.play_anim(anim_type + "_" + anim_dir)
-
-func _get_anim_dir(dir : Vector2) -> String:
-	var new_dir_name = _get_dir_name(dir) as String
-	if new_dir_name.empty():
-		return anim_dir
-	
-#	if "left" in new_dir_name:
-#		new_dir_name = new_dir_name.replace("left", "right")
-#		animated_spritesheet.flip_h = true
-#	else:
-#		animated_spritesheet.flip_h = false
-	return new_dir_name
-
-func _get_dir_name(dir : Vector2) -> String:
-	var result = ""
-	if dir.y > 0.0:
-		result += "down"
-	elif dir.y < 0.0:
-		result += "up"
-	
-	var horizontal = ""
-	if dir.x > 0.0:
-		horizontal += "right"
-	elif dir.x < 0.0:
-		horizontal += "left"
-	
-	if not horizontal.empty():
-		if not result.empty():
-			result += "_"
-		result += horizontal
-	return result
-
-
 # Initialization
 
 func _ready() -> void:
 	emit_signal("moved", position)
+	interaction.rotation_degrees = facing_angle
