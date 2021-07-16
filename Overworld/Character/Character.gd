@@ -30,7 +30,6 @@ var facing_dir = "down"
 var facing_angle = Constants.DIR_TO_DEG.down
 
 
-
 var speeds = {
 	stand = 0,
 	walk = 60,
@@ -56,8 +55,9 @@ var queued_args = []
 func try_interaction() -> void:
 	var overlap = interaction.get_overlapping_bodies()
 	for body in overlap:
-		if body != self:
-			body.turn_to(position)
+		print(body.get_class())
+		if body is Node and body != self:
+			_interact_with(body)
 
 func turn_to(pos : Vector2) -> void:
 	set_facing_dir(pos - position)
@@ -65,6 +65,12 @@ func turn_to(pos : Vector2) -> void:
 func connect_signals_to_overworld(_overworld : Node) -> void:
 #	connect("moved", overworld, "_on_Character_moved")
 	pass
+
+
+# Actions
+
+func _interact_with(character : Character) -> void:
+	character.turn_to(position)
 
 
 # Overrides
@@ -175,13 +181,16 @@ func _convert_dir_input(dir) -> int:
 	if dir is float:
 		dir = round(rad2deg(dir)) as int
 	if dir is int:
-		dir = posmod(dir, 360)
-		var old_dir = dir
-		dir = stepify(dir, ANGLE_SNAP) as int
-		if dir in [60, 120, 240, 300]:
-			var dir_step_delta = dir - old_dir
-			dir += ANGLE_SNAP * sign(dir_step_delta)
-		dir = posmod(dir, 360)
+		dir = _snap_to_valid_direction(dir)
+	return dir
+
+func _snap_to_valid_direction(dir : int) -> int:
+	dir = stepify(dir, ANGLE_SNAP)
+	dir = posmod(dir, 360) as int
+	if dir in [60, 240]:
+		dir -= ANGLE_SNAP
+	elif dir in [120, 300]:
+		dir += ANGLE_SNAP
 	return dir
 
 func do_movement(vel : Vector2, delta :float) -> void:

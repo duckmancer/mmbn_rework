@@ -51,7 +51,7 @@ position = Vector2( 460, 310 )
 sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/MrProg.png"
 
 [node name="DefaultSpawn" parent="." index="4"]
-position = Vector2( 470, 281 )
+position = Vector2( 471, 291 )
 
 [editable path="Events/LocalWarpEvent"]
 [editable path="Events/LocalWarpEvent2"]
