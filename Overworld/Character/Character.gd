@@ -20,6 +20,8 @@ const ANIMATION_BACKUP_LIST = {
 }
 
 
+export(String, FILE, "*.png") var sprite_path
+
 onready var animated_spritesheet = $CharacterSprite
 onready var interaction = $Interaction
 
@@ -251,5 +253,7 @@ func _rotate_vector_to(len_vector : Vector2, angle_vector : Vector2) -> Vector2:
 # Initialization
 
 func _ready() -> void:
+	animated_spritesheet.sheet_path = sprite_path
+	animated_spritesheet.setup_animations()
 	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle

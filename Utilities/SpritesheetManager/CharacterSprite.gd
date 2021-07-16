@@ -127,6 +127,12 @@ var animation_state = null
 
 # Interface
 
+# TODO: Allow spritesheet to dictate animation speed and/or reversing
+func setup_animations() -> void:
+	for anim in ANIMATION_PARAMS:
+		_try_add_anim_batch(anim)
+	_map_animations()
+
 func play_anim(requested_anim : String) -> void:
 	var actual_anim = _get_anim_mapping(requested_anim)
 	var anim_params = _assemble_anim_data_components(requested_anim, actual_anim)
@@ -324,17 +330,13 @@ func _try_add_anim_batch(batch : String, frame_duration := 1) -> void:
 		var anim_name = batch + "_" + ANIM_DIRS[i]
 		_add_anim_single(anim_name, frame_duration)
 
-# TODO: Allow spritesheet to dictate animation speed and/or reversing
-func _setup_standard_animations() -> void:
-	for anim in ANIMATION_PARAMS:
-		_try_add_anim_batch(anim)
-	_map_animations()
+
 
 
 # Init
 
 func _ready() -> void:
-	_setup_standard_animations()
+	pass
 
 
 # Signals

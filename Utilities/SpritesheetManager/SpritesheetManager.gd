@@ -175,13 +175,13 @@ func _get(property: String):
 # Setgetters
 
 func set_data_path(val : String):
-	if not val.is_abs_path():
+	if not File.new().file_exists(val):
 		return
 	data_path = val
 	spritesheet_data = load_json_data(data_path)
 	set_frame_index(0)
 func set_sheet_path(val : String):
-	if not val.is_abs_path():
+	if not File.new().file_exists(val):
 		return
 	sheet_path = val
 	texture = load(sheet_path)
