@@ -44,7 +44,6 @@ func check_diagonal_buffer():
 	var time_delta = OS.get_ticks_msec() - last_diagonal.timestamp
 	if time_delta < DIAGONAL_SNAP_WINDOW * 1000:
 		if facing_dir != last_diagonal.dir:
-			print("super buffer save!")
 			set_facing_dir(last_diagonal.dir)
 
 func record_diagonal(dir : String) -> void:

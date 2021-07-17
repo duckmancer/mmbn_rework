@@ -51,17 +51,12 @@ func try_load_mugshot(path : String) -> bool:
 
 func set_mugshot_frame(frame_number : int) -> void:
 	if frame_number < frame_count:
-		region_rect = Rect2(MUGSHOT_OFFSET + MUGSHOT_FRAME_DELTA * frame_number, MUGSHOT_SIZE)
 		cur_frame = frame_number
+		var frame_x_pos = (MUGSHOT_OFFSET * (frame_number + 1) + MUGSHOT_FRAME_DELTA * frame_number).x
+		region_rect.position.x = frame_x_pos
 
-func advance_talk(force_closed := false) -> void:
-	var delta := 0
-	if force_closed or cur_frame == OPEN:
-		delta = -1
-	elif cur_frame == CLOSED:
-		delta = 1
-	else:
-		delta = randi() % 2 - 1
+func advance_talk() -> void:
+	var delta = randi() % 3 - 1
 	var next_frame = clamp(delta + cur_frame, CLOSED, OPEN) as int
 	set_mugshot_frame(next_frame)
 

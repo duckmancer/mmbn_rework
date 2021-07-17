@@ -1,57 +1,115 @@
 class_name DialogueWindow
 extends PopupDialog
 
+enum State {
+	INACTIVE,
+	RUNNING,
+	FULL,
+}
 
-onready var label = $Label
+const LINES_PER_PAGE = 3
+const TEXT_SCROLL_SPEED = {
+	slow = 20,
+	fast = 80,
+}
+
+onready var label = $TextMargin/Label
 onready var mugshot = $Mugshot
-var open_buffer = false
+onready var anim = $AnimationPlayer
+onready var audio = $AudioStreamPlayer
 
-
+var state = State.INACTIVE
+var text_pages := PoolStringArray()
+var cur_page_num = 0
+var last_visible_chars = 0
 # Interface
 
-func scroll_text() -> bool:
-	var cur_line = label.lines_skipped
-	var visible_lines = label.get_visible_line_count()
-	var next_line = cur_line + visible_lines
-	var total_lines = label.get_line_count()
-	
-	var result = false
-	if next_line < total_lines:
-		label.lines_skipped += visible_lines
-		result = true
-	return result
+func scroll_page(page : String) -> void:
+	mugshot.start_talking()
+	label.text = page
+	anim.play("scroll_text", -1, 1.0 / page.length())
 
-func proceed_text() -> void:
-	if not scroll_text():
-		label.text = ""
-		hide()
+func next_page() -> void:
+	if cur_page_num < text_pages.size():
+		last_visible_chars = 0
+		state = State.RUNNING
+		scroll_page(text_pages[cur_page_num])
+		cur_page_num += 1
+	else:
+		close_dialogue()
+	
+
+
+func close_dialogue() -> void:
+	state = State.INACTIVE
+	hide()
 
 func _unhandled_key_input(event: InputEventKey) -> void:
-	if open_buffer:
-		return
 	if event.is_action_pressed("ui_select"):
-		proceed_text()
+		anim.playback_speed = TEXT_SCROLL_SPEED.fast
+		if state == State.FULL:
+			next_page()
+	elif event.is_action_released("ui_select"):
+		anim.playback_speed = TEXT_SCROLL_SPEED.slow
 
+func _physics_process(_delta: float) -> void:
+	if label.visible_characters > last_visible_chars:
+		last_visible_chars = label.visible_characters
+		audio.play()
 
 # Setup
 
 func open(text : String, mugshot_path := "") -> void:
-	label.text = text
+	_parse_text(text)
 	mugshot.set_mugshot(mugshot_path)
 	popup()
-	open_buffer = true
-	yield(get_tree().create_timer(0.1), "timeout")
-	open_buffer = false
+	cur_page_num = 0
+	next_page()
 
+func _parse_text(text : String) -> void:
+	var word_list = text.split(" ", false)
+	var line_list = _parse_lines(word_list)
+	text_pages = _group_pages(line_list)
+
+func _parse_lines(word_list : PoolStringArray) -> PoolStringArray:
+	var font = label.get("custom_fonts/font")
+	var max_line_length = label.rect_size.x
+	
+	var line_list = PoolStringArray()
+	var cur_line = PoolStringArray()
+	for word in word_list:
+		cur_line.append(word)
+		var potential_length = font.get_string_size(cur_line.join(" ")).x
+		if potential_length > max_line_length:
+			cur_line.remove(cur_line.size() - 1)
+			line_list.append(cur_line.join(" "))
+			cur_line = PoolStringArray()
+			cur_line.append(word)
+	if not cur_line.empty():
+		line_list.append(cur_line.join(" "))
+	return line_list
+
+func _group_pages(line_list : PoolStringArray) -> PoolStringArray:
+	var page_list = PoolStringArray()
+	var cur_page = PoolStringArray()
+	for line in line_list:
+		cur_page.append(line)
+		if cur_page.size() == LINES_PER_PAGE:
+			page_list.append(cur_page.join(" "))
+			cur_page = PoolStringArray()
+	if not cur_page.empty():
+		page_list.append(cur_page.join(" "))
+	return page_list
 
 
 # Init
 
 func _ready() -> void:
-	pass
+	anim.playback_speed = TEXT_SCROLL_SPEED.slow
+#	open(label.text, "res://Assets/Menus/Dialogue/Mugshots/Megaman.png")
 
 
-# Signals
-
-func _on_DialogueWindow_about_to_show() -> void:
-	pass # Replace with function body.
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
+	if state == State.RUNNING:
+		state = State.FULL
+		mugshot.stop_talking()

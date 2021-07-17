@@ -52,7 +52,7 @@ dialogue = "Vendor Navi"
 [node name="NPC4" parent="Entities" index="3" instance=ExtResource( 5 )]
 position = Vector2( 461, 309 )
 sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/MrProg.png"
-dialogue = "Mr. Prog"
+dialogue = "Lorem Ipsum foo bar test this is a lot of text to write out, so its gonna take a long time to do it. Maybe I'll start to repeat myself, I just can't say for certian."
 facing_direction = "up_right"
 
 [node name="DefaultSpawn" parent="." index="4"]
