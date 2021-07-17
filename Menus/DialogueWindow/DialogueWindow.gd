@@ -12,6 +12,7 @@ const TEXT_SCROLL_SPEED = {
 	slow = 20,
 	fast = 80,
 }
+const POPUP_SPEED = 1.5 / TEXT_SCROLL_SPEED.slow
 
 onready var label = $TextMargin/Label
 onready var mugshot = $Mugshot
@@ -22,6 +23,8 @@ var state = State.INACTIVE
 var text_pages := PoolStringArray()
 var cur_page_num = 0
 var last_visible_chars = 0
+
+var text_box_size = 156
 # Interface
 
 func scroll_page(page : String) -> void:
@@ -42,9 +45,14 @@ func next_page() -> void:
 
 func close_dialogue() -> void:
 	state = State.INACTIVE
+	anim.playback_speed = TEXT_SCROLL_SPEED.slow
+	anim.play("open_window", -1, -POPUP_SPEED, true)
+	yield(anim, "animation_finished")
 	hide()
 
 func _unhandled_key_input(event: InputEventKey) -> void:
+	if state == State.INACTIVE:
+		return
 	if event.is_action_pressed("ui_select"):
 		anim.playback_speed = TEXT_SCROLL_SPEED.fast
 		if state == State.FULL:
@@ -60,9 +68,13 @@ func _physics_process(_delta: float) -> void:
 # Setup
 
 func open(text : String, mugshot_path := "") -> void:
+	state = State.INACTIVE
 	_parse_text(text)
 	mugshot.set_mugshot(mugshot_path)
 	popup()
+	anim.play("open_window", -1, POPUP_SPEED)
+	yield(anim, "animation_finished")
+	mugshot.visible = true
 	cur_page_num = 0
 	next_page()
 
@@ -73,7 +85,7 @@ func _parse_text(text : String) -> void:
 
 func _parse_lines(word_list : PoolStringArray) -> PoolStringArray:
 	var font = label.get("custom_fonts/font")
-	var max_line_length = label.rect_size.x
+	var max_line_length = text_box_size
 	
 	var line_list = PoolStringArray()
 	var cur_line = PoolStringArray()

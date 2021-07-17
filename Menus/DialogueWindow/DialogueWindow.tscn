@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menus/DialogueWindow/DialogueWindow.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menus/Dialogue/StaticDialogueWindow.png" type="Texture" id=2]
@@ -13,6 +13,100 @@ margin_left = 49.0
 margin_right = 3.0
 margin_top = 7.0
 margin_bottom = 3.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+length = 0.001
+step = 0.0166667
+
+[sub_resource type="Animation" id=3]
+resource_name = "open_window"
+length = 0.333333
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ), Vector2( 236, 3 ), Vector2( 236, 58 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Mugshot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:anchor_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.166667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:anchor_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.166667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:margin_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -30, -30, -60.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:margin_bottom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.166667, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -27, -27, -2.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("TextMargin/Label:percent_visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "scroll_text"
@@ -36,9 +130,11 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
-margin_top = -60.0
+margin_top = -48.0
 margin_right = -2.0
-margin_bottom = -2.0
+margin_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_styles/panel = SubResource( 1 )
 popup_exclusive = true
 script = ExtResource( 1 )
@@ -48,6 +144,7 @@ __meta__ = {
 }
 
 [node name="Mugshot" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 3, 7 )
 
 [node name="TextMargin" type="MarginContainer" parent="."]
@@ -66,14 +163,15 @@ __meta__ = {
 margin_left = 60.0
 margin_top = 10.0
 margin_right = 216.0
-margin_bottom = 53.0
-size_flags_horizontal = 9
-size_flags_vertical = 9
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod feugiat fermentum. Phasellus vel tincidunt ex. Nam sodales ut ipsum sed vehicula. Aliquam et dolor fringilla, pharetra ante sed, fermentum tortor. Vivamus volutpat malesuada sem vel viverra. Nulla aliquet eu lectus convallis maximus. Nunc nisl velit, vestibulum a pharetra eu, condimentum vitae erat. Duis fringilla quam a orci auctor ultricies. Praesent purus sem, sodales dapibus sagittis ut, tempor eu sapien. Sed cursus tellus justo, tempus gravida ipsum sagittis vel. Pellentesque eu lectus non purus interdum facilisis eu non diam. Vestibulum venenatis mi diam, quis scelerisque sapien gravida nec."
 autowrap = true
 clip_text = true
+percent_visible = 0.0
 max_lines_visible = 3
 __meta__ = {
 "_edit_lock_": true,
@@ -81,6 +179,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 4 )
+anims/open_window = SubResource( 3 )
 anims/scroll_text = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

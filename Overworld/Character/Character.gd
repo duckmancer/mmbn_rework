@@ -6,7 +6,7 @@ signal moved(position)
 signal dialogue_started(responder, text)
 signal interaction_finished()
 
-const SLIDE_ANGLE_THRESHOLD := deg2rad(5)
+const SLIDE_ANGLE_THRESHOLD := deg2rad(30)
 const ANGLE_SNAP = 30
 const DIAGONAL_SNAP_WINDOW = 0.05
 
@@ -266,7 +266,7 @@ func _is_iso_head_on_collision(travel : Vector2, normal : Vector2) -> bool:
 	var iso_normal = normal
 	iso_normal.x *= 2
 	var iso_collision_angle = abs(iso_normal.angle_to(-travel))
-#	print(rad2deg(iso_collision_angle))
+	print(rad2deg(iso_collision_angle))
 #	Utils.slow_print(rad2deg(iso_collision_angle))
 	if iso_collision_angle < SLIDE_ANGLE_THRESHOLD:
 		return true
