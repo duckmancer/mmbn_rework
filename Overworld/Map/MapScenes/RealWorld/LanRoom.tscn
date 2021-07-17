@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Overworld/Map/MapScenes/BaseMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Overworld/Maps/lan_house/lan_room.png" type="Texture" id=2]
+
+[node name="LanRoom" instance=ExtResource( 1 )]
+
+[node name="MapSprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="Collisions" parent="." index="1"]
+visible = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
+build_mode = 1
+polygon = PoolVector2Array( 124, 186, 93, 170, 68, 182, 45, 171, 70, 159, 58, 153, 92, 135, 49, 111, 109, 83, 184, 124, 202, 114, 233, 129 )
+
+[node name="DefaultSpawn" parent="." index="4"]
+position = Vector2( 105, 107 )
+
+[node name="Background" parent="BackgroundLayer" index="0"]
+show_background = false

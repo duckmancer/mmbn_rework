@@ -11,7 +11,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Map" parent="." instance_placeholder="res://Overworld/Map/MapScenes/ACDC_1.tscn"]
+[node name="Map" parent="." instance_placeholder="res://Overworld/Map/MapScenes/Internet/ACDC_1.tscn"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
