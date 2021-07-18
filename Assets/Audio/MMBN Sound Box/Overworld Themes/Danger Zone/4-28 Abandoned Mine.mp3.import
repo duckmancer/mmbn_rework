@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-28 Abandoned Mine.mp3-6403c7b07aa00d6577347ebc348f7ac1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Danger Zone/4-28 Abandoned Mine.mp3"
+dest_files=[ "res://.import/4-28 Abandoned Mine.mp3-6403c7b07aa00d6577347ebc348f7ac1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

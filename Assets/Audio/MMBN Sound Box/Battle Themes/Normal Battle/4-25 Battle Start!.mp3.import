@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-25 Battle Start!.mp3-59fbdfb87405804b1462522eb889e99b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Normal Battle/4-25 Battle Start!.mp3"
+dest_files=[ "res://.import/4-25 Battle Start!.mp3-59fbdfb87405804b1462522eb889e99b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -161,18 +161,23 @@ func load_new_data(path : String) -> void:
 		return
 	spritesheet_data = load_json_data(path)
 	overwrite_data = "LOADED"
-	data_access_mode = "Modify"
+	data_access_mode = "Read"
 	set_frame_index(0)
 
 func load_spritesheet(sheet : Texture) -> void:
 	if not sheet:
 		return
 	var sheet_path = sheet.resource_path
-	print(sheet_path)
+	set_character_name(sheet_path)
 	if not spritesheet_data.empty():
 		return
 	var test_path = sheet_path.replace(sheet_path.get_extension(), "json")
 	load_new_data(test_path)
+
+func set_character_name(sheet_path : String) -> void:
+	var file_name = sheet_path.get_file()
+	var name = file_name.get_basename()
+	resource_name = name
 
 func set_data_access_mode(val) -> void:
 	data_access_mode = val
@@ -222,6 +227,8 @@ func update_sprite() -> void:
 	margin.size = Vector2(6, 100)
 	if int(region.size.x) % 2:
 		margin.size.x -= 1
+	if int(region.size.y) % 2:
+		margin.size.y -= 1
 	var sprite_start = margin.size / 2
 	sprite_start.y -= region.size.y / 2
 
@@ -413,4 +420,5 @@ func read_file(path : String) -> String:
 	file.close()
 	return contents
 
-
+func _init():
+	data_access_mode = "Read"

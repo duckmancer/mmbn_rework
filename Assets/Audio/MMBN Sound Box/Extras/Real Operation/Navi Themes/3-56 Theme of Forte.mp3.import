@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-56 Theme of Forte.mp3-440fb0fd5cd3e2b821b9add6efce6af8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-56 Theme of Forte.mp3"
+dest_files=[ "res://.import/3-56 Theme of Forte.mp3-440fb0fd5cd3e2b821b9add6efce6af8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

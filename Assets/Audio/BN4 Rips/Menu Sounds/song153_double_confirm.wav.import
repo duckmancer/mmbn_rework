@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song153_double_confirm.wav-399c6bd9f3d9ab581b1060cb828891c5.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song153_double_confirm.wav"
+dest_files=[ "res://.import/song153_double_confirm.wav-399c6bd9f3d9ab581b1060cb828891c5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

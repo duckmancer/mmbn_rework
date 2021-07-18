@@ -17,10 +17,6 @@ enum Element {
 	HIDE,
 }
 
-const SPRITE_ROOT = "res://Assets/BattleAssets/"
-const WEAPON_ROOT = SPRITE_ROOT + "Weapons/"
-const ATTACK_ROOT = SPRITE_ROOT + "Attacks/"
-const IMPACT_ROOT = SPRITE_ROOT + "Impacts/"
 
 const STANDARD_ACTION_DURATIONS = {
 	move = {
@@ -66,7 +62,7 @@ var impacts = {
 		pass_through = true,
 		animation_name = "explosion",
 		anim_y_coord = 0,
-		audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/SmallExplosion.wav",
+		audio_path = AudioAssets.SFX.small_explosion,
 		audio_volume = 5,
 		impact_type = "none",
 	},
@@ -77,8 +73,8 @@ var impacts = {
 		prop_type = AreaHit.SHOT,
 		animation_name = "fire_explosion",
 		anim_y_coord = 1,
-		audio_path = "res://Assets/MMBNSFX/Attack SFX/Impacts/ExplosionImpact HQ.ogg",
 		audio_volume = 5,
+		audio_path = AudioAssets.SFX.fire_explosion,
 		impact_type = "none",
 	},
 	bubbles = {
@@ -88,8 +84,8 @@ var impacts = {
 		prop_type = AreaHit.SHOT,
 		animation_name = "bubbles",
 		anim_y_coord = 3,
-		audio_path = "res://Assets/BN4 Rips/Attacks/song416_bubbles.wav",
 		audio_volume = -5,
+		audio_path = AudioAssets.SFX.bubbles,
 		impact_type = "none",
 	},
 }
@@ -104,17 +100,17 @@ var attacks = {
 		prop_delay = 24,
 		prop_recursion = 6,
 		animation_name = "shockwave",
-		sprite_path = ATTACK_ROOT + "Shockwave.png",
+		sprite_path = SpriteAssets.ATTACK_ROOT + "Shockwave.png",
 		anim_y_coord = 0,
-		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/MettWave HQ.ogg",
+		audio_path = AudioAssets.SFX.shockwave,
 		audio_volume = 10,
 		audio_start_offset = 0.55,
 	},
 	buster = {
-		sprite_path = WEAPON_ROOT + "Buster.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Buster.png",
 		anim_y_coord = 1,
 		animation_name = "shoot_light",
-		audio_path = "res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/0- Buster.wav",
+		audio_path = AudioAssets.SFX.buster_shot,
 		
 		attack_type = Hitscan,
 		damage = 10,
@@ -122,11 +118,11 @@ var attacks = {
 		impact_type = "hit",
 	},
 	cannon = {
-		sprite_path = WEAPON_ROOT + "Cannon.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Cannon.png",
 		anim_y_coord = 1,
 		animation_name = "shoot_heavy",
 		
-		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/Cannon HQ.ogg",
+		audio_path = AudioAssets.SFX.cannon,
 		audio_start_offset = 0.4,
 		audio_volume = 10,
 		
@@ -138,8 +134,9 @@ var attacks = {
 		impact_type = "hit",
 	},
 	heatshot = {
-		sprite_path = WEAPON_ROOT + "Heatshot.png",
-		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/Heatshot.wav",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Heatshot.png",
+		
+		audio_path = AudioAssets.SFX.heatshot,
 		anim_y_coord = 1,
 		animation_name = "shoot_med",
 		
@@ -152,8 +149,9 @@ var attacks = {
 		child_data = impacts.fireblast,
 	},
 	fireball = {
-		sprite_path = ATTACK_ROOT + "Shots.png",
-		audio_path = "res://Assets/BN4 Rips/Hits/song112_explosion_small.wav",
+		sprite_path = SpriteAssets.ATTACK_ROOT + "Shots.png",
+		
+		audio_path = AudioAssets.SFX.fireball_shot,
 		anim_y_coord = 0,
 		animation_name = "fireball_shot",
 		
@@ -166,8 +164,9 @@ var attacks = {
 		child_data = impacts.fireblast,
 	},
 	bubble_bounce = {
-		sprite_path = ATTACK_ROOT + "ShrimpyBubble.png",
-		audio_path = "res://Assets/BN4 Rips/Attacks/song359_boing.wav",
+		sprite_path = SpriteAssets.ATTACK_ROOT + "ShrimpyBubble.png",
+		
+		audio_path = AudioAssets.SFX.bubble_bounce,
 		audio_volume = 5,
 		anim_y_coord = 1,
 		animation_name = "fireball_shot",
@@ -181,11 +180,11 @@ var attacks = {
 		child_data = impacts.bubbles,
 	},
 	sword = {
-		sprite_path = WEAPON_ROOT + "Sword.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Sword.png",
 		anim_y_coord = 7,
 		animation_name = "slash",
 		
-		audio_path = "res://Assets/MMBNSFX/Attack SFX/Attacks/SwordSwing HQ.ogg",
+		audio_path = AudioAssets.SFX.sword_swing,
 		
 		attack_type = AreaHit,
 		damage = 80,
@@ -195,7 +194,7 @@ var attacks = {
 		impact_type = "hit",
 	},
 	minibomb = {
-		sprite_path = WEAPON_ROOT + "Throwable.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Throwable.png",
 		anim_y_coord = 0,
 		animation_name = "throw",
 		
@@ -218,7 +217,7 @@ var base_actions = {
 	},
 	buster = {
 		
-		sprite_path = WEAPON_ROOT + "Buster.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Buster.png",
 		anim_y_coord = 0,
 		animation_name = "shoot_light",
 		
@@ -227,7 +226,7 @@ var base_actions = {
 	cannon = {
 		
 		
-		sprite_path = WEAPON_ROOT + "Cannon.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Cannon.png",
 		anim_y_coord = 0,
 		animation_name = "shoot_heavy",
 		
@@ -236,7 +235,7 @@ var base_actions = {
 	heatshot = {
 		
 		
-		sprite_path = WEAPON_ROOT + "Heatshot.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Heatshot.png",
 		anim_y_coord = 0,
 		animation_name = "shoot_med",
 		attack_data = attacks.heatshot,
@@ -244,7 +243,7 @@ var base_actions = {
 	sword = {
 		
 		
-		sprite_path = WEAPON_ROOT + "Sword.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Sword.png",
 		anim_y_coord = 6,
 		animation_name = "slash",
 		
@@ -253,7 +252,7 @@ var base_actions = {
 	minibomb = {
 		
 		
-		sprite_path = WEAPON_ROOT + "Throwable.png",
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Throwable.png",
 		anim_y_coord = 0,
 		animation_name = "throw",
 		

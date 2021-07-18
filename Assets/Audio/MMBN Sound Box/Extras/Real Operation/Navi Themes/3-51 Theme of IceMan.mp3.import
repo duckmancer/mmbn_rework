@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-51 Theme of IceMan.mp3-862bb70d4c1db7a4e9604a1b558df5c8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-51 Theme of IceMan.mp3"
+dest_files=[ "res://.import/3-51 Theme of IceMan.mp3-862bb70d4c1db7a4e9604a1b558df5c8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

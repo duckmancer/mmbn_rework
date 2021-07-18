@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song171_flash_jump.wav-7db281eb0154038e20113d7dc35a8882.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song171_flash_jump.wav"
+dest_files=[ "res://.import/song171_flash_jump.wav-7db281eb0154038e20113d7dc35a8882.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

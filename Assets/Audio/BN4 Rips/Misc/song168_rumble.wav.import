@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song168_rumble.wav-8380e56e7f7aed4ecfc57b234f64c467.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song168_rumble.wav"
+dest_files=[ "res://.import/song168_rumble.wav-8380e56e7f7aed4ecfc57b234f64c467.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

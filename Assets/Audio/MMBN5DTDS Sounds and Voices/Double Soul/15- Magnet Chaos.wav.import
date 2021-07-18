@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/15- Magnet Chaos.wav-b126fb65c89c732e0a32fca9c992e726.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Double Soul/15- Magnet Chaos.wav"
+dest_files=[ "res://.import/15- Magnet Chaos.wav-b126fb65c89c732e0a32fca9c992e726.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

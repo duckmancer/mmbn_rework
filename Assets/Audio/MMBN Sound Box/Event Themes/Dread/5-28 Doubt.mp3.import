@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-28 Doubt.mp3-65006751e57c9dc5c1fa4bfe92373a3f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Dread/5-28 Doubt.mp3"
+dest_files=[ "res://.import/5-28 Doubt.mp3-65006751e57c9dc5c1fa4bfe92373a3f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

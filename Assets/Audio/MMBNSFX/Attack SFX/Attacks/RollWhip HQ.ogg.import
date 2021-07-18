@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/RollWhip HQ.ogg-be8b0d7711489dde7427e4c8a8875b6b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/RollWhip HQ.ogg"
+dest_files=[ "res://.import/RollWhip HQ.ogg-be8b0d7711489dde7427e4c8a8875b6b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

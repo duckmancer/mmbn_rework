@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/12- Slot In!.wav-eb9f3f3053bfb11cef4be546c12ada14.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Lan/12- Slot In!.wav"
+dest_files=[ "res://.import/12- Slot In!.wav-eb9f3f3053bfb11cef4be546c12ada14.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

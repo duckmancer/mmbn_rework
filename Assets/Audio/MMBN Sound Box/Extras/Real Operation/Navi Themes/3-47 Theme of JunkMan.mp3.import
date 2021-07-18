@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-47 Theme of JunkMan.mp3-f35d0a40c88ee4e714c2a5c09e930569.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-47 Theme of JunkMan.mp3"
+dest_files=[ "res://.import/3-47 Theme of JunkMan.mp3-f35d0a40c88ee4e714c2a5c09e930569.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

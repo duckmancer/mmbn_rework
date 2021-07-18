@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/37- Hard Landing.wav-e5f4a744667cda65c0b5a19b65ce8a25.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/37- Hard Landing.wav"
+dest_files=[ "res://.import/37- Hard Landing.wav-e5f4a744667cda65c0b5a19b65ce8a25.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

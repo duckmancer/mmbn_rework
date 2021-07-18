@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/5- What happened, Lan.wav-f75d82e6f14802e3902c81b24317f875.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Megaman/5- What happened, Lan.wav"
+dest_files=[ "res://.import/5- What happened, Lan.wav-f75d82e6f14802e3902c81b24317f875.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

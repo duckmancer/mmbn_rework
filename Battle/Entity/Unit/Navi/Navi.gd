@@ -1,7 +1,7 @@
 class_name Navi
 extends Unit
 
-var navi_deleted_track = "res://Assets/MMBNSFX/Attack SFX/Misc/Deleted HQ.ogg"
+var navi_deleted_track = AudioAssets.SFX.navi_deleted
 
 func begin_death():
 	if is_player_controlled:

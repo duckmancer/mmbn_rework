@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/19- Net Dash Pads.wav-d09443306c4f7d4fb9aa5f2c36c9a3ce.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/19- Net Dash Pads.wav"
+dest_files=[ "res://.import/19- Net Dash Pads.wav-d09443306c4f7d4fb9aa5f2c36c9a3ce.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

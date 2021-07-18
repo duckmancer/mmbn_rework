@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song162_dull_explosion.wav-fe1006ffd2c1e780042875874764f1d9.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Hits/song162_dull_explosion.wav"
+dest_files=[ "res://.import/song162_dull_explosion.wav-fe1006ffd2c1e780042875874764f1d9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

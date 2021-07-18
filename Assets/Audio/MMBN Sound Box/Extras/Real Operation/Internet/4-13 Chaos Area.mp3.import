@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-13 Chaos Area.mp3-d52ff96228f2228efc605f0ba2d86db3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Internet/4-13 Chaos Area.mp3"
+dest_files=[ "res://.import/4-13 Chaos Area.mp3-d52ff96228f2228efc605f0ba2d86db3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

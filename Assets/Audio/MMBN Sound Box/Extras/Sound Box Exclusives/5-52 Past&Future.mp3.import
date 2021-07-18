@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-52 Past&Future.mp3-58cc8051184463f4f4b83879674aec22.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/5-52 Past&Future.mp3"
+dest_files=[ "res://.import/5-52 Past&Future.mp3-58cc8051184463f4f4b83879674aec22.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

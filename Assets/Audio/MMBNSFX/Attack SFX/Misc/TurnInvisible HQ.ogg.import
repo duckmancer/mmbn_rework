@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TurnInvisible HQ.ogg-0725fde61268d8dbe1f0d24613d3e8d9.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/TurnInvisible HQ.ogg"
+dest_files=[ "res://.import/TurnInvisible HQ.ogg-0725fde61268d8dbe1f0d24613d3e8d9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

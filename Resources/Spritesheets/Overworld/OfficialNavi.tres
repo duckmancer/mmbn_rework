@@ -1,0 +1,104 @@
+[gd_resource type="AtlasTexture" load_steps=3 format=2]
+
+[ext_resource path="res://Utilities/SpritesheetManager/Spritesheet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Overworld/Characters/Navis/Minor NPCs/OfficialNavi.png" type="Texture" id=2]
+
+[resource]
+resource_name = "OfficialNavi"
+atlas = ExtResource( 2 )
+region = Rect2( 47, 6, 16, 34 )
+margin = Rect2( 3, 33, 6, 100 )
+script = ExtResource( 1 )
+data_access_mode = "Read"
+frame_index = 0
+spritesheet_data = [ {
+"dir": "down_left",
+"name": "stand_down_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 47, 6, 16, 34 ),
+"type": "stand"
+}, {
+"dir": "up_left",
+"name": "stand_up_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 67, 6, 16, 34 ),
+"type": "stand"
+}, {
+"dir": "down_right",
+"name": "walk_down_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 5, 48, 15, 34 ),
+"type": "walk"
+}, {
+"dir": "down_right",
+"name": "walk_down_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 24, 49, 17, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 45, 48, 15, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 64, 48, 15, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 83, 49, 18, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 105, 48, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "walk_up_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 4, 88, 16, 34 ),
+"type": "walk"
+}, {
+"dir": "up_left",
+"name": "walk_up_left2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 24, 88, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "walk_up_left3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 43, 89, 18, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "walk_up_left4",
+"offset": Vector2( 1, 0 ),
+"rect": Rect2( 65, 88, 17, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "walk_up_left5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 86, 88, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "walk_up_left6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 105, 89, 18, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "fall_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 53, 131, 31, 31 ),
+"type": "fall"
+} ]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PanelCrack HQ.ogg-d7a711a9bdb70efc26ef46fee0052c13.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Impacts/PanelCrack HQ.ogg"
+dest_files=[ "res://.import/PanelCrack HQ.ogg-d7a711a9bdb70efc26ef46fee0052c13.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/16- Gyro Chaos.wav-1f67212077f3fa8a3e4ee13aa0ea603c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Double Soul/16- Gyro Chaos.wav"
+dest_files=[ "res://.import/16- Gyro Chaos.wav-1f67212077f3fa8a3e4ee13aa0ea603c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

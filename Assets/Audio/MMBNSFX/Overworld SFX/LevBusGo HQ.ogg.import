@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/LevBusGo HQ.ogg-61f895635d43c7a8de3dc334713ff550.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/LevBusGo HQ.ogg"
+dest_files=[ "res://.import/LevBusGo HQ.ogg-61f895635d43c7a8de3dc334713ff550.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

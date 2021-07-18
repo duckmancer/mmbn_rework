@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-52 Theme of ElecMan.mp3-3cf2b086f2b1b0bc764f7ee716471da0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-52 Theme of ElecMan.mp3"
+dest_files=[ "res://.import/3-52 Theme of ElecMan.mp3-3cf2b086f2b1b0bc764f7ee716471da0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

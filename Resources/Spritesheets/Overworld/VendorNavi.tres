@@ -1,0 +1,104 @@
+[gd_resource type="AtlasTexture" load_steps=3 format=2]
+
+[ext_resource path="res://Utilities/SpritesheetManager/Spritesheet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Overworld/Characters/Navis/Minor NPCs/VendorNavi.png" type="Texture" id=2]
+
+[resource]
+resource_name = "VendorNavi"
+atlas = ExtResource( 2 )
+region = Rect2( 44, 5, 15, 35 )
+margin = Rect2( 2, 32, 5, 100 )
+script = ExtResource( 1 )
+data_access_mode = "Read"
+frame_index = 0
+spritesheet_data = [ {
+"dir": "down_left",
+"name": "stand_down_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 44, 5, 15, 35 ),
+"type": "stand"
+}, {
+"dir": "up_right",
+"name": "stand_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 64, 5, 15, 35 ),
+"type": "stand"
+}, {
+"dir": "down_left",
+"name": "walk_down_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 5, 45, 15, 35 ),
+"type": "walk"
+}, {
+"dir": "down_left",
+"name": "walk_down_left2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 24, 45, 15, 35 ),
+"type": "copy_prev"
+}, {
+"dir": "down_left",
+"name": "walk_down_left3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 43, 46, 17, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_left",
+"name": "walk_down_left4",
+"offset": Vector2( 1, 0 ),
+"rect": Rect2( 64, 45, 16, 35 ),
+"type": "copy_prev"
+}, {
+"dir": "down_left",
+"name": "walk_down_left5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 84, 45, 15, 35 ),
+"type": "copy_prev"
+}, {
+"dir": "down_left",
+"name": "walk_down_left6",
+"offset": Vector2( 1, 0 ),
+"rect": Rect2( 103, 46, 18, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 5, 85, 15, 35 ),
+"type": "walk"
+}, {
+"dir": "up_right",
+"name": "walk_up_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 24, 86, 17, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 45, 85, 16, 35 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 65, 85, 15, 35 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 84, 86, 17, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 105, 85, 15, 35 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "fall_up_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 50, 127, 25, 30 ),
+"type": "fall"
+} ]

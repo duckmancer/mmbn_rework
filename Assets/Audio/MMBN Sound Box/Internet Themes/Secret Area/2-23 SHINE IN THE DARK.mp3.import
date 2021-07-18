@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-23 SHINE IN THE DARK.mp3-89033e4c2b5d28569ff137da516f007e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Secret Area/2-23 SHINE IN THE DARK.mp3"
+dest_files=[ "res://.import/2-23 SHINE IN THE DARK.mp3-89033e4c2b5d28569ff137da516f007e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

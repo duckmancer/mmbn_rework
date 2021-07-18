@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-21 LOSER.mp3-6f85b1325f07b9324c4bd2a26dfa13a7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Menu Themes/Battle Fanfare/1-21 LOSER.mp3"
+dest_files=[ "res://.import/1-21 LOSER.mp3-6f85b1325f07b9324c4bd2a26dfa13a7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

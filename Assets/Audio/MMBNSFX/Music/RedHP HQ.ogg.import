@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/RedHP HQ.ogg-c0199fc6bba50bf95cd648198ba0dfb1.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Music/RedHP HQ.ogg"
+dest_files=[ "res://.import/RedHP HQ.ogg-c0199fc6bba50bf95cd648198ba0dfb1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

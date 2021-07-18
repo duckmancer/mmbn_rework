@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-17 BLIND MODE.mp3-2f8d3931ffedf05ffc4ecc700d1a2eb2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/2-17 BLIND MODE.mp3"
+dest_files=[ "res://.import/2-17 BLIND MODE.mp3-2f8d3931ffedf05ffc4ecc700d1a2eb2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

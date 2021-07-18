@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Battle/HUD/CustomWindow/ChipBox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Fonts/Chip Code Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Resources/Fonts/Chip Code Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Battle/HUD/CustomWindow/ChipSlot.gd" type="Script" id=3]
-[ext_resource path="res://Assets/BattleAssets/HUD/Chip Frame.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/BattleAssets/CustomWindow/Chip Frame.png" type="Texture" id=4]
 
 [node name="ChipSlot" type="TextureRect"]
 margin_left = 8.0

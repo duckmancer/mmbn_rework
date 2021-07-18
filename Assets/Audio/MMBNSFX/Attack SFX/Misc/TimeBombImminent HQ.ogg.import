@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/TimeBombImminent HQ.ogg-7d24d297ee50e7cb13401efee0655d1b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/TimeBombImminent HQ.ogg"
+dest_files=[ "res://.import/TimeBombImminent HQ.ogg-7d24d297ee50e7cb13401efee0655d1b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

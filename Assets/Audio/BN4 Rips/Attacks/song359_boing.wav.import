@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song359_boing.wav-3bcc869745f490f27408a0a98aa091de.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Attacks/song359_boing.wav"
+dest_files=[ "res://.import/song359_boing.wav-3bcc869745f490f27408a0a98aa091de.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

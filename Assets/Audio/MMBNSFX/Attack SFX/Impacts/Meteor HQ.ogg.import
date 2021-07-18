@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Meteor HQ.ogg-21eb20db0b1b754f64f9dae73ccd3b4e.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Impacts/Meteor HQ.ogg"
+dest_files=[ "res://.import/Meteor HQ.ogg-21eb20db0b1b754f64f9dae73ccd3b4e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

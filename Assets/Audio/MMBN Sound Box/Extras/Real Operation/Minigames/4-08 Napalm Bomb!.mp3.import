@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-08 Napalm Bomb!.mp3-b07d6f8aa0b957640481d9a4b45d6a14.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Minigames/4-08 Napalm Bomb!.mp3"
+dest_files=[ "res://.import/4-08 Napalm Bomb!.mp3-b07d6f8aa0b957640481d9a4b45d6a14.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -7,9 +7,9 @@ const ENCOUNTER_VARIANCE = 300.0
 const TRAVEL_STEP = 100.0
 
 onready var player = $Player
-onready var map = $Map
 onready var dialogue_box = $HUD/DialogueWindow
 
+var map
 var do_encounter = false
 
 var encounter_progress := 0.0
@@ -59,9 +59,9 @@ func load_map(map_name : String) -> void:
 	reset_encounters()
 
 func _clear_old_map(old_map : Node) -> void:
-	if not old_map.get_scene_instance_load_placeholder():
+	if old_map:
 		old_map.release_player()
-	old_map.queue_free()
+		old_map.queue_free()
 
 func _setup_new_map(map_name : String) -> Node:
 	var new_map = Scenes.get_map(map_name)
@@ -86,6 +86,6 @@ func _on_Event_map_transition_triggered(new_map : String) -> void:
 	PlayerData.overworld_map = new_map
 	
 func _on_Character_dialogue_started(character : Character, text : String) -> void:
-	dialogue_box.open(text, character.mugshot)
+	dialogue_box.open(text, character.get_mugshot())
 	yield(dialogue_box, "popup_hide")
 	character.finish_interaction()

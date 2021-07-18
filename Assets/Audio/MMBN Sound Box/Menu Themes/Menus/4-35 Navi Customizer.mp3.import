@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-35 Navi Customizer.mp3-14ca86318cd2416ac13ab19f18f154b0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Menu Themes/Menus/4-35 Navi Customizer.mp3"
+dest_files=[ "res://.import/4-35 Navi Customizer.mp3-14ca86318cd2416ac13ab19f18f154b0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-44 FEAR IN THE CASTLE.mp3-fc557c74784cc3b06542e95f49db1e73.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/1-44 FEAR IN THE CASTLE.mp3"
+dest_files=[ "res://.import/1-44 FEAR IN THE CASTLE.mp3-fc557c74784cc3b06542e95f49db1e73.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

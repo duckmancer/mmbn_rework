@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-07 Metal Shooting!.mp3-a6d2795f7397ce4c0d5755936f565224.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Minigames/4-07 Metal Shooting!.mp3"
+dest_files=[ "res://.import/4-07 Metal Shooting!.mp3-a6d2795f7397ce4c0d5755936f565224.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

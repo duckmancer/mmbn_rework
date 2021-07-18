@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CloseChipDesc HQ.ogg-5bba9d279766d410e5b900de307f17bf.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Menu SFX/CloseChipDesc HQ.ogg"
+dest_files=[ "res://.import/CloseChipDesc HQ.ogg-5bba9d279766d410e5b900de307f17bf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

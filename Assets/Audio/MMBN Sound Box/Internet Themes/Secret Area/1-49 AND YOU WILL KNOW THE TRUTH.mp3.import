@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-49 AND YOU WILL KNOW THE TRUTH.mp3-93721cdb06f73754f3b87e3485e47464.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Secret Area/1-49 AND YOU WILL KNOW THE TRUTH.mp3"
+dest_files=[ "res://.import/1-49 AND YOU WILL KNOW THE TRUTH.mp3-93721cdb06f73754f3b87e3485e47464.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

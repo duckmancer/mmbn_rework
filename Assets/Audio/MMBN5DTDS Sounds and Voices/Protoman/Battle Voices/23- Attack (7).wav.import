@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/23- Attack (7).wav-a6022ceb41b9d7019b27216176dd4cfb.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Protoman/Battle Voices/23- Attack (7).wav"
+dest_files=[ "res://.import/23- Attack (7).wav-a6022ceb41b9d7019b27216176dd4cfb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

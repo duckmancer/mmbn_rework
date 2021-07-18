@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Deleted HQ.ogg-720824609c006764047f0e1e059df31e.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/Deleted HQ.ogg"
+dest_files=[ "res://.import/Deleted HQ.ogg-720824609c006764047f0e1e059df31e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

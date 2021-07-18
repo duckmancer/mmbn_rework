@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/1- Giga Cannon!.wav-0a7d3c6420075e4a56d875a68c9da3f9.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Program Advance/1- Giga Cannon!.wav"
+dest_files=[ "res://.import/1- Giga Cannon!.wav-0a7d3c6420075e4a56d875a68c9da3f9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

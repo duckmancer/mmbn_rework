@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-50 Theme of ROCKMAN EXE6 ~TGS MIX~.mp3-06fef491d2367f39d66c892b4e84eb1a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/5-50 Theme of ROCKMAN EXE6 ~TGS MIX~.mp3"
+dest_files=[ "res://.import/5-50 Theme of ROCKMAN EXE6 ~TGS MIX~.mp3-06fef491d2367f39d66c892b4e84eb1a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

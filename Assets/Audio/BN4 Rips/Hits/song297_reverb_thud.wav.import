@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song297_reverb_thud.wav-3c925cc1fc3e618c6e6eec55bb98d084.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Hits/song297_reverb_thud.wav"
+dest_files=[ "res://.import/song297_reverb_thud.wav-3c925cc1fc3e618c6e6eec55bb98d084.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/9- Hiyaa!(2).wav-13c1257317ff725b28e5a6844bf321ca.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Lan/9- Hiyaa!(2).wav"
+dest_files=[ "res://.import/9- Hiyaa!(2).wav-13c1257317ff725b28e5a6844bf321ca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

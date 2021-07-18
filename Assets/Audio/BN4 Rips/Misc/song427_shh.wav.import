@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song427_shh.wav-ab2b32e78bfb62dfbe8ac87427dc9553.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song427_shh.wav"
+dest_files=[ "res://.import/song427_shh.wav-ab2b32e78bfb62dfbe8ac87427dc9553.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

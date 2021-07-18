@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-02 ANSA.mp3-479847cf0ef8810cd22513c7e276d56d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Buildings/3-02 ANSA.mp3"
+dest_files=[ "res://.import/3-02 ANSA.mp3-479847cf0ef8810cd22513c7e276d56d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

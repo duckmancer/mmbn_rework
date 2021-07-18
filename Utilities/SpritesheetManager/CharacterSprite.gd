@@ -97,20 +97,20 @@ const ANIMATION_BACKUP_LIST = {
 	fall = ["fall", "hurt", "fight", "stand", "emote"],
 }
 const ANIM_DIRS = [
-	"up", 
-	"up_right", 
-	"right", 
 	"down_right", 
-	"down", 
 	"down_left", 
-	"left", 
+	"up_right", 
 	"up_left",
+	"down", 
+	"right", 
+	"left", 
+	"up", 
 ]
 
 
 onready var animation_player = $FrameAnimator
-onready var sprite = texture
-
+func get_sprite():
+	return texture
 
 var anim_map = {
 	stand = {},
@@ -228,11 +228,11 @@ func _map_fallback_animations() -> void:
 			if not anim_dir in anim_map[anim_type]:
 				var missing_anim = anim_type + "_" + anim_dir
 				var best_match = _get_best_anim_match(missing_anim, existing_anims)
-				_set_anim_mapping(missing_anim, best_match)
+				_set_anim_mapping(missing_anim, best_match.name)
 
-func _get_best_anim_match(missing_anim : String, existing_anims: Dictionary) -> String:
+func _get_best_anim_match(missing_anim : String, existing_anims: Dictionary) -> Dictionary:
 	var anim_params = _parse_anim_name(missing_anim)
-	var best_match := ""
+	var best_match := {}
 	var MAX_ANIM_STEP = 9
 	for step in MAX_ANIM_STEP:
 		best_match = _best_match_step(step, anim_params, existing_anims)
@@ -240,20 +240,22 @@ func _get_best_anim_match(missing_anim : String, existing_anims: Dictionary) -> 
 			break
 	return best_match
 
-func _best_match_step(step : int, target_params : Dictionary, existing_anims : Dictionary) -> String:
-	var best_match = ""
+func _best_match_step(step : int, target_params : Dictionary, existing_anims : Dictionary) -> Dictionary:
+	var best_match = null
 	var best_delta = INF
 	var backup_list = ANIMATION_BACKUP_LIST[target_params.type]
 	var max_type_step = min(step, backup_list.size()) as int
 	for type_delta in max_type_step:
 		var test_type = backup_list[type_delta]
 		var test_data = existing_anims[test_type]
-		for backup_dir in test_data:
+		for backup_dir in ANIM_DIRS:
+			if not backup_dir in test_data:
+				continue
 			var angle_delta = _get_angle_delta(target_params.dir, backup_dir)
 			var cur_delta = angle_delta + type_delta
 			if cur_delta <= step:
 				if cur_delta < best_delta:
-					best_match = test_data[backup_dir].name
+					best_match = test_data[backup_dir]
 					best_delta = cur_delta
 	return best_match
 
@@ -288,6 +290,8 @@ func _are_anim_dirs_mirrored(anim1 : String, anim2 : String) -> bool:
 		result = true
 	elif "right" in anim1 and "left" in anim2:
 		result = true
+	elif not "left" in anim1 and "left" in anim2:
+		result = true
 	return result
 
 func _mirror_dir_name(anim_name : String) -> String:
@@ -316,9 +320,9 @@ func _make_anim(keyframes, frame_duration := 1) -> Animation:
 	return anim
 
 func _add_anim_single(anim_name : String, frame_duration := 1) -> void:
-	if not sprite.has_anim(anim_name):
+	if not get_sprite().has_anim(anim_name):
 		return
-	var anim_data = sprite.get_anim_data(anim_name)
+	var anim_data = get_sprite().get_anim_data(anim_name)
 	var frames = []
 	for j in anim_data.length:
 		frames.append(anim_data.start + j)

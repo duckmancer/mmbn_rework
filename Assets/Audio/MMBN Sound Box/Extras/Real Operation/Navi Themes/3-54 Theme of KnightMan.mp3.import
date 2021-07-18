@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-54 Theme of KnightMan.mp3-fc4737e22b2cc0e8e1dd95abb84d2b6e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-54 Theme of KnightMan.mp3"
+dest_files=[ "res://.import/3-54 Theme of KnightMan.mp3-fc4737e22b2cc0e8e1dd95abb84d2b6e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

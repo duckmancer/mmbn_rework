@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/77- Access Port.wav-5b682fb9462db01b8c8d6a8fb0235032.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/77- Access Port.wav"
+dest_files=[ "res://.import/77- Access Port.wav-5b682fb9462db01b8c8d6a8fb0235032.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

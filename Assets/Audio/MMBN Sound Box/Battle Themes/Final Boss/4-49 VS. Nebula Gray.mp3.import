@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-49 VS. Nebula Gray.mp3-fdb5e92bd36e1325718d2a35e626d54f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Final Boss/4-49 VS. Nebula Gray.mp3"
+dest_files=[ "res://.import/4-49 VS. Nebula Gray.mp3-fdb5e92bd36e1325718d2a35e626d54f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

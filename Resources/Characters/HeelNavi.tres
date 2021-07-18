@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Utilities/CharacterData.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Spritesheets/Overworld/HeelNavi.tres" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Menus/Dialogue/Mugshots/HeelNavi.png" type="Texture" id=3]
+
+[resource]
+resource_name = "HeelNavi"
+script = ExtResource( 1 )
+spritesheet = ExtResource( 2 )
+mugshot = ExtResource( 3 )

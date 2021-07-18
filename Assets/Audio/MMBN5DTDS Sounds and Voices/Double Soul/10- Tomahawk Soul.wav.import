@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/10- Tomahawk Soul.wav-92fc6e81fd1ac1d3da35f3c1c4ca22ec.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Double Soul/10- Tomahawk Soul.wav"
+dest_files=[ "res://.import/10- Tomahawk Soul.wav-92fc6e81fd1ac1d3da35f3c1c4ca22ec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

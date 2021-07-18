@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/5- Capcom (Lan).wav-5b04642c4a4eaaa2e862f71dc3e648da.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Title Screen/5- Capcom (Lan).wav"
+dest_files=[ "res://.import/5- Capcom (Lan).wav-5b04642c4a4eaaa2e862f71dc3e648da.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

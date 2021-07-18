@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-21 Versus.mp3-f915b8330c1d9bbe5643eeff580d6014.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Misc/Challenge/3-21 Versus.mp3"
+dest_files=[ "res://.import/3-21 Versus.mp3-f915b8330c1d9bbe5643eeff580d6014.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

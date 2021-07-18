@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-04 Oran Island.mp3-64727b164b4a69caf6b1ffe90cf7a196.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/DTDS/5-04 Oran Island.mp3"
+dest_files=[ "res://.import/5-04 Oran Island.mp3-64727b164b4a69caf6b1ffe90cf7a196.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

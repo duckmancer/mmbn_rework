@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song121_arrow_indicator.wav-52b126a1ce07faf743db090a36cbda7c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song121_arrow_indicator.wav"
+dest_files=[ "res://.import/song121_arrow_indicator.wav-52b126a1ce07faf743db090a36cbda7c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

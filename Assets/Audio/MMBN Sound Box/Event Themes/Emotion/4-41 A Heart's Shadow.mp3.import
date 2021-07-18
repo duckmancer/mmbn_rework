@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-41 A Heart's Shadow.mp3-d500f1f7db6cbbcf09c3d3c7aeb7f087.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Emotion/4-41 A Heart's Shadow.mp3"
+dest_files=[ "res://.import/4-41 A Heart's Shadow.mp3-d500f1f7db6cbbcf09c3d3c7aeb7f087.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

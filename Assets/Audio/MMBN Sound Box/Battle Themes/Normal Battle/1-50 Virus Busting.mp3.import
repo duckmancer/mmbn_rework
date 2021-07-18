@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-50 Virus Busting.mp3-879a1fe6bac79af5574c50a776b8a121.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Normal Battle/1-50 Virus Busting.mp3"
+dest_files=[ "res://.import/1-50 Virus Busting.mp3-879a1fe6bac79af5574c50a776b8a121.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

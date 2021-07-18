@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/27- MuteAnt.wav-3029cd596f02aba58fbef2032d7a67e1.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/27- MuteAnt.wav"
+dest_files=[ "res://.import/27- MuteAnt.wav-3029cd596f02aba58fbef2032d7a67e1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

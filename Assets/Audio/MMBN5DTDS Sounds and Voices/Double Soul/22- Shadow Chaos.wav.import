@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/22- Shadow Chaos.wav-7d1a3cb47c48eaa1e1e5080cdc2d73cc.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Double Soul/22- Shadow Chaos.wav"
+dest_files=[ "res://.import/22- Shadow Chaos.wav-7d1a3cb47c48eaa1e1e5080cdc2d73cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

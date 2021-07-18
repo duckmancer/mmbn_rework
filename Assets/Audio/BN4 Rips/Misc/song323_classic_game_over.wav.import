@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song323_classic_game_over.wav-e7e3e04eecf5cf6f2d2362ebecf83ff9.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song323_classic_game_over.wav"
+dest_files=[ "res://.import/song323_classic_game_over.wav-e7e3e04eecf5cf6f2d2362ebecf83ff9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

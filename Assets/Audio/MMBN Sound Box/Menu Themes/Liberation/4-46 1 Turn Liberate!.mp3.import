@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-46 1 Turn Liberate!.mp3-f730e61786f9b30358e3562b6651008d.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Menu Themes/Liberation/4-46 1 Turn Liberate!.mp3"
+dest_files=[ "res://.import/4-46 1 Turn Liberate!.mp3-f730e61786f9b30358e3562b6651008d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

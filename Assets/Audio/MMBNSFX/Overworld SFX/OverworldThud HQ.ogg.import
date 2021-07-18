@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/OverworldThud HQ.ogg-0ceb14dfe069514e9c4a7514cde0fc8d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/OverworldThud HQ.ogg"
+dest_files=[ "res://.import/OverworldThud HQ.ogg-0ceb14dfe069514e9c4a7514cde0fc8d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

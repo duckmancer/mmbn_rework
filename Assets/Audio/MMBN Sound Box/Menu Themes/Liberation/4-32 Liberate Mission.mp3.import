@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-32 Liberate Mission.mp3-848b458c21ee8f9a67afed97043be6dc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Menu Themes/Liberation/4-32 Liberate Mission.mp3"
+dest_files=[ "res://.import/4-32 Liberate Mission.mp3-848b458c21ee8f9a67afed97043be6dc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

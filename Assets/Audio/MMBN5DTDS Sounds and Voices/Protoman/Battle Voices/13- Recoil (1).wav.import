@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/13- Recoil (1).wav-dca0fa3c67d2cae32f1d0ab957f38935.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Protoman/Battle Voices/13- Recoil (1).wav"
+dest_files=[ "res://.import/13- Recoil (1).wav-dca0fa3c67d2cae32f1d0ab957f38935.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

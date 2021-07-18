@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/1- Buster Hit.wav-355223649ffb8decb957aa67c5dfed94.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/1- Buster Hit.wav"
+dest_files=[ "res://.import/1- Buster Hit.wav-355223649ffb8decb957aa67c5dfed94.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

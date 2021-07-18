@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-51 Theme of ROCKMAN EXE4.5 ~Promotion MIX~ (BONUS TRACK).mp3-12ec82d2a0575595ec4a7d6062fb15a8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/4-51 Theme of ROCKMAN EXE4.5 ~Promotion MIX~ (BONUS TRACK).mp3"
+dest_files=[ "res://.import/4-51 Theme of ROCKMAN EXE4.5 ~Promotion MIX~ (BONUS TRACK).mp3-12ec82d2a0575595ec4a7d6062fb15a8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

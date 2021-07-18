@@ -1,0 +1,50 @@
+[gd_resource type="AtlasTexture" load_steps=3 format=2]
+
+[ext_resource path="res://Utilities/SpritesheetManager/Spritesheet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Overworld/Characters/Navis/Minor NPCs/MrProg.png" type="Texture" id=2]
+
+[resource]
+resource_name = "MrProg"
+atlas = ExtResource( 2 )
+region = Rect2( 3, 0, 13, 35 )
+margin = Rect2( 2, 32, 5, 100 )
+script = ExtResource( 1 )
+data_access_mode = "Read"
+frame_index = 0
+spritesheet_data = [ {
+"dir": "up_right",
+"name": "stand_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 3, 0, 13, 35 ),
+"type": "stand"
+}, {
+"dir": "up_right",
+"name": "stand_up_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 22, 1, 13, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "stand_up_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 42, 2, 13, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "stand_down_right",
+"offset": Vector2( -1, 0 ),
+"rect": Rect2( 60, 0, 15, 35 ),
+"type": "stand"
+}, {
+"dir": "down_right",
+"name": "stand_down_right2",
+"offset": Vector2( -1, 0 ),
+"rect": Rect2( 79, 1, 15, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "stand_down_right3",
+"offset": Vector2( -1, 0 ),
+"rect": Rect2( 98, 2, 15, 33 ),
+"type": "copy_prev"
+} ]

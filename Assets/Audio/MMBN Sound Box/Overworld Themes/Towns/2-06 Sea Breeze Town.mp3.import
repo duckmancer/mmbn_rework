@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-06 Sea Breeze Town.mp3-53d53f02c33a4f5ee83d10312d984809.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Towns/2-06 Sea Breeze Town.mp3"
+dest_files=[ "res://.import/2-06 Sea Breeze Town.mp3-53d53f02c33a4f5ee83d10312d984809.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

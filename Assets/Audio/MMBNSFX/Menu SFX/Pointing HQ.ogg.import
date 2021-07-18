@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Pointing HQ.ogg-6594bed95f1715489aa795f8e5810883.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Menu SFX/Pointing HQ.ogg"
+dest_files=[ "res://.import/Pointing HQ.ogg-6594bed95f1715489aa795f8e5810883.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

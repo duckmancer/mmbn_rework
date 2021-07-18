@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-29 Drill Crush!.mp3-0ff42a03af2937cffbf2d0d61fad46a4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/4-29 Drill Crush!.mp3"
+dest_files=[ "res://.import/4-29 Drill Crush!.mp3-0ff42a03af2937cffbf2d0d61fad46a4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

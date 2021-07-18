@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-26 VS. Proto.mp3-6cc0377978061117246dd6972ca453fa.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Navi Battle/2-26 VS. Proto.mp3"
+dest_files=[ "res://.import/2-26 VS. Proto.mp3-6cc0377978061117246dd6972ca453fa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

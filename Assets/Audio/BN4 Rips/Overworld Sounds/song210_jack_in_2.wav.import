@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song210_jack_in_2.wav-4050b4ec77502a119991a052f6715398.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Overworld Sounds/song210_jack_in_2.wav"
+dest_files=[ "res://.import/song210_jack_in_2.wav-4050b4ec77502a119991a052f6715398.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-40 Theme of FireMan.mp3-dc142ed5f771b5bd0b0e00326c13764f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-40 Theme of FireMan.mp3"
+dest_files=[ "res://.import/3-40 Theme of FireMan.mp3-dc142ed5f771b5bd0b0e00326c13764f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/0- Navi Change!.wav-419d35a3ae30bd50702251919f190298.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Navi Change/0- Navi Change!.wav"
+dest_files=[ "res://.import/0- Navi Change!.wav-419d35a3ae30bd50702251919f190298.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/VarSwordInput HQ.ogg-ca4163f89a339754944e9d128f5527aa.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/VarSwordInput HQ.ogg"
+dest_files=[ "res://.import/VarSwordInput HQ.ogg-ca4163f89a339754944e9d128f5527aa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

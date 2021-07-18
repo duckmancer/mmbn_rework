@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song311_big_blast.wav-666eb1338bf44ec9f2ecab25ba98df85.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Hits/song311_big_blast.wav"
+dest_files=[ "res://.import/song311_big_blast.wav-666eb1338bf44ec9f2ecab25ba98df85.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

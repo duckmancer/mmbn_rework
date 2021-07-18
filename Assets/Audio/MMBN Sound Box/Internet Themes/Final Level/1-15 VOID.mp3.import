@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-15 VOID.mp3-76eebe2b9dee585444ef92c0470119be.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Final Level/1-15 VOID.mp3"
+dest_files=[ "res://.import/1-15 VOID.mp3-76eebe2b9dee585444ef92c0470119be.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

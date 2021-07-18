@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-28 Showdown!.mp3-5d55ece2b0e43e0b7beb480cd2d5f38c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Misc/Challenge/2-28 Showdown!.mp3"
+dest_files=[ "res://.import/2-28 Showdown!.mp3-5d55ece2b0e43e0b7beb480cd2d5f38c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-25 Battle Field.mp3-7346ab1b6afce8fd7e775fd2bdb776cf.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Normal Battle/5-25 Battle Field.mp3"
+dest_files=[ "res://.import/5-25 Battle Field.mp3-7346ab1b6afce8fd7e775fd2bdb776cf.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

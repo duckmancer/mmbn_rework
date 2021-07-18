@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song449_jump_echo.wav-d2e4c826ba25fc6f2a228e163c9d7a8d.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song449_jump_echo.wav"
+dest_files=[ "res://.import/song449_jump_echo.wav-d2e4c826ba25fc6f2a228e163c9d7a8d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

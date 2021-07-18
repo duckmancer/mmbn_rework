@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-43 Game Over.mp3-7bec22b54c0e90d96ec4b9bcd4fe0167.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/SFX/Game Over/5-43 Game Over.mp3"
+dest_files=[ "res://.import/5-43 Game Over.mp3-7bec22b54c0e90d96ec4b9bcd4fe0167.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

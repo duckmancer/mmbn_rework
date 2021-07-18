@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song160_noisy_panel_jump.wav-7e191084c5d13589de97b3c237c4fca4.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song160_noisy_panel_jump.wav"
+dest_files=[ "res://.import/song160_noisy_panel_jump.wav-7e191084c5d13589de97b3c237c4fca4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

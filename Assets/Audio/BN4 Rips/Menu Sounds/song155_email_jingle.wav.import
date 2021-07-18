@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song155_email_jingle.wav-8a50a41056035eae63a5423cbd2a2e9e.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song155_email_jingle.wav"
+dest_files=[ "res://.import/song155_email_jingle.wav-8a50a41056035eae63a5423cbd2a2e9e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

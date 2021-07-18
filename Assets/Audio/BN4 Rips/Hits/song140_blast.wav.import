@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song140_blast.wav-c25bae2832c3748b192648635c87cd15.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Hits/song140_blast.wav"
+dest_files=[ "res://.import/song140_blast.wav-c25bae2832c3748b192648635c87cd15.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

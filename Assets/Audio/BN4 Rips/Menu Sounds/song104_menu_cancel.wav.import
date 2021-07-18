@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song104_menu_cancel.wav-3e25d6ce3ce0a6305a6e959ceb1a41c3.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song104_menu_cancel.wav"
+dest_files=[ "res://.import/song104_menu_cancel.wav-3e25d6ce3ce0a6305a6e959ceb1a41c3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

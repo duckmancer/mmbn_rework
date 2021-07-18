@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CallEnd HQ.ogg-b9553928d8e95ef6f0a4b714258a997a.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/CallEnd HQ.ogg"
+dest_files=[ "res://.import/CallEnd HQ.ogg-b9553928d8e95ef6f0a4b714258a997a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

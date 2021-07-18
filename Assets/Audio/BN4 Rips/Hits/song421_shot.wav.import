@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song421_shot.wav-2610896623a9ede9cd7c239b811c5bbb.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Hits/song421_shot.wav"
+dest_files=[ "res://.import/song421_shot.wav-2610896623a9ede9cd7c239b811c5bbb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

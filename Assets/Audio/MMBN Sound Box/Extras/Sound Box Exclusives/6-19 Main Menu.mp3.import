@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-19 Main Menu.mp3-70252e7eb48a9589ae4fc0f1d1b674a0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/6-19 Main Menu.mp3"
+dest_files=[ "res://.import/6-19 Main Menu.mp3-70252e7eb48a9589ae4fc0f1d1b674a0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

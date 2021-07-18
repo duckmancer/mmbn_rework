@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Xylos HQ.ogg-82081d3eb362f5b8958575df8fe75e9b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/Xylos HQ.ogg"
+dest_files=[ "res://.import/Xylos HQ.ogg-82081d3eb362f5b8958575df8fe75e9b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

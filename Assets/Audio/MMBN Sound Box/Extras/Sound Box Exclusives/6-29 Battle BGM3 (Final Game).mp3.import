@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-29 Battle BGM3 (Final Game).mp3-79a54d5844c8949f3ea5c07a7ce9ebb8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/6-29 Battle BGM3 (Final Game).mp3"
+dest_files=[ "res://.import/6-29 Battle BGM3 (Final Game).mp3-79a54d5844c8949f3ea5c07a7ce9ebb8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

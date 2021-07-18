@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-40 Depth.mp3-190ed805afe1f46ca4655f77d45b36d0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Undernet/4-40 Depth.mp3"
+dest_files=[ "res://.import/4-40 Depth.mp3-190ed805afe1f46ca4655f77d45b36d0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

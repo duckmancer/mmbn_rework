@@ -67,10 +67,10 @@ func _physics_process(_delta: float) -> void:
 
 # Setup
 
-func open(text : String, mugshot_path := "") -> void:
+func open(text : String, new_mugshot : StreamTexture) -> void:
 	state = State.INACTIVE
 	_parse_text(text)
-	mugshot.set_mugshot(mugshot_path)
+	mugshot.set_mugshot(new_mugshot)
 	popup()
 	anim.play("open_window", -1, POPUP_SPEED)
 	yield(anim, "animation_finished")
@@ -118,7 +118,7 @@ func _group_pages(line_list : PoolStringArray) -> PoolStringArray:
 
 func _ready() -> void:
 	anim.playback_speed = TEXT_SCROLL_SPEED.slow
-#	open(label.text, "res://Assets/Menus/Dialogue/Mugshots/Megaman.png")
+#	open(label.text, SpriteAssets.MUGSHOT_ROOT + "Megaman.png")
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:

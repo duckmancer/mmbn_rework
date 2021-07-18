@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-37 Quest in the Water.mp3-b6d919127e13fe6207fe0533bc94855c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/4-37 Quest in the Water.mp3"
+dest_files=[ "res://.import/4-37 Quest in the Water.mp3-b6d919127e13fe6207fe0533bc94855c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

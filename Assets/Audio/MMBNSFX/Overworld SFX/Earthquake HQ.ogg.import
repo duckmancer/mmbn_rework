@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Earthquake HQ.ogg-526b51b1bf0996a646abd2c308829ee5.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/Earthquake HQ.ogg"
+dest_files=[ "res://.import/Earthquake HQ.ogg-526b51b1bf0996a646abd2c308829ee5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

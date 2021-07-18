@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-05 Character BGM2 (Dekao, Mairi) - PET Menu.mp3-c24ed502493c6afac0899f68d3415082.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/6-05 Character BGM2 (Dekao, Mairi) - PET Menu.mp3"
+dest_files=[ "res://.import/6-05 Character BGM2 (Dekao, Mairi) - PET Menu.mp3-c24ed502493c6afac0899f68d3415082.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

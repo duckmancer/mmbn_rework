@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-32 Back Street.mp3-a4241f37f9c489db754eec1d01a4695a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Danger Zone/1-32 Back Street.mp3"
+dest_files=[ "res://.import/1-32 Back Street.mp3-a4241f37f9c489db754eec1d01a4695a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

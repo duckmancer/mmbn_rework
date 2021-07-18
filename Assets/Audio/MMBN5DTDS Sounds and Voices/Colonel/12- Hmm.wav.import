@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/12- Hmm.wav-469a6b0e5c918fd33f7d7b207915049f.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Colonel/12- Hmm.wav"
+dest_files=[ "res://.import/12- Hmm.wav-469a6b0e5c918fd33f7d7b207915049f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

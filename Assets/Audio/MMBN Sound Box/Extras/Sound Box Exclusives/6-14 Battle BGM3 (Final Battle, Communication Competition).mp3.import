@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-14 Battle BGM3 (Final Battle, Communication Competition).mp3-53461f53ff568da36e0622bb0f1762e4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/6-14 Battle BGM3 (Final Battle, Communication Competition).mp3"
+dest_files=[ "res://.import/6-14 Battle BGM3 (Final Battle, Communication Competition).mp3-53461f53ff568da36e0622bb0f1762e4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

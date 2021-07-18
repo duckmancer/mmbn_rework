@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/11- Hurt (8).wav-7e658cb9bb95f5f4c0d2b0c891791462.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Protoman/Battle Voices/11- Hurt (8).wav"
+dest_files=[ "res://.import/11- Hurt (8).wav-7e658cb9bb95f5f4c0d2b0c891791462.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

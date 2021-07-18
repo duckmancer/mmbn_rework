@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-22 Fighting Oneself.mp3-1451276452923794068e5c975718e134.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Navi Battle/3-22 Fighting Oneself.mp3"
+dest_files=[ "res://.import/3-22 Fighting Oneself.mp3-1451276452923794068e5c975718e134.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

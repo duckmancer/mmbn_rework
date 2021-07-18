@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AquaNeedle HQ.ogg-2722bf62b487820389d901af281ec9a0.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/AquaNeedle HQ.ogg"
+dest_files=[ "res://.import/AquaNeedle HQ.ogg-2722bf62b487820389d901af281ec9a0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

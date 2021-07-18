@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SmallZap-SensorPossibly HQ.ogg-e208f856404e57e94ce7b55313f7c22a.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/SmallZap-SensorPossibly HQ.ogg"
+dest_files=[ "res://.import/SmallZap-SensorPossibly HQ.ogg-e208f856404e57e94ce7b55313f7c22a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

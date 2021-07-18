@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cross HQ.ogg-e9c684b598f33cf5e60d16d4706cf8de.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Menu SFX/Cross HQ.ogg"
+dest_files=[ "res://.import/Cross HQ.ogg-e9c684b598f33cf5e60d16d4706cf8de.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PrivateCall HQ.ogg-a8380f532686c9cc0c717be8a9fdae1d.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/PrivateCall HQ.ogg"
+dest_files=[ "res://.import/PrivateCall HQ.ogg-a8380f532686c9cc0c717be8a9fdae1d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

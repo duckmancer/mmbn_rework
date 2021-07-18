@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-17 Net Battle.mp3-7f39dd3d781e062e66f91da30dd7adda.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Navi Battle/1-17 Net Battle.mp3"
+dest_files=[ "res://.import/1-17 Net Battle.mp3-7f39dd3d781e062e66f91da30dd7adda.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

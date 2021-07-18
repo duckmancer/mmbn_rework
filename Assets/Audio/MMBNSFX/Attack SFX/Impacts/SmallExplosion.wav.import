@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SmallExplosion.wav-b9aafab93b59db70a2787c57a556c7a3.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Impacts/SmallExplosion.wav"
+dest_files=[ "res://.import/SmallExplosion.wav-b9aafab93b59db70a2787c57a556c7a3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -20,10 +20,9 @@ var frame_count := 0
 
 # Interface
 
-func set_mugshot(mugshot_path : String) -> void:
-	if not try_load_mugshot(mugshot_path):
-		return
-	get_mugshot_frame_count()
+func set_mugshot(new_mug : StreamTexture) -> void:
+	texture = new_mug
+	frame_count = get_mugshot_frame_count()
 	set_mugshot_frame(0)
 
 func start_talking() -> void:
@@ -38,16 +37,12 @@ func stop_talking() -> void:
 
 # Helpers
 
-func get_mugshot_frame_count() -> void:
-	var sprite_size = texture.get_size()
-	frame_count = floor((sprite_size.x - MUGSHOT_OFFSET.x) / (MUGSHOT_FRAME_DELTA.x + MUGSHOT_OFFSET.x)) as int
-
-func try_load_mugshot(path : String) -> bool:
-	var exists = File.new().file_exists(path)
-	if exists:
-		texture = load(path)
-	visible = exists
-	return exists
+func get_mugshot_frame_count() -> int:
+	var count = 0
+	if texture:
+		var sprite_size = texture.get_size()
+		count = floor((sprite_size.x - MUGSHOT_OFFSET.x) / (MUGSHOT_FRAME_DELTA.x + MUGSHOT_OFFSET.x)) as int
+	return count
 
 func set_mugshot_frame(frame_number : int) -> void:
 	if frame_number < frame_count:

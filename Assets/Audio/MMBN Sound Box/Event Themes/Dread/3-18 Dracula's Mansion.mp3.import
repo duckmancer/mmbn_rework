@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-18 Dracula's Mansion.mp3-66656b103f1d1886a344a7287f1f14f1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Dread/3-18 Dracula's Mansion.mp3"
+dest_files=[ "res://.import/3-18 Dracula's Mansion.mp3-66656b103f1d1886a344a7287f1f14f1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

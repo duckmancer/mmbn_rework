@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-16 All Cast.mp3-9ea0a2d6290f3db4d8cb66e5a29e72dc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Menus/4-16 All Cast.mp3"
+dest_files=[ "res://.import/4-16 All Cast.mp3-9ea0a2d6290f3db4d8cb66e5a29e72dc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

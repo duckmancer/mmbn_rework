@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Battle/HUD/CustomWindow/ChipPreview.gd" type="Script" id=1]
 [ext_resource path="res://Battle/HUD/ShineLabel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Fonts/Player Health Font.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Assets/BattleAssets/HUD/Chip Splashes/schip001.png" type="Texture" id=5]
-[ext_resource path="res://Assets/BattleAssets/HUD/Selected Chip Code.png" type="Texture" id=6]
-[ext_resource path="res://Assets/BattleAssets/HUD/Chip Element.png" type="Texture" id=7]
+[ext_resource path="res://Resources/Fonts/Player Health Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Sprites/BattleAssets/CustomWindow/Chip Splashes/schip001.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/BattleAssets/CustomWindow/Selected Chip Code.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/BattleAssets/CustomWindow/Chip Element.png" type="Texture" id=7]
 
 [node name="ChipPreview" type="Control"]
 margin_top = 7.0

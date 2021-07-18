@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SurfacingWater HQ.ogg-47ab7cf97e087dce2306fefd41ad9e86.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/SurfacingWater HQ.ogg"
+dest_files=[ "res://.import/SurfacingWater HQ.ogg-47ab7cf97e087dce2306fefd41ad9e86.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

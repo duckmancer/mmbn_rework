@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/8- You are worthy!.wav-a74a9e5be33f43d5811788d687aa6eda.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Colonel/8- You are worthy!.wav"
+dest_files=[ "res://.import/8- You are worthy!.wav-a74a9e5be33f43d5811788d687aa6eda.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

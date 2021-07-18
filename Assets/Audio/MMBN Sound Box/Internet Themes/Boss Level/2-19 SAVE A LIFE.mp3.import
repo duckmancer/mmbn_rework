@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-19 SAVE A LIFE.mp3-7633c6f5d819df82234b93bd7b9420ca.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/2-19 SAVE A LIFE.mp3"
+dest_files=[ "res://.import/2-19 SAVE A LIFE.mp3-7633c6f5d819df82234b93bd7b9420ca.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

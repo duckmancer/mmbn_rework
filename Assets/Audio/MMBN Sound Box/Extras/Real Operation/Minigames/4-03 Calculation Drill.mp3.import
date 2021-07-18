@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-03 Calculation Drill.mp3-8a9ae53701f8d7ab1aa0d5a08a8ff6bb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Minigames/4-03 Calculation Drill.mp3"
+dest_files=[ "res://.import/4-03 Calculation Drill.mp3-8a9ae53701f8d7ab1aa0d5a08a8ff6bb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

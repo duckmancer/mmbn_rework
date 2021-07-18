@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PETEMail HQ.ogg-8a09ad32868f1b65490589a7e2df60ef.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/PETEMail HQ.ogg"
+dest_files=[ "res://.import/PETEMail HQ.ogg-8a09ad32868f1b65490589a7e2df60ef.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

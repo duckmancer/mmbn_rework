@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/23- Let's do it, Shadowman!.wav-a7eca70e5f679f26fc52ed4d7994f427.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Navi Change/23- Let's do it, Shadowman!.wav"
+dest_files=[ "res://.import/23- Let's do it, Shadowman!.wav-a7eca70e5f679f26fc52ed4d7994f427.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

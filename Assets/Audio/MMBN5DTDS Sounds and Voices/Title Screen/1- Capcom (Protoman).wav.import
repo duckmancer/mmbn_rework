@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/1- Capcom (Protoman).wav-a60f5a5e512527af370ed112170b73f8.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Title Screen/1- Capcom (Protoman).wav"
+dest_files=[ "res://.import/1- Capcom (Protoman).wav-a60f5a5e512527af370ed112170b73f8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

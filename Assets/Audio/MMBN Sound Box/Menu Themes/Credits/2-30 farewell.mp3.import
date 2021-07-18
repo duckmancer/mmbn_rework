@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-30 farewell.mp3-c059914a4e52bcbf4b3d7172838f1e5c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Menu Themes/Credits/2-30 farewell.mp3"
+dest_files=[ "res://.import/2-30 farewell.mp3-c059914a4e52bcbf4b3d7172838f1e5c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

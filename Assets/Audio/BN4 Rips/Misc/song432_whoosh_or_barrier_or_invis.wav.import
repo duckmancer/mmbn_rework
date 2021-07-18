@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song432_whoosh_or_barrier_or_invis.wav-09af0c7185a3900c8bec92b818ba2cef.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song432_whoosh_or_barrier_or_invis.wav"
+dest_files=[ "res://.import/song432_whoosh_or_barrier_or_invis.wav-09af0c7185a3900c8bec92b818ba2cef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

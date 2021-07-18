@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/12- Hurt (8).wav-e8310b614664349994369d73f3cd39be.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Megaman/Battle Voices/12- Hurt (8).wav"
+dest_files=[ "res://.import/12- Hurt (8).wav-e8310b614664349994369d73f3cd39be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

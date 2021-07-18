@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song249_select_buzzer.wav-0e5316a795935686d33dc9ac09b5a704.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song249_select_buzzer.wav"
+dest_files=[ "res://.import/song249_select_buzzer.wav-0e5316a795935686d33dc9ac09b5a704.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

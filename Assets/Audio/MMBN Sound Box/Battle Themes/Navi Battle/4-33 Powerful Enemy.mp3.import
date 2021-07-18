@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-33 Powerful Enemy.mp3-18ea4e6fb3a28fe1a4cbfe6d35b870a2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Navi Battle/4-33 Powerful Enemy.mp3"
+dest_files=[ "res://.import/4-33 Powerful Enemy.mp3-18ea4e6fb3a28fe1a4cbfe6d35b870a2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

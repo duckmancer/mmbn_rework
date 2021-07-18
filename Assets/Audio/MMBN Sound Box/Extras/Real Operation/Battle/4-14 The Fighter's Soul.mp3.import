@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-14 The Fighter's Soul.mp3-430f441e6ae369861779e3b69a2f790c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Battle/4-14 The Fighter's Soul.mp3"
+dest_files=[ "res://.import/4-14 The Fighter's Soul.mp3-430f441e6ae369861779e3b69a2f790c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

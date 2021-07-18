@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CreepyFloating HQ.ogg-0c4288bd427b864e412874af7201e756.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/CreepyFloating HQ.ogg"
+dest_files=[ "res://.import/CreepyFloating HQ.ogg-0c4288bd427b864e412874af7201e756.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

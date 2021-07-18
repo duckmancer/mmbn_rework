@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Tornado HQ.ogg-9627ce55d2deefe7fb702b5660c389e0.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/Tornado HQ.ogg"
+dest_files=[ "res://.import/Tornado HQ.ogg-9627ce55d2deefe7fb702b5660c389e0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

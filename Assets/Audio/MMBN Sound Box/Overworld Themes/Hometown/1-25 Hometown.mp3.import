@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-25 Hometown.mp3-ebe8bdfdc732c556120f38cdd10e1791.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Hometown/1-25 Hometown.mp3"
+dest_files=[ "res://.import/1-25 Hometown.mp3-ebe8bdfdc732c556120f38cdd10e1791.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-43 Dark Chip Factory.mp3-72fefac57ab5f23b42c8b0b0c4b0440b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Danger Zone/4-43 Dark Chip Factory.mp3"
+dest_files=[ "res://.import/4-43 Dark Chip Factory.mp3-72fefac57ab5f23b42c8b0b0c4b0440b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

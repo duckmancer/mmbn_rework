@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-38 At the Edge of Sadness.mp3-2051d63b52ff7e67f37730b0c4336ac9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Emotion/1-38 At the Edge of Sadness.mp3"
+dest_files=[ "res://.import/1-38 At the Edge of Sadness.mp3-2051d63b52ff7e67f37730b0c4336ac9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

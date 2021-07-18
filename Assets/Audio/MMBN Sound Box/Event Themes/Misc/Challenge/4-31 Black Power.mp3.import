@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-31 Black Power.mp3-219d1f494ff851f0c9c192702106e947.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Misc/Challenge/4-31 Black Power.mp3"
+dest_files=[ "res://.import/4-31 Black Power.mp3-219d1f494ff851f0c9c192702106e947.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

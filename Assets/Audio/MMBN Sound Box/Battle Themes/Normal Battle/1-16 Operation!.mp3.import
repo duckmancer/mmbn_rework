@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-16 Operation!.mp3-e33cdfa0b09a022652bf7f96ef510c19.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Normal Battle/1-16 Operation!.mp3"
+dest_files=[ "res://.import/1-16 Operation!.mp3-e33cdfa0b09a022652bf7f96ef510c19.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

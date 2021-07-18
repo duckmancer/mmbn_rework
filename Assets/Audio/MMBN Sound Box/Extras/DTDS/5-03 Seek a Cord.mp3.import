@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-03 Seek a Cord.mp3-bbb8884f0e15bcca56c4efd9f8f6c129.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/DTDS/5-03 Seek a Cord.mp3"
+dest_files=[ "res://.import/5-03 Seek a Cord.mp3-bbb8884f0e15bcca56c4efd9f8f6c129.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/12- That was close.wav-53ca9c09ea073ad7d9b642c401eefe4e.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Megaman/12- That was close.wav"
+dest_files=[ "res://.import/12- That was close.wav-53ca9c09ea073ad7d9b642c401eefe4e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

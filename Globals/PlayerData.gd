@@ -1,7 +1,7 @@
 extends Node
 
 var current_world := "internet"
-var overworld_map := "ACDC_1"
+var overworld_map := "ACDC_2"
 var overworld_pos := Vector2(150, 250)
 var max_hp := 200
 var hp := 100

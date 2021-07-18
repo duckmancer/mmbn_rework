@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ChipChoose HQ.ogg-de411ce2f4d8b1222a85591bab0c13e3.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Menu SFX/ChipChoose HQ.ogg"
+dest_files=[ "res://.import/ChipChoose HQ.ogg-de411ce2f4d8b1222a85591bab0c13e3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

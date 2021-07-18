@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/75- Jacking In Megaman.wav-af6a13d5beb8166da2478e3d970c3ed9.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/75- Jacking In Megaman.wav"
+dest_files=[ "res://.import/75- Jacking In Megaman.wav-af6a13d5beb8166da2478e3d970c3ed9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

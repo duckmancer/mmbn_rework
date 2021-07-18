@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-33 Dungeon.mp3-3ac97da23374c68a43a45f0dbd64d3da.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Danger Zone/1-33 Dungeon.mp3"
+dest_files=[ "res://.import/1-33 Dungeon.mp3-3ac97da23374c68a43a45f0dbd64d3da.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,9 +1,0 @@
-[gd_resource type="StreamTexture" load_steps=2 format=2]
-
-[ext_resource path="res://Overworld/Map/MapEditor/MapData.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-collisions = [  ]
-events = [  ]
-entities = [  ]

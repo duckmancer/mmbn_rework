@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song405_warp_land.wav-632f7a683f1678ba30bcbd23602e83e2.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song405_warp_land.wav"
+dest_files=[ "res://.import/song405_warp_land.wav-632f7a683f1678ba30bcbd23602e83e2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

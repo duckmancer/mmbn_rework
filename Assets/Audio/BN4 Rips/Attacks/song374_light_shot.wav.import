@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song374_light_shot.wav-5a9ae835442123ddfd86c089e401fb3a.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Attacks/song374_light_shot.wav"
+dest_files=[ "res://.import/song374_light_shot.wav-5a9ae835442123ddfd86c089e401fb3a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

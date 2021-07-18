@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song423_steam.wav-d0e556d9e9bedfa9f700c47b8796c4ac.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Attacks/song423_steam.wav"
+dest_files=[ "res://.import/song423_steam.wav-d0e556d9e9bedfa9f700c47b8796c4ac.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -10,8 +10,7 @@ enum State {
 	ENDING,
 }
 
-const SPLASH_ROOT = "res://Assets/BattleAssets/HUD/"
-const CHIP_ROOT = SPLASH_ROOT + "Chip Splashes/"
+const CHIP_ROOT = SpriteAssets.CHIP_SPLASH_ROOT
 const DISPLAY_SIZE = 10
 
 onready var splash = $ChipSplash
@@ -23,8 +22,8 @@ onready var anim = $AnimationPlayer
 onready var audio = $AudioStreamPlayer
 
 onready var audio_tracks = {
-	beep = load("res://Assets/BN4 Rips/Menu Sounds/song252_text.wav"),
-	get = load("res://Assets/BN4 Rips/Menu Sounds/song153_double_confirm.wav"),
+	beep = load(AudioAssets.SFX.text_beep),
+	get = load(AudioAssets.SFX.item_get),
 }
 
 export(State) var state = State.INACTIVE

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-34 Theme of ROCKMAN EXE4.5.mp3-2430cff99bc92af5905ef5e208dbe5a8.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Menus/3-34 Theme of ROCKMAN EXE4.5.mp3"
+dest_files=[ "res://.import/3-34 Theme of ROCKMAN EXE4.5.mp3-2430cff99bc92af5905ef5e208dbe5a8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

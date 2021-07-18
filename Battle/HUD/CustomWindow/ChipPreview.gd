@@ -1,11 +1,5 @@
 extends Control
 
-const SPLASH_ROOT = "res://Assets/BattleAssets/HUD/"
-const CHIP_ROOT = SPLASH_ROOT + "Chip Splashes/"
-
-const NO_DATA_PATH = SPLASH_ROOT + "Empty Confirm Window.png"
-const SEND_DATA_PATH = SPLASH_ROOT + "Chip Confirm Window.png"
-
 onready var title = $Title
 onready var splash = $Splash
 onready var code = $Code
@@ -17,9 +11,9 @@ onready var damage = $Damage
 func set_ok_preview(has_data := true):
 	var splash_path
 	if has_data:
-		splash_path = SEND_DATA_PATH
+		splash_path = SpriteAssets.SEND_DATA_PATH
 	else:
-		splash_path = NO_DATA_PATH
+		splash_path = SpriteAssets.NO_DATA_PATH
 	splash.texture = load(splash_path)
 	_set_code(null)
 	_set_damage(null)
@@ -52,19 +46,9 @@ func _set_code(code_str):
 
 func _set_splash(id):
 	# TODO: Cleanup magic constants
-	var S_END = 150
-	var S_START = 1
-	
-	var chip_name = ""
 	var icon_id = id + 1
-	
-	if icon_id >= S_START and icon_id <= S_END:
-		var id_str = String(icon_id)
-		var padding_count = 3 - id_str.length()
-		for i in padding_count:
-			id_str = "0" + id_str
-		chip_name = "schip" + String(id_str)
-	splash.texture = load(CHIP_ROOT + chip_name + ".png")
+	var chip_path = SpriteAssets.get_chip_splash_path(icon_id)
+	splash.texture = load(chip_path)
 
 
 func _ready() -> void:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-18 Battle Chip G Announcement - Free Battle.mp3-f4b4430857940a8886a39368ae53cdfd.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/6-18 Battle Chip G Announcement - Free Battle.mp3"
+dest_files=[ "res://.import/6-18 Battle Chip G Announcement - Free Battle.mp3-f4b4430857940a8886a39368ae53cdfd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

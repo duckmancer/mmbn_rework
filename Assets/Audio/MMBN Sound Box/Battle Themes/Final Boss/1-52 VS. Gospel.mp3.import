@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-52 VS. Gospel.mp3-8bb2bda5d476ae5853f8390c6dbe1a5f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Final Boss/1-52 VS. Gospel.mp3"
+dest_files=[ "res://.import/1-52 VS. Gospel.mp3-8bb2bda5d476ae5853f8390c6dbe1a5f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

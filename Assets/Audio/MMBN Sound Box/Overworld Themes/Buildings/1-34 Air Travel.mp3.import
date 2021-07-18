@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-34 Air Travel.mp3-2597846513787d15514d3bd455354820.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Buildings/1-34 Air Travel.mp3"
+dest_files=[ "res://.import/1-34 Air Travel.mp3-2597846513787d15514d3bd455354820.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

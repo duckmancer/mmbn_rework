@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Disconnect HQ.ogg-8b937155d65e1bc44cd87613206fd576.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/Disconnect HQ.ogg"
+dest_files=[ "res://.import/Disconnect HQ.ogg-8b937155d65e1bc44cd87613206fd576.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

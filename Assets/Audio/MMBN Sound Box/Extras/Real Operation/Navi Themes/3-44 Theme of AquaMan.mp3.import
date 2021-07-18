@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-44 Theme of AquaMan.mp3-7604123323aa7bb0eb8937bc6ab5f3aa.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-44 Theme of AquaMan.mp3"
+dest_files=[ "res://.import/3-44 Theme of AquaMan.mp3-7604123323aa7bb0eb8937bc6ab5f3aa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

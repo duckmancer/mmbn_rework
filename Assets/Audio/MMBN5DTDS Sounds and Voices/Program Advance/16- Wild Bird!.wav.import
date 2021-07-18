@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/16- Wild Bird!.wav-449b5bb4fbecabe0c166b030a5d44468.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Program Advance/16- Wild Bird!.wav"
+dest_files=[ "res://.import/16- Wild Bird!.wav-449b5bb4fbecabe0c166b030a5d44468.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

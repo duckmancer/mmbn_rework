@@ -22,7 +22,9 @@ const ANIMATION_BACKUP_LIST = {
 }
 
 
-export(AtlasTexture) var spritesheet
+export(Resource) var character_data
+
+
 
 onready var animated_spritesheet = $CharacterSprite
 onready var interaction = $Interaction
@@ -31,8 +33,6 @@ var velocity = Vector2(0, 0)
 var facing_dir = "down"
 var facing_angle = Constants.DIR_TO_DEG.down
 
-
-var mugshot := ""
 
 var speeds = {
 	stand = 0,
@@ -55,6 +55,11 @@ var queued_args = []
 
 # Interface
 
+func get_mugshot() -> StreamTexture:
+	var result = null
+	if character_data:
+		result = character_data.mugshot
+	return result
 
 func try_interaction() -> void:
 	var overlap = interaction.get_overlapping_bodies()
@@ -264,10 +269,8 @@ func _iso_move_and_slide(collision : KinematicCollision2D) -> void:
 
 func _is_iso_head_on_collision(travel : Vector2, normal : Vector2) -> bool:
 	var iso_normal = normal
-	iso_normal.x *= 2
+	iso_normal.x *= sqrt(2)
 	var iso_collision_angle = abs(iso_normal.angle_to(-travel))
-	print(rad2deg(iso_collision_angle))
-#	Utils.slow_print(rad2deg(iso_collision_angle))
 	if iso_collision_angle < SLIDE_ANGLE_THRESHOLD:
 		return true
 	return false
@@ -296,15 +299,10 @@ func connect_signals_to_overworld(_overworld : Node) -> void:
 
 
 func _ready() -> void:
-	animated_spritesheet.texture = spritesheet
+	if character_data:
+		animated_spritesheet.texture = character_data.spritesheet.duplicate(true)
+	else:
+		printerr("No Character Data in ", name)
 	animated_spritesheet.setup_animations()
 	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle
-#	try_find_mugshot(sprite_path)
-
-func try_find_mugshot(spritesheet_path : String) -> void:
-	var MUGSHOT_ROOT = "res://Assets/Menus/Dialogue/Mugshots/"
-	var file_name = spritesheet_path.get_file()
-	var mugshot_path = MUGSHOT_ROOT + file_name
-	if File.new().file_exists(mugshot_path):
-		mugshot = mugshot_path

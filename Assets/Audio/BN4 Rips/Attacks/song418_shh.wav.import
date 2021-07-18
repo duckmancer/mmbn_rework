@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song418_shh.wav-70ec4284beba4678b01de184e469efc9.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Attacks/song418_shh.wav"
+dest_files=[ "res://.import/song418_shh.wav-70ec4284beba4678b01de184e469efc9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/7- Colonel Soul.wav-718f9c0b10f3e8e30484535a793518ad.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Double Soul/7- Colonel Soul.wav"
+dest_files=[ "res://.import/7- Colonel Soul.wav-718f9c0b10f3e8e30484535a793518ad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

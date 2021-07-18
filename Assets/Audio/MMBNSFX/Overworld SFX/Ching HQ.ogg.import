@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Ching HQ.ogg-ed7a2dd912f4af5e4fcc8c239d8d20a7.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/Ching HQ.ogg"
+dest_files=[ "res://.import/Ching HQ.ogg-ed7a2dd912f4af5e4fcc8c239d8d20a7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FalzarFeather HQ.ogg-b8ecb6f0392f0699c2e61795240260b2.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Impacts/FalzarFeather HQ.ogg"
+dest_files=[ "res://.import/FalzarFeather HQ.ogg-b8ecb6f0392f0699c2e61795240260b2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UseChipWhileInFullSynchro HQ.ogg-3be254e4d67800c219a0ef5be282ea37.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/UseChipWhileInFullSynchro HQ.ogg"
+dest_files=[ "res://.import/UseChipWhileInFullSynchro HQ.ogg-3be254e4d67800c219a0ef5be282ea37.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

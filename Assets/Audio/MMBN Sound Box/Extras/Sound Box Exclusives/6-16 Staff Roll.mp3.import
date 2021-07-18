@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-16 Staff Roll.mp3-4de67af642c2a732521df2399a38c532.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/6-16 Staff Roll.mp3"
+dest_files=[ "res://.import/6-16 Staff Roll.mp3-4de67af642c2a732521df2399a38c532.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

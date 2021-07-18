@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SubmergingUnderwater HQ.ogg-d5b21777c17a123a17bdf06db814afe7.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/SubmergingUnderwater HQ.ogg"
+dest_files=[ "res://.import/SubmergingUnderwater HQ.ogg-d5b21777c17a123a17bdf06db814afe7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-41 Parade!.mp3-3419b01eb0ad8361ea9cf2067c123949.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Towns/5-41 Parade!.mp3"
+dest_files=[ "res://.import/5-41 Parade!.mp3-3419b01eb0ad8361ea9cf2067c123949.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/26- Strong Attack (1).wav-318d701377f6422c35fd1d158838f106.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Protoman/Battle Voices/26- Strong Attack (1).wav"
+dest_files=[ "res://.import/26- Strong Attack (1).wav-318d701377f6422c35fd1d158838f106.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

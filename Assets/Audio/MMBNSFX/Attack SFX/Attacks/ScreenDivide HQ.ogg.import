@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ScreenDivide HQ.ogg-9e6da7c3be7a84fb2f5186b9a0bdaa50.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/ScreenDivide HQ.ogg"
+dest_files=[ "res://.import/ScreenDivide HQ.ogg-9e6da7c3be7a84fb2f5186b9a0bdaa50.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

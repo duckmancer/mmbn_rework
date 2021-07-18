@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-36 Luxury Liner.mp3-840dc2c1d1f111a0fce4f4a6464c5976.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Buildings/4-36 Luxury Liner.mp3"
+dest_files=[ "res://.import/4-36 Luxury Liner.mp3-840dc2c1d1f111a0fce4f4a6464c5976.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

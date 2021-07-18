@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song105_menu_error_short.wav-d137c06084d65f9d3b13b22573ad79cb.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song105_menu_error_short.wav"
+dest_files=[ "res://.import/song105_menu_error_short.wav-d137c06084d65f9d3b13b22573ad79cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

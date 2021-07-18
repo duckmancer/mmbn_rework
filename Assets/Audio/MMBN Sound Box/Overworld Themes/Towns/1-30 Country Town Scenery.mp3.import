@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-30 Country Town Scenery.mp3-2d0cdb11b819ab3be2c746c48af3e2f3.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Towns/1-30 Country Town Scenery.mp3"
+dest_files=[ "res://.import/1-30 Country Town Scenery.mp3-2d0cdb11b819ab3be2c746c48af3e2f3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

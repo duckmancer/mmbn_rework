@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/16- Let's do it, Magnetman!.wav-1ad7acf65aea1a2522b43791d3123af5.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Navi Change/16- Let's do it, Magnetman!.wav"
+dest_files=[ "res://.import/16- Let's do it, Magnetman!.wav-1ad7acf65aea1a2522b43791d3123af5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

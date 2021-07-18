@@ -1,0 +1,183 @@
+[gd_resource type="AtlasTexture" load_steps=3 format=2]
+
+[ext_resource path="res://Utilities/SpritesheetManager/Spritesheet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Overworld/Characters/Navis/Minor NPCs/NormalNavi.png" type="Texture" id=2]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "NormalNavi"
+atlas = ExtResource( 2 )
+region = Rect2( 4, 2, 15, 34 )
+margin = Rect2( 2, 33, 5, 100 )
+script = ExtResource( 1 )
+data_access_mode = "Read"
+frame_index = 0
+spritesheet_data = [ {
+"dir": "down_right",
+"name": "stand_down_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 4, 2, 15, 34 ),
+"type": "stand"
+}, {
+"dir": "up_right",
+"name": "stand_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 26, 2, 15, 34 ),
+"type": "stand"
+}, {
+"dir": "up",
+"name": "stand_up",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 46, 2, 16, 34 ),
+"type": "stand"
+}, {
+"dir": "up_right",
+"name": "walk_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 2, 39, 18, 33 ),
+"type": "walk"
+}, {
+"dir": "up_right",
+"name": "walk_up_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 25, 38, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 46, 38, 15, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 65, 39, 18, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right5",
+"offset": Vector2( -1, 0 ),
+"rect": Rect2( 88, 38, 17, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 109, 38, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right",
+"offset": Vector2( 1, 0 ),
+"rect": Rect2( 3, 75, 18, 33 ),
+"type": "walk"
+}, {
+"dir": "down_right",
+"name": "walk_down_right2",
+"offset": Vector2( 1, 0 ),
+"rect": Rect2( 26, 74, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 46, 74, 15, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 66, 75, 17, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 90, 74, 15, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 110, 74, 15, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 3, 112, 18, 33 ),
+"type": "walk"
+}, {
+"dir": "up",
+"name": "walk_up2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 26, 111, 17, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 46, 111, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 66, 112, 18, 33 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 90, 111, 16, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 110, 111, 17, 34 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "emote_down",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 23, 159, 19, 29 ),
+"type": "emote"
+}, {
+"dir": "down",
+"name": "emote_down2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 51, 158, 17, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "emote_down3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 78, 150, 37, 38 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "fall_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 2, 196, 31, 29 ),
+"type": "fall"
+}, {
+"dir": "down_left",
+"name": "fall_down_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 40, 200, 32, 26 ),
+"type": "fall"
+}, {
+"dir": "left",
+"name": "fall_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 79, 197, 24, 31 ),
+"type": "fall"
+}, {
+"dir": "down_left",
+"name": "hurt_down_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 112, 198, 17, 27 ),
+"type": "hurt"
+} ]

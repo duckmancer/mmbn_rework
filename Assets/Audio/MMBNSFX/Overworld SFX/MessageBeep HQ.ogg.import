@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MessageBeep HQ.ogg-5ca7c0d45143862a7f7b66dec748bedf.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/MessageBeep HQ.ogg"
+dest_files=[ "res://.import/MessageBeep HQ.ogg-5ca7c0d45143862a7f7b66dec748bedf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

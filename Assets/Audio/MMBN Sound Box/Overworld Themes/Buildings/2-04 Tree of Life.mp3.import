@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-04 Tree of Life.mp3-c8edbd243895cf207f484b0454061b26.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Buildings/2-04 Tree of Life.mp3"
+dest_files=[ "res://.import/2-04 Tree of Life.mp3-c8edbd243895cf207f484b0454061b26.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-28 Save Our Planet.mp3-49acb0627d8d507c9611d15bd86758b9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Final Level/3-28 Save Our Planet.mp3"
+dest_files=[ "res://.import/3-28 Save Our Planet.mp3-49acb0627d8d507c9611d15bd86758b9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

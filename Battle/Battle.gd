@@ -86,7 +86,7 @@ func _deactivate_units():
 
 func _play_victory_fanfare():
 	music.stop()
-	music.stream = load("res://Assets/MMBN Sound Box/Menu Themes/Battle Fanfare/3-10 Enemy Deleted!.mp3")
+	music.stream = load(AudioAssets.MUSIC.victory_fanfare)
 	music.play()
 
 func _are_units_alive(group := "unit") -> bool:

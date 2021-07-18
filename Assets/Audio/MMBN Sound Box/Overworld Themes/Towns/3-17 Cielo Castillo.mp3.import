@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-17 Cielo Castillo.mp3-00c0116a1cecfdf4e9f1f3bf49302dcb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Towns/3-17 Cielo Castillo.mp3"
+dest_files=[ "res://.import/3-17 Cielo Castillo.mp3-00c0116a1cecfdf4e9f1f3bf49302dcb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

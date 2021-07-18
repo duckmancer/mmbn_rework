@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Thunder HQ.ogg-e288fb98b0be8fc92242278387c998d6.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/Thunder HQ.ogg"
+dest_files=[ "res://.import/Thunder HQ.ogg-e288fb98b0be8fc92242278387c998d6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

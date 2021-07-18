@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PETPhoneCall HQ.ogg-9f5e86a1f881b037fa771170324a86b4.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/PETPhoneCall HQ.ogg"
+dest_files=[ "res://.import/PETPhoneCall HQ.ogg-9f5e86a1f881b037fa771170324a86b4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

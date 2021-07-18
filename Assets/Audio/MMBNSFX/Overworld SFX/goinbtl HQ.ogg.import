@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/goinbtl HQ.ogg-4b161eb15638be373f745c4f41e1bc6b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/goinbtl HQ.ogg"
+dest_files=[ "res://.import/goinbtl HQ.ogg-4b161eb15638be373f745c4f41e1bc6b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

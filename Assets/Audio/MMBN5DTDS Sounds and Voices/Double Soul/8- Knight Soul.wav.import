@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/8- Knight Soul.wav-fb5fe0e75b7f629bc8e7d2a27dfbb676.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Double Soul/8- Knight Soul.wav"
+dest_files=[ "res://.import/8- Knight Soul.wav-fb5fe0e75b7f629bc8e7d2a27dfbb676.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

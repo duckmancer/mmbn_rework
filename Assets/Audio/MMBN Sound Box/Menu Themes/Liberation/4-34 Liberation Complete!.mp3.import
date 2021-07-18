@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-34 Liberation Complete!.mp3-38893183ec548a63b4702bdf7dfb73a0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Menu Themes/Liberation/4-34 Liberation Complete!.mp3"
+dest_files=[ "res://.import/4-34 Liberation Complete!.mp3-38893183ec548a63b4702bdf7dfb73a0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

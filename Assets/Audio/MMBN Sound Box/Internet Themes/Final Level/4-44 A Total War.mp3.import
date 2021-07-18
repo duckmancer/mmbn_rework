@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-44 A Total War.mp3-4126a739b984e4fdfffde0bc50530be5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Final Level/4-44 A Total War.mp3"
+dest_files=[ "res://.import/4-44 A Total War.mp3-4126a739b984e4fdfffde0bc50530be5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

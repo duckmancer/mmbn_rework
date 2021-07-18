@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-24 Aquarium Question ~ Shark Panic!.mp3-58036fd3dd87358b9a0f0e00bc60332c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/5-24 Aquarium Question ~ Shark Panic!.mp3"
+dest_files=[ "res://.import/5-24 Aquarium Question ~ Shark Panic!.mp3-58036fd3dd87358b9a0f0e00bc60332c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

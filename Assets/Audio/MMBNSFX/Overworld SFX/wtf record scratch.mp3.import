@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wtf record scratch.mp3-729bcff47b5130f8c5dcbe565645001f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/wtf record scratch.mp3"
+dest_files=[ "res://.import/wtf record scratch.mp3-729bcff47b5130f8c5dcbe565645001f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

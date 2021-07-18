@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-39 Castle of NINJA!.mp3-d990cf1e0966b5d5e3997bf637b7b8f1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/4-39 Castle of NINJA!.mp3"
+dest_files=[ "res://.import/4-39 Castle of NINJA!.mp3-d990cf1e0966b5d5e3997bf637b7b8f1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

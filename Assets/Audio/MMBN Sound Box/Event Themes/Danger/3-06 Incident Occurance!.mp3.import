@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-06 Incident Occurance!.mp3-32f8d46103ef54975ba88841539df7e5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Danger/3-06 Incident Occurance!.mp3"
+dest_files=[ "res://.import/3-06 Incident Occurance!.mp3-32f8d46103ef54975ba88841539df7e5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

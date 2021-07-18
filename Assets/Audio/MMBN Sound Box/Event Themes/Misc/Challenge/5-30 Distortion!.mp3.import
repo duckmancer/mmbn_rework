@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-30 Distortion!.mp3-7e9120443a94c27a38374e4840955c42.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Misc/Challenge/5-30 Distortion!.mp3"
+dest_files=[ "res://.import/5-30 Distortion!.mp3-7e9120443a94c27a38374e4840955c42.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

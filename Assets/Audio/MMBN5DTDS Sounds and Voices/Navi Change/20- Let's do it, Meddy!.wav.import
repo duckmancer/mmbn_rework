@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/20- Let's do it, Meddy!.wav-8d81ce39d24ef1c74405a5abd4222923.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Navi Change/20- Let's do it, Meddy!.wav"
+dest_files=[ "res://.import/20- Let's do it, Meddy!.wav-8d81ce39d24ef1c74405a5abd4222923.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

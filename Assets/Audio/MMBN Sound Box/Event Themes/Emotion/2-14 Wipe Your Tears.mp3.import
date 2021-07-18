@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-14 Wipe Your Tears.mp3-88d4fc6313615cb98238bad5573e72fc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Emotion/2-14 Wipe Your Tears.mp3"
+dest_files=[ "res://.import/2-14 Wipe Your Tears.mp3-88d4fc6313615cb98238bad5573e72fc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

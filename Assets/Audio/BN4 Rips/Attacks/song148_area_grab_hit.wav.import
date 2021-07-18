@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song148_area_grab_hit.wav-00251b3a806ab2c057d420cdb5b6803d.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Attacks/song148_area_grab_hit.wav"
+dest_files=[ "res://.import/song148_area_grab_hit.wav-00251b3a806ab2c057d420cdb5b6803d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

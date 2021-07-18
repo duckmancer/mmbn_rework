@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song135_shademan_cape_maybe.wav-4b445726290919a6f013e13db457f88f.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song135_shademan_cape_maybe.wav"
+dest_files=[ "res://.import/song135_shademan_cape_maybe.wav-4b445726290919a6f013e13db457f88f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

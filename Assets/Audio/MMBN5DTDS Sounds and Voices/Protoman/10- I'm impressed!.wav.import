@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/10- I'm impressed!.wav-44d76d57f28a9ce96b1a55751a7c1efe.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Protoman/10- I'm impressed!.wav"
+dest_files=[ "res://.import/10- I'm impressed!.wav-44d76d57f28a9ce96b1a55751a7c1efe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

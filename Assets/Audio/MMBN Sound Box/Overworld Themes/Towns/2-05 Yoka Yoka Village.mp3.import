@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-05 Yoka Yoka Village.mp3-2a6422aef401d14587e8668b032f0d0f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Towns/2-05 Yoka Yoka Village.mp3"
+dest_files=[ "res://.import/2-05 Yoka Yoka Village.mp3-2a6422aef401d14587e8668b032f0d0f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

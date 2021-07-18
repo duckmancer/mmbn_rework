@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-27 Green Town.mp3-99f0dcb66c7fe931374370b858e83bc4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/Towns/5-27 Green Town.mp3"
+dest_files=[ "res://.import/5-27 Green Town.mp3-99f0dcb66c7fe931374370b858e83bc4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

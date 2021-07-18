@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-01 Life in the Network.mp3-1323691fa3372d115b4dc7869cc46195.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Internet/4-01 Life in the Network.mp3"
+dest_files=[ "res://.import/4-01 Life in the Network.mp3-1323691fa3372d115b4dc7869cc46195.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

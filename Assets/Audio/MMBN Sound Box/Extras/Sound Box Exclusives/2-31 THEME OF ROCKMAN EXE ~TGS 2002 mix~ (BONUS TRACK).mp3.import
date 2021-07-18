@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-31 THEME OF ROCKMAN EXE ~TGS 2002 mix~ (BONUS TRACK).mp3-ced96d1c54f698e22c2ffd81b2523298.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/2-31 THEME OF ROCKMAN EXE ~TGS 2002 mix~ (BONUS TRACK).mp3"
+dest_files=[ "res://.import/2-31 THEME OF ROCKMAN EXE ~TGS 2002 mix~ (BONUS TRACK).mp3-ced96d1c54f698e22c2ffd81b2523298.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

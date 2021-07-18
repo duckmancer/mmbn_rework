@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-01 Theme of ROCKMAN EXE5.mp3-6a802458900ded8d759a84cc8e090611.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/DTDS/5-01 Theme of ROCKMAN EXE5.mp3"
+dest_files=[ "res://.import/5-01 Theme of ROCKMAN EXE5.mp3-6a802458900ded8d759a84cc8e090611.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

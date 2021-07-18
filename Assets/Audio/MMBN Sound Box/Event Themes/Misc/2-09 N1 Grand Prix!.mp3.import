@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2-09 N1 Grand Prix!.mp3-01ca9e0cc3d185eb3e28e65aade7be31.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Misc/2-09 N1 Grand Prix!.mp3"
+dest_files=[ "res://.import/2-09 N1 Grand Prix!.mp3-01ca9e0cc3d185eb3e28e65aade7be31.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

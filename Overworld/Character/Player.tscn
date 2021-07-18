@@ -7,8 +7,4 @@
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="CharacterSprite" parent="." index="1"]
-sheet_path = "res://Assets/Overworld/Characters/Navis/Megaman/Megaman.png"
-data_path = "res://Assets/Overworld/Characters/Navis/Megaman/Megaman.json"
-
 [node name="Camera2D" parent="." index="2" instance=ExtResource( 3 )]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Appear(Cutscene)(2) HQ.ogg-5df007f4c1459172be4ed2729aeb6629.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/Appear(Cutscene)(2) HQ.ogg"
+dest_files=[ "res://.import/Appear(Cutscene)(2) HQ.ogg-5df007f4c1459172be4ed2729aeb6629.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

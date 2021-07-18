@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-16 Organization.mp3-71f976c65aff89626e345f4ac1d8d8b5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Dread/Evil Lair/5-16 Organization.mp3"
+dest_files=[ "res://.import/5-16 Organization.mp3-71f976c65aff89626e345f4ac1d8d8b5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

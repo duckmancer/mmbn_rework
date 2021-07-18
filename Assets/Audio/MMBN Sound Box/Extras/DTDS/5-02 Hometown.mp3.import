@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-02 Hometown.mp3-8635755ef1749860e1fa12d57c7403af.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/DTDS/5-02 Hometown.mp3"
+dest_files=[ "res://.import/5-02 Hometown.mp3-8635755ef1749860e1fa12d57c7403af.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/6-20 Internet Area.mp3-ba14c32a3b42dd6fa78e43ba5e8c715e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Sound Box Exclusives/6-20 Internet Area.mp3"
+dest_files=[ "res://.import/6-20 Internet Area.mp3-ba14c32a3b42dd6fa78e43ba5e8c715e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -9,7 +9,7 @@ const OVERWORLD_SCENE = preload("res://Overworld/Overworld.tscn")
 
 const EXPLOSION_SCENE = preload("res://Battle/Entity/Attack/AreaHit/Explosion/Explosion.tscn")
 
-const MAP_ROOT = "res://Overworld/Map/MapScenes/"
+const MAP_ROOT = "res://Overworld/Maps/"
 const INTERNET_ROOT = MAP_ROOT + "Internet/"
 const REAL_WORLD_ROOT = MAP_ROOT + "RealWorld/"
 

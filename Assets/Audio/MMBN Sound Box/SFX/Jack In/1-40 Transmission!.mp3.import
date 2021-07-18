@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1-40 Transmission!.mp3-39143e6c7fdccc3c997fbe4c02b47c60.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/SFX/Jack In/1-40 Transmission!.mp3"
+dest_files=[ "res://.import/1-40 Transmission!.mp3-39143e6c7fdccc3c997fbe4c02b47c60.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

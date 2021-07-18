@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-42 Theme of WindMan.mp3-b41ac5e15edcbcbe6f6162f4b73a66fc.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Navi Themes/3-42 Theme of WindMan.mp3"
+dest_files=[ "res://.import/3-42 Theme of WindMan.mp3-b41ac5e15edcbcbe6f6162f4b73a66fc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

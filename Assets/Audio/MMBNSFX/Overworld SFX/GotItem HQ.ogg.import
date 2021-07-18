@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GotItem HQ.ogg-1a4abffb1445c0acf5e0786a986a7bd5.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Overworld SFX/GotItem HQ.ogg"
+dest_files=[ "res://.import/GotItem HQ.ogg-1a4abffb1445c0acf5e0786a986a7bd5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

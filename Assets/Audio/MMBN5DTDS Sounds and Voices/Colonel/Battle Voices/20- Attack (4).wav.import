@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/20- Attack (4).wav-0d446b23c923a4faf87a2008856157be.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Colonel/Battle Voices/20- Attack (4).wav"
+dest_files=[ "res://.import/20- Attack (4).wav-0d446b23c923a4faf87a2008856157be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

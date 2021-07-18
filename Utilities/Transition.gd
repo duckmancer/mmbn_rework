@@ -14,7 +14,8 @@ const TRANSITION_PRESET = {
 	virus_flash = {
 		fade_color = Color.white,
 		fade_duration = 0.5,
-		audio_path = "res://Assets/MMBNSFX/Overworld SFX/goinbtl HQ.ogg",
+		
+		audio_path = AudioAssets.SFX.virus_encounter,
 		effect_type = "pixelate",
 	},
 }

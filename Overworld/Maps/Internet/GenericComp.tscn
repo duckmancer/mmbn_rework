@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=2]
+
+[node name="Map" instance=ExtResource( 2 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
+build_mode = 1
+polygon = PoolVector2Array( 325, 4, 646, 164, 326, 324, 6, 164 )

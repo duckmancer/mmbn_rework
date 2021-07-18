@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song159_bubbler.wav-84ec63b3aeb04724a27c662bfe91e825.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Attacks/song159_bubbler.wav"
+dest_files=[ "res://.import/song159_bubbler.wav-84ec63b3aeb04724a27c662bfe91e825.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

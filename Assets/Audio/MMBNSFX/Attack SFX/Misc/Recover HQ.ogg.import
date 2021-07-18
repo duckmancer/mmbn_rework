@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Recover HQ.ogg-ab98e3fd0077a57400750cad4c9c55e0.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/Recover HQ.ogg"
+dest_files=[ "res://.import/Recover HQ.ogg-ab98e3fd0077a57400750cad4c9c55e0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

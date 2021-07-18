@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-16 Global Network.mp3-a7aafe2b37c74011d7b3979b6fd8add9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3"
+dest_files=[ "res://.import/3-16 Global Network.mp3-a7aafe2b37c74011d7b3979b6fd8add9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

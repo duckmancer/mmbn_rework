@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song174_confused_bird_tweet.wav-59506e46303dbcd112e41bb3f5905c15.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Misc/song174_confused_bird_tweet.wav"
+dest_files=[ "res://.import/song174_confused_bird_tweet.wav-59506e46303dbcd112e41bb3f5905c15.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

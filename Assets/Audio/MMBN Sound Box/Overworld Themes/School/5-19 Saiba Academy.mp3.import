@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-19 Saiba Academy.mp3-9a49f7622cbce2d1b6cbc1ef67293fc0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Overworld Themes/School/5-19 Saiba Academy.mp3"
+dest_files=[ "res://.import/5-19 Saiba Academy.mp3-9a49f7622cbce2d1b6cbc1ef67293fc0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

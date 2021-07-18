@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song292_bang_or_thud.wav-14ef29248e6571c4c27d88d2583d4a7e.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Hits/song292_bang_or_thud.wav"
+dest_files=[ "res://.import/song292_bang_or_thud.wav-14ef29248e6571c4c27d88d2583d4a7e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

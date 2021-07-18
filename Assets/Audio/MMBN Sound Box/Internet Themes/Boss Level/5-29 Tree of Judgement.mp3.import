@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-29 Tree of Judgement.mp3-72f8636f12d96c2494e2c8d18f8c8086.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Internet Themes/Boss Level/5-29 Tree of Judgement.mp3"
+dest_files=[ "res://.import/5-29 Tree of Judgement.mp3-72f8636f12d96c2494e2c8d18f8c8086.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

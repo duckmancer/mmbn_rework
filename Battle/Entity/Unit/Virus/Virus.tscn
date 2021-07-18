@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/BattleAssets/Characters/Viruses/Mettaur.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/BattleAssets/Characters/Viruses/Mettaur.png" type="Texture" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Virus/Virus.gd" type="Script" id=2]
 [ext_resource path="res://Battle/Entity/Unit/Unit.tscn" type="PackedScene" id=3]
 

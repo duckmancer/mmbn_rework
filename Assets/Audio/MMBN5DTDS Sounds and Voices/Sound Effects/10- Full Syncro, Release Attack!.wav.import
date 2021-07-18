@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/10- Full Syncro, Release Attack!.wav-03e13ee4e8463ccfc7d1238f4c011837.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/10- Full Syncro, Release Attack!.wav"
+dest_files=[ "res://.import/10- Full Syncro, Release Attack!.wav-03e13ee4e8463ccfc7d1238f4c011837.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

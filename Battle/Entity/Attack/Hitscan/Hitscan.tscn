@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Battle/Entity/Attack/Attack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Attack/Hitscan/Hitscan.gd" type="Script" id=2]
-[ext_resource path="res://Assets/BattleAssets/Weapons/Cannon.png" type="Texture" id=3]
-[ext_resource path="res://Assets/MMBNSFX/Attack SFX/Attacks/Cannon HQ.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Assets/MMBN5DTDS Sounds and Voices/Sound Effects/0- Buster.wav" type="AudioStream" id=5]
-[ext_resource path="res://Assets/BattleAssets/Weapons/Buster.png" type="Texture" id=6]
-[ext_resource path="res://Assets/MMBNSFX/Attack SFX/Attacks/Heatshot.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sprites/BattleAssets/Weapons/Cannon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/Cannon HQ.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/0- Buster.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sprites/BattleAssets/Weapons/Buster.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/Heatshot.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hi_cannon"

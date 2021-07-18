@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-27 Under Justice.mp3-6e9e638d9fe314123d819424d1592033.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Event Themes/Hero/3-27 Under Justice.mp3"
+dest_files=[ "res://.import/3-27 Under Justice.mp3-6e9e638d9fe314123d819424d1592033.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

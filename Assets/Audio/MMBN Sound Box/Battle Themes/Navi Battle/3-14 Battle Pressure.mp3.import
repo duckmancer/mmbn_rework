@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/3-14 Battle Pressure.mp3-5215c45e9f2dae8e08558947e9aa53d2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Battle Themes/Navi Battle/3-14 Battle Pressure.mp3"
+dest_files=[ "res://.import/3-14 Battle Pressure.mp3-5215c45e9f2dae8e08558947e9aa53d2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/4-10 Tournament Under Way.mp3-671fae55a230c4e00cb33432af4fb13a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/Real Operation/Menus/4-10 Tournament Under Way.mp3"
+dest_files=[ "res://.import/4-10 Tournament Under Way.mp3-671fae55a230c4e00cb33432af4fb13a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/5-05 End City.mp3-bfc7399b0a22183e840430c8c0c331b7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/MMBN Sound Box/Extras/DTDS/5-05 End City.mp3"
+dest_files=[ "res://.import/5-05 End City.mp3-bfc7399b0a22183e840430c8c0c331b7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

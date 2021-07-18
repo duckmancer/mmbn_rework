@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song101_text_or_menu_scroll.wav-93fb63408e348324b90a625943b44397.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song101_text_or_menu_scroll.wav"
+dest_files=[ "res://.import/song101_text_or_menu_scroll.wav-93fb63408e348324b90a625943b44397.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
