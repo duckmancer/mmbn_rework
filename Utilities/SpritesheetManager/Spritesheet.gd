@@ -1,6 +1,6 @@
 tool
-class_name SpritesheetManager
-extends Sprite
+class_name Spritesheet
+extends AtlasTexture
 
 enum AnchorType {
 	BEGIN,
@@ -33,18 +33,13 @@ const EXPORT_PROPERTY_LIST = {
 		hint_string = "down_right,up_right,up,right,down,down_left,up_left,left",
 		var = "frame_dir",
 	},
-	"Anchors/Horizontal" : {
-		type = TYPE_INT,
-		hint = PROPERTY_HINT_ENUM,
-		hint_string = "Begin,Center,End",
-		var = "horizontal_anchor",
-	},
-	"Anchors/Vertical" : {
-		type = TYPE_INT,
-		hint = PROPERTY_HINT_ENUM,
-		hint_string = "Begin,Center,End",
-		var = "vertical_anchor",
-	},
+}
+const OVERWRITE_DATA_PROPERTY_ENTRY = {
+	name = "overwrite_data",
+	type = TYPE_STRING,
+	hint = PROPERTY_HINT_FILE,
+	hint_string = "*.json",
+	var = "overwrite_data",
 }
 
 const SPRITE_VERTICAL_TOLERANCE = 10
@@ -67,10 +62,9 @@ const BASE_ANIM_GROUPS = {
 	fall = {},
 }
 
-export(String, "Locked", "Local", "Write") var data_access_mode := "Locked"
+export(String, "Read", "Modify", "Overwrite") var data_access_mode := "Read" setget set_data_access_mode
 
-export(String, FILE, "*.png") var sheet_path setget set_sheet_path
-export(String, FILE, "*.json") var data_path setget set_data_path
+var overwrite_data = "EMPTY" setget load_new_data
 
 export var frame_index = 0 setget set_frame_index
 
@@ -81,12 +75,9 @@ var frame_name : String setget set_frame_name
 var frame_type : String = "copy_prev" setget set_frame_type
 var frame_dir : String setget set_frame_dir
 
-var vertical_anchor = AnchorType.END setget set_vertical_anchor
-var horizontal_anchor = AnchorType.CENTER setget set_horizontal_anchor
-
 var sprite_offset := Vector2(0, 0) setget set_sprite_offset
 
-var spritesheet_data : Array = []
+export var spritesheet_data : Array = []
 var frame_data : Dictionary = {}
 var anim_groups : Dictionary = BASE_ANIM_GROUPS.duplicate(true)
 
@@ -119,45 +110,30 @@ func _find_anim(anim_params : Dictionary) -> Dictionary:
 		anim = type_group
 	return anim
 
-func get_anim_by_name(search_name : String) -> Dictionary:
-	var result = {start_frame = 0, frame_count = 0, exists = false}
-	for i in spritesheet_data.size():
-		if spritesheet_data[i].name == search_name:
-			result.start_frame = i
-			result.frame_count = get_chain_length(i)
-			result.exists = true
-			break
-	return result
-
-func get_chain_length(start_index : int) -> int:
-	var length = 1
-	var base_name = spritesheet_data[start_index].name
-	for test_index in range(start_index + 1, spritesheet_data.size()):
-		var test_name = base_name + String(length + 1)
-		if spritesheet_data[test_index].name != test_name:
-			break
-		length += 1
-	return length
-
 
 # Properties
 
 func _get_property_list() -> Array:
 	var list = []
-	
-	for prop_name in EXPORT_PROPERTY_LIST:
-		var prop = EXPORT_PROPERTY_LIST[prop_name].duplicate()
-		prop.name = prop_name
-		list.append(prop)
+	if data_access_mode == "Overwrite":
+		list.append(OVERWRITE_DATA_PROPERTY_ENTRY)
+	if data_access_mode == "Modify":
+		for prop_name in EXPORT_PROPERTY_LIST:
+			var prop = EXPORT_PROPERTY_LIST[prop_name].duplicate()
+			prop.name = prop_name
+			list.append(prop)
 	
 	return list
 
 func _set(property: String, value) -> bool:
 	var result = false
-	if property in EXPORT_PROPERTY_LIST:
+	if property == "atlas":
+		load_spritesheet(value)
+		result = false
+	elif property in EXPORT_PROPERTY_LIST:
 		result = true
 		if "FrameData" in property:
-			if data_access_mode == "Locked":
+			if data_access_mode == "Read":
 				return result
 			else:
 				is_group_dirty = true
@@ -174,24 +150,33 @@ func _get(property: String):
 
 # Setgetters
 
-func set_data_path(val : String):
-	if not File.new().file_exists(val):
+func load_new_data(path : String) -> void:
+	if spritesheet_data.empty():
+		overwrite_data = "EMPTY"
+	else:
+		overwrite_data = "LOADED"
+	if data_access_mode != "Overwrite":
 		return
-	data_path = val
-	spritesheet_data = load_json_data(data_path)
+	if not File.new().file_exists(path):
+		return
+	spritesheet_data = load_json_data(path)
+	overwrite_data = "LOADED"
+	data_access_mode = "Modify"
 	set_frame_index(0)
-func set_sheet_path(val : String):
-	if not File.new().file_exists(val):
-		return
-	sheet_path = val
-	texture = load(sheet_path)
-	region_enabled = true
-	try_find_json(sheet_path)
-func try_find_json(sprite_path : String):
-	var test_path = sprite_path.replace(sprite_path.get_extension(), "json")
-	if test_path.is_abs_path():
-		set_data_path(test_path)
 
+func load_spritesheet(sheet : Texture) -> void:
+	if not sheet:
+		return
+	var sheet_path = sheet.resource_path
+	print(sheet_path)
+	if not spritesheet_data.empty():
+		return
+	var test_path = sheet_path.replace(sheet_path.get_extension(), "json")
+	load_new_data(test_path)
+
+func set_data_access_mode(val) -> void:
+	data_access_mode = val
+	property_list_changed_notify()
 
 func set_frame_index(val : int) -> void:
 	if spritesheet_data.empty():
@@ -229,39 +214,20 @@ func _update_sprite_offset(val):
 	y_offset = round(val.y)
 	sprite_offset = Vector2(x_offset, y_offset)
 
-func set_horizontal_anchor(val):
-	horizontal_anchor = val
-	update_sprite()
-func set_vertical_anchor(val):
-	vertical_anchor = val
-	update_sprite()
 
 
 # Modifiers
 
 func update_sprite() -> void:
-	offset.x = calc_offset(horizontal_anchor, region_rect.size.x)
-	offset.y = calc_offset(vertical_anchor, region_rect.size.y)
-	if flip_h:
-		offset -= sprite_offset
-	else:
-		offset += sprite_offset
-	property_list_changed_notify()
+	margin.size = Vector2(6, 100)
+	if int(region.size.x) % 2:
+		margin.size.x -= 1
+	var sprite_start = margin.size / 2
+	sprite_start.y -= region.size.y / 2
 
-func calc_offset(type, dimension_size) -> int:
-	var result := 0
-	match type:
-		AnchorType.BEGIN:
-			result = 0
-		AnchorType.END:
-			result = -dimension_size
-		AnchorType.CENTER:
-			var half_dim = float(dimension_size) / 2
-			if flip_h:
-				result = -ceil(half_dim) as int
-			else:
-				result = -floor(half_dim) as int
-	return result
+	margin.position = sprite_offset + sprite_start
+	margin.position = margin.position.floor()
+	property_list_changed_notify()
 
 
 func update_frame_names() -> void:
@@ -285,32 +251,20 @@ func update_frame_names() -> void:
 # Data Processing
 
 func load_frame(index = frame_index) -> void:
+	if spritesheet_data.empty():
+		return
 	frame_data = spritesheet_data[index]
 	frame_name = frame_data.name
-	region_rect = frame_data.rect
+	region = frame_data.rect
 	frame_type = frame_data.type
 	frame_dir = frame_data.dir
 	_update_sprite_offset(frame_data.offset)
 	update_sprite()
 
-func set_frame_data(property : String, value, index := frame_index, do_save := true) -> void:
+func set_frame_data(property : String, value, index := frame_index, _do_save := true) -> void:
 	assert(property in FRAME_DATA_TEMPLATE.keys())
 	assert(index >= 0 and index < spritesheet_data.size())
 	spritesheet_data[index][property] = value
-	if do_save:
-		save_json_data(data_path)
-
-func pack_data(unpacked_data : Array) -> Array:
-	var data = []
-	for unpacked_frame in unpacked_data:
-		var packed_frame = {}
-		packed_frame.type = unpacked_frame.type
-		packed_frame.dir = unpacked_frame.dir
-		packed_frame.name = unpacked_frame.name
-		packed_frame.rect = var2str(unpacked_frame.rect)
-		packed_frame.offset = var2str(unpacked_frame.offset)
-		data.append(packed_frame)
-	return data
 
 func unpack_data(packed_data : Array) -> Array:
 	var data := []
@@ -447,12 +401,6 @@ func load_json_data(path : String) -> Array:
 	unpacked_data.sort_custom(self, "sort_frames")
 	return unpacked_data
 
-func save_json_data(path : String) -> void:
-	if data_access_mode == "Write":
-		var packed_data = pack_data(spritesheet_data)
-		var str_data = JSON.print(packed_data)
-		write_file(path, str_data)
-
 func read_file(path : String) -> String:
 	var contents := ""
 	var file := File.new()
@@ -465,13 +413,4 @@ func read_file(path : String) -> String:
 	file.close()
 	return contents
 
-func write_file(path : String, contents : String) -> int:
-	var file := File.new()
-	var err = file.open(path, File.WRITE)
-	if err:
-		printerr("Error: ", err)
-		printerr("Could not open file for writing at \"", path, "\"")
-		return err
-	file.store_string(contents)
-	file.close()
-	return 0
+

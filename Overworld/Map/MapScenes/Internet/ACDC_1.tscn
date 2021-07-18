@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Overworld/Maps/ACDC1.png" type="Texture" id=1]
 [ext_resource path="res://Overworld/Map/MapEditor/Event/LocalWarpEvent.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld/Map/MapEditor/Event/WalkTransition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Overworld/Map/MapScenes/BaseMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Overworld/Character/NPC.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Spritesheets/Overworld/NormalNavi.tres" type="Texture" id=6]
 
 [node name="Map" instance=ExtResource( 4 )]
 
@@ -34,24 +35,21 @@ destination_map = "ACDC_2"
 
 [node name="NPC" parent="Entities" index="0" instance=ExtResource( 5 )]
 position = Vector2( 403, 279 )
-sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/NormNavi.png"
+spritesheet = ExtResource( 6 )
 dialogue = "Normal Navi"
 facing_direction = "up_right"
 
 [node name="NPC2" parent="Entities" index="1" instance=ExtResource( 5 )]
 position = Vector2( 519, 281 )
-sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/OfficialNavi.png"
 dialogue = "Official Navi"
 facing_direction = "down_left"
 
 [node name="NPC3" parent="Entities" index="2" instance=ExtResource( 5 )]
 position = Vector2( 458, 254 )
-sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/VendorNavi.png"
 dialogue = "Vendor Navi"
 
 [node name="NPC4" parent="Entities" index="3" instance=ExtResource( 5 )]
 position = Vector2( 461, 309 )
-sprite_path = "res://Assets/Overworld/Characters/Navis/Minor NPCs/MrProg.png"
 dialogue = "Lorem Ipsum foo bar test this is a lot of text to write out, so its gonna take a long time to do it. Maybe I'll start to repeat myself, I just can't say for certian."
 facing_direction = "up_right"
 

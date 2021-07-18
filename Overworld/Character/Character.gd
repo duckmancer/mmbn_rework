@@ -22,7 +22,7 @@ const ANIMATION_BACKUP_LIST = {
 }
 
 
-export(String, FILE, "*.png") var sprite_path
+export(AtlasTexture) var spritesheet
 
 onready var animated_spritesheet = $CharacterSprite
 onready var interaction = $Interaction
@@ -296,11 +296,11 @@ func connect_signals_to_overworld(_overworld : Node) -> void:
 
 
 func _ready() -> void:
-	animated_spritesheet.sheet_path = sprite_path
+	animated_spritesheet.texture = spritesheet
 	animated_spritesheet.setup_animations()
 	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle
-	try_find_mugshot(sprite_path)
+#	try_find_mugshot(sprite_path)
 
 func try_find_mugshot(spritesheet_path : String) -> void:
 	var MUGSHOT_ROOT = "res://Assets/Menus/Dialogue/Mugshots/"

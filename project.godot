@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Overworld/Character/Character.gd"
 }, {
-"base": "SpritesheetManager",
+"base": "Sprite",
 "class": "CharacterSprite",
 "language": "GDScript",
 "path": "res://Utilities/SpritesheetManager/CharacterSprite.gd"
@@ -144,10 +144,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Unit/Virus/Spikey/Spikey.gd"
 }, {
-"base": "Sprite",
-"class": "SpritesheetManager",
+"base": "AtlasTexture",
+"class": "Spritesheet",
 "language": "GDScript",
-"path": "res://Utilities/SpritesheetManager/SpritesheetManager.gd"
+"path": "res://Utilities/SpritesheetManager/Spritesheet.gd"
 }, {
 "base": "Attack",
 "class": "Throwable",
@@ -202,7 +202,7 @@ _global_script_class_icons={
 "Shot": "",
 "Shrimpy": "",
 "Spikey": "",
-"SpritesheetManager": "",
+"Spritesheet": "",
 "Throwable": "",
 "Unit": "",
 "Virus": "",

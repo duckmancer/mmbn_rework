@@ -1,5 +1,5 @@
 class_name CharacterSprite
-extends SpritesheetManager
+extends Sprite
 
 signal animation_finished()
 
@@ -109,7 +109,7 @@ const ANIM_DIRS = [
 
 
 onready var animation_player = $FrameAnimator
-onready var sprite = $"."
+onready var sprite = texture
 
 
 var anim_map = {
@@ -174,7 +174,7 @@ func _assemble_anim_data_components(anim_name : String, mapped_anim) -> Dictiona
 func _play_anim_step(anim_name := "", frame_duration := 1, do_reverse := false, do_flip := false) -> void:
 	var anim_speed = _get_anim_speed(frame_duration, do_reverse)
 	animation_player.play(anim_name, -1, anim_speed, do_reverse)
-	sprite.flip_h = do_flip
+	flip_h = do_flip
 
 func _get_anim_speed(frame_duration : int, do_reverse := false) -> float:
 	var anim_speed = 1.0
@@ -307,7 +307,7 @@ func _make_anim(keyframes, frame_duration := 1) -> Animation:
 		keyframes = [keyframes]
 	var anim = Animation.new() as Animation
 	var track = anim.add_track(Animation.TYPE_VALUE)
-	anim.track_set_path(track, ".:frame_index")
+	anim.track_set_path(track, ".:texture:frame_index")
 	for i in keyframes.size():
 		var time = _frame_time(i, frame_duration)
 		anim.track_insert_key(track, time, keyframes[i])
