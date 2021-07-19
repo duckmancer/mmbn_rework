@@ -139,6 +139,9 @@ func setup_animations() -> void:
 func play_anim(requested_anim : String) -> void:
 	var actual_anim = _get_anim_mapping(requested_anim)
 	var anim_params = _assemble_anim_data_components(requested_anim, actual_anim)
+	if texture.resource_name == "LanHikari":
+		if "run" in anim_params.name:
+			anim_params.individual_frame_duration = 6
 	animation_state = run_anim_cycle(anim_params)
 
 func _parse_anim_name(anim_name : String) -> Dictionary:

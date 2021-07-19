@@ -226,7 +226,7 @@ func _update_sprite_offset(val):
 # Modifiers
 
 func update_sprite() -> void:
-	margin.size = Vector2(6, 100)
+	margin.size = Vector2(10, 100)
 	if int(region.size.x) % 2:
 		margin.size.x -= 1
 	if int(region.size.y) % 2:
