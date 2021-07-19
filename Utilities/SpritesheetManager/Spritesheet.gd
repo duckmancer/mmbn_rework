@@ -9,6 +9,10 @@ enum AnchorType {
 }
 
 const EXPORT_PROPERTY_LIST = {
+	"FrameData/FrameIndex" : {
+		type = TYPE_INT,
+		var = "frame_index",
+	},
 	"FrameData/XOffset" : {
 		type = TYPE_INT,
 		var = "x_offset",
@@ -153,9 +157,7 @@ func _get(property: String):
 func load_new_data(path : String) -> void:
 	if spritesheet_data.empty():
 		overwrite_data = "EMPTY"
-	else:
-		overwrite_data = "LOADED"
-	if data_access_mode != "Overwrite":
+	elif data_access_mode != "Overwrite":
 		return
 	if not File.new().file_exists(path):
 		return
@@ -279,17 +281,6 @@ func unpack_data(packed_data : Array) -> Array:
 		data.append(_unpack_frame(packed_frame))
 	return data
 
-func sort_frames(frame1, frame2) -> bool:
-	if frame1.has("rect") and frame2.has("rect"):
-		var pos1 = frame1.rect.position
-		var pos2 = frame2.rect.position
-		if abs(pos1.y - pos2.y) > SPRITE_VERTICAL_TOLERANCE:
-			return pos1.y < pos2.y
-		else:
-			return pos1.x < pos2.x
-	else:
-		return frame1.hash() < frame2.hash()
-
 
 ## Anim Grouping
 
@@ -407,6 +398,20 @@ func load_json_data(path : String) -> Array:
 	var unpacked_data = unpack_data(raw_data)
 	unpacked_data.sort_custom(self, "sort_frames")
 	return unpacked_data
+
+
+func sort_frames(frame1, frame2) -> bool:
+	if frame1.has("rect") and frame2.has("rect"):
+		var pos1 = frame1.rect.position
+		var pos2 = frame2.rect.position
+		var min_height = min(frame1.rect.size.y, frame2.rect.size.y)
+		if abs(pos1.y - pos2.y) > min_height:
+			return pos1.y < pos2.y
+		else:
+			return pos1.x < pos2.x
+	else:
+		return frame1.hash() < frame2.hash()
+
 
 func read_file(path : String) -> String:
 	var contents := ""

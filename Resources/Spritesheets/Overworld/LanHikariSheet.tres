@@ -1,0 +1,710 @@
+[gd_resource type="AtlasTexture" load_steps=3 format=2]
+
+[ext_resource path="res://Utilities/SpritesheetManager/Spritesheet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Overworld/Characters/People/LanHikari.png" type="Texture" id=2]
+
+[resource]
+resource_name = "LanHikari"
+atlas = ExtResource( 2 )
+region = Rect2( 119, 8, 17, 32 )
+margin = Rect2( 2, 34, 5, 100 )
+script = ExtResource( 1 )
+data_access_mode = "Modify"
+frame_index = 0
+spritesheet_data = [ {
+"dir": "down",
+"name": "stand_down",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 119, 8, 17, 32 ),
+"type": "stand"
+}, {
+"dir": "up_right",
+"name": "stand_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 139, 8, 15, 32 ),
+"type": "stand"
+}, {
+"dir": "right",
+"name": "stand_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 159, 8, 14, 32 ),
+"type": "stand"
+}, {
+"dir": "down_right",
+"name": "stand_down_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 179, 8, 15, 32 ),
+"type": "stand"
+}, {
+"dir": "down",
+"name": "stand_down",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 198, 8, 17, 32 ),
+"type": "stand"
+}, {
+"dir": "up",
+"name": "walk_up",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 110, 44, 15, 32 ),
+"type": "walk"
+}, {
+"dir": "up",
+"name": "walk_up2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 129, 45, 15, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 149, 44, 15, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 169, 44, 15, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 189, 45, 15, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "walk_up6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 209, 44, 15, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 99, 80, 14, 32 ),
+"type": "walk"
+}, {
+"dir": "up_right",
+"name": "walk_up_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 119, 81, 24, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 147, 80, 21, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 175, 80, 16, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 195, 81, 19, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "walk_up_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 219, 80, 16, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "walk_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 87, 116, 14, 32 ),
+"type": "walk"
+}, {
+"dir": "right",
+"name": "walk_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 109, 117, 26, 28 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "walk_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 139, 116, 24, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "walk_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 167, 116, 16, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "walk_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 188, 117, 28, 29 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "walk_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 223, 116, 22, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 93, 152, 15, 31 ),
+"type": "walk"
+}, {
+"dir": "down_right",
+"name": "walk_down_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 113, 153, 21, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 143, 152, 18, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 165, 152, 15, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 187, 153, 27, 29 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "walk_down_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 221, 152, 23, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "walk_down",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 108, 188, 17, 32 ),
+"type": "walk"
+}, {
+"dir": "down",
+"name": "walk_down2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 130, 189, 17, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "walk_down3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 149, 188, 16, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "walk_down4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 168, 188, 17, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "walk_down5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 190, 189, 15, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "walk_down6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 209, 188, 17, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "run_up",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 75, 224, 16, 31 ),
+"type": "run"
+}, {
+"dir": "up",
+"name": "run_up2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 95, 225, 20, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "run_up3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 119, 225, 18, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "run_up4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 143, 224, 17, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "run_up5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 167, 224, 16, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "run_up6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 187, 225, 20, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "run_up7",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 215, 225, 18, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "up",
+"name": "run_up8",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 239, 224, 17, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "run_up_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 75, 260, 16, 32 ),
+"type": "run"
+}, {
+"dir": "up_right",
+"name": "run_up_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 96, 260, 15, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "run_up_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 115, 261, 22, 29 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "run_up_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 139, 261, 22, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "run_up_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 163, 260, 19, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "run_up_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 187, 260, 19, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "run_up_right7",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 214, 261, 25, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "up_right",
+"name": "run_up_right8",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 243, 261, 20, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "run_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 71, 296, 18, 31 ),
+"type": "run"
+}, {
+"dir": "right",
+"name": "run_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 94, 296, 16, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "run_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 115, 297, 24, 29 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "run_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 147, 297, 20, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "run_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 173, 296, 17, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "run_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 195, 296, 16, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "run_right7",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 215, 297, 24, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "right",
+"name": "run_right8",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 243, 297, 23, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "run_down_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 73, 332, 18, 32 ),
+"type": "run"
+}, {
+"dir": "down_right",
+"name": "run_down_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 95, 332, 21, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "run_down_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 123, 333, 24, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "run_down_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 151, 333, 20, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "run_down_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 176, 332, 14, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "run_down_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 195, 332, 15, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "run_down_right7",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 215, 333, 22, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "run_down_right8",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 243, 333, 24, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "run_down",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 81, 368, 18, 31 ),
+"type": "run"
+}, {
+"dir": "down",
+"name": "run_down2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 105, 368, 19, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "run_down3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 129, 369, 15, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "run_down4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 151, 369, 14, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "run_down5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 169, 368, 16, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "run_down6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 189, 368, 19, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "run_down7",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 213, 369, 17, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "run_down8",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 237, 369, 17, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "emote_down",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 121, 408, 17, 32 ),
+"type": "emote"
+}, {
+"dir": "down",
+"name": "emote_down2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 146, 409, 18, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "emote_down3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 170, 409, 18, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "emote_down4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 194, 409, 18, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 6, 460, 17, 32 ),
+"type": "fight"
+}, {
+"dir": "down",
+"name": "fight_down2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 27, 462, 22, 30 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 55, 461, 24, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 83, 461, 23, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 111, 461, 22, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 139, 461, 22, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down7",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 167, 461, 22, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down8",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 195, 464, 23, 28 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down9",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 223, 446, 20, 43 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down10",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 249, 446, 19, 46 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down11",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 277, 446, 19, 46 ),
+"type": "copy_prev"
+}, {
+"dir": "down",
+"name": "fight_down12",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 305, 446, 19, 46 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 128, 500, 17, 32 ),
+"type": "emote"
+}, {
+"dir": "down_right",
+"name": "emote_down_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 150, 500, 15, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 170, 500, 15, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 190, 500, 15, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 102, 540, 19, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right6",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 140, 540, 18, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right7",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 177, 540, 17, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right8",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 207, 540, 19, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right9",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 152, 580, 20, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right10",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 59, 612, 22, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right11",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 127, 580, 16, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right12",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 176, 580, 20, 32 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "emote_down_right13",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 90, 612, 23, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "fall_down_right",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 128, 624, 30, 24 ),
+"type": "fall"
+}, {
+"dir": "down_right",
+"name": "fall_down_right2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 164, 625, 30, 23 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "fall_down_right3",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 199, 627, 27, 21 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "fall_down_right4",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 231, 617, 20, 26 ),
+"type": "copy_prev"
+}, {
+"dir": "down_right",
+"name": "fall_down_right5",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 259, 615, 14, 29 ),
+"type": "copy_prev"
+}, {
+"dir": "down_left",
+"name": "emote_down_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 99, 670, 23, 30 ),
+"type": "emote"
+}, {
+"dir": "down_left",
+"name": "emote_down_left2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 128, 665, 24, 35 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "emote_up_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 172, 670, 30, 30 ),
+"type": "emote"
+}, {
+"dir": "up_left",
+"name": "emote_up_left2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 209, 669, 51, 31 ),
+"type": "copy_prev"
+}, {
+"dir": "up_left",
+"name": "hurt_up_left",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 147, 709, 14, 30 ),
+"type": "hurt"
+}, {
+"dir": "up_left",
+"name": "hurt_up_left2",
+"offset": Vector2( 0, 0 ),
+"rect": Rect2( 171, 712, 16, 27 ),
+"type": "copy_prev"
+} ]
+FrameData/FrameIndex = 0
+FrameData/XOffset = 0.0
+FrameData/YOffset = 0.0
+FrameData/Name = "stand_down"
+FrameData/Type = "stand"
+FrameData/Dir = "down"

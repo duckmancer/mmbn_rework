@@ -15,10 +15,10 @@ func set_spritesheet(sheet) -> void:
 	resource_name = spritesheet.resource_name
 	if not mugshot:
 		infer_mugshot(spritesheet)
-#	if not resource_path:
-#		var target_path = RESOURCE_ROOT.plus_file(resource_name + ".tres")
-#		if not ResourceSaver.save(target_path, self):
-#			resource_path = target_path
+	var target_path = RESOURCE_ROOT.plus_file(resource_name + ".tres")
+	if not ResourceLoader.exists(target_path):
+		if not ResourceSaver.save(target_path, self):
+			resource_path = target_path
 	
 
 func infer_mugshot(sheet : Spritesheet) -> void:
