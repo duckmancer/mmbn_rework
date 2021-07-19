@@ -21,6 +21,8 @@ const SFX = {
 
 const MUSIC = {
 	victory_fanfare = AUDIO_ROOT + "MMBN Sound Box/Menu Themes/Battle Fanfare/3-10 Enemy Deleted!.mp3",
+	internet_theme = AUDIO_ROOT + "MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3",
+	indoor_theme = AUDIO_ROOT + "MMBN Sound Box/Overworld Themes/Indoors/3-04 Indoors.mp3"
 }
 
 func _ready() -> void:

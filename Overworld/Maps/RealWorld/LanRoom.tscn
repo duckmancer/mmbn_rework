@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/Overworld/Maps/lan_house/lan_room.png" type="Texture" id=2]
+[ext_resource path="res://Overworld/MapElements/Event/WalkTransition.tscn" type="PackedScene" id=3]
 
 [node name="LanRoom" instance=ExtResource( 1 )]
 
@@ -13,7 +14,12 @@ visible = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
 build_mode = 1
-polygon = PoolVector2Array( 124, 186, 93, 170, 68, 182, 45, 171, 70, 159, 58, 153, 102, 129, 55, 107, 109, 83, 184, 124, 202, 114, 233, 129 )
+polygon = PoolVector2Array( 124, 186, 93, 170, 38, 197, 18, 186, 70, 159, 58, 153, 102, 129, 55, 107, 109, 83, 184, 124, 202, 114, 233, 129 )
+
+[node name="WalkTransition" parent="Events" index="0" instance=ExtResource( 3 )]
+position = Vector2( 45, 188 )
+walk_dir = "down_left"
+destination_map = "LanHouse"
 
 [node name="DefaultSpawn" parent="." index="4"]
 position = Vector2( 105, 107 )

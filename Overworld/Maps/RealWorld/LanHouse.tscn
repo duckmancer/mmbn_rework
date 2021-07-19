@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/Overworld/Maps/lan_house/lan_house.png" type="Texture" id=2]
+[ext_resource path="res://Overworld/MapElements/Event/WalkTransition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Overworld/Character/NPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/Characters/YuichiroHikari.tres" type="Resource" id=5]
+[ext_resource path="res://Resources/Characters/HarukaHikari.tres" type="Resource" id=6]
+
+[node name="LanHouse" instance=ExtResource( 1 )]
+
+[node name="MapSprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions" index="0"]
+build_mode = 1
+polygon = PoolVector2Array( 28, 189, 103, 151, 146, 174, 169, 163, 115, 132, 203, 85, 234, 101, 250, 94, 269, 102, 314, 66, 341, 81, 298, 117, 377, 156, 204, 247, 225, 260, 196, 275 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Collisions" index="1"]
+build_mode = 1
+polygon = PoolVector2Array( 200, 225, 200, 210, 210, 206, 231, 215, 231, 229, 221, 235 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Collisions" index="2"]
+build_mode = 1
+polygon = PoolVector2Array( 168, 164, 204, 146, 205, 129, 203, 115, 193, 110, 176, 97, 125, 123 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Collisions" index="3"]
+build_mode = 1
+polygon = PoolVector2Array( 300, 195, 242, 166, 243, 143, 250, 139, 271, 137, 284, 139, 302, 129, 339, 147, 352, 138, 379, 157 )
+
+[node name="WalkTransition" parent="Events" index="0" instance=ExtResource( 3 )]
+position = Vector2( 315, 81 )
+walk_dir = "up_right"
+destination_map = "LanRoom"
+
+[node name="NPC" parent="Entities" index="0" instance=ExtResource( 4 )]
+position = Vector2( 76, 186 )
+character_data = ExtResource( 6 )
+dialogue = "Sorry Lan, but breakfast is going to have to wait a bit. The microwave is acting up again."
+
+[node name="NPC2" parent="Entities" index="1" instance=ExtResource( 4 )]
+position = Vector2( 124, 176 )
+character_data = ExtResource( 5 )
+dialogue = "Looks like another one of those \"tutorials\"..."
+facing_direction = "down_left"
+
+[node name="DefaultSpawn" parent="." index="4"]
+position = Vector2( 242, 124 )
+
+[node name="Background" parent="BackgroundLayer" index="0"]
+show_background = false

@@ -8,7 +8,7 @@ var _positions = {
 		facing_dir = "",
 	},
 	real = {
-		map = "LanRoom",
+		map = "LanHouse",
 		position = null,
 		facing_dir = "",
 	}

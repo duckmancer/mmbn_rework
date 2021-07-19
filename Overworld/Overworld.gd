@@ -10,12 +10,14 @@ onready var player_megaman = $Megaman
 onready var player_lan = $Lan
 
 onready var dialogue_box = $HUD/DialogueWindow
+onready var music = $Music
 
 var map
 var do_encounter = false
 
 var encounter_progress := 0.0
 var distance_traveled := 0.0
+
 
 
 # Movement
@@ -43,16 +45,39 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("action_1"):
 		enter_battle()
 	elif event.is_action_pressed("custom_menu"):
-		_save_worldstate()
-		load_map(PlayerData.change_world())
+		swap_worlds()
+		
 
 func enter_battle() -> void:
 	_save_worldstate()
 	Transition.transition_to("battle", "virus_flash")
 
+func swap_worlds() -> void:
+	_save_worldstate()
+	load_map(PlayerData.change_world())
+
+
+func get_music_for_map():
+	var result = ""
+	match PlayerData.current_world:
+		"real":
+			result = AudioAssets.MUSIC.indoor_theme
+		"internet":
+			result = AudioAssets.MUSIC.internet_theme
+	return result
+
 func _save_worldstate() -> void:
 	PlayerData.update_position(get_player().position)
 	reset_encounters()
+
+func set_music(track : String) -> void:
+	if music.stream.resource_path == track:
+		return
+	if not track:
+		return
+	music.stream = load(track)
+	music.play()
+
 
 # Setup
 
@@ -65,6 +90,8 @@ func load_map(map_name : String) -> void:
 	_clear_old_map(map)
 	map = _setup_new_map(map_name)
 	reset_encounters()
+	var track = get_music_for_map()
+	set_music(track)
 
 func _clear_old_map(old_map : Node) -> void:
 	if old_map:
