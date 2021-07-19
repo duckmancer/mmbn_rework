@@ -4,6 +4,8 @@ onready var entity_container = $Entities
 onready var default_spawn = $DefaultSpawn
 onready var events = $Events
 
+onready var map_name = filename.get_file().get_basename()
+
 var characters := []
 var player : Player
 
@@ -15,31 +17,49 @@ func spawn_player(new_player : Player) -> void:
 #	player.position = default_spawn.position
 	characters.append(new_player)
 	entity_container.add_child(player)
+	
+	# TODO:
+		#Compare current map with Playerdata
+	
+	var spawn_data = _get_player_spawn()
+	
+	player.position = spawn_data.position
+	player.set_facing_dir(spawn_data.facing_dir)
 
-	var player_start = default_spawn.position
-	var player_dir = "none"
-	var old_map = PlayerData.overworld_map
+	player.is_active = true
+	PlayerData.update_position(player.position)
+
+func _get_player_spawn() -> Dictionary:
+	var spawn_data := {}
+	
+	var old_map = PlayerData.get_map()
+	if old_map != map_name:
+		spawn_data = _get_spawnpoint_from_transition(old_map)
+	
+	if not spawn_data.has("position"):
+		spawn_data = PlayerData.get_position()
+	
+	if not spawn_data.has("position"):
+		spawn_data.position = default_spawn.position
+	if not spawn_data.has("facing_dir"):
+		spawn_data.facing_dir = "down"
+		spawn_data.movement_type = "stand"
+	else:
+		spawn_data.movement_type = "move"
+
+	return spawn_data
+
+
+func _get_spawnpoint_from_transition(old_map) -> Dictionary:
+	var result = {}
 	for e in events.get_children():
 		if "destination_map" in e:
 			if e.destination_map == old_map:
-				player_start = e.position
-				player_dir = e.walk_dir
-				if e is WalkTransition:
-					player_dir = reverse_dirs(player_dir)
-	player.position = player_start
-	player.set_velocity_from_string(player_dir)
-	PlayerData.update_position(player.position)
+				result = e.get_spawnpoint()
+				break
+	return result
 
-func reverse_dirs(dir : String) -> String:
-	if "left" in dir:
-		dir = dir.replace("left", "right")
-	else:
-		dir = dir.replace("right", "left")
-	if "up" in dir:
-		dir = dir.replace("up", "down")
-	else:
-		dir = dir.replace("down", "up")
-	return dir
+
 
 
 func release_player() -> Player:

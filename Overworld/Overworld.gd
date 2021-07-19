@@ -6,7 +6,9 @@ const ENCOUNTER_THRESHOLD = 1000.0
 const ENCOUNTER_VARIANCE = 300.0
 const TRAVEL_STEP = 100.0
 
-onready var player = $Player
+onready var player_megaman = $Megaman
+onready var player_lan = $Lan
+
 onready var dialogue_box = $HUD/DialogueWindow
 
 var map
@@ -35,23 +37,29 @@ func track_travel(new_pos : Vector2) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if encounter_check():
-		reset_encounters()
 		enter_battle()
-
-func enter_battle() -> void:
-	PlayerData.overworld_pos = player.position
-	Transition.transition_to("battle", "virus_flash")
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("action_1"):
 		enter_battle()
+	elif event.is_action_pressed("custom_menu"):
+		_save_worldstate()
+		load_map(PlayerData.change_world())
 
+func enter_battle() -> void:
+	_save_worldstate()
+	Transition.transition_to("battle", "virus_flash")
+
+func _save_worldstate() -> void:
+	PlayerData.update_position(get_player().position)
+	reset_encounters()
 
 # Setup
 
 func _ready() -> void:
-	remove_child(player)
-	load_map(PlayerData.overworld_map)
+	remove_child(player_megaman)
+	remove_child(player_lan)
+	load_map(PlayerData.get_map())
 
 func load_map(map_name : String) -> void:
 	_clear_old_map(map)
@@ -66,13 +74,21 @@ func _clear_old_map(old_map : Node) -> void:
 func _setup_new_map(map_name : String) -> Node:
 	var new_map = Scenes.get_map(map_name)
 	add_child(new_map)
-	new_map.spawn_player(player)
+	new_map.spawn_player(get_player())
 	new_map.connect_signals_to_overworld(self)
 	return new_map
 
 func reset_encounters():
 	distance_traveled = 0.0
 	encounter_progress = 0.0
+
+func get_player() -> Player:
+	var result = null
+	if PlayerData.current_world == "internet":
+		result = player_megaman
+	elif PlayerData.current_world == "real":
+		result = player_lan
+	return result
 
 
 # Signals
@@ -83,7 +99,7 @@ func _on_Player_moved(position : Vector2) -> void:
 func _on_Event_map_transition_triggered(new_map : String) -> void:
 	yield(Transition.fade_in_and_out(), "completed")
 	load_map(new_map)
-	PlayerData.overworld_map = new_map
+	PlayerData.set_map(new_map)
 	
 func _on_Character_dialogue_started(character : Character, text : String) -> void:
 	dialogue_box.open(text, character.get_mugshot())

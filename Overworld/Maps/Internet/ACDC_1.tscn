@@ -21,7 +21,7 @@ polygon = PoolVector2Array( 439, 7, 422, 18, 421, 31, 429, 41, 468, 49, 583, 108
 
 [node name="LocalWarpEvent" parent="Events" index="0" instance=ExtResource( 2 )]
 position = Vector2( 941, 358 )
-walk_dir = "down right"
+walk_dir = "down_right"
 
 [node name="WarpDestination" parent="Events/LocalWarpEvent" index="1"]
 position = Vector2( -640, -160 )

@@ -2,24 +2,18 @@
 class_name Event
 extends Area2D
 
+export(String, "up_left", "up_right", "down_left", "down_right") var walk_dir = "up_left"
+
 onready var trigger_area = $TriggerArea
 
 
+# Interface
 
-# Save/Load
-
-func get_data() -> Dictionary:
+func get_spawnpoint() -> Dictionary:
 	var result = {}
-	result.type = get_filename()
 	result.position = position
-	result.shape_path = trigger_area.shape.resource_path
-	result.rotation_degrees = rotation_degrees
+	result.facing_dir = walk_dir
 	return result
-
-func load_from_data(data : Dictionary) -> void:
-	position = data.position
-	trigger_area.shape = load(data.shape_path)
-	rotation_degrees = rotation_degrees
 
 
 # Events

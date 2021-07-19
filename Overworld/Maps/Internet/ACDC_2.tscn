@@ -19,7 +19,7 @@ polygon = PoolVector2Array( 186, 295, 192, 295, 192, 296.2, 207, 299.2, 207, 300
 
 [node name="WalkTransition" parent="Events" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1040, 521 )
-walk_dir = "down right"
+walk_dir = "down_right"
 
 [node name="WalkTransition2" parent="Events" index="1" instance=ExtResource( 2 )]
 position = Vector2( 160, 84 )

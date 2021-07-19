@@ -29,10 +29,9 @@ export(Resource) var character_data
 onready var animated_spritesheet = $CharacterSprite
 onready var interaction = $Interaction
 
-var velocity = Vector2(0, 0)
 var facing_dir = "down"
 var facing_angle = Constants.DIR_TO_DEG.down
-
+var cur_speed = "stand"
 
 var speeds = {
 	stand = 0,
@@ -40,13 +39,6 @@ var speeds = {
 	run = 100,
 }
 
-var held_inputs = {
-	up = false,
-	down = false,
-	left = false,
-	right = false,
-	run = false,
-}
 
 var is_busy = false
 var queued_action = null
@@ -67,11 +59,11 @@ func try_interaction() -> void:
 	if target:
 		_interact_with(target)
 
-func turn_to(pos : Vector2) -> void:
+func turn_towards(pos : Vector2) -> void:
 	set_facing_dir(pos - position)
 
 func respond_to(character : Character) -> void:
-	turn_to(character.position)
+	turn_towards(character.position)
 	emit_signal("interaction_finished")
 
 
@@ -81,8 +73,6 @@ func respond_to(character : Character) -> void:
 func _interact_with(character : Character) -> void:
 	if not is_busy:
 		run_coroutine("talk_to", [character])
-
-
 
 func _get_closest_target(targets : Array) -> Node:
 	var closest_target = null
@@ -113,26 +103,11 @@ func walk_transition(walk_dir : String, walk_duration : float) -> bool:
 
 # Inputs
 
-func get_velocity(inputs : Dictionary) -> Vector2:
-	var direction = Vector2(0, 0)
-	for dir in Constants.ISOMETRIC_DIRS:
-		if inputs.has(dir) and inputs[dir]:
-			direction += Constants.ISOMETRIC_DIRS[dir]
-	direction = direction.normalized()
-	var speed = speeds.run if inputs.run else speeds.walk
-	return direction * speed
+func get_velocity(direction := facing_dir, speed := cur_speed) -> Vector2:
+	var velocity = Constants.get_iso_dir_vector(direction)
+	velocity *= speeds[speed]
+	return velocity
 
-func _get_string_dirs(string_dir : String, run := true) -> Dictionary:
-	var movement_dirs = {}
-	for dir in Constants.DIRS:
-		if dir in string_dir:
-			movement_dirs[dir] = true
-	if not "run" in movement_dirs:
-		movement_dirs.run = run
-	return movement_dirs
-
-func set_velocity_from_string(string_dir : String) -> void:
-	velocity = get_velocity(_get_string_dirs(string_dir))
 
 
 # Processing
@@ -145,14 +120,18 @@ func _physics_process(delta : float) -> void:
 			queued_args.clear()
 			return
 		else:
-			
-			velocity = get_velocity(held_inputs)
-		
+			set_movement()
+	process_motion(delta)
+	animate_movement()
+
+func set_movement() -> void:
+	pass
+
+func process_motion(delta : float) -> void:
+	var velocity = get_velocity()
 	if velocity:
 		do_movement(velocity, delta)
 		emit_signal("moved", position)
-	if velocity or not is_busy:
-		animate_movement(velocity)
 
 func run_coroutine(func_name : String, args := []) -> void:
 	is_busy = true
@@ -163,7 +142,7 @@ func run_coroutine(func_name : String, args := []) -> void:
 # Coroutines
 
 func talk_to(target : Character) -> void:
-	turn_to(target.position)
+	turn_towards(target.position)
 	stop_movement()
 	target.respond_to(self)
 	yield(target, "interaction_finished")
@@ -177,23 +156,31 @@ func warp_local(destination : Vector2, walk_dir : String, walk_duration : float)
 	stop_movement()
 	position = destination
 
-	var movement_dirs = _get_string_dirs(walk_dir)
-	velocity = get_velocity(movement_dirs)
+	set_facing_dir(walk_dir)
+	cur_speed = "run"
 	
 	yield(get_tree().create_timer(walk_duration), "timeout")
 
 func walking_map_change(walk_dir : String, walk_duration : float) -> void:
-	var movement_dirs = _get_string_dirs(walk_dir)
-	velocity = get_velocity(movement_dirs)
+	set_facing_dir(walk_dir)
+	cur_speed = "run"
 	
 	yield(get_tree().create_timer(walk_duration * 2), "timeout")
 
 
 # Movement
 
+func do_movement(vel : Vector2, delta :float) -> void:
+	var displacement = vel * delta
+	var collision = move_and_collide(displacement, true, true, true)
+	if not collision:
+		move_and_collide(displacement)
+	else:
+		_iso_move_and_slide(collision)
+
 func stop_movement() -> void:
-	velocity = Vector2(0, 0)
-	animate_movement(velocity)
+	cur_speed = "stand"
+	animate_movement()
 
 func set_facing_dir(dir) -> bool:
 	var snapped_angle = _convert_dir_input(dir)
@@ -226,28 +213,34 @@ func _snap_to_valid_direction(dir : int) -> int:
 		dir += ANGLE_SNAP
 	return dir
 
-func do_movement(vel : Vector2, delta :float) -> void:
-	var displacement = vel * delta
-	var collision = move_and_collide(displacement, true, true, true)
-	if not collision:
-		move_and_collide(displacement)
-	else:
-		_iso_move_and_slide(collision)
 
 
 # Animation Execution
 
-func animate_movement(dir : Vector2) -> void:
-	set_facing_dir(dir)
-	var anim_type = "stand"
-	if dir:
-		if is_equal_approx(dir.length(), speeds.run):
-			anim_type = "run"
-		else:
-			anim_type = "walk"
-	else:
+func animate_movement() -> void:
+	if cur_speed == "stand":
 		check_diagonal_buffer()
-	animated_spritesheet.play_anim(anim_type + "_" + facing_dir)
+	var cur_anim = animated_spritesheet.get_cur_anim()
+	if _is_anim_overridable(cur_anim):
+		animated_spritesheet.play_anim(_get_movement_name())
+
+func _get_movement_name() -> String:
+	return cur_speed + "_" + facing_dir
+
+func _is_anim_overridable(anim_name : String) -> bool:
+	var OVERRIDABLE_ANIMS = ["stand", "walk", "run"]
+	
+	var result = false
+	
+	if not anim_name:
+		result = true
+	else:
+		for anim in OVERRIDABLE_ANIMS:
+			if anim in anim_name:
+				result = true
+				break
+	
+	return result
 
 func check_diagonal_buffer():
 	pass
@@ -269,7 +262,7 @@ func _iso_move_and_slide(collision : KinematicCollision2D) -> void:
 
 func _is_iso_head_on_collision(travel : Vector2, normal : Vector2) -> bool:
 	var iso_normal = normal
-	iso_normal.x *= sqrt(2)
+	iso_normal.x *= sqrt(3)
 	var iso_collision_angle = abs(iso_normal.angle_to(-travel))
 	if iso_collision_angle < SLIDE_ANGLE_THRESHOLD:
 		return true

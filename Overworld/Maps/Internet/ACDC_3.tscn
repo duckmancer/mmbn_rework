@@ -23,8 +23,8 @@ polygon = PoolVector2Array( 499, 181, 509, 182, 560, 207, 569, 208, 590, 197, 59
 
 [node name="WalkTransition" parent="Events" index="0" instance=ExtResource( 2 )]
 position = Vector2( 805, 586 )
+walk_dir = "down_right"
 destination_map = "ACDC_2"
-walk_dir = "down right"
 
 [node name="DefaultSpawn" parent="." index="4"]
 position = Vector2( 651, 504 )

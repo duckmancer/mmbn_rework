@@ -46,6 +46,18 @@ static func instantiate(type: Script):
 		scene = load(path).instance()
 	return scene
 
+func reverse_string_dir(dir : String) -> String:
+	if "left" in dir:
+		dir = dir.replace("left", "right")
+	else:
+		dir = dir.replace("right", "left")
+	if "up" in dir:
+		dir = dir.replace("up", "down")
+	else:
+		dir = dir.replace("down", "up")
+	return dir
+
+
 # Grid Mapping
 
 static func scale_vector(v1: Vector2, v2: Vector2) -> Vector2:

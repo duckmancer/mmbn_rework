@@ -14,7 +14,7 @@ export(String, "down_right", "down_left", "up_right", "up_left") var facing_dire
 # Actions
 
 func respond_to(character : Character) -> void:
-	turn_to(character.position)
+	turn_towards(character.position)
 	emit_signal("dialogue_started", self, dialogue)
 
 func finish_interaction() -> void:

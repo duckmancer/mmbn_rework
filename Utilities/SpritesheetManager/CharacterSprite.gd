@@ -127,6 +127,9 @@ var animation_state = null
 
 # Interface
 
+func get_cur_anim() -> String:
+	return animation_player.current_animation
+
 # TODO: Allow spritesheet to dictate animation speed and/or reversing
 func setup_animations() -> void:
 	for anim in ANIMATION_PARAMS:
@@ -260,8 +263,8 @@ func _best_match_step(step : int, target_params : Dictionary, existing_anims : D
 	return best_match
 
 func _get_angle_delta(original_dir : String, backup_dir : String) -> int:
-	var original_vec = Constants.DIR_ANGLES[original_dir]
-	var backup_vec = Constants.DIR_ANGLES[backup_dir]
+	var original_vec = Constants.DIR_VECTORS[original_dir]
+	var backup_vec = Constants.DIR_VECTORS[backup_dir]
 	var angle = abs(original_vec.angle_to(backup_vec))
 	var step = round(angle / (PI / 4)) as int
 	return step

@@ -1,4 +1,3 @@
-#tool
 class_name LocalWarpEvent
 extends Event
 
@@ -10,25 +9,9 @@ const WALK_DIRS = {
 	SE = "down right",
 }
 
-export(String, "up left", "up right", "down left", "down right") var walk_dir = "up left"
 export var walk_duration := 0.5
 
 onready var warp_destination = $WarpDestination
-
-# Load/Save
-
-func get_data() -> Dictionary:
-	var result = .get_data()
-	result.destination = warp_destination.position
-	result.walk_dir = walk_dir
-	result.walk_duration = walk_duration
-	return result
-
-func load_from_data(data : Dictionary) -> void:
-	.load_from_data(data)
-	warp_destination.position = data.destination
-	walk_dir = data.walk_dir
-	walk_duration = data.walk_duration
 
 
 # Events

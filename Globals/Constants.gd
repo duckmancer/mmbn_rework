@@ -19,7 +19,7 @@ const ISOMETRIC_DIRS = {
 	left = Vector2(-2, 0),
 	right = Vector2(2, 0),
 }
-const DIR_ANGLES = {
+const DIR_VECTORS = {
 	up = Vector2(0, -1),
 	up_right = Vector2(1, -1),
 	right = Vector2(1, 0),
@@ -56,3 +56,7 @@ const FRAMES_PER_SECOND = 60
 
 const GRID_Y_POS_Z_FACTOR = 10
 
+static func get_iso_dir_vector(dir_name : String) -> Vector2:
+	var result = DIR_VECTORS[dir_name]
+	result.x *= 2
+	return result.normalized()
