@@ -22,6 +22,10 @@
 [node name="Background" type="Node2D"]
 z_index = -100
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 scroll_factor = 4
 
 [node name="TileMap" type="TileMap" parent="."]
