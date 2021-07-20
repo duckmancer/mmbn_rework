@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sprites/Overworld/Maps/ACDC1.png" type="Texture" id=1]
 [ext_resource path="res://Overworld/MapElements/Event/LocalWarpEvent.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Resources/Characters/MrProg.tres" type="Resource" id=8]
 [ext_resource path="res://Resources/Characters/Megaman.tres" type="Resource" id=9]
 [ext_resource path="res://Overworld/MapElements/Objects/Barrier.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Overworld/MapElements/Objects/SecurityCube.tscn" type="PackedScene" id=11]
 
 [node name="Map" instance=ExtResource( 4 )]
 
@@ -64,8 +65,13 @@ position = Vector2( 796, 238 )
 dialogue = "Netbattler Club President's Office.
 Authorized persons only!"
 
+[node name="SecurityCube" parent="Entities" index="5" instance=ExtResource( 11 )]
+position = Vector2( 382, 238 )
+dialogue = "Mayl's HP Security Cube.
+You can't unlock it without the P-Code!"
+
 [node name="DefaultSpawn" parent="." index="4"]
-position = Vector2( 753, 262 )
+position = Vector2( 450, 277 )
 
 [editable path="Events/LocalWarpEvent"]
 [editable path="Events/LocalWarpEvent2"]
