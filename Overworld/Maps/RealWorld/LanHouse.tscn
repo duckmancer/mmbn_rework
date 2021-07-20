@@ -33,16 +33,16 @@ position = Vector2( 315, 81 )
 walk_dir = "up_right"
 destination_map = "LanRoom"
 
-[node name="NPC" parent="Entities" index="0" instance=ExtResource( 4 )]
-position = Vector2( 76, 186 )
+[node name="HarukaHikari" parent="Entities" index="0" instance=ExtResource( 4 )]
+position = Vector2( 122, 174 )
 character_data = ExtResource( 6 )
 dialogue = "Sorry Lan, but breakfast is going to have to wait a bit. The microwave is acting up again."
+facing_direction = "down_left"
 
-[node name="NPC2" parent="Entities" index="1" instance=ExtResource( 4 )]
-position = Vector2( 124, 176 )
+[node name="YuichiroHikari" parent="Entities" index="1" instance=ExtResource( 4 )]
+position = Vector2( 71, 187 )
 character_data = ExtResource( 5 )
 dialogue = "Looks like another one of those \"tutorials\"..."
-facing_direction = "down_left"
 
 [node name="DefaultSpawn" parent="." index="4"]
 position = Vector2( 242, 124 )

@@ -1,5 +1,8 @@
+tool
 class_name Character
 extends KinematicBody2D
+
+const DEFAULT_CHARACTER_DATA = "res://Resources/Characters/MrProg.tres"
 
 signal moved(position)
 # warning-ignore:unused_signal
@@ -22,7 +25,7 @@ const ANIMATION_BACKUP_LIST = {
 }
 
 
-export(Resource) var character_data
+export(Resource) var character_data setget set_character_data
 
 
 
@@ -43,6 +46,14 @@ var speeds = {
 var is_busy = false
 var queued_action = null
 var queued_args = []
+
+
+# SetGet
+
+func set_character_data(val) -> void:
+	character_data = val
+	if Engine.is_editor_hint():
+		_editor_update_character_data()
 
 
 # Interface
@@ -109,10 +120,16 @@ func get_velocity(direction := facing_dir, speed := cur_speed) -> Vector2:
 	return velocity
 
 
-
 # Processing
 
 func _physics_process(delta : float) -> void:
+	if Engine.is_editor_hint():
+		_editor_process(delta)
+	else:
+		_runtime_process(delta)
+
+
+func _runtime_process(delta : float) -> void:
 	if not is_busy:
 		if queued_action:
 			run_coroutine(queued_action, queued_args.duplicate())
@@ -123,6 +140,7 @@ func _physics_process(delta : float) -> void:
 			set_movement()
 	process_motion(delta)
 	animate_movement()
+
 
 func set_movement() -> void:
 	pass
@@ -285,17 +303,55 @@ func _rotate_vector_to(len_vector : Vector2, angle_vector : Vector2) -> Vector2:
 
 # Initialization
 
-
 func connect_signals_to_overworld(_overworld : Node) -> void:
 #	connect("moved", overworld, "_on_Character_moved")
 	pass
 
-
 func _ready() -> void:
-	if character_data:
-		animated_spritesheet.texture = character_data.spritesheet.duplicate(true)
-	else:
-		printerr("No Character Data in ", name)
+	if Engine.is_editor_hint():
+		return
+	set_sprite_from_data()
 	animated_spritesheet.setup_animations()
 	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle
+
+func set_sprite_from_data(sprite = animated_spritesheet) -> void:
+	if character_data:
+		sprite.texture = character_data.spritesheet.duplicate(true)
+	else:
+		if Engine.is_editor_hint():
+			_editor_set_default_character_data(sprite)
+		else:
+			printerr("No Character Data in ", name)
+			character_data = load(DEFAULT_CHARACTER_DATA)
+			sprite.texture = character_data.spritesheet.duplicate(true)
+
+
+# Editor Code:
+
+func _editor_process(_delta : float) -> void:
+	pass
+
+func _editor_update_character_data() -> void:
+	_editor_update_character_sprite()
+	_editor_update_node_name()
+	
+	property_list_changed_notify()
+
+func _editor_update_character_sprite() -> void:
+	for node in get_children():
+		if node is CharacterSprite:
+			set_sprite_from_data(node)
+			break
+
+func _editor_update_node_name() -> void:
+	var new_name = ""
+	if character_data:
+		if character_data.resource_name:
+			new_name = character_data.resource_name
+	if new_name:
+		name = new_name
+
+func _editor_set_default_character_data(sprite):
+	var backup_data = load(DEFAULT_CHARACTER_DATA)
+	sprite.texture = backup_data.spritesheet.duplicate(true)
