@@ -71,8 +71,8 @@ func release_player() -> Player:
 	return result
 
 func connect_signals_to_overworld(overworld : Node) -> void:
-	for c in characters:
-		c.connect_signals_to_overworld(overworld)
+	for e in entity_container.get_children():
+		e.connect_signals_to_overworld(overworld)
 	for e in events.get_children():
 		e.connect_signals_to_overworld(overworld)
 

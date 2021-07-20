@@ -73,7 +73,7 @@ func try_interaction() -> void:
 func turn_towards(pos : Vector2) -> void:
 	set_facing_dir(pos - position)
 
-func respond_to(character : Character) -> void:
+func respond_to(character) -> void:
 	turn_towards(character.position)
 	emit_signal("interaction_finished")
 
@@ -81,7 +81,7 @@ func respond_to(character : Character) -> void:
 
 # Interaction
 
-func _interact_with(character : Character) -> void:
+func _interact_with(character) -> void:
 	if not is_busy:
 		run_coroutine("talk_to", [character])
 
@@ -159,7 +159,7 @@ func run_coroutine(func_name : String, args := []) -> void:
 
 # Coroutines
 
-func talk_to(target : Character) -> void:
+func talk_to(target) -> void:
 	turn_towards(target.position)
 	stop_movement()
 	target.respond_to(self)

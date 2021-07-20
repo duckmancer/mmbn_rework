@@ -128,7 +128,7 @@ func _on_Event_map_transition_triggered(new_map : String) -> void:
 	load_map(new_map)
 	PlayerData.set_map(new_map)
 	
-func _on_Character_dialogue_started(character : Character, text : String) -> void:
+func _on_Character_dialogue_started(character, text : String) -> void:
 	dialogue_box.open(text, character.get_mugshot())
 	yield(dialogue_box, "dialogue_finished")
 	character.finish_interaction()

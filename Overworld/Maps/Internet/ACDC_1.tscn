@@ -37,19 +37,19 @@ position = Vector2( 640, 160 )
 position = Vector2( 29, 190 )
 destination_map = "ACDC_2"
 
-[node name="NPC" parent="Entities" index="0" instance=ExtResource( 5 )]
+[node name="Megaman" parent="Entities" index="0" instance=ExtResource( 5 )]
 position = Vector2( 403, 279 )
 character_data = ExtResource( 9 )
 dialogue = "Normal Navi"
 facing_direction = "up_right"
 
-[node name="NPC2" parent="Entities" index="1" instance=ExtResource( 5 )]
+[node name="OfficialNavi" parent="Entities" index="1" instance=ExtResource( 5 )]
 position = Vector2( 519, 281 )
 character_data = ExtResource( 6 )
 dialogue = "Official Navi"
 facing_direction = "down_left"
 
-[node name="NPC3" parent="Entities" index="2" instance=ExtResource( 5 )]
+[node name="VendorNavi" parent="Entities" index="2" instance=ExtResource( 5 )]
 position = Vector2( 458, 254 )
 character_data = ExtResource( 7 )
 dialogue = "Vendor Navi"
@@ -60,7 +60,9 @@ character_data = ExtResource( 8 )
 dialogue = "WELCOME TO THE INTERNET! THIS IS THE ACDC AREA."
 
 [node name="Barrier" parent="Entities" index="4" instance=ExtResource( 10 )]
-position = Vector2( 796, 222 )
+position = Vector2( 796, 238 )
+dialogue = "Netbattler Club President's Office.
+Authorized persons only!"
 
 [node name="DefaultSpawn" parent="." index="4"]
 position = Vector2( 753, 262 )
