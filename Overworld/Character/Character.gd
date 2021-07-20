@@ -349,7 +349,7 @@ func _editor_update_node_name() -> void:
 	if character_data:
 		if character_data.resource_name:
 			new_name = character_data.resource_name
-	if new_name:
+	if new_name and new_name != name:
 		name = new_name
 
 func _editor_set_default_character_data(sprite):

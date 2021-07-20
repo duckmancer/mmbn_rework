@@ -1,16 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Sprites/Overworld/Maps/ACDC1.png" type="Texture" id=1]
 [ext_resource path="res://Overworld/MapElements/Event/LocalWarpEvent.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld/MapElements/Event/WalkTransition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Overworld/Character/NPC.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Resources/Characters/OfficialNavi.tres" type="Resource" id=6]
-[ext_resource path="res://Resources/Characters/VendorNavi.tres" type="Resource" id=7]
+[ext_resource path="res://Resources/Characters/NormalNavi.tres" type="Resource" id=6]
 [ext_resource path="res://Resources/Characters/MrProg.tres" type="Resource" id=8]
-[ext_resource path="res://Resources/Characters/Megaman.tres" type="Resource" id=9]
 [ext_resource path="res://Overworld/MapElements/Objects/Barrier.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Overworld/MapElements/Objects/SecurityCube.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Curve2D" id=1]
+bake_interval = 100.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 207, 265, 0, 0, 0, 0, 242, 283 )
+}
 
 [node name="Map" instance=ExtResource( 4 )]
 
@@ -38,40 +42,34 @@ position = Vector2( 640, 160 )
 position = Vector2( 29, 190 )
 destination_map = "ACDC_2"
 
-[node name="Megaman" parent="Entities" index="0" instance=ExtResource( 5 )]
-position = Vector2( 403, 279 )
-character_data = ExtResource( 9 )
-dialogue = "Normal Navi"
-facing_direction = "up_right"
-
-[node name="OfficialNavi" parent="Entities" index="1" instance=ExtResource( 5 )]
-position = Vector2( 519, 281 )
+[node name="NormalNavi" parent="Entities" index="0" instance=ExtResource( 5 )]
+position = Vector2( 209, 268 )
 character_data = ExtResource( 6 )
-dialogue = "Official Navi"
-facing_direction = "down_left"
+dialogue = "This wide blue path is the main street for ACDC Area.
+It runs all the way to the next area."
+movement_type = 1
+track = NodePath("../../Paths/Path2D")
 
-[node name="VendorNavi" parent="Entities" index="2" instance=ExtResource( 5 )]
-position = Vector2( 458, 254 )
-character_data = ExtResource( 7 )
-dialogue = "Vendor Navi"
-
-[node name="MrProg" parent="Entities" index="3" instance=ExtResource( 5 )]
+[node name="MrProg" parent="Entities" index="1" instance=ExtResource( 5 )]
 position = Vector2( 696, 264 )
 character_data = ExtResource( 8 )
 dialogue = "WELCOME TO THE INTERNET! THIS IS THE ACDC AREA."
 
-[node name="Barrier" parent="Entities" index="4" instance=ExtResource( 10 )]
+[node name="Barrier" parent="Entities" index="2" instance=ExtResource( 10 )]
 position = Vector2( 796, 238 )
 dialogue = "Netbattler Club President's Office.
 Authorized persons only!"
 
-[node name="SecurityCube" parent="Entities" index="5" instance=ExtResource( 11 )]
+[node name="SecurityCube" parent="Entities" index="3" instance=ExtResource( 11 )]
 position = Vector2( 382, 238 )
 dialogue = "Mayl's HP Security Cube.
 You can't unlock it without the P-Code!"
 
-[node name="DefaultSpawn" parent="." index="4"]
-position = Vector2( 450, 277 )
+[node name="Path2D" type="Path2D" parent="Paths" index="0"]
+curve = SubResource( 1 )
+
+[node name="DefaultSpawn" parent="." index="5"]
+position = Vector2( 250, 303 )
 
 [editable path="Events/LocalWarpEvent"]
 [editable path="Events/LocalWarpEvent2"]

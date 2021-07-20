@@ -33,6 +33,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Paths" type="Node2D" parent="."]
+
 [node name="DefaultSpawn" type="Position2D" parent="."]
 position = Vector2( 229, 211 )
 

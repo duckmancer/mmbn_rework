@@ -8,9 +8,9 @@ resource_local_to_scene = true
 resource_name = "NormalNavi"
 atlas = ExtResource( 2 )
 region = Rect2( 4, 2, 15, 34 )
-margin = Rect2( 2, 33, 5, 100 )
+margin = Rect2( 4, 33, 9, 100 )
 script = ExtResource( 1 )
-data_access_mode = "Read"
+data_access_mode = "Modify"
 frame_index = 0
 spritesheet_data = [ {
 "dir": "down_right",
@@ -33,13 +33,13 @@ spritesheet_data = [ {
 }, {
 "dir": "up_right",
 "name": "walk_up_right",
-"offset": Vector2( 0, 0 ),
+"offset": Vector2( -1, 0 ),
 "rect": Rect2( 2, 39, 18, 33 ),
 "type": "walk"
 }, {
 "dir": "up_right",
 "name": "walk_up_right2",
-"offset": Vector2( 0, 0 ),
+"offset": Vector2( -1, 0 ),
 "rect": Rect2( 25, 38, 16, 34 ),
 "type": "copy_prev"
 }, {
@@ -51,7 +51,7 @@ spritesheet_data = [ {
 }, {
 "dir": "up_right",
 "name": "walk_up_right4",
-"offset": Vector2( 0, 0 ),
+"offset": Vector2( -1, 0 ),
 "rect": Rect2( 65, 39, 18, 33 ),
 "type": "copy_prev"
 }, {
@@ -63,19 +63,19 @@ spritesheet_data = [ {
 }, {
 "dir": "up_right",
 "name": "walk_up_right6",
-"offset": Vector2( 0, 0 ),
+"offset": Vector2( -1, 0 ),
 "rect": Rect2( 109, 38, 16, 34 ),
 "type": "copy_prev"
 }, {
 "dir": "down_right",
 "name": "walk_down_right",
-"offset": Vector2( 1, 0 ),
+"offset": Vector2( 0, 0 ),
 "rect": Rect2( 3, 75, 18, 33 ),
 "type": "walk"
 }, {
 "dir": "down_right",
 "name": "walk_down_right2",
-"offset": Vector2( 1, 0 ),
+"offset": Vector2( 0, 0 ),
 "rect": Rect2( 26, 74, 16, 34 ),
 "type": "copy_prev"
 }, {
@@ -111,7 +111,7 @@ spritesheet_data = [ {
 }, {
 "dir": "up",
 "name": "walk_up2",
-"offset": Vector2( 0, 0 ),
+"offset": Vector2( 1, 0 ),
 "rect": Rect2( 26, 111, 17, 34 ),
 "type": "copy_prev"
 }, {
@@ -135,13 +135,13 @@ spritesheet_data = [ {
 }, {
 "dir": "up",
 "name": "walk_up6",
-"offset": Vector2( 0, 0 ),
+"offset": Vector2( 1, 0 ),
 "rect": Rect2( 110, 111, 17, 34 ),
 "type": "copy_prev"
 }, {
 "dir": "down",
 "name": "emote_down",
-"offset": Vector2( 0, 0 ),
+"offset": Vector2( 1, 0 ),
 "rect": Rect2( 23, 159, 19, 29 ),
 "type": "emote"
 }, {
@@ -151,11 +151,11 @@ spritesheet_data = [ {
 "rect": Rect2( 51, 158, 17, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "emote_down3",
+"dir": "right",
+"name": "hurt_right",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 78, 150, 37, 38 ),
-"type": "copy_prev"
+"type": "hurt"
 }, {
 "dir": "up_right",
 "name": "fall_up_right",
@@ -181,3 +181,9 @@ spritesheet_data = [ {
 "rect": Rect2( 112, 198, 17, 27 ),
 "type": "hurt"
 } ]
+FrameData/FrameIndex = 0
+FrameData/XOffset = 0.0
+FrameData/YOffset = 0.0
+FrameData/Name = "stand_down_right"
+FrameData/Type = "stand"
+FrameData/Dir = "down_right"
