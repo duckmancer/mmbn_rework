@@ -36,7 +36,8 @@ destination_map = "LanRoom"
 [node name="HarukaHikari" parent="Entities" index="0" instance=ExtResource( 4 )]
 position = Vector2( 122, 174 )
 character_data = ExtResource( 6 )
-dialogue = "Sorry Lan, but breakfast is going to have to wait a bit. The microwave is acting up again."
+dialogue = "Sorry Lan, but breakfast is going to have to wait.
+The microwave is acting up again."
 facing_direction = "down_left"
 
 [node name="YuichiroHikari" parent="Entities" index="1" instance=ExtResource( 4 )]

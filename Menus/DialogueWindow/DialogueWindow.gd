@@ -25,6 +25,8 @@ var cur_page_num = 0
 var last_visible_chars = 0
 
 var text_box_size = 156
+
+
 # Interface
 
 func scroll_page(page : String) -> void:
@@ -40,7 +42,6 @@ func next_page() -> void:
 		cur_page_num += 1
 	else:
 		close_dialogue()
-	
 
 
 func close_dialogue() -> void:
@@ -65,11 +66,12 @@ func _physics_process(_delta: float) -> void:
 		last_visible_chars = label.visible_characters
 		audio.play()
 
+
 # Setup
 
 func open(text : String, new_mugshot : StreamTexture) -> void:
 	state = State.INACTIVE
-	_parse_text(text)
+	text_pages = _parse_text(text)
 	mugshot.set_mugshot(new_mugshot)
 	popup()
 	anim.play("open_window", -1, POPUP_SPEED)
@@ -78,10 +80,18 @@ func open(text : String, new_mugshot : StreamTexture) -> void:
 	cur_page_num = 0
 	next_page()
 
-func _parse_text(text : String) -> void:
-	var word_list = text.split(" ", false)
+func _parse_text(text : String) -> PoolStringArray:
+	var page_groups = text.split("\n", false)
+	var pages = PoolStringArray()
+	for p in page_groups:
+		pages.append_array(_format_page_groups(p))
+	return pages
+
+func _format_page_groups(group : String) -> PoolStringArray:
+	var word_list = group.split(" ", false)
 	var line_list = _parse_lines(word_list)
-	text_pages = _group_pages(line_list)
+	var pages = _group_pages(line_list)
+	return pages
 
 func _parse_lines(word_list : PoolStringArray) -> PoolStringArray:
 	var font = label.get("custom_fonts/font")
