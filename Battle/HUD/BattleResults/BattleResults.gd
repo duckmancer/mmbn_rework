@@ -23,7 +23,7 @@ onready var audio = $AudioStreamPlayer
 
 onready var audio_tracks = {
 	beep = load(AudioAssets.SFX.text_beep),
-	get = load(AudioAssets.SFX.item_get),
+	get = load(AudioAssets.SFX.battle_results_reveal_reward),
 }
 
 export(State) var state = State.INACTIVE

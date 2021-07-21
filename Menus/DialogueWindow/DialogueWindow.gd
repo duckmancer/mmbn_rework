@@ -2,12 +2,22 @@ class_name DialogueWindow
 extends PopupDialog
 
 signal dialogue_finished()
+# warning-ignore:unused_signal
+signal sfx_triggered(sfx_name)
+# warning-ignore:unused_signal
+signal anim_triggered(anim_name)
 
 enum State {
 	INACTIVE,
 	RUNNING,
 	FULL,
 }
+
+const FORMAT_MARKERS = {
+	line_break = "\n",
+	page_break = "\n\n",
+}
+const COMMAND_PATTERN = "{(?<type>.*) : (?<name>.*)}"
 
 const LINES_PER_PAGE = 3
 const TEXT_SCROLL_SPEED = {
@@ -20,6 +30,8 @@ onready var label = $TextMargin/Label
 onready var mugshot = $Mugshot
 onready var anim = $AnimationPlayer
 onready var audio = $AudioStreamPlayer
+
+var command_regex = RegEx.new()
 
 var text_pages := PoolStringArray()
 var cur_page_num = 0
@@ -41,6 +53,11 @@ func scroll_page(page : String) -> void:
 
 func next_page() -> void:
 	if cur_page_num < text_pages.size():
+		var cur_page = text_pages[cur_page_num]
+		if _process_command(cur_page):
+			cur_page_num += 1
+			next_page()
+			return
 		last_visible_chars = 0
 		state = State.RUNNING
 		scroll_page(text_pages[cur_page_num])
@@ -48,6 +65,15 @@ func next_page() -> void:
 	else:
 		close_dialogue()
 
+func _process_command(cur_page : String) -> bool:
+	var result = false
+	var command_match = command_regex.search(cur_page)
+	if command_match:
+		result = true
+		var command_type = command_match.get_string("type")
+		var command_name = command_match.get_string("name")
+		emit_signal(command_type + "_triggered", command_name)
+	return result
 
 func close_dialogue() -> void:
 	state = State.INACTIVE
@@ -104,17 +130,24 @@ func open(text : String, new_mugshot : StreamTexture) -> void:
 # Text Parsing
 
 func _parse_text(text : String) -> PoolStringArray:
-	var page_groups = text.split("\n", false)
+	var page_groups = text.split(FORMAT_MARKERS.page_break, false)
 	var pages = PoolStringArray()
 	for p in page_groups:
-		pages.append_array(_format_page_groups(p))
+		pages.append_array(_format_page_group(p))
 	return pages
 
-func _format_page_groups(group : String) -> PoolStringArray:
-	var word_list = group.split(" ", false)
-	var line_list = _parse_lines(word_list)
-	var pages = _group_pages(line_list)
+func _format_page_group(group : String) -> PoolStringArray:
+	var manual_subgroups = group.split(FORMAT_MARKERS.line_break, false)
+	var lines = PoolStringArray()
+	for subgroup in manual_subgroups:
+		lines.append_array(_format_page_subgroup(subgroup))
+	var pages = _group_pages(lines)
 	return pages
+
+func _format_page_subgroup(subgroup : String) -> PoolStringArray:
+	var word_list = subgroup.split(" ", false)
+	var line_list = _parse_lines(word_list)
+	return line_list
 
 func _parse_lines(word_list : PoolStringArray) -> PoolStringArray:
 	var font = label.get("custom_fonts/font")
@@ -140,16 +173,17 @@ func _group_pages(line_list : PoolStringArray) -> PoolStringArray:
 	for line in line_list:
 		cur_page.append(line)
 		if cur_page.size() == LINES_PER_PAGE:
-			page_list.append(cur_page.join(" "))
+			page_list.append(cur_page.join("\n"))
 			cur_page = PoolStringArray()
 	if not cur_page.empty():
-		page_list.append(cur_page.join(" "))
+		page_list.append(cur_page.join("\n"))
 	return page_list
 
 
 # Init
 
 func _ready() -> void:
+	command_regex.compile(COMMAND_PATTERN)
 	set_speed(TEXT_SCROLL_SPEED.slow)
 #	open(label.text, SpriteAssets.MUGSHOT_ROOT + "Megaman.png")
 

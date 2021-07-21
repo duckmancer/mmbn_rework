@@ -43,7 +43,7 @@ var speeds = {
 }
 
 
-var is_busy = false
+var is_busy := 0
 var queued_action = null
 var queued_args = []
 
@@ -112,8 +112,7 @@ func walk_transition(walk_dir : String, walk_duration : float) -> bool:
 	return false
 
 func force_emote():
-	if not is_busy:
-		run_coroutine("emote", ["down"])
+	run_coroutine("emote", ["down"])
 
 
 # Inputs
@@ -156,9 +155,9 @@ func process_motion(delta : float) -> void:
 		emit_signal("moved", position)
 
 func run_coroutine(func_name : String, args := []) -> void:
-	is_busy = true
+	is_busy += 1
 	yield(callv(func_name, args), "completed")
-	is_busy = false
+	is_busy -= 1
 
 
 # Coroutines

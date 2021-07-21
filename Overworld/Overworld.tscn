@@ -24,6 +24,8 @@ stream = ExtResource( 5 )
 volume_db = -10.0
 autoplay = true
 
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 3
 
@@ -31,3 +33,5 @@ layer = 3
 
 [connection signal="moved" from="Megaman" to="." method="_on_Player_moved"]
 [connection signal="moved" from="Lan" to="." method="_on_Player_moved"]
+[connection signal="anim_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_anim_triggered"]
+[connection signal="sfx_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_sfx_triggered"]

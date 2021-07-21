@@ -16,7 +16,8 @@ const SFX = {
 	sword_swing = AUDIO_ROOT + "MMBNSFX/Attack SFX/Attacks/SwordSwing HQ.ogg",
 	navi_deleted = AUDIO_ROOT + "MMBNSFX/Attack SFX/Misc/Deleted HQ.ogg",
 	text_beep = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song252_text.wav",
-	item_get = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song153_double_confirm.wav",
+	battle_results_reveal_reward = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song153_double_confirm.wav",
+	item_get = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song115_get_something.wav",
 }
 
 const MUSIC = {
@@ -24,6 +25,12 @@ const MUSIC = {
 	internet_theme = AUDIO_ROOT + "MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3",
 	indoor_theme = AUDIO_ROOT + "MMBN Sound Box/Overworld Themes/Indoors/3-04 Indoors.mp3"
 }
+
+func get_sfx(sfx_name : String) -> AudioStream:
+	var result = null
+	if sfx_name in SFX:
+		result = load(SFX[sfx_name])
+	return result
 
 func _ready() -> void:
 	pass

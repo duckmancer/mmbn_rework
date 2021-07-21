@@ -3,6 +3,12 @@ extends OverworldEntity
 
 
 const EDITOR_DISPLAY_FRAME := 2
+const MESSAGE_TEMPLATE = {
+	access = "Megaman accessed the mystery data\n...",
+	sfx = "{sfx : item_get}",
+	anim = "{anim : emote}",
+	loot = "Megaman got:\n\"{loot}\" !!",
+}
 
 export(String, "Green", "Blue", "Purple") var type := "Green" setget set_type
 export var loot = "200 Zenny"
@@ -10,7 +16,7 @@ export var loot = "200 Zenny"
 onready var sprite = $AnimatedSprite
 
 var respondent = null
-
+var components = ["access", "sfx", "anim", "loot"]
 
 # SetGet
 
@@ -25,13 +31,23 @@ func set_type(val : String) -> void:
 
 func respond_to(character) -> void:
 	respondent = character  
-	var text = dialogue.format({"str" : loot})
+	var text = _generate_message()
 	emit_signal("dialogue_started", self, text)
 	emit_signal("interaction_finished")
 
+func _generate_message() -> String:
+	var message_body = _generate_base_message() 
+	var message = message_body.format({"loot" : loot})
+	return message
+
+func _generate_base_message() -> String:
+	var parts = PoolStringArray()
+	for c in components:
+		parts.append(MESSAGE_TEMPLATE[c])
+	return parts.join(DialogueWindow.FORMAT_MARKERS.page_break)
+
 func finish_interaction() -> void:
 	.finish_interaction()
-	respondent.emote()
 	queue_free()
 
 

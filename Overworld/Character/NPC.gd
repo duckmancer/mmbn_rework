@@ -28,14 +28,14 @@ var cur_point := 0
 # Actions
 
 func respond_to(character : Character) -> void:
-	is_busy = true
+	is_busy += 1
 	stop_movement()
 	turn_towards(character.position)
 	emit_signal("dialogue_started", self, dialogue)
 
 func finish_interaction() -> void:
 	emit_signal("interaction_finished")
-	is_busy = false
+	is_busy -= 1
 	rest()
 
 

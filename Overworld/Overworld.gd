@@ -11,6 +11,7 @@ onready var player_lan = $Lan
 
 onready var dialogue_box = $HUD/DialogueWindow
 onready var music = $Music
+onready var sfx_player = $SFX
 
 var map
 var do_encounter = false
@@ -132,3 +133,14 @@ func _on_Character_dialogue_started(character, text : String) -> void:
 	dialogue_box.open(text, character.get_mugshot())
 	yield(dialogue_box, "dialogue_finished")
 	character.finish_interaction()
+
+
+func _on_DialogueWindow_sfx_triggered(sfx_name : String) -> void:
+	var sfx_stream = AudioAssets.get_sfx(sfx_name)
+	sfx_player.stream = sfx_stream
+	sfx_player.play()
+
+
+func _on_DialogueWindow_anim_triggered(anim_name : String) -> void:
+	if anim_name == "emote":
+		get_player().force_emote()
