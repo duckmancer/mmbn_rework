@@ -5,6 +5,7 @@ extends OverworldEntity
 const EDITOR_DISPLAY_FRAME := 2
 const MESSAGE_TEMPLATE = {
 	access = "Megaman accessed the mystery data\n...",
+	locked = "It's locked.\n\"Unlocker\" is needed to open it.",
 	sfx = "{sfx : item_get}",
 	anim = "{anim : emote}",
 	loot = "Megaman got:\n\"{loot}\" !!",
@@ -33,11 +34,14 @@ func respond_to(character) -> void:
 	respondent = character  
 	var text = _generate_message()
 	emit_signal("dialogue_started", self, text)
-	emit_signal("interaction_finished")
 
 func _generate_message() -> String:
-	var message_body = _generate_base_message() 
-	var message = message_body.format({"loot" : loot})
+	var message = ""
+	if type == "Purple":
+		message = MESSAGE_TEMPLATE.locked
+	else:
+		var message_body = _generate_base_message() 
+		message = message_body.format({"loot" : loot})
 	return message
 
 func _generate_base_message() -> String:
@@ -48,7 +52,8 @@ func _generate_base_message() -> String:
 
 func finish_interaction() -> void:
 	.finish_interaction()
-	queue_free()
+	if type != "Purple":
+		queue_free()
 
 
 # Init
