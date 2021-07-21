@@ -55,7 +55,21 @@ position = Vector2( 750, 381 )
 character_data = ExtResource( 5 )
 dialogue = "Have you seen the BBS before?
 
-I thought not, it's not a story the officials would tell you."
+They can be found on various homepages, and let people exchange all kinds of info with each other!
+
+The type of info depends on the homepage.
+
+My favorite is the BBS on Dex's homepage.
+
+There are 2 ways to access homepages.
+
+Either from the Net, or jacking in from the real world. 
+
+If you don't have \"DexCode\", the only way to access his page is by jacking in from the real world.
+
+Oh, yeah!
+
+You should also check out Yai's gossip BBS too!"
 movement_type = 1
 track = NodePath("../../Paths/Path2D")
 

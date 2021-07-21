@@ -1,8 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Sprites/Overworld/Maps/ACDC3.png" type="Texture" id=1]
 [ext_resource path="res://Overworld/MapElements/Event/WalkTransition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Overworld/MapElements/Objects/MysteryData.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Overworld/MapElements/Objects/Barrier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/Characters/VendorNavi.tres" type="Resource" id=6]
+[ext_resource path="res://Overworld/Character/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Resources/Characters/MrProg.tres" type="Resource" id=8]
+[ext_resource path="res://Overworld/MapElements/Objects/SecurityCube.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Overworld/MapElements/Event/InvisibleWall.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Resources/Characters/NormalNavi.tres" type="Resource" id=11]
+[ext_resource path="res://Resources/Characters/HeelNavi.tres" type="Resource" id=12]
+
+[sub_resource type="Curve2D" id=1]
+bake_interval = 100.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 906, 333, 0, 0, 0, 0, 851, 305 )
+}
+
+[sub_resource type="Curve2D" id=2]
+bake_interval = 100.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 813, 399, 0, 0, 0, 0, 746, 432 )
+}
 
 [node name="Map" instance=ExtResource( 3 )]
 
@@ -21,10 +42,124 @@ polygon = PoolVector2Array( 608, 213.1, 617, 214.1, 617, 215.3, 626, 218.3, 626,
 build_mode = 1
 polygon = PoolVector2Array( 499, 181, 509, 182, 560, 207, 569, 208, 590, 197, 597, 196, 890, 342, 888, 346, 609, 487, 602, 497, 501, 548, 218, 407, 221, 396, 219, 387, 285, 353, 304, 362, 301, 375, 307, 392, 320, 404, 343, 412, 368, 415, 398, 413, 420, 407, 439, 391, 443, 370, 428, 353, 406, 344, 377, 340, 344, 343, 326, 333, 454, 269, 462, 259, 465, 244, 460, 234, 431, 217 )
 
-[node name="WalkTransition" parent="Events" index="0" instance=ExtResource( 2 )]
+[node name="InvisibleWall" parent="Events" index="0" instance=ExtResource( 10 )]
+position = Vector2( 430, 79 )
+walk_dir = "down_right"
+talk_to_character = NodePath("../../Entities/MrProg")
+
+[node name="WalkTransition" parent="Events" index="1" instance=ExtResource( 2 )]
 position = Vector2( 805, 586 )
 walk_dir = "down_right"
 destination_map = "ACDC_2"
 
-[node name="DefaultSpawn" parent="." index="4"]
-position = Vector2( 651, 504 )
+[node name="MysteryData" parent="Entities" index="0" instance=ExtResource( 4 )]
+position = Vector2( 373, 563 )
+type = "Blue"
+
+[node name="MysteryData2" parent="Entities" index="1" instance=ExtResource( 4 )]
+position = Vector2( 53, 468 )
+
+[node name="Barrier" parent="Entities" index="2" instance=ExtResource( 5 )]
+position = Vector2( 98, 365 )
+scale = Vector2( -1, 1 )
+dialogue = "A security door...
+
+Show \"FireID\"...
+Otherwise you can't pass.
+
+That's what the sign says."
+flip = true
+
+[node name="VendorNavi" parent="Entities" index="3" instance=ExtResource( 7 )]
+position = Vector2( 127, 381 )
+character_data = ExtResource( 6 )
+dialogue = "I sell parts to repair Mr. Progs! Whaddya say?
+
+Wanna buy something?
+
+My operator is really sick right now...
+
+The only way I can help is to make money for medicine.
+
+...What?
+You want to buy \"RcvPatch\"?
+
+But it's expensive! 
+It's 500 Zennys.
+
+Well, thank you!
+You're a big help.
+
+Now I can buy medicine for my sick operator!
+
+Go on! Take this \"RcvPatch\"!
+
+Thanks a lot!"
+
+[node name="MrProg" parent="Entities" index="4" instance=ExtResource( 7 )]
+position = Vector2( 468, 104 )
+character_data = ExtResource( 8 )
+dialogue = "THIS PATH IS CLOSED RIGHT NOW. IT'S UNDER REPAIR.
+
+DUE TO A BAD CONNECTION, THE AREA'S BEEN CUT OFF.
+
+YOU'LL BE ABLE TO ACCESS THE TOWN AREA AGAIN LATER."
+
+[node name="SecurityCube" parent="Entities" index="5" instance=ExtResource( 9 )]
+position = Vector2( 315, 346 )
+dialogue = "It's Yai's Security Cube.
+
+You can't unlock it without the P-Code!"
+
+[node name="MysteryData4" parent="Entities" index="6" instance=ExtResource( 4 )]
+position = Vector2( 918, 228 )
+type = "Blue"
+
+[node name="Barrier2" parent="Entities" index="7" instance=ExtResource( 5 )]
+position = Vector2( 870, 204 )
+scale = Vector2( -1, 1 )
+dialogue = "You can't pass with this door blocking the way!
+
+"
+flip = true
+type = "Skull"
+
+[node name="MysteryData3" parent="Entities" index="8" instance=ExtResource( 4 )]
+position = Vector2( 693, 117 )
+
+[node name="NormalNavi" parent="Entities" index="9" instance=ExtResource( 7 )]
+position = Vector2( 851, 305 )
+character_data = ExtResource( 11 )
+dialogue = "We can't go to the Town Area right now.
+
+They say there's a bad connection.
+Darn!
+
+I suppose it would make navigating a bit easier if you had no reason to go there yet though..."
+movement_type = 1
+track = NodePath("../../Paths/Path2D")
+
+[node name="HeelNavi" parent="Entities" index="10" instance=ExtResource( 7 )]
+position = Vector2( 813, 399 )
+character_data = ExtResource( 12 )
+dialogue = "Do you know about \"BugFrags\"?
+
+I thought not, it's not a story the officials would tell you.
+
+You can find them inside mystery data.
+
+There's a BugFrag exchange shop on the Net somewhere.
+
+Ironic, that they could be exchanged for other cool items, but do nothing cool themselves."
+facing_direction = "down_left"
+movement_type = 1
+track = NodePath("../../Paths/Path2D2")
+
+[node name="Path2D" type="Path2D" parent="Paths" index="0"]
+curve = SubResource( 1 )
+
+[node name="Path2D2" type="Path2D" parent="Paths" index="1"]
+curve = SubResource( 2 )
+
+[node name="DefaultSpawn" parent="." index="5"]
+position = Vector2( 343, 294 )
