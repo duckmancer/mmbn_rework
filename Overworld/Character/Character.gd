@@ -111,6 +111,10 @@ func walk_transition(walk_dir : String, walk_duration : float) -> bool:
 		return true
 	return false
 
+func force_emote():
+	if not is_busy:
+		run_coroutine("emote", ["down"])
+
 
 # Inputs
 
@@ -165,9 +169,9 @@ func talk_to(target) -> void:
 	target.respond_to(self)
 	yield(target, "interaction_finished")
 
-func emote() -> void:
+func emote(dir_override := facing_dir) -> void:
 	stop_movement()
-	animated_spritesheet.play_anim("emote_" + facing_dir)
+	animated_spritesheet.play_anim("emote_" + dir_override)
 	yield(animated_spritesheet, "animation_finished")
 
 func warp_local(destination : Vector2, walk_dir : String, walk_duration : float) -> void:

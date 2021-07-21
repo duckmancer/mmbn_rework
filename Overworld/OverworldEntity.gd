@@ -6,6 +6,8 @@ signal interaction_finished()
 
 export(String, MULTILINE) var dialogue = "DEBUG TEXT"
 
+
+
 func respond_to(_character) -> void:
 	emit_signal("dialogue_started", self, dialogue)
 	emit_signal("interaction_finished")

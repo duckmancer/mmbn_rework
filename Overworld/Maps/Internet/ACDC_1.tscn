@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Sprites/Overworld/Maps/ACDC1.png" type="Texture" id=1]
 [ext_resource path="res://Overworld/MapElements/Event/LocalWarpEvent.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Overworld/Character/NPC.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Resources/Characters/NormalNavi.tres" type="Resource" id=6]
+[ext_resource path="res://Overworld/MapElements/Objects/MysteryData.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Resources/Characters/MrProg.tres" type="Resource" id=8]
 [ext_resource path="res://Overworld/MapElements/Objects/Barrier.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Overworld/MapElements/Objects/SecurityCube.tscn" type="PackedScene" id=11]
@@ -70,11 +71,22 @@ position = Vector2( 382, 238 )
 dialogue = "Mayl's HP Security Cube.
 You can't unlock it without the P-Code!"
 
+[node name="MysteryData" parent="Entities" index="5" instance=ExtResource( 7 )]
+position = Vector2( 717, 374 )
+type = "Blue"
+
+[node name="MysteryData2" parent="Entities" index="6" instance=ExtResource( 7 )]
+position = Vector2( 736, 469 )
+
+[node name="MysteryData3" parent="Entities" index="7" instance=ExtResource( 7 )]
+position = Vector2( 204, 374 )
+type = "Blue"
+
 [node name="Path2D" type="Path2D" parent="Paths" index="0"]
 curve = SubResource( 1 )
 
 [node name="DefaultSpawn" parent="." index="5"]
-position = Vector2( 250, 303 )
+position = Vector2( 702, 464 )
 
 [editable path="Events/LocalWarpEvent"]
 [editable path="Events/LocalWarpEvent2"]
