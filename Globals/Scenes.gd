@@ -10,9 +10,11 @@ const OVERWORLD_SCENE = preload("res://Overworld/Overworld.tscn")
 const EXPLOSION_SCENE = preload("res://Battle/Entity/Attack/AreaHit/Explosion/Explosion.tscn")
 
 const MAP_ROOT = "res://Overworld/Maps/"
-const INTERNET_ROOT = MAP_ROOT + "Internet/"
+const INTERNET_ROOT = MAP_ROOT + "Internet/MainNet"
+const COMP_ROOT = MAP_ROOT + "Internet/Comps"
 const REAL_WORLD_ROOT = MAP_ROOT + "RealWorld/"
 
+const POSSIBLE_MAP_ROOTS = [COMP_ROOT, REAL_WORLD_ROOT, INTERNET_ROOT]
 
 const _scenes = {
 	overworld = OVERWORLD_SCENE,
@@ -25,9 +27,11 @@ func switch_to(scene_name : String) -> void:
 
 func get_map(map_name : String) -> Node:
 	Directory.new()
-	var map_path = INTERNET_ROOT + map_name + ".tscn"
-	if not File.new().file_exists(map_path):
-		map_path = REAL_WORLD_ROOT + map_name + ".tscn"
-		if not File.new().file_exists(map_path):
-			return null
-	return load(map_path).instance()
+	var expected_filename = map_name + ".tscn"
+	var result = null
+	for dir in POSSIBLE_MAP_ROOTS:
+		var test_path = dir.plus_file(expected_filename)
+		if File.new().file_exists(test_path):
+			result = load(test_path).instance()
+			break
+	return result
