@@ -74,7 +74,9 @@ type = "Skull"
 
 [node name="SecurityCube" parent="Entities" index="5" instance=ExtResource( 11 )]
 position = Vector2( 382, 238 )
-dialogue = "Mayl's HP Security Cube.
+dialogue = "Mayl's HP
+Security Cube.
+
 You can't unlock it without the P-Code!"
 
 [node name="MysteryData" parent="Entities" index="6" instance=ExtResource( 7 )]

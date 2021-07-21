@@ -7,28 +7,30 @@
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 144, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 1 ), SubResource( 4 ), SubResource( 2 ), SubResource( 2 ), SubResource( 4 ), SubResource( 1 ), SubResource( 1 ), SubResource( 4 ), SubResource( 3 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 1 ), SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 3 ), SubResource( 2 ), SubResource( 1 ), SubResource( 1 ), SubResource( 2 ), SubResource( 4 ), SubResource( 4 ), SubResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
 [node name="SecurityCube" instance=ExtResource( 2 )]
-dialogue = "NAME's HP Security Cube.
+dialogue = "NAME's
+Security Cube.
+
 You can't unlock it without the P-Code!"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
@@ -38,5 +40,5 @@ polygon = PoolVector2Array( 0, 15, 34, -2, 0, -19, -34, -2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 position = Vector2( 3, -14 )
 frames = SubResource( 5 )
-frame = 3
+frame = 7
 playing = true
