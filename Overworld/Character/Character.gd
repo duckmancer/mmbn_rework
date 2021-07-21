@@ -68,7 +68,7 @@ func try_interaction() -> void:
 	var overlap = interaction.get_overlapping_bodies()
 	var target = _get_closest_target(overlap)
 	if target:
-		_interact_with(target)
+		interact_with(target)
 
 func turn_towards(pos : Vector2) -> void:
 	set_facing_dir(pos - position)
@@ -77,13 +77,13 @@ func respond_to(character) -> void:
 	turn_towards(character.position)
 	emit_signal("interaction_finished")
 
+func interact_with(character) -> void:
+	if not is_busy:
+		run_coroutine("talk_to", [character])
 
 
 # Interaction
 
-func _interact_with(character) -> void:
-	if not is_busy:
-		run_coroutine("talk_to", [character])
 
 func _get_closest_target(targets : Array) -> Node:
 	var closest_target = null
@@ -113,6 +113,12 @@ func walk_transition(walk_dir : String, walk_duration : float) -> bool:
 
 func force_emote():
 	run_coroutine("emote", ["down"])
+
+func force_walk(walk_dir : String, walk_duration : float) -> bool:
+	if not is_busy:
+		run_coroutine("walk", [walk_dir, walk_duration])
+		return true
+	return false
 
 
 # Inputs
@@ -187,6 +193,12 @@ func walking_map_change(walk_dir : String, walk_duration : float) -> void:
 	cur_speed = "run"
 	
 	yield(get_tree().create_timer(walk_duration * 2), "timeout")
+
+func walk(walk_dir : String, walk_duration : float, speed_type := "walk") -> void:
+	set_facing_dir(walk_dir)
+	cur_speed = speed_type
+	
+	yield(get_tree().create_timer(walk_duration), "timeout")
 
 
 # Movement
