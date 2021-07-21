@@ -60,7 +60,12 @@ position = Vector2( 796, 238 )
 dialogue = "Netbattler Club President's Office.
 Authorized persons only!"
 
-[node name="SecurityCube" parent="Entities" index="3" instance=ExtResource( 11 )]
+[node name="Barrier2" parent="Entities" index="3" instance=ExtResource( 10 )]
+position = Vector2( 645, 410 )
+dialogue = "You can't pass with this door blocking the way!"
+type = "Skull"
+
+[node name="SecurityCube" parent="Entities" index="4" instance=ExtResource( 11 )]
 position = Vector2( 382, 238 )
 dialogue = "Mayl's HP Security Cube.
 You can't unlock it without the P-Code!"
