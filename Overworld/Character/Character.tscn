@@ -7,10 +7,10 @@
 radius = 3.0
 height = 7.0
 
-[sub_resource type="StreamTexture" id=3]
+[sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/MrProg.png-d582041c9b9bcf8399a651f6842c59bc.stex"
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 script/source = "tool
 class_name Spritesheet
 extends AtlasTexture
@@ -442,12 +442,12 @@ func _init():
 	data_access_mode = \"Read\"
 "
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=4]
 resource_name = "MrProg"
-atlas = SubResource( 3 )
+atlas = SubResource( 2 )
 region = Rect2( 3, 0, 13, 35 )
 margin = Rect2( 2, 32, 5, 100 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 data_access_mode = "Read"
 frame_index = 0
 spritesheet_data = [ {
@@ -488,16 +488,13 @@ spritesheet_data = [ {
 "type": "copy_prev"
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=5]
 height = 5.0
 
 [node name="Character" type="KinematicBody2D"]
 collision_layer = 7
 collision_mask = 5
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -505,7 +502,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="CharacterSprite" parent="." instance=ExtResource( 1 )]
-texture = SubResource( 5 )
+texture = SubResource( 4 )
 
 [node name="Interaction" type="Area2D" parent="."]
 visible = false
@@ -515,4 +512,4 @@ collision_mask = 4
 [node name="FoV" type="CollisionShape2D" parent="Interaction"]
 position = Vector2( 12, 0 )
 rotation = -1.5708
-shape = SubResource( 2 )
+shape = SubResource( 5 )

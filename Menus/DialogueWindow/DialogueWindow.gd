@@ -158,7 +158,7 @@ func _parse_lines(word_list : PoolStringArray) -> PoolStringArray:
 	for word in word_list:
 		cur_line.append(word)
 		var potential_length = font.get_string_size(cur_line.join(" ")).x
-		if potential_length > max_line_length:
+		if potential_length >= max_line_length:
 			cur_line.remove(cur_line.size() - 1)
 			line_list.append(cur_line.join(" "))
 			cur_line = PoolStringArray()

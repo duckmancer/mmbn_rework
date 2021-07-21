@@ -3,7 +3,7 @@ extends Node
 var current_world := "internet"
 var _positions = {
 	internet = {
-		map = "ACDC_1",
+		map = "ACDC_2",
 		position = null,#Vector2(150, 250),
 		facing_dir = "",
 	},
