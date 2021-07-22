@@ -1,7 +1,6 @@
 class_name WalkTransition
 extends Event
 
-signal map_transition_triggered(new_map)
 
 export(String) var destination_map := "ACDC_1"
 export var destination_position := Vector2()
@@ -22,7 +21,7 @@ func connect_signals_to_overworld(overworld) -> void:
 
 func trigger_event(entity) -> void:
 	if entity.walk_transition(walk_dir, walk_duration):
-		emit_signal("map_transition_triggered", destination_map)
+		emit_signal("map_transition_triggered", destination_map, "walk")
 
 func _ready() -> void:
 	pass

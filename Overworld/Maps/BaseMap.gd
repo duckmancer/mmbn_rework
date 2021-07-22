@@ -1,11 +1,6 @@
 extends Node2D
 
-const MOVEMENT_DURATIONS = {
-	stand = 0,
-	move = 0.5,
-	walk = 0.5,
-	run = 0.5,
-}
+
 
 onready var entity_container = $Entities
 onready var default_spawn = $DefaultSpawn
@@ -26,19 +21,16 @@ func spawn_player(new_player : Player) -> void:
 	
 	var spawn_data = _get_player_spawn()
 	
-	player.position = spawn_data.position
+	player.spawn(spawn_data.position, spawn_data.facing_dir)
 	PlayerData.update_position(player.position)
-	
-	var move_type = "stand" if spawn_data.movement_type == "stand" else "run"
-	
-	player.force_move(spawn_data.facing_dir, MOVEMENT_DURATIONS[move_type], move_type)
 
 	player.is_active = true
 
 func _get_player_spawn() -> Dictionary:
 	var spawn_data := {}
 	
-	var old_map = PlayerData.get_transition_map()
+	var transition_data = PlayerData.get_transition_data()
+	var old_map = transition_data.old_map
 	if old_map:
 		if old_map != map_name:
 			spawn_data = _get_spawnpoint_from_transition(old_map)

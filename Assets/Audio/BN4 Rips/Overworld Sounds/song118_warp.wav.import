@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song118_warp.wav-a57c32184f651cc5e74b0932d1863326.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Overworld Sounds/song118_warp.wav"
+dest_files=[ "res://.import/song118_warp.wav-a57c32184f651cc5e74b0932d1863326.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

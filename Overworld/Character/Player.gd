@@ -86,5 +86,4 @@ func record_diagonal(dir : String) -> void:
 # Init
 
 func _ready() -> void:
-#	position = PlayerData.overworld_pos
 	pass

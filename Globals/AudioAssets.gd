@@ -18,6 +18,7 @@ const SFX = {
 	text_beep = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song252_text.wav",
 	battle_results_reveal_reward = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song153_double_confirm.wav",
 	item_get = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song115_get_something.wav",
+	warp = "res://Assets/Audio/BN4 Rips/Overworld Sounds/song118_warp.wav",
 }
 
 const MUSIC = {

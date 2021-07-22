@@ -90,4 +90,4 @@ type = "Blue"
 curve = SubResource( 1 )
 
 [node name="DefaultSpawn" parent="." index="5"]
-position = Vector2( 138, 246 )
+position = Vector2( 907, 343 )

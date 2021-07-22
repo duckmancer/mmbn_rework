@@ -19,4 +19,4 @@ walk_dir = "down_left"
 destination_map = "ACDC_1"
 
 [node name="DefaultSpawn" parent="." index="5"]
-position = Vector2( 79, 259 )
+position = Vector2( 491, 53 )

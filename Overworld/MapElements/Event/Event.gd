@@ -2,6 +2,9 @@
 class_name Event
 extends Area2D
 
+# warning-ignore:unused_signal
+signal map_transition_triggered(new_map, transition_type, warp_code)
+
 export(String, "up_left", "up_right", "down_left", "down_right") var walk_dir = "up_left"
 
 onready var trigger_area = $TriggerArea

@@ -83,7 +83,7 @@ func set_music(track : String) -> void:
 # Map Loading
 
 func load_map(map_name : String) -> void:
-	PlayerData.set_map(map_name)
+	PlayerData.change_map(map_name)
 	_clear_old_map(map)
 	map = _setup_new_map(map_name)
 	reset_encounters()
@@ -93,6 +93,7 @@ func load_map(map_name : String) -> void:
 func _clear_old_map(old_map : Node) -> void:
 	if old_map:
 		old_map.release_player()
+		remove_child(old_map)
 		old_map.queue_free()
 
 func _setup_new_map(map_name : String) -> Node:
@@ -128,7 +129,11 @@ func _ready() -> void:
 func _on_Player_moved(position : Vector2) -> void:
 	track_travel(position)
 
-func _on_Event_map_transition_triggered(new_map : String) -> void:
+func _on_Event_map_transition_triggered(new_map : String, transition_type : String, warp_code := -1) -> void:
+	var trans_data = Transition.TRANSITION_PRESET.fade_to_black.duplicate()
+	if transition_type == "warp":
+		trans_data.fade_duration = 0.25
+		yield(get_tree().create_timer(0.5), "timeout")
 	yield(Transition.fade_in_and_out(), "completed")
 	load_map(new_map)
 	

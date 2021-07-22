@@ -1,9 +1,15 @@
 extends Node
 
+const _EMPTY_TRANSITION_DATA = {
+	old_map = "",
+	warp_code = "",
+	transition_type = "",
+}
+
 var current_world := "internet"
 var _positions = {
 	internet = {
-		map = "LanHP",
+		map = "ACDC_1",
 		position = null,#Vector2(150, 250),
 		facing_dir = "",
 	},
@@ -13,7 +19,7 @@ var _positions = {
 		facing_dir = "",
 	}
 }
-var transition_map = "" setget , get_transition_map
+var transition_data = _EMPTY_TRANSITION_DATA.duplicate()
 var max_hp := 200
 var hp := 100
 
@@ -21,7 +27,7 @@ var hp := 100
 # Maps
 
 func change_world() -> String:
-	transition_map = ""
+	_reset_transition_data()
 	if current_world == "real":
 		current_world = "internet"
 	else:
@@ -42,14 +48,19 @@ func get_map() -> String:
 	result = _positions[current_world].map
 	return result
 
-func set_map(new_map : String) -> void:
-	transition_map = get_map()
+func change_map(new_map : String, transition_type := "walk", warp_code := "") -> void:
+	transition_data.old_map = get_map()
+	transition_data.transition_type = transition_type
+	transition_data.warp_code = warp_code
 	_positions[current_world].map = new_map
 
-func get_transition_map() -> String:
-	var result = transition_map
-	transition_map = ""
+func get_transition_data() -> Dictionary:
+	var result = transition_data.duplicate()
+	_reset_transition_data()
 	return result
+
+func _reset_transition_data():
+	transition_data = _EMPTY_TRANSITION_DATA.duplicate()
 
 
 # Misc

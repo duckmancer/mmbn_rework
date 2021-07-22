@@ -1,8 +1,6 @@
 class_name WarpEvent
 extends Event
 
-signal map_transition_triggered(new_map)
-
 enum WarpCode {
 	ALPHA,
 	BETA,
@@ -13,6 +11,8 @@ enum WarpCode {
 	ETA,
 	THETA,
 }
+
+const WARP_DELAY = 0.3
 
 const DEFAULT_WARP_WALK_DURATION = 0.5
 const WALK_DIRS = {
@@ -49,7 +49,9 @@ func trigger_event(entity : Node) -> void:
 
 func trigger_warp_transition(entity : Node) -> void:
 	if entity.run_warp_out():
-		emit_signal("map_transition_triggered", destination_map)
+		
+#		yield(get_tree().create_timer(WARP_DELAY), "timeout")
+		emit_signal("map_transition_triggered", destination_map, "warp", warp_code)
 
 func trigger_local_warp(entity : Node) -> void:
 	var dest = get_warp_destination()

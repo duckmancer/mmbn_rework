@@ -2,8 +2,25 @@ tool
 class_name Character
 extends KinematicBody2D
 
+enum CollisionLayer {
+	COLLISION = 1,
+	EVENT_TRIGGER = 2,
+	INTERACTION = 4,
+}
+
+const DEFAULT_CHARACTER_LAYER = CollisionLayer.COLLISION | CollisionLayer.EVENT_TRIGGER | CollisionLayer.INTERACTION
+const DEFAULT_CHARACTER_MASK = CollisionLayer.COLLISION | CollisionLayer.INTERACTION
 
 const DEFAULT_CHARACTER_DATA = "res://Resources/Characters/MrProg.tres"
+
+const MOVEMENT_DURATIONS = {
+	stand = 0,
+	move = 0.5,
+	walk = 0.5,
+	run = 0.5,
+	warp = 0.5,
+}
+const WARP_DURATION = 1
 
 signal moved(position)
 # warning-ignore:unused_signal
@@ -31,7 +48,15 @@ export(Resource) var character_data setget set_character_data
 
 
 onready var animated_spritesheet = $CharacterSprite
+onready var effect_player = $Effects/EffectPlayer
+onready var tween = $Effects/Tween
 onready var interaction = $Interaction
+
+var is_first_ready = true
+
+
+var spawn_type = ""
+
 
 var facing_dir = "down"
 var facing_angle = Constants.DIR_TO_DEG.down
@@ -97,14 +122,47 @@ func _get_closest_target(targets : Array) -> Node:
 				closest_distance =  dist
 	return closest_target
 
+func set_tangibility(state : bool) -> void:
+	if state:
+		collision_layer = DEFAULT_CHARACTER_LAYER
+		collision_mask = DEFAULT_CHARACTER_MASK
+	else:
+		collision_layer = 0
+		collision_mask = 0
+
 
 # Overrides
 
+func spawn(spawn_pos : Vector2, spawn_direction : String) -> void:
+	set_tangibility(false)
+	position = spawn_pos
+	
+	match spawn_type:
+		"walk":
+			yield(run_coroutine("lock_movement", [spawn_direction, MOVEMENT_DURATIONS.run, "run"]), "completed")
+		"warp":
+			yield(get_tree().create_timer(0.3), "timeout")
+			yield(run_coroutine("warp_in", [spawn_direction, MOVEMENT_DURATIONS.warp]), "completed")
+		_:
+			set_facing_dir(spawn_direction)
+	
+	set_tangibility(true)
+	spawn_type = ""
+
 func warp_to(destination : Vector2, walk_dir : String, walk_duration : float) -> bool:
-	if not is_busy:
-		run_coroutine("warp_local", [destination, walk_dir, walk_duration])
-		return true
-	return false
+	var will_run : bool = not is_busy
+	if will_run:
+		is_busy += 1
+		yield(run_coroutine("warp_out"), "completed")
+		
+		tween.interpolate_property(self, "position", null, destination, WARP_DURATION, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		tween.start()
+		yield(tween, "tween_completed")
+		
+		run_coroutine("warp_in", [walk_dir, walk_duration])
+		
+		is_busy -= 1
+	return will_run
 
 func walk_transition(walk_dir : String, walk_duration : float) -> bool:
 	if not is_busy:
@@ -189,15 +247,6 @@ func emote(dir_override := facing_dir) -> void:
 	animated_spritesheet.play_anim("emote_" + dir_override)
 	yield(animated_spritesheet, "animation_finished")
 
-func warp_local(destination : Vector2, walk_dir : String, walk_duration : float) -> void:
-	stop_movement()
-	position = destination
-
-	set_facing_dir(walk_dir)
-	cur_speed = "run"
-	
-	yield(get_tree().create_timer(walk_duration), "timeout")
-
 func walking_map_change(walk_dir : String, walk_duration : float) -> void:
 	set_facing_dir(walk_dir)
 	cur_speed = "run"
@@ -205,18 +254,19 @@ func walking_map_change(walk_dir : String, walk_duration : float) -> void:
 	yield(get_tree().create_timer(walk_duration * 2), "timeout")
 
 func warp_out() -> void:
+	spawn_type = "warp"
 	stop_movement()
-#	animated_spritesheet.play_anim("warp_out")
-	var WARP_DURATION = 0.5
-	yield(get_tree().create_timer(WARP_DURATION), "timeout")
+	effect_player.play("warp_out")
+	yield(effect_player, "animation_finished")
 
 func warp_in(walk_dir : String, walk_duration : float) -> void:
 	set_facing_dir(walk_dir)
-	cur_speed = "run"
+	cur_speed = "stand"
 	
-#	animated_spritesheet.play_anim("warp_in")
-	var WARP_DURATION = 0.5
-	yield(get_tree().create_timer(WARP_DURATION), "timeout")
+	effect_player.play("warp_in")
+	yield(effect_player, "animation_finished")
+	
+	yield(lock_movement(walk_dir, MOVEMENT_DURATIONS.warp, "walk"), "completed")
 
 func lock_movement(walk_dir : String, walk_duration : float, speed_type := "walk") -> void:
 	set_facing_dir(walk_dir)
@@ -347,6 +397,9 @@ func connect_signals_to_overworld(_overworld : Node) -> void:
 	pass
 
 func _ready() -> void:
+	if not is_first_ready:
+		return
+	is_first_ready = false
 	if Engine.is_editor_hint():
 		return
 	set_sprite_from_data()
