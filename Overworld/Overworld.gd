@@ -80,14 +80,10 @@ func set_music(track : String) -> void:
 	music.play()
 
 
-# Setup
-
-func _ready() -> void:
-	remove_child(player_megaman)
-	remove_child(player_lan)
-	load_map(PlayerData.get_map())
+# Map Loading
 
 func load_map(map_name : String) -> void:
+	PlayerData.set_map(map_name)
 	_clear_old_map(map)
 	map = _setup_new_map(map_name)
 	reset_encounters()
@@ -119,6 +115,14 @@ func get_player() -> Player:
 	return result
 
 
+# Setup
+
+func _ready() -> void:
+	remove_child(player_megaman)
+	remove_child(player_lan)
+	load_map(PlayerData.get_map())
+
+
 # Signals
 
 func _on_Player_moved(position : Vector2) -> void:
@@ -127,7 +131,6 @@ func _on_Player_moved(position : Vector2) -> void:
 func _on_Event_map_transition_triggered(new_map : String) -> void:
 	yield(Transition.fade_in_and_out(), "completed")
 	load_map(new_map)
-	PlayerData.set_map(new_map)
 	
 func _on_Character_dialogue_started(character, text : String) -> void:
 	dialogue_box.open(text, character.get_mugshot())

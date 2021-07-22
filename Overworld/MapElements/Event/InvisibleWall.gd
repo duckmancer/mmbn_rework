@@ -11,7 +11,7 @@ func trigger_event(entity) -> void:
 		if talker:
 			entity.interact_with(talker)
 			yield(talker, "interaction_finished")
-		entity.force_walk(walk_dir, walk_duration)
+		entity.force_move(walk_dir, walk_duration)
 
 func _ready() -> void:
 	if talk_to_character:

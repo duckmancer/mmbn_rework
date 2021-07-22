@@ -1,5 +1,12 @@
 extends Node2D
 
+const MOVEMENT_DURATIONS = {
+	stand = 0,
+	move = 0.5,
+	walk = 0.5,
+	run = 0.5,
+}
+
 onready var entity_container = $Entities
 onready var default_spawn = $DefaultSpawn
 onready var events = $Events
@@ -14,29 +21,28 @@ var player : Player
 
 func spawn_player(new_player : Player) -> void:
 	player = new_player
-#	player.position = default_spawn.position
-	characters.append(new_player)
+	characters.append(player)
 	entity_container.add_child(player)
-	
-	# TODO:
-		#Compare current map with Playerdata
 	
 	var spawn_data = _get_player_spawn()
 	
 	player.position = spawn_data.position
-	player.set_facing_dir(spawn_data.facing_dir)
+	PlayerData.update_position(player.position)
+	
+	var move_type = "stand" if spawn_data.movement_type == "stand" else "run"
+	
+	player.force_move(spawn_data.facing_dir, MOVEMENT_DURATIONS[move_type], move_type)
 
 	player.is_active = true
-	PlayerData.update_position(player.position)
 
 func _get_player_spawn() -> Dictionary:
 	var spawn_data := {}
 	
-	var old_map = PlayerData.get_map()
-	if old_map != map_name:
-		spawn_data = _get_spawnpoint_from_transition(old_map)
-	
-	if not spawn_data.has("position"):
+	var old_map = PlayerData.get_transition_map()
+	if old_map:
+		if old_map != map_name:
+			spawn_data = _get_spawnpoint_from_transition(old_map)
+	else:
 		spawn_data = PlayerData.get_position()
 	
 	if not spawn_data.has("position"):
@@ -44,8 +50,6 @@ func _get_player_spawn() -> Dictionary:
 	if not spawn_data.has("facing_dir"):
 		spawn_data.facing_dir = "down"
 		spawn_data.movement_type = "stand"
-	else:
-		spawn_data.movement_type = "move"
 
 	return spawn_data
 

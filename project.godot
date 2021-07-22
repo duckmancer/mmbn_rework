@@ -84,11 +84,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Impact/Impact.gd"
 }, {
-"base": "Event",
-"class": "LocalWarpEvent",
-"language": "GDScript",
-"path": "res://Overworld/MapElements/Event/LocalWarpEvent.gd"
-}, {
 "base": "Navi",
 "class": "Megaman",
 "language": "GDScript",
@@ -174,6 +169,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Overworld/MapElements/Event/WalkTransition.gd"
 }, {
+"base": "Event",
+"class": "WarpEvent",
+"language": "GDScript",
+"path": "res://Overworld/MapElements/Event/WarpEvent.gd"
+}, {
 "base": "Entity",
 "class": "Weapon",
 "language": "GDScript",
@@ -195,7 +195,6 @@ _global_script_class_icons={
 "Explosion": "",
 "Hitscan": "",
 "Impact": "",
-"LocalWarpEvent": "",
 "Megaman": "",
 "Mettaur": "",
 "NPC": "",
@@ -213,6 +212,7 @@ _global_script_class_icons={
 "Unit": "",
 "Virus": "",
 "WalkTransition": "",
+"WarpEvent": "",
 "Weapon": ""
 }
 

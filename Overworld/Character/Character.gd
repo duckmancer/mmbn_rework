@@ -2,6 +2,7 @@ tool
 class_name Character
 extends KinematicBody2D
 
+
 const DEFAULT_CHARACTER_DATA = "res://Resources/Characters/MrProg.tres"
 
 signal moved(position)
@@ -110,15 +111,24 @@ func walk_transition(walk_dir : String, walk_duration : float) -> bool:
 		run_coroutine("walking_map_change", [walk_dir, walk_duration])
 		return true
 	return false
+	
+func run_warp_out() -> bool:
+	if not is_busy:
+		run_coroutine("warp_out")
+		return true
+	return false
+
+func run_warp_in() -> bool:
+	if not is_busy:
+		run_coroutine("warp_in")
+		return true
+	return false
 
 func force_emote():
 	run_coroutine("emote", ["down"])
 
-func force_walk(walk_dir : String, walk_duration : float) -> bool:
-	if not is_busy:
-		run_coroutine("walk", [walk_dir, walk_duration])
-		return true
-	return false
+func force_move(walk_dir : String, walk_duration : float, movement_type := "walk") -> void:
+	run_coroutine("lock_movement", [walk_dir, walk_duration, movement_type])
 
 
 # Inputs
@@ -194,7 +204,21 @@ func walking_map_change(walk_dir : String, walk_duration : float) -> void:
 	
 	yield(get_tree().create_timer(walk_duration * 2), "timeout")
 
-func walk(walk_dir : String, walk_duration : float, speed_type := "walk") -> void:
+func warp_out() -> void:
+	stop_movement()
+#	animated_spritesheet.play_anim("warp_out")
+	var WARP_DURATION = 0.5
+	yield(get_tree().create_timer(WARP_DURATION), "timeout")
+
+func warp_in(walk_dir : String, walk_duration : float) -> void:
+	set_facing_dir(walk_dir)
+	cur_speed = "run"
+	
+#	animated_spritesheet.play_anim("warp_in")
+	var WARP_DURATION = 0.5
+	yield(get_tree().create_timer(WARP_DURATION), "timeout")
+
+func lock_movement(walk_dir : String, walk_duration : float, speed_type := "walk") -> void:
 	set_facing_dir(walk_dir)
 	cur_speed = speed_type
 	

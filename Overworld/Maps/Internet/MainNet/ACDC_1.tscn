@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Sprites/Overworld/Maps/ACDC1.png" type="Texture" id=1]
-[ext_resource path="res://Overworld/MapElements/Event/LocalWarpEvent.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Overworld/MapElements/Event/WarpEvent.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld/MapElements/Event/WalkTransition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Overworld/Character/NPC.tscn" type="PackedScene" id=5]
@@ -29,16 +29,12 @@ polygon = PoolVector2Array( 439, 7, 422, 18, 421, 31, 429, 41, 468, 49, 583, 108
 
 [node name="LocalWarpEvent" parent="Events" index="0" instance=ExtResource( 2 )]
 position = Vector2( 941, 358 )
-walk_dir = "down_right"
-
-[node name="WarpDestination" parent="Events/LocalWarpEvent" index="1"]
-position = Vector2( -640, -160 )
+destination_map = "LanHP"
 
 [node name="LocalWarpEvent2" parent="Events" index="1" instance=ExtResource( 2 )]
 position = Vector2( 301, 198 )
-
-[node name="WarpDestination" parent="Events/LocalWarpEvent2" index="1"]
-position = Vector2( 640, 160 )
+walk_dir = "down_right"
+warp_code = 1
 
 [node name="WalkTransition" parent="Events" index="2" instance=ExtResource( 3 )]
 position = Vector2( 29, 190 )
@@ -95,6 +91,3 @@ curve = SubResource( 1 )
 
 [node name="DefaultSpawn" parent="." index="5"]
 position = Vector2( 138, 246 )
-
-[editable path="Events/LocalWarpEvent"]
-[editable path="Events/LocalWarpEvent2"]

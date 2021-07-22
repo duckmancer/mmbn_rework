@@ -13,6 +13,7 @@ func get_spawnpoint() -> Dictionary:
 	var result = {}
 	result.position = position
 	result.facing_dir = walk_dir
+	result.movement_type = "move"
 	return result
 
 
