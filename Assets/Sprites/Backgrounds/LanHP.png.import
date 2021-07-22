@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile007.png-e48e37322981719f1d7f939515897613.stex"
+path="res://.import/LanHP.png-dfc977711426e950f36a7d6ce4f4aa69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Backgrounds/ACDC/tile007.png"
-dest_files=[ "res://.import/tile007.png-e48e37322981719f1d7f939515897613.stex" ]
+source_file="res://Assets/Sprites/Backgrounds/LanHP.png"
+dest_files=[ "res://.import/LanHP.png-dfc977711426e950f36a7d6ce4f4aa69.stex" ]
 
 [params]
 

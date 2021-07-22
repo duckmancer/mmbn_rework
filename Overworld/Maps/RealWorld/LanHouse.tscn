@@ -45,8 +45,8 @@ position = Vector2( 71, 187 )
 character_data = ExtResource( 5 )
 dialogue = "Looks like another one of those \"tutorials\"..."
 
-[node name="DefaultSpawn" parent="." index="4"]
+[node name="DefaultSpawn" parent="." index="5"]
 position = Vector2( 242, 124 )
 
 [node name="Background" parent="BackgroundLayer" index="0"]
-show_background = false
+type = "None"

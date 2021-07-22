@@ -20,3 +20,7 @@ destination_map = "ACDC_1"
 
 [node name="DefaultSpawn" parent="." index="5"]
 position = Vector2( 491, 53 )
+
+[node name="Background" parent="BackgroundLayer" index="0"]
+type = "LanHP"
+scroll_direction = 3

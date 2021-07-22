@@ -9,10 +9,10 @@
 radius = 3.0
 height = 7.0
 
-[sub_resource type="StreamTexture" id=12]
+[sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/MrProg.png-d582041c9b9bcf8399a651f6842c59bc.stex"
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=3]
 script/source = "tool
 class_name Spritesheet
 extends AtlasTexture
@@ -444,12 +444,12 @@ func _init():
 	data_access_mode = \"Read\"
 "
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=4]
 resource_name = "MrProg"
-atlas = SubResource( 12 )
+atlas = SubResource( 2 )
 region = Rect2( 3, 0, 13, 35 )
 margin = Rect2( 2, 32, 5, 100 )
-script = SubResource( 13 )
+script = SubResource( 3 )
 data_access_mode = "Read"
 frame_index = 0
 spritesheet_data = [ {
@@ -534,7 +534,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 resource_name = "warp_in"
 length = 0.5
 step = 0.0166667
@@ -625,8 +625,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "warp_out"
+[sub_resource type="Animation" id=8]
 length = 0.5
 step = 0.0166667
 tracks/0/type = "value"
@@ -728,7 +727,7 @@ shape = SubResource( 1 )
 
 [node name="CharacterSprite" parent="." instance=ExtResource( 1 )]
 modulate = Color( 1, 4, 4, 0 )
-texture = SubResource( 14 )
+texture = SubResource( 4 )
 
 [node name="Interaction" type="Area2D" parent="."]
 visible = false
@@ -749,8 +748,8 @@ hframes = 7
 [node name="EffectPlayer" type="AnimationPlayer" parent="Effects"]
 autoplay = "default"
 anims/default = SubResource( 6 )
-anims/warp_in = SubResource( 11 )
-anims/warp_out = SubResource( 7 )
+anims/warp_in = SubResource( 7 )
+anims/warp_out = SubResource( 8 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource( 4 )
