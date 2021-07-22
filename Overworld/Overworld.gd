@@ -134,6 +134,11 @@ func _on_Event_map_transition_triggered(new_map : String, transition_type : Stri
 	if transition_type == "warp":
 		trans_data.fade_duration = 0.25
 		yield(get_tree().create_timer(0.5), "timeout")
+	
+	# Todo: Without this line, screen flashes black on warp
+	# Assumed to be related to lookahead jumping the gun
+	yield(get_tree(), "idle_frame")
+	
 	yield(Transition.fade_in_and_out(), "completed")
 	load_map(new_map)
 	
