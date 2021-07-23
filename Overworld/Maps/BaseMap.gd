@@ -21,27 +21,32 @@ func spawn_player(new_player : Player) -> void:
 	
 	var spawn_data = _get_player_spawn()
 	
-	player.spawn(spawn_data.position, spawn_data.facing_dir)
-	PlayerData.update_position(player.position)
+	player.spawn(spawn_data.position, spawn_data.facing_dir, spawn_data.movement_type)
+#	PlayerData.update_position(player.position)
 
 	player.is_active = true
 
 func _get_player_spawn() -> Dictionary:
 	var spawn_data := {}
 	
-	var transition_data = PlayerData.get_transition_data()
-	var old_map = transition_data.old_map
+#	var transition_data = PlayerData.get_transition_data()
+#	var old_map = transition_data.old_map
+	var old_map = PlayerData.get_map()
 	if old_map:
 		if old_map != map_name:
 			spawn_data = _get_spawnpoint_from_transition(old_map)
-	else:
-		spawn_data = PlayerData.get_location()
+	
+	if spawn_data.empty():
+		spawn_data = PlayerData.get_location(map_name)
 	
 	if not spawn_data.has("position"):
 		spawn_data.position = default_spawn.position
 	if not spawn_data.has("facing_dir"):
 		spawn_data.facing_dir = "down"
 		spawn_data.movement_type = "stand"
+	if not spawn_data.has("movement_type"):
+		spawn_data.movement_type = "stand"
+		
 
 	return spawn_data
 
@@ -67,10 +72,10 @@ func release_player() -> Player:
 	return result
 
 func connect_signals_to_overworld(overworld : Node) -> void:
-	for e in entity_container.get_children():
-		e.connect_signals_to_overworld(overworld)
-	for e in events.get_children():
-		e.connect_signals_to_overworld(overworld)
+	for container in get_children():
+		for node in container.get_children():
+			if node.has_method("connect_signals_to_overworld"):
+				node.connect_signals_to_overworld(overworld)
 
 
 # Init

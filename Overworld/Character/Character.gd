@@ -133,14 +133,20 @@ func set_tangibility(state : bool) -> void:
 
 # Overrides
 
-func spawn(spawn_pos : Vector2, spawn_direction : String) -> void:
+func spawn(spawn_pos : Vector2, spawn_direction : String, manual_spawn_type : String) -> void:
+	is_busy += 1
 	set_tangibility(false)
 	position = spawn_pos
+	stop_movement()
+	
+	if manual_spawn_type:
+		spawn_type = manual_spawn_type
 	
 	match spawn_type:
-		"walk":
+		"walk", "run", "move":
 			yield(run_coroutine("lock_movement", [spawn_direction, MOVEMENT_DURATIONS.run, "run"]), "completed")
 		"warp":
+			effect_player.play("hide")
 			yield(get_tree().create_timer(0.3), "timeout")
 			yield(run_coroutine("warp_in", [spawn_direction, MOVEMENT_DURATIONS.warp]), "completed")
 		_:
@@ -148,6 +154,7 @@ func spawn(spawn_pos : Vector2, spawn_direction : String) -> void:
 	
 	set_tangibility(true)
 	spawn_type = ""
+	is_busy -= 1
 
 func warp_to(destination : Vector2, walk_dir : String, walk_duration : float) -> bool:
 	var will_run : bool = not is_busy
@@ -406,6 +413,7 @@ func _ready() -> void:
 	animated_spritesheet.setup_animations()
 	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle
+	effect_player.play("default")
 
 func set_sprite_from_data(sprite = animated_spritesheet) -> void:
 	if character_data:

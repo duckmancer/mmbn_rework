@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/Overworld/Maps/lan_house/lan_room.png" type="Texture" id=2]
 [ext_resource path="res://Overworld/MapElements/Event/WalkTransition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Overworld/MapElements/NetAccessPoint.tscn" type="PackedScene" id=4]
 
 [node name="LanRoom" instance=ExtResource( 1 )]
 
@@ -16,12 +17,19 @@ visible = true
 build_mode = 1
 polygon = PoolVector2Array( 124, 186, 93, 170, 38, 197, 18, 186, 70, 159, 58, 153, 102, 129, 55, 107, 109, 83, 184, 124, 202, 114, 233, 129 )
 
+[node name="LanHP" parent="NetAccess" index="0" instance=ExtResource( 4 )]
+position = Vector2( 172, 93 )
+dialogue = "Lan's personal computer.
+
+...The chair is covered in dust."
+internet_destination = "LanHP"
+
 [node name="WalkTransition" parent="Events" index="0" instance=ExtResource( 3 )]
 position = Vector2( 45, 188 )
 walk_dir = "down_left"
 destination_map = "LanHouse"
 
-[node name="DefaultSpawn" parent="." index="5"]
+[node name="DefaultSpawn" parent="." index="6"]
 position = Vector2( 105, 107 )
 
 [node name="Background" parent="BackgroundLayer" index="0"]

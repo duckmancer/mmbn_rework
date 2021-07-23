@@ -20,7 +20,7 @@ const WORLD_MAPS = {
 	],
 }
 
-var current_world := "internet"
+var current_world := "real"
 var _locations = {
 	internet = {
 		map = "ACDC_3",
@@ -28,7 +28,7 @@ var _locations = {
 		facing_dir = "",
 	},
 	real = {
-		map = "LanHouse",
+		map = "LanRoom",
 		position = null,
 		facing_dir = "",
 	}
@@ -40,24 +40,26 @@ var hp := 100
 
 # Maps
 
-func change_map(new_map : String, transition_type := "walk", warp_code := "") -> void:
+func change_map(new_map : String, transition_type := "stand", warp_code := "") -> void:
 	if new_map == get_map():
 		return
 	_update_transition_data(transition_type, warp_code)
-	var new_world = _get_map_world(new_map)
+	var new_world = get_map_world(new_map)
 	if new_world != current_world:
 		_reset_transition_data()
+		if current_world == "internet":
+			reset_world_location("internet")
 	current_world = new_world
 	_locations[current_world].map = new_map
 
-func _get_map_world(map_name : String) -> String:
+func get_map_world(map_name : String) -> String:
 	var result = ""
 	for world_type in WORLD_MAPS:
 		if map_name in WORLD_MAPS[world_type]:
 			result = world_type
 	return result
 
-func _update_transition_data(transition_type := "walk", warp_code := "") -> void:
+func _update_transition_data(transition_type := "stand", warp_code := "") -> void:
 	transition_data.old_map = get_map()
 	transition_data.transition_type = transition_type
 	transition_data.warp_code = warp_code
@@ -113,9 +115,9 @@ func save_location(position : Vector2, facing_dir : String, map := get_map()) ->
 	_locations[current_world].facing_dir = facing_dir
 	_locations[current_world].map = map
 
-func get_location() -> Dictionary:
+func get_location(for_map := get_map()) -> Dictionary:
 	var result = {}
-	var world = _locations[current_world]
+	var world = _locations[get_map_world(for_map)]
 	if world.position:
 		result.position = world.position
 	if world.facing_dir:

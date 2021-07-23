@@ -33,6 +33,14 @@ export var destination_map := ""
 onready var sprite = $AnimatedSprite
 
 
+# Interface
+
+func get_spawnpoint() -> Dictionary:
+	var result = .get_spawnpoint()
+	result.movement_type = "warp"
+	return result
+
+
 # Events
 
 func get_warp_destination() -> Node:

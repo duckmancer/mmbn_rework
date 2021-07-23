@@ -87,9 +87,10 @@ func set_music(track : String) -> void:
 # Map Loading
 
 func load_map(map_name : String) -> void:
-	PlayerData.change_map(map_name)
+	save_player_location()
 	_clear_old_map(map)
 	map = _setup_new_map(map_name)
+	PlayerData.change_map(map_name)
 	reset_encounters()
 	var track = get_music_for_map()
 	set_music(track)
@@ -103,7 +104,8 @@ func _clear_old_map(old_map : Node) -> void:
 func _setup_new_map(map_name : String) -> Node:
 	var new_map = Scenes.get_map(map_name)
 	add_child(new_map)
-	new_map.spawn_player(get_player())
+	var map_world = PlayerData.get_map_world(map_name)
+	new_map.spawn_player(get_player(map_world))
 	new_map.connect_signals_to_overworld(self)
 	return new_map
 
@@ -111,11 +113,11 @@ func reset_encounters():
 	distance_traveled = 0.0
 	encounter_progress = 0.0
 
-func get_player() -> Player:
+func get_player(player_map := PlayerData.current_world) -> Player:
 	var result = null
-	if PlayerData.current_world == "internet":
+	if player_map == "internet":
 		result = player_megaman
-	elif PlayerData.current_world == "real":
+	elif player_map == "real":
 		result = player_lan
 	return result
 
@@ -159,10 +161,12 @@ func _on_Player_jack_out_prompted(text : String, mug = null):
 	PlayerData.reset_world_location("internet")
 	load_map(PlayerData.change_world())
 	
-func _on_Player_jacked_in(destination := "LanHP"):
-	save_player_location()
-	PlayerData.change_map(destination, "warp")
-	load_map(PlayerData.get_map())
+func _on_Player_jacked_in(destination : String):
+	if destination:
+		load_map(destination)
+#	save_player_location()
+#	PlayerData.change_map(destination, "warp")
+#	load_map(PlayerData.get_map())
 
 
 func _on_DialogueWindow_sfx_triggered(sfx_name : String) -> void:
