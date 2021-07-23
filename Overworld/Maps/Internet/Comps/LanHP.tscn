@@ -13,13 +13,19 @@ texture = ExtResource( 2 )
 build_mode = 1
 polygon = PoolVector2Array( 175, 226, 248, 263, 262, 266, 281, 266, 297, 263, 407, 207, 522, 150, 533, 140, 536, 126, 528, 115, 463, 83, 497, 65, 519, 69, 537, 70, 564, 65, 585, 54, 594, 45, 596, 31, 586, 18, 570, 9, 551, 4, 529, 2, 503, 4, 476, 15, 467, 23, 462, 32, 463, 42, 469, 50, 433, 68, 366, 35, 344, 29, 328, 29, 305, 36, 80, 148, 71, 158, 71, 167, 75, 175, 82, 181, 146, 212, 108, 231, 85, 227, 72, 227, 42, 232, 24, 240, 16, 247, 11, 255, 11, 267, 20, 279, 38, 288, 63, 294, 90, 294, 117, 289, 135, 279, 145, 268, 146, 255, 139, 244 )
 
-[node name="WarpEvent" parent="Events" index="0" instance=ExtResource( 3 )]
-position = Vector2( 529, 34 )
+[node name="WarpEvent2" parent="Events" index="0" instance=ExtResource( 3 )]
+position = Vector2( 79, 260 )
+pad_type = "flat_yellow_red"
+warp_code = 1
+
+[node name="WarpEvent" parent="Events" index="1" instance=ExtResource( 3 )]
+position = Vector2( 529, 35 )
 walk_dir = "down_left"
+pad_type = "flat_green_blue"
 destination_map = "ACDC_1"
 
 [node name="DefaultSpawn" parent="." index="5"]
-position = Vector2( 491, 53 )
+position = Vector2( 112, 241 )
 
 [node name="Background" parent="BackgroundLayer" index="0"]
 type = "LanHP"

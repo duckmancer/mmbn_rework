@@ -1,3 +1,4 @@
+tool
 class_name WarpEvent
 extends Event
 
@@ -22,11 +23,14 @@ const WALK_DIRS = {
 	SE = "down right",
 }
 
+export(String, "red_yellow", "small_red_yellow", "flat_yellow_red", "small_green_blue", "flat_green_blue") var pad_type = "red_yellow" setget set_pad_type
+
 export var walk_duration := 0.5
 
 export(WarpCode) var warp_code = WarpCode.ALPHA
 export var destination_map := ""
 
+onready var sprite = $AnimatedSprite
 
 
 # Events
@@ -64,7 +68,20 @@ func trigger_local_warp(entity : Node) -> void:
 # Init
 
 func _ready() -> void:
-	pass
+	if not Engine.is_editor_hint():
+		sprite.play(pad_type)
 
 func connect_signals_to_overworld(overworld) -> void:
 	connect("map_transition_triggered", overworld, "_on_Event_map_transition_triggered")
+
+
+# Editor
+
+func set_pad_type(val : String) -> void:
+	pad_type = val
+	if Engine.is_editor_hint():
+		var sprite_ref = sprite
+		if $AnimatedSprite and not sprite_ref:
+			sprite_ref = $AnimatedSprite
+		if sprite_ref:
+			sprite_ref.set_animation(pad_type)

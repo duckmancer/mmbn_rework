@@ -9,7 +9,7 @@ const _EMPTY_TRANSITION_DATA = {
 var current_world := "internet"
 var _positions = {
 	internet = {
-		map = "ACDC_1",
+		map = "ACDC_3",
 		position = null,#Vector2(150, 250),
 		facing_dir = "",
 	},

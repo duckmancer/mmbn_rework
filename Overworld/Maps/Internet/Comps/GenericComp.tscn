@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Overworld/MapElements/Event/WarpEvent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Overworld/Maps/BaseMap.tscn" type="PackedScene" id=2]
 
 [node name="Map" instance=ExtResource( 2 )]
@@ -7,3 +8,9 @@
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
 build_mode = 1
 polygon = PoolVector2Array( 325, 4, 646, 164, 326, 324, 6, 164 )
+
+[node name="WarpEvent" parent="Events" index="0" instance=ExtResource( 1 )]
+position = Vector2( 230, 212 )
+
+[node name="DefaultSpawn" parent="." index="5"]
+position = Vector2( 259, 195 )
