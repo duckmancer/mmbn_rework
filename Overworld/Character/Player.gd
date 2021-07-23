@@ -1,7 +1,12 @@
 class_name Player
 extends Character
 
+signal jack_out_prompted(text, mug)
+signal jacked_in(destination)
+
 onready var camera = $Camera
+
+var jack_out_text = "Should we jack out, Megaman?" + "\n" + "{y/n}"
 
 var is_active := false setget set_is_active
 
@@ -26,6 +31,9 @@ func set_is_active(val : bool) -> void:
 		yield(self, "ready")
 	camera.current = val
 
+func finish_interaction() -> void:
+	is_busy -= 1
+
 
 # Input
 
@@ -47,6 +55,12 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("ui_select"):
 		if not is_busy:
 			try_interaction()
+	if event.is_action_pressed("custom_menu"):
+		if not is_busy:
+			if PlayerData.current_world == "internet":
+				prompt_jack_out()
+			else:
+				try_jack_in()
 
 func set_movement() -> void:
 	var net_dir = Vector2(0, 0)
@@ -58,6 +72,16 @@ func set_movement() -> void:
 		cur_speed = "run" if held_inputs.run else "walk"
 	else:
 		cur_speed = "stand"
+
+
+# Special Actions
+
+func prompt_jack_out() -> void:
+	is_busy += 1
+	emit_signal("jack_out_prompted", jack_out_text, "LanHikari")
+
+func try_jack_in() -> void:
+	emit_signal("jacked_in", "LanHP")
 
 
 # Movement Smoothing
@@ -87,3 +111,7 @@ func record_diagonal(dir : String) -> void:
 
 func _ready() -> void:
 	pass
+
+func connect_signals_to_overworld(overworld : Node) -> void:
+	connect("jack_out_prompted", overworld, "_on_Player_jack_out_prompted")
+	connect("jacked_in", overworld, "_on_Player_jacked_in")

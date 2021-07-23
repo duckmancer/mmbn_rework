@@ -20,8 +20,8 @@ var frame_count := 0
 
 # Interface
 
-func set_mugshot(new_mug : StreamTexture) -> void:
-	texture = new_mug
+func set_mugshot(input_mug) -> void:
+	texture = _try_load_mugshot(input_mug)
 	frame_count = get_mugshot_frame_count()
 	set_mugshot_frame(0)
 
@@ -54,6 +54,22 @@ func advance_talk() -> void:
 	var delta = randi() % 3 - 1
 	var next_frame = clamp(delta + cur_frame, CLOSED, OPEN) as int
 	set_mugshot_frame(next_frame)
+
+func _try_load_mugshot(input_mug) -> Texture:
+	var mug = null
+	if input_mug:
+		if input_mug is Texture:
+			mug = input_mug
+		elif input_mug is String:
+			var mug_path = input_mug
+			if not ResourceLoader.exists(mug_path):
+				mug_path = SpriteAssets.MUGSHOT_ROOT.plus_file(mug_path + ".png")
+			if ResourceLoader.exists(mug_path):
+				mug = load(mug_path)
+	return mug
+
+
+# Init
 
 func _ready() -> void:
 	pass

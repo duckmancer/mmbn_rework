@@ -35,6 +35,10 @@ func track_travel(new_pos : Vector2) -> void:
 		encounter_progress += distance_traveled * rand_range(0.0, 5.0)
 		distance_traveled = 0.0
 
+func save_player_location() -> void:
+	var p = get_player()
+	PlayerData.save_location(p.position, p.facing_dir)
+
 
 # Processing
 
@@ -45,9 +49,9 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("action_1"):
 		enter_battle()
-	elif event.is_action_pressed("custom_menu"):
-		swap_worlds()
-		
+#	elif event.is_action_pressed("custom_menu"):
+#		swap_worlds()
+
 
 func enter_battle() -> void:
 	_save_worldstate()
@@ -146,6 +150,19 @@ func _on_Character_dialogue_started(character, text : String) -> void:
 	dialogue_box.open(text, character.get_mugshot())
 	yield(dialogue_box, "dialogue_finished")
 	character.finish_interaction()
+
+func _on_Player_jack_out_prompted(text : String, mug = null):
+	dialogue_box.open(text, mug)
+	yield(dialogue_box, "dialogue_finished")
+	get_player().finish_interaction()
+	yield(get_player().run_coroutine("warp_out"), "completed")
+	PlayerData.reset_world_location("internet")
+	load_map(PlayerData.change_world())
+	
+func _on_Player_jacked_in(destination := "LanHP"):
+	save_player_location()
+	PlayerData.change_map(destination, "warp")
+	load_map(PlayerData.get_map())
 
 
 func _on_DialogueWindow_sfx_triggered(sfx_name : String) -> void:

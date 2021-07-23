@@ -6,8 +6,22 @@ const _EMPTY_TRANSITION_DATA = {
 	transition_type = "",
 }
 
+const WORLD_MAPS = {
+	real = [
+		"LanHouse",
+		"LanRoom",
+	],
+	internet = [
+		"GenericComp",
+		"LanHP",
+		"ACDC_1",
+		"ACDC_2",
+		"ACDC_3",
+	],
+}
+
 var current_world := "internet"
-var _positions = {
+var _locations = {
 	internet = {
 		map = "ACDC_3",
 		position = null,#Vector2(150, 250),
@@ -26,6 +40,42 @@ var hp := 100
 
 # Maps
 
+func change_map(new_map : String, transition_type := "walk", warp_code := "") -> void:
+	if new_map == get_map():
+		return
+	_update_transition_data(transition_type, warp_code)
+	var new_world = _get_map_world(new_map)
+	if new_world != current_world:
+		_reset_transition_data()
+	current_world = new_world
+	_locations[current_world].map = new_map
+
+func _get_map_world(map_name : String) -> String:
+	var result = ""
+	for world_type in WORLD_MAPS:
+		if map_name in WORLD_MAPS[world_type]:
+			result = world_type
+	return result
+
+func _update_transition_data(transition_type := "walk", warp_code := "") -> void:
+	transition_data.old_map = get_map()
+	transition_data.transition_type = transition_type
+	transition_data.warp_code = warp_code
+
+
+func jack_in(destination : String) -> void:
+	if current_world == "internet":
+		return
+	_locations.internet.map = destination
+	current_world = "internet"
+
+func debug_set_map(map_name : String) -> void:
+	for world_type in WORLD_MAPS:
+		if map_name in WORLD_MAPS[world_type]:
+			current_world = world_type
+			_locations[world_type].map = map_name
+			break
+
 func change_world() -> String:
 	_reset_transition_data()
 	if current_world == "real":
@@ -34,25 +84,12 @@ func change_world() -> String:
 		current_world = "real"
 	return get_map()
 
-func get_position():
-	var result = {}
-	var world = _positions[current_world]
-	if world.position:
-		result.position = world.position
-	if world.facing_dir:
-		result.facing_dir = world.facing_dir
-	return result
+
 
 func get_map() -> String:
 	var result = ""
-	result = _positions[current_world].map
+	result = _locations[current_world].map
 	return result
-
-func change_map(new_map : String, transition_type := "walk", warp_code := "") -> void:
-	transition_data.old_map = get_map()
-	transition_data.transition_type = transition_type
-	transition_data.warp_code = warp_code
-	_positions[current_world].map = new_map
 
 func get_transition_data() -> Dictionary:
 	var result = transition_data.duplicate()
@@ -65,6 +102,28 @@ func _reset_transition_data():
 
 # Misc
 
+func reset_world_location(world_type : String) -> void:
+	var w = _locations[world_type]
+	w.position = Vector2(0, 0)
+	w.map = ""
+	w.facing_dir = ""
+
+func save_location(position : Vector2, facing_dir : String, map := get_map()) -> void:
+	_locations[current_world].position = position
+	_locations[current_world].facing_dir = facing_dir
+	_locations[current_world].map = map
+
+func get_location() -> Dictionary:
+	var result = {}
+	var world = _locations[current_world]
+	if world.position:
+		result.position = world.position
+	if world.facing_dir:
+		result.facing_dir = world.facing_dir
+	if world.map:
+		result.map = world.map
+	return result
+
 func get_hp_state() -> String:
 	if hp == max_hp:
 		return "full"
@@ -76,9 +135,9 @@ func get_hp_state() -> String:
 
 func update_position(new_pos : Vector2) -> float:
 	var distance = 0.0
-	if _positions[current_world].position:
-		distance = _positions[current_world].position.distance_to(new_pos)
-	_positions[current_world].position = new_pos
+	if _locations[current_world].position:
+		distance = _locations[current_world].position.distance_to(new_pos)
+	_locations[current_world].position = new_pos
 	return distance
 
 

@@ -114,7 +114,7 @@ func set_speed(speed : float) -> void:
 
 # Setup
 
-func open(text : String, new_mugshot : StreamTexture) -> void:
+func open(text : String, new_mugshot = null) -> void:
 	state = State.INACTIVE
 	text_pages = _parse_text(text)
 	mugshot.set_mugshot(new_mugshot)

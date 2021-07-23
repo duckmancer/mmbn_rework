@@ -35,7 +35,7 @@ func _get_player_spawn() -> Dictionary:
 		if old_map != map_name:
 			spawn_data = _get_spawnpoint_from_transition(old_map)
 	else:
-		spawn_data = PlayerData.get_position()
+		spawn_data = PlayerData.get_location()
 	
 	if not spawn_data.has("position"):
 		spawn_data.position = default_spawn.position
@@ -77,6 +77,9 @@ func connect_signals_to_overworld(overworld : Node) -> void:
 
 func _ready() -> void:
 	_setup_refs()
+	if get_tree().get_current_scene() == self:
+		PlayerData.debug_set_map(map_name)
+		Scenes.switch_to("overworld")
 
 func _setup_refs():
 	for entity in entity_container.get_children():
