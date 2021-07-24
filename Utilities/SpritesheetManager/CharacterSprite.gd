@@ -53,37 +53,37 @@ const ANIMATION_PARAMS = {
 	stand = {
 		individual_frame_duration = 10,
 		loop = true,
-		cycle = STANDARD_ANIM_CYCLES.oscillate
+		cycle = STANDARD_ANIM_CYCLES.oscillate,
 	},
 	walk = {
 		individual_frame_duration = 6,
 		loop = true,
-		cycle = STANDARD_ANIM_CYCLES.normal
+		cycle = STANDARD_ANIM_CYCLES.normal,
 	},
 	run = {
 		individual_frame_duration = 4,
 		loop = true,
-		cycle = STANDARD_ANIM_CYCLES.normal
+		cycle = STANDARD_ANIM_CYCLES.normal,
 	},
 	emote = {
 		individual_frame_duration = 6,
 		loop = false,
-		cycle = STANDARD_ANIM_CYCLES.oscillate
+		cycle = STANDARD_ANIM_CYCLES.oscillate,
 	},
 	fight = {
-		individual_frame_duration = 6,
-		loop = true,
-		cycle = STANDARD_ANIM_CYCLES.normal
+		individual_frame_duration = 4,
+		loop = false,
+		cycle = STANDARD_ANIM_CYCLES.oscillate,
 	},
 	hurt = {
 		individual_frame_duration = 6,
 		loop = true,
-		cycle = STANDARD_ANIM_CYCLES.normal
+		cycle = STANDARD_ANIM_CYCLES.normal,
 	},
 	fall = {
 		individual_frame_duration = 6,
 		loop = true,
-		cycle = STANDARD_ANIM_CYCLES.normal
+		cycle = STANDARD_ANIM_CYCLES.normal,
 	},
 }
 
@@ -123,12 +123,25 @@ var anim_map = {
 }
 
 var animation_state = null
-
+var is_locked : bool = false setget lock
 
 # Interface
 
+func lock(lock_state : bool) -> void:
+	is_locked = lock_state
+	if is_locked and animation_player.is_playing():
+		animation_player.stop(false)
+	elif not is_locked and animation_player.current_animation:
+		animation_player.play()
+
+func step_frame(delta : int) -> void:
+	texture.frame_index += delta
+
 func get_cur_anim() -> String:
-	return animation_player.current_animation
+	var result = animation_player.current_animation
+	if is_locked and not animation_player.current_animation:
+		result = animation_player.assigned_animation
+	return result
 
 # TODO: Allow spritesheet to dictate animation speed and/or reversing
 func setup_animations() -> void:
@@ -136,9 +149,11 @@ func setup_animations() -> void:
 		_try_add_anim_batch(anim)
 	_map_animations()
 
-func play_anim(requested_anim : String) -> void:
+func play_anim(requested_anim : String, loop_override = null) -> void:
 	var actual_anim = _get_anim_mapping(requested_anim)
 	var anim_params = _assemble_anim_data_components(requested_anim, actual_anim)
+	if loop_override != null:
+		anim_params.loop = loop_override
 	if texture.resource_name == "LanHikari":
 		if "run" in anim_params.name:
 			anim_params.individual_frame_duration = 6

@@ -93,7 +93,19 @@ func try_jack_in() -> void:
 	for object in overlap:
 		if object is NetAccessPoint:
 			if object.internet_destination:
-				emit_signal("jacked_in", object.internet_destination)
+				do_jack_in(object)
+				break
+
+func do_jack_in(access_point : Node) -> void:
+	turn_towards(access_point)
+	effect_player.play("jack_in")
+
+	run_coroutine("emote", ["up", "fight"])
+#	animated_spritesheet.lock(true)
+	var JACK_IN_DELAY = 1
+	yield(get_tree().create_timer(JACK_IN_DELAY), "timeout")
+#	animated_spritesheet.lock(false)
+	emit_signal("jacked_in", access_point.internet_destination)
 
 
 # Movement Smoothing

@@ -6,11 +6,11 @@
 [resource]
 resource_name = "LanHikari"
 atlas = ExtResource( 2 )
-region = Rect2( 119, 8, 17, 32 )
-margin = Rect2( 4, 34, 9, 100 )
+region = Rect2( 305, 446, 19, 46 )
+margin = Rect2( 4, 27, 9, 100 )
 script = ExtResource( 1 )
 data_access_mode = "Read"
-frame_index = 0
+frame_index = 90
 spritesheet_data = [ {
 "dir": "up",
 "name": "stand_up",
@@ -486,74 +486,74 @@ spritesheet_data = [ {
 "rect": Rect2( 194, 409, 18, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down",
+"dir": "up",
+"name": "fight_up",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 6, 460, 17, 32 ),
 "type": "fight"
 }, {
-"dir": "down",
-"name": "fight_down2",
+"dir": "up",
+"name": "fight_up2",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 27, 462, 22, 30 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down3",
+"dir": "up",
+"name": "fight_up3",
 "offset": Vector2( -1, 0 ),
 "rect": Rect2( 55, 461, 24, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down4",
+"dir": "up",
+"name": "fight_up4",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 83, 461, 23, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down5",
+"dir": "up",
+"name": "fight_up5",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 111, 461, 22, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down6",
+"dir": "up",
+"name": "fight_up6",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 139, 461, 22, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down7",
+"dir": "up",
+"name": "fight_up7",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 167, 461, 22, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down8",
+"dir": "up",
+"name": "fight_up8",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 195, 464, 23, 28 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down9",
+"dir": "up",
+"name": "fight_up9",
 "offset": Vector2( -1, 0 ),
 "rect": Rect2( 223, 446, 20, 43 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down10",
+"dir": "up",
+"name": "fight_up10",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 249, 446, 19, 46 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down11",
+"dir": "up",
+"name": "fight_up11",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 277, 446, 19, 46 ),
 "type": "copy_prev"
 }, {
-"dir": "down",
-"name": "fight_down12",
+"dir": "up",
+"name": "fight_up12",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 305, 446, 19, 46 ),
 "type": "copy_prev"
@@ -582,56 +582,56 @@ spritesheet_data = [ {
 "rect": Rect2( 190, 500, 15, 32 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right5",
+"dir": "up_right",
+"name": "emote_up_right",
 "offset": Vector2( 1, 0 ),
 "rect": Rect2( 102, 540, 19, 32 ),
-"type": "copy_prev"
+"type": "emote"
 }, {
-"dir": "down_right",
-"name": "emote_down_right6",
+"dir": "up_right",
+"name": "emote_up_right2",
 "offset": Vector2( -1, 0 ),
 "rect": Rect2( 140, 540, 18, 32 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right7",
+"dir": "up_right",
+"name": "emote_up_right3",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 177, 540, 17, 32 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right8",
+"dir": "up_right",
+"name": "emote_up_right4",
 "offset": Vector2( -1, 0 ),
 "rect": Rect2( 207, 540, 19, 32 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right9",
+"dir": "up_right",
+"name": "emote_up_right5",
 "offset": Vector2( 2, 0 ),
 "rect": Rect2( 152, 580, 20, 31 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right10",
+"dir": "up_right",
+"name": "emote_up_right6",
 "offset": Vector2( -1, 0 ),
 "rect": Rect2( 59, 612, 22, 32 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right11",
+"dir": "up_right",
+"name": "emote_up_right7",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 127, 580, 16, 32 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right12",
+"dir": "up_right",
+"name": "emote_up_right8",
 "offset": Vector2( 2, 0 ),
 "rect": Rect2( 176, 580, 20, 32 ),
 "type": "copy_prev"
 }, {
-"dir": "down_right",
-"name": "emote_down_right13",
+"dir": "up_right",
+"name": "emote_up_right9",
 "offset": Vector2( 0, 0 ),
 "rect": Rect2( 90, 612, 23, 31 ),
 "type": "copy_prev"

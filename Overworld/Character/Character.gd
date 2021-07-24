@@ -96,7 +96,12 @@ func try_interaction() -> void:
 	if target:
 		interact_with(target)
 
-func turn_towards(pos : Vector2) -> void:
+func turn_towards(target) -> void:
+	var pos = position
+	if target is Vector2:
+		pos = target
+	elif target is Node:
+		pos = target.position
 	set_facing_dir(pos - position)
 
 func respond_to(character) -> void:
@@ -249,9 +254,10 @@ func talk_to(target) -> void:
 	target.respond_to(self)
 	yield(target, "interaction_finished")
 
-func emote(dir_override := facing_dir) -> void:
+func emote(dir_override := facing_dir, anim_override := "emote") -> void:
 	stop_movement()
-	animated_spritesheet.play_anim("emote_" + dir_override)
+	var chosen_anim = anim_override + "_" + dir_override
+	animated_spritesheet.play_anim(chosen_anim)
 	yield(animated_spritesheet, "animation_finished")
 
 func walking_map_change(walk_dir : String, walk_duration : float) -> void:
@@ -455,3 +461,9 @@ func _editor_update_node_name() -> void:
 func _editor_set_default_character_data(sprite):
 	var backup_data = load(DEFAULT_CHARACTER_DATA)
 	sprite.texture = backup_data.spritesheet.duplicate(true)
+
+
+
+
+func _on_Character_tree_exiting() -> void:
+	effect_player.play("null")
