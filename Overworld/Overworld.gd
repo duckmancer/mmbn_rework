@@ -49,17 +49,11 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("action_1"):
 		enter_battle()
-#	elif event.is_action_pressed("custom_menu"):
-#		swap_worlds()
 
 
 func enter_battle() -> void:
 	_save_worldstate()
 	Transition.transition_to("battle", "virus_flash")
-
-func swap_worlds() -> void:
-	_save_worldstate()
-	load_map(PlayerData.change_world())
 
 
 func get_music_for_map():
@@ -86,7 +80,14 @@ func set_music(track : String) -> void:
 
 # Map Loading
 
-func load_map(map_name : String) -> void:
+func load_map(map_name : String, no_trans := false) -> void:
+	if not no_trans:
+		var trans_type = "fade_to_black"
+		if PlayerData.get_map_world(map_name) != PlayerData.current_world:
+			trans_type = "jack_in" if PlayerData.current_world == "real" else "jack_out"
+		Transition.fade_out_and_in(trans_type)
+		yield(Transition, "transitioned_out")
+
 	save_player_location()
 	_clear_old_map(map)
 	map = _setup_new_map(map_name)
@@ -127,7 +128,7 @@ func get_player(player_map := PlayerData.current_world) -> Player:
 func _ready() -> void:
 	remove_child(player_megaman)
 	remove_child(player_lan)
-	load_map(PlayerData.get_map())
+	load_map(PlayerData.get_map(), true)
 
 
 # Signals
@@ -145,7 +146,6 @@ func _on_Event_map_transition_triggered(new_map : String, transition_type : Stri
 	# Assumed to be related to lookahead jumping the gun
 	yield(get_tree(), "idle_frame")
 	
-	yield(Transition.fade_in_and_out(), "completed")
 	load_map(new_map)
 	
 func _on_Character_dialogue_started(character, text : String) -> void:
@@ -158,15 +158,14 @@ func _on_Player_jack_out_prompted(text : String, mug = null):
 	yield(dialogue_box, "dialogue_finished")
 	get_player().finish_interaction()
 	yield(get_player().run_coroutine("warp_out"), "completed")
-	PlayerData.reset_world_location("internet")
-	load_map(PlayerData.change_world())
+#	PlayerData.reset_world_location("internet")
+	load_map(PlayerData.get_other_world_map())
 	
 func _on_Player_jacked_in(destination : String):
 	if destination:
+#		Transition.fade_out_and_in("jack_in")
+#		yield(Transition, "transitioned_out")
 		load_map(destination)
-#	save_player_location()
-#	PlayerData.change_map(destination, "warp")
-#	load_map(PlayerData.get_map())
 
 
 func _on_DialogueWindow_sfx_triggered(sfx_name : String) -> void:

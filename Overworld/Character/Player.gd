@@ -102,7 +102,7 @@ func do_jack_in(access_point : Node) -> void:
 
 	run_coroutine("emote", ["up", "fight"])
 #	animated_spritesheet.lock(true)
-	var JACK_IN_DELAY = 1
+	var JACK_IN_DELAY = 0.5
 	yield(get_tree().create_timer(JACK_IN_DELAY), "timeout")
 #	animated_spritesheet.lock(false)
 	emit_signal("jacked_in", access_point.internet_destination)

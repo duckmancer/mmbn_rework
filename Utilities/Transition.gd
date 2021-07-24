@@ -1,6 +1,10 @@
 extends CanvasLayer
 
+signal transitioned_out()
+signal transitioned_in()
+
 onready var _screen_tint = $ScreenTint
+onready var _sprite = $TransitionSprite
 onready var _pixelate = $Pixelate
 onready var _anim = $AnimationPlayer
 onready var _effect = $EffectPlayer
@@ -18,6 +22,18 @@ const TRANSITION_PRESET = {
 		audio_path = AudioAssets.SFX.virus_encounter,
 		effect_type = "pixelate",
 	},
+	jack_in = {
+		fade_duration = 0.5,
+		fade_sprite = "jack_in",
+		
+		audio_path = AudioAssets.SFX.jack_in_short,
+	},
+	jack_out = {
+		fade_duration = 0.5,
+		fade_sprite = "jack_out",
+		
+		audio_path = AudioAssets.SFX.jack_in_short,
+	},
 }
 
 
@@ -25,14 +41,23 @@ const TRANSITION_PRESET = {
 
 func transition_to(scene_name : String, transition_data = "fade_to_black") -> void:
 	get_tree().paused = true
-	yield(fade_in_and_out(transition_data), "completed")
+	fade_out_and_in(transition_data)
+	yield(self, "transitioned_out")
 	get_tree().paused = false
 	_change_scene(scene_name)
 
-func fade_in_and_out(transition_data = "fade_to_black") -> void:
+func fade_out_and_in(transition_data = "fade_to_black") -> void:
 	transition_data = _prepare_transition_data(transition_data)
+	_set_speed(transition_data.fade_speed)
+	
 	yield(_fade_out(transition_data), "completed")
-	_fade_in(transition_data)
+	emit_signal("transitioned_out")
+	
+	yield(_fade_in(transition_data), "completed")
+	emit_signal("transitioned_in")
+	
+	_anim.play("default")
+	_effect.play("default")
 
 
 # Execution
@@ -43,13 +68,21 @@ func _fade_out(transition_data : Dictionary) -> void:
 	yield(_anim, "animation_finished")
 
 func _fade_in(transition_data : Dictionary) -> void:
-	_anim.play("fade_in", -1, transition_data.fade_speed)
+	_anim.play_backwards()
+#	_anim.play("fade_in", -1, transition_data.fade_speed)
+	yield(_anim, "animation_finished")
 
 func _play_fade(transition_data : Dictionary) -> void:
+	var anim_type = "default"
 	if "fade_color" in transition_data:
 		_screen_tint.color = transition_data.fade_color
+		anim_type = "fade_out"
+	elif "fade_sprite" in transition_data:
+		_sprite.set_animation(transition_data.fade_sprite)
+		anim_type = "fade_to_sprite"
+	
 
-	_anim.play("fade_out", -1, transition_data.fade_speed)
+	_anim.play(anim_type)
 	
 	if "effect_type" in transition_data:
 		_effect.play(transition_data.effect_type, -1, transition_data.fade_speed)
@@ -100,11 +133,16 @@ func _prepare_audio(transition_data : Dictionary) -> AudioStream:
 			audio = load(path)
 	return audio
 
+func _set_speed(speed : float) -> void:
+	_anim.playback_speed = speed
+	_effect.playback_speed = speed
+
 
 # Init
 
 func _ready() -> void:
-	_screen_tint.color = Color.black
-	_screen_tint.color.a = 0
-	_pixelate.material.set("shader_param/do_pixelate", false)
-	_pixelate.color.a = 0
+	pass
+#	_screen_tint.color = Color.black
+#	_screen_tint.color.a = 0
+#	_pixelate.material.set("shader_param/do_pixelate", false)
+#	_pixelate.color.a = 0

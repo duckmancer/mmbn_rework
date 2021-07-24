@@ -78,13 +78,11 @@ func debug_set_map(map_name : String) -> void:
 			_locations[world_type].map = map_name
 			break
 
-func change_world() -> String:
-	_reset_transition_data()
+func get_other_world_map() -> String:
 	if current_world == "real":
-		current_world = "internet"
+		return _locations["internet"].map
 	else:
-		current_world = "real"
-	return get_map()
+		return _locations["real"].map
 
 
 

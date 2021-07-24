@@ -19,6 +19,8 @@ const SFX = {
 	battle_results_reveal_reward = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song153_double_confirm.wav",
 	item_get = AUDIO_ROOT + "BN4 Rips/Menu Sounds/song115_get_something.wav",
 	warp = "res://Assets/Audio/BN4 Rips/Overworld Sounds/song118_warp.wav",
+	jack_in = "res://Assets/Audio/BN4 Rips/Overworld Sounds/jack_in.wav",
+	jack_in_short = "res://Assets/Audio/BN4 Rips/Overworld Sounds/song014_jack_in.wav",
 }
 
 const MUSIC = {

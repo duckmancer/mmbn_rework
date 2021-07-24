@@ -548,7 +548,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=15]
 resource_name = "hide"
 length = 0.001
 step = 0.0166667
@@ -577,7 +577,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=16]
 resource_name = "jack_in"
 length = 2.0
 step = 0.0166667
@@ -630,7 +630,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.533333, 0.75, 1.83333, 2 ),
+"times": PoolRealArray( 0, 0.533333, 0.75, 0.85, 1.02 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
@@ -865,8 +865,8 @@ hframes = 7
 [node name="EffectPlayer" type="AnimationPlayer" parent="Effects"]
 autoplay = "null"
 anims/default = SubResource( 6 )
-anims/hide = SubResource( 7 )
-anims/jack_in = SubResource( 8 )
+anims/hide = SubResource( 15 )
+anims/jack_in = SubResource( 16 )
 anims/null = SubResource( 9 )
 anims/warp_in = SubResource( 10 )
 anims/warp_out = SubResource( 11 )
@@ -877,4 +877,3 @@ stream = ExtResource( 6 )
 [node name="Tween" type="Tween" parent="Effects"]
 
 [connection signal="tree_exiting" from="." to="." method="_on_Character_tree_exiting"]
-[connection signal="tree_exiting" from="Effects/EffectPlayer" to="." method="_on_EffectPlayer_tree_exiting"]
