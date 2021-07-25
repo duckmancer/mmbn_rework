@@ -9,6 +9,7 @@ signal anim_triggered(anim_name)
 signal option_selected(option)
 
 enum State {
+	CLOSED,
 	INACTIVE,
 	RUNNING,
 	FULL,
@@ -20,7 +21,7 @@ const FORMAT_MARKERS = {
 	page_break = "\n\n",
 }
 const COMMAND_PATTERN = "{(?<type>.*) : (?<name>.*)}"
-const QUESTION_PATTERN = "{(?:(.+)\/)+}"
+const QUESTION_PATTERN = "{(?<options>[^:]*)}"
 
 const LINES_PER_PAGE = 3
 const TEXT_SCROLL_SPEED = {
@@ -33,6 +34,7 @@ onready var label = $TextMargin/Label
 onready var mugshot = $Mugshot
 onready var anim = $AnimationPlayer
 onready var audio = $AudioStreamPlayer
+onready var item_list = $ItemList
 
 var command_regex = RegEx.new()
 var question_regex = RegEx.new()
@@ -42,36 +44,9 @@ var cur_page_num = 0
 var last_visible_chars = 0
 var text_box_size = 156
 
-var state = State.INACTIVE
+var state = State.CLOSED
 var custom_anim_speed := 1.0
 var use_custom_anim_speed := false
-
-
-
-# Commands
-
-func _process_question(cur_page : String) -> bool:
-	var result = ""
-	var question_match = question_regex.search(cur_page)
-	if question_match:
-		result = true
-		var options = question_match.strings()
-		options.pop_front()
-		_prompt_input(options)
-	return result
-
-func _prompt_input(options : Array) -> void:
-	pass
-
-func _process_command(cur_page : String) -> bool:
-	var result = false
-	var command_match = command_regex.search(cur_page)
-	if command_match:
-		result = true
-		var command_type = command_match.get_string("type")
-		var command_name = command_match.get_string("name")
-		emit_signal(command_type + "_triggered", command_name)
-	return result
 
 
 
@@ -90,6 +65,8 @@ func next_page() -> void:
 			cur_page_num += 1
 			next_page()
 			return
+		elif _process_question(cur_page):
+			return
 		last_visible_chars = 0
 		state = State.RUNNING
 		scroll_page(text_pages[cur_page_num])
@@ -104,7 +81,44 @@ func close_dialogue() -> void:
 	toggle_custom_speed(false)
 	anim.play_backwards("open_window")
 	yield(anim, "animation_finished")
+	state = State.CLOSED
 	hide()
+
+
+# Commands
+
+func _process_command(cur_page : String) -> bool:
+	var result = false
+	var command_match = command_regex.search(cur_page)
+	if command_match:
+		result = true
+		var command_type = command_match.get_string("type")
+		var command_name = command_match.get_string("name")
+		emit_signal(command_type + "_triggered", command_name)
+	return result
+
+func _process_question(cur_page : String) -> bool:
+	var result = false
+	var question_match = question_regex.search(cur_page)
+	if question_match:
+		result = true
+		var option_str = question_match.get_string("options")
+		var options = option_str.split(" ", false)
+		_prompt_input(options)
+	return result
+
+func _prompt_input(options : Array) -> void:
+	state = State.QUESTION
+	_set_options(options)
+	item_list.visible = true
+	item_list.grab_focus()
+
+func _set_options(options : Array) -> void:
+	item_list.clear()
+	for o in options:
+		item_list.add_item(o, SpriteAssets.EMPTY_SELECTOR_SPACER)
+	if not options.empty():
+		item_list.select(0)
 
 
 # Animation
@@ -140,10 +154,19 @@ func _physics_process(_delta: float) -> void:
 
 # Setup
 
-func open(text : String, new_mugshot = null) -> void:
+func open(text : String, new_mugshot = null) -> bool:
+	var did_open = false
+	if state == State.CLOSED:
+		text_pages = _parse_text(text)
+		mugshot.set_mugshot(new_mugshot)
+		_setup_window()
+		did_open = true
+	return did_open
+
+
+func _setup_window() -> void:
+	item_list.visible = false
 	state = State.INACTIVE
-	text_pages = _parse_text(text)
-	mugshot.set_mugshot(new_mugshot)
 	popup()
 	toggle_custom_speed(false)
 	anim.play("open_window")
@@ -151,6 +174,13 @@ func open(text : String, new_mugshot = null) -> void:
 	mugshot.visible = true
 	cur_page_num = 0
 	next_page()
+
+func extend_dialogue(text : String, other_mugshot = null) -> void:
+	if state == State.CLOSED:
+		open(text, other_mugshot)
+	else:
+		var new_pages = _parse_text(text)
+		text_pages.append_array(new_pages)
 
 
 # Text Parsing
@@ -217,13 +247,7 @@ func _ready() -> void:
 #	open(label.text, SpriteAssets.MUGSHOT_ROOT + "Megaman.png")
 
 func _debug_init() -> void:
-	popup()
-	var list = $ItemList
-	var ICON_SPRITE = load("res://Assets/Sprites/Menus/Dialogue/SelectorSpacer.png")
-	list.add_item("foo", ICON_SPRITE)
-	list.add_item("bar", ICON_SPRITE)
-	list.add_item("Yes", ICON_SPRITE)
-	list.add_item("No", ICON_SPRITE)
+	open("Try this on for size!\n\n{ Yes No }")
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
@@ -235,4 +259,9 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 
 
 func _on_ItemList_item_activated(index: int) -> void:
-	print($ItemList.get_item_text(index))
+	var item = item_list.get_item_text(index)
+	emit_signal("option_selected", item)
+	state = State.FULL
+	cur_page_num += 1
+	item_list.visible = false
+	

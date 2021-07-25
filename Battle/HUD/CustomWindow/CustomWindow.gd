@@ -226,7 +226,7 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 			_select_chip(focus)
 		elif ok_button.has_focus():
 			_finish_custom()
-	elif event.is_action_pressed("ui_accept"):
+	elif event.is_action_pressed("start"):
 		ok_button.grab_focus()
 	elif event.is_action_pressed("ui_cancel"):
 		_unselect_chip()

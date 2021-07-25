@@ -6,7 +6,7 @@ signal jacked_in(destination)
 
 onready var camera = $Camera
 
-var jack_out_text = "Should we jack out, Megaman?" + "\n" + "{y/n}"
+var jack_out_text = "Should we jack out, Megaman?" + "\n\n" + "{Yes No}" + "\n\n" + "Ok, here we go!"
 
 var is_active := false setget set_is_active
 
@@ -137,5 +137,6 @@ func _ready() -> void:
 	pass
 
 func connect_signals_to_overworld(overworld : Node) -> void:
-	connect("jack_out_prompted", overworld, "_on_Player_jack_out_prompted")
-	connect("jacked_in", overworld, "_on_Player_jacked_in")
+	for sig in ["jack_out_prompted", "jacked_in"]:
+		if not is_connected(sig, overworld, "_on_Player_" + sig):
+			connect(sig, overworld, "_on_Player_" + sig)

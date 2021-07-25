@@ -16,6 +16,8 @@ const OTHER_SPLASH_ROOT = CUSTOM_ROOT + "OtherSplashes/"
 const NO_DATA_PATH = OTHER_SPLASH_ROOT + "Empty Confirm Window.png"
 const SEND_DATA_PATH = OTHER_SPLASH_ROOT + "Chip Confirm Window.png"
 
+const EMPTY_SELECTOR_SPACER = preload("res://Assets/Sprites/Menus/Dialogue/SelectorSpacer.png")
+
 func get_chip_splash_path(chip_id : int) -> String:
 	# TODO: Cleanup magic constants
 	var S_END = 150

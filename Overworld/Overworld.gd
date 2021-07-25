@@ -19,6 +19,7 @@ var do_encounter = false
 var encounter_progress := 0.0
 var distance_traveled := 0.0
 
+var chosen_dialogue_response := ""
 
 
 # Movement
@@ -38,6 +39,14 @@ func track_travel(new_pos : Vector2) -> void:
 func save_player_location() -> void:
 	var p = get_player()
 	PlayerData.save_location(p.position, p.facing_dir)
+
+
+# Misc
+
+func match_chosen_option(match_text : String) -> bool:
+	var result = chosen_dialogue_response == match_text
+	chosen_dialogue_response = ""
+	return result
 
 
 # Processing
@@ -133,38 +142,35 @@ func _ready() -> void:
 
 # Signals
 
-func _on_Player_moved(position : Vector2) -> void:
-	track_travel(position)
-
 func _on_Event_map_transition_triggered(new_map : String, transition_type : String, warp_code := -1) -> void:
-	var trans_data = Transition.TRANSITION_PRESET.fade_to_black.duplicate()
 	if transition_type == "warp":
-		trans_data.fade_duration = 0.25
-		yield(get_tree().create_timer(0.5), "timeout")
+		pass
+#		yield(get_tree().create_timer(0.5), "timeout")
 	
 	# Todo: Without this line, screen flashes black on warp
 	# Assumed to be related to lookahead jumping the gun
-	yield(get_tree(), "idle_frame")
+#	yield(get_tree(), "idle_frame")
 	
 	load_map(new_map)
-	
+
 func _on_Character_dialogue_started(character, text : String) -> void:
-	dialogue_box.open(text, character.get_mugshot())
-	yield(dialogue_box, "dialogue_finished")
+	if dialogue_box.open(text, character.get_mugshot()):
+		yield(dialogue_box, "dialogue_finished")
 	character.finish_interaction()
 
+func _on_Player_moved(position : Vector2) -> void:
+	track_travel(position)
+
 func _on_Player_jack_out_prompted(text : String, mug = null):
-	dialogue_box.open(text, mug)
-	yield(dialogue_box, "dialogue_finished")
+	if dialogue_box.open(text, mug):
+		yield(dialogue_box, "dialogue_finished")
 	get_player().finish_interaction()
-	yield(get_player().run_coroutine("warp_out"), "completed")
-#	PlayerData.reset_world_location("internet")
-	load_map(PlayerData.get_other_world_map())
+	if match_chosen_option("Yes"):
+		get_player().run_coroutine("warp_out")
+		load_map(PlayerData.get_other_world_map())
 	
 func _on_Player_jacked_in(destination : String):
 	if destination:
-#		Transition.fade_out_and_in("jack_in")
-#		yield(Transition, "transitioned_out")
 		load_map(destination)
 
 
@@ -173,7 +179,10 @@ func _on_DialogueWindow_sfx_triggered(sfx_name : String) -> void:
 	sfx_player.stream = sfx_stream
 	sfx_player.play()
 
-
 func _on_DialogueWindow_anim_triggered(anim_name : String) -> void:
 	if anim_name == "emote":
 		get_player().force_emote()
+
+func _on_DialogueWindow_option_selected(option : String) -> void:
+	chosen_dialogue_response = option
+

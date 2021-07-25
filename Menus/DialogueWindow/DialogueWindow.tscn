@@ -176,14 +176,14 @@ margin_left = 9.0
 margin_bottom = 17.0
 
 [node name="DialogueWindow" type="PopupDialog"]
-visible = true
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 2.0
-margin_top = -60.0
+margin_top = -30.0
 margin_right = -2.0
-margin_bottom = -2.0
+margin_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_styles/panel = SubResource( 1 )
@@ -213,8 +213,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="TextMargin"]
 margin_left = 60.0
 margin_top = 10.0
-margin_right = 216.0
-margin_bottom = 53.0
+margin_right = 61.0
+margin_bottom = 11.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
@@ -230,7 +230,6 @@ __meta__ = {
 }
 
 [node name="Indicator" type="Sprite" parent="TextMargin"]
-visible = false
 position = Vector2( 227, 44 )
 texture = ExtResource( 6 )
 centered = false
@@ -247,6 +246,7 @@ stream = ExtResource( 5 )
 volume_db = -5.0
 
 [node name="ItemList" type="ItemList" parent="."]
+visible = false
 margin_left = 181.0
 margin_top = -37.0
 margin_right = 235.0
