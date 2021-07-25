@@ -53,7 +53,7 @@ func fade_out_and_in(transition_data = "fade_to_black") -> void:
 	yield(_fade_out(transition_data), "completed")
 	emit_signal("transitioned_out")
 	
-	yield(_fade_in(transition_data), "completed")
+	yield(_fade_in(), "completed")
 	emit_signal("transitioned_in")
 	
 	_anim.play("default")
@@ -67,7 +67,7 @@ func _fade_out(transition_data : Dictionary) -> void:
 	_play_audio(transition_data.audio)
 	yield(_anim, "animation_finished")
 
-func _fade_in(transition_data : Dictionary) -> void:
+func _fade_in() -> void:
 	_anim.play_backwards()
 #	_anim.play("fade_in", -1, transition_data.fade_speed)
 	yield(_anim, "animation_finished")

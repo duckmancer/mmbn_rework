@@ -21,7 +21,7 @@ func connect_signals_to_overworld(overworld) -> void:
 
 func trigger_event(entity) -> void:
 	if entity.walk_transition(walk_dir, walk_duration):
-		emit_signal("map_transition_triggered", destination_map, "walk")
+		emit_signal("map_transition_triggered", destination_map)
 
 func _ready() -> void:
 	pass

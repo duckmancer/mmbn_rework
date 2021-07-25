@@ -56,7 +56,11 @@ func set_movement() -> void:
 
 func rest() -> void:
 	is_resting = true
-	yield(get_tree().create_timer(REST_DURATION), "timeout")
+	var t = Timer.new()
+	add_child(t)
+	t.start(REST_DURATION)
+	yield(t, "timeout")
+	t.queue_free()
 	is_resting = false
 
 

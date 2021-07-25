@@ -38,7 +38,7 @@ var pixels_scrolled_per_tick = Vector2(2, 1)
 var total_frames = 1
 var cur_frame = 0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	sprite_holder.position += pixels_scrolled_per_tick * scroll_factor
 	sprite_holder.position.x = fmod(sprite_holder.position.x, tile_size.x)
 	sprite_holder.position.y = fmod(sprite_holder.position.y, tile_size.y)

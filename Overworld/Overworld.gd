@@ -142,15 +142,7 @@ func _ready() -> void:
 
 # Signals
 
-func _on_Event_map_transition_triggered(new_map : String, transition_type : String, warp_code := -1) -> void:
-	if transition_type == "warp":
-		pass
-#		yield(get_tree().create_timer(0.5), "timeout")
-	
-	# Todo: Without this line, screen flashes black on warp
-	# Assumed to be related to lookahead jumping the gun
-#	yield(get_tree(), "idle_frame")
-	
+func _on_Event_map_transition_triggered(new_map : String) -> void:	
 	load_map(new_map)
 
 func _on_Character_dialogue_started(character, text : String) -> void:

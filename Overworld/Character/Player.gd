@@ -6,7 +6,7 @@ signal jacked_in(destination)
 
 onready var camera = $Camera
 
-var jack_out_text = "Should we jack out, Megaman?" + "\n\n" + "{Yes No}" + "\n\n" + "Ok, here we go!"
+var jack_out_text = "Should we jack out, Megaman?" + "\n\n" + "{Yes No}"
 
 var is_active := false setget set_is_active
 

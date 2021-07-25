@@ -153,7 +153,7 @@ func spawn(spawn_pos : Vector2, spawn_direction : String, manual_spawn_type : St
 		"warp":
 			effect_player.play("hide")
 			yield(get_tree().create_timer(0.3), "timeout")
-			yield(run_coroutine("warp_in", [spawn_direction, MOVEMENT_DURATIONS.warp]), "completed")
+			yield(run_coroutine("warp_in", [spawn_direction]), "completed")
 		_:
 			set_facing_dir(spawn_direction)
 	
@@ -272,7 +272,7 @@ func warp_out() -> void:
 	effect_player.play("warp_out")
 	yield(effect_player, "animation_finished")
 
-func warp_in(walk_dir : String, walk_duration : float) -> void:
+func warp_in(walk_dir : String) -> void:
 	set_facing_dir(walk_dir)
 	cur_speed = "stand"
 	
