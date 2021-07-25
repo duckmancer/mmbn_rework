@@ -6,11 +6,13 @@ signal dialogue_finished()
 signal sfx_triggered(sfx_name)
 # warning-ignore:unused_signal
 signal anim_triggered(anim_name)
+signal option_selected(option)
 
 enum State {
 	INACTIVE,
 	RUNNING,
 	FULL,
+	QUESTION,
 }
 
 const FORMAT_MARKERS = {
@@ -18,6 +20,7 @@ const FORMAT_MARKERS = {
 	page_break = "\n\n",
 }
 const COMMAND_PATTERN = "{(?<type>.*) : (?<name>.*)}"
+const QUESTION_PATTERN = "{(?:(.+)\/)+}"
 
 const LINES_PER_PAGE = 3
 const TEXT_SCROLL_SPEED = {
@@ -32,6 +35,7 @@ onready var anim = $AnimationPlayer
 onready var audio = $AudioStreamPlayer
 
 var command_regex = RegEx.new()
+var question_regex = RegEx.new()
 
 var text_pages := PoolStringArray()
 var cur_page_num = 0
@@ -43,7 +47,35 @@ var custom_anim_speed := 1.0
 var use_custom_anim_speed := false
 
 
-# Interface
+
+# Commands
+
+func _process_question(cur_page : String) -> bool:
+	var result = ""
+	var question_match = question_regex.search(cur_page)
+	if question_match:
+		result = true
+		var options = question_match.strings()
+		options.pop_front()
+		_prompt_input(options)
+	return result
+
+func _prompt_input(options : Array) -> void:
+	pass
+
+func _process_command(cur_page : String) -> bool:
+	var result = false
+	var command_match = command_regex.search(cur_page)
+	if command_match:
+		result = true
+		var command_type = command_match.get_string("type")
+		var command_name = command_match.get_string("name")
+		emit_signal(command_type + "_triggered", command_name)
+	return result
+
+
+
+# Page Advancing
 
 func scroll_page(page : String) -> void:
 	mugshot.start_talking()
@@ -65,16 +97,6 @@ func next_page() -> void:
 	else:
 		close_dialogue()
 
-func _process_command(cur_page : String) -> bool:
-	var result = false
-	var command_match = command_regex.search(cur_page)
-	if command_match:
-		result = true
-		var command_type = command_match.get_string("type")
-		var command_name = command_match.get_string("name")
-		emit_signal(command_type + "_triggered", command_name)
-	return result
-
 func close_dialogue() -> void:
 	state = State.INACTIVE
 	emit_signal("dialogue_finished")
@@ -83,19 +105,6 @@ func close_dialogue() -> void:
 	anim.play_backwards("open_window")
 	yield(anim, "animation_finished")
 	hide()
-
-func _unhandled_key_input(event: InputEventKey) -> void:
-	if event.is_action_pressed("ui_select"):
-		set_speed(TEXT_SCROLL_SPEED.fast)
-		if state == State.FULL:
-			next_page()
-	elif event.is_action_released("ui_select"):
-		set_speed(TEXT_SCROLL_SPEED.slow)
-
-func _physics_process(_delta: float) -> void:
-	if label.visible_characters > last_visible_chars:
-		last_visible_chars = label.visible_characters
-		audio.play()
 
 
 # Animation
@@ -110,6 +119,23 @@ func set_speed(speed : float) -> void:
 		anim.playback_speed = custom_anim_speed
 	else:
 		anim.playback_speed = 1
+
+
+# Processing
+
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if event.is_action_pressed("ui_select"):
+		set_speed(TEXT_SCROLL_SPEED.fast)
+		if state == State.FULL:
+			next_page()
+	elif event.is_action_released("ui_select"):
+		set_speed(TEXT_SCROLL_SPEED.slow)
+
+func _physics_process(_delta: float) -> void:
+	if label.visible_characters > last_visible_chars:
+		last_visible_chars = label.visible_characters
+		audio.play()
+
 
 
 # Setup
@@ -184,8 +210,20 @@ func _group_pages(line_list : PoolStringArray) -> PoolStringArray:
 
 func _ready() -> void:
 	command_regex.compile(COMMAND_PATTERN)
+	question_regex.compile(QUESTION_PATTERN)
 	set_speed(TEXT_SCROLL_SPEED.slow)
+	if get_tree().current_scene == self:
+		_debug_init()
 #	open(label.text, SpriteAssets.MUGSHOT_ROOT + "Megaman.png")
+
+func _debug_init() -> void:
+	popup()
+	var list = $ItemList
+	var ICON_SPRITE = load("res://Assets/Sprites/Menus/Dialogue/SelectorSpacer.png")
+	list.add_item("foo", ICON_SPRITE)
+	list.add_item("bar", ICON_SPRITE)
+	list.add_item("Yes", ICON_SPRITE)
+	list.add_item("No", ICON_SPRITE)
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
@@ -194,3 +232,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 		mugshot.stop_talking()
 		toggle_custom_speed(false)
 		anim.play("show_indicator")
+
+
+func _on_ItemList_item_activated(index: int) -> void:
+	print($ItemList.get_item_text(index))

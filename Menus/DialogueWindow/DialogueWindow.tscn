@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Menus/DialogueWindow/DialogueWindow.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Menus/Dialogue/StaticDialogueWindow.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Menus/DialogueWindow/Mugshot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Audio/BN4 Rips/Menu Sounds/song101_text_or_menu_scroll.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sprites/Menus/Dialogue/AdvanceArrow.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Menus/Dialogue/SelectorArrow.png" type="Texture" id=7]
+[ext_resource path="res://Menus/DialogueWindow/QuestionBoxStyle.tres" type="StyleBox" id=8]
+[ext_resource path="res://Resources/Fonts/PromptFont.tres" type="DynamicFont" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -166,7 +169,14 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 10, 18 )
+margin_left = 9.0
+margin_bottom = 17.0
+
 [node name="DialogueWindow" type="PopupDialog"]
+visible = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -236,4 +246,34 @@ anims/show_indicator = SubResource( 5 )
 stream = ExtResource( 5 )
 volume_db = -5.0
 
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 181.0
+margin_top = -37.0
+margin_right = 235.0
+margin_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+custom_styles/selected_focus = SubResource( 7 )
+custom_styles/bg = ExtResource( 8 )
+custom_fonts/font = ExtResource( 9 )
+custom_colors/guide_color = Color( 0, 0, 0, 0 )
+custom_constants/vseparation = -1
+custom_constants/icon_margin = 0
+auto_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_left = 91.0
+margin_top = -70.0
+margin_right = 137.0
+margin_bottom = -32.0
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="item_activated" from="ItemList" to="." method="_on_ItemList_item_activated"]
