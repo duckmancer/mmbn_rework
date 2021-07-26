@@ -26,19 +26,19 @@ func set_preview(data):
 	title.text = data.pretty_name
 
 func _set_damage(chip_name):
+	var attack_data = {damage = "", damage_type = ActionData.Element.HIDE}
 	if chip_name:
-		var data = ActionData.action_factory(chip_name).attack_data
-		damage.set_text(String(data.damage))
-		element.frame = data.damage_type
-	else:
-		damage.set_text("")
-		element.frame = ActionData.Element.HIDE
+		var data = ActionData.action_factory(chip_name)
+		if data and "attack_data" in data:
+			attack_data = data.attack_data
+	damage.set_text(String(attack_data.damage))
+	element.frame = attack_data.damage_type
 
 func _set_code(code_str):
 	if code_str:
 		var index = code_str.to_ascii()[0] - "A".to_ascii()[0]
-		if index > 25:
-			index = 25
+		if index > 25 or index < 0:
+			index = 26
 		code.frame = index
 		code.visible = true
 	else:

@@ -34,7 +34,6 @@ layer = 3
 [node name="DialogueWindow" parent="HUD" instance=ExtResource( 2 )]
 
 [node name="PauseMenu" parent="HUD" instance=ExtResource( 7 )]
-visible = false
 
 [connection signal="moved" from="Megaman" to="." method="_on_Player_moved"]
 [connection signal="moved" from="Lan" to="." method="_on_Player_moved"]

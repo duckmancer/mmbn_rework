@@ -70,12 +70,15 @@ func on_battle_start() -> void:
 	emit_signal("battle_start")
 
 func set_chip_details(chip_data = null):
+	var chip_name = ""
+	var chip_damage = ""
 	if chip_data:
-		cur_name.set_text(chip_data.pretty_name)
-		cur_damage.set_text( String(ActionData.action_factory(chip_data.name).attack_data.damage))
-	else:
-		cur_name.set_text("")
-		cur_damage.set_text("")
+		chip_name = chip_data.pretty_name
+		var action_data = ActionData.action_factory(chip_data.name)
+		if "attack_data" in action_data:
+			chip_damage = String(action_data.attack_data.damage)
+	cur_name.set_text(chip_name)
+	cur_damage.set_text(chip_damage)
 
 func set_enemy_names():
 	var enemies = get_tree().get_nodes_in_group("enemy")

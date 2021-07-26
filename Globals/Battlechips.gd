@@ -309,39 +309,46 @@ enum ChipID {
 	_END,
 }
 
-var selected_folder : Array = [
+const DEFAULT_FOLDER : Array = [
+	"Cannon A",
 	"Cannon A",
 	"Cannon B",
-	"Cannon C",
-	"HiCannon B",
-	"HiCannon C",
-	"HiCannon D",
-	"M-Cannon C",
-	"M-Cannon D",
-	"M-Cannon E",
-	"Sword E",
-	"Sword F",
-	"Sword G",
+	"Cannon B",
+	"AirShot A",
+	"AirShot A",
+	"AirShot A",
+	"Vulcan1 V",
+	"Vulcan1 V",
+	"Vulcan1 V",
 	"MiniBomb B",
-	"MiniBomb C",
-	"MiniBomb D",
-	"HeatShot B",
-	"HeatShot C",
-	"HeatShot D",
-	"Heat-V C",
-	"Heat-V D",
-	"Heat-V E",
-	"HeatSide D",
-	"HeatSide E",
-	"HeatSide F",
+	"MiniBomb B",
+	"MiniBomb L",
+	"MiniBomb L",
+	"Sword S",
+	"Sword S",
+	"Sword S",
+	"Sword S",
+	"WideSwrd S",
+	"WideSwrd S",
+	"CrakOut *",
+	"CrakOut *",
+	"CrakOut *",
+	"Recov10 A",
+	"Recov10 A",
+	"Recov10 L",
+	"Recov10 L",
+	"AreaGrab S",
+	"Atk+10 *",
+	"Atk+10 *",
 ]
+
 
 var _active_folder : Array = []
 
 
 func create_active_folder() -> void:
 	_active_folder.clear()
-	for chip in selected_folder:
+	for chip in PlayerData.chip_folder:
 		_active_folder.append(get_chip_data(chip))
 	_active_folder.shuffle()
 

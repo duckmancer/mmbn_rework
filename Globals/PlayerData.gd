@@ -27,6 +27,8 @@ var story_flags = {
 	tutorial_finished = false,
 }
 
+var chip_folder := []
+
 var current_world := "real"
 var _locations = {
 	internet = {
@@ -155,4 +157,5 @@ func update_position(new_pos : Vector2) -> float:
 # Init
 
 func _ready() -> void:
-	pass
+	if chip_folder.empty():
+		chip_folder = Battlechips.DEFAULT_FOLDER.duplicate()
