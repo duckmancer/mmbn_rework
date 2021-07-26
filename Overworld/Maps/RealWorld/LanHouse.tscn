@@ -36,17 +36,14 @@ destination_map = "LanRoom"
 [node name="HarukaHikari" parent="Entities" index="0" instance=ExtResource( 4 )]
 position = Vector2( 122, 174 )
 character_data = ExtResource( 6 )
-dialogue = "Sorry Lan, but breakfast is going to have to wait.
-The microwave is acting up again."
 facing_direction = "down_left"
 
 [node name="YuichiroHikari" parent="Entities" index="1" instance=ExtResource( 4 )]
 position = Vector2( 71, 187 )
 character_data = ExtResource( 5 )
-dialogue = "Looks like another one of those \"tutorials\"..."
 
-[node name="DefaultSpawn" parent="." index="5"]
-position = Vector2( 242, 124 )
+[node name="DefaultSpawn" parent="." index="6"]
+position = Vector2( 101, 200 )
 
 [node name="Background" parent="BackgroundLayer" index="0"]
 type = "None"

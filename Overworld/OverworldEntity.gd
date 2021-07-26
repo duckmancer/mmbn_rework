@@ -1,15 +1,19 @@
 class_name OverworldEntity
 extends KinematicBody2D
 
-signal dialogue_started(responder, text)
+signal dialogue_started(responder)
 signal interaction_finished()
 
 export(String, MULTILINE) var dialogue = "DEBUG TEXT"
 
 
 
+func get_dialogue() -> String:
+	var result = dialogue
+	return result
+
 func respond_to(_character) -> void:
-	emit_signal("dialogue_started", self, dialogue)
+	emit_signal("dialogue_started", self)
 	emit_signal("interaction_finished")
 
 func finish_interaction() -> void:

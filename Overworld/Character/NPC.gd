@@ -15,8 +15,9 @@ const NPC_SPEED_OVERRIDE = {
 
 const REST_DURATION = 2.0
 const PATHFINDING_TOLERANCE = 5.0
+const DEBUG_DIALOGUE = "DEBUG TEXT"
 
-export(String, MULTILINE) var dialogue = "DEBUG TEXT"
+export(String, MULTILINE) var dialogue = DEBUG_DIALOGUE
 export(String, "down_right", "down_left", "up_right", "up_left") var facing_direction = "down_right"
 export(MovementType) var movement_type = MovementType.STAND
 export(NodePath) var track
@@ -25,13 +26,25 @@ var travel_points : PoolVector2Array
 var is_resting := false
 var cur_point := 0
 
+
+# Interface
+
+func get_dialogue() -> String:
+	var result = CharacterDialogue.get_dialogue(character_name)
+	if not result:
+		if dialogue:
+			result = dialogue
+		else:
+			result = .get_dialogue()
+	return result
+
 # Actions
 
 func respond_to(character : Character) -> void:
 	is_busy += 1
 	stop_movement()
 	turn_towards(character.position)
-	emit_signal("dialogue_started", self, dialogue)
+	emit_signal("dialogue_started", self)
 
 func finish_interaction() -> void:
 	emit_signal("interaction_finished")

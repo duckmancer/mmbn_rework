@@ -145,8 +145,9 @@ func _ready() -> void:
 func _on_Event_map_transition_triggered(new_map : String) -> void:	
 	load_map(new_map)
 
-func _on_Character_dialogue_started(character, text : String) -> void:
-	if dialogue_box.open(text, character.get_mugshot()):
+func _on_Character_dialogue_started(character) -> void:
+	var message = character.get_dialogue()
+	if dialogue_box.open(message, character.get_mugshot()):
 		yield(dialogue_box, "dialogue_finished")
 	character.finish_interaction()
 

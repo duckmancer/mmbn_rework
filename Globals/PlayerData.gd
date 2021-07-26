@@ -20,6 +20,13 @@ const WORLD_MAPS = {
 	],
 }
 
+var story_flags = {
+	base = true,
+	tutorial_started = false,
+	got_recv_patch = false,
+	tutorial_finished = false,
+}
+
 var current_world := "real"
 var _locations = {
 	internet = {
@@ -101,6 +108,10 @@ func _reset_transition_data():
 
 
 # Misc
+
+func set_flag(flag_name : String) -> void:
+	if flag_name in story_flags:
+		story_flags[flag_name] = true
 
 func reset_world_location(world_type : String) -> void:
 	var w = _locations[world_type]

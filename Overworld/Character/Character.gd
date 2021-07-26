@@ -24,7 +24,7 @@ const WARP_DURATION = 1
 
 signal moved(position)
 # warning-ignore:unused_signal
-signal dialogue_started(responder, text)
+signal dialogue_started(responder)
 signal interaction_finished()
 
 const SLIDE_ANGLE_THRESHOLD := deg2rad(30)
@@ -44,7 +44,7 @@ const ANIMATION_BACKUP_LIST = {
 
 
 export(Resource) var character_data setget set_character_data
-
+export(String) var character_name := ""
 
 
 onready var animated_spritesheet = $CharacterSprite
@@ -83,6 +83,10 @@ func set_character_data(val) -> void:
 
 
 # Interface
+
+func get_dialogue() -> String:
+	var result = ""
+	return result
 
 func get_mugshot() -> StreamTexture:
 	var result = null
@@ -416,10 +420,15 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	set_sprite_from_data()
+	set_character_name()
 	animated_spritesheet.setup_animations()
 	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle
 	effect_player.play("default")
+
+func set_character_name() -> void:
+	if not character_name:
+		character_name = character_data.resource_name
 
 func set_sprite_from_data(sprite = animated_spritesheet) -> void:
 	if character_data:

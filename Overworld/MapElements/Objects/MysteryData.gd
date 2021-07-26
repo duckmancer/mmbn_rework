@@ -30,10 +30,14 @@ func set_type(val : String) -> void:
 
 # Interaction
 
+
 func respond_to(character) -> void:
 	respondent = character  
-	var text = _generate_message()
-	emit_signal("dialogue_started", self, text)
+	emit_signal("dialogue_started", self)
+
+func get_dialogue() -> String:
+	var result = _generate_message()
+	return result
 
 func _generate_message() -> String:
 	var message = ""

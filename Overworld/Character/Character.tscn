@@ -548,7 +548,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=7]
 resource_name = "hide"
 length = 0.001
 step = 0.0166667
@@ -577,7 +577,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=8]
 resource_name = "jack_in"
 length = 2.0
 step = 0.0166667
@@ -865,8 +865,8 @@ hframes = 7
 [node name="EffectPlayer" type="AnimationPlayer" parent="Effects"]
 autoplay = "null"
 anims/default = SubResource( 6 )
-anims/hide = SubResource( 15 )
-anims/jack_in = SubResource( 16 )
+anims/hide = SubResource( 7 )
+anims/jack_in = SubResource( 8 )
 anims/null = SubResource( 9 )
 anims/warp_in = SubResource( 10 )
 anims/warp_out = SubResource( 11 )

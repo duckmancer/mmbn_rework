@@ -95,5 +95,5 @@ type = "Blue"
 [node name="Path2D" type="Path2D" parent="Paths" index="0"]
 curve = SubResource( 1 )
 
-[node name="DefaultSpawn" parent="." index="5"]
+[node name="DefaultSpawn" parent="." index="6"]
 position = Vector2( 907, 343 )

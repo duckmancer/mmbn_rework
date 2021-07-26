@@ -20,7 +20,7 @@ const FORMAT_MARKERS = {
 	line_break = "\n",
 	page_break = "\n\n",
 }
-const COMMAND_PATTERN = "{(?<type>.*) : (?<name>.*)}"
+const COMMAND_PATTERN = "{(?<type>.*)[ \n]+:[ \n]+(?<name>.*)}"
 const QUESTION_PATTERN = "{(?<options>[^:]*)}"
 
 const LINES_PER_PAGE = 3
@@ -93,8 +93,11 @@ func _process_command(cur_page : String) -> bool:
 	if command_match:
 		result = true
 		var command_type = command_match.get_string("type")
-		var command_name = command_match.get_string("name")
-		emit_signal(command_type + "_triggered", command_name)
+		var command_arg = command_match.get_string("name")
+		if command_type == "set_flag":
+			PlayerData.set_flag(command_arg)
+		else:
+			emit_signal(command_type + "_triggered", command_arg)
 	return result
 
 func _process_question(cur_page : String) -> bool:
@@ -186,7 +189,9 @@ func extend_dialogue(text : String, other_mugshot = null) -> void:
 # Text Parsing
 
 func _parse_text(text : String) -> PoolStringArray:
-	var page_groups = text.split(FORMAT_MARKERS.page_break, false)
+	var tab_stripped = text.replace("\t", "")
+	var page_groups = tab_stripped.split(FORMAT_MARKERS.page_break, false)
+#	var page_groups = text.split(FORMAT_MARKERS.page_break, false)
 	var pages = PoolStringArray()
 	for p in page_groups:
 		pages.append_array(_format_page_group(p))
