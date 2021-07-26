@@ -9,7 +9,9 @@ const TRAVEL_STEP = 100.0
 onready var player_megaman = $Megaman
 onready var player_lan = $Lan
 
+onready var pause_menu = $HUD/PauseMenu
 onready var dialogue_box = $HUD/DialogueWindow
+
 onready var music = $Music
 onready var sfx_player = $SFX
 
@@ -58,6 +60,18 @@ func _physics_process(_delta: float) -> void:
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("action_1"):
 		enter_battle()
+	if event.is_action_pressed("start"):
+		if not get_player().is_busy:
+			pause()
+
+func pause() -> void:
+	var will_pause = not get_tree().paused
+	get_tree().set_pause(will_pause)
+	if will_pause:
+		pause_menu.open()
+	else:
+		pause_menu.close()
+		get_player()._refresh_inputs()
 
 
 func enter_battle() -> void:

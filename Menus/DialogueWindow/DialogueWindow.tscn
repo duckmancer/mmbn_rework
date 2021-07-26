@@ -111,6 +111,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ 0.0, 0.0 ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("TextMargin/Indicator:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 step = 0.0166667
@@ -169,7 +181,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 10, 18 )
 margin_left = 9.0
@@ -230,6 +242,7 @@ __meta__ = {
 }
 
 [node name="Indicator" type="Sprite" parent="TextMargin"]
+visible = false
 position = Vector2( 227, 44 )
 texture = ExtResource( 6 )
 centered = false
@@ -254,7 +267,7 @@ margin_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
-custom_styles/selected_focus = SubResource( 7 )
+custom_styles/selected_focus = SubResource( 6 )
 custom_styles/bg = ExtResource( 8 )
 custom_fonts/font = ExtResource( 9 )
 custom_colors/guide_color = Color( 0, 0, 0, 0 )

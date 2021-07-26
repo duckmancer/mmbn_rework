@@ -1,30 +1,29 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Fonts/BN6/BN6FontSmallCd.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/blank_option.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/menu_icons.png" type="Texture" id=3]
-[ext_resource path="res://Menus/pause_menu/menu_button.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/BlankOption.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/MenuIcons.png" type="Texture" id=3]
+[ext_resource path="res://Menus/PauseMenu/MenuButton.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Audio/BN4 Rips/Menu Sounds/song229_menu_scroll.wav" type="AudioStream" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
 [sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 outline_size = 1
 outline_color = Color( 0.345098, 0.345098, 0.313726, 1 )
 extra_spacing_top = -3
 extra_spacing_bottom = -2
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "default"
+[sub_resource type="Animation" id=7]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -40,8 +39,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "hover"
+[sub_resource type="Animation" id=8]
 length = 0.266667
 loop = true
 step = 0.0166667
@@ -65,7 +63,6 @@ texture = ExtResource( 2 )
 stretch_mode = 3
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -74,12 +71,12 @@ margin_left = 26.0
 margin_right = 82.0
 margin_bottom = 12.0
 mouse_filter = 2
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.941176, 0.972549, 0.941176, 1 )
 custom_colors/font_color_hover = Color( 0.564706, 0.878431, 0.847059, 1 )
 shortcut_in_tooltip = false
@@ -102,8 +99,8 @@ vframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 2 )
-anims/hover = SubResource( 3 )
+anims/default = SubResource( 7 )
+anims/hover = SubResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

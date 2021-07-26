@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/megaman_symbol.png-b0abbd266815360a1fe595ef8df0c631.stex"
+path="res://.import/MenuIcons.png-df57bf305b2d3432d2dd71be664464f7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Menus/Pause Menu/megaman_symbol.png"
-dest_files=[ "res://.import/megaman_symbol.png-b0abbd266815360a1fe595ef8df0c631.stex" ]
+source_file="res://Assets/Sprites/Menus/Pause Menu/MenuIcons.png"
+dest_files=[ "res://.import/MenuIcons.png-df57bf305b2d3432d2dd71be664464f7.stex" ]
 
 [params]
 

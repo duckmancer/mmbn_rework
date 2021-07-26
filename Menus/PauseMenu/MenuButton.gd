@@ -21,7 +21,11 @@ onready var anim = $AnimationPlayer
 onready var audio = $AudioStreamPlayer
 onready var button = $Button
 
+var silence_next_focus = false
 
+func grab_focus() -> void:
+	silence_next_focus = true
+	button.grab_focus()
 
 func set_index(index : int) -> void:
 	button_icon.frame_coords.y = index
@@ -39,7 +43,10 @@ func slide_to(pos : int) -> void:
 func _on_Button_focus_entered() -> void:
 	slide_to(ICON_IN)
 	anim.play("hover")
-	audio.play()
+	if not silence_next_focus:
+		audio.play()
+	else:
+		silence_next_focus = false
 
 func _on_Button_focus_exited() -> void:
 	slide_to(ICON_OUT)
