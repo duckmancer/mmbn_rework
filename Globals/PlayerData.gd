@@ -1,10 +1,18 @@
 extends Node
 
-const _EMPTY_TRANSITION_DATA = {
-	old_map = "",
-	warp_code = "",
-	transition_type = "",
-}
+const DEBUG_FILE_NUM = 0
+
+const SAVE_BASE_PATH = "res://Saves/PlayerData"
+const SAVE_EXT = ".dat"
+
+const SAVED_PROPERTIES = [
+	"story_flags",
+	"chip_folder",
+	"current_world",
+	"_locations",
+	"max_hp",
+	"hp",
+]
 
 const WORLD_MAPS = {
 	real = [
@@ -42,7 +50,6 @@ var _locations = {
 		facing_dir = "",
 	}
 }
-var transition_data = _EMPTY_TRANSITION_DATA.duplicate()
 var max_hp := 200
 var hp := 100
 
@@ -52,10 +59,8 @@ var hp := 100
 func change_map(new_map : String, transition_type := "stand", warp_code := "") -> void:
 	if new_map == get_map():
 		return
-	_update_transition_data(transition_type, warp_code)
 	var new_world = get_map_world(new_map)
 	if new_world != current_world:
-		_reset_transition_data()
 		if current_world == "internet":
 			reset_world_location("internet")
 	current_world = new_world
@@ -68,10 +73,7 @@ func get_map_world(map_name : String) -> String:
 			result = world_type
 	return result
 
-func _update_transition_data(transition_type := "stand", warp_code := "") -> void:
-	transition_data.old_map = get_map()
-	transition_data.transition_type = transition_type
-	transition_data.warp_code = warp_code
+
 
 
 func jack_in(destination : String) -> void:
@@ -81,6 +83,7 @@ func jack_in(destination : String) -> void:
 	current_world = "internet"
 
 func debug_set_map(map_name : String) -> void:
+	printerr("DEBUG MAP SET")
 	for world_type in WORLD_MAPS:
 		if map_name in WORLD_MAPS[world_type]:
 			current_world = world_type
@@ -100,13 +103,6 @@ func get_map() -> String:
 	result = _locations[current_world].map
 	return result
 
-func get_transition_data() -> Dictionary:
-	var result = transition_data.duplicate()
-	_reset_transition_data()
-	return result
-
-func _reset_transition_data():
-	transition_data = _EMPTY_TRANSITION_DATA.duplicate()
 
 
 # Misc
@@ -157,5 +153,40 @@ func update_position(new_pos : Vector2) -> float:
 # Init
 
 func _ready() -> void:
+	load_file(DEBUG_FILE_NUM)
 	if chip_folder.empty():
 		chip_folder = Battlechips.DEFAULT_FOLDER.duplicate()
+
+
+# Save File I/O
+
+func save_file(file_num := 0) -> void:
+	var path = _get_save_file_path(file_num)
+	var file = File.new()
+	if not file.open(path, File.WRITE):
+		file.store_var(self.serialize())
+	file.close()
+
+func load_file(file_num := 0) -> void:
+	var path = _get_save_file_path(file_num)
+	var file = File.new()
+	if not file.open(path, File.READ):
+		var data = file.get_var()
+		if data and data is Dictionary:
+			deserialize(data)
+	file.close()
+
+func serialize() -> Dictionary:
+	var result = {}
+	for prop in SAVED_PROPERTIES:
+		result[prop] = var2str(self[prop])
+	return result
+
+func deserialize(data : Dictionary) -> void:
+	for prop in SAVED_PROPERTIES:
+		if prop in data:
+			self[prop] = str2var(data[prop])
+
+func _get_save_file_path(file_num : int) -> String:
+	return SAVE_BASE_PATH + String(file_num) + ".dat"
+

@@ -68,6 +68,7 @@ func pause() -> void:
 	var will_pause = not get_tree().paused
 	get_tree().set_pause(will_pause)
 	if will_pause:
+		save_player_location()
 		pause_menu.open()
 	else:
 		pause_menu.close()
@@ -110,8 +111,8 @@ func load_map(map_name : String, no_trans := false) -> void:
 			trans_type = "jack_in" if PlayerData.current_world == "real" else "jack_out"
 		Transition.fade_out_and_in(trans_type)
 		yield(Transition, "transitioned_out")
+		save_player_location()
 
-	save_player_location()
 	_clear_old_map(map)
 	map = _setup_new_map(map_name)
 	PlayerData.change_map(map_name)

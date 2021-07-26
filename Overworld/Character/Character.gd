@@ -422,7 +422,7 @@ func _ready() -> void:
 	set_sprite_from_data()
 	set_character_name()
 	animated_spritesheet.setup_animations()
-	emit_signal("moved", position)
+#	emit_signal("moved", position)
 	interaction.rotation_degrees = facing_angle
 	effect_player.play("default")
 

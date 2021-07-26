@@ -107,3 +107,4 @@ stream = ExtResource( 5 )
 
 [connection signal="focus_entered" from="Button" to="." method="_on_Button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_Button_focus_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -19,14 +19,15 @@ func close() -> void:
 
 func _ready() -> void:
 	visible = false
-	setup_icons()
+	setup_buttons()
 	if get_tree().current_scene == self:
 		_debug_init()
 
-func setup_icons() -> void:
+func setup_buttons() -> void:
 	buttons = menu_button_holder.get_children()
 	for i in buttons.size():
 		buttons[i].set_index(i)
+		buttons[i].connect("pressed", self, "_on_Button_pressed")
 
 
 # Debug
@@ -35,3 +36,10 @@ func _debug_init() -> void:
 	pass
 	open()
 #	$PopupPanel.popup()
+
+
+# Signals
+
+func _on_Button_pressed(type : String) -> void:
+	if type == "Save":
+		PlayerData.save_file()

@@ -1,5 +1,7 @@
 extends TextureRect
 
+signal pressed(type)
+
 const ICON_OUT = 0
 const ICON_IN = 8
 const ICON_MOVE_DURATION = 0.1
@@ -51,3 +53,7 @@ func _on_Button_focus_entered() -> void:
 func _on_Button_focus_exited() -> void:
 	slide_to(ICON_OUT)
 	anim.play("default")
+
+
+func _on_Button_pressed() -> void:
+	emit_signal("pressed", button.text)

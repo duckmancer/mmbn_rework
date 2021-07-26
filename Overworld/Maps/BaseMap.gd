@@ -28,9 +28,7 @@ func spawn_player(new_player : Player) -> void:
 
 func _get_player_spawn() -> Dictionary:
 	var spawn_data := {}
-	
-#	var transition_data = PlayerData.get_transition_data()
-#	var old_map = transition_data.old_map
+
 	var old_map = PlayerData.get_map()
 	if old_map:
 		if old_map != map_name:
