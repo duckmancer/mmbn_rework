@@ -30,9 +30,12 @@ const SFX = {
 
 const MENU_SFX = {
 	menu_open = "res://Assets/Audio/BN4 Rips/Menu Sounds/song102menu_scroll.wav",
-	menu_close = "res://Assets/Audio/BN4 Rips/Menu Sounds/song104_menu_cancel.wav",
+	menu_cancel = "res://Assets/Audio/BN4 Rips/Menu Sounds/song104_menu_cancel.wav",
 	menu_scroll = "res://Assets/Audio/BN4 Rips/Menu Sounds/song229_menu_scroll.wav",
 	menu_save = "res://Assets/Audio/BN4 Rips/Menu Sounds/song153_double_confirm.wav",
+	menu_select = "res://Assets/Audio/BN4 Rips/Menu Sounds/song283_menu_select.wav",
+	menu_error = "res://Assets/Audio/BN4 Rips/Menu Sounds/song105_menu_error_short.wav",
+	
 }
 
 const MUSIC = {

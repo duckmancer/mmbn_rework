@@ -24,9 +24,20 @@ onready var button = $Button
 
 var silence_next_focus = false
 var index : int setget set_index
+var disabled := false setget set_disabled
+
+
+# SetGet
+
+func set_disabled(val : bool) -> void:
+	disabled = val
+	button.disabled = val
 
 
 # Interface
+
+func get_label() -> String:
+	return button.text
 
 func grab_focus() -> void:
 	silence_next_focus = true

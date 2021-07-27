@@ -4,6 +4,17 @@ onready var anim = $AnimationPlayer
 onready var menu_button_holder = $MenuButtons
 var buttons := []
 
+var active_buttons = {
+	"ChipFolder" : true,
+	"SubChip" : false,
+	"Library" : false,
+	"MegaMan" : false,
+	"E-Mail" : false,
+	"KeyItem" : false,
+	"Comm" : false,
+	"Save" : true,
+}
+
 
 # Button Actions
 
@@ -16,13 +27,24 @@ func save() -> void:
 # Open/Close
 
 func open() -> void:
-	buttons.front().grab_focus()
+	var first = _get_first_active_button()
+	if first:
+		first.grab_focus()
 	anim.play("scroll_in")
 	AudioAssets.play_detached_sfx("menu_open")
 
+func _get_first_active_button() -> Node:
+	var result = null
+	for i in active_buttons.size():
+		if active_buttons.values()[i]:
+			result = buttons[i]
+			break
+	return result
+
 func close() -> void:
 	anim.play_backwards("scroll_in")
-	AudioAssets.play_detached_sfx("menu_close")
+	AudioAssets.play_detached_sfx("menu_cancel")
+
 
 
 # Init
@@ -40,6 +62,7 @@ func setup_buttons() -> void:
 		var cur_button = buttons[i]
 		cur_button.set_index(i)
 		cur_button.connect("pressed", self, "_on_Button_pressed")
+		cur_button.disabled = not active_buttons[cur_button.get_label()]
 		
 #		set_button_neighbours(i)
 		cur_button.infer_neighbours()
@@ -67,3 +90,5 @@ func _on_Button_pressed(type : String) -> void:
 	match type:
 		"Save":
 			save()
+		_:
+			AudioAssets.play_detached_sfx("menu_error")

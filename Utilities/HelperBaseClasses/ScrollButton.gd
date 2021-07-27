@@ -15,11 +15,17 @@ func _gui_input(event : InputEvent) -> void:
 		for input in _NEIGHBOURS:
 			if event.is_action_pressed(input, true):
 				accept_event()
-				var neighbour_path = get(_NEIGHBOURS[input])
-				if has_node(neighbour_path):
-					var neighbour = get_node(neighbour_path)
-					neighbour.grab_focus()
+				_pass_focus_to_dir(input)
 
+func _pass_focus_to_dir(input : String) -> void:
+	var neighbour_path = get(_NEIGHBOURS[input])
+	if has_node(neighbour_path):
+		var neighbour = get_node(neighbour_path)
+		if not neighbour.disabled:
+			neighbour.grab_focus()
+		else:
+			neighbour._pass_focus_to_dir(input)
 
 func _ready() -> void:
 	pass
+

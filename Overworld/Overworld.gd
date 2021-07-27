@@ -76,6 +76,9 @@ func _unhandled_key_input(event: InputEventKey) -> void:
 	if event.is_action_pressed("start"):
 		if not get_player().is_busy:
 			pause()
+	if event.is_action_pressed("ui_cancel"):
+		if get_tree().paused:
+			pause()
 
 func pause() -> void:
 	var will_pause = not get_tree().paused
