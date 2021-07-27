@@ -24,23 +24,55 @@ onready var audio = $AudioStreamPlayer
 onready var button = $Button
 
 var silence_next_focus = false
+var index : int setget set_index
+
+
+# Interface
 
 func grab_focus() -> void:
 	silence_next_focus = true
 	button.grab_focus()
 
-func set_index(index : int) -> void:
+func set_index(val : int) -> void:
+	index = val
 	button_icon.frame_coords.y = index
 	button.text = LABELS[index]
-	
+
+func set_neighbour(dir : String, node : Control) -> void:
+	var prop = "focus_neighbour_" + dir
+	assert(prop in button)
+	var neighbour = node
+	if node and "button" in node:
+		neighbour = node.button
+	button.set(prop, neighbour)
+
+func infer_neighbours() -> void:
+	var self_path = String(button.get_path())
+	var prop_root = "focus_neighbour_"
+	var neighbor_indexes = {
+		top = posmod(index - 1, LABELS.size()),
+		bottom = posmod(index + 1, LABELS.size()),
+	}
+	for neigh in neighbor_indexes:
+		var prop = prop_root + neigh
+		var neigh_path = self_path.replace(String(index), String(neighbor_indexes[neigh]))
+		button.set(prop, NodePath(neigh_path))
+
+
+# Interaction
+
+func slide_to(pos : int) -> void:
+	tween.interpolate_property(button_icon, "offset:x", null, pos, ICON_MOVE_DURATION)
+	tween.start()
+
+
+# Init
 
 func _ready() -> void:
 	button_icon.offset.x = ICON_OUT
 
 
-func slide_to(pos : int) -> void:
-	tween.interpolate_property(button_icon, "offset:x", null, pos, ICON_MOVE_DURATION)
-	tween.start()
+# Signals
 
 func _on_Button_focus_entered() -> void:
 	slide_to(ICON_IN)
@@ -53,7 +85,6 @@ func _on_Button_focus_entered() -> void:
 func _on_Button_focus_exited() -> void:
 	slide_to(ICON_OUT)
 	anim.play("default")
-
 
 func _on_Button_pressed() -> void:
 	emit_signal("pressed", button.text)

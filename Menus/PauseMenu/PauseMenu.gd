@@ -25,9 +25,22 @@ func _ready() -> void:
 
 func setup_buttons() -> void:
 	buttons = menu_button_holder.get_children()
-	for i in buttons.size():
-		buttons[i].set_index(i)
-		buttons[i].connect("pressed", self, "_on_Button_pressed")
+	var num_items = buttons.size()
+	for i in num_items:
+		var cur_button = buttons[i]
+		cur_button.set_index(i)
+		cur_button.connect("pressed", self, "_on_Button_pressed")
+		
+#		set_button_neighbours(i)
+		cur_button.infer_neighbours()
+
+func _set_button_neighbours(index : int) -> void:
+	var cur_button = buttons[index]
+	var num_items = buttons.size()
+	var neighbour = buttons[posmod(index - 1, num_items)]
+	cur_button.set_neighbour("top", neighbour)
+	neighbour = buttons[posmod(index + 1, num_items)]
+	cur_button.set_neighbour("bottom", neighbour)
 
 
 # Debug
