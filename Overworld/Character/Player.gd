@@ -35,7 +35,7 @@ func finish_interaction() -> void:
 	is_busy -= 1
 
 func spawn(spawn_pos : Vector2, spawn_direction : String, manual_spawn_type : String) -> void:
-	_refresh_inputs()
+	refresh_inputs()
 	.spawn(spawn_pos, spawn_direction, manual_spawn_type)
 
 # Input
@@ -76,7 +76,7 @@ func set_movement() -> void:
 	else:
 		cur_speed = "stand"
 
-func _refresh_inputs():
+func refresh_inputs():
 	for d in Constants.DIRS:
 		held_inputs[d] = Input.is_action_pressed(d)
 	held_inputs.run = Input.is_action_pressed("ui_cancel")

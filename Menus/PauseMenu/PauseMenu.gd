@@ -1,5 +1,9 @@
 extends Panel
 
+signal closed()
+signal chip_folder_opened()
+
+
 onready var anim = $AnimationPlayer
 onready var menu_button_holder = $MenuButtons
 var buttons := []
@@ -15,6 +19,8 @@ var active_buttons = {
 	"Save" : true,
 }
 
+var is_active := false
+
 
 # Button Actions
 
@@ -22,16 +28,25 @@ func save() -> void:
 	PlayerData.save_file()
 	AudioAssets.play_detached_sfx("menu_save")
 
+func open_chip_folder() -> void:
+	visible = false
+	is_active = false
+	emit_signal("chip_folder_opened")
 
 
 # Open/Close
 
 func open() -> void:
+	_set_button_focus()
+	anim.play("scroll_in")
+	AudioAssets.play_detached_sfx("menu_open")
+	yield(anim, "animation_finished")
+	is_active = true
+
+func _set_button_focus() -> void:
 	var first = _get_first_active_button()
 	if first:
 		first.grab_focus()
-	anim.play("scroll_in")
-	AudioAssets.play_detached_sfx("menu_open")
 
 func _get_first_active_button() -> Node:
 	var result = null
@@ -42,9 +57,21 @@ func _get_first_active_button() -> Node:
 	return result
 
 func close() -> void:
+	is_active = false
 	anim.play_backwards("scroll_in")
 	AudioAssets.play_detached_sfx("menu_cancel")
+	emit_signal("closed")
 
+
+# Input
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not visible or anim.is_playing():
+		return
+	if event.is_action_pressed("ui_cancel"):
+		close()
+	elif event.is_action_pressed("start"):
+		close()
 
 
 # Init
@@ -90,5 +117,13 @@ func _on_Button_pressed(type : String) -> void:
 	match type:
 		"Save":
 			save()
+		"ChipFolder":
+			open_chip_folder()
 		_:
 			AudioAssets.play_detached_sfx("menu_error")
+
+
+func _on_FolderEdit_closed() -> void:
+	visible = true
+	is_active = true
+	_set_button_focus()

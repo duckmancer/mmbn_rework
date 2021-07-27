@@ -61,6 +61,7 @@ tracks/1/keys = {
 }
 
 [node name="PauseMenu" type="Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 17.0

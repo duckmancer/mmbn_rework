@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 const PLAYER_ANCHOR = Vector2(120, 90)
 
 const ENCOUNTER_THRESHOLD = 1000.0
@@ -22,6 +24,8 @@ var encounter_progress := 0.0
 var distance_traveled := 0.0
 
 var chosen_dialogue_response := ""
+
+var in_menu := false
 
 
 # Movement
@@ -71,24 +75,21 @@ func _physics_process(_delta: float) -> void:
 		enter_battle()
 
 func _unhandled_key_input(event: InputEventKey) -> void:
+	if in_menu:
+		return
 	if event.is_action_pressed("action_1"):
 		enter_battle()
 	if event.is_action_pressed("start"):
 		if not get_player().is_busy:
 			pause()
-	if event.is_action_pressed("ui_cancel"):
-		if get_tree().paused:
-			pause()
+
 
 func pause() -> void:
-	var will_pause = not get_tree().paused
-	get_tree().set_pause(will_pause)
-	if will_pause:
-		save_player_location()
-		pause_menu.open()
-	else:
-		pause_menu.close()
-		get_player()._refresh_inputs()
+	get_tree().set_pause(true)
+	save_player_location()
+	pause_menu.open()
+	in_menu = true
+
 
 
 func enter_battle() -> void:
@@ -202,3 +203,11 @@ func _on_DialogueWindow_anim_triggered(anim_name : String) -> void:
 func _on_DialogueWindow_option_selected(option : String) -> void:
 	chosen_dialogue_response = option
 
+
+
+
+func _on_PauseMenu_closed() -> void:
+	get_tree().paused = false
+	get_player().refresh_inputs()
+	yield(get_tree(), "idle_frame")
+	in_menu = false

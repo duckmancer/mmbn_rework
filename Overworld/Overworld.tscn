@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Overworld/Character/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menus/DialogueWindow/DialogueWindow.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Audio/MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Resources/Characters/LanHikari.tres" type="Resource" id=6]
 [ext_resource path="res://Menus/PauseMenu/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menus/PauseMenu/ChipFolder/FolderEdit.tscn" type="PackedScene" id=8]
 
 [node name="Overworld" type="Node2D"]
 pause_mode = 2
@@ -34,8 +35,14 @@ layer = 3
 
 [node name="PauseMenu" parent="HUD" instance=ExtResource( 7 )]
 
+[node name="FolderEdit" parent="HUD" instance=ExtResource( 8 )]
+visible = false
+
 [connection signal="moved" from="Megaman" to="." method="_on_Player_moved"]
 [connection signal="moved" from="Lan" to="." method="_on_Player_moved"]
 [connection signal="anim_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_anim_triggered"]
 [connection signal="option_selected" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_option_selected"]
 [connection signal="sfx_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_sfx_triggered"]
+[connection signal="chip_folder_opened" from="HUD/PauseMenu" to="HUD/FolderEdit" method="_on_PauseMenu_chip_folder_opened"]
+[connection signal="closed" from="HUD/PauseMenu" to="." method="_on_PauseMenu_closed"]
+[connection signal="closed" from="HUD/FolderEdit" to="HUD/PauseMenu" method="_on_FolderEdit_closed"]
