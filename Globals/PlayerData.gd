@@ -56,7 +56,7 @@ var hp := 100
 
 # Maps
 
-func change_map(new_map : String, transition_type := "stand", warp_code := "") -> void:
+func change_map(new_map : String) -> void:
 	if new_map == get_map():
 		return
 	var new_world = get_map_world(new_map)
