@@ -17,6 +17,12 @@ onready var chip_box = $ChipBox
 var chip_data
 
 var state = EMPTY setget set_state
+
+
+
+
+# SetGet
+
 func set_state(new_state):
 	state = new_state
 	visible = true
@@ -31,6 +37,9 @@ func set_state(new_state):
 		EMPTY:
 			visible = false
 
+
+# Interface
+
 func set_chip(chip):
 	chip_data = chip
 	label.text = chip.code
@@ -41,13 +50,19 @@ func use_chip():
 	self.state = LOADED
 	return chip_data
 
-
 func return_chip():
 	self.state = AVAILABLE
 
 func clear():
 	self.state = EMPTY
 
+
+# Input
+
+
+
+
+# Init
 
 func _ready() -> void:
 	pass
