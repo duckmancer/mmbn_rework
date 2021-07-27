@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/ScrollBar.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Themes/ChipScrollGrabber.tres" type="StyleBox" id=2]
+[ext_resource path="res://Resources/Themes/ChipScrollBackground.tres" type="StyleBox" id=3]
+
+[resource]
+VScrollBar/icons/ChipScrollBar = ExtResource( 1 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = ExtResource( 2 )
+VScrollBar/styles/grabber_highlight = ExtResource( 2 )
+VScrollBar/styles/grabber_pressed = ExtResource( 2 )
+VScrollBar/styles/scroll = ExtResource( 3 )
+VScrollBar/styles/scroll_focus = ExtResource( 3 )

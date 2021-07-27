@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Resources/Fonts/MegabyteFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Battle/HUD/CustomWindow/ChipBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/Fonts/Player Health Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Sprites/BattleAssets/CustomWindow/Chip Element.png" type="Texture" id=4]
+[ext_resource path="res://Menus/PauseMenu/ChipFolder/ChipEntry.gd" type="Script" id=5]
+[ext_resource path="res://Utilities/HelperBaseClasses/ScrollButton.tscn" type="PackedScene" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="ChipEntry" type="HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 16.0
+size_flags_horizontal = 12
+custom_constants/separation = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 14.0
+margin_bottom = 14.0
+
+[node name="ScrollButton" parent="Icon" instance=ExtResource( 6 )]
+margin_left = 7.0
+margin_right = 7.0
+margin_bottom = 14.0
+grow_horizontal = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+align = 2
+
+[node name="Name" type="Label" parent="."]
+margin_left = 16.0
+margin_right = 80.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 64, 16 )
+size_flags_horizontal = 0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.498039 )
+custom_constants/line_spacing = 0
+text = "Cannon23"
+valign = 2
+clip_text = true
+
+[node name="Element" type="Control" parent="."]
+margin_left = 82.0
+margin_right = 96.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 14, 14 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Sprite" type="Sprite" parent="Element"]
+texture = ExtResource( 4 )
+centered = false
+hframes = 7
+vframes = 2
+
+[node name="Code" type="Label" parent="."]
+margin_left = 98.0
+margin_right = 106.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 8, 16 )
+size_flags_horizontal = 0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.498039 )
+custom_constants/line_spacing = 0
+text = "A"
+valign = 2
+clip_text = true
+max_lines_visible = 1
+
+[node name="Megabytes" type="VBoxContainer" parent="."]
+margin_left = 108.0
+margin_right = 118.0
+margin_bottom = 13.0
+size_flags_vertical = 0
+custom_constants/separation = 1
+alignment = 2
+
+[node name="Value" type="Label" parent="Megabytes"]
+margin_right = 10.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.905882, 0.482353, 1 )
+custom_colors/font_outline_modulate = Color( 0.611765, 0.580392, 0.482353, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "13"
+align = 2
+valign = 2
+
+[node name="MB" type="Label" parent="Megabytes"]
+margin_top = 7.0
+margin_right = 10.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0.611765, 0.580392, 0.482353, 1 )
+text = "MB"
+align = 2
+valign = 2
+
+[node name="Quantity" type="Label" parent="."]
+margin_left = 120.0
+margin_right = 136.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_horizontal = 0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.498039 )
+custom_constants/line_spacing = 0
+text = "12"
+valign = 2
+clip_text = true
+max_lines_visible = 1

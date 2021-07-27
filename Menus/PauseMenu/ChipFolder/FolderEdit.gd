@@ -3,7 +3,9 @@ extends Control
 signal closed()
 
 onready var anim = $AnimationPlayer
+onready var folder_chips = $PanelHolder/Folder/ChipList
 
+onready var cursor = $PanelHolder/Folder/Cursor
 
 var is_active := false
 var folder_open := true
@@ -15,6 +17,7 @@ func open() -> void:
 	visible = true
 	is_active = true
 	anim.play("default")
+	folder_chips.set_chip_focus()
 
 func close() -> void:
 	visible = false
@@ -46,11 +49,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		accept_event()
 		close()
 
+func _physics_process(_delta: float) -> void:
+	var focus = get_focus_owner()
+	if focus:
+		cursor.global_position = focus.rect_global_position - Vector2(11, -7)
+
 
 # Init
 
 func _ready() -> void:
 	visible = false
+	if get_tree().current_scene == self:
+		open()
 
 
 # Signals
