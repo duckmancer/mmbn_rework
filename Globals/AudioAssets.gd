@@ -2,6 +2,11 @@ extends Node
 
 const AUDIO_ROOT = "res://Assets/Audio/"
 
+const _SFX_POOLS = [
+	"SFX",
+	"MENU_SFX",
+]
+
 const SFX = {
 	virus_encounter = AUDIO_ROOT + "MMBNSFX/Overworld SFX/goinbtl HQ.ogg",
 	small_explosion = AUDIO_ROOT + "MMBNSFX/Attack SFX/Impacts/SmallExplosion.wav",
@@ -23,6 +28,13 @@ const SFX = {
 	jack_in_short = "res://Assets/Audio/BN4 Rips/Overworld Sounds/song014_jack_in.wav",
 }
 
+const MENU_SFX = {
+	menu_open = "res://Assets/Audio/BN4 Rips/Menu Sounds/song102menu_scroll.wav",
+	menu_close = "res://Assets/Audio/BN4 Rips/Menu Sounds/song104_menu_cancel.wav",
+	menu_scroll = "res://Assets/Audio/BN4 Rips/Menu Sounds/song229_menu_scroll.wav",
+	menu_save = "res://Assets/Audio/BN4 Rips/Menu Sounds/song153_double_confirm.wav",
+}
+
 const MUSIC = {
 	victory_fanfare = AUDIO_ROOT + "MMBN Sound Box/Menu Themes/Battle Fanfare/3-10 Enemy Deleted!.mp3",
 	internet_theme = AUDIO_ROOT + "MMBN Sound Box/Internet Themes/Main Internet/3-16 Global Network.mp3",
@@ -31,9 +43,23 @@ const MUSIC = {
 
 func get_sfx(sfx_name : String) -> AudioStream:
 	var result = null
-	if sfx_name in SFX:
-		result = load(SFX[sfx_name])
+	for pool_name in _SFX_POOLS:
+		var pool = self[pool_name]
+		if sfx_name in pool:
+			result = load(pool[sfx_name])
 	return result
+
+func play_detached_sfx(sfx_name : String) -> void:
+	var stream = get_sfx(sfx_name)
+	if stream:
+		if "loop" in stream:
+			stream.loop = false
+		var temp_player = AudioStreamPlayer.new()
+		add_child(temp_player)
+		temp_player.stream = stream
+		temp_player.play()
+		yield(temp_player, "finished")
+		temp_player.queue_free()
 
 func _ready() -> void:
 	pass

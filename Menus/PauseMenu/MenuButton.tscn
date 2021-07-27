@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Fonts/BN6/BN6FontSmallCd.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/BlankOption.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/MenuIcons.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/MainWindow/BlankOption.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/MainWindow/MenuIcons.png" type="Texture" id=3]
 [ext_resource path="res://Menus/PauseMenu/MenuButton.gd" type="Script" id=4]
-[ext_resource path="res://Assets/Audio/BN4 Rips/Menu Sounds/song229_menu_scroll.wav" type="AudioStream" id=5]
 [ext_resource path="res://Utilities/HelperBaseClasses/ScrollButton.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -103,9 +102,6 @@ vframes = 8
 autoplay = "default"
 anims/default = SubResource( 7 )
 anims/hover = SubResource( 8 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
 
 [connection signal="focus_entered" from="Button" to="." method="_on_Button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_Button_focus_exited"]

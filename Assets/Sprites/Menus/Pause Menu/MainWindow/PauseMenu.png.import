@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlankOption.png-b4a134d95b818d19d8fbf96cc7b50e97.stex"
+path="res://.import/PauseMenu.png-62d47a6d09fcf2b2679460f2c50f7b8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Menus/Pause Menu/BlankOption.png"
-dest_files=[ "res://.import/BlankOption.png-b4a134d95b818d19d8fbf96cc7b50e97.stex" ]
+source_file="res://Assets/Sprites/Menus/Pause Menu/MainWindow/PauseMenu.png"
+dest_files=[ "res://.import/PauseMenu.png-62d47a6d09fcf2b2679460f2c50f7b8f.stex" ]
 
 [params]
 

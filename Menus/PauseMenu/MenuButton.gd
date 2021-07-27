@@ -20,7 +20,6 @@ const LABELS = [
 onready var button_icon = $Icon
 onready var tween = $Tween
 onready var anim = $AnimationPlayer
-onready var audio = $AudioStreamPlayer
 onready var button = $Button
 
 var silence_next_focus = false
@@ -78,7 +77,7 @@ func _on_Button_focus_entered() -> void:
 	slide_to(ICON_IN)
 	anim.play("hover")
 	if not silence_next_focus:
-		audio.play()
+		AudioAssets.play_detached_sfx("menu_scroll")
 	else:
 		silence_next_focus = false
 

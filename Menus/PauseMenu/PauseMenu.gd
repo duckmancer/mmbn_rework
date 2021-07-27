@@ -5,14 +5,24 @@ onready var menu_button_holder = $MenuButtons
 var buttons := []
 
 
-# Opening
+# Button Actions
+
+func save() -> void:
+	PlayerData.save_file()
+	AudioAssets.play_detached_sfx("menu_save")
+
+
+
+# Open/Close
 
 func open() -> void:
 	buttons.front().grab_focus()
 	anim.play("scroll_in")
+	AudioAssets.play_detached_sfx("menu_open")
 
 func close() -> void:
 	anim.play_backwards("scroll_in")
+	AudioAssets.play_detached_sfx("menu_close")
 
 
 # Init
@@ -54,5 +64,6 @@ func _debug_init() -> void:
 # Signals
 
 func _on_Button_pressed(type : String) -> void:
-	if type == "Save":
-		PlayerData.save_file()
+	match type:
+		"Save":
+			save()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ExitButton.png-ac14057ae32161a132dadbd51ccce0b8.stex"
+path="res://.import/MenuIcons.png-922b9d25d14b64fd38d927fb3d3bcaf1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Menus/Pause Menu/ExitButton.png"
-dest_files=[ "res://.import/ExitButton.png-ac14057ae32161a132dadbd51ccce0b8.stex" ]
+source_file="res://Assets/Sprites/Menus/Pause Menu/MainWindow/MenuIcons.png"
+dest_files=[ "res://.import/MenuIcons.png-922b9d25d14b64fd38d927fb3d3bcaf1.stex" ]
 
 [params]
 

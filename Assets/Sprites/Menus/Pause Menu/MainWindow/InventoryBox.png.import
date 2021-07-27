@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MenuItems.png-83ed04f8ca14463a74544686efe785f1.stex"
+path="res://.import/InventoryBox.png-152184186b7849873182e2162139dacd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Menus/Pause Menu/MenuItems.png"
-dest_files=[ "res://.import/MenuItems.png-83ed04f8ca14463a74544686efe785f1.stex" ]
+source_file="res://Assets/Sprites/Menus/Pause Menu/MainWindow/InventoryBox.png"
+dest_files=[ "res://.import/InventoryBox.png-152184186b7849873182e2162139dacd.stex" ]
 
 [params]
 

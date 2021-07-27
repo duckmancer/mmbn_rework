@@ -50,6 +50,19 @@ func match_chosen_option(match_text : String) -> bool:
 	chosen_dialogue_response = ""
 	return result
 
+func play_sfx(sfx_name : String) -> void:
+	var sfx_stream = AudioAssets.get_sfx(sfx_name)
+	sfx_player.stream = sfx_stream
+	sfx_player.play()
+
+func set_music(track : String) -> void:
+	if music.stream.resource_path == track:
+		return
+	if not track:
+		return
+	music.stream = load(track)
+	music.play()
+
 
 # Processing
 
@@ -92,14 +105,6 @@ func get_music_for_map():
 func _save_worldstate() -> void:
 	PlayerData.update_position(get_player().position)
 	reset_encounters()
-
-func set_music(track : String) -> void:
-	if music.stream.resource_path == track:
-		return
-	if not track:
-		return
-	music.stream = load(track)
-	music.play()
 
 
 # Map Loading
