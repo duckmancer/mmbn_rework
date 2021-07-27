@@ -42,7 +42,7 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 pretty_name = "Spikey"
 delay_between_actions = 30
-max_hp = 300
+max_hp = 100
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )

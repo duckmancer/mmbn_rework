@@ -52,12 +52,12 @@ func fade_out_and_in(transition_data = "fade_to_black") -> void:
 	
 	yield(_fade_out(transition_data), "completed")
 	emit_signal("transitioned_out")
+	_effect.play("default")
 	
 	yield(_fade_in(), "completed")
 	emit_signal("transitioned_in")
 	
 	_anim.play("default")
-	_effect.play("default")
 
 
 # Execution
@@ -85,7 +85,7 @@ func _play_fade(transition_data : Dictionary) -> void:
 	_anim.play(anim_type)
 	
 	if "effect_type" in transition_data:
-		_effect.play(transition_data.effect_type, -1, transition_data.fade_speed)
+		_effect.play(transition_data.effect_type)
 
 func _play_audio(audio : AudioStream) -> void:
 	if audio:

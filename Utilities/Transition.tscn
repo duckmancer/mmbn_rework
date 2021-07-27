@@ -4,36 +4,36 @@
 [ext_resource path="res://Assets/Sprites/Menus/Transitions/JackIn.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Audio/BN4 Rips/Overworld Sounds/jack_in.wav" type="AudioStream" id=3]
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 2 )
-region = Rect2( 500, 850, 250, 170 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 2 )
-region = Rect2( 250, 850, 250, 170 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 850, 250, 170 )
-
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 500, 680, 250, 170 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 850, 250, 170 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 250, 850, 250, 170 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 500, 850, 250, 170 )
+
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 9 ), SubResource( 8 ), SubResource( 7 ) ],
-"loop": true,
-"name": "jack_out",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "jack_in",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 3 ), SubResource( 2 ), SubResource( 1 ) ],
+"loop": true,
+"name": "jack_out",
+"speed": 15.0
 } ]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
 
 uniform bool do_pixelate = false;
@@ -47,13 +47,13 @@ void fragment() {
 		COLOR.rgb = textureLod(SCREEN_TEXTURE, uv, 0.0).rgb;
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
 shader_param/do_pixelate = false
 shader_param/size_x = 0.008
 shader_param/size_y = 0.008
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 resource_name = "default"
 length = 0.001
 tracks/0/type = "value"
@@ -129,8 +129,7 @@ tracks/5/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "pixelate"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Pixelate:material:shader_param/do_pixelate")
 tracks/0/interp = 1
@@ -179,8 +178,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Pixelate:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=10]
 resource_name = "default"
 length = 0.001
 tracks/0/type = "value"
@@ -232,7 +243,7 @@ tracks/3/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=11]
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScreenTint:color:a")
@@ -259,7 +270,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=12]
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScreenTint:color:a")
@@ -286,8 +297,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "fade_to_sprite"
+[sub_resource type="Animation" id=13]
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("TransitionSprite:modulate")
@@ -332,7 +342,8 @@ layer = 4
 script = ExtResource( 1 )
 
 [node name="TransitionSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 11 )
+visible = false
+frames = SubResource( 5 )
 animation = "jack_out"
 frame = 2
 centered = false
@@ -348,7 +359,7 @@ __meta__ = {
 
 [node name="Pixelate" type="ColorRect" parent="."]
 visible = false
-material = SubResource( 2 )
+material = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 1, 1, 1, 0 )
@@ -358,15 +369,15 @@ __meta__ = {
 
 [node name="EffectPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 12 )
-anims/pixelate = SubResource( 3 )
+anims/default = SubResource( 8 )
+anims/pixelate = SubResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 13 )
-anims/fade_in = SubResource( 4 )
-anims/fade_out = SubResource( 5 )
-anims/fade_to_sprite = SubResource( 6 )
+anims/default = SubResource( 10 )
+anims/fade_in = SubResource( 11 )
+anims/fade_out = SubResource( 12 )
+anims/fade_to_sprite = SubResource( 13 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
