@@ -103,6 +103,7 @@ func _exit_battle() -> void:
 #	anim.play("fade_to_black")
 #	yield(get_tree().create_timer(0.5), "timeout")
 #	Scenes.switch_to("overworld")
+	PlayerData.add_chip(encounter_data.reward)
 	PlayerData.hp = player_controller.player.hp
 	Transition.transition_to("overworld")
 

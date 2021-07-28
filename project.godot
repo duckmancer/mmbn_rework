@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utilities/SpritesheetManager/CharacterSprite.gd"
 }, {
+"base": "HBoxContainer",
+"class": "ChipEntry",
+"language": "GDScript",
+"path": "res://Menus/PauseMenu/ChipFolder/ChipEntry.gd"
+}, {
 "base": "TextureRect",
 "class": "ChipSlot",
 "language": "GDScript",
@@ -204,6 +209,7 @@ _global_script_class_icons={
 "CharacterData": "",
 "CharacterDialogue": "",
 "CharacterSprite": "",
+"ChipEntry": "",
 "ChipSlot": "",
 "DialogueWindow": "",
 "Entity": "",

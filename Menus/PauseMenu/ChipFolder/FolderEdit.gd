@@ -2,10 +2,13 @@ extends Control
 
 signal closed()
 
-onready var anim = $AnimationPlayer
-onready var folder_chips = $PanelHolder/Folder/ChipList
+const CURSOR_OFFSET := Vector2(-11, 7)
 
-onready var cursor = $PanelHolder/Folder/Cursor
+onready var anim := $AnimationPlayer
+onready var folder_chips := $PanelHolder/Folder/FolderList
+onready var pack_chips := $PanelHolder/Pack/PackList
+
+onready var cursor := $PanelHolder/Cursor
 
 var is_active := false
 var folder_open := true
@@ -17,11 +20,13 @@ func open() -> void:
 	visible = true
 	is_active = true
 	anim.play("default")
-	folder_chips.set_chip_focus()
+	folder_chips.activate()
 
 func close() -> void:
 	visible = false
 	is_active = false
+	PlayerData.chip_folder = folder_chips.get_chip_list()
+	PlayerData.chip_pack = pack_chips.get_chip_list()
 	emit_signal("closed")
 
 
@@ -30,11 +35,15 @@ func close() -> void:
 func change_state() -> void:
 	if folder_open:
 		anim.play("scroll_right")
+		pack_chips.activate()
+		folder_chips.deactivate()
 	else:
 		anim.play("scroll_left")
+		folder_chips.activate()
+		pack_chips.deactivate()
 	folder_open = not folder_open
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not is_active:
 		return
 	if anim.is_playing():
@@ -52,15 +61,20 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(_delta: float) -> void:
 	var focus = get_focus_owner()
 	if focus:
-		cursor.global_position = focus.rect_global_position - Vector2(11, -7)
+		cursor.global_position = focus.rect_global_position + CURSOR_OFFSET
 
 
 # Init
 
 func _ready() -> void:
 	visible = false
+	setup_chip_lists()
 	if get_tree().current_scene == self:
 		open()
+
+func setup_chip_lists():
+	folder_chips.set_chip_list(PlayerData.chip_folder)
+	pack_chips.set_chip_list(PlayerData.chip_pack)
 
 
 # Signals
@@ -69,3 +83,11 @@ func _ready() -> void:
 
 func _on_PauseMenu_chip_folder_opened() -> void:
 	open()
+
+
+func _on_FolderList_chip_transferred(chip : String) -> void:
+	pack_chips.add_chip(chip)
+
+
+func _on_PackList_chip_transferred(chip : String) -> void:
+	folder_chips.add_chip(chip)

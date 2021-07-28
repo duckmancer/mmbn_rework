@@ -10,21 +10,34 @@ const _NEIGHBOURS = {
 	ui_right = _BASE_NEIGHBOUR + "right",
 }
 
+# Interface
+
+func disable() -> void:
+	if has_focus():
+		if not _pass_focus_to_dir("ui_up"):
+			_pass_focus_to_dir("ui_down")
+	disabled = true
+
+
 func _gui_input(event : InputEvent) -> void:
 	if has_focus() and event is InputEventKey:
 		for input in _NEIGHBOURS:
 			if event.is_action_pressed(input, true):
 				accept_event()
-				_pass_focus_to_dir(input)
+				if _pass_focus_to_dir(input):
+					pass
 
-func _pass_focus_to_dir(input : String) -> void:
+func _pass_focus_to_dir(input : String) -> bool:
+	var result := false
 	var neighbour_path = get(_NEIGHBOURS[input])
 	if has_node(neighbour_path):
 		var neighbour = get_node(neighbour_path)
 		if not neighbour.disabled:
 			neighbour.grab_focus()
-		else:
-			neighbour._pass_focus_to_dir(input)
+			result = true
+		elif neighbour is get_script():
+			result = neighbour._pass_focus_to_dir(input)
+	return result
 
 func _ready() -> void:
 	pass

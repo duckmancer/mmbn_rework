@@ -309,38 +309,21 @@ enum ChipID {
 	_END,
 }
 
-const DEFAULT_FOLDER : Array = [
-	"Cannon A",
-	"Cannon A",
-	"Cannon B",
-	"Cannon B",
-	"AirShot A",
-	"AirShot A",
-	"AirShot A",
-	"Vulcan1 V",
-	"Vulcan1 V",
-	"Vulcan1 V",
-	"MiniBomb B",
-	"MiniBomb B",
-	"MiniBomb L",
-	"MiniBomb L",
-	"Sword S",
-	"Sword S",
-	"Sword S",
-	"Sword S",
-	"WideSwrd S",
-	"WideSwrd S",
-	"CrakOut *",
-	"CrakOut *",
-	"CrakOut *",
-	"Recov10 A",
-	"Recov10 A",
-	"Recov10 L",
-	"Recov10 L",
-	"AreaGrab S",
-	"Atk+10 *",
-	"Atk+10 *",
-]
+const DEFAULT_FOLDER : Dictionary = {
+	"Cannon A" : 2,
+	"Cannon B" : 2,
+	"AirShot A" : 3,
+	"Vulcan1 V" : 3,
+	"MiniBomb B" : 2,
+	"MiniBomb L" : 2,
+	"Sword S" : 4,
+	"WideSwrd S" : 2,
+	"CrakOut *" : 3,
+	"Recov10 A" : 2,
+	"Recov10 L" : 2,
+	"AreaGrab S" : 1,
+	"Atk+10 *" : 2,
+}
 
 
 var _active_folder : Array = []
@@ -349,7 +332,8 @@ var _active_folder : Array = []
 func create_active_folder() -> void:
 	_active_folder.clear()
 	for chip in PlayerData.chip_folder:
-		_active_folder.append(get_chip_data(chip))
+		for _count in PlayerData.chip_folder[chip]:
+			_active_folder.append(get_chip_data(chip))
 	_active_folder.shuffle()
 
 func get_chip_from_folder() -> Dictionary:

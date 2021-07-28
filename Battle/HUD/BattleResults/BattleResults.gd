@@ -10,7 +10,7 @@ enum State {
 	ENDING,
 }
 
-const CHIP_ROOT = SpriteAssets.CHIP_SPLASH_ROOT
+var CHIP_ROOT = SpriteAssets.CHIP_SPLASH_ROOT
 const DISPLAY_SIZE = 10
 
 onready var splash = $ChipSplash

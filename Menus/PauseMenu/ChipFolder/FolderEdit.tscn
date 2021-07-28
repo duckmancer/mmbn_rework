@@ -20,32 +20,31 @@ region_rect = Rect2( 0, 0, 80, 136 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 240, 133 )
+
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 12, 11 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 7 )
 region = Rect2( 12, 0, 12, 11 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 7 )
 region = Rect2( 24, 0, 12, 11 )
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
 } ]
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 240, 133 )
-
-[sub_resource type="Animation" id=4]
-resource_name = "default"
+[sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("PanelHolder:rect_position")
@@ -60,7 +59,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=9]
 length = 0.25
 step = 0.0166667
 tracks/0/type = "value"
@@ -76,7 +75,7 @@ tracks/0/keys = {
 "values": [ Vector2( -240, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=10]
 length = 0.25
 step = 0.0166667
 tracks/0/type = "value"
@@ -140,17 +139,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChipList" parent="PanelHolder/Folder" instance=ExtResource( 6 )]
+[node name="FolderList" parent="PanelHolder/Folder" instance=ExtResource( 6 )]
 margin_left = 94.0
 margin_top = 15.0
 margin_right = 240.0
 margin_bottom = 128.0
-
-[node name="Cursor" type="AnimatedSprite" parent="PanelHolder/Folder"]
-position = Vector2( 92, 24 )
-frames = SubResource( 10 )
-frame = 2
-playing = true
 
 [node name="Pack" type="Panel" parent="PanelHolder"]
 anchor_left = 1.0
@@ -160,7 +153,7 @@ margin_top = 16.0
 margin_right = 440.0
 margin_bottom = 149.0
 rect_min_size = Vector2( 240, 133 )
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -176,8 +169,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PackList" parent="PanelHolder/Pack" instance=ExtResource( 6 )]
+margin_left = 6.0
+margin_top = 16.0
+margin_right = 152.0
+margin_bottom = 126.0
+
+[node name="Cursor" type="AnimatedSprite" parent="PanelHolder"]
+position = Vector2( 92, 40 )
+frames = SubResource( 6 )
+frame = 1
+playing = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 4 )
-anims/scroll_left = SubResource( 5 )
-anims/scroll_right = SubResource( 6 )
+anims/default = SubResource( 8 )
+anims/scroll_left = SubResource( 9 )
+anims/scroll_right = SubResource( 10 )
+
+[connection signal="chip_transferred" from="PanelHolder/Folder/FolderList" to="." method="_on_FolderList_chip_transferred"]
+[connection signal="chip_transferred" from="PanelHolder/Pack/PackList" to="." method="_on_PackList_chip_transferred"]

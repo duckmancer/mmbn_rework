@@ -8,6 +8,7 @@ const SAVE_EXT = ".dat"
 const SAVED_PROPERTIES = [
 	"story_flags",
 	"chip_folder",
+	"chip_pack",
 	"current_world",
 	"_locations",
 	"max_hp",
@@ -35,7 +36,8 @@ var story_flags = {
 	tutorial_finished = false,
 }
 
-var chip_folder := []
+var chip_folder := {}
+var chip_pack := {}
 
 var current_world := "real"
 var _locations = {
@@ -107,6 +109,12 @@ func get_map() -> String:
 
 # Misc
 
+func add_chip(chip : String) -> void:
+	if chip in chip_pack:
+		chip_pack[chip] += 1
+	else:
+		chip_pack[chip] = 1
+
 func set_flag(flag_name : String) -> void:
 	if flag_name in story_flags:
 		story_flags[flag_name] = true
@@ -154,8 +162,13 @@ func update_position(new_pos : Vector2) -> float:
 
 func _ready() -> void:
 	load_file(DEBUG_FILE_NUM)
+#	set_default_properties()
+
+func set_default_properties() -> void:
 	if chip_folder.empty():
 		chip_folder = Battlechips.DEFAULT_FOLDER.duplicate()
+	if chip_pack.empty():
+		chip_pack = {"Cannon A" : 50, "Heat-V E" : 3}
 
 
 # Save File I/O
@@ -185,7 +198,9 @@ func serialize() -> Dictionary:
 func deserialize(data : Dictionary) -> void:
 	for prop in SAVED_PROPERTIES:
 		if prop in data:
-			self[prop] = str2var(data[prop])
+			var val = str2var(data[prop])
+			if typeof(val) == typeof(self[prop]):
+				self[prop] = str2var(data[prop])
 
 func _get_save_file_path(file_num : int) -> String:
 	return SAVE_BASE_PATH + String(file_num) + ".dat"
