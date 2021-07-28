@@ -2,6 +2,7 @@ extends ScrollContainer
 
 signal chip_transferred(chip)
 signal focus_changed(entry)
+signal scrolled(portion)
 
 onready var list = $VBoxContainer
 
@@ -153,6 +154,12 @@ func _ready() -> void:
 func _on_ChipEntry_focused(entry : Node) -> void:
 	index = entry.get_index()
 	emit_signal("focus_changed", entry)
+	var ENTRY_MARGIN = 2
+	var max_scroll = get_v_scrollbar().max_value - get_v_scrollbar().page - ENTRY_MARGIN
+	var cur_scroll = float(scroll_vertical) / max_scroll
+#	var cur_scroll = get_v_scrollbar().ratio
+	emit_signal("scrolled", cur_scroll)
+	
 
 func _on_ChipEntry_moved(chip : String) -> void:
 	remove_chip(chip)

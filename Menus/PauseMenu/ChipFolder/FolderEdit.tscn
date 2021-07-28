@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/FolderEdit.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/Folder.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Menus/PauseMenu/ChipFolder/FolderEdit.gd" type="Script" id=5]
 [ext_resource path="res://Menus/PauseMenu/ChipFolder/ChipList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/ChipSelectorArrow.png" type="Texture" id=7]
+[ext_resource path="res://Menus/PauseMenu/ChipFolder/Scrollbar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -140,10 +141,13 @@ __meta__ = {
 }
 
 [node name="FolderList" parent="PanelHolder/Folder" instance=ExtResource( 6 )]
-margin_left = 94.0
-margin_top = 15.0
-margin_right = 240.0
-margin_bottom = 128.0
+margin_left = 84.0
+margin_top = 17.0
+margin_right = 230.0
+margin_bottom = 127.0
+
+[node name="Scrollbar" parent="PanelHolder/Folder" instance=ExtResource( 8 )]
+position = Vector2( 233, 20 )
 
 [node name="Pack" type="Panel" parent="PanelHolder"]
 anchor_left = 1.0
@@ -170,10 +174,13 @@ __meta__ = {
 }
 
 [node name="PackList" parent="PanelHolder/Pack" instance=ExtResource( 6 )]
-margin_left = 6.0
-margin_top = 16.0
-margin_right = 152.0
-margin_bottom = 126.0
+margin_left = -2.0
+margin_top = 17.0
+margin_right = 144.0
+margin_bottom = 127.0
+
+[node name="Scrollbar" parent="PanelHolder/Pack" instance=ExtResource( 8 )]
+position = Vector2( 147, 20 )
 
 [node name="Cursor" type="AnimatedSprite" parent="PanelHolder"]
 position = Vector2( 92, 40 )
@@ -188,5 +195,7 @@ anims/scroll_right = SubResource( 10 )
 
 [connection signal="chip_transferred" from="PanelHolder/Folder/FolderList" to="." method="_on_FolderList_chip_transferred"]
 [connection signal="focus_changed" from="PanelHolder/Folder/FolderList" to="." method="_on_ChipList_focus_changed"]
+[connection signal="scrolled" from="PanelHolder/Folder/FolderList" to="PanelHolder/Folder/Scrollbar" method="_on_ChipList_scrolled"]
 [connection signal="chip_transferred" from="PanelHolder/Pack/PackList" to="." method="_on_PackList_chip_transferred"]
 [connection signal="focus_changed" from="PanelHolder/Pack/PackList" to="." method="_on_ChipList_focus_changed"]
+[connection signal="scrolled" from="PanelHolder/Pack/PackList" to="PanelHolder/Pack/Scrollbar" method="_on_ChipList_scrolled"]
