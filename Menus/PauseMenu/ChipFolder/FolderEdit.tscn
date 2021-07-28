@@ -178,7 +178,6 @@ margin_bottom = 126.0
 [node name="Cursor" type="AnimatedSprite" parent="PanelHolder"]
 position = Vector2( 92, 40 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -188,4 +187,6 @@ anims/scroll_left = SubResource( 9 )
 anims/scroll_right = SubResource( 10 )
 
 [connection signal="chip_transferred" from="PanelHolder/Folder/FolderList" to="." method="_on_FolderList_chip_transferred"]
+[connection signal="focus_changed" from="PanelHolder/Folder/FolderList" to="." method="_on_ChipList_focus_changed"]
 [connection signal="chip_transferred" from="PanelHolder/Pack/PackList" to="." method="_on_PackList_chip_transferred"]
+[connection signal="focus_changed" from="PanelHolder/Pack/PackList" to="." method="_on_ChipList_focus_changed"]

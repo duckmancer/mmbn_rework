@@ -2,7 +2,7 @@ extends Control
 
 signal closed()
 
-const CURSOR_OFFSET := Vector2(-11, 7)
+const CURSOR_OFFSET := Vector2(-2, 7)
 
 onready var anim := $AnimationPlayer
 onready var folder_chips := $PanelHolder/Folder/FolderList
@@ -58,10 +58,6 @@ func _input(event: InputEvent) -> void:
 		accept_event()
 		close()
 
-func _physics_process(_delta: float) -> void:
-	var focus = get_focus_owner()
-	if focus:
-		cursor.global_position = focus.rect_global_position + CURSOR_OFFSET
 
 
 # Init
@@ -91,3 +87,8 @@ func _on_FolderList_chip_transferred(chip : String) -> void:
 
 func _on_PackList_chip_transferred(chip : String) -> void:
 	folder_chips.add_chip(chip)
+
+
+func _on_ChipList_focus_changed(entry : Node) -> void:
+	yield(get_tree(), "idle_frame")
+	cursor.global_position = entry.rect_global_position + CURSOR_OFFSET
