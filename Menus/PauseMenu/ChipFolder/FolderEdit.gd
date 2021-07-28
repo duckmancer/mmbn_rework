@@ -23,6 +23,7 @@ func open() -> void:
 	visible = true
 	is_active = true
 	anim.play("default")
+	folder_open = true
 	folder_chips.activate()
 
 func close() -> void:
