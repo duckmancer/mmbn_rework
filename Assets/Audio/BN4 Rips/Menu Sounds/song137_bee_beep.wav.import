@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song137_bee_beep.wav-e5e6e6108e7b8224f3b1fc94b7c3ef89.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song137_bee_beep.wav"
+dest_files=[ "res://.import/song137_bee_beep.wav-e5e6e6108e7b8224f3b1fc94b7c3ef89.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

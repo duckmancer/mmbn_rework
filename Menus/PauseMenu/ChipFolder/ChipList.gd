@@ -4,6 +4,8 @@ signal chip_transferred(chip)
 signal focus_changed(entry)
 signal scrolled(portion)
 
+const CHIP_CAP = 4
+
 onready var list = $VBoxContainer
 
 
@@ -24,19 +26,21 @@ func activate() -> void:
 func deactivate() -> void:
 	is_active = false
 
-func add_chip(chip : String) -> void:
+func add_chip(chip : String, use_cap := false) -> bool:
 	if chip in chip_counts:
+		if use_cap and chip_counts[chip] >= CHIP_CAP:
+			return false
 		chip_counts[chip] += 1
 	else:
 		chip_counts[chip] = 1
 	refresh_entries()
+	return true
 
 func remove_chip(chip : String) -> void:
 	chip_counts[chip] -= 1
 	if chip_counts[chip] == 0:
 		chip_counts.erase(chip)
 	refresh_entries()
-	emit_signal("chip_transferred", chip)
 
 func set_chip_list(new_list : Dictionary) -> void:
 	chip_counts = new_list.duplicate(true)
@@ -120,7 +124,7 @@ func update_entry_quantities() -> void:
 # Entry Helpers
 
 func _connect_entry_signals(entry : Node) -> void:
-	var sigs = ["focused", "moved"]
+	var sigs = ["focused", "transferred"]
 	var sig_base = "_on_ChipEntry_"
 	for s in sigs:
 		entry.connect(s, self, sig_base + s)
@@ -161,5 +165,5 @@ func _on_ChipEntry_focused(entry : Node) -> void:
 	emit_signal("scrolled", cur_scroll)
 	
 
-func _on_ChipEntry_moved(chip : String) -> void:
-	remove_chip(chip)
+func _on_ChipEntry_transferred(chip : String) -> void:
+	emit_signal("chip_transferred", chip)

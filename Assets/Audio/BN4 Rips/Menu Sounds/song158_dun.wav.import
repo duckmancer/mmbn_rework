@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/song158_dun.wav-53a66b282c9049ba5e3ed62d135bfbbd.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/BN4 Rips/Menu Sounds/song158_dun.wav"
+dest_files=[ "res://.import/song158_dun.wav-53a66b282c9049ba5e3ed62d135bfbbd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

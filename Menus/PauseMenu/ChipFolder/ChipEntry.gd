@@ -2,7 +2,7 @@ class_name ChipEntry
 extends HBoxContainer
 
 signal focused(entry)
-signal moved(chip_name)
+signal transferred(chip_name)
 
 onready var icon = $Icon
 onready var chip_name = $Name
@@ -59,4 +59,4 @@ func _on_ScrollButton_focus_entered() -> void:
 	emit_signal("focused", self)
 
 func _on_ScrollButton_button_down() -> void:
-	emit_signal("moved", chip)
+	emit_signal("transferred", chip)

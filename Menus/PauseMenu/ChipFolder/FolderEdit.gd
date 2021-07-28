@@ -12,17 +12,21 @@ onready var cursor := $PanelHolder/Cursor
 
 var is_active := false
 var folder_open := true
+var silence_next_focus := false
 
 
 # Open/Close
 
 func open() -> void:
+	AudioAssets.play_detached_sfx("menu_open")
+	silence_next_focus = true
 	visible = true
 	is_active = true
 	anim.play("default")
 	folder_chips.activate()
 
 func close() -> void:
+	AudioAssets.play_detached_sfx("menu_cancel")
 	visible = false
 	is_active = false
 	PlayerData.chip_folder = folder_chips.get_chip_list()
@@ -83,12 +87,22 @@ func _on_PauseMenu_chip_folder_opened() -> void:
 
 func _on_FolderList_chip_transferred(chip : String) -> void:
 	pack_chips.add_chip(chip)
+	folder_chips.remove_chip(chip)
+	AudioAssets.play_detached_sfx("menu_select")
 
 
 func _on_PackList_chip_transferred(chip : String) -> void:
-	folder_chips.add_chip(chip)
+	if folder_chips.add_chip(chip, true):
+		pack_chips.remove_chip(chip)
+		AudioAssets.play_detached_sfx("menu_select")
+	else:
+		AudioAssets.play_detached_sfx("menu_error")
 
 
 func _on_ChipList_focus_changed(entry : Node) -> void:
 	yield(get_tree(), "idle_frame")
 	cursor.global_position = entry.rect_global_position + CURSOR_OFFSET
+	if not silence_next_focus:
+		AudioAssets.play_detached_sfx("menu_scroll")
+	else:
+		silence_next_focus = false
