@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform bool do_pixelate = false;
+uniform float scale = 1.0;
+
+varying vec2 pixelated_size;
+
+void vertex() {
+	pixelated_size = TEXTURE_PIXEL_SIZE * scale;
+}
+
+
+
+void fragment() {
+	vec2 uv = UV;
+	vec2 delta = mod(uv, pixelated_size);
+	if (do_pixelate) {
+		uv -= delta;
+		uv += pixelated_size / 2.0;
+	}
+	COLOR = texture(TEXTURE, uv);
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/do_pixelate = false
+shader_param/scale = 1.0

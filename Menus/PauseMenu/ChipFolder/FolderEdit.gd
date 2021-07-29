@@ -24,6 +24,8 @@ func open() -> void:
 	is_active = true
 	anim.play("default")
 	folder_open = true
+	folder_chips.index = 0
+	pack_chips.index = 0
 	folder_chips.activate()
 
 func close() -> void:
