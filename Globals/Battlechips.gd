@@ -368,6 +368,16 @@ const CHIP_DATA : Dictionary = {
 		power = 80,
 		description = "Cuts enmy in front! Range: 1",
 	},
+	ChipID.WIDESWRD : {
+		element = Element.SWORD,
+		power = 80,
+		description = "Cuts enmy in front! Range: 3",
+	},
+	ChipID.LONGSWRD : {
+		element = Element.SWORD,
+		power = 80,
+		description = "Cuts enmy in front! Range: 2",
+	},
 	ChipID.HEATSHOT : {
 		element = Element.FIRE,
 		power = 60,

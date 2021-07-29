@@ -162,6 +162,7 @@ func update_position(new_pos : Vector2) -> float:
 
 func _ready() -> void:
 	load_file(DEBUG_FILE_NUM)
+	add_chip("LongSwrd S")
 #	set_default_properties()
 
 func set_default_properties() -> void:

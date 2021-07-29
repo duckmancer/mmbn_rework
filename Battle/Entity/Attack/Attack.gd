@@ -21,7 +21,7 @@ func set_state(new_state):
 	if is_ready:
 		state = new_state
 
-
+var sprite_displacement := Vector2(0, 0)
 
 var attack_data = {}
 
@@ -51,7 +51,7 @@ func set_audio_path(p):
 func terminate():
 	if animation_player.is_playing():
 		state = AttackState.WAITING
-		visible = finish_anim_on_hit
+		visible = finish_anim_on_hit and visible
 	else:
 		.terminate()
 
@@ -105,6 +105,7 @@ func _ready():
 	attack_dir = TEAM_DIRS[team]
 	if is_offset:
 		set_grid_pos(grid_pos + attack_dir)
+	sprite.offset += Utils.scale_grid_to_pixel(sprite_displacement)
 	state = starting_state
 	_start_animation()
 	_start_audio()

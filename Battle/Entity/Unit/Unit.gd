@@ -59,17 +59,15 @@ var input_map = {
 		}
 	),
 	action_1 = ActionData.action_factory(
-		"heatshot", 
+		"sword", 
 		{}
 	),
 	action_2 = ActionData.action_factory(
-		"heatshot", 
-		{
-			attack_data = ActionData.attacks.fireball
-		}
+		"wideswrd",
+		{}
 	),
 	action_3 = ActionData.action_factory(
-		"buster", 
+		"longswrd", 
 		{}
 	),
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Battle/HUD/ShineLabel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Fonts/Player Health Font.tres" type="DynamicFont" id=2]
@@ -8,7 +8,23 @@
 [ext_resource path="res://Resources/Shaders/Pixelation.tres" type="Material" id=6]
 [ext_resource path="res://Assets/Audio/BN4 Rips/Menu Sounds/song153_double_confirm.wav" type="AudioStream" id=7]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:state")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
 resource_name = "show"
 length = 2.0
 step = 0.0166667
@@ -189,7 +205,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/show = SubResource( 1 )
+autoplay = "default"
+anims/default = SubResource( 3 )
+anims/show = SubResource( 4 )
 anims/waiting = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

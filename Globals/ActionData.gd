@@ -180,8 +180,8 @@ var attacks = {
 		child_data = impacts.bubbles,
 	},
 	sword = {
-		sprite_path = SpriteAssets.WEAPON_ROOT + "Sword.png",
-		anim_y_coord = 7,
+		sprite_path = SpriteAssets.ATTACK_ROOT + "Slash.png",
+		anim_y_coord = 1,
 		animation_name = "slash",
 		
 		audio_path = AudioAssets.SFX.sword_swing,
@@ -309,6 +309,23 @@ var action_data = {
 	},
 	sword = {
 		base = "sword",
+	},
+	wideswrd = {
+		base = "sword",
+		attack_data = {
+			anim_y_coord = 2,
+			prop_type = AreaHit.SIDE,
+			visible_children = false,
+			sprite_displacement = Vector2(0, 1),
+		},
+	},
+	longswrd = {
+		base = "sword",
+		attack_data = {
+			anim_y_coord = 3,
+			prop_type = AreaHit.SHOT,
+			visible_children = false,
+		},
 	},
 	minibomb = {
 		base = "minibomb",

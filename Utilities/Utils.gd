@@ -77,4 +77,7 @@ static func pos_to_grid(pixel_pos: Vector2):
 static func scale_pixel_to_grid(pixel_vector: Vector2):
 	return scale_down_vector(pixel_vector, BattlePanel.SIZE)
 
+static func scale_grid_to_pixel(grid_vector: Vector2):
+	return scale_vector(grid_vector, BattlePanel.SIZE)
+
 

@@ -61,6 +61,7 @@ var is_original := true
 var prop_type = NONE
 var prop_delay := 1
 var prop_recursion := 1
+var visible_children := true
 
 func spawn_propogation(offset):
 	var prop_data = {data = data.duplicate()}
@@ -90,6 +91,8 @@ func do_tick():
 		propogate()
 	
 func _ready():
+	if not visible_children and not is_original:
+		visible = false
 	pass
 
 func _start_audio():
