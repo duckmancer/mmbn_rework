@@ -103,9 +103,19 @@ func _on_PackList_chip_transferred(chip : String) -> void:
 
 
 func _on_ChipList_focus_changed(entry : Node) -> void:
-	yield(get_tree(), "idle_frame")
-	cursor.global_position = entry.rect_global_position + CURSOR_OFFSET
+	_update_cursor(entry)
+	_play_scroll_audio()
+
+
+# UI Helpers
+
+func _play_scroll_audio() -> void:
 	if not silence_next_focus:
 		AudioAssets.play_detached_sfx("menu_scroll")
 	else:
 		silence_next_focus = false
+
+func _update_cursor(target : Node) -> void:
+	yield(get_tree(), "idle_frame")
+	cursor.global_position = target.rect_global_position + CURSOR_OFFSET
+

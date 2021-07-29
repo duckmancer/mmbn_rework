@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Battle/HUD/CustomWindow/ChipPreview.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menus/PauseMenu/ChipFolder/ChipDisplay.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/ChipPreview.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Fonts/ChipDescriptionFont.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 80, 136 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ChipDisplay" type="Panel"]
+margin_right = 80.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 80, 136 )
+rect_clip_content = true
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChipPreview" parent="." instance=ExtResource( 1 )]
+margin_left = -4.0
+margin_top = -20.0
+margin_right = 79.0
+margin_bottom = 71.0
+
+[node name="Description" type="Label" parent="."]
+margin_left = 4.0
+margin_top = 72.0
+margin_right = 77.0
+margin_bottom = 124.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0980392 )
+text = "[DEBUG
+    TEXT]"
+autowrap = true
+clip_text = true
+max_lines_visible = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

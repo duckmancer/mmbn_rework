@@ -1,13 +1,13 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/FolderEdit.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/Folder.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/ChipPreview.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/Pack.png" type="Texture" id=4]
 [ext_resource path="res://Menus/PauseMenu/ChipFolder/FolderEdit.gd" type="Script" id=5]
 [ext_resource path="res://Menus/PauseMenu/ChipFolder/ChipList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Sprites/Menus/Pause Menu/ChipFolder/ChipSelectorArrow.png" type="Texture" id=7]
 [ext_resource path="res://Menus/PauseMenu/ChipFolder/Scrollbar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menus/PauseMenu/ChipFolder/ChipDisplay.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -15,31 +15,25 @@ region_rect = Rect2( 0, 0, 240, 133 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 80, 136 )
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 240, 133 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 12, 11 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 7 )
 region = Rect2( 12, 0, 12, 11 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 7 )
 region = Rect2( 24, 0, 12, 11 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
@@ -129,16 +123,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChipPreview" type="Panel" parent="PanelHolder/Folder"]
+[node name="ChipDisplay" parent="PanelHolder/Folder" instance=ExtResource( 10 )]
 margin_left = 6.0
 margin_right = 86.0
-margin_bottom = 136.0
-rect_min_size = Vector2( 80, 136 )
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="FolderList" parent="PanelHolder/Folder" instance=ExtResource( 6 )]
 margin_left = 84.0
@@ -157,21 +144,14 @@ margin_top = 16.0
 margin_right = 440.0
 margin_bottom = 149.0
 rect_min_size = Vector2( 240, 133 )
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ChipPreview" type="Panel" parent="PanelHolder/Pack"]
+[node name="ChipDisplay" parent="PanelHolder/Pack" instance=ExtResource( 10 )]
 margin_left = 158.0
 margin_right = 238.0
-margin_bottom = 136.0
-rect_min_size = Vector2( 80, 136 )
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="PackList" parent="PanelHolder/Pack" instance=ExtResource( 6 )]
 margin_left = -2.0
@@ -184,7 +164,7 @@ position = Vector2( 147, 20 )
 
 [node name="Cursor" type="AnimatedSprite" parent="PanelHolder"]
 position = Vector2( 92, 40 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 frame = 2
 playing = true
 
@@ -195,8 +175,10 @@ anims/scroll_left = SubResource( 9 )
 anims/scroll_right = SubResource( 10 )
 
 [connection signal="chip_transferred" from="PanelHolder/Folder/FolderList" to="." method="_on_FolderList_chip_transferred"]
+[connection signal="focus_changed" from="PanelHolder/Folder/FolderList" to="PanelHolder/Folder/ChipDisplay" method="_on_ChipList_focus_changed"]
 [connection signal="focus_changed" from="PanelHolder/Folder/FolderList" to="." method="_on_ChipList_focus_changed"]
 [connection signal="scrolled" from="PanelHolder/Folder/FolderList" to="PanelHolder/Folder/Scrollbar" method="_on_ChipList_scrolled"]
 [connection signal="chip_transferred" from="PanelHolder/Pack/PackList" to="." method="_on_PackList_chip_transferred"]
 [connection signal="focus_changed" from="PanelHolder/Pack/PackList" to="." method="_on_ChipList_focus_changed"]
+[connection signal="focus_changed" from="PanelHolder/Pack/PackList" to="PanelHolder/Pack/ChipDisplay" method="_on_ChipList_focus_changed"]
 [connection signal="scrolled" from="PanelHolder/Pack/PackList" to="PanelHolder/Pack/Scrollbar" method="_on_ChipList_scrolled"]

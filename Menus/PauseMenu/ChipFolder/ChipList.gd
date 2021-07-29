@@ -50,12 +50,8 @@ func get_chip_list() -> Dictionary:
 	return chip_counts.duplicate(true)
 
 
-# Helpers
+# UI Helpers
 
-#func _set_dirty() -> void:
-#	is_dirty = true
-#	if is_active:
-#		refresh_entries()
 
 func set_chip_focus() -> void:
 	var chip_refs = list.get_children()
@@ -63,6 +59,12 @@ func set_chip_focus() -> void:
 		return
 	index = clamp(index, 0, chip_refs.size() - 1) as int
 	chip_refs[index].set_focus()
+
+func update_scrollbar() -> void:
+	var ENTRY_MARGIN = 2
+	var max_scroll = get_v_scrollbar().max_value - get_v_scrollbar().page - ENTRY_MARGIN
+	var cur_scroll = float(scroll_vertical) / max_scroll
+	emit_signal("scrolled", cur_scroll)
 
 
 # Entry Management
@@ -158,11 +160,7 @@ func _ready() -> void:
 func _on_ChipEntry_focused(entry : Node) -> void:
 	index = entry.get_index()
 	emit_signal("focus_changed", entry)
-	var ENTRY_MARGIN = 2
-	var max_scroll = get_v_scrollbar().max_value - get_v_scrollbar().page - ENTRY_MARGIN
-	var cur_scroll = float(scroll_vertical) / max_scroll
-#	var cur_scroll = get_v_scrollbar().ratio
-	emit_signal("scrolled", cur_scroll)
+	update_scrollbar()
 	
 
 func _on_ChipEntry_transferred(chip : String) -> void:

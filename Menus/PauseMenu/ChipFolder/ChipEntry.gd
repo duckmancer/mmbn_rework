@@ -16,6 +16,8 @@ var chip := "Cannon A"
 var quantity := 1 setget set_quantity
 var enabled := true setget set_enabled
 
+var data : Dictionary = {}
+
 # SetGet
 
 func set_quantity(val : int) -> void:
@@ -42,7 +44,7 @@ func _ready() -> void:
 	setup_data()
 
 func setup_data() -> void:
-	var data = Battlechips.get_chip_data(chip)
+	data = Battlechips.get_chip_data(chip)
 	icon.set_chip(data.id)
 	chip_name.text = data.pretty_name
 	# TODO: Element

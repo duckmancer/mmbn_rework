@@ -1,5 +1,22 @@
 extends Node
 
+enum Element {
+	NONE,
+	WIND,
+	BREAK,
+	SWORD,
+	QUAKE,
+	BLOCK,
+	HEART,
+	INVIS,
+	PLUS,
+	FIRE,
+	AQUA,
+	ELEC,
+	WOOD,
+	HIDE,
+}
+
 enum ChipID {
 	# ~~~ STANDARD CHIPS ~~~
 	CANNON = 0,
@@ -323,6 +340,49 @@ const DEFAULT_FOLDER : Dictionary = {
 	"Recov10 L" : 2,
 	"AreaGrab S" : 1,
 	"Atk+10 *" : 2,
+}
+
+const CHIP_DATA : Dictionary = {
+	ChipID.CANNON : {
+		element = Element.NONE,
+		power = 40,
+	},
+	ChipID.HICANNON : {
+		element = Element.NONE,
+		power = 80,
+	},
+	ChipID.M_CANNON : {
+		element = Element.NONE,
+		power = 120,
+	},
+	ChipID.MINIBOMB : {
+		element = Element.NONE,
+		power = 50,
+	},
+	ChipID.SWORD : {
+		element = Element.SWORD,
+		power = 80,
+	},
+	ChipID.HEATSHOT : {
+		element = Element.FIRE,
+		power = 60,
+	},
+	ChipID.HEAT_V : {
+		element = Element.FIRE,
+		power = 70,
+	},
+	ChipID.HEATSIDE : {
+		element = Element.FIRE,
+		power = 100,
+	},
+	ChipID.BUBBLER : {
+		element = Element.AQUA,
+		power = 40,
+	},
+#	ChipID.AIRSHOT : {
+#		element = Element.WIND,
+#		power = 20,
+#	},
 }
 
 
