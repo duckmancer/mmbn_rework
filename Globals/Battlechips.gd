@@ -346,42 +346,52 @@ const CHIP_DATA : Dictionary = {
 	ChipID.CANNON : {
 		element = Element.NONE,
 		power = 40,
+		description = "Cannon to attack 1 enemy",
 	},
 	ChipID.HICANNON : {
 		element = Element.NONE,
 		power = 80,
+		description = "Cannon to attack 1 enemy",
 	},
 	ChipID.M_CANNON : {
 		element = Element.NONE,
 		power = 120,
+		description = "Cannon to attack 1 enemy",
 	},
 	ChipID.MINIBOMB : {
 		element = Element.NONE,
 		power = 50,
+		description = "Throws a bomb 3 squares",
 	},
 	ChipID.SWORD : {
 		element = Element.SWORD,
 		power = 80,
+		description = "Cuts enmy in front! Range: 1",
 	},
 	ChipID.HEATSHOT : {
 		element = Element.FIRE,
 		power = 60,
+		description = "Explodes 1 square behind",
 	},
 	ChipID.HEAT_V : {
 		element = Element.FIRE,
 		power = 70,
+		description = "Explodes 2 diag. squares",
 	},
 	ChipID.HEATSIDE : {
 		element = Element.FIRE,
 		power = 100,
+		description = "Explodes up,down on hit",
 	},
 	ChipID.BUBBLER : {
 		element = Element.AQUA,
 		power = 40,
+		description = "Explodes 1 square behind",
 	},
 #	ChipID.AIRSHOT : {
 #		element = Element.WIND,
 #		power = 20,
+#		description = "",
 #	},
 }
 
@@ -419,6 +429,8 @@ func get_chip_data(chip : String) -> Dictionary:
 	assert(data.name.to_upper() in ChipID)
 	
 	data.id = ChipID[data.name.to_upper()]
+	if data.id in CHIP_DATA:
+		Utils.overwrite_dict(data, CHIP_DATA[data.id])
 	return data
 
 func _ready() -> void:

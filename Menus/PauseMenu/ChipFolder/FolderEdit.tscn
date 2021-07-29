@@ -165,7 +165,6 @@ position = Vector2( 147, 20 )
 [node name="Cursor" type="AnimatedSprite" parent="PanelHolder"]
 position = Vector2( 92, 40 )
 frames = SubResource( 7 )
-frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
