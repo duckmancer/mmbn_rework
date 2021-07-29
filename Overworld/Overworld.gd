@@ -12,6 +12,7 @@ onready var player_megaman = $Megaman
 onready var player_lan = $Lan
 
 onready var pause_menu = $HUD/PauseMenu
+onready var folder_edit = $HUD/FolderEdit
 onready var dialogue_box = $HUD/DialogueWindow
 
 onready var music = $Music
@@ -49,7 +50,7 @@ func save_player_location() -> void:
 
 # Misc
 
-func match_chosen_option(match_text : String) -> bool:
+func match_chosen_option(match_text := "Yes") -> bool:
 	var result = chosen_dialogue_response == match_text
 	chosen_dialogue_response = ""
 	return result
@@ -206,8 +207,18 @@ func _on_DialogueWindow_option_selected(option : String) -> void:
 
 
 
+
 func _on_PauseMenu_closed() -> void:
 	get_tree().paused = false
 	get_player().refresh_inputs()
 	yield(get_tree(), "idle_frame")
 	in_menu = false
+
+
+func _on_FolderEdit_discard_prompted(text : String) -> void:
+	if dialogue_box.open(text):
+		yield(dialogue_box, "dialogue_finished")
+	if match_chosen_option("Yes"):
+		folder_edit.force_close()
+	else:
+		folder_edit.resume_editing()

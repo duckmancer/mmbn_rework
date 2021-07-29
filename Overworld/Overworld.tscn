@@ -31,18 +31,21 @@ volume_db = -10.0
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="DialogueWindow" parent="HUD" instance=ExtResource( 2 )]
-
 [node name="PauseMenu" parent="HUD" instance=ExtResource( 7 )]
 
 [node name="FolderEdit" parent="HUD" instance=ExtResource( 8 )]
 visible = false
 
+[node name="DialogueWindow" parent="HUD" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_right = 0.0
+
 [connection signal="moved" from="Megaman" to="." method="_on_Player_moved"]
 [connection signal="moved" from="Lan" to="." method="_on_Player_moved"]
-[connection signal="anim_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_anim_triggered"]
-[connection signal="option_selected" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_option_selected"]
-[connection signal="sfx_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_sfx_triggered"]
 [connection signal="chip_folder_opened" from="HUD/PauseMenu" to="HUD/FolderEdit" method="_on_PauseMenu_chip_folder_opened"]
 [connection signal="closed" from="HUD/PauseMenu" to="." method="_on_PauseMenu_closed"]
 [connection signal="closed" from="HUD/FolderEdit" to="HUD/PauseMenu" method="_on_FolderEdit_closed"]
+[connection signal="discard_prompted" from="HUD/FolderEdit" to="." method="_on_FolderEdit_discard_prompted"]
+[connection signal="anim_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_anim_triggered"]
+[connection signal="option_selected" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_option_selected"]
+[connection signal="sfx_triggered" from="HUD/DialogueWindow" to="." method="_on_DialogueWindow_sfx_triggered"]

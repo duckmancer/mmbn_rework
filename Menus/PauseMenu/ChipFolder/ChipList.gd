@@ -49,6 +49,11 @@ func set_chip_list(new_list : Dictionary) -> void:
 func get_chip_list() -> Dictionary:
 	return chip_counts.duplicate(true)
 
+func get_chip_count() -> int:
+	var result = 0
+	for count in chip_counts.values():
+		result += count
+	return result
 
 # UI Helpers
 
@@ -63,7 +68,9 @@ func set_chip_focus() -> void:
 func update_scrollbar() -> void:
 	var ENTRY_MARGIN = 2
 	var max_scroll = get_v_scrollbar().max_value - get_v_scrollbar().page - ENTRY_MARGIN
-	var cur_scroll = float(scroll_vertical) / max_scroll
+	var cur_scroll = 0
+	if max_scroll:
+		cur_scroll = float(scroll_vertical) / max_scroll
 	emit_signal("scrolled", cur_scroll)
 
 
@@ -164,4 +171,5 @@ func _on_ChipEntry_focused(entry : Node) -> void:
 	
 
 func _on_ChipEntry_transferred(chip : String) -> void:
-	emit_signal("chip_transferred", chip)
+	if is_active:
+		emit_signal("chip_transferred", chip)
