@@ -255,6 +255,15 @@ var attacks = {
 		damage_type = Element.NONE,
 		audio_path = AudioAssets.ATTACK_SFX.areagrab,
 	},
+	recover = {
+		sprite_path = SpriteAssets.ATTACK_ROOT + "Areagrab.png",
+#		anim_y_coord = 0,
+#		animation_name = "throw",
+		
+		attack_type = Areagrab,
+		damage_type = Element.HEART,
+		audio_path = AudioAssets.ATTACK_SFX.areagrab,
+	},
 }
 
 var base_actions = {
@@ -327,6 +336,11 @@ var base_actions = {
 		animation_name = "throw",
 		
 		attack_data = attacks.minibomb,
+	},
+	recover = {
+		no_weapon = true,
+#		sprite_path = SpriteAssets.IMPACT_ROOT + "Recover.png",
+		heal_amount = 0,
 	},
 }
 
@@ -417,6 +431,10 @@ var action_data = {
 		areagrab = true,
 		attack_data = attacks.areagrab,
 	},
+	recov10 = {
+		base = "recover",
+		heal_amount = 10,
+	}
 }
 
 func action_factory(action_type, kwargs := {}) -> Dictionary:

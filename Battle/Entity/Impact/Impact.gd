@@ -15,7 +15,10 @@ func do_tick():
 		animation_player.play(impact_anim)
 
 func _ready() -> void:
-	randomize_offset()
+	if impact_anim != "recover":
+		randomize_offset()
+	else:
+		sprite.position.y += 10
 	sprite.visible = false
 	if delay == 0:
 		delay = 1

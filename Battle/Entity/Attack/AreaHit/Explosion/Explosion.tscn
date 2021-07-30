@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Battle/Entity/Attack/AreaHit/AreaHit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Attack/AreaHit/Explosion/Explosion.gd" type="Script" id=2]
@@ -190,24 +190,63 @@ tracks/5/keys = {
 "values": [ true, false ]
 }
 
-[node name="Explosion" groups=[
-"entity",
-] instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=4]
+resource_name = "recover"
+length = 0.266667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:anim_x_coord")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333334, 0.0666668, 0.1, 0.133334, 0.166667, 0.2, 0.233334, 0.300001, 0.333334, 0.366667, 0.400001, 0.433334, 0.466668, 0.500001 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.283333 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "advance_animation"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.533334 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Explosion" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+anim_x_coord = 7
 is_offset = false
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 4 )
-offset = Vector2( 0, -61 )
-hframes = 8
-vframes = 8
-frame = 24
-region_rect = Rect2( 107, 7, 34, 46 )
+frame = 25
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/bubbles = SubResource( 1 )
 anims/explosion = SubResource( 2 )
 anims/fire_explosion = SubResource( 3 )
+anims/recover = SubResource( 4 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 5 )

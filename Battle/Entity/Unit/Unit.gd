@@ -63,7 +63,7 @@ var input_map = {
 		{}
 	),
 	action_2 = ActionData.action_factory(
-		"wideswrd",
+		"recov10",
 		{}
 	),
 	action_3 = ActionData.action_factory(
@@ -129,7 +129,7 @@ func set_display_hp(new_hp):
 
 # Interface
 
-func hurt(damage, impact_type = "hit", damage_type = "normal"):
+func hurt(damage, impact_type = "hit", damage_type = ActionData.Element.NORMAL):
 	set_hp(hp - damage)
 	effect_player.play_effect("hit_flash")
 	create_child_entity(Impact, {impact_anim = impact_type})
@@ -151,7 +151,7 @@ func check_hitstun(damage, damage_type):
 	# TODO: Fix damage types
 	if damage_type == ActionData.Element.ELEC:
 		return Hitstun.STUN
-	elif hitstun_threshold: #and damage_type != "light":
+	elif hitstun_threshold and damage > 0: #and damage_type != "light":
 		if damage >= hitstun_threshold:
 			return Hitstun.INVULN
 		else:
@@ -257,6 +257,8 @@ func _launch_manual_action(_action_data) -> void:
 		yield(wait_frames(action_data.delay), "completed")
 	if action_data.has("areagrab"):
 		_do_areagrab()
+	elif action_data.has("heal_amount"):
+		_do_recover()
 	elif action_data.has("attack_data"):
 		create_child_entity(action_data.attack_data.attack_type, {data = action_data.attack_data})
 	if action_data.has("is_movement"):
@@ -265,6 +267,9 @@ func _launch_manual_action(_action_data) -> void:
 		else:
 			move_to(declared_grid_pos)
 	is_action_running = false
+
+func _do_recover() -> void:
+	hurt(-action_data.heal_amount, "recover", ActionData.Element.HEART)
 
 func _do_areagrab() -> void:
 	var panel_grid := Globals.battle_grid
