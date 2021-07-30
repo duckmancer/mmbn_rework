@@ -22,6 +22,7 @@ func set_state(new_state):
 		state = new_state
 
 var sprite_displacement := Vector2(0, 0)
+var sprite_displacement_variance := Vector2(0, 0)
 
 var attack_data = {}
 
@@ -69,6 +70,7 @@ func hit(target):
 func spawn_on_hit(pos):
 	var args = child_data
 	args.grid_pos = pos
+	args.is_offset = false
 	create_child_entity(child_data.attack_type, {data = args})
 
 # Processing
@@ -110,10 +112,19 @@ func _ready():
 	attack_dir = TEAM_DIRS[team]
 	if is_offset:
 		set_grid_pos(grid_pos + attack_dir)
-	sprite.offset += Utils.scale_grid_to_pixel(sprite_displacement)
+	_set_sprite_offset()
+	
 	state = starting_state
 	_start_animation()
 	_start_audio()
+
+func _set_sprite_offset() -> void:
+	sprite.offset += sprite_displacement
+	if sprite_displacement_variance:
+		var delta = Vector2(0, 0)
+		delta.x += rand_range(-sprite_displacement_variance.x, sprite_displacement_variance.x)
+		delta.y += rand_range(-sprite_displacement_variance.y, sprite_displacement_variance.y)
+		sprite.offset += delta
 
 func _start_animation():
 	animation_player.play(animation_name)

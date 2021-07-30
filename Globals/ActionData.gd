@@ -77,6 +77,16 @@ var impacts = {
 		audio_path = AudioAssets.SFX.fire_explosion,
 		impact_type = "none",
 	},
+	vulcan_hit = {
+		attack_type = AreaHit,
+		duration = 1,
+		pass_through = true,
+		prop_type = AreaHit.SHOT,
+		animation_name = "small_hit",
+		anim_y_coord = 2,
+		audio_path = AudioAssets.ATTACK_SFX.light_hit,
+		impact_type = "none",
+	},
 	bubbles = {
 		attack_type = Explosion,
 		duration = 1,
@@ -146,6 +156,25 @@ var attacks = {
 		pass_through = false,
 		impact_type = "hit",
 		push = 1,
+	},
+	vulcan_shot = {
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Vulcan.png",
+		anim_y_coord = 1,
+		animation_name = "shoot_light",
+		sprite_displacement = Vector2(3, 0),
+		sprite_displacement_variance = Vector2(3, 3),
+		# TODO: Implement below
+#		animation_name = "shoot_rapid",
+		
+		audio_path = AudioAssets.ATTACK_SFX.vulcan,
+		
+		attack_type = Hitscan,
+		damage = 10,
+		damage_type = Element.NONE,
+		pass_through = false,
+		impact_type = "none",
+		is_direct_hit = false,
+		child_data = impacts.vulcan_hit,
 	},
 	heatshot = {
 		sprite_path = SpriteAssets.WEAPON_ROOT + "Heatshot.png",
@@ -236,6 +265,16 @@ var base_actions = {
 		animation_name = "shoot_light",
 		
 		attack_data = attacks.buster,
+	},
+	vulcan = {
+		do_repeat = true,
+		max_shots = -1,
+		
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Vulcan.png",
+		anim_y_coord = 0,
+		animation_name = "shoot_rapid",
+		
+		attack_data = attacks.vulcan_shot,
 	},
 	airshot = {
 		
@@ -338,7 +377,7 @@ var action_data = {
 			anim_y_coord = 2,
 			prop_type = AreaHit.SIDE,
 			visible_children = false,
-			sprite_displacement = Vector2(0, 1),
+			sprite_displacement = Utils.scale_grid_to_pixel(Vector2(0, 1)),
 		},
 	},
 	longswrd = {
@@ -352,6 +391,18 @@ var action_data = {
 	minibomb = {
 		base = "minibomb",
 	},
+	vulcan1 = {
+		base = "vulcan",
+		max_shots = 3,
+	},
+	vulcan2 = {
+		base = "vulcan",
+		max_shots = 5,
+	},
+	vulcan3 = {
+		base = "vulcan",
+		max_shots = 7,
+	},
 }
 
 func action_factory(action_type, kwargs := {}) -> Dictionary:
@@ -363,6 +414,8 @@ func action_factory(action_type, kwargs := {}) -> Dictionary:
 		result = base_actions[data.base].duplicate(true)
 	elif action_type in base_actions:
 		result = base_actions[action_type].duplicate(true)
+	else:
+		printerr("No data found for [%s]" % action_type)
 	Utils.overwrite_dict(result, data)
 	Utils.overwrite_dict(result, kwargs)
 	return result

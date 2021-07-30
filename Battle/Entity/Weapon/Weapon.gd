@@ -17,8 +17,9 @@ var do_manual_tick = false
 var cur_tick_pos := 0
 
 
-var loop_start = 0
+var loop_start := 0.0
 var do_repeat := false
+var max_shots := 1
 
 var is_movement := false
 var is_slide := false
@@ -49,10 +50,15 @@ func _execute_attack():
 	kwargs)
 
 func repeat_action():
-	if do_repeat:
-		var loop_target_time = Utils.frames_to_seconds(loop_start)
+	max_shots -= 1
+	if do_repeat and max_shots != 0:
+#		var loop_target_time = Utils.frames_to_seconds(loop_start)
+		var loop_target_time = loop_start
 		animation_player.seek(loop_target_time)
 		emit_signal("action_looped", loop_target_time)
+
+func set_loop_start():
+	loop_start = animation_player.current_animation_position
 
 
 # Cleanup

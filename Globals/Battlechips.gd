@@ -403,6 +403,21 @@ const CHIP_DATA : Dictionary = {
 		power = 20,
 		description = "Knocks enemy back 1",
 	},
+	ChipID.VULCAN1 : {
+		element = Element.NONE,
+		power = 10,
+		description = "3-shot to pierce 1 panel!",
+	},
+	ChipID.VULCAN2 : {
+		element = Element.NONE,
+		power = 10,
+		description = "5-shot to pierce 1 panel!",
+	},
+	ChipID.VULCAN3 : {
+		element = Element.NONE,
+		power = 10,
+		description = "7-shot to pierce 1 panel!",
+	},
 }
 
 

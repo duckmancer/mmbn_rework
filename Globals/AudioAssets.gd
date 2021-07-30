@@ -5,6 +5,7 @@ const AUDIO_ROOT = "res://Assets/Audio/"
 const _SFX_POOLS = [
 	"SFX",
 	"MENU_SFX",
+	"ATTACK_SFX",
 ]
 
 const SFX = {
@@ -28,6 +29,14 @@ const SFX = {
 	jack_in_short = "res://Assets/Audio/BN4 Rips/Overworld Sounds/song014_jack_in.wav",
 }
 
+const ATTACK_SFX = {
+	vulcan = "res://Assets/Audio/BN4 Rips/Attacks/song444_vulcan.wav",
+	areagrab = "res://Assets/Audio/BN4 Rips/Attacks/song246_area_grab.wav",
+	light_hit = "res://Assets/Audio/BN4 Rips/Hits/song109_buster_hit.wav",
+	hit = "res://Assets/Audio/BN4 Rips/Hits/song107_hit.wav",
+	block_hit = "res://Assets/Audio/BN4 Rips/Hits/song110_guard_hit.wav",
+}
+
 const MENU_SFX = {
 	menu_open = "res://Assets/Audio/BN4 Rips/Menu Sounds/song102menu_scroll.wav",
 	menu_cancel = "res://Assets/Audio/BN4 Rips/Menu Sounds/song104_menu_cancel.wav",
@@ -35,7 +44,6 @@ const MENU_SFX = {
 	menu_save = "res://Assets/Audio/BN4 Rips/Menu Sounds/song153_double_confirm.wav",
 	menu_select = "res://Assets/Audio/BN4 Rips/Menu Sounds/song283_menu_select.wav",
 	menu_error = "res://Assets/Audio/BN4 Rips/Menu Sounds/song105_menu_error_short.wav",
-	
 }
 
 const MUSIC = {

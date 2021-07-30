@@ -59,7 +59,7 @@ var input_map = {
 		}
 	),
 	action_1 = ActionData.action_factory(
-		"sword", 
+		"vulcan", 
 		{}
 	),
 	action_2 = ActionData.action_factory(
@@ -168,7 +168,7 @@ func enter_hitstun(hitstun_type):
 		pause(_STUN_DURATION)
 
 func flinch():
-	play_anim("flinch")
+	play_anim("flinch", 1, true)
 	if cur_action:
 		cur_action.abort()
 	cur_cooldown = _FLINCH_DURATION
@@ -341,13 +341,16 @@ func run_AI(_target):
 
 # Animation
 
-func play_anim(anim_name : String, speed := 1.0):
+func play_anim(anim_name : String, speed := 1.0, force_reset := false):
 	var play_name = anim_name
 	for suffix in anim_suffix:
 		var potential_name = anim_name + "_" + suffix
 		if animation_player.has_animation(potential_name):
 			play_name = potential_name
 			break
+	if animation_player.current_animation == play_name:
+		if force_reset:
+			animation_player.seek(0)
 	animation_player.play(play_name, -1, speed)
 
 func animation_done():

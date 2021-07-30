@@ -215,9 +215,8 @@ script = ExtResource( 2 )
 anim_x_coord = 7
 
 [node name="Sprite" parent="." index="0"]
-visible = false
 texture = ExtResource( 5 )
-frame = 15
+frame = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/buster_hit = SubResource( 1 )
@@ -226,5 +225,4 @@ anims/hit = SubResource( 3 )
 anims/none = SubResource( 4 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
-stream = ExtResource( 6 )
-volume_db = 5.0
+stream = ExtResource( 4 )

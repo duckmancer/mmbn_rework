@@ -11,7 +11,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "default_unit"
-length = 0.0166667
+length = 0.001
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -148,8 +148,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "default"
-length = 0.0166667
-loop = true
+length = 0.001
 step = 0.0166667
 
 [sub_resource type="Animation" id=6]
@@ -253,7 +252,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-length = 0.0166667
+length = 0.001
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/do_pixelate")

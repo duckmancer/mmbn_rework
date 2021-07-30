@@ -73,9 +73,9 @@ void fragment() {
 
 [resource]
 shader = SubResource( 1 )
-shader_param/do_pixelate = true
+shader_param/do_pixelate = false
 shader_param/scale = 0.5
-shader_param/do_shred = true
-shader_param/shred_height = 6
+shader_param/do_shred = false
+shader_param/shred_height = 0
 shader_param/shred_cut_ratio = 3
 shader_param/color_override = Color( 0, 0, 0, 0 )
