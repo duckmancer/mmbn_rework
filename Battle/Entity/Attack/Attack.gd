@@ -37,6 +37,7 @@ var is_direct_hit = true
 var finish_anim_on_hit := true
 var child_type = null
 var child_data = {}
+var push := 0
 
 var animation_name = "none"
 
@@ -58,6 +59,10 @@ func terminate():
 func hit(target):
 	if is_direct_hit:
 		target.hurt(damage, impact_type, damage_type)
+		if push:
+			var destination = target.grid_pos + attack_dir * push
+			if target.can_move_to(destination):
+				target.slide(destination, 5)
 	else:
 		spawn_on_hit(target.grid_pos)
 

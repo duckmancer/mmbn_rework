@@ -398,11 +398,11 @@ const CHIP_DATA : Dictionary = {
 		power = 40,
 		description = "Explodes 1 square behind",
 	},
-#	ChipID.AIRSHOT : {
-#		element = Element.WIND,
-#		power = 20,
-#		description = "",
-#	},
+	ChipID.AIRSHOT : {
+		element = Element.WIND,
+		power = 20,
+		description = "Knocks enemy back 1",
+	},
 }
 
 

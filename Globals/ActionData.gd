@@ -133,6 +133,20 @@ var attacks = {
 		pass_through = false,
 		impact_type = "hit",
 	},
+	airshot = {
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Airshot.png",
+		anim_y_coord = 1,
+		animation_name = "shoot_light",
+		
+		audio_path = AudioAssets.SFX.heatshot,		
+		
+		attack_type = Hitscan,
+		damage = 20,
+		damage_type = Element.WIND,
+		pass_through = false,
+		impact_type = "hit",
+		push = 1,
+	},
 	heatshot = {
 		sprite_path = SpriteAssets.WEAPON_ROOT + "Heatshot.png",
 		
@@ -222,6 +236,14 @@ var base_actions = {
 		animation_name = "shoot_light",
 		
 		attack_data = attacks.buster,
+	},
+	airshot = {
+		
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Airshot.png",
+		anim_y_coord = 0,
+		animation_name = "shoot_light",
+		
+		attack_data = attacks.airshot,
 	},
 	cannon = {
 		
