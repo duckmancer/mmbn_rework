@@ -134,6 +134,12 @@ func register_danger(source, duration := DANGER_DURATION):
 
 # State Changes
 
+func break_panel() -> void:
+	if _is_occupied():
+		_set_type(TileType.CRACKED)
+	else:
+		_set_type(TileType.BROKEN)
+
 func steal(new_team) -> void:
 	_start_change_team(new_team, true)
 
@@ -160,6 +166,14 @@ func _can_change_team(new_team) -> bool:
 				break
 	return result
 
+func _is_occupied() -> bool:
+	var result = false
+	for e in get_tree().get_nodes_in_group("target"):
+		if e.grid_pos == grid_pos:
+			result = true
+			break
+	return result
+
 func _change_team(new_team) -> void:
 	_set_team(new_team)
 	if new_team != original_team:
@@ -176,6 +190,11 @@ func _flicker_change_team(new_team, duration := DEFAULT_TEAM_FLICKER_DURATION_SE
 func _set_team(new_team) -> void:
 	team = new_team
 	display_team = new_team
+
+func _set_type(new_type) -> void:
+	type = new_type
+	if type == TileType.BROKEN:
+		type_timer = DEFAULT_BROKEN_DURATION
 
 # Initialization
 

@@ -59,7 +59,7 @@ var input_map = {
 		}
 	),
 	action_1 = ActionData.action_factory(
-		"vulcan", 
+		"crakout", 
 		{}
 	),
 	action_2 = ActionData.action_factory(
@@ -260,6 +260,8 @@ func _launch_manual_action(_action_data) -> void:
 		yield(wait_frames(action_data.delay), "completed")
 	if action_data.has("areagrab"):
 		_do_areagrab()
+	elif action_data.has("crakout"):
+		_do_crakout()
 	elif action_data.has("heal_amount"):
 		_do_recover()
 	elif action_data.has("attack_data"):
@@ -270,6 +272,9 @@ func _launch_manual_action(_action_data) -> void:
 		else:
 			move_to(declared_grid_pos)
 	is_action_running = false
+
+func _do_crakout() -> void:
+	Globals.get_panel(facing_dir * Vector2(1, 0) + grid_pos).break_panel()
 
 func _do_recover() -> void:
 	hurt(-action_data.heal_amount, "recover", ActionData.Element.HEART)

@@ -431,6 +431,10 @@ var action_data = {
 		areagrab = true,
 		attack_data = attacks.areagrab,
 	},
+	crakout = {
+		base = "unique_action",
+		crakout = true,
+	},
 	recov10 = {
 		base = "recover",
 		heal_amount = 10,

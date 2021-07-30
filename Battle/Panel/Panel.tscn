@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Battle/Panel/Panel.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/BattleAssets/Panels/Panel Border.png" type="Texture" id=2]
@@ -107,7 +107,22 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "danger"
+resource_name = "broken_middle_player"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 53 ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -123,8 +138,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "normal_back_enemy"
+[sub_resource type="Animation" id=9]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -140,8 +154,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "normal_back_player"
+[sub_resource type="Animation" id=10]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -157,8 +170,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "normal_front_enemy"
+[sub_resource type="Animation" id=11]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -174,8 +186,7 @@ tracks/0/keys = {
 "values": [ 23 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "normal_front_player"
+[sub_resource type="Animation" id=12]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -191,8 +202,7 @@ tracks/0/keys = {
 "values": [ 22 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "normal_middle_enemy"
+[sub_resource type="Animation" id=13]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -208,8 +218,7 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "normal_middle_player"
+[sub_resource type="Animation" id=14]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -229,8 +238,7 @@ tracks/0/keys = {
 resource_name = "default"
 length = 0.001
 
-[sub_resource type="Animation" id=14]
-resource_name = "flicker_team"
+[sub_resource type="Animation" id=16]
 length = 0.133333
 loop = true
 step = 0.0666667
@@ -275,18 +283,19 @@ texture = ExtResource( 3 )
 centered = false
 hframes = 9
 vframes = 15
-frame = 22
+frame = 54
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tile"]
-anims/danger = SubResource( 7 )
-anims/normal_back_enemy = SubResource( 8 )
-anims/normal_back_player = SubResource( 9 )
-anims/normal_front_enemy = SubResource( 10 )
-anims/normal_front_player = SubResource( 11 )
-anims/normal_middle_enemy = SubResource( 12 )
-anims/normal_middle_player = SubResource( 13 )
+anims/broken_middle_player = SubResource( 7 )
+anims/danger = SubResource( 8 )
+anims/normal_back_enemy = SubResource( 9 )
+anims/normal_back_player = SubResource( 10 )
+anims/normal_front_enemy = SubResource( 11 )
+anims/normal_front_player = SubResource( 12 )
+anims/normal_middle_enemy = SubResource( 13 )
+anims/normal_middle_player = SubResource( 14 )
 
 [node name="FlickerPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
 anims/default = SubResource( 15 )
-anims/flicker_team = SubResource( 14 )
+anims/flicker_team = SubResource( 16 )
