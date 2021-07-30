@@ -76,7 +76,8 @@ func set_chip_details(chip_data = null):
 		chip_name = chip_data.pretty_name
 		var action_data = ActionData.action_factory(chip_data.name)
 		if "attack_data" in action_data:
-			chip_damage = String(action_data.attack_data.damage)
+			if "attack_damage" in action_data.attack_data:
+				chip_damage = String(action_data.attack_data.damage)
 	cur_name.set_text(chip_name)
 	cur_damage.set_text(chip_damage)
 

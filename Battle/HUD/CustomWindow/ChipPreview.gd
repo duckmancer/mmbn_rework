@@ -30,7 +30,7 @@ func _set_damage(chip_name):
 	if chip_name:
 		var data = ActionData.action_factory(chip_name)
 		if data and "attack_data" in data:
-			attack_data = data.attack_data
+			Utils.overwrite_dict(attack_data, data.attack_data)
 	damage.set_text(String(attack_data.damage))
 	element.frame = attack_data.damage_type
 

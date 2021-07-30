@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Battle/Panel/Panel.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/BattleAssets/Panels/Panel Border.png" type="Texture" id=2]
@@ -225,11 +225,34 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "default"
+length = 0.001
+
+[sub_resource type="Animation" id=14]
+resource_name = "flicker_team"
+length = 0.133333
+loop = true
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:display_team")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0666667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [node name="Panel" type="Node2D" groups=[
 "panel",
 ]]
 z_index = -100
 script = ExtResource( 1 )
+display_team = 1
 
 [node name="Border" type="Sprite" parent="."]
 z_index = -1
@@ -237,6 +260,7 @@ texture = ExtResource( 2 )
 centered = false
 hframes = 2
 vframes = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Border"]
 anims/enemy_back = SubResource( 1 )
@@ -261,3 +285,8 @@ anims/normal_front_enemy = SubResource( 10 )
 anims/normal_front_player = SubResource( 11 )
 anims/normal_middle_enemy = SubResource( 12 )
 anims/normal_middle_player = SubResource( 13 )
+
+[node name="FlickerPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 15 )
+anims/flicker_team = SubResource( 14 )

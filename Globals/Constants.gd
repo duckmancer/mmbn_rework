@@ -1,9 +1,9 @@
 extends Node
 
 enum Team {
-	PLAYER,
-	ENEMY,
-	NEUTRAL,
+	ENEMY = -1,
+	NEUTRAL = 0,
+	PLAYER = 1,
 }
 
 # Directions

@@ -31,10 +31,12 @@ const SFX = {
 
 const ATTACK_SFX = {
 	vulcan = "res://Assets/Audio/BN4 Rips/Attacks/song444_vulcan.wav",
-	areagrab = "res://Assets/Audio/BN4 Rips/Attacks/song246_area_grab.wav",
+	areagrab = "res://Assets/Audio/BN4 Rips/Attacks/song147_area_grab.wav",
+	areagrab_hit = "res://Assets/Audio/BN4 Rips/Attacks/song148_area_grab_hit.wav",
 	light_hit = "res://Assets/Audio/BN4 Rips/Hits/song109_buster_hit.wav",
 	hit = "res://Assets/Audio/BN4 Rips/Hits/song107_hit.wav",
 	block_hit = "res://Assets/Audio/BN4 Rips/Hits/song110_guard_hit.wav",
+	
 }
 
 const MENU_SFX = {

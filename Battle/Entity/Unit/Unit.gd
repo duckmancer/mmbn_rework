@@ -67,7 +67,7 @@ var input_map = {
 		{}
 	),
 	action_3 = ActionData.action_factory(
-		"longswrd", 
+		"areagrab", 
 		{}
 	),
 }
@@ -255,7 +255,9 @@ func _set_cooldown(_action_data) -> void:
 func _launch_manual_action(_action_data) -> void:
 	if action_data.has("delay"):
 		yield(wait_frames(action_data.delay), "completed")
-	if action_data.has("attack_data"):
+	if action_data.has("areagrab"):
+		_do_areagrab()
+	elif action_data.has("attack_data"):
 		create_child_entity(action_data.attack_data.attack_type, {data = action_data.attack_data})
 	if action_data.has("is_movement"):
 		if action_data.has("is_slide"):
@@ -263,6 +265,17 @@ func _launch_manual_action(_action_data) -> void:
 		else:
 			move_to(declared_grid_pos)
 	is_action_running = false
+
+func _do_areagrab() -> void:
+	var panel_grid := Globals.battle_grid
+	for row in panel_grid:
+		var search_row = row.duplicate()
+		if team == Team.ENEMY:
+			search_row.invert()
+		for panel in search_row:
+			if panel.team != team:
+				create_child_entity(action_data.attack_data.attack_type, {data = action_data.attack_data, grid_pos = panel.grid_pos})
+				break
 
 func _animate_action(_action_data: Dictionary) -> void:
 	if action_data.has("unit_animation"):

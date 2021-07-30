@@ -244,7 +244,16 @@ var attacks = {
 		attack_type = Throwable,
 		damage = 50,
 		damage_type = Element.NONE,
-		child_data = impacts.small_explosion
+		child_data = impacts.small_explosion,
+	},
+	areagrab = {
+		sprite_path = SpriteAssets.ATTACK_ROOT + "Areagrab.png",
+#		anim_y_coord = 0,
+#		animation_name = "throw",
+		
+		attack_type = Areagrab,
+		damage_type = Element.NONE,
+		audio_path = AudioAssets.ATTACK_SFX.areagrab,
 	},
 }
 
@@ -402,6 +411,11 @@ var action_data = {
 	vulcan3 = {
 		base = "vulcan",
 		max_shots = 7,
+	},
+	areagrab = {
+		base = "unique_action",
+		areagrab = true,
+		attack_data = attacks.areagrab,
 	},
 }
 

@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Battle/Entity/Attack/AreaHit/AreaHit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Battle/Entity/Attack/AreaHit/Areagrab.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites/BattleAssets/Attacks/Areagrab.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Audio/BN4 Rips/Attacks/song148_area_grab_hit.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "descend_areagrab"
+length = 0.0666667
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.05 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hit_areagrab"
+length = 0.5
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.0333333 )
+}
+
+[node name="Areagrab" groups=[
+"entity",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+starting_state = 0
+is_offset = false
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+offset = Vector2( 0, -61 )
+hframes = 8
+vframes = 8
+frame = 15
+region_rect = Rect2( 107, 7, 34, 46 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/descend_areagrab = SubResource( 1 )
+anims/hit_areagrab = SubResource( 2 )
+
+[node name="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 4 )

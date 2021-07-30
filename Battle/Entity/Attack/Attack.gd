@@ -14,7 +14,7 @@ const TEAM_DIRS = {
 const SECONDS_PER_FRAME = 1.0 / 60.0
 
 export var do_panel_warning = false
-export var starting_state = AttackState.ACTIVE
+export(AttackState) var starting_state = AttackState.ACTIVE
 export var is_offset = true
 export(AttackState) var state = AttackState.WAITING setget set_state
 func set_state(new_state):
