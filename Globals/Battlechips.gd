@@ -418,6 +418,24 @@ const CHIP_DATA : Dictionary = {
 		power = 10,
 		description = "7-shot to pierce 1 panel!",
 	},
+	ChipID.AREAGRAB : {
+		element = Element.NONE,
+		description = "Steals left edge from enmy",
+	},
+	ChipID.RECOV10 : {
+		element = Element.HEART,
+		power = 10,
+		description = "Recovers 10HP",
+	},
+	ChipID.ATK_10 : {
+		element = Element.PLUS,
+		description = "+10 for selected atk chip",
+	},
+	ChipID.CRAKOUT : {
+		element = Element.QUAKE,
+		description = "Destroys 1 panel in front",
+	},
+	
 }
 
 

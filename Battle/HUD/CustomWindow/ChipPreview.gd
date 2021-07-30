@@ -16,23 +16,23 @@ func set_ok_preview(has_data := true):
 		splash_path = SpriteAssets.NO_DATA_PATH
 	splash.texture = load(splash_path)
 	_set_code(null)
-	_set_damage(null)
+	_set_damage({})
 	title.text = ""
 
 func set_preview(data):
 	_set_splash(data.id)
 	_set_code(data.code)
-	_set_damage(data.name)
+	_set_damage(data)
 	title.text = data.pretty_name
 
-func _set_damage(chip_name):
-	var attack_data = {damage = "", damage_type = ActionData.Element.HIDE}
-	if chip_name:
-		var data = ActionData.action_factory(chip_name)
-		if data and "attack_data" in data:
-			Utils.overwrite_dict(attack_data, data.attack_data)
-	damage.set_text(String(attack_data.damage))
-	element.frame = attack_data.damage_type
+func _set_damage(chip_data : Dictionary):
+	var attack_data = {power = "", element = ActionData.Element.HIDE}
+	if "power" in chip_data:
+		attack_data.power = chip_data.power
+	if "element" in chip_data:
+		attack_data.element = chip_data.element
+	damage.set_text(String(attack_data.power))
+	element.frame = attack_data.element
 
 func _set_code(code_str):
 	if code_str:

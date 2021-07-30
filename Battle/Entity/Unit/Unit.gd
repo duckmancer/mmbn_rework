@@ -222,6 +222,9 @@ func _execute_input(input : String) -> void:
 		var chip = chip_data.use_chip()
 		if chip:
 			action = ActionData.action_factory(chip.name)
+			if action.has("attack_data") and chip.has("power"):
+				if action.attack_data.has("damage"):
+					action.attack_data.damage = chip.power
 	else:
 		action = _parse_input(input)
 	if action:

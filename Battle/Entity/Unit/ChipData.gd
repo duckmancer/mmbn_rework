@@ -36,6 +36,10 @@ func set_chips(new_chips):
 		return
 	chips.clear()
 	for c in new_chips:
+		if c.id == Battlechips.ChipID.ATK_10:
+			if chips.back().has("power"):
+				chips.back().power += 10
+				continue
 		chips.append(c)
 	_update_display()
 
