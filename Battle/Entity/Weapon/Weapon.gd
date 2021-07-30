@@ -29,7 +29,8 @@ var unique_action_delay := 0
 
 
 func stop_repeat():
-	do_repeat = false
+	if max_shots <= 0:
+		do_repeat = false
 
 
 # Action Execution
