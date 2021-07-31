@@ -63,7 +63,7 @@ var input_map = {
 		{}
 	),
 	action_2 = ActionData.action_factory(
-		"recov10",
+		"vulcan",
 		{}
 	),
 	action_3 = ActionData.action_factory(
@@ -260,12 +260,13 @@ func _launch_manual_action(_action_data) -> void:
 		yield(wait_frames(action_data.delay), "completed")
 	if action_data.has("areagrab"):
 		_do_areagrab()
-	elif action_data.has("crakout"):
-		_do_crakout()
 	elif action_data.has("heal_amount"):
 		_do_recover()
 	elif action_data.has("attack_data"):
 		create_child_entity(action_data.attack_data.attack_type, {data = action_data.attack_data})
+	if action_data.has("crakout"):
+		yield(wait_frames(action_data.crakout_delay), "completed")
+		_do_crakout()
 	if action_data.has("is_movement"):
 		if action_data.has("is_slide"):
 			slide(declared_grid_pos, cur_cooldown)
@@ -274,7 +275,10 @@ func _launch_manual_action(_action_data) -> void:
 	is_action_running = false
 
 func _do_crakout() -> void:
-	Globals.get_panel(facing_dir * Vector2(1, 0) + grid_pos).break_panel()
+	var target_pos = grid_pos + facing_dir * Vector2(1, 0)
+	var target_panel = Globals.get_panel(target_pos)
+	if target_panel:
+		target_panel.break_panel()
 
 func _do_recover() -> void:
 	hurt(-action_data.heal_amount, "recover", ActionData.Element.HEART)

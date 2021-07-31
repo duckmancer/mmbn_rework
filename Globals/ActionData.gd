@@ -104,6 +104,7 @@ var attacks = {
 	shockwave = {
 		attack_type = Shockwave,
 		damage = 10,
+		is_grounded = true,
 		duration = 28,
 		pass_through = true,
 		prop_type = AreaHit.SHOT,
@@ -342,6 +343,14 @@ var base_actions = {
 #		sprite_path = SpriteAssets.IMPACT_ROOT + "Recover.png",
 		heal_amount = 0,
 	},
+	crakout = {
+		no_weapon = true,
+		unit_animation = "slash",
+		attack_data = attacks.shockwave,
+#		delay = 5,
+		crakout = true,
+		crakout_delay = 0,
+	},
 }
 
 var action_data = {
@@ -432,8 +441,16 @@ var action_data = {
 		attack_data = attacks.areagrab,
 	},
 	crakout = {
-		base = "unique_action",
-		crakout = true,
+		base = "crakout",
+		cooldown = 28,
+		attack_data = {
+			prop_recursion = 0,
+			is_grounded = false,
+			animation_speed = 2,
+			duration = 14,
+			damage = 30,
+			flip_anim = true,
+		},
 	},
 	recov10 = {
 		base = "recover",

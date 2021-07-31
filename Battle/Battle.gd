@@ -160,9 +160,10 @@ func _spawn_units(new_units : Array):
 func _debug_override_units(unit_data : Array):
 	var default_team = Entity.Team.ENEMY
 	var override_data = [
-			[NormalNavi, Vector2(3, 0),],
-			[NormalNavi, Vector2(4, 0),],
-			[NormalNavi, Vector2(5, 0),],
+			[Mettaur, Vector2(3, 1),],
+#			[NormalNavi, Vector2(3, 0),],
+#			[NormalNavi, Vector2(4, 0),],
+#			[NormalNavi, Vector2(5, 0),],
 #			[NormalNavi, Vector2(3, 1),],
 #			[NormalNavi, Vector2(4, 1),],
 #			[NormalNavi, Vector2(5, 1),],

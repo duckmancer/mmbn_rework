@@ -149,7 +149,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utilities/HelperBaseClasses/ScrollButton.gd"
 }, {
-"base": "Reference",
+"base": "AreaHit",
 "class": "Shockwave",
 "language": "GDScript",
 "path": "res://Battle/Entity/Attack/AreaHit/Shockwave/Shockwave.gd"

@@ -433,6 +433,7 @@ const CHIP_DATA : Dictionary = {
 	},
 	ChipID.CRAKOUT : {
 		element = Element.QUAKE,
+		power = 30,
 		description = "Destroys 1 panel in front",
 	},
 	

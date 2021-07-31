@@ -61,6 +61,7 @@ var team_timer := -1
 var type_timer := -1
 
 var _danger_sources := {}
+var occupant : Node = null
 
 var grid_pos : Vector2 setget set_grid_pos
 func set_grid_pos(pos: Vector2):
@@ -68,6 +69,42 @@ func set_grid_pos(pos: Vector2):
 	position = PANEL_ORIGIN + Utils.scale_vector(SIZE, pos)
 	z_index = PANEL_BASE_Z_INDEX + int(grid_pos.y) * Constants.GRID_Y_POS_Z_FACTOR
 
+
+# Interface
+
+func break_panel() -> void:
+	if is_occupied():
+		_set_type(TileType.CRACKED)
+	else:
+		_set_type(TileType.BROKEN)
+
+func steal(new_team) -> void:
+	_start_change_team(new_team, true)
+
+func is_free_real_estate(for_team) -> bool:
+	var result = true
+	if team != for_team:
+		result = false
+	elif is_occupied():
+		result = false
+	elif type == TileType.BROKEN or type == TileType.MISSING:
+		result = false
+	return result
+
+func is_occupied() -> bool:
+	return occupant != null
+
+func is_walkable() -> bool:
+	var result = true
+	if type == TileType.BROKEN:
+		result = false
+	elif type == TileType.MISSING:
+		result = false
+	return result
+
+func register_danger(source, duration := DANGER_DURATION):
+	_danger_sources[source] = duration
+	_update_panel()
 
 
 # Animation
@@ -89,10 +126,10 @@ func _get_tile_anim():
 	if not _danger_sources.empty():
 		return "danger"
 	var result = ""
-	result += TILE_NAMES[type] + "_"
-	result += _get_row_name()
+	result += TILE_NAMES[type]
+	tile.frame_coords.y = grid_pos.y
 	
-	if type == TileType.NORMAL or type == TileType.CRACKED or type == TileType.BROKEN:
+	if type == TileType.NORMAL or type == TileType.CRACKED:# or type == TileType.BROKEN:
 		result += "_"
 		if display_team == Entity.Team.PLAYER:
 			result += "player"
@@ -105,9 +142,11 @@ func _get_tile_anim():
 # Processing
 
 func _physics_process(_delta):
+	_update_occupation()
 	_check_danger()
 	_tick_timers()
 	_update_panel()
+
 
 func _check_danger() -> void:
 	for s in _danger_sources:
@@ -127,21 +166,35 @@ func _update_panel():
 	border_player.play(_get_border_anim())
 	tile_player.play(_get_tile_anim())
 
-func register_danger(source, duration := DANGER_DURATION):
-	_danger_sources[source] = duration
-	_update_panel()
+
+# Occupant
+
+func _update_occupation() -> void:
+	if occupant:
+		if occupant.grid_pos == self.grid_pos:
+			return
+		else:
+			_release_occupant()
+	for t in get_tree().get_nodes_in_group("target"):
+		if t.grid_pos == grid_pos:
+			_bind_occupant(t)
+			break
+
+
+func _bind_occupant(node : Node) -> void:
+	occupant = node
+	node.connect("tree_exiting", self, "_on_Occupant_tree_exiting")
+
+func _release_occupant() -> void:
+	if occupant:
+		occupant.disconnect("tree_exiting", self, "_on_Occupant_tree_exiting")
+		occupant = null
+		
+		if type == TileType.CRACKED:
+			break_panel()
 
 
 # State Changes
-
-func break_panel() -> void:
-	if _is_occupied():
-		_set_type(TileType.CRACKED)
-	else:
-		_set_type(TileType.BROKEN)
-
-func steal(new_team) -> void:
-	_start_change_team(new_team, true)
 
 func _start_change_team(new_team, try_quick := false) -> void:
 	if try_quick and _can_change_team(new_team):
@@ -159,19 +212,8 @@ func _can_change_team(new_team) -> bool:
 	if front_panel and front_panel.team == team:
 		return false
 	
-	for e in get_tree().get_nodes_in_group("target"):
-		if e.grid_pos == grid_pos:
-			if e.team != new_team:
-				result = false
-				break
-	return result
-
-func _is_occupied() -> bool:
-	var result = false
-	for e in get_tree().get_nodes_in_group("target"):
-		if e.grid_pos == grid_pos:
-			result = true
-			break
+	if occupant and occupant.team != new_team:
+		result = false
 	return result
 
 func _change_team(new_team) -> void:
@@ -212,3 +254,8 @@ func _ready():
 	border_player.advance(1)
 	tile_player.advance(1)
 
+
+# Signals
+
+func _on_Occupant_tree_exiting() -> void:
+	_release_occupant()

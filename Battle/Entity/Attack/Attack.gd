@@ -39,8 +39,11 @@ var finish_anim_on_hit := true
 var child_type = null
 var child_data = {}
 var push := 0
+var is_grounded := false
 
 var animation_name = "none"
+var animation_speed = 1
+var flip_anim := false
 
 var audio_start_offset := 0.0
 var audio_volume := 0
@@ -73,10 +76,22 @@ func spawn_on_hit(pos):
 	args.is_offset = false
 	create_child_entity(child_data.attack_type, {data = args})
 
+func check_for_invalid_ground() -> bool:
+	var result = false
+	if is_grounded:
+		var panel = Globals.get_panel(self.grid_pos)
+		if not panel or not panel.is_walkable():
+			.terminate()
+			result = true
+	return result
+
 # Processing
 
 func do_tick():
 	.do_tick()
+	if check_for_invalid_ground():
+		return
+	
 	if state == AttackState.ACTIVE:
 		_do_unit_collision(self.grid_pos)
 		if do_panel_warning:
@@ -110,10 +125,16 @@ func _warn_panels(snapped_pos: Vector2):
 func _ready():
 	# TODO: Clean up all these hard-coded workarounds
 	attack_dir = TEAM_DIRS[team]
+	animation_player.playback_speed = animation_speed
 	if is_offset:
 		set_grid_pos(grid_pos + attack_dir)
 	_set_sprite_offset()
 	
+	if check_for_invalid_ground():
+		return
+	
+	if flip_anim:
+		sprite.flip_h = not sprite.flip_h
 	state = starting_state
 	_start_animation()
 	_start_audio()

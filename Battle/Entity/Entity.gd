@@ -82,10 +82,11 @@ func can_move_to(destination : Vector2) -> bool:
 	return _is_panel_habitable(destination) and _is_space_open(destination)
 
 func _is_panel_habitable(destination : Vector2) -> bool:
-	for p in get_tree().get_nodes_in_group("panel"):
-		if p.grid_pos == destination:
-			return p.team == self.team
-	return false
+	var result = false
+	var panel = Globals.get_panel(destination)
+	if panel and panel.is_free_real_estate(team):
+		result = true
+	return result
 
 func _is_space_open(destination : Vector2) -> bool:
 	for t in get_tree().get_nodes_in_group("target"):

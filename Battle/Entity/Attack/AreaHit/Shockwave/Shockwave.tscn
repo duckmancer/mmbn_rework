@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466668 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -52,10 +52,18 @@ tracks/2/keys = {
 
 [node name="Shockwave" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+is_independent = true
+pretty_name = "DEFAULT"
+anim_x_coord = 0
+anim_y_coord = 0
 do_panel_warning = true
+starting_state = 1
+is_offset = true
+state = 0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
+frame = 8
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/shockwave = SubResource( 1 )

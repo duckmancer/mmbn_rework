@@ -36,7 +36,7 @@ const ATTACK_SFX = {
 	light_hit = "res://Assets/Audio/BN4 Rips/Hits/song109_buster_hit.wav",
 	hit = "res://Assets/Audio/BN4 Rips/Hits/song107_hit.wav",
 	block_hit = "res://Assets/Audio/BN4 Rips/Hits/song110_guard_hit.wav",
-	
+	panel_break = "res://Assets/Audio/MMBNSFX/Attack SFX/Impacts/Aspire Break HQ.ogg",
 }
 
 const MENU_SFX = {
