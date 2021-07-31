@@ -287,6 +287,7 @@ var base_actions = {
 	},
 	vulcan = {
 		do_repeat = true,
+		
 		max_shots = -1,
 		
 		sprite_path = SpriteAssets.WEAPON_ROOT + "Vulcan.png",
@@ -351,6 +352,19 @@ var base_actions = {
 		crakout = true,
 		crakout_delay = 0,
 	},
+	guard = {
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Guard.png",
+		anim_y_coord = 0,
+		animation_name = "guard",
+		unit_animation = "crouch",
+		
+		is_counter = true,
+		do_repeat = true,
+		release_to_end = true,
+		max_shots = 5,
+		
+		attack_data = attacks.shockwave,
+	}
 }
 
 var action_data = {
@@ -455,7 +469,16 @@ var action_data = {
 	recov10 = {
 		base = "recover",
 		heal_amount = 10,
-	}
+	},
+	guard1 = {
+		base = "guard",
+		attack_data = {
+			damage = 60,
+			animation_speed = 2,
+			duration = 14,
+			prop_delay = 12,
+		},
+	},
 }
 
 func action_factory(action_type, kwargs := {}) -> Dictionary:

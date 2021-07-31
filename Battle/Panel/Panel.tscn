@@ -122,7 +122,7 @@ tracks/0/keys = {
 "values": [ 8.0 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=8]
 resource_name = "cracked_enemy"
 length = 0.1
 tracks/0/type = "value"
@@ -138,7 +138,7 @@ tracks/0/keys = {
 "values": [ 2.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=9]
 resource_name = "cracked_player"
 length = 0.0166667
 step = 0.0166667
@@ -155,7 +155,7 @@ tracks/0/keys = {
 "values": [ 3.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -171,7 +171,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -187,7 +187,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -203,7 +203,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=13]
 resource_name = "normal_enemy"
 length = 0.001
 tracks/0/type = "value"
@@ -219,7 +219,7 @@ tracks/0/keys = {
 "values": [ 5.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=14]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -235,7 +235,7 @@ tracks/0/keys = {
 "values": [ 23 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=15]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -251,7 +251,7 @@ tracks/0/keys = {
 "values": [ 22 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=16]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -267,7 +267,7 @@ tracks/0/keys = {
 "values": [ 14 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=17]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -283,7 +283,7 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=18]
 resource_name = "normal_player"
 length = 0.1
 tracks/0/type = "value"
@@ -299,11 +299,10 @@ tracks/0/keys = {
 "values": [ 4.0 ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "default"
+[sub_resource type="Animation" id=19]
 length = 0.001
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=20]
 length = 0.133333
 loop = true
 step = 0.0666667
@@ -352,19 +351,19 @@ frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tile"]
 anims/broken = SubResource( 7 )
-anims/cracked_enemy = SubResource( 17 )
-anims/cracked_player = SubResource( 18 )
-anims/danger = SubResource( 8 )
-anims/normal_back_enemy = SubResource( 9 )
-anims/normal_back_player = SubResource( 10 )
-anims/normal_enemy = SubResource( 19 )
-anims/normal_front_enemy = SubResource( 11 )
-anims/normal_front_player = SubResource( 12 )
-anims/normal_middle_enemy = SubResource( 13 )
-anims/normal_middle_player = SubResource( 14 )
-anims/normal_player = SubResource( 20 )
+anims/cracked_enemy = SubResource( 8 )
+anims/cracked_player = SubResource( 9 )
+anims/danger = SubResource( 10 )
+anims/normal_back_enemy = SubResource( 11 )
+anims/normal_back_player = SubResource( 12 )
+anims/normal_enemy = SubResource( 13 )
+anims/normal_front_enemy = SubResource( 14 )
+anims/normal_front_player = SubResource( 15 )
+anims/normal_middle_enemy = SubResource( 16 )
+anims/normal_middle_player = SubResource( 17 )
+anims/normal_player = SubResource( 18 )
 
 [node name="FlickerPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 15 )
-anims/flicker_team = SubResource( 16 )
+anims/default = SubResource( 19 )
+anims/flicker_team = SubResource( 20 )

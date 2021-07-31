@@ -1,12 +1,69 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Weapon/Weapon.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/BattleAssets/Weapons/Vulcan.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/BattleAssets/Weapons/Guard.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Audio/MMBNSFX/Attack SFX/Attacks/TossItemInBtl HQ.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
-resource_name = "hide"
+resource_name = "guard"
+length = 0.533333
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.0833333, 0.1, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.266667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_loop_start"
+}, {
+"args": [  ],
+"method": "repeat_action"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.533333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame_coords:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.0833333, 0.1, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 0.001
 step = 0.0166667
 tracks/0/type = "value"
@@ -22,8 +79,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "move"
+[sub_resource type="Animation" id=3]
 length = 0.1
 step = 0.0166667
 tracks/0/type = "method"
@@ -53,8 +109,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "shoot_heavy"
+[sub_resource type="Animation" id=4]
 length = 0.533334
 step = 0.0166667
 tracks/0/type = "value"
@@ -84,8 +139,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "shoot_light"
+[sub_resource type="Animation" id=5]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -118,8 +172,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "shoot_med"
+[sub_resource type="Animation" id=6]
 length = 0.500001
 step = 0.0166667
 tracks/0/type = "value"
@@ -149,8 +202,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "shoot_rapid"
+[sub_resource type="Animation" id=7]
 length = 0.333334
 step = 0.0166667
 tracks/0/type = "value"
@@ -222,7 +274,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.466667
 step = 0.0166667
 tracks/0/type = "value"
@@ -252,7 +304,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.4
 step = 0.0166667
 tracks/0/type = "value"
@@ -320,7 +372,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "method"
@@ -353,23 +405,24 @@ tracks/1/keys = {
 [node name="Weapon" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 is_independent = false
-anim_x_coord = 1
+anim_x_coord = 7
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 texture = ExtResource( 3 )
-frame = 1
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "hide"
-anims/hide = SubResource( 1 )
-anims/move = SubResource( 2 )
-anims/shoot_heavy = SubResource( 3 )
-anims/shoot_light = SubResource( 4 )
-anims/shoot_med = SubResource( 5 )
-anims/shoot_rapid = SubResource( 6 )
-anims/slash = SubResource( 7 )
-anims/throw = SubResource( 8 )
-anims/unique_action = SubResource( 9 )
+anims/guard = SubResource( 1 )
+anims/hide = SubResource( 2 )
+anims/move = SubResource( 3 )
+anims/shoot_heavy = SubResource( 4 )
+anims/shoot_light = SubResource( 5 )
+anims/shoot_med = SubResource( 6 )
+anims/shoot_rapid = SubResource( 7 )
+anims/slash = SubResource( 8 )
+anims/throw = SubResource( 9 )
+anims/unique_action = SubResource( 10 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 4 )

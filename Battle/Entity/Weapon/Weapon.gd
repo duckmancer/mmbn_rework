@@ -20,6 +20,8 @@ var cur_tick_pos := 0
 var loop_start := 0.0
 var do_repeat := false
 var max_shots := 1
+var release_to_end := false
+var is_counter := false
 
 var is_movement := false
 var is_slide := false
@@ -29,7 +31,7 @@ var unique_action_delay := 0
 
 
 func stop_repeat():
-	if max_shots <= 0:
+	if max_shots <= 0 or release_to_end:
 		do_repeat = false
 
 

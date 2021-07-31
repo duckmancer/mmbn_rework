@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Impact/Impact.gd" type="Script" id=2]
@@ -6,8 +6,87 @@
 [ext_resource path="res://Assets/Audio/MMBN5DTDS Sounds and Voices/Sound Effects/1- Buster Hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sprites/BattleAssets/Impacts/Small Impact.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Audio/MMBNSFX/Attack SFX/Impacts/SmallExplosion.wav" type="AudioStream" id=6]
-[ext_resource path="res://Assets/Sprites/BattleAssets/Impacts/Recover.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Audio/BN4 Rips/Hits/song110_guard_hit.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/Recover HQ.ogg" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=6]
+resource_name = "block"
+length = 0.333334
+step = 0.0166667
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18, 19, 20 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame_coords:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 1.0, 2.0, 3.0, 4.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.166667 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "buster_hit"
@@ -320,10 +399,11 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 visible = false
-texture = ExtResource( 7 )
-frame = 8
+texture = ExtResource( 5 )
+frame = 20
 
 [node name="AnimationPlayer" parent="." index="1"]
+anims/block = SubResource( 6 )
 anims/buster_hit = SubResource( 1 )
 anims/explosion = SubResource( 2 )
 anims/hit = SubResource( 3 )
@@ -331,4 +411,4 @@ anims/none = SubResource( 4 )
 anims/recover = SubResource( 5 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )

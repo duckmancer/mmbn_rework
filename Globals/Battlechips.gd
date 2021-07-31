@@ -436,6 +436,11 @@ const CHIP_DATA : Dictionary = {
 		power = 30,
 		description = "Destroys 1 panel in front",
 	},
+	ChipID.GUARD1 : {
+		element = Element.NONE,
+		power = 60,
+		description = "Hold to counter!",
+	},
 	
 }
 

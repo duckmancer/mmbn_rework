@@ -67,7 +67,7 @@ var input_map = {
 		{}
 	),
 	action_3 = ActionData.action_factory(
-		"areagrab", 
+		"guard1", 
 		{}
 	),
 }
@@ -130,12 +130,24 @@ func set_display_hp(new_hp):
 # Interface
 
 func hurt(damage, impact_type = "hit", damage_type = ActionData.Element.NORMAL):
+	if check_counter(damage, damage_type):
+		create_child_entity(Impact, {impact_anim = "block"})
+		return
 	set_hp(hp - damage)
 	effect_player.play_effect("hit_flash")
 	create_child_entity(Impact, {impact_anim = impact_type})
 	var hitstun_type = check_hitstun(damage, damage_type)
 	if hitstun_type != Hitstun.NONE:
 		enter_hitstun(hitstun_type)
+
+func check_counter(_damage, _damage_type) -> bool:
+	var result = false
+	
+	if cur_action and cur_action.is_counter:
+		cur_action.execute_action()
+		result = true
+	
+	return result
 
 func deactivate() -> void:
 	.deactivate()
