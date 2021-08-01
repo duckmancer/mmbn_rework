@@ -79,28 +79,126 @@ const _GRID_HELPER = [
 ]
 
 var encounters = {
-	e0 = {
+	met2_a = {
+		units = [
+			[Mettaur, Vector2(4, 1)],
+			[Mettaur, Vector2(5, 2)],
+		],
+		reward = "Guard1 A",
+	},
+	met2_b = {
 		units = [
 			[Mettaur, Vector2(4, 0)],
-			[Mettaur, Vector2(5, 1)],
 			[Mettaur, Vector2(4, 2)],
 		],
 		reward = "Guard1 A",
 	},
-	e1 = {
+	met2_c = {
 		units = [
-			[Spikey, Vector2(4, 0)],
-			[Spikey, Vector2(5, 1)],
+			[Mettaur, Vector2(3, 1)],
+			[Mettaur, Vector2(5, 1)],
 		],
-		reward = "Heat-V G",
+		reward = "Guard1 A",
 	},
-	e2 = {
+	met3_a = {
+		units = [
+			[Mettaur, Vector2(5, 0)],
+			[Mettaur, Vector2(3, 1)],
+			[Mettaur, Vector2(4, 2)],
+		],
+		reward = "Guard1 A",
+	},
+	met1_bil1_a = {
+		units = [
+			[Billy, Vector2(4, 1)],
+			[Mettaur, Vector2(5, 2)],
+		],
+		reward = "Thunder1 P",
+	},
+	met1_bil1_b = {
+		units = [
+			[Mettaur, Vector2(4, 0)],
+			[Billy, Vector2(3, 2)],
+		],
+		reward = "Thunder1 P",
+	},
+	met2_bil1_a = {
+		units = [
+			[Mettaur, Vector2(4, 0)],
+			[Mettaur, Vector2(5, 1)],
+			[Billy, Vector2(3, 2)],
+		],
+		reward = "Thunder1 P",
+	},
+	met2_bil1_b = {
+		units = [
+			[Billy, Vector2(4, 0)],
+			[Mettaur, Vector2(3, 1)],
+			[Mettaur, Vector2(5, 2)],
+		],
+		reward = "Thunder1 P",
+	},
+	met2_bil1_c = {
 		units = [
 			[Mettaur, Vector2(3, 0)],
-			[Shrimpy, Vector2(5, 2)],
+			[Billy, Vector2(4, 1)],
+			[Mettaur, Vector2(3, 2)],
 		],
-		reward = "LongSwrd S",
+		reward = "Thunder1 P",
 	},
+	met1_spk1_a = {
+		units = [
+			[Mettaur, Vector2(3, 0)],
+			[Spikey, Vector2(5, 2)],
+		],
+		reward = "HeatShot C",
+	},
+	met2_spk1_a = {
+		units = [
+			[Spikey, Vector2(5, 0)],
+			[Mettaur, Vector2(4, 1)],
+			[Mettaur, Vector2(5, 2)],
+		],
+		reward = "HeatShot D",
+	},
+	met1_bil1_spk1_a = {
+		units = [
+			[Mettaur, Vector2(3, 1)],
+			[Billy, Vector2(4, 0)],
+			[Spikey, Vector2(5, 2)],
+		],
+		reward = "HeatShot C",
+	},
+	spk2_a = {
+		units = [
+			[Spikey, Vector2(5, 2)],
+			[Spikey, Vector2(5, 0)],
+		],
+		reward = "HeatShot C",
+	},
+}
+
+var area_pools := {
+	ACDC_1 = [
+		"met2_a",
+		"met2_b",
+		"met3_a",
+		"met1_bil1_a",
+		"met2_bil1_a",
+	],
+	ACDC_2 = [
+		"met2_c",
+		"met2_bil1_b",
+		"met2_bil1_c",
+		"met1_spk1_a",
+		"met2_spk1_a",
+	],
+	ACDC_3 = [
+		"met2_bil1_b",
+		"met2_bil1_c",
+		"met1_bil1_spk1_a",
+		"met2_spk1_a",
+	],
 }
 
 func encounter_factory(units : Array, panel_difs := {}, player_spawn := Vector2(1, 1)) -> Dictionary:
@@ -113,7 +211,11 @@ func encounter_factory(units : Array, panel_difs := {}, player_spawn := Vector2(
 
 
 func get_random_encounter() -> Dictionary:
-	var keys = encounters.keys()
+	var map = PlayerData.get_map()
+	if not map in area_pools:
+		return {}
+	var pool = area_pools[map]
+	var keys = pool.duplicate()
 	keys.shuffle()
 	var e = keys.front()
 	var encounter = encounter_factory(encounters[e].units)

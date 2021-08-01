@@ -1,6 +1,6 @@
 extends Node2D
 
-
+const EVENT_ENCOUNTER_PAUSE_DURATION = 3
 
 const PLAYER_ANCHOR = Vector2(120, 90)
 
@@ -19,7 +19,8 @@ onready var music = $Music
 onready var sfx_player = $SFX
 
 var map
-var do_encounter = false
+
+var encounter_pause_counter := 0
 
 var encounter_progress := 0.0
 var distance_traveled := 0.0
@@ -31,12 +32,21 @@ var in_menu := false
 
 # Movement
 
+func pause_encounters(duration := EVENT_ENCOUNTER_PAUSE_DURATION) -> void:
+	encounter_pause_counter += 1
+	yield(get_tree().create_timer(duration), "timeout")
+	encounter_pause_counter -= 1
+	reset_encounters()
+	
+
 func encounter_check() -> bool:
-	if not do_encounter:
+	if Globals.DEBUG_FLAGS.encounter_check:
 		return false
 	return encounter_progress > ENCOUNTER_THRESHOLD
 
 func track_travel(new_pos : Vector2) -> void:
+	if encounter_pause_counter:
+		return
 	var distance = PlayerData.update_position(new_pos)
 	distance_traveled += distance
 	if distance_traveled > TRAVEL_STEP:
@@ -62,6 +72,8 @@ func play_sfx(sfx_name : String) -> void:
 
 func set_music(track : String) -> void:
 	if music.stream.resource_path == track:
+		if not music.playing:
+			music.play()
 		return
 	if not track:
 		return
@@ -73,13 +85,16 @@ func set_music(track : String) -> void:
 
 func _physics_process(_delta: float) -> void:
 	if encounter_check():
-		enter_battle()
+		encounter_progress = 0
+		if PlayerData.get_map() in EncounterPool.area_pools:
+			enter_battle()
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if in_menu:
 		return
-	if event.is_action_pressed("action_1"):
-		enter_battle()
+	if event.is_action_pressed("action_3"):
+		if Globals.DEBUG_FLAGS.encounter_check:
+			enter_battle()
 	if event.is_action_pressed("start"):
 		if not get_player().is_busy:
 			pause()
@@ -147,6 +162,7 @@ func _setup_new_map(map_name : String) -> Node:
 func reset_encounters():
 	distance_traveled = 0.0
 	encounter_progress = 0.0
+	PlayerData.update_position(get_player().position)
 
 func get_player(player_map := PlayerData.current_world) -> Player:
 	var result = null
@@ -166,6 +182,9 @@ func _ready() -> void:
 
 
 # Signals
+
+func _on_Event_event_triggered() -> void:
+	pause_encounters()
 
 func _on_Event_map_transition_triggered(new_map : String) -> void:	
 	load_map(new_map)

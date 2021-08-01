@@ -4,6 +4,7 @@ extends Area2D
 
 # warning-ignore:unused_signal
 signal map_transition_triggered(new_map)
+signal event_triggered()
 
 export(String, "up_left", "up_right", "down_left", "down_right") var walk_dir = "up_left"
 
@@ -23,10 +24,10 @@ func get_spawnpoint() -> Dictionary:
 # Events
 
 func trigger_event(_entity) -> void:
-	print("[DEBUG] BASE EVENT TRIGGERED")
+	emit_signal("event_triggered")
 
-func connect_signals_to_overworld(_overworld) -> void:
-	pass
+func connect_signals_to_overworld(overworld) -> void:
+	connect("event_triggered", overworld, "_on_Event_event_triggered")
 
 # Init
 

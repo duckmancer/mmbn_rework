@@ -24,6 +24,9 @@ func activate() -> void:
 	refresh_entries()
 
 func deactivate() -> void:
+	var focus = get_focus_owner()
+	if is_a_parent_of(focus):
+		focus.release_focus()
 	is_active = false
 
 func add_chip(chip : String, use_cap := false) -> bool:

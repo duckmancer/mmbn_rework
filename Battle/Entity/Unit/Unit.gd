@@ -33,6 +33,21 @@ export var hitstun_frame = 0
 export var hitstun_duration = 1.5
 export var hitstun_threshold := 0
 
+var debug_actions = {
+	action_1 = ActionData.action_factory(
+		"crakout", 
+		{}
+	),
+	action_2 = ActionData.action_factory(
+		"vulcan",
+		{}
+	),
+	action_3 = ActionData.action_factory(
+		"thunder1", 
+		{}
+	),
+}
+
 var input_map = {
 	up = ActionData.action_factory(
 		"move", 
@@ -59,15 +74,7 @@ var input_map = {
 		}
 	),
 	action_1 = ActionData.action_factory(
-		"crakout", 
-		{}
-	),
-	action_2 = ActionData.action_factory(
-		"vulcan",
-		{}
-	),
-	action_3 = ActionData.action_factory(
-		"thunder1", 
+		"buster", 
 		{}
 	),
 }
@@ -459,6 +466,8 @@ func pause(duration : float):
 # Setup
 
 func _ready():
+	if Globals.DEBUG_FLAGS.manual_actions:
+		Utils.overwrite_dict(input_map, debug_actions)
 	set_anim_suffix()
 	sprite.material = sprite.material.duplicate()
 	if hp == 0:

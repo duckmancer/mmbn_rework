@@ -5,7 +5,7 @@ const THUNDER_DAMAGE = 15
 
 var thunder_data = {
 	unit_animation = "shoot",
-	attack_data = ActionData.attacks.thunder_ball,
+	attack_data = ActionData.attacks.thunder_ball.duplicate(true),
 	delay = 6,
 }
 

@@ -7,6 +7,7 @@ export var talk_to_character : NodePath
 var talker
 
 func trigger_event(entity) -> void:
+	.trigger_event(entity)
 	if entity is Player:
 		if talker:
 			entity.interact_with(talker)

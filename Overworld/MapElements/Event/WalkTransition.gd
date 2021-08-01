@@ -15,11 +15,13 @@ func get_spawnpoint() -> Dictionary:
 	return result
 
 func connect_signals_to_overworld(overworld) -> void:
+	.connect_signals_to_overworld(overworld)
 	connect("map_transition_triggered", overworld, "_on_Event_map_transition_triggered")
 
 
 
 func trigger_event(entity) -> void:
+	.trigger_event(entity)
 	if entity.walk_transition(walk_dir, walk_duration):
 		emit_signal("map_transition_triggered", destination_map)
 

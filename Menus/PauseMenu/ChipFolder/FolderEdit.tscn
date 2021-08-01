@@ -17,7 +17,7 @@ region_rect = Rect2( 0, 0, 240, 133 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -145,7 +145,7 @@ position = Vector2( 233, 20 )
 margin_left = 179.0
 margin_right = 225.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.4, 0.262745, 1 )
 text = "30/30"
 align = 2
@@ -197,10 +197,10 @@ anims/scroll_left = SubResource( 9 )
 anims/scroll_right = SubResource( 10 )
 
 [connection signal="chip_transferred" from="PanelHolder/Folder/FolderList" to="." method="_on_FolderList_chip_transferred"]
-[connection signal="focus_changed" from="PanelHolder/Folder/FolderList" to="." method="_on_ChipList_focus_changed"]
 [connection signal="focus_changed" from="PanelHolder/Folder/FolderList" to="PanelHolder/Folder/ChipDisplay" method="_on_ChipList_focus_changed"]
+[connection signal="focus_changed" from="PanelHolder/Folder/FolderList" to="." method="_on_ChipList_focus_changed"]
 [connection signal="scrolled" from="PanelHolder/Folder/FolderList" to="PanelHolder/Folder/Scrollbar" method="_on_ChipList_scrolled"]
 [connection signal="chip_transferred" from="PanelHolder/Pack/PackList" to="." method="_on_PackList_chip_transferred"]
-[connection signal="focus_changed" from="PanelHolder/Pack/PackList" to="." method="_on_ChipList_focus_changed"]
 [connection signal="focus_changed" from="PanelHolder/Pack/PackList" to="PanelHolder/Pack/ChipDisplay" method="_on_ChipList_focus_changed"]
+[connection signal="focus_changed" from="PanelHolder/Pack/PackList" to="." method="_on_ChipList_focus_changed"]
 [connection signal="scrolled" from="PanelHolder/Pack/PackList" to="PanelHolder/Pack/Scrollbar" method="_on_ChipList_scrolled"]

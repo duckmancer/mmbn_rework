@@ -53,6 +53,7 @@ func get_warp_destination() -> Node:
 	return destination
 
 func trigger_event(entity : Node) -> void:
+	.trigger_event(entity)
 	if destination_map:
 		trigger_warp_transition(entity)
 	else:
@@ -79,6 +80,7 @@ func _ready() -> void:
 		sprite.play(pad_type)
 
 func connect_signals_to_overworld(overworld) -> void:
+	.connect_signals_to_overworld(overworld)
 	connect("map_transition_triggered", overworld, "_on_Event_map_transition_triggered")
 
 

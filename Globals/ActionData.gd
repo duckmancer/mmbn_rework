@@ -124,7 +124,7 @@ var attacks = {
 		audio_path = AudioAssets.SFX.buster_shot,
 		
 		attack_type = Hitscan,
-		damage = 10,
+		damage = 5,
 		pass_through = false,
 		impact_type = "hit",
 	},

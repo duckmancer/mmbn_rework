@@ -7,6 +7,7 @@ onready var description := $Description
 
 
 func set_chip(data : Dictionary) -> void:
+	visible = true
 	preview.set_preview(data)
 	if "description" in data:
 		description.text = data.description
@@ -15,7 +16,7 @@ func set_chip(data : Dictionary) -> void:
 
 
 func _ready() -> void:
-	pass
+	visible = false
 
 
 func _on_ChipList_focus_changed(entry : Node) -> void:

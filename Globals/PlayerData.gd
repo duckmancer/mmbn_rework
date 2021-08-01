@@ -2,6 +2,9 @@ extends Node
 
 
 const DEBUG_FILE_NUM = 0
+const RELEASE_FILE_NUM = 1
+
+const DEBUG_MAP = "ACDC_1"
 
 const SAVE_BASE_PATH = "res://Saves/PlayerData"
 const SAVE_EXT = ".dat"
@@ -40,6 +43,8 @@ var story_flags = {
 var chip_folder := {}
 var chip_pack := {}
 
+
+
 var current_world := "real"
 var _locations = {
 	internet = {
@@ -48,7 +53,7 @@ var _locations = {
 		facing_dir = "",
 	},
 	real = {
-		map = "LanRoom",
+		map = "LanHouse",
 		position = null,
 		facing_dir = "",
 	}
@@ -162,7 +167,10 @@ func update_position(new_pos : Vector2) -> float:
 # Init
 
 func _ready() -> void:
-	load_file(DEBUG_FILE_NUM)
+	if Globals.DEBUG_ENABLED:
+		load_file(DEBUG_FILE_NUM)
+	else:
+		load_file(RELEASE_FILE_NUM)
 	_set_debug_properties()
 	_set_default_properties()
 
@@ -171,6 +179,8 @@ func _set_debug_properties() -> void:
 		chip_folder = Battlechips.DEFAULT_FOLDER.duplicate()
 	if Globals.DEBUG_FLAGS.pack:
 		chip_pack = Battlechips.DEBUG_PACK.duplicate()
+	if Globals.DEBUG_FLAGS.map:
+		change_map(DEBUG_MAP)
 
 func _set_default_properties() -> void:
 	if chip_folder.empty() or Globals.DEBUG_FLAGS.reset_inventory:

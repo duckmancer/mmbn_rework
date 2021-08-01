@@ -115,6 +115,10 @@ func _ready():
 	Battlechips.create_active_folder()
 	
 	encounter_data = EncounterPool.get_random_encounter()
+	if encounter_data.empty():
+		Transition.transition_to("overworld")
+		return
+
 	_set_panels(encounter_data.panels)
 	_spawn_player(encounter_data.player_spawn)
 	
@@ -160,8 +164,8 @@ func _spawn_units(new_units : Array):
 func _debug_override_units(unit_data : Array):
 	var default_team = Entity.Team.ENEMY
 	var override_data = [
-#			[Mettaur, Vector2(3, 1),],
-#			[Spikey, Vector2(3, 1),],
+			[Mettaur, Vector2(3, 0),],
+			[Spikey, Vector2(5, 0),],
 			[Billy, Vector2(4, 1),],
 #			[NormalNavi, Vector2(3, 0),],
 #			[NormalNavi, Vector2(4, 0),],
@@ -173,7 +177,7 @@ func _debug_override_units(unit_data : Array):
 #			[NormalNavi, Vector2(4, 2),],
 #			[NormalNavi, Vector2(5, 2),],
 	]
-	if Globals.DEBUG_FLAGS.encounter and not override_data.empty():
+	if Globals.DEBUG_FLAGS.encounter_pool and not override_data.empty():
 		unit_data.clear()
 		for unit in override_data:
 			var team = default_team

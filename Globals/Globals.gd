@@ -2,14 +2,17 @@ extends Node
 
 const CUST_GAUGE_FILL_TIME = 8.0
 
-const DEBUG_ENABLED := true
+const DEBUG_ENABLED := false
 
 const DEBUG_FLAGS := {
 	reset_inventory = false,
 	folder = false,
 	pack = false,
-	encounter = true,
+	encounter_check = false,
+	encounter_pool = false,
 	custom_open = true,
+	map = true,
+	manual_actions = false,
 }
 
 
