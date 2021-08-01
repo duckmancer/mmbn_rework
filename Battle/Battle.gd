@@ -162,7 +162,8 @@ func _debug_override_units(unit_data : Array):
 	var override_data = [
 #			[Mettaur, Vector2(3, 1),],
 #			[Spikey, Vector2(3, 1),],
-			[NormalNavi, Vector2(3, 0),],
+			[Billy, Vector2(4, 1),],
+#			[NormalNavi, Vector2(3, 0),],
 #			[NormalNavi, Vector2(4, 0),],
 #			[NormalNavi, Vector2(5, 0),],
 #			[NormalNavi, Vector2(3, 1),],

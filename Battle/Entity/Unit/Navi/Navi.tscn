@@ -175,6 +175,7 @@ hitstun_frame = 16
 hitstun_threshold = 30
 
 [node name="Sprite" parent="." index="1"]
+frame = 16
 region_rect = Rect2( 4, 62, 49, 44 )
 
 [node name="AnimationPlayer" parent="." index="2"]

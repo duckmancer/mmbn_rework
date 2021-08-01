@@ -85,6 +85,8 @@ var cur_action_tick = 0
 var is_tangible := true
 var is_alive := true
 
+var pause_count = 0
+
 export var start_delay_avg = 30
 export var start_delay_range = 30
 
@@ -370,6 +372,16 @@ func get_random_position(pref_row = -1, pref_col = -1):
 				return l
 	return valid_locations.front()
 
+func get_random_adjacent_position():
+	var valid_locations = get_all_valid_destinations()
+	if valid_locations.empty():
+		return null
+	valid_locations.shuffle()
+	for loc in valid_locations:
+		if self.grid_pos.distance_to(loc) <= 1.1:
+			return loc
+	return valid_locations.front()
+
 func align_row(target):
 	var result = null
 	var target_row = target.grid_pos.y
@@ -428,15 +440,21 @@ func do_tick():
 			cur_cooldown -= 1
 
 func pause(duration : float):
-	animation_player.stop(false)
-	is_active = false
-	if cur_action:
-		cur_action.toggle_pause(true)
+	if pause_count == 0:
+		animation_player.stop(false)
+		is_active = false
+		if cur_action:
+			cur_action.toggle_pause(true)
+			
+	pause_count += 1
 	yield(get_tree().create_timer(duration), "timeout")
-	if cur_action:
-		cur_action.toggle_pause(false)
-	is_active = true
-	animation_player.play()
+	pause_count -= 1
+	
+	if pause_count == 0:
+		if cur_action:
+			cur_action.toggle_pause(false)
+		is_active = true
+		animation_player.play()
 
 # Setup
 

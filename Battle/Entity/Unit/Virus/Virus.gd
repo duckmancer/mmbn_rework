@@ -10,6 +10,8 @@ enum AI {
 	IDLE,
 }
 
+const WALKER_DIRS = ["up", "down", "left", "right", "idle"]
+
 var virus_inputs = {
 	move = ActionData.action_factory("move", {
 		movement_dir = Vector2(0, 0),
@@ -41,7 +43,12 @@ var AI_sequence = []
 var sequence_pos = -1
 var cur_cycle_pos = 0
 
+func _set_cooldown(_action_data) -> void:
+	if cur_cooldown == 0:
+		._set_cooldown(_action_data)
+
 func try_move(dir):
+	cur_cycle_pos += 1	
 	cur_cooldown = move_cooldown
 	return dir
 
@@ -77,6 +84,23 @@ func try_chaser_col(target):
 		return try_move(result)
 	else:
 		return try_attack()
+		
+func try_walker(_target):
+	if cur_cycle_pos >= max_move_cycle:
+		return try_attack()
+	elif cur_cycle_pos >= min_move_cycle:
+		if randi() % 2:
+			return try_attack()
+	else:
+		var dirs = WALKER_DIRS.duplicate()
+		dirs.shuffle()
+		for d in dirs:
+			if d == "idle":
+				return try_move(null)
+			var dest = grid_pos + Constants.DIRS[d]
+			if can_move_to(dest):
+				return try_move(d)
+		return null
 
 func try_jumper(target):
 	var target_row = target.grid_pos.y
@@ -101,6 +125,10 @@ func run_AI(target):
 			return try_jumper(target)
 		AI.RAILS:
 			return try_rails(target)
+		AI.WALKER:
+			return try_walker(target)
+
+
 
 
 func _ready() -> void:
