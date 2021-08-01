@@ -107,6 +107,12 @@ var is_group_dirty := true
 
 # Interface
 
+func make_copy() -> Resource:
+	var new_sheet = get_script().new()
+	new_sheet.atlas = atlas.duplicate()
+	new_sheet.frame_data = frame_data.duplicate(true)
+	return new_sheet
+
 func has_anim(anim_name : String) -> bool:
 	group_animations()
 	var anim_params = _parse_anim_name(anim_name)

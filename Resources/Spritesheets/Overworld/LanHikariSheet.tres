@@ -10,7 +10,7 @@ region = Rect2( 305, 446, 19, 46 )
 margin = Rect2( 4, 27, 9, 100 )
 script = ExtResource( 1 )
 data_access_mode = "Read"
-frame_index = 90
+frame_index = 0
 spritesheet_data = [ {
 "dir": "up",
 "name": "stand_up",
