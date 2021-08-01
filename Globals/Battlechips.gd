@@ -326,6 +326,25 @@ enum ChipID {
 	_END,
 }
 
+const DEBUG_PACK : Dictionary = {
+	"Cannon A" : 4,
+	"Cannon B" : 4,
+	"AirShot A" : 4,
+	"Vulcan1 V" : 4,
+	"MiniBomb B" : 4,
+	"MiniBomb L" : 4,
+	"Sword S" : 4,
+	"WideSwrd S" : 4,
+	"CrakOut *" : 4,
+	"Recov10 A" : 4,
+	"Recov10 L" : 4,
+	"AreaGrab S" : 4,
+	"Atk+10 *" : 4,
+	"Guard1 A" : 4,
+	"Thunder1 P" : 4,
+	"HeatShot D" : 4,
+}
+
 const DEFAULT_FOLDER : Dictionary = {
 	"Cannon A" : 2,
 	"Cannon B" : 2,
@@ -441,7 +460,11 @@ const CHIP_DATA : Dictionary = {
 		power = 60,
 		description = "Hold to counter!",
 	},
-	
+	ChipID.THUNDER1 : {
+		element = Element.ELEC,
+		power = 40,
+		description = "Parlyzing electric attack!",
+	},
 }
 
 

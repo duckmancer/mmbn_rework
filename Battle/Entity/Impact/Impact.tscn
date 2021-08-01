@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Audio/BN4 Rips/Hits/song110_guard_hit.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Audio/MMBNSFX/Attack SFX/Misc/Recover HQ.ogg" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "block"
 length = 0.333334
 step = 0.0166667
@@ -88,8 +88,7 @@ tracks/5/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "buster_hit"
+[sub_resource type="Animation" id=2]
 length = 0.533333
 step = 0.0166667
 tracks/0/type = "audio"
@@ -155,8 +154,7 @@ tracks/4/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "explosion"
+[sub_resource type="Animation" id=3]
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -233,7 +231,7 @@ tracks/5/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.533333
 step = 0.0166667
 tracks/0/type = "audio"
@@ -299,7 +297,7 @@ tracks/4/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.001
 step = 0.0166667
 tracks/0/type = "value"
@@ -339,8 +337,7 @@ tracks/2/keys = {
 "values": [ ExtResource( 5 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "recover"
+[sub_resource type="Animation" id=6]
 length = 0.666667
 step = 0.0333333
 tracks/0/type = "value"
@@ -403,12 +400,12 @@ texture = ExtResource( 5 )
 frame = 20
 
 [node name="AnimationPlayer" parent="." index="1"]
-anims/block = SubResource( 6 )
-anims/buster_hit = SubResource( 1 )
-anims/explosion = SubResource( 2 )
-anims/hit = SubResource( 3 )
-anims/none = SubResource( 4 )
-anims/recover = SubResource( 5 )
+anims/block = SubResource( 1 )
+anims/buster_hit = SubResource( 2 )
+anims/explosion = SubResource( 3 )
+anims/hit = SubResource( 4 )
+anims/none = SubResource( 5 )
+anims/recover = SubResource( 6 )
 
 [node name="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 7 )

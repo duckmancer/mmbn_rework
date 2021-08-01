@@ -18,7 +18,7 @@ enum Hitstun {
 const _REPEAT_INPUT_BUFFER = 0
 const _DEATH_EXPLOSION_STAGGER_DELAY = 10
 const _FLINCH_DURATION = 20
-const _STUN_DURATION = 120
+const _STUN_DURATION = 2.0
 const _HP_UPDATE_DELAY = 0.3
 
 onready var healthbar = $HealthbarHolder/Healthbar
@@ -67,7 +67,7 @@ var input_map = {
 		{}
 	),
 	action_3 = ActionData.action_factory(
-		"guard1", 
+		"thunder1", 
 		{}
 	),
 }
@@ -177,10 +177,12 @@ func enter_hitstun(hitstun_type):
 	if hitstun_type == Hitstun.INVULN:
 		start_invis(hitstun_duration)
 	if hitstun_type == Hitstun.STUN:
+		effect_player.play_effect("stun", _STUN_DURATION)
 		pause(_STUN_DURATION)
 
 func flinch():
 	play_anim("flinch", 1, true)
+	animation_player.advance(0.0)
 	if cur_action:
 		cur_action.abort()
 	cur_cooldown = _FLINCH_DURATION

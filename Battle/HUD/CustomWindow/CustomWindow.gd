@@ -12,7 +12,7 @@ const CHIP_SELECTOR_SIZE = Vector2(22, 22)
 const OK_SELECTOR_SIZE = Vector2(28,26)
 
 const MAX_CHIPS = 5
-const MAX_AVAILABLE_CHIPS = 8
+var MAX_AVAILABLE_CHIPS := 10 if Globals.DEBUG_FLAGS.custom_open else 5
 
 const NO_LOCKOUT = {
 	code = "*",

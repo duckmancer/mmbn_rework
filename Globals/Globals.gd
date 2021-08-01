@@ -2,7 +2,16 @@ extends Node
 
 const CUST_GAUGE_FILL_TIME = 8.0
 
-var debug_mode = true
+const DEBUG_ENABLED := true
+
+const DEBUG_FLAGS := {
+	reset_inventory = false,
+	folder = false,
+	pack = false,
+	encounter = true,
+	custom_open = true,
+}
+
 
 var battle_paused = false
 
@@ -17,3 +26,6 @@ func get_panel(pos : Vector2) -> Node:
 
 func _ready() -> void:
 	randomize()
+	if not DEBUG_ENABLED:
+		for flag in DEBUG_FLAGS:
+			DEBUG_FLAGS[flag] = false

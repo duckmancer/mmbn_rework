@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Battle/Entity/Entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle/Entity/Unit/Unit.gd" type="Script" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://Battle/Entity/Unit/SpriteShader.tres" type="Material" id=7]
 [ext_resource path="res://Assets/Audio/BN4 Rips/Misc/song304_appear.wav" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=1]
 resource_name = "crouch_unit"
 length = 0.001
 step = 0.0166667
@@ -26,8 +26,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "default_unit"
+[sub_resource type="Animation" id=2]
 length = 0.001
 step = 0.0166667
 tracks/0/type = "value"
@@ -55,8 +54,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle_unit"
+[sub_resource type="Animation" id=3]
 length = 1.06667
 loop = true
 step = 0.0166667
@@ -73,8 +71,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "move_unit"
+[sub_resource type="Animation" id=4]
 length = 0.1
 step = 0.0166667
 tracks/0/type = "method"
@@ -92,8 +89,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "spawn_unit"
+[sub_resource type="Animation" id=5]
 length = 0.666668
 step = 0.0166667
 tracks/0/type = "value"
@@ -163,13 +159,11 @@ tracks/4/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "default"
+[sub_resource type="Animation" id=6]
 length = 0.001
 step = 0.0166667
 
-[sub_resource type="Animation" id=6]
-resource_name = "hit_flash"
+[sub_resource type="Animation" id=7]
 length = 0.0166667
 step = 0.0166667
 tracks/0/type = "value"
@@ -185,8 +179,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "invis_flicker"
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 step = 0.0166667
@@ -203,8 +196,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "move"
+[sub_resource type="Animation" id=9]
 length = 0.1
 step = 0.0166667
 tracks/0/type = "value"
@@ -268,7 +260,7 @@ tracks/4/keys = {
 "values": [ 5, 3, 5 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.001
 step = 0.0166667
 tracks/0/type = "value"
@@ -332,7 +324,7 @@ tracks/4/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.666668
 step = 0.0166667
 tracks/0/type = "value"
@@ -372,6 +364,24 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "stun"
+length = 0.400001
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:material:shader_param/color_override")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.992157, 1, 0.0313726, 0.0784314 ), Color( 0.992157, 1, 0.0313726, 0.643137 ) ]
+}
+
 [node name="Unit" groups=[
 "target",
 "unit",
@@ -400,24 +410,24 @@ __meta__ = {
 
 [node name="Sprite" parent="." index="1"]
 material = ExtResource( 7 )
-frame = 2
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "default_unit"
-anims/crouch_unit = SubResource( 11 )
-anims/default_unit = SubResource( 1 )
-anims/idle_unit = SubResource( 2 )
-anims/move_unit = SubResource( 3 )
-anims/spawn_unit = SubResource( 4 )
+anims/crouch_unit = SubResource( 1 )
+anims/default_unit = SubResource( 2 )
+anims/idle_unit = SubResource( 3 )
+anims/move_unit = SubResource( 4 )
+anims/spawn_unit = SubResource( 5 )
 
 [node name="EffectPlayer" type="AnimationPlayer" parent="." index="3"]
 autoplay = "default"
-anims/default = SubResource( 5 )
-anims/hit_flash = SubResource( 6 )
-anims/invis_flicker = SubResource( 7 )
-anims/move = SubResource( 8 )
-anims/normal = SubResource( 9 )
-anims/spawn = SubResource( 10 )
+anims/default = SubResource( 6 )
+anims/hit_flash = SubResource( 7 )
+anims/invis_flicker = SubResource( 8 )
+anims/move = SubResource( 9 )
+anims/normal = SubResource( 10 )
+anims/spawn = SubResource( 11 )
+anims/stun = SubResource( 12 )
 script = ExtResource( 6 )
 
 [node name="ChipData" type="Node2D" parent="." index="5"]

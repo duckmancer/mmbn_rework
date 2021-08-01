@@ -1,5 +1,6 @@
 extends Node
 
+
 const DEBUG_FILE_NUM = 0
 
 const SAVE_BASE_PATH = "res://Saves/PlayerData"
@@ -162,13 +163,20 @@ func update_position(new_pos : Vector2) -> float:
 
 func _ready() -> void:
 	load_file(DEBUG_FILE_NUM)
-#	set_default_properties()
+	_set_debug_properties()
+	_set_default_properties()
 
-func set_default_properties() -> void:
-	if chip_folder.empty():
+func _set_debug_properties() -> void:
+	if Globals.DEBUG_FLAGS.folder:
 		chip_folder = Battlechips.DEFAULT_FOLDER.duplicate()
-	if chip_pack.empty():
-		chip_pack = {"Cannon A" : 50, "Heat-V E" : 3}
+	if Globals.DEBUG_FLAGS.pack:
+		chip_pack = Battlechips.DEBUG_PACK.duplicate()
+
+func _set_default_properties() -> void:
+	if chip_folder.empty() or Globals.DEBUG_FLAGS.reset_inventory:
+		chip_folder = Battlechips.DEFAULT_FOLDER.duplicate()
+	if Globals.DEBUG_FLAGS.reset_inventory:
+		chip_pack = {}
 
 
 # Save File I/O

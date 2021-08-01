@@ -207,6 +207,19 @@ var attacks = {
 		is_direct_hit = false,
 		child_data = impacts.fireblast,
 	},
+	thunder_ball = {
+		sprite_path = SpriteAssets.ATTACK_ROOT + "Thunder.png",
+		
+		audio_path = AudioAssets.ATTACK_SFX.thunder,
+		anim_y_coord = 0,
+		animation_name = "thunder_seeker",
+		
+		attack_type = Seeker,
+		damage = 40,
+		damage_type = Element.ELEC,
+		pass_through = false,
+		impact_type = "hit",
+	},
 	bubble_bounce = {
 		sprite_path = SpriteAssets.ATTACK_ROOT + "ShrimpyBubble.png",
 		
@@ -312,6 +325,13 @@ var base_actions = {
 		animation_name = "shoot_heavy",
 		
 		attack_data = attacks.cannon,
+	},
+	thunder = {
+		sprite_path = SpriteAssets.WEAPON_ROOT + "Buster.png",
+		anim_y_coord = 0,
+		animation_name = "shoot_light",
+		
+		attack_data = attacks.thunder_ball,
 	},
 	heatshot = {
 		
@@ -479,6 +499,13 @@ var action_data = {
 			prop_delay = 12,
 		},
 	},
+	thunder1 = {
+		base = "thunder",
+		attack_data = {
+			damage = 40,
+		},
+	},
+	
 }
 
 func action_factory(action_type, kwargs := {}) -> Dictionary:

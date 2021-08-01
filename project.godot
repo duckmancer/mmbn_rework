@@ -149,6 +149,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utilities/HelperBaseClasses/ScrollButton.gd"
 }, {
+"base": "Shot",
+"class": "Seeker",
+"language": "GDScript",
+"path": "res://Battle/Entity/Attack/Shot/Seeker.gd"
+}, {
 "base": "AreaHit",
 "class": "Shockwave",
 "language": "GDScript",
@@ -233,6 +238,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerController": "",
 "ScrollButton": "",
+"Seeker": "",
 "Shockwave": "",
 "Shot": "",
 "Shrimpy": "",
