@@ -432,13 +432,13 @@ func set_character_name() -> void:
 
 func set_sprite_from_data(sprite = animated_spritesheet) -> void:
 	if character_data:
-		print(character_data.resource_name)
-		print("    Character Data: ", character_data.resource_path)
-		print("    Spritesheet: ", character_data.spritesheet is Spritesheet)
-		var tex  = character_data.spritesheet.make_copy()
-		print("    Texture_Dupe: ", tex is Spritesheet)
+#		print(character_data.resource_name)
+#		print("    Character Data: ", character_data.resource_path)
+#		print("    Spritesheet: ", character_data.spritesheet is Spritesheet)
+#		var tex  = character_data.spritesheet.make_copy()
+#		print("    Texture_Dupe: ", tex is Spritesheet)
 		sprite.texture = character_data.spritesheet.make_copy()
-		print("    Sprite: ", sprite.texture is Spritesheet)
+#		print("    Sprite: ", sprite.texture is Spritesheet)
 		
 	else:
 		if Engine.is_editor_hint():

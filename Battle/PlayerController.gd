@@ -75,7 +75,8 @@ func _update_player_hp(cur_hp, max_hp):
 	emit_signal("hp_changed", cur_hp, is_danger)
 
 func _on_player_hp_changed(new_hp, max_hp):
-	_update_player_hp(new_hp, max_hp)
+#	_update_player_hp(new_hp, max_hp)
+	PlayerData.hp = new_hp
 
 func _on_player_cur_chip_updated(chip_data):
 	emit_signal("cur_chip_updated", chip_data)

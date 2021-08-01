@@ -129,7 +129,7 @@ func set_hp(new_hp):
 		self._display_hp = hp
 
 func set_display_hp(new_hp):
-	_display_hp = new_hp
+	_display_hp = floor(new_hp)
 	if healthbar:
 		healthbar.text = str(_display_hp)
 	if is_player_controlled:

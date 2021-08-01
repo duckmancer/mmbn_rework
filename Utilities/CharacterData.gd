@@ -22,6 +22,8 @@ func set_spritesheet(sheet) -> void:
 	
 
 func infer_mugshot(sheet : Spritesheet) -> void:
+	if Engine.is_editor_hint():
+		return
 #	var sheet_path = sheet.atlas.resource_path
 #	var sheet_name = sheet_path.get_file()
 	var expected_mugshot_path = SpriteAssets.MUGSHOT_ROOT.plus_file(sheet.resource_name + ".png")

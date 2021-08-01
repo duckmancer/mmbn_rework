@@ -93,6 +93,7 @@ func _play_audio(audio : AudioStream) -> void:
 		if "loop" in _audio.stream:
 			_audio.stream.loop = false
 		_audio.play()
+		print("Playing Audio")
 
 func _change_scene(scene_name : String) -> void:
 	if scene_name:
@@ -127,9 +128,14 @@ func _prepare_fade_speed(transition_data : Dictionary) -> float:
 
 func _prepare_audio(transition_data : Dictionary) -> AudioStream:
 	var audio = null
+	print("Preparing Transition Audio")
 	if "audio_path" in transition_data:
 		var path = transition_data.audio_path
 		if File.new().file_exists(path):
+			print("  Loaded Audio just fine at: ", path)
+			audio = load(path)
+		else:
+			printerr("  Could not load audio at: ", path)
 			audio = load(path)
 	return audio
 

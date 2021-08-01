@@ -148,7 +148,7 @@ func _spawn_player(spawn_pos := Vector2(1, 1)):
 		grid_pos = spawn_pos, 
 		team = Entity.Team.PLAYER,
 		is_player_controlled = true,
-		max_hp = 100,
+		max_hp = PlayerData.max_hp,
 		hp = PlayerData.hp,
 	}
 	var player = Entity.construct_entity(Megaman, player_data)

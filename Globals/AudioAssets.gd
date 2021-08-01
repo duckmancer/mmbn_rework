@@ -61,6 +61,8 @@ func get_sfx(sfx_name : String) -> AudioStream:
 		var pool = self[pool_name]
 		if sfx_name in pool:
 			result = load(pool[sfx_name])
+	if not result:
+		printerr("Error loading sfx: \"", sfx_name, "\"")
 	return result
 
 func play_detached_sfx(sfx_name : String) -> void:

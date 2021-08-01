@@ -30,8 +30,12 @@ func set_color_mode(mode):
 		health.outer_color = health_colors[color_mode].outer
 		health.inner_color = health_colors[color_mode].inner
 
-	
+func _physics_process(_delta: float) -> void:
+	update_hp()
 
-func _ready() -> void:
+func update_hp():
 	self.color_mode = PlayerData.get_hp_state()
 	self.hp = PlayerData.hp
+
+func _ready() -> void:
+	update_hp()

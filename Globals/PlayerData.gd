@@ -7,6 +7,7 @@ const RELEASE_FILE_NUM = 1
 const DEBUG_MAP = "ACDC_1"
 
 const SAVE_BASE_PATH = "res://Saves/PlayerData"
+const SAVE_BACKUP_PATH = "user://MegamanBetterNetwork_SaveData"
 const SAVE_EXT = ".dat"
 
 const SAVED_PROPERTIES = [
@@ -58,7 +59,7 @@ var _locations = {
 		facing_dir = "",
 	}
 }
-var max_hp := 200
+var max_hp := 100
 var hp := 100
 
 
@@ -191,20 +192,28 @@ func _set_default_properties() -> void:
 
 # Save File I/O
 
-func save_file(file_num := 0) -> void:
-	var path = _get_save_file_path(file_num)
+func save_file(_file_num := 0) -> void:
+	var path = _get_save_file_path()
 	var file = File.new()
+#	if file.open(path, File.WRITE):
+#		printerr("Loading base path failed")
 	if not file.open(path, File.WRITE):
-		file.store_var(self.serialize())
+		file.store_var(self.serialize())	
+	else:
+		printerr("Loading backup path failed")
 	file.close()
 
-func load_file(file_num := 0) -> void:
-	var path = _get_save_file_path(file_num)
+func load_file(_file_num := 0) -> void:
+	var path = _get_save_file_path()
 	var file = File.new()
+#	if file.open(path, File.READ):
+#		printerr("Reading base path failed")
 	if not file.open(path, File.READ):
 		var data = file.get_var()
 		if data and data is Dictionary:
 			deserialize(data)
+	else:
+		printerr("Reading backup path failed")
 	file.close()
 
 func serialize() -> Dictionary:
@@ -220,6 +229,7 @@ func deserialize(data : Dictionary) -> void:
 			if typeof(val) == typeof(self[prop]):
 				self[prop] = str2var(data[prop])
 
-func _get_save_file_path(file_num : int) -> String:
-	return SAVE_BASE_PATH + String(file_num) + ".dat"
-
+func _get_save_file_path() -> String:
+	var file_num = DEBUG_FILE_NUM if Globals.DEBUG_ENABLED else RELEASE_FILE_NUM
+	var base = SAVE_BASE_PATH if Globals.DEBUG_ENABLED else SAVE_BACKUP_PATH
+	return base + String(file_num) + ".dat"

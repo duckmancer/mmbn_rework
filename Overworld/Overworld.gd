@@ -205,6 +205,7 @@ func _on_Player_jack_out_prompted(text : String, mug = null):
 	if match_chosen_option("Yes"):
 		get_player().run_coroutine("warp_out")
 		load_map(PlayerData.get_other_world_map())
+		PlayerData.hp = PlayerData.max_hp
 	
 func _on_Player_jacked_in(destination : String):
 	if destination:
