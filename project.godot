@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Battle/Entity/Entity.gd"
 }, {
+"base": "Resource",
+"class": "EntityLogic",
+"language": "GDScript",
+"path": "res://Battle/ScriptedEntity/EntityLogic/EntityLogic.gd"
+}, {
 "base": "Area2D",
 "class": "Event",
 "language": "GDScript",
@@ -113,6 +118,11 @@ _global_script_classes=[ {
 "class": "Mettaur",
 "language": "GDScript",
 "path": "res://Battle/Entity/Unit/Virus/Mettaur/Mettaur.gd"
+}, {
+"base": "Resource",
+"class": "MovementLogic",
+"language": "GDScript",
+"path": "res://Battle/ScriptedEntity/EntityLogic/MovementLogic.gd"
 }, {
 "base": "Character",
 "class": "NPC",
@@ -148,6 +158,11 @@ _global_script_classes=[ {
 "class": "PlayerController",
 "language": "GDScript",
 "path": "res://Battle/PlayerController.gd"
+}, {
+"base": "Node2D",
+"class": "ScriptedEntity",
+"language": "GDScript",
+"path": "res://Battle/ScriptedEntity/ScriptedEntity.gd"
 }, {
 "base": "Button",
 "class": "ScrollButton",
@@ -230,12 +245,14 @@ _global_script_class_icons={
 "ChipSlot": "",
 "DialogueWindow": "",
 "Entity": "",
+"EntityLogic": "",
 "Event": "",
 "Explosion": "",
 "Hitscan": "",
 "Impact": "",
 "Megaman": "",
 "Mettaur": "",
+"MovementLogic": "",
 "NPC": "",
 "Navi": "",
 "NetAccessPoint": "",
@@ -243,6 +260,7 @@ _global_script_class_icons={
 "OverworldEntity": "",
 "Player": "",
 "PlayerController": "",
+"ScriptedEntity": "",
 "ScrollButton": "",
 "Seeker": "",
 "Shockwave": "",
@@ -276,6 +294,7 @@ Battlechips="*res://Globals/Battlechips.gd"
 EncounterPool="*res://Globals/EncounterPool.gd"
 PlayerData="*res://Globals/PlayerData.gd"
 Transition="*res://Utilities/Transition.tscn"
+Battlefield="*res://Globals/Battle/Battlefield.gd"
 
 [debug]
 
